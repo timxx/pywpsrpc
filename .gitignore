@@ -1,0 +1,8 @@
+.vscode
+Makefile
+sip*.cpp
+sip*.h
+*.o
+*.so
+*.sbf
+*.exp
