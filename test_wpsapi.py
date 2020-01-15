@@ -18,8 +18,15 @@ def test():
     #hr = rpc.setProcessArgs(["not a file", "中文sth"])
     #print(hr)
 
-    hr, app = rpc.getWpsApplication()
-    print(hr, app)
+    wpsApp = wpsapi.getWpsApplication(rpc)
+    print(wpsApp.get_Name())
+    print(wpsApp.get_Version())
+
+    wpsApp.put_Visible(0)
+    print(wpsApp.get_Visible())
+
+    wpsApp.put_Visible(-1)
+    print(wpsApp.get_Visible())
 
     hr, pid = rpc.getProcessPid()
     print(hr, pid)

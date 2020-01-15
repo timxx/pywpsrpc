@@ -27,6 +27,7 @@ makefile = sipconfig.SIPModuleMakefile(config, build_file)
 
 makefile.extra_include_dirs = ["../../include",
                                "../../include/common",
+                               "../../include/wps",
                                qt_inc_dir,
                                qt_inc_dir + "/QtCore"
                                ]
