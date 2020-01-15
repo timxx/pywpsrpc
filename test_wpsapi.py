@@ -24,18 +24,6 @@ def test():
     hr, pid = rpc.getProcessPid()
     print(hr, pid)
 
-    IID__Application = wpsapi.GUID("00020970-0000-0000-C000-000000000046")
-    print(IID__Application)
-
-    hr, interface = app.QueryInterface(IID__Application)
-    print(hr, interface)
-
-    wpsApp = wpsapi.IDispatch.fromVoidPtr(interface)
-    print(wpsApp)
-
-    hr, count = wpsApp.GetTypeInfoCount()
-    print(hr, count)
-
     #qapp.exec()
 
 

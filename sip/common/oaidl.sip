@@ -40,38 +40,6 @@ typedef UINT32 DISPID;
 typedef DISPID MEMBERID;
 typedef DWORD HREFTYPE;
 
-struct DISPPARAMS
-{
-    %TypeHeaderCode
-        #include <pre_stddef.h>
-        #include <typedef.h>
-    %End
-    VARIANTARG *rgvarg;
-    //DISPID *rgdispidNamedArgs;
-    //SIP_PYLIST rgdispidNamedArgs /TypeHint="List[int]"/;
-    UINT cArgs;
-    UINT cNamedArgs;
-};
-
-struct EXCEPINFO
-{
-    %TypeHeaderCode
-        #include <pre_stddef.h>
-        #include <typedef.h>
-    %End
-    WORD  wCode;
-    WORD  wReserved;
-    //BSTR  bstrSource;
-    //BSTR  bstrDescription;
-    //BSTR  bstrHelpFile;
-    DWORD dwHelpContext;
-    PVOID pvReserved;
-    // HRESULT (*pfnDeferredFillIn)(struct EXCEPINFO *);
-    SCODE scode;
-};
-
-typedef EXCEPINFO *LPEXCEPINFO;
-
 
 struct IDispatch : public IUnknown /Abstract/
 {
@@ -83,40 +51,32 @@ struct IDispatch : public IUnknown /Abstract/
         #include <objidl.h>
     %End
 public:
+    /*
     virtual HRESULT GetTypeInfoCount(
-        /* [out] */ UINT *pctinfo) = 0;
+        UINT *pctinfo) = 0;
 
     virtual HRESULT GetTypeInfo(
-        /* [in] */ UINT iTInfo,
-        /* [in] */ LCID lcid,
-        /* [out] */ ITypeInfo **ppTInfo) = 0;
+        UINT iTInfo,
+        LCID lcid,
+        ITypeInfo **ppTInfo) = 0;
 
     virtual HRESULT GetIDsOfNames(
         const IID& riid,
-        // LPOLESTR *rgszNames,
-        // UINT cNames,
-        SIP_PYLIST rgszNames /TypeHint="List[str]"/,
+        LPOLESTR *rgszNames,
+        UINT cNames,
         LCID lcid,
         DISPID *rgDispId) = 0;
-    %MethodCode
-        Py_ssize_t cNames = PyList_Size(a1);
-
-    %End
 
     virtual HRESULT  Invoke(
-        /* [in] */ DISPID dispIdMember,
-        /* [in] */ const IID& riid,
-        /* [in] */ LCID lcid,
-        /* [in] */ WORD wFlags,
-        /* [out][in] */ DISPPARAMS *pDispParams,
-        /* [out] */ VARIANT *pVarResult,
-        /* [out] */ EXCEPINFO *pExcepInfo,
-        /* [out] */ UINT *puArgErr) = 0;
-
-    static IDispatch* fromVoidPtr(void *ptr);
-    %MethodCode
-        sipRes = reinterpret_cast<IDispatch*>(a0);
-    %End
+        DISPID dispIdMember,
+        const IID& riid,
+        LCID lcid,
+        WORD wFlags,
+        DISPPARAMS *pDispParams,
+        VARIANT *pVarResult,
+        EXCEPINFO *pExcepInfo,
+        UINT *puArgErr) = 0;
+    */
 };
 
 struct ITypeInfo : public IUnknown /Abstract/

@@ -12,8 +12,6 @@ public:
     virtual HRESULT QueryInterface(
         /* [in] */ const IID& riid,
         /* [iid_is][out] */ void **ppvObject) = 0;
-    
     virtual ULONG AddRef() = 0;
-    
     virtual ULONG Release() = 0;
 };
