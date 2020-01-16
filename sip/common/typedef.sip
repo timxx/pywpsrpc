@@ -159,5 +159,30 @@ typedef const CHAR *PCSTR;
 
 typedef void* PVOID;
 typedef unsigned short VARTYPE;
-typedef short VARIANT_BOOL;
 typedef long SCODE;
+
+// typedef short VARIANT_BOOL;
+%MappedType VARIANT_BOOL /TypeHint="bool"/
+{
+%TypeHeaderCode
+    #include <typedef.h>
+%End
+%ConvertToTypeCode
+    if (!sipIsErr)
+        return PyBool_Check(sipPy) || PyLong_Check(sipPy);
+
+    VARIANT_BOOL *boolPtr = new VARIANT_BOOL;
+    if (PyBool_Check(sipPy))
+        *boolPtr = sipPy == Py_True ? VARIANT_TRUE : VARIANT_FALSE;
+    else // PyLong_Check
+        *boolPtr = PyLong_AsLong(sipPy) == 0 ? VARIANT_FALSE : VARIANT_TRUE;
+
+    *sipCppPtr = boolPtr;
+
+    return SIP_TEMPORARY;
+%End
+
+%ConvertFromTypeCode
+    return PyBool_FromLong(*sipCpp == VARIANT_FALSE ? 0 : 1);
+%End
+};
