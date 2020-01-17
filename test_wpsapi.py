@@ -15,8 +15,8 @@ def test():
     hr, rpc = wpsapi.createWpsRpcInstance()
     print(hr, rpc)
 
-    #hr = rpc.setProcessArgs(["not a file", "中文sth"])
-    #print(hr)
+    hr = rpc.setProcessArgs([__file__])
+    print(hr)
 
     wpsApp = wpsapi.getWpsApplication(rpc)
 
@@ -25,6 +25,11 @@ def test():
 
     print(wpsApp.get_Name())
     print(wpsApp.get_Version())
+    print(wpsApp.get_Build())
+
+    print(wpsApp.get_Caption())
+    wpsApp.put_Caption("test标题")
+    print(wpsApp.get_Caption())
 
     wpsApp.put_Visible(False)
     print(wpsApp.get_Visible())

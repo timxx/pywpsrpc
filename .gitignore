@@ -6,3 +6,5 @@ sip*.h
 *.so
 *.sbf
 *.exp
+*.stash
+*.a
