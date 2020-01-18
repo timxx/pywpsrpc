@@ -1,7 +1,8 @@
-%Module wpsapi
+%Module wpssdk
 
 %Include wpsrpcsdk.sip
 %Include _Application.sip
+%Include enums.sip
 
 %ModuleCode
     #include <QString>

@@ -6,19 +6,20 @@ import os
 from PyQt5.QtCore import *
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/sip/wpsapi")
-import wpsapi
+import wpssdk
+from wpssdk import wpsapi
 
 
 def test():
     qapp = QCoreApplication(sys.argv)
 
-    hr, rpc = wpsapi.createWpsRpcInstance()
+    hr, rpc = wpssdk.createWpsRpcInstance()
     print(hr, rpc)
 
     hr = rpc.setProcessArgs([__file__])
     print(hr)
 
-    wpsApp = wpsapi.getWpsApplication(rpc)
+    wpsApp = wpssdk.getWpsApplication(rpc)
 
     hr, pid = rpc.getProcessPid()
     print(hr, pid)
@@ -36,6 +37,8 @@ def test():
 
     wpsApp.put_Visible(True)
     print(wpsApp.get_Visible())
+
+    wpsApp.Quit(wpsapi.wdDoNotSaveChanges, None, None)
 
     #qapp.exec()
 

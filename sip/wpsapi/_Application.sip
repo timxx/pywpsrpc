@@ -1,5 +1,6 @@
 %Include oaidl.sip
 %Include _Application_extend.sip
+%Include enums.sip
 
 namespace wpsapi {
     typedef float single;
@@ -58,7 +59,7 @@ public:
     virtual HRESULT get_UsableHeight(long *prop /Out/) = 0;
     virtual HRESULT get_MathCoprocessorAvailable(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT get_MouseAvailable(VARIANT_BOOL *prop /Out/) = 0;
-    // virtual HRESULT get_International(WdInternationalIndex Index, VARIANT *prop) = 0;
+    virtual HRESULT get_International(WdInternationalIndex Index, VARIANT *prop) = 0;
     virtual HRESULT get_Build(BSTR *prop /Out/) = 0;
     virtual HRESULT get_CapsLock(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT get_NumLock(VARIANT_BOOL *prop /Out/) = 0;
@@ -108,12 +109,10 @@ public:
     //virtual HRESULT put_WindowState(WdWindowState prop) = 0;
     virtual HRESULT get_DisplayAutoCompleteTips(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_DisplayAutoCompleteTips(VARIANT_BOOL prop) = 0;
-/*
-    virtual HRESULT get_Options(Options **prop) = 0;
+    //virtual HRESULT get_Options(Options **prop) = 0;
     virtual HRESULT get_DisplayAlerts(WdAlertLevel *prop) = 0;
     virtual HRESULT put_DisplayAlerts(WdAlertLevel prop) = 0;
-    virtual HRESULT get_CustomDictionaries(Dictionaries **prop) = 0;
-*/
+    //virtual HRESULT get_CustomDictionaries(Dictionaries **prop) = 0;
     virtual HRESULT get_PathSeparator(BSTR *prop /Out/) = 0;
     virtual HRESULT put_StatusBar(BSTR rhs) = 0;
     virtual HRESULT get_MAPIAvailable(VARIANT_BOOL *prop /Out/) = 0;
@@ -122,10 +121,8 @@ public:
     //virtual HRESULT get_EnableCancelKey(WdEnableCancelKey *prop) = 0;
     //virtual HRESULT put_EnableCancelKey(WdEnableCancelKey prop) = 0;
     virtual HRESULT get_UserControl(VARIANT_BOOL *prop /Out/) = 0;
-/*
-    virtual HRESULT get_FileSearch(FileSearch **prop) = 0;
+    //virtual HRESULT get_FileSearch(FileSearch **prop) = 0;
     virtual HRESULT get_MailSystem(WdMailSystem *prop) = 0;
-*/
     virtual HRESULT get_DefaultTableSeparator(BSTR *prop /Out/) = 0;
     virtual HRESULT put_DefaultTableSeparator(BSTR prop) = 0;
     virtual HRESULT get_ShowVisualBasicEditor(VARIANT_BOOL *prop /Out/) = 0;
@@ -136,9 +133,8 @@ public:
     //virtual HRESULT get_HangulHanjaDictionaries(HangulHanjaConversionDictionaries **prop) = 0;
     //virtual HRESULT get_MailMessage(MailMessage **prop) = 0;
     virtual HRESULT get_FocusInMailHeader(VARIANT_BOOL *prop /Out/) = 0;
-    //virtual HRESULT Quit(VARIANT *SaveChanges, VARIANT *OriginalFormat, VARIANT *RouteDocument) = 0;
+    virtual HRESULT Quit(VARIANT *SaveChanges, VARIANT *OriginalFormat, VARIANT *RouteDocument) = 0;
     virtual HRESULT ScreenRefresh() = 0;
-/*
     virtual HRESULT PrintOutOld(VARIANT *Background,
             VARIANT *Append,
             VARIANT *Range,
@@ -156,9 +152,7 @@ public:
             VARIANT *ManualDuplexPrint) = 0;
     virtual HRESULT LookupNameProperties(BSTR Name) = 0;
     virtual HRESULT SubstituteFont(BSTR UnavailableFont, BSTR SubstituteFont) = 0;
-*/
     virtual HRESULT Repeat(VARIANT *Times, VARIANT_BOOL *prop /Out/) = 0;
-/*
     virtual HRESULT DDEExecute(long Channel, BSTR Command) = 0;
     virtual HRESULT DDEInitiate(BSTR App, BSTR Topic, long *prop) = 0;
     virtual HRESULT DDEPoke(long Channel, BSTR Item, BSTR Data) = 0;
@@ -170,7 +164,7 @@ public:
     virtual HRESULT OrganizerCopy(BSTR Source, BSTR Destination, BSTR Name, WdOrganizerObject Object) = 0;
     virtual HRESULT OrganizerDelete(BSTR Source, BSTR Name, WdOrganizerObject Object) = 0;
     virtual HRESULT OrganizerRename(BSTR Source, BSTR Name, BSTR NewName, WdOrganizerObject Object) = 0;
-    virtual HRESULT AddAddress(SAFEARRAY * *TagID, SAFEARRAY * *Value) = 0;
+    //virtual HRESULT AddAddress(SAFEARRAY **TagID, SAFEARRAY **Value) = 0;
     virtual HRESULT GetAddress(VARIANT *Name,
             VARIANT *AddressProperties,
             VARIANT *UseAutoText,
@@ -196,6 +190,7 @@ public:
             VARIANT *CustomDictionary10,
             VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT ResetIgnoreAll() = 0;
+/*
     virtual HRESULT GetSpellingSuggestions(BSTR Word,
             VARIANT *CustomDictionary,
             VARIANT *IgnoreUppercase,
@@ -211,12 +206,13 @@ public:
             VARIANT *CustomDictionary9,
             VARIANT *CustomDictionary10,
             SpellingSuggestions **prop) = 0;
+*/
     virtual HRESULT GoBack() = 0;
     virtual HRESULT Help(VARIANT *HelpType) = 0;
     virtual HRESULT AutomaticChange() = 0;
     virtual HRESULT ShowMe() = 0;
     virtual HRESULT HelpTool() = 0;
-    virtual HRESULT NewWindow(Window **prop) = 0;
+    //virtual HRESULT NewWindow(Window **prop) = 0;
     virtual HRESULT ListCommands(VARIANT_BOOL ListAllCommands) = 0;
     virtual HRESULT ShowClipboard() = 0;
     virtual HRESULT OnTime(VARIANT *When, BSTR Name, VARIANT *Tolerance) = 0;
@@ -228,7 +224,6 @@ public:
             VARIANT *UserPassword,
             VARIANT *VolumePassword,
             short *prop) = 0;
-*/
     virtual HRESULT CleanString(BSTR String, BSTR *prop /Out/) = 0;
     virtual HRESULT SendFax() = 0;
     virtual HRESULT ChangeFileOpenDirectory(BSTR Path) = 0;
@@ -254,21 +249,18 @@ public:
     virtual HRESULT ToggleKeyboard() = 0;
     virtual HRESULT Keyboard(long LangId, long *prop /Out/) = 0;
     virtual HRESULT ProductCode(BSTR *prop /Out/) = 0;
-/*
-    virtual HRESULT DefaultWebOptions(DefaultWebOptions **prop) = 0;
+    //virtual HRESULT DefaultWebOptions(DefaultWebOptions **prop) = 0;
     virtual HRESULT DiscussionSupport(VARIANT *Range, VARIANT *cid, VARIANT *piCSE) = 0;
     virtual HRESULT SetDefaultTheme(BSTR Name, WdDocumentMedium DocumentType) = 0;
     virtual HRESULT GetDefaultTheme(WdDocumentMedium DocumentType, BSTR *prop /Out/) = 0;
-    virtual HRESULT get_EmailOptions(EmailOptions **prop) = 0;
+    //virtual HRESULT get_EmailOptions(EmailOptions **prop) = 0;
     virtual HRESULT get_Language(MsoLanguageID *prop) = 0;
-    virtual HRESULT get_COMAddIns(COMAddIns **prop) = 0;
-*/
+    //virtual HRESULT get_COMAddIns(COMAddIns **prop) = 0;
     virtual HRESULT get_CheckLanguage(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_CheckLanguage(VARIANT_BOOL prop) = 0;
     //virtual HRESULT get_LanguageSettings(LanguageSettings **prop) = 0;
     virtual HRESULT get_Dummy1(VARIANT_BOOL *prop /Out/) = 0;
-/*
-    virtual HRESULT get_AnswerWizard(AnswerWizard **prop) = 0;
+    //virtual HRESULT get_AnswerWizard(AnswerWizard **prop) = 0;
     virtual HRESULT get_FeatureInstall(MsoFeatureInstall *prop) = 0;
     virtual HRESULT put_FeatureInstall(MsoFeatureInstall prop) = 0;
     virtual HRESULT PrintOut2000(VARIANT *Background,
@@ -288,6 +280,7 @@ public:
             VARIANT *PrintZoomRow,
             VARIANT *PrintZoomPaperWidth,
             VARIANT *PrintZoomPaperHeight) = 0;
+/*
     virtual HRESULT Run(BSTR MacroName,
             VARIANT *varg1,
             VARIANT *varg2,
@@ -320,6 +313,7 @@ public:
             VARIANT *varg29,
             VARIANT *varg30,
             VARIANT *prop) = 0;
+*/
     virtual HRESULT PrintOut(VARIANT *Background,
             VARIANT *Append,
             VARIANT *Range,
@@ -339,10 +333,9 @@ public:
             VARIANT *PrintZoomRow,
             VARIANT *PrintZoomPaperWidth,
             VARIANT *PrintZoomPaperHeight) = 0;
-    virtual HRESULT get_AutomationSecurity(MsoAutomationSecurity *prop) = 0;
+    virtual HRESULT get_AutomationSecurity(MsoAutomationSecurity *prop /Out/) = 0;
     virtual HRESULT put_AutomationSecurity(MsoAutomationSecurity prop) = 0;
-    virtual HRESULT get_FileDialog(MsoFileDialogType FileDialogType, FileDialog **prop) = 0;
-*/
+    //virtual HRESULT get_FileDialog(MsoFileDialogType FileDialogType, FileDialog **prop) = 0;
     virtual HRESULT get_EmailTemplate(BSTR *prop /Out/) = 0;
     virtual HRESULT put_EmailTemplate(BSTR prop) = 0;
     virtual HRESULT get_ShowWindowsInTaskbar(VARIANT_BOOL *prop /Out/) = 0;
@@ -429,8 +422,8 @@ public:
     virtual HRESULT get_ActiveProtectedViewWindow(ProtectedViewWindow **prop) = 0;
 */
     virtual HRESULT get_IsSandboxed(VARIANT_BOOL *prop /Out/) = 0;
-    //virtual HRESULT get_FileValidation(MsoFileValidationMode *prop /Out/) = 0;
-    //virtual HRESULT put_FileValidation(MsoFileValidationMode prop) = 0;
+    virtual HRESULT get_FileValidation(MsoFileValidationMode *prop /Out/) = 0;
+    virtual HRESULT put_FileValidation(MsoFileValidationMode prop) = 0;
     virtual HRESULT get_ChartDataPointTrack(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_ChartDataPointTrack(VARIANT_BOOL prop) = 0;
     virtual HRESULT get_ShowAnimation(VARIANT_BOOL *prop /Out/) = 0;

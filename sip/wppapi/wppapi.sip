@@ -1,4 +1,4 @@
-%Module wppapi
+%Module wppsdk
 
 %Include wpsrpcsdk.sip
 

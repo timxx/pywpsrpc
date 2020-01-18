@@ -1,4 +1,4 @@
-%Module etapi
+%Module etsdk
 
 %Include wpsrpcsdk.sip
 
