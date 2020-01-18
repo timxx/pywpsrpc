@@ -8,3 +8,13 @@ sip*.h
 *.exp
 *.stash
 *.a
+*.docx
+*.doc
+*.rtf
+*.wps
+*.xlsx
+*.xls
+*.et
+*.pptx
+*.ppt
+*.wpt

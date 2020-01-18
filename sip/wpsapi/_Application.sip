@@ -1,6 +1,7 @@
 %Include oaidl.sip
 %Include _Application_extend.sip
 %Include enums.sip
+%Include Documents.sip
 
 namespace wpsapi {
     typedef float single;
@@ -18,10 +19,13 @@ public:
     virtual HRESULT get_Creator(long *prop) = 0;
     virtual HRESULT get_Parent(IDispatch **prop) = 0;
     virtual HRESULT get_Name(BSTR *prop /Out/) = 0;
+    virtual HRESULT get_Documents(Documents **prop /Out/) = 0;
+    //virtual HRESULT get_Windows(Windows **prop) = 0;
+    virtual HRESULT get_ActiveDocument(_Document **prop /Out/) = 0;
+    %MethodCode
+        sipRes = sipCpp->get_ActiveDocument((wpsapi::Document**)&a0);
+    %End
 /*
-    virtual HRESULT get_Documents(Documents **prop) = 0;
-    virtual HRESULT get_Windows(Windows **prop) = 0;
-    virtual HRESULT get_ActiveDocument(Document **prop) = 0;
     virtual HRESULT get_ActiveWindow(Window **prop) = 0;
     virtual HRESULT get_Selection(Selection **prop) = 0;
     virtual HRESULT get_WordBasic(IDispatch **prop) = 0;

@@ -24,6 +24,37 @@ def test():
     hr, pid = rpc.getProcessPid()
     print(hr, pid)
 
+    hr, docs = wpsApp.get_Documents()
+    print(hr, docs)
+    print(docs.get_Count())
+
+    hr, doc = wpsApp.get_ActiveDocument()
+    print(hr, doc)
+    print(doc.get_Name())
+    # TODO: make the argument as optional
+    hr = doc.SaveAs("test.docx",
+        wpsapi.wdFormatDocument, # FileFormat
+        False, # LockComments
+        "", # Password
+        False, # AddToRecentFiles
+        "", # WritePassword
+        False, # ReadOnlyRecommended
+        False, # EmbedTrueTypeFonts
+        False, # SaveNativePictureFormat
+        None, # SaveFormsData
+        None, # SaveAsAOCELetter
+        None, # Encoding
+        None, # InsertLineBreaks
+        None, # AllowSubstitutions
+        None, # LineEnding
+        None # AddBiDiMarks
+        )
+    doc.Close(None, None, None)
+
+    hr, doc = docs.Add(None, None, None, True)
+    print(hr, doc)
+    print(doc.get_Name())
+
     print(wpsApp.get_Name())
     print(wpsApp.get_Version())
     print(wpsApp.get_Build())
