@@ -163,6 +163,26 @@ typedef UINT32 DISPID;
 typedef DISPID MEMBERID;
 typedef DWORD HREFTYPE;
 
+%ModuleHeaderCode
+#include <pre_stddef.h>
+#include <typedef.h>
+#include <oaidl.h>
+
+VARIANT* argMissing();
+%End
+
+%ModuleCode
+VARIANT* argMissing()
+{
+    static VARIANT s_varMissing;
+    // reset every time, shall we make a assert?
+    V_VT(&s_varMissing) = VT_ERROR;
+    V_ERROR(&s_varMissing) =0x80020004;
+
+    return &s_varMissing;
+}
+%End
+
 
 struct IDispatch : public IUnknown /Abstract/
 {

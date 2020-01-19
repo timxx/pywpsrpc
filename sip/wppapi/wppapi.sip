@@ -1,4 +1,4 @@
-%Module wppsdk
+%Module(name=wppsdk, keyword_arguments="Optional")
 
 %Include wpsrpcsdk.sip
 

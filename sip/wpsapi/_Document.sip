@@ -244,21 +244,21 @@ namespace wpsapi
         virtual HRESULT get_ShowRevisions(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_ShowRevisions(VARIANT_BOOL prop) = 0;
 
-        virtual HRESULT Close(VARIANT *SaveChanges,
-            VARIANT *OriginalFormat,
-            VARIANT *RouteDocument) = 0;
+        virtual HRESULT Close(VARIANT *SaveChanges = argMissing(),
+            VARIANT *OriginalFormat = argMissing(),
+            VARIANT *RouteDocument = argMissing()) = 0;
 
-        virtual HRESULT SaveAs2000(VARIANT *FileName,
-            VARIANT *FileFormat,
-            VARIANT *LockComments,
-            VARIANT *Password,
-            VARIANT *AddToRecentFiles,
-            VARIANT *WritePassword,
-            VARIANT *ReadOnlyRecommended,
-            VARIANT *EmbedTrueTypeFonts,
-            VARIANT *SaveNativePictureFormat,
-            VARIANT *SaveFormsData,
-            VARIANT *SaveAsAOCELetter) = 0;
+        virtual HRESULT SaveAs2000(VARIANT *FileName = argMissing(),
+            VARIANT *FileFormat = argMissing(),
+            VARIANT *LockComments = argMissing(),
+            VARIANT *Password = argMissing(),
+            VARIANT *AddToRecentFiles = argMissing(),
+            VARIANT *WritePassword = argMissing(),
+            VARIANT *ReadOnlyRecommended = argMissing(),
+            VARIANT *EmbedTrueTypeFonts = argMissing(),
+            VARIANT *SaveNativePictureFormat = argMissing(),
+            VARIANT *SaveFormsData = argMissing(),
+            VARIANT *SaveAsAOCELetter = argMissing()) = 0;
 
         virtual HRESULT Repaginate() = 0;
         virtual HRESULT FitToPages() = 0;
@@ -268,20 +268,20 @@ namespace wpsapi
         virtual HRESULT Route() = 0;
         virtual HRESULT Save() = 0;
 
-        virtual HRESULT PrintOutOld(VARIANT *Background,
-            VARIANT *Append,
-            VARIANT *Range,
-            VARIANT *OutputFileName,
-            VARIANT *From,
-            VARIANT *To,
-            VARIANT *Item,
-            VARIANT *Copies,
-            VARIANT *Pages,
-            VARIANT *PageType,
-            VARIANT *PrintToFile,
-            VARIANT *Collate,
-            VARIANT *ActivePrinterMacGX,
-            VARIANT *ManualDuplexPrint) = 0;
+        virtual HRESULT PrintOutOld(VARIANT *Background = argMissing(),
+            VARIANT *Append = argMissing(),
+            VARIANT *Range = argMissing(),
+            VARIANT *OutputFileName = argMissing(),
+            VARIANT *From = argMissing(),
+            VARIANT *To = argMissing(),
+            VARIANT *Item = argMissing(),
+            VARIANT *Copies = argMissing(),
+            VARIANT *Pages = argMissing(),
+            VARIANT *PageType = argMissing(),
+            VARIANT *PrintToFile = argMissing(),
+            VARIANT *Collate = argMissing(),
+            VARIANT *ActivePrinterMacGX = argMissing(),
+            VARIANT *ManualDuplexPrint = argMissing()) = 0;
 
         virtual HRESULT SendMail() = 0;
 
@@ -315,10 +315,10 @@ namespace wpsapi
         virtual HRESULT MakeCompatibilityDefault() = 0;
 
         virtual HRESULT Protect2002(WdProtectionType Type,
-            VARIANT *NoReset,
-            VARIANT *Password) = 0;
+            VARIANT *NoReset = argMissing(),
+            VARIANT *Password = argMissing()) = 0;
 
-        virtual HRESULT Unprotect(VARIANT *Password) = 0;
+        virtual HRESULT Unprotect(VARIANT *Password = argMissing()) = 0;
 
         virtual HRESULT EditionOptions(WdEditionType Type,
             WdEditionOption Option,
@@ -480,47 +480,47 @@ namespace wpsapi
 
         virtual HRESULT get_VBASigned(VARIANT_BOOL *prop /Out/) = 0;
 
-        virtual HRESULT PrintOut2000(VARIANT *Background,
-            VARIANT *Append,
-            VARIANT *Range,
-            VARIANT *OutputFileName,
-            VARIANT *From,
-            VARIANT *To,
-            VARIANT *Item,
-            VARIANT *Copies,
-            VARIANT *Pages,
-            VARIANT *PageType,
-            VARIANT *PrintToFile,
-            VARIANT *Collate,
-            VARIANT *ActivePrinterMacGX,
-            VARIANT *ManualDuplexPrint,
-            VARIANT *PrintZoomColumn,
-            VARIANT *PrintZoomRow,
-            VARIANT *PrintZoomPaperWidth,
-            VARIANT *PrintZoomPaperHeight) = 0;
+        virtual HRESULT PrintOut2000(VARIANT *Background = argMissing(),
+            VARIANT *Append = argMissing(),
+            VARIANT *Range = argMissing(),
+            VARIANT *OutputFileName = argMissing(),
+            VARIANT *From = argMissing(),
+            VARIANT *To = argMissing(),
+            VARIANT *Item = argMissing(),
+            VARIANT *Copies = argMissing(),
+            VARIANT *Pages = argMissing(),
+            VARIANT *PageType = argMissing(),
+            VARIANT *PrintToFile = argMissing(),
+            VARIANT *Collate = argMissing(),
+            VARIANT *ActivePrinterMacGX = argMissing(),
+            VARIANT *ManualDuplexPrint = argMissing(),
+            VARIANT *PrintZoomColumn = argMissing(),
+            VARIANT *PrintZoomRow = argMissing(),
+            VARIANT *PrintZoomPaperWidth = argMissing(),
+            VARIANT *PrintZoomPaperHeight = argMissing()) = 0;
 
         virtual HRESULT sblt(BSTR s) = 0;
 
         virtual HRESULT ConvertVietDoc(long CodePageOrigin) = 0;
 
-        virtual HRESULT PrintOut(VARIANT *Background,
-            VARIANT *Append,
-            VARIANT *Range,
-            VARIANT *OutputFileName,
-            VARIANT *From,
-            VARIANT *To,
-            VARIANT *Item,
-            VARIANT *Copies,
-            VARIANT *Pages,
-            VARIANT *PageType,
-            VARIANT *PrintToFile,
-            VARIANT *Collate,
-            VARIANT *ActivePrinterMacGX,
-            VARIANT *ManualDuplexPrint,
-            VARIANT *PrintZoomColumn,
-            VARIANT *PrintZoomRow,
-            VARIANT *PrintZoomPaperWidth,
-            VARIANT *PrintZoomPaperHeight) = 0;
+        virtual HRESULT PrintOut(VARIANT *Background = argMissing(),
+            VARIANT *Append = argMissing(),
+            VARIANT *Range = argMissing(),
+            VARIANT *OutputFileName = argMissing(),
+            VARIANT *From = argMissing(),
+            VARIANT *To = argMissing(),
+            VARIANT *Item = argMissing(),
+            VARIANT *Copies = argMissing(),
+            VARIANT *Pages = argMissing(),
+            VARIANT *PageType = argMissing(),
+            VARIANT *PrintToFile = argMissing(),
+            VARIANT *Collate = argMissing(),
+            VARIANT *ActivePrinterMacGX = argMissing(),
+            VARIANT *ManualDuplexPrint = argMissing(),
+            VARIANT *PrintZoomColumn = argMissing(),
+            VARIANT *PrintZoomRow = argMissing(),
+            VARIANT *PrintZoomPaperWidth = argMissing(),
+            VARIANT *PrintZoomPaperHeight = argMissing()) = 0;
 
         // virtual HRESULT get_MailEnvelope(MsoEnvelope **prop /Out/) = 0;
 
@@ -611,22 +611,22 @@ namespace wpsapi
         virtual HRESULT DeleteAllCommentsShown() = 0;
         virtual HRESULT ResetFormFields() = 0;
 
-        virtual HRESULT SaveAs(VARIANT *FileName,
-            VARIANT *FileFormat,
-            VARIANT *LockComments,
-            VARIANT *Password,
-            VARIANT *AddToRecentFiles,
-            VARIANT *WritePassword,
-            VARIANT *ReadOnlyRecommended,
-            VARIANT *EmbedTrueTypeFonts,
-            VARIANT *SaveNativePictureFormat,
-            VARIANT *SaveFormsData,
-            VARIANT *SaveAsAOCELetter,
-            VARIANT *Encoding,
-            VARIANT *InsertLineBreaks,
-            VARIANT *AllowSubstitutions,
-            VARIANT *LineEnding,
-            VARIANT *AddBiDiMarks) = 0;
+        virtual HRESULT SaveAs(VARIANT *FileName = argMissing(),
+            VARIANT *FileFormat = argMissing(),
+            VARIANT *LockComments = argMissing(),
+            VARIANT *Password = argMissing(),
+            VARIANT *AddToRecentFiles = argMissing(),
+            VARIANT *WritePassword = argMissing(),
+            VARIANT *ReadOnlyRecommended = argMissing(),
+            VARIANT *EmbedTrueTypeFonts = argMissing(),
+            VARIANT *SaveNativePictureFormat = argMissing(),
+            VARIANT *SaveFormsData = argMissing(),
+            VARIANT *SaveAsAOCELetter = argMissing(),
+            VARIANT *Encoding = argMissing(),
+            VARIANT *InsertLineBreaks = argMissing(),
+            VARIANT *AllowSubstitutions = argMissing(),
+            VARIANT *LineEnding = argMissing(),
+            VARIANT *AddBiDiMarks = argMissing()) = 0;
 
         virtual HRESULT get_EmbedLinguisticData(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_EmbedLinguisticData(VARIANT_BOOL prop) = 0;
@@ -697,10 +697,10 @@ namespace wpsapi
         virtual HRESULT TransformDocument(BSTR Path, VARIANT_BOOL DataOnly = -1) = 0;
 
         virtual HRESULT Protect(WdProtectionType Type,
-            VARIANT *NoReset,
-            VARIANT *Password,
-            VARIANT *UseIRM,
-            VARIANT *EnforceStyleLock) = 0;
+            VARIANT *NoReset = argMissing(),
+            VARIANT *Password = argMissing(),
+            VARIANT *UseIRM = argMissing(),
+            VARIANT *EnforceStyleLock = argMissing()) = 0;
 
         virtual HRESULT SelectAllEditableRanges(VARIANT *EditorID) = 0;
         virtual HRESULT DeleteAllEditableRanges(VARIANT *EditorID) = 0;
@@ -901,23 +901,23 @@ namespace wpsapi
 
         virtual HRESULT get_CompatibilityMode(long *prop /Out/) = 0;
 
-        virtual HRESULT SaveAs2(VARIANT *FileName,
-            VARIANT *FileFormat,
-            VARIANT *LockComments,
-            VARIANT *Password,
-            VARIANT *AddToRecentFiles,
-            VARIANT *WritePassword,
-            VARIANT *ReadOnlyRecommended,
-            VARIANT *EmbedTrueTypeFonts,
-            VARIANT *SaveNativePictureFormat,
-            VARIANT *SaveFormsData,
-            VARIANT *SaveAsAOCELetter,
-            VARIANT *Encoding,
-            VARIANT *InsertLineBreaks,
-            VARIANT *AllowSubstitutions,
-            VARIANT *LineEnding,
-            VARIANT *AddBiDiMarks,
-            VARIANT *CompatibilityMode) = 0;
+        virtual HRESULT SaveAs2(VARIANT *FileName = argMissing(),
+            VARIANT *FileFormat = argMissing(),
+            VARIANT *LockComments = argMissing(),
+            VARIANT *Password = argMissing(),
+            VARIANT *AddToRecentFiles = argMissing(),
+            VARIANT *WritePassword = argMissing(),
+            VARIANT *ReadOnlyRecommended = argMissing(),
+            VARIANT *EmbedTrueTypeFonts = argMissing(),
+            VARIANT *SaveNativePictureFormat = argMissing(),
+            VARIANT *SaveFormsData = argMissing(),
+            VARIANT *SaveAsAOCELetter = argMissing(),
+            VARIANT *Encoding = argMissing(),
+            VARIANT *InsertLineBreaks = argMissing(),
+            VARIANT *AllowSubstitutions = argMissing(),
+            VARIANT *LineEnding = argMissing(),
+            VARIANT *AddBiDiMarks = argMissing(),
+            VARIANT *CompatibilityMode = argMissing()) = 0;
 
         // virtual HRESULT get_CoAuthoring(CoAuthoring **prop /Out/) = 0;
 
@@ -932,23 +932,23 @@ namespace wpsapi
 
         virtual HRESULT get_IsInAutosave(VARIANT_BOOL *prop /Out/) = 0;
 
-        virtual HRESULT SaveCopyAs(VARIANT *FileName,
-            VARIANT *FileFormat,
-            VARIANT *LockComments,
-            VARIANT *Password,
-            VARIANT *AddToRecentFiles,
-            VARIANT *WritePassword,
-            VARIANT *ReadOnlyRecommended,
-            VARIANT *EmbedTrueTypeFonts,
-            VARIANT *SaveNativePictureFormat,
-            VARIANT *SaveFormsData,
-            VARIANT *SaveAsAOCELetter,
-            VARIANT *Encoding,
-            VARIANT *InsertLineBreaks,
-            VARIANT *AllowSubstitutions,
-            VARIANT *LineEnding,
-            VARIANT *AddBiDiMarks,
-            VARIANT *CompatibilityMode) = 0;
+        virtual HRESULT SaveCopyAs(VARIANT *FileName = argMissing(),
+            VARIANT *FileFormat = argMissing(),
+            VARIANT *LockComments = argMissing(),
+            VARIANT *Password = argMissing(),
+            VARIANT *AddToRecentFiles = argMissing(),
+            VARIANT *WritePassword = argMissing(),
+            VARIANT *ReadOnlyRecommended = argMissing(),
+            VARIANT *EmbedTrueTypeFonts = argMissing(),
+            VARIANT *SaveNativePictureFormat = argMissing(),
+            VARIANT *SaveFormsData = argMissing(),
+            VARIANT *SaveAsAOCELetter = argMissing(),
+            VARIANT *Encoding = argMissing(),
+            VARIANT *InsertLineBreaks = argMissing(),
+            VARIANT *AllowSubstitutions = argMissing(),
+            VARIANT *LineEnding = argMissing(),
+            VARIANT *AddBiDiMarks = argMissing(),
+            VARIANT *CompatibilityMode = argMissing()) = 0;
 
         // virtual HRESULT get_DocumentFields(DocumentFields **prop /Out/) = 0;
     };

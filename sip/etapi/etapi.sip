@@ -1,4 +1,4 @@
-%Module etsdk
+%Module(name=etsdk, keyword_arguments="Optional")
 
 %Include wpsrpcsdk.sip
 

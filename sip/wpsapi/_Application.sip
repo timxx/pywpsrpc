@@ -137,23 +137,27 @@ public:
     //virtual HRESULT get_HangulHanjaDictionaries(HangulHanjaConversionDictionaries **prop) = 0;
     //virtual HRESULT get_MailMessage(MailMessage **prop) = 0;
     virtual HRESULT get_FocusInMailHeader(VARIANT_BOOL *prop /Out/) = 0;
-    virtual HRESULT Quit(VARIANT *SaveChanges, VARIANT *OriginalFormat, VARIANT *RouteDocument) = 0;
+
+    virtual HRESULT Quit(VARIANT *SaveChanges = argMissing(),
+        VARIANT *OriginalFormat = argMissing(),
+         VARIANT *RouteDocument = argMissing()) = 0;
+
     virtual HRESULT ScreenRefresh() = 0;
-    virtual HRESULT PrintOutOld(VARIANT *Background,
-            VARIANT *Append,
-            VARIANT *Range,
-            VARIANT *OutputFileName,
-            VARIANT *From,
-            VARIANT *To,
-            VARIANT *Item,
-            VARIANT *Copies,
-            VARIANT *Pages,
-            VARIANT *PageType,
-            VARIANT *PrintToFile,
-            VARIANT *Collate,
-            VARIANT *FileName,
-            VARIANT *ActivePrinterMacGX,
-            VARIANT *ManualDuplexPrint) = 0;
+    virtual HRESULT PrintOutOld(VARIANT *Background = argMissing(),
+            VARIANT *Append = argMissing(),
+            VARIANT *Range = argMissing(),
+            VARIANT *OutputFileName = argMissing(),
+            VARIANT *From = argMissing(),
+            VARIANT *To = argMissing(),
+            VARIANT *Item = argMissing(),
+            VARIANT *Copies = argMissing(),
+            VARIANT *Pages = argMissing(),
+            VARIANT *PageType = argMissing(),
+            VARIANT *PrintToFile = argMissing(),
+            VARIANT *Collate = argMissing(),
+            VARIANT *FileName = argMissing(),
+            VARIANT *ActivePrinterMacGX = argMissing(),
+            VARIANT *ManualDuplexPrint = argMissing()) = 0;
     virtual HRESULT LookupNameProperties(BSTR Name) = 0;
     virtual HRESULT SubstituteFont(BSTR UnavailableFont, BSTR SubstituteFont) = 0;
     virtual HRESULT Repeat(VARIANT *Times, VARIANT_BOOL *prop /Out/) = 0;
@@ -180,19 +184,19 @@ public:
             BSTR *prop /Out/) = 0;
     virtual HRESULT CheckGrammar(BSTR String, VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT CheckSpelling(BSTR Word,
-            VARIANT *CustomDictionary,
-            VARIANT *IgnoreUppercase,
-            VARIANT *MainDictionary,
-            VARIANT *CustomDictionary2,
-            VARIANT *CustomDictionary3,
-            VARIANT *CustomDictionary4,
-            VARIANT *CustomDictionary5,
-            VARIANT *CustomDictionary6,
-            VARIANT *CustomDictionary7,
-            VARIANT *CustomDictionary8,
-            VARIANT *CustomDictionary9,
-            VARIANT *CustomDictionary10,
-            VARIANT_BOOL *prop /Out/) = 0;
+            VARIANT *CustomDictionary = argMissing(),
+            VARIANT *IgnoreUppercase = argMissing(),
+            VARIANT *MainDictionary = argMissing(),
+            VARIANT *CustomDictionary2 = argMissing(),
+            VARIANT *CustomDictionary3 = argMissing(),
+            VARIANT *CustomDictionary4 = argMissing(),
+            VARIANT *CustomDictionary5 = argMissing(),
+            VARIANT *CustomDictionary6 = argMissing(),
+            VARIANT *CustomDictionary7 = argMissing(),
+            VARIANT *CustomDictionary8 = argMissing(),
+            VARIANT *CustomDictionary9 = argMissing(),
+            VARIANT *CustomDictionary10 = argMissing(),
+            VARIANT_BOOL *prop /Out/ = 0) = 0;
     virtual HRESULT ResetIgnoreAll() = 0;
 /*
     virtual HRESULT GetSpellingSuggestions(BSTR Word,
@@ -267,23 +271,23 @@ public:
     //virtual HRESULT get_AnswerWizard(AnswerWizard **prop) = 0;
     virtual HRESULT get_FeatureInstall(MsoFeatureInstall *prop) = 0;
     virtual HRESULT put_FeatureInstall(MsoFeatureInstall prop) = 0;
-    virtual HRESULT PrintOut2000(VARIANT *Background,
-            VARIANT *Append,
-            VARIANT *Range,
-            VARIANT *OutputFileName,
-            VARIANT *From, VARIANT *To,
-            VARIANT *Item, VARIANT *Copies,
-            VARIANT *Pages,
-            VARIANT *PageType,
-            VARIANT *PrintToFile,
-            VARIANT *Collate,
-            VARIANT *FileName,
-            VARIANT *ActivePrinterMacGX,
-            VARIANT *ManualDuplexPrint,
-            VARIANT *PrintZoomColumn,
-            VARIANT *PrintZoomRow,
-            VARIANT *PrintZoomPaperWidth,
-            VARIANT *PrintZoomPaperHeight) = 0;
+    virtual HRESULT PrintOut2000(VARIANT *Background = argMissing(),
+            VARIANT *Append = argMissing(),
+            VARIANT *Range = argMissing(),
+            VARIANT *OutputFileName = argMissing(),
+            VARIANT *From = argMissing(), VARIANT *To = argMissing(),
+            VARIANT *Item = argMissing(), VARIANT *Copies = argMissing(),
+            VARIANT *Pages = argMissing(),
+            VARIANT *PageType = argMissing(),
+            VARIANT *PrintToFile = argMissing(),
+            VARIANT *Collate = argMissing(),
+            VARIANT *FileName = argMissing(),
+            VARIANT *ActivePrinterMacGX = argMissing(),
+            VARIANT *ManualDuplexPrint = argMissing(),
+            VARIANT *PrintZoomColumn = argMissing(),
+            VARIANT *PrintZoomRow = argMissing(),
+            VARIANT *PrintZoomPaperWidth = argMissing(),
+            VARIANT *PrintZoomPaperHeight = argMissing()) = 0;
 /*
     virtual HRESULT Run(BSTR MacroName,
             VARIANT *varg1,
@@ -318,25 +322,25 @@ public:
             VARIANT *varg30,
             VARIANT *prop) = 0;
 */
-    virtual HRESULT PrintOut(VARIANT *Background,
-            VARIANT *Append,
-            VARIANT *Range,
-            VARIANT *OutputFileName,
-            VARIANT *From,
-            VARIANT *To,
-            VARIANT *Item,
-            VARIANT *Copies,
-            VARIANT *Pages,
-            VARIANT *PageType,
-            VARIANT *PrintToFile,
-            VARIANT *Collate,
-            VARIANT *FileName,
-            VARIANT *ActivePrinterMacGX,
-            VARIANT *ManualDuplexPrint,
-            VARIANT *PrintZoomColumn,
-            VARIANT *PrintZoomRow,
-            VARIANT *PrintZoomPaperWidth,
-            VARIANT *PrintZoomPaperHeight) = 0;
+    virtual HRESULT PrintOut(VARIANT *Background = argMissing(),
+            VARIANT *Append = argMissing(),
+            VARIANT *Range = argMissing(),
+            VARIANT *OutputFileName = argMissing(),
+            VARIANT *From = argMissing(),
+            VARIANT *To = argMissing(),
+            VARIANT *Item = argMissing(),
+            VARIANT *Copies = argMissing(),
+            VARIANT *Pages = argMissing(),
+            VARIANT *PageType = argMissing(),
+            VARIANT *PrintToFile = argMissing(),
+            VARIANT *Collate = argMissing(),
+            VARIANT *FileName = argMissing(),
+            VARIANT *ActivePrinterMacGX = argMissing(),
+            VARIANT *ManualDuplexPrint = argMissing(),
+            VARIANT *PrintZoomColumn = argMissing(),
+            VARIANT *PrintZoomRow = argMissing(),
+            VARIANT *PrintZoomPaperWidth = argMissing(),
+            VARIANT *PrintZoomPaperHeight = argMissing()) = 0;
     virtual HRESULT get_AutomationSecurity(MsoAutomationSecurity *prop /Out/) = 0;
     virtual HRESULT put_AutomationSecurity(MsoAutomationSecurity prop) = 0;
     //virtual HRESULT get_FileDialog(MsoFileDialogType FileDialogType, FileDialog **prop) = 0;
