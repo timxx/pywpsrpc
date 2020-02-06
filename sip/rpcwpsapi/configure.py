@@ -6,7 +6,7 @@ import os
 from PyQt5.QtCore import PYQT_CONFIGURATION
 
 
-build_file = "wpsapi.sbf"
+build_file = "rpcwpsapi.sbf"
 config = sipconfig.Configuration()
 
 # FIXME:
@@ -19,7 +19,7 @@ subprocess.check_call(
      "-b", build_file,
      "-I", "../common",
      "-I", sip_dir] + sip_flags +
-    ["wpsapi.sip"])
+    ["rpcwpsapi.sip"])
 
 qt_inc_dir = "/usr/include/qt"
 

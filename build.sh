@@ -2,7 +2,7 @@
 
 set -e
 
-dirs=(sip/etapi sip/wppapi sip/wpsapi)
+dirs=(sip/rpcetapi sip/rpcwppapi sip/rpcwpsapi)
 
 for dir in ${dirs[@]} ; do
     cd $dir

@@ -1,4 +1,4 @@
-%Module(name=etsdk, keyword_arguments="Optional")
+%Module(name=rpcetapi, keyword_arguments="Optional")
 
 %Include wpsrpcsdk.sip
 

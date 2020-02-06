@@ -1,4 +1,4 @@
-%Module(name=wppsdk, keyword_arguments="Optional")
+%Module(name=rpcwppapi, keyword_arguments="Optional")
 
 %Include wpsrpcsdk.sip
 

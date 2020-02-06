@@ -5,9 +5,9 @@ import os
 
 from PyQt5.QtCore import *
 
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/sip/wpsapi")
-import wpssdk
-from wpssdk import wpsapi
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/sip/rpcwpsapi")
+import rpcwpsapi
+from rpcwpsapi import wpsapi
 
 
 def check_call(funcName, hr, value=None):
@@ -24,13 +24,13 @@ def check_call(funcName, hr, value=None):
 def test():
     qapp = QCoreApplication(sys.argv)
 
-    hr, rpc = wpssdk.createWpsRpcInstance()
+    hr, rpc = rpcwpsapi.createWpsRpcInstance()
     check_call("createWpsRpcInstance", hr, rpc)
 
     hr = rpc.setProcessArgs([__file__])
     check_call("setProcessArgs", hr)
 
-    wpsApp = wpssdk.getWpsApplication(rpc)
+    wpsApp = rpcwpsapi.getWpsApplication(rpc)
 
     hr, pid = rpc.getProcessPid()
     check_call("getProcessPid", hr, pid)
