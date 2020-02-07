@@ -43,4 +43,4 @@ For full API refrences, go to [https://open.wps.cn/docs/office](https://open.wps
 - [ ] Python attribute bindings
   - Since now the SDK **DOES NOT** provide the IDispatch way's invoke, we have to find out a way to make it easy calling those get_XXX & put_XXX mehtods
 - [ ] Examples
-    - For now, only [test_wpsapi.py](./tests/test_wpsapi.py) is available for developing testing.
+    - For now, only [test_rpcwpsapi.py](./tests/test_rpcwpsapi.py) is available for developing testing.
