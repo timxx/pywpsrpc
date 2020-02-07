@@ -8,6 +8,8 @@
  *
 */
 
+%Include Range.sip
+
 namespace wpsapi
 {
     struct _Document : public IDispatch /Abstract/
@@ -25,7 +27,7 @@ namespace wpsapi
         virtual HRESULT get_CustomDocumentProperties(IDispatch **prop /Out/) = 0;
         virtual HRESULT get_Path(BSTR *prop /Out/) = 0;
 /*
-        virtual HRESULT get_Bookmarks(Bookmarks **prop) /Out/ = 0;
+        virtual HRESULT get_Bookmarks(Bookmarks **prop /Out/) = 0;
         virtual HRESULT get_Tables(Tables **prop /Out/) = 0;
         virtual HRESULT get_Footnotes(Footnotes **prop /Out/) = 0;
         virtual HRESULT get_Endnotes(Endnotes **prop /Out/) = 0;
@@ -82,7 +84,7 @@ namespace wpsapi
         virtual HRESULT get_Saved(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_Saved(VARIANT_BOOL prop) = 0;
 
-        // virtual HRESULT get_Content(Range **prop /Out/) = 0;
+        virtual HRESULT get_Content(Range **prop /Out/) = 0;
         // virtual HRESULT get_ActiveWindow(Window **prop /Out/) = 0;
 
         virtual HRESULT get_Kind(WdDocumentKind *prop /Out/) = 0;

@@ -42,6 +42,36 @@ def test():
     hr, name = doc.get_Name()
     check_call("get_Name", hr, name)
 
+    hr, docRange = doc.get_Content()
+    check_call("get_Content", hr, docRange)
+
+    hr, start = docRange.get_Start()
+    check_call("get_Start", hr, start)
+
+    hr, end = docRange.get_End()
+    check_call("get_End", hr, end)
+
+    hr, text = docRange.get_Text()
+    check_call("get_Text", hr, text)
+    # the text uses \r as newline, LoL
+    print(text.replace("\r", "\n"))
+
+    hr = docRange.InsertParagraphAfter()
+    check_call("InsertParagraphAfter", hr)
+
+    hr = docRange.InsertAfter("Hello, world")
+    check_call("InsertAfter", hr)
+
+    hr = docRange.put_Start(end)
+    check_call("put_Start", hr)
+
+    hr = docRange.put_End(end + 12)
+    check_call("put_End", hr)
+
+    hr, text = docRange.get_Text()
+    # should be "Hello, world"
+    check_call("get_Text", hr, text)
+
     hr = doc.SaveAs("test.docx", wpsapi.wdFormatDocument)
     check_call("SaveAs", hr)
 
