@@ -1,3 +1,13 @@
+/**
+ * Copyright (c) 2020 Weitian Leung
+ *
+ * This file is part of pywpsrpc.
+ *
+ * This file is distributed under the MIT License.
+ * See the LICENSE file for details.
+ *
+*/
+
 %Include typedef.sip
 %Include objbase.sip
 %Include objidl.sip

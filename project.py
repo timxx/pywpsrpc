@@ -1,3 +1,13 @@
+#**
+# * Copyright (c) 2020 Weitian Leung
+# *
+# * This file is part of pywpsrpc.
+# *
+# * This file is distributed under the MIT License.
+# * See the LICENSE file for details.
+# *
+#*
+
 import sipbuild
 import os
 import sys
@@ -36,6 +46,18 @@ class PyWpsRpcProject(sipbuild.Project):
     def get_bindings_dir(self):
         # override the default behavior
         return self.name + "/bindings"
+
+    def get_dunder_init(self):
+        return """#**
+# * Copyright (c) 2020 Weitian Leung
+# *
+# * This file is part of pywpsrpc.
+# *
+# * This file is distributed under the MIT License.
+# * See the LICENSE file for details.
+# *
+#*
+"""
 
 
 class RpcApiBindings(sipbuild.Bindings):
