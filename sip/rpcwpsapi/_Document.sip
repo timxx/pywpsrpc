@@ -1,5 +1,3 @@
-%Include oaidl.sip
-
 namespace wpsapi
 {
     struct _Document : public IDispatch /Abstract/

@@ -1,0 +1,14 @@
+[build-system]
+requires = ["sip >=5, <6"]
+build-backend = "sipbuild.api"
+
+[tool.sip.metadata]
+name = "pywpsrpc"
+# same as the WPS Office version?
+version = "1.0.0"
+summary = "Python bindings for the WPS Office RPC"
+home-page = "https://github.com/timxx/pywpsrpc"
+author = "Weitian Leung"
+author-email = "weitianleung@gmail.com"
+license = "MIT"
+description-file = "README.md"

@@ -1,4 +1,3 @@
-%Include oaidl.sip
 %Include _Application_extend.sip
 %Include enums.sip
 %Include Documents.sip

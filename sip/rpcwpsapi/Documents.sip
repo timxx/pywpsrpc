@@ -1,4 +1,3 @@
-%Include oaidl.sip
 %Include _Document.sip
 
 namespace wpsapi

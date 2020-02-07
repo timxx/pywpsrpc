@@ -18,3 +18,8 @@ sip*.h
 *.pptx
 *.ppt
 *.wpt
+__pycache__
+build
+*.tar
+*.gz
+*.whl

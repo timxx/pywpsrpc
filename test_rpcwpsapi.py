@@ -3,11 +3,9 @@
 import sys
 import os
 
-from PyQt5.QtCore import *
-
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/sip/rpcwpsapi")
-import rpcwpsapi
-from rpcwpsapi import wpsapi
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/build")
+from pywpsrpc import rpcwpsapi
+from pywpsrpc.rpcwpsapi import wpsapi
 
 
 def check_call(funcName, hr, value=None):
@@ -20,10 +18,7 @@ def check_call(funcName, hr, value=None):
         print("{}: <ok>".format(funcName))
 
 
-
 def test():
-    qapp = QCoreApplication(sys.argv)
-
     hr, rpc = rpcwpsapi.createWpsRpcInstance()
     check_call("createWpsRpcInstance", hr, rpc)
 
@@ -100,8 +95,6 @@ def test():
 
     hr = wpsApp.Quit(wpsapi.wdDoNotSaveChanges)
     check_call("Quit", hr)
-
-    #qapp.exec()
 
 
 if __name__ == "__main__":

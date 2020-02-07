@@ -1,4 +1,4 @@
-%Module(name=rpcwpsapi, keyword_arguments="Optional")
+%Module(name=pywpsrpc.rpcwpsapi, keyword_arguments="Optional")
 
 %Include wpsrpcsdk.sip
 %Include _Application.sip
