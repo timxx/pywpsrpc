@@ -13,7 +13,7 @@ The C++ SDK headers was taken from [wps_cpp](https://dev.tencent.com/u/zouyingfe
 Copyright @ 2012-2019, Kingsoft office,All rights reserved.
 ```
 
-For full API refrences, go to [https://open.wps.cn/docs/office](https://open.wps.cn/docs/office).
+For full API references, go to [https://open.wps.cn/docs/office](https://open.wps.cn/docs/office).
 
 **The project is under heavy development**.
 
