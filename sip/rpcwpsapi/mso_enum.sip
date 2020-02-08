@@ -10,10 +10,6 @@
 
 namespace wpsapi
 {
-%TypeHeaderCode
-    #include <mso_enum.h>
-%End
-
     enum MsoLineDashStyle
     {
         msoLineDashStyleMixed	= -2,

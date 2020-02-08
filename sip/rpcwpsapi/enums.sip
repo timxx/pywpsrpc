@@ -12,11 +12,6 @@
 
 namespace wpsapi
 {
-%TypeHeaderCode
-    #include <QString>
-    #include <wps/wpsapi.h>
-%End
-
     enum WdMailSystem
     {
         wdNoMailSystem    = 0,

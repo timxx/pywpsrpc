@@ -12,12 +12,6 @@ namespace wpsapi
 {
     class _Application_extend /Abstract/
     {
-        %TypeHeaderCode
-            #include <QString>
-            namespace wpsapi {
-                #include <wpsapi/wpsapi_extend.h>
-            }
-        %End
     public:
     /*
         virtual bool insertDocumentField(QString id) = 0;

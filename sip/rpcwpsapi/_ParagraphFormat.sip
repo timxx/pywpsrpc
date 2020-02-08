@@ -10,12 +10,9 @@
 
 namespace wpsapi
 {
-    struct Paragraph : public IDispatch /Abstract/
+    struct _ParagraphFormat : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Range(
-            Range **prop /Out/) = 0;
-
         virtual HRESULT get_Application(_Application **prop /Out/) = 0;
         %MethodCode
             sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
@@ -27,31 +24,11 @@ namespace wpsapi
         virtual HRESULT get_Parent(
             IDispatch **prop /Out/) = 0;
 
-        virtual HRESULT get_Format(_ParagraphFormat **prop /Out/) = 0;
+        virtual HRESULT get_Duplicate(_ParagraphFormat **prop /Out/) = 0;
         %MethodCode
-            sipRes = sipCpp->get_Format((wpsapi::ParagraphFormat**)&a0);
+            sipRes = sipCpp->get_Duplicate((wpsapi::ParagraphFormat**)&a0);
         %End
 
-        virtual HRESULT put_Format(_ParagraphFormat *prop) = 0;
-        %MethodCode
-            sipRes = sipCpp->put_Format((wpsapi::ParagraphFormat*)a0);
-        %End
-
-        virtual HRESULT get_TabStops(
-            TabStops **prop /Out/) = 0;
-
-        virtual HRESULT put_TabStops(
-            TabStops *prop) = 0;
-
-        virtual HRESULT get_Borders(
-            Borders **prop /Out/) = 0;
-
-        virtual HRESULT put_Borders(
-            Borders *prop) = 0;
-/*
-        virtual HRESULT get_DropCap(
-            DropCap **prop /Out/) = 0;
-*/
         virtual HRESULT get_Style(
             VARIANT *prop /Out/) = 0;
 
@@ -142,8 +119,6 @@ namespace wpsapi
         virtual HRESULT put_WidowControl(
             long prop) = 0;
 
-        virtual HRESULT get_Shading(Shading **prop /Out/) = 0;
-
         virtual HRESULT get_FarEastLineBreakControl(
             long *prop /Out/) = 0;
 
@@ -198,6 +173,20 @@ namespace wpsapi
         virtual HRESULT put_DisableLineHeightGrid(
             long prop) = 0;
 
+        virtual HRESULT get_TabStops(
+            TabStops **prop /Out/) = 0;
+
+        virtual HRESULT put_TabStops(
+            TabStops *prop) = 0;
+
+        virtual HRESULT get_Borders(
+            Borders **prop /Out/) = 0;
+
+        virtual HRESULT put_Borders(
+            Borders *prop) = 0;
+
+        virtual HRESULT get_Shading(Shading **prop /Out/) = 0;
+
         virtual HRESULT get_OutlineLevel(
             WdOutlineLevel *prop /Out/) = 0;
 
@@ -207,6 +196,7 @@ namespace wpsapi
         virtual HRESULT CloseUp() = 0;
 
         virtual HRESULT OpenUp() = 0;
+
         virtual HRESULT OpenOrCloseUp() = 0;
 
         virtual HRESULT TabHangingIndent(
@@ -218,7 +208,9 @@ namespace wpsapi
         virtual HRESULT Reset() = 0;
 
         virtual HRESULT Space1() = 0;
+
         virtual HRESULT Space15() = 0;
+
         virtual HRESULT Space2() = 0;
 
         virtual HRESULT IndentCharWidth(
@@ -226,21 +218,6 @@ namespace wpsapi
 
         virtual HRESULT IndentFirstLineCharWidth(
             short Count) = 0;
-
-        virtual HRESULT Next(
-            VARIANT *Count = argMissing(),
-            Paragraph **prop /Out/ = 0) = 0;
-
-        virtual HRESULT Previous(
-            VARIANT *Count = argMissing(),
-            Paragraph **prop /Out/ = 0) = 0;
-
-        virtual HRESULT OutlinePromote() = 0;
-        virtual HRESULT OutlineDemote() = 0;
-        virtual HRESULT OutlineDemoteToBody() = 0;
-
-        virtual HRESULT Indent() = 0;
-        virtual HRESULT Outdent() = 0;
 
         virtual HRESULT get_CharacterUnitRightIndent(
             single *prop /Out/) = 0;
@@ -278,12 +255,6 @@ namespace wpsapi
         virtual HRESULT put_ReadingOrder(
             WdReadingOrder prop) = 0;
 
-        virtual HRESULT get_ID(
-            BSTR *prop /Out/) = 0;
-
-        virtual HRESULT put_ID(
-            BSTR prop) = 0;
-
         virtual HRESULT get_SpaceBeforeAuto(
             long *prop /Out/) = 0;
 
@@ -295,28 +266,6 @@ namespace wpsapi
 
         virtual HRESULT put_SpaceAfterAuto(
             long prop) = 0;
-
-        virtual HRESULT get_IsStyleSeparator(
-            VARIANT_BOOL *prop /Out/) = 0;
-
-        virtual HRESULT SelectNumber() = 0;
-
-        virtual HRESULT ListAdvanceTo(
-            short Level1 = 0,
-            short Level2 = 0,
-            short Level3 = 0,
-            short Level4 = 0,
-            short Level5 = 0,
-            short Level6 = 0,
-            short Level7 = 0,
-            short Level8 = 0,
-            short Level9 = 0) = 0;
-
-        virtual HRESULT ResetAdvanceTo() = 0;
-
-        virtual HRESULT SeparateList() = 0;
-
-        virtual HRESULT JoinList() = 0;
 
         virtual HRESULT get_MirrorIndents(
             long *prop /Out/) = 0;
@@ -330,26 +279,10 @@ namespace wpsapi
         virtual HRESULT put_TextboxTightWrap(
             WdTextboxTightWrap prop) = 0;
 
-        virtual HRESULT get_ListNumberOriginal(
-            short Level,
-            short *prop /Out/) = 0;
-
-        virtual HRESULT get_ParaID(
+        virtual HRESULT get_CollapsedByDefault(
             long *prop /Out/) = 0;
 
-        virtual HRESULT get_TextID(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_CollapsedState(
-            VARIANT_BOOL *prop /Out/) = 0;
-
-        virtual HRESULT put_CollapsedState(
-            VARIANT_BOOL prop) = 0;
-
-        virtual HRESULT get_CollapseHeadingByDefault(
-            VARIANT_BOOL *prop /Out/) = 0;
-
-        virtual HRESULT put_CollapseHeadingByDefault(
-            VARIANT_BOOL prop) = 0;
+        virtual HRESULT put_CollapsedByDefault(
+            long prop) = 0;
     };
 };

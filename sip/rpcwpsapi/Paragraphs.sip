@@ -12,10 +12,6 @@ namespace wpsapi
 {
     struct Paragraphs : public IDispatch /Abstract/
     {
-    %TypeHeaderCode
-        #include <QString>
-        #include <wps/wpsapi.h>
-    %End
     public:
         virtual HRESULT get__NewEnum(IUnknown **prop /Out/) = 0;
 
@@ -26,19 +22,26 @@ namespace wpsapi
         virtual HRESULT get_Last(
             Paragraph **prop /Out/) = 0;
 
-        // virtual HRESULT get_Application(Application **prop /Out/) = 0;
+        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
+        %End
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
 
         virtual HRESULT get_Parent(
             IDispatch **prop /Out/) = 0;
-/*
-        virtual HRESULT get_Format(
-            ParagraphFormat	**prop /Out/) = 0;
 
-        virtual HRESULT put_Format(
-            ParagraphFormat	*prop) = 0;
+        virtual HRESULT get_Format(_ParagraphFormat **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Format((wpsapi::ParagraphFormat**)&a0);
+        %End
+
+        virtual HRESULT put_Format(_ParagraphFormat *prop) = 0;
+        %MethodCode
+            sipRes = sipCpp->put_Format((wpsapi::ParagraphFormat*)a0);
+        %End
 
         virtual HRESULT get_TabStops(
             TabStops **prop /Out/) = 0;
@@ -51,7 +54,7 @@ namespace wpsapi
 
         virtual HRESULT put_Borders(
             Borders *prop) = 0;
-*/
+
         virtual HRESULT get_Style(
             VARIANT *prop /Out/) = 0;
 
@@ -142,7 +145,7 @@ namespace wpsapi
         virtual HRESULT put_WidowControl(
             long prop) = 0;
 
-        // virtual HRESULT get_Shading(Shading **prop /Out/) = 0;
+        virtual HRESULT get_Shading(Shading **prop /Out/) = 0;
 
         virtual HRESULT get_FarEastLineBreakControl(
             long *prop /Out/) = 0;

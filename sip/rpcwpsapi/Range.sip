@@ -13,11 +13,6 @@ namespace wpsapi
 {
     struct Range : public IDispatch /Abstract/
     {
-    %TypeHeaderCode
-        #include <QString>
-        #include <wps/wpsapi.h>
-    %End
-
     public:
         virtual HRESULT get_Text(BSTR *prop /Out/) = 0;
         virtual HRESULT put_Text(BSTR prop) = 0;
@@ -56,13 +51,12 @@ namespace wpsapi
         virtual HRESULT get_Sections(Sections **prop /Out/) = 0;
 */
         virtual HRESULT get_Paragraphs(Paragraphs **prop /Out/) = 0;
-/*
-        virtual HRESULT get_Borders(Borders **prop /Out/) = 0;
 
+        virtual HRESULT get_Borders(Borders **prop /Out/) = 0;
         virtual HRESULT put_Borders(Borders *prop) = 0;
 
         virtual HRESULT get_Shading(Shading **prop /Out/) = 0;
-
+/*
         virtual HRESULT get_TextRetrievalMode(TextRetrievalMode **prop /Out/) = 0;
         virtual HRESULT put_TextRetrievalMode(TextRetrievalMode *prop) = 0;
 
@@ -70,16 +64,26 @@ namespace wpsapi
         virtual HRESULT get_FormFields(FormFields **prop /Out/) = 0;
 
         virtual HRESULT get_Frames(Frames **prop /Out/) = 0;
+*/
+        virtual HRESULT get_ParagraphFormat(_ParagraphFormat **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_ParagraphFormat((wpsapi::ParagraphFormat**)&a0);
+        %End
 
-        virtual HRESULT get_ParagraphFormat(ParagraphFormat **prop /Out/) = 0;
-        virtual HRESULT put_ParagraphFormat(ParagraphFormat *prop) = 0;
-
+        virtual HRESULT put_ParagraphFormat(_ParagraphFormat *prop) = 0;
+        %MethodCode
+            sipRes = sipCpp->put_ParagraphFormat((wpsapi::ParagraphFormat*)a0);
+        %End
+/*
         virtual HRESULT get_ListFormat(ListFormat **prop /Out/) = 0;
 
         virtual HRESULT get_Bookmarks(Bookmarks **prop /Out/) = 0;
-
-        virtual HRESULT get_Application(Application **prop /Out/) = 0;
 */
+        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
+        %End
+
         virtual HRESULT get_Creator(long *prop /Out/) = 0;
 
         virtual HRESULT get_Parent(IDispatch **prop /Out/) = 0;

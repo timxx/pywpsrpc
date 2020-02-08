@@ -12,13 +12,10 @@ namespace wpsapi {
     typedef float single;
 };
 
-namespace wpsapi {
+namespace wpsapi
+{
 struct _Application : public IDispatch, public wpsapi::_Application_extend /Abstract/
 {
-    %TypeHeaderCode
-        #include <QString>
-        #include <wps/wpsapi.h>
-    %End
 public:
     //virtual HRESULT get_Application(Application **prop /Out/) = 0;
     virtual HRESULT get_Creator(long *prop) = 0;

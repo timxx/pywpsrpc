@@ -71,6 +71,12 @@ def test():
     hr, count = paras.get_Count()
     check_call("get_Count", hr, count)
 
+    hr, app2 = paras.get_Application()
+    check_call("paras.get_Application", hr, app2)
+
+    hr, build = app2.get_Build()
+    check_call("app2.get_Build", hr, build)
+
     hr, para = paras.get_First()
     check_call("paras.get_First", hr, para)
 
@@ -82,6 +88,36 @@ def test():
 
     hr = para.put_Alignment(wpsapi.wdAlignParagraphCenter)
     check_call("para.put_Alignment", hr)
+
+    hr, paraFormat = para.get_Format()
+    check_call("para.get_Format", hr, paraFormat)
+
+    hr, style = paraFormat.get_Style()
+    check_call("paraFormat.get_Style", hr, style)
+
+    hr, borders = paraFormat.get_Borders()
+    check_call("paraFormat.get_Borders", hr, borders)
+
+    hr, count = borders.get_Count()
+    check_call("borders.get_Count", hr, count)
+
+    hr = borders.put_Shadow(True)
+    check_call("borders.put_Shadow", hr)
+
+    hr = paraFormat.put_Borders(borders)
+    check_call("paraFormat.put_Borders", hr)
+
+    hr, shading = para.get_Shading()
+    check_call("para.get_Shading", hr, shading)
+
+    hr = shading.put_BackgroundPatternColor(wpsapi.wdColorGreen)
+    check_call("shading.put_BackgroundPatternColor", hr)
+
+    hr, tabStops = para.get_TabStops()
+    check_call("para.get_TabStops", hr, tabStops)
+
+    hr, count = tabStops.get_Count()
+    check_call("tabStops.get_Count", hr, count)
 
     hr = docRange.put_Start(end)
     check_call("put_Start", hr)

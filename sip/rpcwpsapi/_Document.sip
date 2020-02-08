@@ -12,13 +12,13 @@ namespace wpsapi
 {
     struct _Document : public IDispatch /Abstract/
     {
-    %TypeHeaderCode
-        #include <QString>
-        #include <wps/wpsapi.h>
-    %End
     public:
         virtual HRESULT get_Name(BSTR *prop /Out/) = 0;
-        //virtual HRESULT get_Application(Application **prop /Out/) = 0;
+        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
+        %End
+
         virtual HRESULT get_Creator(long *prop /Out/) = 0;
         virtual HRESULT get_Parent(IDispatch **prop /Out/) = 0;
         virtual HRESULT get_BuiltInDocumentProperties(IDispatch **prop /Out/) = 0;

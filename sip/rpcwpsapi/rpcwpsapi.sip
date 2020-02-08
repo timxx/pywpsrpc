@@ -10,6 +10,14 @@
 
 %Module(name=pywpsrpc.rpcwpsapi, keyword_arguments="Optional")
 
+namespace wpsapi
+{
+%TypeHeaderCode
+    #include <QString>
+    #include <wps/wpsapi.h>
+%End
+};
+
 %Include wpsrpcsdk.sip
 %Include enums.sip
 %Include Documents.sip
@@ -20,11 +28,10 @@
 %Include Range.sip
 %Include Paragraph.sip
 %Include Paragraphs.sip
-
-%ModuleCode
-    #include <QString>
-    #include <wps/wpsapi.h>
-%End
+%Include _ParagraphFormat.sip
+%Include Borders.sip
+%Include TabStops.sip
+%Include Shading.sip
 
 HRESULT createWpsRpcInstance(IKRpcClient **client);
 

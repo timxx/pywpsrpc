@@ -16,14 +16,15 @@ namespace wpsapi
 
     struct Documents : public IDispatch /Abstract/
     {
-    %TypeHeaderCode
-        #include <QString>
-        #include <wps/wpsapi.h>
-    %End
     public:
         virtual HRESULT get__NewEnum(IUnknown **prop /Out/) = 0;
         virtual HRESULT get_Count(long *prop /Out/) = 0;
-        //virtual HRESULT get_Application(Application **prop /Out/) = 0;
+
+        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
+        %End
+
         virtual HRESULT get_Creator(long *prop /Out/) = 0;
         virtual HRESULT get_Parent(IDispatch **prop /Out/) = 0;
         virtual HRESULT Item(VARIANT *Index, _Document **prop /Out/) = 0;
