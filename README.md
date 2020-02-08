@@ -1,5 +1,8 @@
 # pywpsrpc
 
+[![Build Status](https://travis-ci.org/timxx/pywpsrpc.svg?branch=master)](https://travis-ci.org/timxx/pywpsrpc)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Python bindings for WPS Office RPC (for Linux version only).
 
 What is WPS Office RPC?
