@@ -21,7 +21,7 @@ For full API references, go to [https://open.wps.cn/docs/office](https://open.wp
 **The project is under heavy development**.
 
 
-## Rrequirements
+## Requirements
   - Python 3.5+
   - Qt5 (the SDK required both for building & running)
   - WPS Office for Linux 11.1.0.9080+
