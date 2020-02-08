@@ -48,16 +48,11 @@ class PyWpsRpcProject(sipbuild.Project):
         return self.name + "/bindings"
 
     def get_dunder_init(self):
-        return """#**
-# * Copyright (c) 2020 Weitian Leung
-# *
-# * This file is part of pywpsrpc.
-# *
-# * This file is distributed under the MIT License.
-# * See the LICENSE file for details.
-# *
-#*
-"""
+        dunder_init = ""
+        with open(os.path.join(self.root_dir, "__init__.py")) as f:
+            dunder_init = f.read()
+
+        return dunder_init
 
 
 class RpcApiBindings(sipbuild.Bindings):

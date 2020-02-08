@@ -1,0 +1,304 @@
+#**
+# * Copyright (c) 2020 Weitian Leung
+# *
+# * This file is part of pywpsrpc.
+# *
+# * This file is distributed under the MIT License.
+# * See the LICENSE file for details.
+# *
+#*
+
+from distutils import sysconfig
+import os
+import sys
+import shutil
+import subprocess
+
+
+class PyWpsRpcProject:
+    def __init__(self):
+        self.name = "pywpsrpc"
+        self.root_dir = os.getcwd()
+        self.build_dir = os.path.join(self.root_dir, "build")
+        self.target_dir = os.path.join(
+            sysconfig.get_python_lib(), self.name)
+        self.debug = False
+
+        self.sip = self._find_sip()
+        self.qmake = self._find_qmake()
+        self.py_include_dir = sysconfig.get_python_inc()
+
+        self.sdk_inc_dir = os.path.join(self.root_dir, "include")
+        # For Arch Linux
+        if os.path.exists("/usr/lib/office6"):
+            self.sdk_lib_dir = "/usr/lib/office6"
+        else:
+            self.sdk_lib_dir = "/opt/kingsoft/wps-office/office6"
+
+        self.bindings_factories = [RpcWpsApi, RpcWppApi, RpcEtApi]
+
+    def _find_sip(self):
+        return shutil.which("sip")
+
+    def _find_qmake(self):
+        qmake = shutil.which("qmake-qt5")
+        if not qmake:
+            qmake = shutil.which("qmake")
+        return qmake
+
+    def run_command(self, args, fatal=True, verbose=False):
+        stdout = sys.stdout if verbose else subprocess.PIPE
+        cmd = ' '.join(args)
+
+        pipe = subprocess.Popen(cmd, shell=True,
+                                stdin=subprocess.PIPE,
+                                stdout=stdout,
+                                stderr=stdout)
+
+        ret = pipe.wait()
+        if ret != 0 and fatal:
+            raise RpcException(
+                "`{}' failed returning {}".format(cmd, ret), ret)
+
+    def progress(self, text):
+        print(text + "...")
+
+    def build(self):
+        if os.path.exists(self.build_dir):
+            shutil.rmtree(self.build_dir)
+        else:
+            os.makedirs(self.build_dir)
+
+        installed = []
+        sub_dirs = []
+
+        for binding_factory in self.bindings_factories:
+            binding = binding_factory(self)
+            self._gen_cxx_source(binding)
+            self._gen_module_pro_file(binding, installed)
+            sub_dirs.append(binding.name)
+
+        self.progress("Generating the top-level project")
+
+        inventory_file = os.path.join(self.build_dir, "inventory.txt")
+
+        with open(self.build_dir + "/" + self.name + ".pro", "w+") as f:
+            f.write("TEMPLATE = subdirs\n")
+            f.write("CONFIG += ordered\n\n")
+            f.write("SUBDIRS = %s\n\n" % ' '.join(sub_dirs))
+
+            f.write("init.path = %s\n" % self.target_dir)
+            f.write("init.files = %s\n" % (self.root_dir + "/__init__.py"))
+            f.write("INSTALLS += init\n\n")
+
+            installed.append(self.target_dir + "/__init__.py")
+
+            # install the non-target files
+            common_dir = os.path.join(self.root_dir, "sip", "common")
+            common_binding_dir = os.path.join(
+                self.target_dir, "bindings", "common")
+            sip_common_files = [(common_dir + "/" + f)
+                                for f in os.listdir(common_dir) if f.endswith(".sip")]
+
+            f.write("sip_common.path = %s\n" % common_binding_dir)
+            f.write("sip_common.files = %s\n" %
+                    " \\\n\t".join(sip_common_files))
+            f.write("INSTALLS += sip_common\n\n")
+
+            installed.extend([f.replace(common_dir, common_binding_dir)
+                              for f in sip_common_files])
+
+        with open(inventory_file, "w+") as f:
+            f.write('\n'.join(installed))
+            f.write('\n')
+
+        old_dir = os.getcwd()
+        os.chdir(self.build_dir)
+
+        self.run_command(
+            [self.qmake, "-recursive", self.name + ".pro"], fatal=True)
+
+        self.progress("Compiling the project")
+        self._run_make()
+
+        os.chdir(old_dir)
+
+        print("The project has been built.")
+
+    def install(self):
+        old_dir = os.getcwd()
+        os.chdir(self.build_dir)
+
+        self.progress("Installing the project")
+        self._run_make(install=True)
+
+        os.chdir(old_dir)
+
+    def _gen_cxx_source(self, binding):
+        self.progress("Generating the %s bindings" % binding.name)
+
+        build_subdir = os.path.join(self.build_dir, binding.name)
+        os.makedirs(build_subdir, exist_ok=True)
+
+        args = [self.sip,
+                "-w",
+                "-n", "sip",
+                "-f",
+                "-c", build_subdir,
+                "-I", self.root_dir + "/sip/common",
+                self.root_dir + "/sip/" + binding.sip_file]
+
+        self.run_command(args)
+
+    def _gen_module_pro_file(self, binding, installed):
+        self.progress("Generating the %s project" % binding.name)
+
+        build_subdir = os.path.join(self.build_dir, binding.name)
+        with open(os.path.join(build_subdir, binding.name + ".pro"), "w+") as f:
+            f.write("TEMPLATE = lib\n")
+            f.write("CONFIG += plugin no_plugin_name_prefix warn_on\n")
+            f.write("CONFIG += %s\n" % ("debug" if self.debug else "release"))
+            f.write("QT = %s\n" % (' '.join(binding.QT) if binding.QT else ''))
+            f.write("TARGET = %s\n\n" % binding.name)
+
+            f.write("INCLUDEPATH += .\n")
+            for dir in binding.include_dirs:
+                f.write("INCLUDEPATH += %s\n" % dir)
+            f.write("INCLUDEPATH += %s\n\n" % self.py_include_dir)
+
+            for dir in binding.library_dirs:
+                f.write("LIBS += -L%s\n" % dir)
+            for lib in binding.libraries:
+                f.write("LIBS += -l%s\n" % lib)
+
+            f.write('\n')
+
+            # hidden symbols
+            with open(build_subdir + "/" + binding.name + ".exp", "w+") as exp:
+                exp.write("{ global: PyInit_%s; local: *; };" % binding.name)
+
+            f.write("QMAKE_LFLAGS += -Wl,--version-script=%s.exp\n" %
+                    binding.name)
+            #f.write("QMAKE_LFLAGS_PLUGIN += -Wl,--no-undefined\n")
+            f.write("QMAKE_CXXFLAGS += -Wno-attributes\n")
+            f.write("QMAKE_RPATHDIR += $ORIGIN /opt/kingsoft/wps-office/office6\n")
+            f.write("QMAKE_RPATHDIR += /usr/lib/office6\n\n")
+
+            # for testing
+            rpc_dir = os.path.join(self.build_dir, self.name)
+            os.makedirs(rpc_dir, exist_ok=True)
+            f.write("QMAKE_POST_LINK = $(COPY_FILE) $(TARGET) %s\n\n" % rpc_dir)
+
+            headers = [os.path.basename(f) for f in os.listdir(
+                build_subdir) if f.endswith(".h")]
+            sources = [os.path.basename(f) for f in os.listdir(
+                build_subdir) if f.endswith(".cpp")]
+
+            f.write("HEADERS = %s\n" % " \\\n\t".join(headers))
+            f.write("SOURCES = %s" % " \\\n\t".join(sources))
+            f.write('\n\n')
+
+            f.write("target.path = %s\n" % self.target_dir)
+            f.write("INSTALLS += target\n\n")
+
+            installed.append(self.target_dir + "/%s.so" % binding.name)
+
+            sip_dir = os.path.join(self.root_dir, "sip", binding.name)
+            sip_files = [(sip_dir + "/" + f)
+                         for f in os.listdir(sip_dir) if f.endswith(".sip")]
+            sip_binding_dir = self.target_dir + "/bindings/" + binding.name
+
+            f.write("sip.path = %s\n" % sip_binding_dir)
+            f.write("sip.files = %s\n" % " \\\n\t".join(sip_files))
+            f.write("INSTALLS += sip")
+
+            installed.extend([f.replace(sip_dir, sip_binding_dir) for f in sip_files])
+
+    def _run_make(self, install=False):
+        if install:
+            # single thread only
+            args = ["make", "install"]
+        else:
+            args = ["make", "-j%s" % os.cpu_count()]
+
+        self.run_command(args, fatal=True)
+
+
+class RpcApiBindings:
+
+    def __init__(self, project, name, **kwargs):
+        self.project = project
+        self.name = name
+
+        for option in self.get_options():
+            setattr(self, option, kwargs.get(option))
+
+        self.sip_file = name + "/" + name + ".sip"
+
+    def get_options(self):
+        return ["include_dirs",
+                "libraries",
+                "library_dirs",
+                "QT"]
+
+
+class RpcWpsApi(RpcApiBindings):
+
+    def __init__(self, project):
+        dirs = [project.sdk_inc_dir, project.sdk_inc_dir + "/common"]
+        dirs.append(project.sdk_inc_dir + "/wps")
+        super().__init__(project,
+                         "rpcwpsapi",
+                         include_dirs=dirs,
+                         libraries=["rpcwpsapi_sysqt5"],
+                         library_dirs=[project.sdk_lib_dir],
+                         QT=["core"])
+
+
+class RpcWppApi(RpcApiBindings):
+
+    def __init__(self, project):
+        dirs = [project.sdk_inc_dir, project.sdk_inc_dir + "/common"]
+        dirs.append(project.sdk_inc_dir + "/wpp")
+        super().__init__(project,
+                         "rpcwppapi",
+                         include_dirs=dirs,
+                         libraries=["rpcwppapi_sysqt5"],
+                         library_dirs=[project.sdk_lib_dir])
+
+
+class RpcEtApi(RpcApiBindings):
+
+    def __init__(self, project):
+        dirs = [project.sdk_inc_dir, project.sdk_inc_dir + "/common"]
+        dirs.append(project.sdk_inc_dir + "/et")
+        super().__init__(project,
+                         "rpcetapi",
+                         include_dirs=dirs,
+                         libraries=["rpcetapi_sysqt5"],
+                         library_dirs=[project.sdk_lib_dir])
+
+
+class RpcException(Exception):
+
+    def __init__(self, text, exit_code):
+        super().__init__()
+        self.text = text
+        self.exit_code = exit_code
+
+
+def main(argv):
+    try:
+        project = PyWpsRpcProject()
+        project.build()
+
+        if len(argv) == 2:
+            if argv[1] == "install":
+                project.install()
+    except RpcException as e:
+        print(e.text)
+        sys.exit(e.exit_code)
+
+
+if __name__ == "__main__":
+    main(sys.argv)

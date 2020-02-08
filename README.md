@@ -23,12 +23,15 @@ For full API references, go to [https://open.wps.cn/docs/office](https://open.wp
   - Qt5 (the SDK required both for building & running)
   - WPS Office for Linux 11.1.0.9080+
   - python-sip (for building)
-  - sip5 (for building)
+  - sip 4.0+ (for building)
   - qmake (for building)
   - gcc/clang (for building)
 
 ## How to build
-  run `sip-build` under the project root directory
+  - For sip5
+    run `sip-build` under the project root directory
+  - For sip 4.x
+    run `python configure.py` under the project root directory
 
 ## Progress
 
@@ -39,7 +42,7 @@ For full API references, go to [https://open.wps.cn/docs/office](https://open.wp
 - [ ] Memory managerment
   - It seems that the bingings now cause memory leaks.
 - [x] Packaging
-  - run `sip-wheel` to make the whl package
+  - run `sip-wheel` to make the whl package for sip5
 - [ ] Python attribute bindings
   - Since now the SDK **DOES NOT** provide the IDispatch way's invoke, we have to find out a way to make it easy calling those get_XXX & put_XXX mehtods
 - [ ] Examples
