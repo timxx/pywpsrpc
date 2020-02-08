@@ -56,11 +56,32 @@ def test():
     # the text uses \r as newline, LoL
     print(text.replace("\r", "\n"))
 
+    hr, paras = doc.get_Paragraphs()
+    check_call("get_Paragraphs", hr, paras)
+
+    hr, count = paras.get_Count()
+    check_call("get_Count", hr, count)
+
     hr = docRange.InsertParagraphAfter()
     check_call("InsertParagraphAfter", hr)
 
     hr = docRange.InsertAfter("Hello, world")
     check_call("InsertAfter", hr)
+
+    hr, count = paras.get_Count()
+    check_call("get_Count", hr, count)
+
+    hr, para = paras.get_First()
+    check_call("paras.get_First", hr, para)
+
+    hr, paraRange = para.get_Range()
+    check_call("para.get_Range", hr, paraRange)
+
+    hr, text = paraRange.get_Text()
+    check_call("paraRange.get_Text", hr, text)
+
+    hr = para.put_Alignment(wpsapi.wdAlignParagraphCenter)
+    check_call("para.put_Alignment", hr)
 
     hr = docRange.put_Start(end)
     check_call("put_Start", hr)

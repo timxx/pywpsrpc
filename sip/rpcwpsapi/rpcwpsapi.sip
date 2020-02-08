@@ -11,8 +11,15 @@
 %Module(name=pywpsrpc.rpcwpsapi, keyword_arguments="Optional")
 
 %Include wpsrpcsdk.sip
-%Include _Application.sip
 %Include enums.sip
+%Include Documents.sip
+%Include Selection.sip
+%Include _Application_extend.sip
+%Include _Application.sip
+%Include _Document.sip
+%Include Range.sip
+%Include Paragraph.sip
+%Include Paragraphs.sip
 
 %ModuleCode
     #include <QString>

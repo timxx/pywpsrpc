@@ -8,8 +8,6 @@
  *
 */
 
-%Include _Document.sip
-
 namespace wpsapi
 {
     // Oh no!!! The sdk has no Document but the argument is!!!

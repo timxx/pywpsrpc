@@ -67,10 +67,9 @@ namespace wpsapi
 
         virtual HRESULT get_Sections(
             Sections **prop /Out/) = 0;
-
-        virtual HRESULT get_Paragraphs(
-            Paragraphs **prop /Out/) = 0;
-
+*/
+        virtual HRESULT get_Paragraphs(Paragraphs **prop /Out/) = 0;
+/*
         virtual HRESULT get_Borders(
             Borders **prop /Out/) = 0;
 

@@ -8,8 +8,6 @@
  *
 */
 
-%Include Range.sip
-
 namespace wpsapi
 {
     struct _Document : public IDispatch /Abstract/
@@ -46,9 +44,10 @@ namespace wpsapi
 
         virtual HRESULT get_ConsecutiveHyphensLimit(long *prop /Out/) = 0;
         virtual HRESULT put_ConsecutiveHyphensLimit(long prop) = 0;
-/*
-        virtual HRESULT get_Sections(Sections **prop /Out/) = 0;
+
+        // virtual HRESULT get_Sections(Sections **prop /Out/) = 0;
         virtual HRESULT get_Paragraphs(Paragraphs **prop /Out/) = 0;
+/*
         virtual HRESULT get_Words(Words **prop /Out/) = 0;
         virtual HRESULT get_Sentences(Sentences **prop) /Out/ = 0;
         virtual HRESULT get_Characters(Characters **prop /Out/) = 0;

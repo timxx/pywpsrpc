@@ -8,11 +8,6 @@
  *
 */
 
-%Include _Application_extend.sip
-%Include enums.sip
-%Include Documents.sip
-%Include Selection.sip
-
 namespace wpsapi {
     typedef float single;
 };
