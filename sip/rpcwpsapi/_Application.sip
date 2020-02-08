@@ -11,6 +11,7 @@
 %Include _Application_extend.sip
 %Include enums.sip
 %Include Documents.sip
+%Include Selection.sip
 
 namespace wpsapi {
     typedef float single;
@@ -24,36 +25,37 @@ struct _Application : public IDispatch, public wpsapi::_Application_extend /Abst
         #include <wps/wpsapi.h>
     %End
 public:
-    //virtual HRESULT get_Application(Application **prop) = 0;
+    //virtual HRESULT get_Application(Application **prop /Out/) = 0;
     virtual HRESULT get_Creator(long *prop) = 0;
-    virtual HRESULT get_Parent(IDispatch **prop) = 0;
+    virtual HRESULT get_Parent(IDispatch **prop /Out/) = 0;
     virtual HRESULT get_Name(BSTR *prop /Out/) = 0;
     virtual HRESULT get_Documents(Documents **prop /Out/) = 0;
-    //virtual HRESULT get_Windows(Windows **prop) = 0;
+    //virtual HRESULT get_Windows(Windows **prop /Out/) = 0;
     virtual HRESULT get_ActiveDocument(_Document **prop /Out/) = 0;
     %MethodCode
         sipRes = sipCpp->get_ActiveDocument((wpsapi::Document**)&a0);
     %End
+
+    // virtual HRESULT get_ActiveWindow(Window **prop /Out/) = 0;
+    virtual HRESULT get_Selection(Selection **prop /Out/) = 0;
+    virtual HRESULT get_WordBasic(IDispatch **prop /Out/) = 0;
 /*
-    virtual HRESULT get_ActiveWindow(Window **prop) = 0;
-    virtual HRESULT get_Selection(Selection **prop) = 0;
-    virtual HRESULT get_WordBasic(IDispatch **prop) = 0;
-    virtual HRESULT get_RecentFiles(RecentFiles **prop) = 0;
-    virtual HRESULT get_NormalTemplate(Template **prop) = 0;
-    virtual HRESULT get_System(System **prop) = 0;
-    virtual HRESULT get_AutoCorrect(AutoCorrect **prop) = 0;
-    virtual HRESULT get_FontNames(FontNames **prop) = 0;
-    virtual HRESULT get_LandscapeFontNames(FontNames **prop) = 0;
-    virtual HRESULT get_PortraitFontNames(FontNames **prop) = 0;
-    virtual HRESULT get_Languages(Languages **prop) = 0;
-    virtual HRESULT get_Assistant(Assistant **prop) = 0;
-    virtual HRESULT get_Browser(Browser **prop) = 0;
-    virtual HRESULT get_FileConverters(FileConverters **prop) = 0;
-    virtual HRESULT get_MailingLabel(MailingLabel **prop) = 0;
-    virtual HRESULT get_Dialogs(Dialogs **prop) = 0;
-    virtual HRESULT get_CaptionLabels(CaptionLabels **prop) = 0;
-    virtual HRESULT get_AutoCaptions(AutoCaptions **prop) = 0;
-    virtual HRESULT get_AddIns(AddIns **prop) = 0;
+    virtual HRESULT get_RecentFiles(RecentFiles **prop /Out/) = 0;
+    virtual HRESULT get_NormalTemplate(Template **prop /Out/) = 0;
+    virtual HRESULT get_System(System **prop /Out/) = 0;
+    virtual HRESULT get_AutoCorrect(AutoCorrect **prop /Out/) = 0;
+    virtual HRESULT get_FontNames(FontNames **prop /Out/) = 0;
+    virtual HRESULT get_LandscapeFontNames(FontNames **prop /Out/) = 0;
+    virtual HRESULT get_PortraitFontNames(FontNames **prop /Out/) = 0;
+    virtual HRESULT get_Languages(Languages **prop /Out/) = 0;
+    virtual HRESULT get_Assistant(Assistant **prop /Out/) = 0;
+    virtual HRESULT get_Browser(Browser **prop /Out/) = 0;
+    virtual HRESULT get_FileConverters(FileConverters **prop /Out/) = 0;
+    virtual HRESULT get_MailingLabel(MailingLabel **prop /Out/) = 0;
+    virtual HRESULT get_Dialogs(Dialogs **prop /Out/) = 0;
+    virtual HRESULT get_CaptionLabels(CaptionLabels **prop /Out/) = 0;
+    virtual HRESULT get_AutoCaptions(AutoCaptions **prop /Out/) = 0;
+    virtual HRESULT get_AddIns(AddIns **prop /Out/) = 0;
 */
     virtual HRESULT get_Visible(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_Visible(VARIANT_BOOL prop) = 0;
@@ -63,7 +65,7 @@ public:
     virtual HRESULT get_PrintPreview(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_PrintPreview(VARIANT_BOOL prop) = 0;
 /*
-    virtual HRESULT get_Tasks(Tasks **prop) = 0;
+    virtual HRESULT get_Tasks(Tasks **prop /Out/) = 0;
 */
     virtual HRESULT get_DisplayStatusBar(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_DisplayStatusBar(VARIANT_BOOL prop) = 0;
@@ -82,23 +84,23 @@ public:
     virtual HRESULT put_UserInitials(BSTR prop) = 0;
     virtual HRESULT get_UserAddress(BSTR *prop /Out/) = 0;
     virtual HRESULT put_UserAddress(BSTR prop) = 0;
-    virtual HRESULT get_MacroContainer(IDispatch **prop) = 0;
+    virtual HRESULT get_MacroContainer(IDispatch **prop /Out/) = 0;
     virtual HRESULT get_DisplayRecentFiles(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_DisplayRecentFiles(VARIANT_BOOL prop) = 0;
 /*
-    virtual HRESULT get_CommandBars(CommandBars **prop) = 0;
-    virtual HRESULT get_SynonymInfo(BSTR Word, VARIANT *LanguageID, SynonymInfo **prop) = 0;
+    virtual HRESULT get_CommandBars(CommandBars **prop /Out/) = 0;
+    virtual HRESULT get_SynonymInfo(BSTR Word, VARIANT *LanguageID, SynonymInfo **prop /Out/) = 0;
     virtual HRESULT get_VBE(VBE **prop) = 0;
 */
     virtual HRESULT get_DefaultSaveFormat(BSTR *prop /Out/) = 0;
     virtual HRESULT put_DefaultSaveFormat(BSTR prop) = 0;
-    //virtual HRESULT get_ListGalleries(ListGalleries **prop) = 0;
+    //virtual HRESULT get_ListGalleries(ListGalleries **prop /Out/) = 0;
     virtual HRESULT get_ActivePrinter(BSTR *prop /Out/) = 0;
     virtual HRESULT put_ActivePrinter(BSTR prop) = 0;
-    //virtual HRESULT get_Templates(Templates **prop) = 0;
+    //virtual HRESULT get_Templates(Templates **prop /Out/) = 0;
     virtual HRESULT get_CustomizationContext(IDispatch **prop /Out/) = 0;
     virtual HRESULT put_CustomizationContext(IDispatch *prop) = 0;
-    //virtual HRESULT get_KeyBindings(KeyBindings **prop) = 0;
+    //virtual HRESULT get_KeyBindings(KeyBindings **prop /Out/) = 0;
     //virtual HRESULT get_KeysBoundTo(WdKeyCategory KeyCategory, BSTR Command, VARIANT *CommandParameter, KeysBoundTo **prop) = 0;
     //virtual HRESULT get_FindKey(long KeyCode, VARIANT *KeyCode2, KeyBinding **prop) = 0;
     virtual HRESULT get_Caption(BSTR *prop /Out/) = 0;
@@ -118,7 +120,7 @@ public:
     virtual HRESULT put_Width(long prop) = 0;
     virtual HRESULT get_Height(long *prop /Out/) = 0;
     virtual HRESULT put_Height(long prop) = 0;
-    //virtual HRESULT get_WindowState(WdWindowState *prop) = 0;
+    //virtual HRESULT get_WindowState(WdWindowState *prop /Out/) = 0;
     //virtual HRESULT put_WindowState(WdWindowState prop) = 0;
     virtual HRESULT get_DisplayAutoCompleteTips(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_DisplayAutoCompleteTips(VARIANT_BOOL prop) = 0;
@@ -144,7 +146,7 @@ public:
     virtual HRESULT put_BrowseExtraFileTypes(BSTR prop) = 0;
     virtual HRESULT get_IsObjectValid(IDispatch *Object, VARIANT_BOOL *prop /Out/) = 0;
     //virtual HRESULT get_HangulHanjaDictionaries(HangulHanjaConversionDictionaries **prop) = 0;
-    //virtual HRESULT get_MailMessage(MailMessage **prop) = 0;
+    //virtual HRESULT get_MailMessage(MailMessage **prop /Out/) = 0;
     virtual HRESULT get_FocusInMailHeader(VARIANT_BOOL *prop /Out/) = 0;
 
     virtual HRESULT Quit(VARIANT *SaveChanges = argMissing(),
@@ -270,15 +272,15 @@ public:
     virtual HRESULT DiscussionSupport(VARIANT *Range, VARIANT *cid, VARIANT *piCSE) = 0;
     virtual HRESULT SetDefaultTheme(BSTR Name, WdDocumentMedium DocumentType) = 0;
     virtual HRESULT GetDefaultTheme(WdDocumentMedium DocumentType, BSTR *prop /Out/) = 0;
-    //virtual HRESULT get_EmailOptions(EmailOptions **prop) = 0;
-    virtual HRESULT get_Language(MsoLanguageID *prop) = 0;
-    //virtual HRESULT get_COMAddIns(COMAddIns **prop) = 0;
+    //virtual HRESULT get_EmailOptions(EmailOptions **prop /Out/) = 0;
+    virtual HRESULT get_Language(MsoLanguageID *prop /Out/) = 0;
+    //virtual HRESULT get_COMAddIns(COMAddIns **prop /Out/) = 0;
     virtual HRESULT get_CheckLanguage(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_CheckLanguage(VARIANT_BOOL prop) = 0;
-    //virtual HRESULT get_LanguageSettings(LanguageSettings **prop) = 0;
+    //virtual HRESULT get_LanguageSettings(LanguageSettings **prop /Out/) = 0;
     virtual HRESULT get_Dummy1(VARIANT_BOOL *prop /Out/) = 0;
-    //virtual HRESULT get_AnswerWizard(AnswerWizard **prop) = 0;
-    virtual HRESULT get_FeatureInstall(MsoFeatureInstall *prop) = 0;
+    //virtual HRESULT get_AnswerWizard(AnswerWizard **prop /Out/) = 0;
+    virtual HRESULT get_FeatureInstall(MsoFeatureInstall *prop /Out/) = 0;
     virtual HRESULT put_FeatureInstall(MsoFeatureInstall prop) = 0;
     virtual HRESULT PrintOut2000(VARIANT *Background = argMissing(),
             VARIANT *Append = argMissing(),
@@ -352,22 +354,22 @@ public:
             VARIANT *PrintZoomPaperHeight = argMissing()) = 0;
     virtual HRESULT get_AutomationSecurity(MsoAutomationSecurity *prop /Out/) = 0;
     virtual HRESULT put_AutomationSecurity(MsoAutomationSecurity prop) = 0;
-    //virtual HRESULT get_FileDialog(MsoFileDialogType FileDialogType, FileDialog **prop) = 0;
+    //virtual HRESULT get_FileDialog(MsoFileDialogType FileDialogType, FileDialog **prop /Out/) = 0;
     virtual HRESULT get_EmailTemplate(BSTR *prop /Out/) = 0;
     virtual HRESULT put_EmailTemplate(BSTR prop) = 0;
     virtual HRESULT get_ShowWindowsInTaskbar(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_ShowWindowsInTaskbar(VARIANT_BOOL prop) = 0;
-    //virtual HRESULT get_NewDocument(NewFile **prop) = 0;
+    //virtual HRESULT get_NewDocument(NewFile **prop /Out/) = 0;
     virtual HRESULT get_ShowStartupDialog(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_ShowStartupDialog(VARIANT_BOOL prop) = 0;
-    //virtual HRESULT get_AutoCorrectEmail(AutoCorrect **prop) = 0;
-    //virtual HRESULT get_TaskPanes(TaskPanes **prop) = 0;
+    //virtual HRESULT get_AutoCorrectEmail(AutoCorrect **prop /Out/) = 0;
+    //virtual HRESULT get_TaskPanes(TaskPanes **prop /Out/) = 0;
     virtual HRESULT get_DefaultLegalBlackline(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_DefaultLegalBlackline(VARIANT_BOOL prop) = 0;
     virtual HRESULT Dummy2(VARIANT_BOOL *prop /Out/) = 0;
-    //virtual HRESULT get_SmartTagRecognizers(SmartTagRecognizers **prop) = 0;
-    //virtual HRESULT get_SmartTagTypes(SmartTagTypes **prop) = 0;
-    //virtual HRESULT get_XMLNamespaces(XMLNamespaces **prop) = 0;
+    //virtual HRESULT get_SmartTagRecognizers(SmartTagRecognizers **prop /Out/) = 0;
+    //virtual HRESULT get_SmartTagTypes(SmartTagTypes **prop /Out/) = 0;
+    //virtual HRESULT get_XMLNamespaces(XMLNamespaces **prop /Out/) = 0;
     virtual HRESULT PutFocusInMailHeader() = 0;
     virtual HRESULT get_ArbitraryXMLSupportAvailable(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT get_BuildFull(BSTR *prop /Out/) = 0;
@@ -409,7 +411,7 @@ public:
             BSTR RevisedAuthor,
             WdMergeFormatFrom FormatFrom,
             Document **prop) = 0;
-    virtual HRESULT get_Bibliography(Bibliography **prop) = 0;
+    virtual HRESULT get_Bibliography(Bibliography **prop /Out/) = 0;
 */
     virtual HRESULT get_ShowStylePreviews(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_ShowStylePreviews(VARIANT_BOOL prop) = 0;
@@ -425,18 +427,18 @@ public:
     virtual HRESULT get_DontResetInsertionPointProperties(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_DontResetInsertionPointProperties(VARIANT_BOOL prop) = 0;
 /*
-    virtual HRESULT get_SmartArtLayouts(SmartArtLayouts **prop) = 0;
-    virtual HRESULT get_SmartArtQuickStyles(SmartArtQuickStyles **prop) = 0;
-    virtual HRESULT get_SmartArtColors(SmartArtColors **prop) = 0;
+    virtual HRESULT get_SmartArtLayouts(SmartArtLayouts **prop /Out/) = 0;
+    virtual HRESULT get_SmartArtQuickStyles(SmartArtQuickStyles **prop /Out/) = 0;
+    virtual HRESULT get_SmartArtColors(SmartArtColors **prop /Out/) = 0;
     virtual HRESULT ThreeWayMerge(Document *LocalDocument,
             Document *ServerDocument,
             Document *BaseDocument,
             VARIANT_BOOL FavorSource) = 0;
     virtual HRESULT Dummy4() = 0;
-    virtual HRESULT get_UndoRecord(UndoRecord **prop) = 0;
-    virtual HRESULT get_PickerDialog(PickerDialog **prop) = 0;
-    virtual HRESULT get_ProtectedViewWindows(ProtectedViewWindows **prop) = 0;
-    virtual HRESULT get_ActiveProtectedViewWindow(ProtectedViewWindow **prop) = 0;
+    virtual HRESULT get_UndoRecord(UndoRecord **prop /Out/) = 0;
+    virtual HRESULT get_PickerDialog(PickerDialog **prop /Out/) = 0;
+    virtual HRESULT get_ProtectedViewWindows(ProtectedViewWindows **prop /Out/) = 0;
+    virtual HRESULT get_ActiveProtectedViewWindow(ProtectedViewWindow **prop /Out/) = 0;
 */
     virtual HRESULT get_IsSandboxed(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT get_FileValidation(MsoFileValidationMode *prop /Out/) = 0;
@@ -446,8 +448,8 @@ public:
     virtual HRESULT get_ShowAnimation(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_ShowAnimation(VARIANT_BOOL prop) = 0;
 /*
-    virtual HRESULT get_OfdExportOptions(OfdExportOptions **prop) = 0;
-    virtual HRESULT get_PdfExportOptions(PdfExportOptions **prop) = 0;
+    virtual HRESULT get_OfdExportOptions(OfdExportOptions **prop /Out/) = 0;
+    virtual HRESULT get_PdfExportOptions(PdfExportOptions **prop /Out/) = 0;
 */
 };
 }; // namespace wpsapi

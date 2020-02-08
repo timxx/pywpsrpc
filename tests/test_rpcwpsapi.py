@@ -72,6 +72,21 @@ def test():
     # should be "Hello, world"
     check_call("get_Text", hr, text)
 
+    hr, selection = wpsApp.get_Selection()
+    check_call("get_Selection", hr, selection)
+
+    hr = selection.SetRange(0, 10)
+    check_call("SetRange", hr)
+
+    hr, start = selection.get_Start()
+    check_call("get_Start", hr, start)
+
+    hr, end = selection.get_End()
+    check_call("get_End", hr, end)
+
+    hr, text = selection.get_Text()
+    check_call("get_Text", hr, text)
+
     hr = doc.SaveAs("test.docx", wpsapi.wdFormatDocument)
     check_call("SaveAs", hr)
 
