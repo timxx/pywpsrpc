@@ -31,4 +31,4 @@ before_install:
   - sudo dpkg -i wps-office_11.1.0.9080.XA_amd64.deb
 
 script:
-  - python3 configure.py
+  - python3 configure.py --verbose

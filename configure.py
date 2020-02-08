@@ -23,6 +23,7 @@ class PyWpsRpcProject:
         self.target_dir = os.path.join(
             sysconfig.get_python_lib(), self.name)
         self.debug = False
+        self.verbose = False
 
         self.sip = self._find_sip()
         self.qmake = self._find_qmake()
@@ -116,7 +117,9 @@ class PyWpsRpcProject:
         os.chdir(self.build_dir)
 
         self.run_command(
-            [self.qmake, "-recursive", self.name + ".pro"], fatal=True)
+            [self.qmake, "-recursive", self.name + ".pro"],
+            fatal=True,
+            verbose=self.verbose)
 
         self.progress("Compiling the project")
         self._run_make()
@@ -222,7 +225,7 @@ class PyWpsRpcProject:
         else:
             args = ["make", "-j%s" % os.cpu_count()]
 
-        self.run_command(args, fatal=True)
+        self.run_command(args, fatal=True, verbose=self.verbose)
 
 
 class RpcApiBindings:
@@ -291,10 +294,11 @@ class RpcException(Exception):
 def main(argv):
     try:
         project = PyWpsRpcProject()
+        project.verbose = ("--verbose" in argv)
         project.build()
 
-        if len(argv) == 2:
-            if argv[1] == "install":
+        if len(argv) >= 2:
+            if "install" in argv:
                 project.install()
     except RpcException as e:
         print(e.text)
