@@ -33,7 +33,7 @@
 
     VARIANT *pVar = new VARIANT;
     VariantInit(pVar);
-    *sipCppPtr = SIP_NULLPTR;
+    *sipCppPtr = nullptr;
 
     // TODO: fix the ugly code
     if (sipPy == Py_None)
@@ -46,7 +46,7 @@
 
         BSTR *pBstr = reinterpret_cast<BSTR*>(sipConvertToType(sipPy,
             sipType_BSTR, sipTransferObj, SIP_NO_CONVERTORS, 0, sipIsErr));
-        V_BSTR(pVar) = pBstr ? *pBstr : SIP_NULLPTR;
+        V_BSTR(pVar) = pBstr ? *pBstr : nullptr;
         sipReleaseType(pBstr, sipType_BSTR, 0);
     }
     else if (Py_TYPE(sipPy) == &PyLong_Type)
@@ -162,7 +162,7 @@
         }
         break;
     }
-    return SIP_NULLPTR;
+    return nullptr;
 %End
 };
 

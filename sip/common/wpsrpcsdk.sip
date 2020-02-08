@@ -47,9 +47,9 @@ public:
         {
             PyObject *strObj = PyList_GetItem(a0, i);
             BSTR* pStr = reinterpret_cast<BSTR*>(sipConvertToType(strObj,
-                sipType_BSTR, SIP_NULLPTR, SIP_NO_CONVERTORS, 0, &sipIsErr));
+                sipType_BSTR, nullptr, SIP_NO_CONVERTORS, 0, &sipIsErr));
 
-            bstrArgs.push_back(pStr ? *pStr : SIP_NULLPTR);
+            bstrArgs.push_back(pStr ? *pStr : nullptr);
             bstrPtrs.push_back(pStr);
 
             if (sipIsErr)

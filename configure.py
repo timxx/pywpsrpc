@@ -142,7 +142,7 @@ class PyWpsRpcProject:
 
         args = [self.sip,
                 "-w",
-                "-n", "sip",
+                #"-n", "sip",
                 "-f",
                 "-c", build_subdir,
                 "-I", self.root_dir + "/sip/common",
@@ -158,6 +158,7 @@ class PyWpsRpcProject:
             f.write("TEMPLATE = lib\n")
             f.write("CONFIG += plugin no_plugin_name_prefix warn_on\n")
             f.write("CONFIG += %s\n" % ("debug" if self.debug else "release"))
+            f.write("CONFIG += c++11\n")
             f.write("QT = %s\n" % (' '.join(binding.QT) if binding.QT else ''))
             f.write("TARGET = %s\n\n" % binding.name)
 

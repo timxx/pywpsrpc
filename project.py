@@ -229,6 +229,7 @@ class RpcApiBuilder(sipbuild.Builder):
             f.write("TEMPLATE = lib\n")
             f.write("CONFIG += plugin no_plugin_name_prefix warn_on\n")
             f.write("CONFIG += %s\n" % ("debug" if buildable.debug else "release"))
+            f.write("CONFIG += c++11\n")
             f.write("%s\n" % ' '.join(buildable.builder_settings))
             f.write("TARGET = %s\n\n" % buildable.target)
 

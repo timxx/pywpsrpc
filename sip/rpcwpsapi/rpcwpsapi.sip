@@ -23,7 +23,7 @@ HRESULT createWpsRpcInstance(IKRpcClient **client);
 
 wpsapi::_Application* getWpsApplication(IKRpcClient *client);
 %MethodCode
-    wpsapi::_Application* pApp = SIP_NULLPTR;
+    wpsapi::_Application* pApp = nullptr;
     a0->getWpsApplication((IUnknown **)&pApp);
 
     sipRes = pApp;

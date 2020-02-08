@@ -61,7 +61,7 @@ struct GUID
         Py_ssize_t len = 0;
         const char *str = PyUnicode_AsUTF8AndSize(a0, &len);
         if (!str || len != 36)
-            return SIP_NULLPTR;
+            return nullptr;
 
         sipCpp = new GUID();
         sscanf(str, "%08x-%04hx-%04hx-%02hhx%02hhx-%02hhx%02hhx%02hhx%02hhx%02hhx%02hhx",
