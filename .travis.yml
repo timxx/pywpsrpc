@@ -1,5 +1,4 @@
 language: python
-sudo: required
 dist: bionic
 
 arch:
@@ -27,7 +26,7 @@ addons:
     - qt5-default
 
 before_install:
-  - [ -f "wps-office_11.1.0.9080.XA_amd64.deb" ] || wget http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9080/wps-office_11.1.0.9080.XA_amd64.deb
+  - test -f "wps-office_11.1.0.9080.XA_amd64.deb" || wget http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9080/wps-office_11.1.0.9080.XA_amd64.deb
   - dpkg -l wps-office || sudo dpkg -i wps-office_11.1.0.9080.XA_amd64.deb
 
 script:
