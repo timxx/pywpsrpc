@@ -129,6 +129,15 @@ def test():
     # should be "Hello, world"
     check_call("get_Text", hr, text)
 
+    hr, font = docRange.get_Font()
+    check_call("docRange.get_Font", hr, font)
+
+    hr, name = font.get_Name()
+    check_call("font.get_Name", hr, name)
+
+    hr = font.put_Bold(True)
+    check_call("font.put_Bold", hr)
+
     hr, selection = wpsApp.get_Selection()
     check_call("get_Selection", hr, selection)
 

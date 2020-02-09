@@ -184,6 +184,16 @@ class RpcApiBuilder(sipbuild.Builder):
 
             self._install(f, sip_common, target_dir, installed)
 
+            ksoapi_subdir = os.path.join(common_subdir, "ksoapi")
+            sip_ksoapi = sipbuild.Installable(
+                "sip_ksoapi", target_subdir=ksoapi_subdir)
+            ksoapi_dir = os.path.join(common_dir, "ksoapi")
+            sip_ksoapi_files = [(ksoapi_dir + "/" + f)
+                                for f in os.listdir(ksoapi_dir) if f.endswith(".sip")]
+
+            sip_ksoapi.files.extend(sip_ksoapi_files)
+            self._install(f, sip_ksoapi, target_dir, installed)
+
             # for distinfo
             inventory_file = self.project.build_dir + "/inventory.txt"
             with open(inventory_file, "w+") as inventory:

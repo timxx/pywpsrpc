@@ -109,6 +109,20 @@ class PyWpsRpcProject:
             installed.extend([f.replace(common_dir, common_binding_dir)
                               for f in sip_common_files])
 
+            ksoapi_dir = os.path.join(common_dir, "ksoapi")
+            ksoapi_binding_dir = os.path.join(
+                self.target_dir, "bindings", "common", "ksoapi")
+            sip_ksoapi_files = [(ksoapi_dir + "/" + f)
+                                for f in os.listdir(ksoapi_dir) if f.endswith(".sip")]
+
+            f.write("sip_ksoapi.path = %s\n" % ksoapi_binding_dir)
+            f.write("sip_ksoapi.files = %s\n" %
+                    " \\\n\t".join(sip_ksoapi_files))
+            f.write("INSTALLS += sip_ksoapi\n\n")
+
+            installed.extend([f.replace(ksoapi_dir, ksoapi_binding_dir)
+                              for f in sip_ksoapi_files])
+
         with open(inventory_file, "w+") as f:
             f.write('\n'.join(installed))
             f.write('\n')

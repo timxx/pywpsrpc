@@ -26,8 +26,15 @@ namespace wpsapi
         virtual HRESULT get_End(long *prop /Out/) = 0;
         virtual HRESULT put_End(long prop) = 0;
 
-        // virtual HRESULT get_Font(Font **prop /Out/ = 0;
-        // virtual HRESULT put_Font(Font *prop) = 0;
+        virtual HRESULT get_Font(_Font **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Font((wpsapi::Font**)&a0);
+        %End
+
+        virtual HRESULT put_Font(_Font *prop) = 0;
+        %MethodCode
+            sipRes = sipCpp->put_Font((wpsapi::Font*)a0);
+        %End
 
         virtual HRESULT get_Duplicate(Range **prop /Out/) = 0;
 

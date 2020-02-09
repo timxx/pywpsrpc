@@ -19,6 +19,7 @@ namespace wpsapi
 };
 
 %Include wpsrpcsdk.sip
+%Include ksoapi.sip
 %Include enums.sip
 %Include Documents.sip
 %Include Selection.sip
@@ -32,6 +33,14 @@ namespace wpsapi
 %Include Borders.sip
 %Include TabStops.sip
 %Include Shading.sip
+%Include _Font.sip
+%Include GlowFormat.sip
+%Include ColorFormat.sip
+%Include ReflectionFormat.sip
+%Include ShadowFormat.sip
+%Include FillFormat.sip
+%Include LineFormat.sip
+%Include ThreeDFormat.sip
 
 HRESULT createWpsRpcInstance(IKRpcClient **client);
 
