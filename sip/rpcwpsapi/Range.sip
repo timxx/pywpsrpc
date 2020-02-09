@@ -40,8 +40,8 @@ namespace wpsapi
 
         virtual HRESULT get_StoryType(WdStoryType *prop /Out/) = 0;
 
-/*
         virtual HRESULT get_Tables(Tables **prop /Out/) = 0;
+/*
         virtual HRESULT get_Words(Words **prop /Out/) = 0;
 
         virtual HRESULT get_Sentences(Sentences **prop /Out/) = 0;
@@ -273,7 +273,6 @@ namespace wpsapi
         virtual HRESULT InsertParagraph() = 0;
         virtual HRESULT InsertParagraphAfter() = 0;
 
-/*
         virtual HRESULT ConvertToTableOld(VARIANT *Separator = argMissing(),
             VARIANT *NumRows = argMissing(),
             VARIANT *NumColumns = argMissing(),
@@ -289,7 +288,7 @@ namespace wpsapi
             VARIANT *ApplyLastColumn = argMissing(),
             VARIANT *AutoFit = argMissing(),
             Table **prop /Out/ = argMissing()) = 0;
-*/
+
         virtual HRESULT InsertDateTimeOld(VARIANT *DateTimeFormat = argMissing(),
             VARIANT *InsertAsField = argMissing(),
             VARIANT *InsertAsFullWidth = argMissing()) = 0;
@@ -470,7 +469,6 @@ namespace wpsapi
 
         virtual HRESULT DetectLanguage() = 0;
 
-/*
         virtual HRESULT ConvertToTable(VARIANT *Separator = argMissing(),
             VARIANT *NumRows = argMissing(),
             VARIANT *NumColumns = argMissing(),
@@ -488,7 +486,6 @@ namespace wpsapi
             VARIANT *AutoFitBehavior = argMissing(),
             VARIANT *DefaultTableBehavior = argMissing(),
             Table **prop /Out/ = 0) = 0;
-*/
 
         virtual HRESULT TCSCConverter(WdTCSCConverterDirection direction = (wpsapi::WdTCSCConverterDirection)2,
             VARIANT_BOOL CommonTerms = 0,
@@ -512,7 +509,7 @@ namespace wpsapi
         virtual HRESULT get_NoProofing(long *prop /Out/) = 0;
         virtual HRESULT put_NoProofing(long prop) = 0;
 
-        // virtual HRESULT get_TopLevelTables(Tables **prop /Out/) = 0;
+        virtual HRESULT get_TopLevelTables(Tables **prop /Out/) = 0;
 
         // virtual HRESULT get_Scripts(Scripts **prop /Out/) = 0;
 

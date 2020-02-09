@@ -41,6 +41,10 @@ namespace wpsapi
 %Include FillFormat.sip
 %Include LineFormat.sip
 %Include ThreeDFormat.sip
+%Include Tables.sip
+%Include Columns.sip
+%Include Rows.sip
+%Include Cells.sip
 
 HRESULT createWpsRpcInstance(IKRpcClient **client);
 

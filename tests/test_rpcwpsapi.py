@@ -22,7 +22,7 @@ def test():
     hr, rpc = rpcwpsapi.createWpsRpcInstance()
     check_call("createWpsRpcInstance", hr, rpc)
 
-    hr = rpc.setProcessArgs([__file__])
+    hr = rpc.setProcessArgs([os.path.dirname(os.path.realpath(__file__)) + "/../__init__.py"])
     check_call("setProcessArgs", hr)
 
     wpsApp = rpcwpsapi.getWpsApplication(rpc)
@@ -152,6 +152,30 @@ def test():
 
     hr, text = selection.get_Text()
     check_call("get_Text", hr, text)
+
+    hr, tables = doc.get_Tables()
+    check_call("doc.get_Tables", hr, tables)
+
+    hr, pos = selection.EndKey(Unit=wpsapi.wdStory)
+    check_call("selection.EndKey", hr, pos)
+
+    hr = selection.InsertParagraphAfter()
+    hr, pos = selection.EndKey(Unit=wpsapi.wdStory)
+
+    hr, selRange = selection.get_Range()
+    check_call("selection.get_Range", hr, selRange)
+
+    hr, table = tables.Add(selRange, 2, 2)
+    check_call("tables.Add", hr, table)
+
+    hr, cell = table.Cell(1, 2)
+    check_call("table.Cell", hr, cell)
+
+    hr, cellRange = cell.get_Range()
+    check_call("cell.get_Range", hr, cellRange)
+
+    hr = cellRange.put_Text("cell")
+    check_call("cellRange.put_Text", hr)
 
     hr = doc.SaveAs("test.docx", wpsapi.wdFormatDocument)
     check_call("SaveAs", hr)

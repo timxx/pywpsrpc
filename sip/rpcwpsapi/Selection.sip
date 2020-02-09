@@ -43,10 +43,8 @@ namespace wpsapi
         virtual HRESULT get_Style(VARIANT *prop /Out/) = 0;
         virtual HRESULT put_Style(VARIANT *prop) = 0;
 
+        virtual HRESULT get_Tables(Tables **prop /Out/) = 0;
 /*
-        virtual HRESULT get_Tables(
-            Tables **prop /Out/) = 0;
-
         virtual HRESULT get_Words(
             Words **prop /Out/) = 0;
 
@@ -327,7 +325,7 @@ namespace wpsapi
 
         virtual HRESULT InsertParagraph() = 0;
         virtual HRESULT InsertParagraphAfter() = 0;
-/*
+
         virtual HRESULT ConvertToTableOld(
             VARIANT *Separator = argMissing(),
             VARIANT *NumRows = argMissing(),
@@ -343,8 +341,8 @@ namespace wpsapi
             VARIANT *ApplyFirstColumn = argMissing(),
             VARIANT *ApplyLastColumn = argMissing(),
             VARIANT *AutoFit = argMissing(),
-            Table **prop /Out/) = 0;
-*/
+            Table **prop /Out/ = 0) = 0;
+
         virtual HRESULT InsertDateTimeOld(
             VARIANT *DateTimeFormat = argMissing(),
             VARIANT *InsertAsField = argMissing(),
@@ -573,7 +571,7 @@ namespace wpsapi
             VARIANT *IgnoreDiacritics = argMissing(),
             VARIANT *IgnoreHe = argMissing(),
             VARIANT *LanguageID = argMissing()) = 0;
-/*
+
         virtual HRESULT ConvertToTable(
             VARIANT *Separator = argMissing(),
             VARIANT *NumRows = argMissing(),
@@ -592,14 +590,14 @@ namespace wpsapi
             VARIANT *AutoFitBehavior = argMissing(),
             VARIANT *DefaultTableBehavior = argMissing(),
             Table **prop /Out/ = 0) = 0;
-*/
+
         virtual HRESULT get_NoProofing(
             long *prop /Out/) = 0;
 
         virtual HRESULT put_NoProofing(
             long prop) = 0;
 
-        // virtual HRESULT get_TopLevelTables(Tables **prop /Out/) = 0;
+        virtual HRESULT get_TopLevelTables(Tables **prop /Out/) = 0;
 
         virtual HRESULT get_LanguageDetected(
             VARIANT_BOOL *prop /Out/) = 0;

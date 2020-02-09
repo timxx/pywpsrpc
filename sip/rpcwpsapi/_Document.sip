@@ -24,9 +24,10 @@ namespace wpsapi
         virtual HRESULT get_BuiltInDocumentProperties(IDispatch **prop /Out/) = 0;
         virtual HRESULT get_CustomDocumentProperties(IDispatch **prop /Out/) = 0;
         virtual HRESULT get_Path(BSTR *prop /Out/) = 0;
-/*
-        virtual HRESULT get_Bookmarks(Bookmarks **prop /Out/) = 0;
+
+        // virtual HRESULT get_Bookmarks(Bookmarks **prop /Out/) = 0;
         virtual HRESULT get_Tables(Tables **prop /Out/) = 0;
+/*
         virtual HRESULT get_Footnotes(Footnotes **prop /Out/) = 0;
         virtual HRESULT get_Endnotes(Endnotes **prop /Out/) = 0;
         virtual HRESULT get_Comments(Comments **prop /Out/) = 0;
