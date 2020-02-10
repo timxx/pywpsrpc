@@ -144,7 +144,7 @@ namespace wpsapi
         virtual HRESULT get_PreviousBookmarkID(
             long *prop /Out/) = 0;
 
-        // virtual HRESULT get_Find(Find **prop /Out/) = 0;
+        virtual HRESULT get_Find(Find **prop /Out/) = 0;
 
         virtual HRESULT get_Range(
             Range **prop /Out/) = 0;
@@ -503,14 +503,14 @@ namespace wpsapi
         virtual HRESULT InsertFormula(
             VARIANT *Formula = argMissing(),
             VARIANT *NumberFormat = argMissing()) = 0;
-/*
+
         virtual HRESULT NextRevision(
             VARIANT *Wrap = argMissing(),
-            Revision **prop /Out/) = 0;
+            Revision **prop /Out/ = 0) = 0;
 
         virtual HRESULT PreviousRevision(
             VARIANT *Wrap = argMissing(),
-            Revision **prop /Out/) = 0;
+            Revision **prop /Out/ = 0) = 0;
 
         virtual HRESULT PasteAsNestedTable() = 0;
 
@@ -518,7 +518,7 @@ namespace wpsapi
             BSTR Name,
             BSTR StyleName,
             AutoTextEntry **prop /Out/) = 0;
-*/
+
         virtual HRESULT DetectLanguage() = 0;
 
         virtual HRESULT SelectCell() = 0;
@@ -610,13 +610,13 @@ namespace wpsapi
         virtual HRESULT ClearFormatting() = 0;
 
         virtual HRESULT PasteAppendTable() = 0;
-/*
+
         virtual HRESULT get_HTMLDivisions(
             HTMLDivisions **prop /Out/) = 0;
 
         virtual HRESULT get_SmartTags(
             SmartTags **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_ChildShapeRange(
             ShapeRange **prop /Out/) = 0;
 
@@ -643,7 +643,6 @@ namespace wpsapi
 
         virtual HRESULT InsertStyleSeparator() = 0;
 
-/*
         virtual HRESULT Sort(
             VARIANT *ExcludeHeader = argMissing(),
             VARIANT *FieldNumber = argMissing(),
@@ -664,9 +663,17 @@ namespace wpsapi
             VARIANT *IgnoreDiacritics = argMissing(),
             VARIANT *IgnoreHe = argMissing(),
             VARIANT *LanguageID = argMissing(),
-            VARIANT *SubFieldNumber = argMissing(),
+            VARIANT *SubFieldNumber = argMissing()/*,
             VARIANT *SubFieldNumber2 = argMissing(),
-            VARIANT *SubFieldNumber3 = argMissing()) = 0;
+            VARIANT *SubFieldNumber3 = argMissing()*/) = 0;
+        %MethodCode
+            // FIXME: increase the value of MAX_NR_ARGS
+            sipRes = sipCpp->Sort(a0, a1, a2, a3, a4, a5,
+                a6, a7, a8, a9, a10,
+                a11, a12, a13, a14, a15,
+                a16, a17, a18, a19,
+                argMissing(), argMissing());
+        %End
 
         virtual HRESULT get_XMLNodes(
             XMLNodes **prop /Out/) = 0;
@@ -674,9 +681,8 @@ namespace wpsapi
         virtual HRESULT get_XMLParentNode(
             XMLNode **prop /Out/) = 0;
 
-        virtual HRESULT get_Editors(
-            Editors **prop /Out/) = 0;
-*/
+        virtual HRESULT get_Editors(Editors **prop /Out/) = 0;
+
         virtual HRESULT get_XML(
             VARIANT_BOOL DataOnly,
             BSTR *prop /Out/) = 0;
@@ -708,7 +714,7 @@ namespace wpsapi
             VARIANT *SeparateNumbers = argMissing(),
             VARIANT *SeparatorString = argMissing()) = 0;
 
-        // virtual HRESULT get_OMaths(OMaths **prop /Out/) = 0;
+        virtual HRESULT get_OMaths(OMaths **prop /Out/) = 0;
 
         virtual HRESULT get_WordOpenXML(
             BSTR *prop /Out/) = 0;
@@ -717,13 +723,13 @@ namespace wpsapi
         virtual HRESULT ClearCharacterAllFormatting() = 0;
         virtual HRESULT ClearCharacterStyle() = 0;
         virtual HRESULT ClearCharacterDirectFormatting() = 0;
-/*
+
         virtual HRESULT get_ContentControls(
             ContentControls **prop /Out/) = 0;
 
         virtual HRESULT get_ParentContentControl(
             ContentControl **prop /Out/) = 0;
-*/
+
         virtual HRESULT ExportAsFixedFormat(
             BSTR OutputFileName,
             WdExportFormat ExportFormat,
@@ -758,6 +764,6 @@ namespace wpsapi
             VARIANT *IgnoreHe = argMissing(),
             VARIANT *LanguageID = argMissing()) = 0;
 
-        // virtual HRESULT get_DocumentFields(DocumentFields **prop /Out/) = 0;
+        virtual HRESULT get_DocumentFields(DocumentFields **prop /Out/) = 0;
     };
 };

@@ -12,7 +12,7 @@ namespace wpsapi
 {
     // Oh no!!! The sdk has no Document but the argument is!!!
     // So we map to _Document by self
-    class Document;
+    // class Document;
 
     struct Documents : public IDispatch /Abstract/
     {

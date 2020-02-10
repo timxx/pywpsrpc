@@ -42,3 +42,4 @@ typedef long MsoRGBType;
 %Include ksoapi/TextFrame.sip
 %Include ksoapi/MsoChart.sip
 %Include ksoapi/SmartArt.sip
+%Include ksoapi/CustomXML.sip

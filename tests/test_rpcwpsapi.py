@@ -129,6 +129,15 @@ def test():
     # should be "Hello, world"
     check_call("get_Text", hr, text)
 
+    # reset the range to find
+    hr, docRange = doc.get_Content()
+
+    hr, find = docRange.get_Find()
+    check_call("docRange.get_Find", hr, find)
+
+    hr, found = find.Execute("Hello, world", MatchWholeWord=True)
+    check_call("find.Execute", hr, found)
+
     hr, font = docRange.get_Font()
     check_call("docRange.get_Font", hr, font)
 

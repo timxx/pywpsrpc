@@ -79,11 +79,11 @@ public:
     virtual HRESULT get_MacroContainer(IDispatch **prop /Out/) = 0;
     virtual HRESULT get_DisplayRecentFiles(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_DisplayRecentFiles(VARIANT_BOOL prop) = 0;
-/*
-    virtual HRESULT get_CommandBars(CommandBars **prop /Out/) = 0;
+
+    //virtual HRESULT get_CommandBars(CommandBars **prop /Out/) = 0;
     virtual HRESULT get_SynonymInfo(BSTR Word, VARIANT *LanguageID, SynonymInfo **prop /Out/) = 0;
-    virtual HRESULT get_VBE(VBE **prop) = 0;
-*/
+    //virtual HRESULT get_VBE(VBE **prop) = 0;
+
     virtual HRESULT get_DefaultSaveFormat(BSTR *prop /Out/) = 0;
     virtual HRESULT put_DefaultSaveFormat(BSTR prop) = 0;
     //virtual HRESULT get_ListGalleries(ListGalleries **prop /Out/) = 0;
@@ -205,23 +205,23 @@ public:
             VARIANT *CustomDictionary10 = argMissing(),
             VARIANT_BOOL *prop /Out/ = 0) = 0;
     virtual HRESULT ResetIgnoreAll() = 0;
-/*
+
     virtual HRESULT GetSpellingSuggestions(BSTR Word,
-            VARIANT *CustomDictionary,
-            VARIANT *IgnoreUppercase,
-            VARIANT *MainDictionary,
-            VARIANT *SuggestionMode,
-            VARIANT *CustomDictionary2,
-            VARIANT *CustomDictionary3,
-            VARIANT *CustomDictionary4,
-            VARIANT *CustomDictionary5,
-            VARIANT *CustomDictionary6,
-            VARIANT *CustomDictionary7,
-            VARIANT *CustomDictionary8,
-            VARIANT *CustomDictionary9,
-            VARIANT *CustomDictionary10,
-            SpellingSuggestions **prop) = 0;
-*/
+            VARIANT *CustomDictionary = argMissing(),
+            VARIANT *IgnoreUppercase = argMissing(),
+            VARIANT *MainDictionary = argMissing(),
+            VARIANT *SuggestionMode = argMissing(),
+            VARIANT *CustomDictionary2 = argMissing(),
+            VARIANT *CustomDictionary3 = argMissing(),
+            VARIANT *CustomDictionary4 = argMissing(),
+            VARIANT *CustomDictionary5 = argMissing(),
+            VARIANT *CustomDictionary6 = argMissing(),
+            VARIANT *CustomDictionary7 = argMissing(),
+            VARIANT *CustomDictionary8 = argMissing(),
+            VARIANT *CustomDictionary9 = argMissing(),
+            VARIANT *CustomDictionary10 = argMissing(),
+            SpellingSuggestions **prop /Out/ = 0) = 0;
+
     virtual HRESULT GoBack() = 0;
     virtual HRESULT Help(VARIANT *HelpType) = 0;
     virtual HRESULT AutomaticChange() = 0;
@@ -431,7 +431,7 @@ public:
     virtual HRESULT put_ShowStylePreviews(VARIANT_BOOL prop) = 0;
     virtual HRESULT get_RestrictLinkedStyles(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_RestrictLinkedStyles(VARIANT_BOOL prop) = 0;
-    //virtual HRESULT get_OMathAutoCorrect(OMathAutoCorrect **prop) = 0;
+    virtual HRESULT get_OMathAutoCorrect(OMathAutoCorrect **prop) = 0;
     virtual HRESULT get_DisplayDocumentInformationPanel(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_DisplayDocumentInformationPanel(VARIANT_BOOL prop) = 0;
     //virtual HRESULT get_Assistance(IAssistance **prop /Out/) = 0;

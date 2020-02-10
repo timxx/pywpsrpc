@@ -78,6 +78,25 @@ namespace wpsapi
 %Include TextRetrievalMode.sip
 %Include ListFormat.sip
 %Include Bookmarks.sip
+%Include Revisions.sip
+%Include SynonymInfo.sip
+%Include Subdocuments.sip
+%Include Find.sip
+%Include ReadabilityStatistics.sip
+%Include ProofreadingErrors.sip
+%Include HTMLDivisions.sip
+%Include SmartTags.sip
+%Include CustomProperties.sip
+%Include XMLNodes.sip
+%Include XMLSchemaReferences.sip
+%Include Editors.sip
+%Include OMaths.sip
+%Include Styles.sip
+%Include ContentControls.sip
+%Include BuildingBlocks.sip
+%Include DocumentFields.sip
+%Include SpellingSuggestions.sip
+%Include AutoTextEntries.sip
 
 HRESULT createWpsRpcInstance(IKRpcClient **client);
 

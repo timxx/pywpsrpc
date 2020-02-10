@@ -110,7 +110,7 @@ namespace wpsapi
         virtual HRESULT get_DisableCharacterSpaceGrid(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_DisableCharacterSpaceGrid(VARIANT_BOOL prop) = 0;
 
-        // virtual HRESULT get_Revisions(Revisions **prop /Out/) = 0;
+        virtual HRESULT get_Revisions(Revisions **prop /Out/) = 0;
 
         virtual HRESULT get_Style(VARIANT *prop /Out/) = 0;
         virtual HRESULT put_Style(VARIANT *prop) = 0;
@@ -120,13 +120,13 @@ namespace wpsapi
         virtual HRESULT get_LanguageID(WdLanguageID *prop /Out/) = 0;
         virtual HRESULT put_LanguageID(WdLanguageID prop) = 0;
 
-        // virtual HRESULT get_SynonymInfo(SynonymInfo **prop /Out/) = 0;
+        virtual HRESULT get_SynonymInfo(SynonymInfo **prop /Out/) = 0;
 
         virtual HRESULT get_Hyperlinks(Hyperlinks **prop /Out/) = 0;
 
         virtual HRESULT get_ListParagraphs(ListParagraphs **prop /Out/) = 0;
 
-        // virtual HRESULT get_Subdocuments(Subdocuments **prop /Out/) = 0;
+        virtual HRESULT get_Subdocuments(Subdocuments **prop /Out/) = 0;
 
         virtual HRESULT get_GrammarChecked(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_GrammarChecked(VARIANT_BOOL prop) = 0;
@@ -148,7 +148,7 @@ namespace wpsapi
         virtual HRESULT get_BookmarkID(long *prop /Out/) = 0;
         virtual HRESULT get_PreviousBookmarkID(long *prop /Out/) = 0;
 
-       // virtual HRESULT get_Find(Find **prop /Out/) = 0;
+       virtual HRESULT get_Find(Find **prop /Out/) = 0;
 
         virtual HRESULT get_PageSetup(PageSetup **prop /Out/) = 0;
         virtual HRESULT put_PageSetup(PageSetup *prop) = 0;
@@ -160,13 +160,11 @@ namespace wpsapi
 
         virtual HRESULT get_Information(WdInformation Type, VARIANT *prop /Out/) = 0;
 
-/*
         virtual HRESULT get_ReadabilityStatistics(ReadabilityStatistics **prop /Out/) = 0;
 
         virtual HRESULT get_GrammaticalErrors(ProofreadingErrors **prop /Out/) = 0;
 
         virtual HRESULT get_SpellingErrors(ProofreadingErrors **prop /Out/) = 0;
-*/
 
         virtual HRESULT get_Orientation(WdTextOrientation *prop /Out/) = 0;
         virtual HRESULT put_Orientation(WdTextOrientation prop) = 0;
@@ -401,7 +399,6 @@ namespace wpsapi
             VARIANT *CustomDictionary9 = argMissing(),
             VARIANT *CustomDictionary10 = argMissing()) = 0;
 
-/*
         virtual HRESULT GetSpellingSuggestions(VARIANT *CustomDictionary = argMissing(),
             VARIANT *IgnoreUppercase = argMissing(),
             VARIANT *MainDictionary = argMissing(),
@@ -416,7 +413,7 @@ namespace wpsapi
             VARIANT *CustomDictionary9 = argMissing(),
             VARIANT *CustomDictionary10 = argMissing(),
             SpellingSuggestions **prop /Out/ = 0) = 0;
-*/
+
         virtual HRESULT InsertParagraphBefore() = 0;
         virtual HRESULT NextSubdocument() = 0;
         virtual HRESULT PreviousSubdocument() = 0;
@@ -526,9 +523,9 @@ namespace wpsapi
         virtual HRESULT get_ID(BSTR *prop /Out/) = 0;
         virtual HRESULT put_ID(BSTR prop) = 0;
 
-        // virtual HRESULT get_HTMLDivisions(HTMLDivisions **prop /Out/) = 0;
+        virtual HRESULT get_HTMLDivisions(HTMLDivisions **prop /Out/) = 0;
 
-        // virtual HRESULT get_SmartTags(SmartTags **prop /Out/) = 0;
+        virtual HRESULT get_SmartTags(SmartTags **prop /Out/) = 0;
 
         virtual HRESULT get_ShowAll(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_ShowAll(VARIANT_BOOL prop) = 0;
@@ -549,12 +546,11 @@ namespace wpsapi
 
         virtual HRESULT PasteAppendTable() = 0;
 
-/*
         virtual HRESULT get_XMLNodes(XMLNodes **prop /Out/) = 0;
         virtual HRESULT get_XMLParentNode(XMLNode **prop /Out/) = 0;
 
         virtual HRESULT get_Editors(Editors **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_XML(VARIANT_BOOL DataOnly,
             BSTR *prop /Out/) = 0;
 
@@ -580,14 +576,14 @@ namespace wpsapi
             VARIANT *SeparateNumbers = argMissing(),
             VARIANT *SeparatorString = argMissing()) = 0;
 
-        // virtual HRESULT get_OMaths(OMaths **prop /Out/) = 0;
+        virtual HRESULT get_OMaths(OMaths **prop /Out/) = 0;
 
         virtual HRESULT get_CharacterStyle(VARIANT *prop /Out/) = 0;
         virtual HRESULT get_ParagraphStyle(VARIANT *prop /Out/) = 0;
         virtual HRESULT get_ListStyle(VARIANT *prop /Out/) = 0;
         virtual HRESULT get_TableStyle(VARIANT *prop /Out/) = 0;
 
-        // virtual HRESULT get_ContentControls(ContentControls **prop /Out/) = 0;
+        virtual HRESULT get_ContentControls(ContentControls **prop /Out/) = 0;
 
         virtual HRESULT ExportFragment(BSTR FileName,
             WdSaveFormat Format) = 0;
@@ -599,7 +595,7 @@ namespace wpsapi
         virtual HRESULT InsertAlignmentTab(long Alignment,
             long RelativeTo = 0) = 0;
 
-        // virtual HRESULT get_ParentContentControl(ContentControl **prop /Out/) = 0;
+        virtual HRESULT get_ParentContentControl(ContentControl **prop /Out/) = 0;
 
         virtual HRESULT ImportFragment(BSTR FileName,
             VARIANT_BOOL MatchDestination = 0) = 0;
@@ -634,6 +630,6 @@ namespace wpsapi
             VARIANT *IgnoreHe = argMissing(),
             VARIANT *LanguageID = argMissing()) = 0;
 
-        // virtual HRESULT get_DocumentFields(DocumentFields **prop /Out/) = 0;
+        virtual HRESULT get_DocumentFields(DocumentFields **prop /Out/) = 0;
     };
 };

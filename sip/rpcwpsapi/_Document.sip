@@ -55,7 +55,7 @@ namespace wpsapi
 
         virtual HRESULT get_Fields(Fields **prop /Out/) = 0;
         virtual HRESULT get_FormFields(FormFields **prop /Out/) = 0;
-        // virtual HRESULT get_Styles(Styles **prop /Out/) = 0;
+        virtual HRESULT get_Styles(Styles **prop /Out/) = 0;
         virtual HRESULT get_Frames(Frames **prop /Out/) = 0;
 /*
         virtual HRESULT get_TablesOfFigures(TablesOfFigures **prop /Out/) = 0;
@@ -65,8 +65,8 @@ namespace wpsapi
 */
         virtual HRESULT get_FullName(BSTR *prop /Out/) = 0;
 
-/*
         virtual HRESULT get_Revisions(Revisions **prop /Out/) = 0;
+/*
         virtual HRESULT get_TablesOfContents(TablesOfContents **prop /Out/) = 0;
         virtual HRESULT get_TablesOfAuthorities(TablesOfAuthorities **prop /Out/) = 0;
 */
@@ -96,7 +96,7 @@ namespace wpsapi
 
         virtual HRESULT get_ReadOnly(VARIANT_BOOL *prop /Out/) = 0;
 
-        // virtual HRESULT get_Subdocuments(Subdocuments **prop /Out/) = 0;
+        virtual HRESULT get_Subdocuments(Subdocuments **prop /Out/) = 0;
 
         virtual HRESULT get_IsMasterDocument(VARIANT_BOOL *prop /Out/) = 0;
 
@@ -191,13 +191,13 @@ namespace wpsapi
         virtual HRESULT get_HasMailer(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_HasMailer(VARIANT_BOOL prop) = 0;
 
-/*
-        virtual HRESULT get_Mailer(Mailer **prop /Out/) = 0;
+        // virtual HRESULT get_Mailer(Mailer **prop /Out/) = 0;
         virtual HRESULT get_ReadabilityStatistics(ReadabilityStatistics **prop) = 0;
+
         virtual HRESULT get_GrammaticalErrors(ProofreadingErrors **prop) = 0;
         virtual HRESULT get_SpellingErrors(ProofreadingErrors **prop) = 0;
-        virtual HRESULT get_VBProject(VBProject **prop) = 0;
-*/
+
+        // virtual HRESULT get_VBProject(VBProject **prop) = 0;
 
         virtual HRESULT get_FormsDesign(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT get__CodeName(BSTR *prop /Out/) = 0;
@@ -542,7 +542,7 @@ namespace wpsapi
         virtual HRESULT get_DefaultTargetFrame(BSTR *prop /Out/) = 0;
         virtual HRESULT put_DefaultTargetFrame(BSTR prop) = 0;
 
-        // virtual HRESULT get_HTMLDivisions(HTMLDivisions **prop /Out/) = 0;
+        virtual HRESULT get_HTMLDivisions(HTMLDivisions **prop /Out/) = 0;
 
         virtual HRESULT get_DisableFeaturesIntroducedAfter(WdDisableFeaturesIntroducedAfter *prop /Out/) = 0;
         virtual HRESULT put_DisableFeaturesIntroducedAfter(WdDisableFeaturesIntroducedAfter prop) = 0;
@@ -550,7 +550,7 @@ namespace wpsapi
         virtual HRESULT get_RemovePersonalInformation(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_RemovePersonalInformation(VARIANT_BOOL prop) = 0;
 
-        // virtual HRESULT get_SmartTags(SmartTags **prop /Out/) = 0;
+        virtual HRESULT get_SmartTags(SmartTags **prop /Out/) = 0;
 
         virtual HRESULT Compare2002(BSTR Name,
             VARIANT *AuthorName = argMissing(),
@@ -655,13 +655,13 @@ namespace wpsapi
 
         virtual HRESULT CheckNewSmartTags() = 0;
 
-/*
-        virtual HRESULT get_Permission(Permission **prop) = 0;
+
+        // virtual HRESULT get_Permission(Permission **prop) = 0;
 
         virtual HRESULT get_XMLNodes(XMLNodes **prop) = 0;
 
         virtual HRESULT get_XMLSchemaReferences(XMLSchemaReferences **prop) = 0;
-
+/*
         virtual HRESULT get_SmartDocument(SmartDocument **prop) = 0;
 
         virtual HRESULT get_SharedWorkspace(SharedWorkspace **prop) = 0;
@@ -732,7 +732,6 @@ namespace wpsapi
 
         virtual HRESULT RemoveLockedStyles() = 0;
 
-/*
         virtual HRESULT get_ChildNodeSuggestions(XMLChildNodeSuggestions **prop /Out/) = 0;
 
         virtual HRESULT SelectSingleNode(BSTR XPath,
@@ -746,7 +745,6 @@ namespace wpsapi
             XMLNodes **prop /Out/) = 0;
 
         virtual HRESULT get_XMLSchemaViolations(XMLNodes **prop /Out/) = 0;
-*/
 
         virtual HRESULT get_ReadingLayoutSizeX(long *prop /Out/) = 0;
         virtual HRESULT put_ReadingLayoutSizeX(long prop) = 0;
@@ -769,7 +767,7 @@ namespace wpsapi
 
         virtual HRESULT get_Dummy1() = 0;
 
-        // virtual HRESULT get_OMaths(OMaths **prop /Out/) = 0;
+        virtual HRESULT get_OMaths(OMaths **prop /Out/) = 0;
 
         virtual HRESULT RemoveDocumentInformation(WdRemoveDocInfoType RemoveDocInfoType) = 0;
 
@@ -782,7 +780,7 @@ namespace wpsapi
         virtual HRESULT get_Dummy3() = 0;
 
         // virtual HRESULT get_ServerPolicy(ServerPolicy **prop /Out/) = 0;
-        // virtual HRESULT get_ContentControls(ContentControls **prop /Out/) = 0;
+        virtual HRESULT get_ContentControls(ContentControls **prop /Out/) = 0;
         // virtual HRESULT get_DocumentInspectors(DocumentInspectors **prop /Out/) = 0;
 
         virtual HRESULT LockServerFile() = 0;
@@ -809,7 +807,10 @@ namespace wpsapi
         virtual HRESULT get_OriginalDocumentTitle(BSTR *prop /Out/) = 0;
         virtual HRESULT get_RevisedDocumentTitle(BSTR *prop /Out/) = 0;
 
-        // virtual HRESULT get_CustomXMLParts(CustomXMLParts **prop /Out/) = 0;
+        virtual HRESULT get_CustomXMLParts(ksoapi::_CustomXMLParts **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_CustomXMLParts((ksoapi::CustomXMLParts**)&a0);
+        %End
 
         virtual HRESULT get_FormattingShowNextLevel(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_FormattingShowNextLevel(VARIANT_BOOL prop) = 0;
@@ -861,9 +862,14 @@ namespace wpsapi
 
         virtual HRESULT get_HasVBProject(VARIANT_BOOL *prop /Out/) = 0;
 
-        // virtual HRESULT SelectLinkedControls(CustomXMLNode *Node, ContentControls **prop) = 0;
-        // virtual HRESULT SelectUnlinkedControls(CustomXMLPart *Stream, ContentControls **prop) = 0;
-        // virtual HRESULT SelectContentControlsByTitle(BSTR Title, ContentControls **prop /Out/) = 0;
+        virtual HRESULT SelectLinkedControls(ksoapi::CustomXMLNode *Node, ContentControls **prop) = 0;
+
+        virtual HRESULT SelectUnlinkedControls(ksoapi::_CustomXMLPart *Stream, ContentControls **prop) = 0;
+        %MethodCode
+            sipRes = sipCpp->SelectUnlinkedControls((ksoapi::CustomXMLPart*)a0, &a1);
+        %End
+
+        virtual HRESULT SelectContentControlsByTitle(BSTR Title, ContentControls **prop /Out/) = 0;
 
         virtual HRESULT ExportAsFixedFormat(BSTR OutputFileName,
             WdExportFormat ExportFormat,
@@ -899,7 +905,7 @@ namespace wpsapi
 
         virtual HRESULT Convert() = 0;
 
-        // virtual HRESULT SelectContentControlsByTag(BSTR Tag, ContentControls **prop /Out/) = 0;
+        virtual HRESULT SelectContentControlsByTag(BSTR Tag, ContentControls **prop /Out/) = 0;
 
         virtual HRESULT ConvertAutoHyphens() = 0;
         virtual HRESULT get_DocID(long *prop /Out/) = 0;
@@ -957,6 +963,6 @@ namespace wpsapi
             VARIANT *AddBiDiMarks = argMissing(),
             VARIANT *CompatibilityMode = argMissing()) = 0;
 
-        // virtual HRESULT get_DocumentFields(DocumentFields **prop /Out/) = 0;
+        virtual HRESULT get_DocumentFields(DocumentFields **prop /Out/) = 0;
     };
 };
