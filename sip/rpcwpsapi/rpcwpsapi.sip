@@ -75,6 +75,9 @@ namespace wpsapi
 %Include Chart.sip
 %Include Fields.sip
 %Include ListEntries.sip
+%Include TextRetrievalMode.sip
+%Include ListFormat.sip
+%Include Bookmarks.sip
 
 HRESULT createWpsRpcInstance(IKRpcClient **client);
 

@@ -63,10 +63,10 @@ namespace wpsapi
         virtual HRESULT put_Borders(Borders *prop) = 0;
 
         virtual HRESULT get_Shading(Shading **prop /Out/) = 0;
-/*
+
         virtual HRESULT get_TextRetrievalMode(TextRetrievalMode **prop /Out/) = 0;
         virtual HRESULT put_TextRetrievalMode(TextRetrievalMode *prop) = 0;
-*/
+
         virtual HRESULT get_Fields(Fields **prop /Out/) = 0;
         virtual HRESULT get_FormFields(FormFields **prop /Out/) = 0;
 
@@ -81,11 +81,11 @@ namespace wpsapi
         %MethodCode
             sipRes = sipCpp->put_ParagraphFormat((wpsapi::ParagraphFormat*)a0);
         %End
-/*
+
         virtual HRESULT get_ListFormat(ListFormat **prop /Out/) = 0;
 
         virtual HRESULT get_Bookmarks(Bookmarks **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_Application(_Application **prop /Out/) = 0;
         %MethodCode
             sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
@@ -123,11 +123,11 @@ namespace wpsapi
         // virtual HRESULT get_SynonymInfo(SynonymInfo **prop /Out/) = 0;
 
         virtual HRESULT get_Hyperlinks(Hyperlinks **prop /Out/) = 0;
-/*
+
         virtual HRESULT get_ListParagraphs(ListParagraphs **prop /Out/) = 0;
 
-        virtual HRESULT get_Subdocuments(Subdocuments **prop /Out/) = 0;
-*/
+        // virtual HRESULT get_Subdocuments(Subdocuments **prop /Out/) = 0;
+
         virtual HRESULT get_GrammarChecked(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_GrammarChecked(VARIANT_BOOL prop) = 0;
 

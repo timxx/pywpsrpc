@@ -192,6 +192,21 @@ def test():
     hr, field = fields.Add(selRange, Type=wpsapi.wdFieldDate)
     check_call("fields.Add", hr, field)
 
+    hr, bookmarks = doc.get_Bookmarks()
+    check_call("doc.get_Bookmarks", hr, bookmarks)
+
+    hr, bkmRange = doc.Range(0, 10)
+    check_call("doc.Range", hr, bkmRange)
+
+    hr, bookmark = bookmarks.Add("BookmarkName", bkmRange)
+    check_call("bookmarks.Add", hr, bookmark)
+
+    hr, count = bookmarks.get_Count()
+    check_call("bookmarks.get_Count", hr, count)
+
+    hr, name = bookmark.get_Name()
+    check_call("bookmark.get_Name", hr, name)
+
     hr = doc.SaveAs("test.docx", wpsapi.wdFormatDocument)
     check_call("SaveAs", hr)
 

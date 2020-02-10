@@ -101,7 +101,7 @@ namespace wpsapi
         virtual HRESULT put_PageSetup(
             PageSetup *prop) = 0;
 
-        // virtual HRESULT get_Bookmarks(Bookmarks **prop /Out/) = 0;
+        virtual HRESULT get_Bookmarks(Bookmarks **prop /Out/) = 0;
 
         virtual HRESULT get_StoryLength(
             long *prop /Out/) = 0;

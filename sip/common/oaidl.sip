@@ -35,6 +35,11 @@
     VariantInit(pVar);
     *sipCppPtr = nullptr;
 
+    auto toSipType = [&]() -> const sipTypeDef*
+    {
+        return sipTypeFromPyTypeObject(Py_TYPE(sipPy));
+    };
+
     // TODO: fix the ugly code
     if (sipPy == Py_None)
     {
@@ -75,15 +80,7 @@
         }
         V_ARRAY(pVar) = arr;
     }
-    else if (Py_TYPE(sipPy) == sipTypeAsPyTypeObject(sipType_IUnknown))
-    {
-        V_VT(pVar) = VT_UNKNOWN;
-        IUnknown *pUnk = reinterpret_cast<IUnknown*>(sipConvertToType(sipPy,
-            sipType_IUnknown, sipTransferObj, SIP_NO_CONVERTORS, 0, sipIsErr));
-        V_UNKNOWN(pVar) = pUnk;
-        sipReleaseType(pUnk, sipType_IUnknown, 0);
-    }
-    else if (Py_TYPE(sipPy) == sipTypeAsPyTypeObject(sipType_IDispatch))
+    else if (sipCanConvertToType(sipPy, sipType_IDispatch, SIP_NOT_NONE | SIP_NO_CONVERTORS))
     {
         V_VT(pVar) = VT_DISPATCH;
         IDispatch *pDisp = reinterpret_cast<IDispatch*>(sipConvertToType(sipPy,
@@ -91,7 +88,15 @@
         V_DISPATCH(pVar) = pDisp;
         sipReleaseType(pDisp, sipType_IDispatch, 0);
     }
-    else if (PyLong_Check(sipPy)) // maybe enums
+    else if (sipCanConvertToType(sipPy, sipType_IUnknown, SIP_NOT_NONE | SIP_NO_CONVERTORS))
+    {
+        V_VT(pVar) = VT_UNKNOWN;
+        IUnknown *pUnk = reinterpret_cast<IUnknown*>(sipConvertToType(sipPy,
+            sipType_IUnknown, sipTransferObj, SIP_NO_CONVERTORS, 0, sipIsErr));
+        V_UNKNOWN(pVar) = pUnk;
+        sipReleaseType(pUnk, sipType_IUnknown, 0);
+    }
+    else if (sipTypeIsEnum(toSipType()) || PyLong_Check(sipPy))
     {
         V_VT(pVar) = VT_I4;
         V_I4(pVar) = PyLong_AsLong(sipPy);
@@ -159,6 +164,7 @@
                     PyList_SetItem(pyList, i, pyObj);
                 }
             }
+            return pyList;
         }
         break;
     }
