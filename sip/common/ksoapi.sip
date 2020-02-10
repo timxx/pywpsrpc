@@ -31,3 +31,14 @@ typedef long MsoRGBType;
 %Include ksoapi/GradientStops.sip
 %Include ksoapi/ColorFormat.sip
 %Include ksoapi/PictureEffects.sip
+%Include ksoapi/Crop.sip
+%Include ksoapi/TextColumn2.sip
+%Include ksoapi/Scripts.sip
+%Include ksoapi/DiagramNodes.sip
+%Include ksoapi/Shapes.sip
+%Include ksoapi/ShapeRange.sip
+%Include ksoapi/ShapeNodes.sip
+%Include ksoapi/ShapeFormat.sip
+%Include ksoapi/TextFrame.sip
+%Include ksoapi/MsoChart.sip
+%Include ksoapi/SmartArt.sip

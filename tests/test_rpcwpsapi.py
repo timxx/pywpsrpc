@@ -177,6 +177,21 @@ def test():
     hr = cellRange.put_Text("cell")
     check_call("cellRange.put_Text", hr)
 
+    hr, shapes = doc.get_Shapes()
+    check_call("doc.get_Shapes", hr, shapes)
+
+    hr, shape = shapes.AddShape(wpsapi.msoShapeMoon, 0, 0, 100, 100)
+    check_call("shapes.AddShape", hr, shape)
+
+    hr = shape.put_AlternativeText("this is a moon shape")
+    check_call("shape.put_AlternativeText", hr)
+
+    hr, fields = doc.get_Fields()
+    check_call("doc.get_Fields",hr, fields)
+
+    hr, field = fields.Add(selRange, Type=wpsapi.wdFieldDate)
+    check_call("fields.Add", hr, field)
+
     hr = doc.SaveAs("test.docx", wpsapi.wdFormatDocument)
     check_call("SaveAs", hr)
 

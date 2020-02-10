@@ -27,11 +27,11 @@ namespace wpsapi
 
         // virtual HRESULT get_Bookmarks(Bookmarks **prop /Out/) = 0;
         virtual HRESULT get_Tables(Tables **prop /Out/) = 0;
-/*
+
         virtual HRESULT get_Footnotes(Footnotes **prop /Out/) = 0;
         virtual HRESULT get_Endnotes(Endnotes **prop /Out/) = 0;
         virtual HRESULT get_Comments(Comments **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_Type(WdDocumentType *prop /Out/) = 0;
 
         virtual HRESULT get_AutoHyphenation(VARIANT_BOOL *prop /Out/) = 0;
@@ -46,16 +46,18 @@ namespace wpsapi
         virtual HRESULT get_ConsecutiveHyphensLimit(long *prop /Out/) = 0;
         virtual HRESULT put_ConsecutiveHyphensLimit(long prop) = 0;
 
-        // virtual HRESULT get_Sections(Sections **prop /Out/) = 0;
+        virtual HRESULT get_Sections(Sections **prop /Out/) = 0;
         virtual HRESULT get_Paragraphs(Paragraphs **prop /Out/) = 0;
-/*
+
         virtual HRESULT get_Words(Words **prop /Out/) = 0;
-        virtual HRESULT get_Sentences(Sentences **prop) /Out/ = 0;
+        virtual HRESULT get_Sentences(Sentences **prop /Out/) = 0;
         virtual HRESULT get_Characters(Characters **prop /Out/) = 0;
+
         virtual HRESULT get_Fields(Fields **prop /Out/) = 0;
         virtual HRESULT get_FormFields(FormFields **prop /Out/) = 0;
-        virtual HRESULT get_Styles(Styles **prop /Out/) = 0;
+        // virtual HRESULT get_Styles(Styles **prop /Out/) = 0;
         virtual HRESULT get_Frames(Frames **prop /Out/) = 0;
+/*
         virtual HRESULT get_TablesOfFigures(TablesOfFigures **prop /Out/) = 0;
         virtual HRESULT get_Variables(Variables **prop /Out/) = 0;
         virtual HRESULT get_MailMerge(MailMerge **prop /Out/) = 0;
@@ -67,10 +69,12 @@ namespace wpsapi
         virtual HRESULT get_Revisions(Revisions **prop /Out/) = 0;
         virtual HRESULT get_TablesOfContents(TablesOfContents **prop /Out/) = 0;
         virtual HRESULT get_TablesOfAuthorities(TablesOfAuthorities **prop /Out/) = 0;
+*/
         virtual HRESULT get_PageSetup(PageSetup **prop /Out/) = 0;
         virtual HRESULT put_PageSetup(PageSetup *prop) = 0;
-        virtual HRESULT get_Windows(Windows **prop /Out/) = 0;
-*/
+
+        // virtual HRESULT get_Windows(Windows **prop /Out/) = 0;
+
         virtual HRESULT get_HasRoutingSlip(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_HasRoutingSlip(VARIANT_BOOL prop) = 0;
 
@@ -121,23 +125,20 @@ namespace wpsapi
         virtual HRESULT get_SaveFormat(long *prop /Out/) = 0;
         virtual HRESULT get_ProtectionType(WdProtectionType *prop /Out/) = 0;
 
-/*
         virtual HRESULT get_Hyperlinks(Hyperlinks **prop) = 0;
         virtual HRESULT get_Shapes(Shapes **prop) = 0;
-        virtual HRESULT get_ListTemplates(ListTemplates **prop) = 0;
-        virtual HRESULT get_Lists(Lists **prop) = 0;
-*/
+        // virtual HRESULT get_ListTemplates(ListTemplates **prop) = 0;
+        // virtual HRESULT get_Lists(Lists **prop) = 0;
+
         virtual HRESULT get_UpdateStylesOnOpen(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_UpdateStylesOnOpen(VARIANT_BOOL prop) = 0;
 
         virtual HRESULT get_AttachedTemplate(VARIANT *prop /Out/) = 0;
         virtual HRESULT put_AttachedTemplate(VARIANT *prop) = 0;
 
-/*
         virtual HRESULT get_InlineShapes(InlineShapes **prop /Out/) = 0;
         virtual HRESULT get_Background(Shape **prop) = 0;
         virtual HRESULT put_Background(Shape *prop) = 0;
-*/
 
         virtual HRESULT get_GrammarChecked(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_GrammarChecked(VARIANT_BOOL prop) = 0;
@@ -295,23 +296,20 @@ namespace wpsapi
 
         virtual HRESULT SendMail() = 0;
 
-/*
-        virtual HRESULT Range(VARIANT *Start,
-            VARIANT *End,
-            _Range **prop) = 0;
-*/
+        virtual HRESULT Range(VARIANT *Start = argMissing(),
+            VARIANT *End = argMissing(),
+            Range **prop /Out/ = 0) = 0;
 
         virtual HRESULT RunAutoMacro(WdAutoMacros Which) = 0;
         virtual HRESULT Activate() = 0;
         virtual HRESULT PrintPreview() = 0;
 
-/*
-        virtual HRESULT GoTo(VARIANT *What,
-            VARIANT *Which,
-            VARIANT *Count,
-            VARIANT *Name,
-            _Range **prop) = 0;
-*/
+        virtual HRESULT GoTo(VARIANT *What = argMissing(),
+            VARIANT *Which = argMissing(),
+            VARIANT *Count = argMissing(),
+            VARIANT *Name = argMissing(),
+            Range **prop /Out/ = 0) = 0;
+
         virtual HRESULT Undo(VARIANT *Times,
             VARIANT_BOOL *prop) = 0;
 
@@ -373,12 +371,11 @@ namespace wpsapi
 
         virtual HRESULT Reload() = 0;
 
-/*
-        virtual HRESULT AutoSummarize(VARIANT *Length,
-            VARIANT *Mode,
-            VARIANT *UpdateProperties,
-            _Range **prop) = 0;
-*/
+        virtual HRESULT AutoSummarize(VARIANT *Length = argMissing(),
+            VARIANT *Mode = argMissing(),
+            VARIANT *UpdateProperties = argMissing(),
+            Range **prop /Out/ = 0) = 0;
+
         virtual HRESULT RemoveNumbers(VARIANT *NumberType) = 0;
 
         virtual HRESULT ConvertNumbersToText(VARIANT *NumberType) = 0;
@@ -393,7 +390,7 @@ namespace wpsapi
         virtual HRESULT UpdateSummaryProperties() = 0;
 
         virtual HRESULT GetCrossReferenceItems(VARIANT *ReferenceType,
-            VARIANT *prop) = 0;
+            VARIANT *prop /Out/) = 0;
 
         virtual HRESULT AutoFormat() = 0;
         virtual HRESULT ViewCode() = 0;
@@ -464,7 +461,7 @@ namespace wpsapi
         virtual HRESULT get_ActiveThemeDisplayName(BSTR *prop /Out/) = 0;
 
         //virtual HRESULT get_Email(Email **prop) = 0;
-        //virtual HRESULT get_Scripts(Scripts **prop) = 0;
+        virtual HRESULT get_Scripts(ksoapi::Scripts **prop) = 0;
 
         virtual HRESULT get_LanguageDetected(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_LanguageDetected(VARIANT_BOOL prop) = 0;
@@ -556,11 +553,11 @@ namespace wpsapi
         // virtual HRESULT get_SmartTags(SmartTags **prop /Out/) = 0;
 
         virtual HRESULT Compare2002(BSTR Name,
-            VARIANT *AuthorName,
-            VARIANT *CompareTarget,
-            VARIANT *DetectFormatChanges,
-            VARIANT *IgnoreAllComparisonWarnings,
-            VARIANT *AddToRecentFiles) = 0;
+            VARIANT *AuthorName = argMissing(),
+            VARIANT *CompareTarget = argMissing(),
+            VARIANT *DetectFormatChanges = argMissing(),
+            VARIANT *IgnoreAllComparisonWarnings = argMissing(),
+            VARIANT *AddToRecentFiles = argMissing()) = 0;
 
         virtual HRESULT CheckIn(VARIANT_BOOL SaveChanges,
             VARIANT *Comments,
@@ -569,10 +566,10 @@ namespace wpsapi
         virtual HRESULT CanCheckin(VARIANT_BOOL *prop /Out/) = 0;
 
         virtual HRESULT Merge(BSTR FileName,
-            VARIANT *MergeTarget,
-            VARIANT *DetectFormatChanges,
-            VARIANT *UseFormattingFrom,
-            VARIANT *AddToRecentFiles) = 0;
+            VARIANT *MergeTarget = argMissing(),
+            VARIANT *DetectFormatChanges = argMissing(),
+            VARIANT *UseFormattingFrom = argMissing(),
+            VARIANT *AddToRecentFiles = argMissing()) = 0;
 
         virtual HRESULT get_EmbedSmartTags(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_EmbedSmartTags(VARIANT_BOOL prop) = 0;
@@ -929,7 +926,7 @@ namespace wpsapi
             VARIANT *AddBiDiMarks = argMissing(),
             VARIANT *CompatibilityMode = argMissing()) = 0;
 
-        // virtual HRESULT get_CoAuthoring(CoAuthoring **prop /Out/) = 0;
+        virtual HRESULT get_CoAuthoring(CoAuthoring **prop /Out/) = 0;
 
         virtual HRESULT SetCompatibilityMode(long Mode) = 0;
 

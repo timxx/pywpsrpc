@@ -3104,4 +3104,512 @@ namespace ksoapi
         msoPictureCompressFalse	= 0,
         msoPictureCompressTrue	= 1
     };
+
+    enum XlChartType
+    {
+        xlColumnClustered	= 51,
+        xlColumnStacked	= 52,
+        xlColumnStacked100	= 53,
+        xl3DColumnClustered	= 54,
+        xl3DColumnStacked	= 55,
+        xl3DColumnStacked100	= 56,
+        xlBarClustered	= 57,
+        xlBarStacked	= 58,
+        xlBarStacked100	= 59,
+        xl3DBarClustered	= 60,
+        xl3DBarStacked	= 61,
+        xl3DBarStacked100	= 62,
+        xlLineStacked	= 63,
+        xlLineStacked100	= 64,
+        xlLineMarkers	= 65,
+        xlLineMarkersStacked	= 66,
+        xlLineMarkersStacked100	= 67,
+        xlPieOfPie	= 68,
+        xlPieExploded	= 69,
+        xl3DPieExploded	= 70,
+        xlBarOfPie	= 71,
+        xlXYScatterSmooth	= 72,
+        xlXYScatterSmoothNoMarkers	= 73,
+        xlXYScatterLines	= 74,
+        xlXYScatterLinesNoMarkers	= 75,
+        xlAreaStacked	= 76,
+        xlAreaStacked100	= 77,
+        xl3DAreaStacked	= 78,
+        xl3DAreaStacked100	= 79,
+        xlDoughnutExploded	= 80,
+        xlRadarMarkers	= 81,
+        xlRadarFilled	= 82,
+        xlSurface	= 83,
+        xlSurfaceWireframe	= 84,
+        xlSurfaceTopView	= 85,
+        xlSurfaceTopViewWireframe	= 86,
+        xlBubble	= 15,
+        xlBubble3DEffect	= 87,
+        xlStockHLC	= 88,
+        xlStockOHLC	= 89,
+        xlStockVHLC	= 90,
+        xlStockVOHLC	= 91,
+        xlCylinderColClustered	= 92,
+        xlCylinderColStacked	= 93,
+        xlCylinderColStacked100	= 94,
+        xlCylinderBarClustered	= 95,
+        xlCylinderBarStacked	= 96,
+        xlCylinderBarStacked100	= 97,
+        xlCylinderCol	= 98,
+        xlConeColClustered	= 99,
+        xlConeColStacked	= 100,
+        xlConeColStacked100	= 101,
+        xlConeBarClustered	= 102,
+        xlConeBarStacked	= 103,
+        xlConeBarStacked100	= 104,
+        xlConeCol	= 105,
+        xlPyramidColClustered	= 106,
+        xlPyramidColStacked	= 107,
+        xlPyramidColStacked100	= 108,
+        xlPyramidBarClustered	= 109,
+        xlPyramidBarStacked	= 110,
+        xlPyramidBarStacked100	= 111,
+        xlPyramidCol	= 112,
+        xl3DColumn	= -4100,
+        xlLine	= 4,
+        xl3DLine	= -4101,
+        xl3DPie	= -4102,
+        xlPie	= 5,
+        xlXYScatter	= -4169,
+        xl3DArea	= -4098,
+        xlArea	= 1,
+        xlDoughnut	= -4120,
+        xlRadar	= -4151,
+        xlCombo	= -4152,
+        xlComboColumnClusteredLine	= 113,
+        xlComboColumnClusteredLineSecondaryAxis	= 114,
+        xlComboAreaStackedColumnClustered	= 115,
+        xlOtherCombinations	= 116,
+        xlSuggestedChart	= -2
+    };
+
+    enum XlChartSplitType
+    {
+        xlSplitByPosition	= 1,
+        xlSplitByPercentValue	= 3,
+        xlSplitByCustomSplit	= 4,
+        xlSplitByValue	= 2
+    };
+
+    enum XlSizeRepresents
+    {
+        xlSizeIsWidth	= 2,
+        xlSizeIsArea	= 1
+    };
+
+    enum XlAxisGroup
+    {
+        xlPrimary	= 1,
+        xlSecondary	= 2
+    };
+
+    enum XlConstants
+    {
+        xlAutomatic	= -4105,
+        xlCombination	= -4111,
+        xlCustom	= -4114,
+        xlBar	= 2,
+        xlColumn	= 3,
+        xl3DBar	= -4099,
+        xl3DSurface	= -4103,
+        xlDefaultAutoFormat	= -1,
+        xlNone	= -4142,
+        xlAbove	= 0,
+        xlBelow	= 1,
+        xlBoth	= 1,
+        xlBottom	= -4107,
+        xlCenter	= -4108,
+        xlChecker	= 9,
+        xlCircle	= 8,
+        xlCorner	= 2,
+        xlCrissCross	= 16,
+        xlCross	= 4,
+        xlDiamond	= 2,
+        xlDistributed	= -4117,
+        xlFill	= 5,
+        xlFixedValue	= 1,
+        xlGeneral	= 1,
+        xlGray16	= 17,
+        xlGray25	= -4124,
+        xlGray50	= -4125,
+        xlGray75	= -4126,
+        xlGray8	= 18,
+        xlGrid	= 15,
+        xlHigh	= -4127,
+        xlInside	= 2,
+        xlJustify	= -4130,
+        xlLeft	= -4131,
+        xlLightDown	= 13,
+        xlLightHorizontal	= 11,
+        xlLightUp	= 14,
+        xlLightVertical	= 12,
+        xlLow	= -4134,
+        xlMaximum	= 2,
+        xlMinimum	= 4,
+        xlMinusValues	= 3,
+        xlNextToAxis	= 4,
+        xlOpaque	= 3,
+        xlOutside	= 3,
+        xlPercent	= 2,
+        xlPlus	= 9,
+        xlPlusValues	= 2,
+        xlRight	= -4152,
+        xlScale	= 3,
+        xlSemiGray75	= 10,
+        xlShowLabel	= 4,
+        xlShowLabelAndPercent	= 5,
+        xlShowPercent	= 3,
+        xlShowValue	= 2,
+        xlSingle	= 2,
+        xlSolid	= 1,
+        xlSquare	= 1,
+        xlStar	= 5,
+        xlStError	= 4,
+        xlTop	= -4160,
+        xlTransparent	= 2,
+        xlTriangle	= 3
+    };
+
+    enum XlReadingOrder
+    {
+        xlContext	= -5002,
+        xlLTR	= -5003,
+        xlRTL	= -5004
+    };
+
+    enum XlBorderWeight
+    {
+        xlHairline	= 1,
+        xlMedium	= -4138,
+        xlThick	= 4,
+        xlThin	= 2
+    };
+
+    enum XlLegendPosition
+    {
+        xlLegendPositionBottom	= -4107,
+        xlLegendPositionCorner	= 2,
+        xlLegendPositionLeft	= -4131,
+        xlLegendPositionRight	= -4152,
+        xlLegendPositionTop	= -4160,
+        xlLegendPositionCustom	= -4161
+    };
+
+    enum XlUnderlineStyle
+    {
+        xlUnderlineStyleDouble	= -4119,
+        xlUnderlineStyleDoubleAccounting	= 5,
+        xlUnderlineStyleNone	= -4142,
+        xlUnderlineStyleSingle	= 2,
+        xlUnderlineStyleSingleAccounting	= 4
+    };
+
+    enum XlColorIndex
+    {
+        xlColorIndexAutomatic	= -4105,
+        xlColorIndexNone	= -4142
+    };
+
+    enum XlMarkerStyle
+    {
+        xlMarkerStyleAutomatic	= -4105,
+        xlMarkerStyleCircle	= 8,
+        xlMarkerStyleDash	= -4115,
+        xlMarkerStyleDiamond	= 2,
+        xlMarkerStyleDot	= -4118,
+        xlMarkerStyleNone	= -4142,
+        xlMarkerStylePicture	= -4147,
+        xlMarkerStylePlus	= 9,
+        xlMarkerStyleSquare	= 1,
+        xlMarkerStyleStar	= 5,
+        xlMarkerStyleTriangle	= 3,
+        xlMarkerStyleX	= -4168
+    };
+
+    enum XlRowCol
+    {
+        xlColumns	= 2,
+        xlRows	= 1
+    };
+
+    enum XlDataLabelsType
+    {
+        xlDataLabelsShowNone	= -4142,
+        xlDataLabelsShowValue	= 2,
+        xlDataLabelsShowPercent	= 3,
+        xlDataLabelsShowLabel	= 4,
+        xlDataLabelsShowLabelAndPercent	= 5,
+        xlDataLabelsShowBubbleSizes	= 6
+    };
+
+    enum XlErrorBarInclude
+    {
+        xlErrorBarIncludeBoth	= 1,
+        xlErrorBarIncludeMinusValues	= 3,
+        xlErrorBarIncludeNone	= -4142,
+        xlErrorBarIncludePlusValues	= 2
+    };
+
+    enum XlErrorBarType
+    {
+        xlErrorBarTypeCustom	= -4114,
+        xlErrorBarTypeFixedValue	= 1,
+        xlErrorBarTypePercent	= 2,
+        xlErrorBarTypeStDev	= -4155,
+        xlErrorBarTypeStError	= 4
+    };
+
+    enum XlErrorBarDirection
+    {
+        xlChartX	= -4168,
+        xlChartY	= 1
+    };
+
+    enum XlChartPictureType
+    {
+        xlStackScale	= 3,
+        xlStack	= 2,
+        xlStretch	= 1
+    };
+
+    enum XlChartItem
+    {
+        xlDataLabel	= 0,
+        xlChartArea	= 2,
+        xlSeries	= 3,
+        xlChartTitle	= 4,
+        xlWalls	= 5,
+        xlCorners	= 6,
+        xlDataTable	= 7,
+        xlTrendline	= 8,
+        xlErrorBars	= 9,
+        xlXErrorBars	= 10,
+        xlYErrorBars	= 11,
+        xlLegendEntry	= 12,
+        xlLegendKey	= 13,
+        xlShape	= 14,
+        xlMajorGridlines	= 15,
+        xlMinorGridlines	= 16,
+        xlAxisTitle	= 17,
+        xlUpBars	= 18,
+        xlPlotArea	= 19,
+        xlDownBars	= 20,
+        xlAxis	= 21,
+        xlSeriesLines	= 22,
+        xlFloor	= 23,
+        xlLegend	= 24,
+        xlHiLoLines	= 25,
+        xlDropLines	= 26,
+        xlRadarAxisLabels	= 27,
+        xlNothing	= 28,
+        xlLeaderLines	= 29,
+        xlDisplayUnitLabel	= 30,
+        xlPivotChartFieldButton	= 31,
+        xlPivotChartDropZone	= 32
+    };
+
+    enum XlBarShape
+    {
+        xlBox	= 0,
+        xlPyramidToPoint	= 1,
+        xlPyramidToMax	= 2,
+        xlCylinder	= 3,
+        xlConeToPoint	= 4,
+        xlConeToMax	= 5
+    };
+
+    enum XlEndStyleCap
+    {
+        xlCap	= 1,
+        xlNoCap	= 2
+    };
+
+    enum XlTrendlineType
+    {
+        xlExponential	= 5,
+        xlLinear	= -4132,
+        xlLogarithmic	= -4133,
+        xlMovingAvg	= 6,
+        xlPolynomial	= 3,
+        xlPower	= 4
+    };
+
+    enum XlAxisType
+    {
+        xlCategory	= 1,
+        xlSeriesAxis	= 3,
+        xlValue	= 2
+    };
+
+    enum XlAxisCrosses
+    {
+        xlAxisCrossesAutomatic	= -4105,
+        xlAxisCrossesCustom	= -4114,
+        xlAxisCrossesMaximum	= 2,
+        xlAxisCrossesMinimum	= 4
+    };
+
+    enum XlTickMark
+    {
+        xlTickMarkCross	= 4,
+        xlTickMarkInside	= 2,
+        xlTickMarkNone	= -4142,
+        xlTickMarkOutside	= 3
+    };
+
+    enum XlScaleType
+    {
+        xlScaleLinear	= -4132,
+        xlScaleLogarithmic	= -4133
+    };
+
+    enum XlTickLabelPosition
+    {
+        xlTickLabelPositionHigh	= -4127,
+        xlTickLabelPositionLow	= -4134,
+        xlTickLabelPositionNextToAxis	= 4,
+        xlTickLabelPositionNone	= -4142
+    };
+
+    enum XlTimeUnit
+    {
+        xlDays	= 0,
+        xlMonths	= 1,
+        xlYears	= 2
+    };
+
+    enum XlCategoryType
+    {
+        xlCategoryScale	= 2,
+        xlTimeScale	= 3,
+        xlAutomaticScale	= -4105
+    };
+
+    enum XlDisplayUnit
+    {
+        xlHundreds	= -2,
+        xlThousands	= -3,
+        xlTenThousands	= -4,
+        xlHundredThousands	= -5,
+        xlMillions	= -6,
+        xlTenMillions	= -7,
+        xlHundredMillions	= -8,
+        xlThousandMillions	= -9,
+        xlMillionMillions	= -10,
+        xlDisplayUnitCustom	= -4114,
+        xlDisplayUnitNone	= -4142
+    };
+
+    enum XlChartOrientation
+    {
+        xlDownward	= -4170,
+        xlHorizontal	= -4128,
+        xlUpward	= -4171,
+        xlVertical	= -4166
+    };
+
+    enum XlTickLabelOrientation
+    {
+        xlTickLabelOrientationAutomatic	= -4105,
+        xlTickLabelOrientationDownward	= -4170,
+        xlTickLabelOrientationHorizontal	= -4128,
+        xlTickLabelOrientationUpward	= -4171,
+        xlTickLabelOrientationVertical	= -4166
+    };
+
+    enum XlDisplayBlanksAs
+    {
+        xlInterpolated	= 3,
+        xlNotPlotted	= 1,
+        xlZero	= 2
+    };
+
+    enum XlDataLabelPosition
+    {
+        xlLabelPositionCenter	= -4108,
+        xlLabelPositionAbove	= 0,
+        xlLabelPositionBelow	= 1,
+        xlLabelPositionLeft	= -4131,
+        xlLabelPositionRight	= -4152,
+        xlLabelPositionOutsideEnd	= 2,
+        xlLabelPositionInsideEnd	= 3,
+        xlLabelPositionInsideBase	= 4,
+        xlLabelPositionBestFit	= 5,
+        xlLabelPositionMixed	= 6,
+        xlLabelPositionCustom	= 7
+    };
+
+    enum XlPivotFieldOrientation
+    {
+        xlColumnField	= 2,
+        xlDataField	= 4,
+        xlHidden	= 0,
+        xlPageField	= 3,
+        xlRowField	= 1
+    };
+
+    enum XlHAlign
+    {
+        xlHAlignCenter	= -4108,
+        xlHAlignCenterAcrossSelection	= 7,
+        xlHAlignDistributed	= -4117,
+        xlHAlignFill	= 5,
+        xlHAlignGeneral	= 1,
+        xlHAlignJustify	= -4130,
+        xlHAlignLeft	= -4131,
+        xlHAlignRight	= -4152
+    };
+
+    enum XlVAlign
+    {
+        xlVAlignBottom	= -4107,
+        xlVAlignCenter	= -4108,
+        xlVAlignDistributed	= -4117,
+        xlVAlignJustify	= -4130,
+        xlVAlignTop	= -4160
+    };
+
+    enum XlChartElementPosition
+    {
+        xlChartElementPositionAutomatic	= -4105,
+        xlChartElementPositionCustom	= -4114
+    };
+
+    enum XlPieSliceLocation
+    {
+        xlHorizontalCoordinate	= 1,
+        xlVerticalCoordinate	= 2
+    };
+
+    enum XlPieSliceIndex
+    {
+        xlOuterCounterClockwisePoint	= 1,
+        xlOuterCenterPoint	= 2,
+        xlOuterClockwisePoint	= 3,
+        xlMidClockwiseRadiusPoint	= 4,
+        xlCenterPoint	= 5,
+        xlMidCounterClockwiseRadiusPoint	= 6,
+        xlInnerClockwisePoint	= 7,
+        xlInnerCenterPoint	= 8,
+        xlInnerCounterClockwisePoint	= 9
+    };
+
+    enum XlCategoryLabelLevel
+    {
+        xlCategoryLabelLevelNone	= -3,
+        xlCategoryLabelLevelCustom	= -2,
+        xlCategoryLabelLevelAll	= -1
+    };
+
+    enum XlSeriesNameLevel
+    {
+        xlSeriesNameLevelNone	= -3,
+        xlSeriesNameLevelCustom	= -2,
+        xlSeriesNameLevelAll	= -1
+    };
 };

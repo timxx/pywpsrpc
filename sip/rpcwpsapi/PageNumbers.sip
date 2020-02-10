@@ -1,0 +1,122 @@
+/**
+ * Copyright (c) 2020 Weitian Leung
+ *
+ * This file is part of pywpsrpc.
+ *
+ * This file is distributed under the MIT License.
+ * See the LICENSE file for details.
+ *
+*/
+
+namespace wpsapi
+{
+    struct PageNumbers : public IDispatch /Abstract/
+    {
+    public:
+        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
+        %End
+
+        virtual HRESULT get_Creator(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT get_Parent(
+            IDispatch **prop /Out/) = 0;
+
+        virtual HRESULT get__NewEnum(
+            IUnknown **prop /Out/) = 0;
+
+        virtual HRESULT get_Count(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT get_NumberStyle(
+            WdPageNumberStyle *prop /Out/) = 0;
+
+        virtual HRESULT put_NumberStyle(
+            WdPageNumberStyle prop) = 0;
+
+        virtual HRESULT get_IncludeChapterNumber(
+            VARIANT_BOOL *prop /Out/) = 0;
+
+        virtual HRESULT put_IncludeChapterNumber(
+            VARIANT_BOOL prop) = 0;
+
+        virtual HRESULT get_HeadingLevelForChapter(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT put_HeadingLevelForChapter(
+            long prop) = 0;
+
+        virtual HRESULT get_ChapterPageSeparator(
+            WdSeparatorType *prop /Out/) = 0;
+
+        virtual HRESULT put_ChapterPageSeparator(
+            WdSeparatorType prop) = 0;
+
+        virtual HRESULT get_RestartNumberingAtSection(
+            VARIANT_BOOL *prop /Out/) = 0;
+
+        virtual HRESULT put_RestartNumberingAtSection(
+            VARIANT_BOOL prop) = 0;
+
+        virtual HRESULT get_StartingNumber(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT put_StartingNumber(
+            long prop) = 0;
+
+        virtual HRESULT get_ShowFirstPageNumber(
+            VARIANT_BOOL *prop /Out/) = 0;
+
+        virtual HRESULT put_ShowFirstPageNumber(
+            VARIANT_BOOL prop) = 0;
+
+        virtual HRESULT Item(
+            long Index,
+            PageNumber **prop /Out/) = 0;
+
+        virtual HRESULT Add(
+            VARIANT *PageNumberAlignment = argMissing(),
+            VARIANT *FirstPage = argMissing(),
+            PageNumber **prop /Out/ = 0) = 0;
+
+        virtual HRESULT get_DoubleQuote(
+            VARIANT_BOOL *prop /Out/) = 0;
+
+        virtual HRESULT put_DoubleQuote(
+            VARIANT_BOOL prop) = 0;
+    };
+
+    struct PageNumber : public IDispatch /Abstract/
+    {
+    public:
+        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
+        %End
+
+        virtual HRESULT get_Creator(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT get_Parent(
+            IDispatch **prop /Out/) = 0;
+
+        virtual HRESULT get_Index(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT get_Alignment(
+            WdPageNumberAlignment *prop /Out/) = 0;
+
+        virtual HRESULT put_Alignment(
+            WdPageNumberAlignment prop) = 0;
+
+        virtual HRESULT Select() = 0;
+
+        virtual HRESULT Copy() = 0;
+
+        virtual HRESULT Cut() = 0;
+
+        virtual HRESULT Delete() = 0;
+    };
+};

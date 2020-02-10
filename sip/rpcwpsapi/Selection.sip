@@ -44,7 +44,7 @@ namespace wpsapi
         virtual HRESULT put_Style(VARIANT *prop) = 0;
 
         virtual HRESULT get_Tables(Tables **prop /Out/) = 0;
-/*
+
         virtual HRESULT get_Words(
             Words **prop /Out/) = 0;
 
@@ -68,7 +68,7 @@ namespace wpsapi
 
         virtual HRESULT get_Sections(
             Sections **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_Paragraphs(Paragraphs **prop /Out/) = 0;
 
         virtual HRESULT get_Borders(Borders **prop /Out/) = 0;
@@ -76,7 +76,6 @@ namespace wpsapi
 
         virtual HRESULT get_Shading(Shading **prop /Out/) = 0;
 
-/*
         virtual HRESULT get_Fields(
             Fields **prop /Out/) = 0;
 
@@ -85,7 +84,7 @@ namespace wpsapi
 
         virtual HRESULT get_Frames(
             Frames **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_ParagraphFormat(_ParagraphFormat **prop /Out/) = 0;
         %MethodCode
             sipRes = sipCpp->get_ParagraphFormat((wpsapi::ParagraphFormat**)&a0);
@@ -95,16 +94,15 @@ namespace wpsapi
         %MethodCode
             sipRes = sipCpp->put_ParagraphFormat((wpsapi::ParagraphFormat*)a0);
         %End
-/*
+
         virtual HRESULT get_PageSetup(
             PageSetup **prop /Out/) = 0;
 
         virtual HRESULT put_PageSetup(
             PageSetup *prop) = 0;
 
-        virtual HRESULT get_Bookmarks(
-            Bookmarks **prop /Out/) = 0;
-*/
+        // virtual HRESULT get_Bookmarks(Bookmarks **prop /Out/) = 0;
+
         virtual HRESULT get_StoryLength(
             long *prop /Out/) = 0;
 
@@ -125,9 +123,8 @@ namespace wpsapi
 
         virtual HRESULT put_LanguageIDOther(
             WdLanguageID prop) = 0;
-/*
-        virtual HRESULT get_Hyperlinks(
-            Hyperlinks **prop /Out/) = 0;
+
+        virtual HRESULT get_Hyperlinks(Hyperlinks **prop /Out/) = 0;
 
         virtual HRESULT get_Columns(
             Columns **prop /Out/) = 0;
@@ -137,7 +134,7 @@ namespace wpsapi
 
         virtual HRESULT get_HeaderFooter(
             HeaderFooter **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_IsEndOfRowMark(
             VARIANT_BOOL *prop /Out/) = 0;
 
@@ -192,7 +189,7 @@ namespace wpsapi
         virtual HRESULT put_Orientation(
             WdTextOrientation prop) = 0;
 
-        // virtual HRESULT get_InlineShapes(InlineShapes **prop /Out/) = 0;
+        virtual HRESULT get_InlineShapes(InlineShapes **prop /Out/) = 0;
 
         virtual HRESULT get_Application(_Application **prop /Out/) = 0;
         %MethodCode
@@ -210,7 +207,7 @@ namespace wpsapi
             sipRes = sipCpp->get_Document((wpsapi::Document**)&a0);
         %End
 
-        // virtual HRESULT get_ShapeRange(ShapeRange **prop /Out/) = 0;
+        virtual HRESULT get_ShapeRange(ShapeRange **prop /Out/) = 0;
 
         virtual HRESULT Select() = 0;
 
@@ -419,13 +416,12 @@ namespace wpsapi
             VARIANT *IconFileName = argMissing(),
             VARIANT *IconLabel = argMissing()) = 0;
 
-/*
         virtual HRESULT PreviousField(
             Field **prop /Out/) = 0;
 
         virtual HRESULT NextField(
             Field **prop /Out/) = 0;
-*/
+
         virtual HRESULT InsertParagraphBefore() = 0;
 
         virtual HRESULT InsertCells(
@@ -620,19 +616,19 @@ namespace wpsapi
 
         virtual HRESULT get_SmartTags(
             SmartTags **prop /Out/) = 0;
-
+*/
         virtual HRESULT get_ChildShapeRange(
             ShapeRange **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_HasChildShapeRange(
             VARIANT_BOOL *prop /Out/) = 0;
-/*
+
         virtual HRESULT get_FootnoteOptions(
             FootnoteOptions **prop /Out/) = 0;
 
         virtual HRESULT get_EndnoteOptions(
             EndnoteOptions **prop /Out/) = 0;
-*/
+
         virtual HRESULT ToggleCharacterCode() = 0;
 
         virtual HRESULT PasteAndFormat(

@@ -112,8 +112,10 @@ public:
     virtual HRESULT put_Width(long prop) = 0;
     virtual HRESULT get_Height(long *prop /Out/) = 0;
     virtual HRESULT put_Height(long prop) = 0;
-    //virtual HRESULT get_WindowState(WdWindowState *prop /Out/) = 0;
-    //virtual HRESULT put_WindowState(WdWindowState prop) = 0;
+
+    virtual HRESULT get_WindowState(WdWindowState *prop /Out/) = 0;
+    virtual HRESULT put_WindowState(WdWindowState prop) = 0;
+
     virtual HRESULT get_DisplayAutoCompleteTips(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_DisplayAutoCompleteTips(VARIANT_BOOL prop) = 0;
     //virtual HRESULT get_Options(Options **prop) = 0;
@@ -125,8 +127,10 @@ public:
     virtual HRESULT get_MAPIAvailable(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT get_DisplayScreenTips(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_DisplayScreenTips(VARIANT_BOOL prop) = 0;
-    //virtual HRESULT get_EnableCancelKey(WdEnableCancelKey *prop) = 0;
-    //virtual HRESULT put_EnableCancelKey(WdEnableCancelKey prop) = 0;
+
+    virtual HRESULT get_EnableCancelKey(WdEnableCancelKey *prop /Out/) = 0;
+    virtual HRESULT put_EnableCancelKey(WdEnableCancelKey prop) = 0;
+
     virtual HRESULT get_UserControl(VARIANT_BOOL *prop /Out/) = 0;
     //virtual HRESULT get_FileSearch(FileSearch **prop) = 0;
     virtual HRESULT get_MailSystem(WdMailSystem *prop) = 0;
@@ -367,44 +371,62 @@ public:
     virtual HRESULT get_BuildFull(BSTR *prop /Out/) = 0;
     virtual HRESULT get_BuildFeatureCrew(BSTR *prop /Out/) = 0;
     virtual HRESULT LoadMasterList(BSTR FileName) = 0;
-/*
-    virtual HRESULT CompareDocuments(Document *OriginalDocument,
-            Document *RevisedDocument,
-            WdCompareDestination Destination,
-            WdGranularity Granularity,
-            VARIANT_BOOL CompareFormatting,
-            VARIANT_BOOL CompareCaseChanges,
-            VARIANT_BOOL CompareWhitespace,
-            VARIANT_BOOL CompareTables,
-            VARIANT_BOOL CompareHeaders,
-            VARIANT_BOOL CompareFootnotes,
-            VARIANT_BOOL CompareTextboxes,
-            VARIANT_BOOL CompareFields,
-            VARIANT_BOOL CompareComments,
-            VARIANT_BOOL CompareMoves,
-            BSTR RevisedAuthor,
-            VARIANT_BOOL IgnoreAllComparisonWarnings,
-            Document **prop) = 0;
-    virtual HRESULT MergeDocuments(Document *OriginalDocument,
-            Document *RevisedDocument,
-            WdCompareDestination Destination,
-            WdGranularity Granularity,
-            VARIANT_BOOL CompareFormatting,
-            VARIANT_BOOL CompareCaseChanges,
-            VARIANT_BOOL CompareWhitespace,
-            VARIANT_BOOL CompareTables,
-            VARIANT_BOOL CompareHeaders,
-            VARIANT_BOOL CompareFootnotes,
-            VARIANT_BOOL CompareTextboxes,
-            VARIANT_BOOL CompareFields,
-            VARIANT_BOOL CompareComments,
-            VARIANT_BOOL CompareMoves,
-            BSTR OriginalAuthor,
-            BSTR RevisedAuthor,
-            WdMergeFormatFrom FormatFrom,
-            Document **prop) = 0;
-    virtual HRESULT get_Bibliography(Bibliography **prop /Out/) = 0;
-*/
+
+    virtual HRESULT CompareDocuments(_Document *OriginalDocument,
+            _Document *RevisedDocument,
+            WdCompareDestination Destination = wpsapi::wdCompareDestinationNew,
+            WdGranularity Granularity = wpsapi::wdGranularityWordLevel,
+            VARIANT_BOOL CompareFormatting = VARIANT_TRUE,
+            VARIANT_BOOL CompareCaseChanges = VARIANT_TRUE,
+            VARIANT_BOOL CompareWhitespace = VARIANT_TRUE,
+            VARIANT_BOOL CompareTables = VARIANT_TRUE,
+            VARIANT_BOOL CompareHeaders = VARIANT_TRUE,
+            VARIANT_BOOL CompareFootnotes = VARIANT_TRUE,
+            VARIANT_BOOL CompareTextboxes = VARIANT_TRUE,
+            VARIANT_BOOL CompareFields = VARIANT_TRUE,
+            VARIANT_BOOL CompareComments = VARIANT_TRUE,
+            VARIANT_BOOL CompareMoves = VARIANT_TRUE,
+            BSTR RevisedAuthor = 0,
+            VARIANT_BOOL IgnoreAllComparisonWarnings = VARIANT_TRUE,
+            _Document **prop /Out/ = 0) = 0;
+    %MethodCode
+        sipRes = sipCpp->CompareDocuments((wpsapi::Document*)a0,
+            (wpsapi::Document*)a1, a2, a3,
+            *a4, *a5, *a6, *a7, *a8, *a9, *a10, *a11, *a12, *a13,
+            *a14,
+            *a15,
+            (wpsapi::Document**)&a16);
+    %End
+    
+    virtual HRESULT MergeDocuments(_Document *OriginalDocument,
+            _Document *RevisedDocument,
+            WdCompareDestination Destination = wpsapi::wdCompareDestinationNew,
+            WdGranularity Granularity = wpsapi:: wdGranularityWordLevel,
+            VARIANT_BOOL CompareFormatting = VARIANT_TRUE,
+            VARIANT_BOOL CompareCaseChanges = VARIANT_TRUE,
+            VARIANT_BOOL CompareWhitespace = VARIANT_TRUE,
+            VARIANT_BOOL CompareTables = VARIANT_TRUE,
+            VARIANT_BOOL CompareHeaders = VARIANT_TRUE,
+            VARIANT_BOOL CompareFootnotes = VARIANT_TRUE,
+            VARIANT_BOOL CompareTextboxes = VARIANT_TRUE,
+            VARIANT_BOOL CompareFields = VARIANT_TRUE,
+            VARIANT_BOOL CompareComments = VARIANT_TRUE,
+            VARIANT_BOOL CompareMoves = VARIANT_TRUE,
+            BSTR OriginalAuthor = 0,
+            BSTR RevisedAuthor = 0,
+            WdMergeFormatFrom FormatFrom = wpsapi::wdMergeFormatFromOriginal, // TODO:
+            _Document **prop /Out/ = 0) = 0;
+    %MethodCode
+        sipRes = sipCpp->MergeDocuments((wpsapi::Document*)a0,
+            (wpsapi::Document*)a1, a2, a3,
+             *a4, *a5, *a6, *a7, *a8, *a9, *a10, *a11, *a12, *a13,
+            *a14, *a15,
+            a16,
+            (wpsapi::Document**)&a17);
+    %End
+
+    // virtual HRESULT get_Bibliography(Bibliography **prop /Out/) = 0;
+
     virtual HRESULT get_ShowStylePreviews(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_ShowStylePreviews(VARIANT_BOOL prop) = 0;
     virtual HRESULT get_RestrictLinkedStyles(VARIANT_BOOL *prop /Out/) = 0;
@@ -418,15 +440,24 @@ public:
     virtual HRESULT get_ActiveEncryptionSession(long *prop /Out/) = 0;
     virtual HRESULT get_DontResetInsertionPointProperties(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_DontResetInsertionPointProperties(VARIANT_BOOL prop) = 0;
-/*
-    virtual HRESULT get_SmartArtLayouts(SmartArtLayouts **prop /Out/) = 0;
-    virtual HRESULT get_SmartArtQuickStyles(SmartArtQuickStyles **prop /Out/) = 0;
-    virtual HRESULT get_SmartArtColors(SmartArtColors **prop /Out/) = 0;
-    virtual HRESULT ThreeWayMerge(Document *LocalDocument,
-            Document *ServerDocument,
-            Document *BaseDocument,
+
+    virtual HRESULT get_SmartArtLayouts(ksoapi::SmartArtLayouts **prop /Out/) = 0;
+    virtual HRESULT get_SmartArtQuickStyles(ksoapi::SmartArtQuickStyles **prop /Out/) = 0;
+    virtual HRESULT get_SmartArtColors(ksoapi::SmartArtColors **prop /Out/) = 0;
+
+    virtual HRESULT ThreeWayMerge(_Document *LocalDocument,
+            _Document *ServerDocument,
+            _Document *BaseDocument,
             VARIANT_BOOL FavorSource) = 0;
+    %MethodCode
+        sipRes = sipCpp->ThreeWayMerge((wpsapi::Document*)a0,
+            (wpsapi::Document*)a1,
+            (wpsapi::Document*)a2,
+            *a3);
+    %End
+
     virtual HRESULT Dummy4() = 0;
+/*
     virtual HRESULT get_UndoRecord(UndoRecord **prop /Out/) = 0;
     virtual HRESULT get_PickerDialog(PickerDialog **prop /Out/) = 0;
     virtual HRESULT get_ProtectedViewWindows(ProtectedViewWindows **prop /Out/) = 0;

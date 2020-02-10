@@ -45,6 +45,36 @@ namespace wpsapi
 %Include Columns.sip
 %Include Rows.sip
 %Include Cells.sip
+%Include Words.sip
+%Include Sentences.sip
+%Include Characters.sip
+%Include Footnotes.sip
+%Include Endnotes.sip
+%Include Comments.sip
+%Include Sections.sip
+%Include PageSetup.sip
+%Include HeadersFooters.sip
+%Include LineNumbering.sip
+%Include TextColumns.sip
+%Include PageNumbers.sip
+%Include Shapes.sip
+%Include InlineShapes.sip
+%Include ShapeRange.sip
+%Include ShapeNodes.sip
+%Include SoftEdgeFormat.sip
+%Include PictureFormat.sip
+%Include TextEffectFormat.sip
+%Include WrapFormat.sip
+%Include OLEFormat.sip
+%Include LinkFormat.sip
+%Include HorizontalLineFormat.sip
+%Include TextFrame.sip
+%Include Hyperlinks.sip
+%Include Frames.sip
+%Include DiagramNodes.sip
+%Include Chart.sip
+%Include Fields.sip
+%Include ListEntries.sip
 
 HRESULT createWpsRpcInstance(IKRpcClient **client);
 

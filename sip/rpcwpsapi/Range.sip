@@ -41,7 +41,7 @@ namespace wpsapi
         virtual HRESULT get_StoryType(WdStoryType *prop /Out/) = 0;
 
         virtual HRESULT get_Tables(Tables **prop /Out/) = 0;
-/*
+
         virtual HRESULT get_Words(Words **prop /Out/) = 0;
 
         virtual HRESULT get_Sentences(Sentences **prop /Out/) = 0;
@@ -56,7 +56,7 @@ namespace wpsapi
         virtual HRESULT get_Cells(Cells **prop /Out/) = 0;
 
         virtual HRESULT get_Sections(Sections **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_Paragraphs(Paragraphs **prop /Out/) = 0;
 
         virtual HRESULT get_Borders(Borders **prop /Out/) = 0;
@@ -66,12 +66,12 @@ namespace wpsapi
 /*
         virtual HRESULT get_TextRetrievalMode(TextRetrievalMode **prop /Out/) = 0;
         virtual HRESULT put_TextRetrievalMode(TextRetrievalMode *prop) = 0;
-
+*/
         virtual HRESULT get_Fields(Fields **prop /Out/) = 0;
         virtual HRESULT get_FormFields(FormFields **prop /Out/) = 0;
 
         virtual HRESULT get_Frames(Frames **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_ParagraphFormat(_ParagraphFormat **prop /Out/) = 0;
         %MethodCode
             sipRes = sipCpp->get_ParagraphFormat((wpsapi::ParagraphFormat**)&a0);
@@ -120,11 +120,10 @@ namespace wpsapi
         virtual HRESULT get_LanguageID(WdLanguageID *prop /Out/) = 0;
         virtual HRESULT put_LanguageID(WdLanguageID prop) = 0;
 
-/*
-        virtual HRESULT get_SynonymInfo(SynonymInfo **prop /Out/) = 0;
+        // virtual HRESULT get_SynonymInfo(SynonymInfo **prop /Out/) = 0;
 
         virtual HRESULT get_Hyperlinks(Hyperlinks **prop /Out/) = 0;
-
+/*
         virtual HRESULT get_ListParagraphs(ListParagraphs **prop /Out/) = 0;
 
         virtual HRESULT get_Subdocuments(Subdocuments **prop /Out/) = 0;
@@ -138,8 +137,8 @@ namespace wpsapi
         virtual HRESULT get_HighlightColorIndex(WdColorIndex *prop /Out/) = 0;
         virtual HRESULT put_HighlightColorIndex(WdColorIndex prop) = 0;
 
-        // virtual HRESULT get_Columns(Columns **prop /Out/) = 0;
-        // virtual HRESULT get_Rows(Rows **prop /Out/) = 0;
+        virtual HRESULT get_Columns(Columns **prop /Out/) = 0;
+        virtual HRESULT get_Rows(Rows **prop /Out/) = 0;
 
         virtual HRESULT get_CanEdit(long *prop /Out/) = 0;
         virtual HRESULT get_CanPaste(long *prop /Out/) = 0;
@@ -149,14 +148,13 @@ namespace wpsapi
         virtual HRESULT get_BookmarkID(long *prop /Out/) = 0;
         virtual HRESULT get_PreviousBookmarkID(long *prop /Out/) = 0;
 
-/*
-        virtual HRESULT get_Find(Find **prop /Out/) = 0;
+       // virtual HRESULT get_Find(Find **prop /Out/) = 0;
 
         virtual HRESULT get_PageSetup(PageSetup **prop /Out/) = 0;
         virtual HRESULT put_PageSetup(PageSetup *prop) = 0;
 
         virtual HRESULT get_ShapeRange(ShapeRange **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_Case(WdCharacterCase *prop /Out/) = 0;
         virtual HRESULT put_Case(WdCharacterCase prop) = 0;
 
@@ -173,7 +171,7 @@ namespace wpsapi
         virtual HRESULT get_Orientation(WdTextOrientation *prop /Out/) = 0;
         virtual HRESULT put_Orientation(WdTextOrientation prop) = 0;
 
-        // virtual HRESULT get_InlineShapes(InlineShapes **prop /Out/) = 0;
+        virtual HRESULT get_InlineShapes(InlineShapes **prop /Out/) = 0;
 
         virtual HRESULT get_NextStoryRange(Range **prop /Out/) = 0;
 
@@ -511,7 +509,7 @@ namespace wpsapi
 
         virtual HRESULT get_TopLevelTables(Tables **prop /Out/) = 0;
 
-        // virtual HRESULT get_Scripts(Scripts **prop /Out/) = 0;
+        virtual HRESULT get_Scripts(ksoapi::Scripts **prop /Out/) = 0;
 
         virtual HRESULT get_CharacterWidth(WdCharacterWidth *prop /Out/) = 0;
         virtual HRESULT put_CharacterWidth(WdCharacterWidth prop) = 0;
@@ -540,8 +538,8 @@ namespace wpsapi
             sipRes = sipCpp->get_Document((wpsapi::Document**)&a0);
         %End
 
-        // virtual HRESULT get_FootnoteOptions(FootnoteOptions **prop /Out/) = 0;
-        // virtual HRESULT get_EndnoteOptions(EndnoteOptions **prop /Out/) = 0;
+        virtual HRESULT get_FootnoteOptions(FootnoteOptions **prop /Out/) = 0;
+        virtual HRESULT get_EndnoteOptions(EndnoteOptions **prop /Out/) = 0;
 
         virtual HRESULT PasteAndFormat(WdRecoveryType Type) = 0;
 
@@ -620,11 +618,10 @@ namespace wpsapi
             VARIANT_BOOL UseISO19005_1,
             VARIANT *FixedFormatExtClassPtr = argMissing()) = 0;
 
-/*
         virtual HRESULT get_Locks(CoAuthLocks **prop /Out/) = 0;
         virtual HRESULT get_Updates(CoAuthUpdates **prop /Out/) = 0;
         virtual HRESULT get_Conflicts(Conflicts **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_TextVisibleOnScreen(long *prop /Out/) = 0;
 
         virtual HRESULT SortByHeadings(VARIANT *SortFieldType = argMissing(),
