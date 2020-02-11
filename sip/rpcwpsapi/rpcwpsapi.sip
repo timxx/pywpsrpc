@@ -13,12 +13,11 @@
 namespace wpsapi
 {
 %TypeHeaderCode
-    #include <QString>
-    #include <wps/wpsapi.h>
+    #include "stdafx.h"
 %End
 };
 
-%Include wpsrpcsdk.sip
+%Include common.sip
 %Include ksoapi.sip
 %Include enums.sip
 %Include Documents.sip

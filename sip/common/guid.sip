@@ -8,15 +8,9 @@
  *
 */
 
-%Include typedef.sip
 
 struct GUID
 {
-    %TypeHeaderCode
-        #include <typedef.h>
-        #include <kfc/guid.h>
-    %End
-
     uint32 Data1;
     uint16 Data2;
     uint16 Data3;

@@ -63,6 +63,7 @@ class RpcApiBindings(sipbuild.Bindings):
         options = super().get_options()
 
         options.append(sipbuild.Option("QT", option_type=list))
+        options.append(sipbuild.Option("PCH", option_type=list))
 
         return options
 
@@ -77,6 +78,23 @@ class RpcApiBindings(sipbuild.Bindings):
     def apply_user_defaults(self, tool):
         super().apply_user_defaults(tool)
 
+    def generate(self):
+        buildable = super().generate()
+
+        pch_file = os.path.join(buildable.build_dir, "stdafx.h")
+        with open(pch_file, "w+") as f:
+            f.write("#ifndef PYWPSRPC_%s_H\n" % buildable.target)
+            f.write("#define PYWPSRPC_%s_H\n\n" % buildable.target)
+            for pch in self.PCH:
+                f.write("#include <%s>\n" % pch)
+
+            f.write("#include <vector>\n\n")
+            f.write("#endif\n")
+
+        buildable.headers.append(pch_file)
+
+        return buildable
+
 
 class RpcWpsApi(RpcApiBindings):
 
@@ -88,7 +106,8 @@ class RpcWpsApi(RpcApiBindings):
                          include_dirs=dirs,
                          libraries=["rpcwpsapi_sysqt5"],
                          library_dirs=[project.sdk_lib_dir],
-                         QT=["core"])
+                         QT=["core"],
+                         PCH=["QString", "wps/wpsapi.h"])
 
 
 class RpcWppApi(RpcApiBindings):
@@ -100,7 +119,8 @@ class RpcWppApi(RpcApiBindings):
                          "rpcwppapi",
                          include_dirs=dirs,
                          libraries=["rpcwppapi_sysqt5"],
-                         library_dirs=[project.sdk_lib_dir])
+                         library_dirs=[project.sdk_lib_dir],
+                         PCH=["wpp/wppapi.h"])
 
 
 class RpcEtApi(RpcApiBindings):
@@ -112,7 +132,8 @@ class RpcEtApi(RpcApiBindings):
                          "rpcetapi",
                          include_dirs=dirs,
                          libraries=["rpcetapi_sysqt5"],
-                         library_dirs=[project.sdk_lib_dir])
+                         library_dirs=[project.sdk_lib_dir],
+                         PCH=["et/etapi.h"])
 
 
 # seems that we have no easy way to change the cxx flags
@@ -241,7 +262,7 @@ class RpcApiBuilder(sipbuild.Builder):
             f.write("TEMPLATE = lib\n")
             f.write("CONFIG += plugin no_plugin_name_prefix warn_on\n")
             f.write("CONFIG += %s\n" % ("debug" if buildable.debug else "release"))
-            f.write("CONFIG += c++11\n")
+            f.write("CONFIG += c++11 precompile_header\n")
             f.write("%s\n" % ' '.join(buildable.builder_settings))
             f.write("TARGET = %s\n\n" % buildable.target)
 
@@ -274,6 +295,8 @@ class RpcApiBuilder(sipbuild.Builder):
             rpc_dir = os.path.join(self.project.build_dir, self.project.name)
             os.makedirs(rpc_dir, exist_ok=True)
             f.write("QMAKE_POST_LINK = $(COPY_FILE) $(TARGET) %s\n\n" % rpc_dir)
+
+            f.write("PRECOMPILED_HEADER = stdafx.h\n\n")
 
             f.write("HEADERS = %s\n" % " \\\n\t".join(buildable.headers))
             f.write("SOURCES = %s" % " \\\n\t".join(buildable.sources))

@@ -167,6 +167,16 @@ class PyWpsRpcProject:
 
         self.run_command(args)
 
+        pch_file = os.path.join(build_subdir, "stdafx.h")
+        with open(pch_file, "w+") as f:
+            f.write("#ifndef PYWPSRPC_%s_H\n" % binding.name)
+            f.write("#define PYWPSRPC_%s_H\n\n" % binding.name)
+            for pch in binding.PCH:
+                f.write("#include <%s>\n" % pch)
+
+            f.write("#include <vector>\n\n")
+            f.write("#endif\n")
+
     def _gen_module_pro_file(self, binding, installed):
         self.progress("Generating the %s project" % binding.name)
 
@@ -175,7 +185,7 @@ class PyWpsRpcProject:
             f.write("TEMPLATE = lib\n")
             f.write("CONFIG += plugin no_plugin_name_prefix warn_on\n")
             f.write("CONFIG += %s\n" % ("debug" if self.debug else "release"))
-            f.write("CONFIG += c++11\n")
+            f.write("CONFIG += c++11 precompile_header\n")
             f.write("QT = %s\n" % (' '.join(binding.QT) if binding.QT else ''))
             f.write("TARGET = %s\n\n" % binding.name)
 
@@ -206,6 +216,8 @@ class PyWpsRpcProject:
             rpc_dir = os.path.join(self.build_dir, self.name)
             os.makedirs(rpc_dir, exist_ok=True)
             f.write("QMAKE_POST_LINK = $(COPY_FILE) $(TARGET) %s\n\n" % rpc_dir)
+
+            f.write("PRECOMPILED_HEADER = stdafx.h\n\n")
 
             headers = [os.path.basename(f) for f in os.listdir(
                 build_subdir) if f.endswith(".h")]
@@ -257,7 +269,8 @@ class RpcApiBindings:
         return ["include_dirs",
                 "libraries",
                 "library_dirs",
-                "QT"]
+                "QT",
+                "PCH"]
 
 
 class RpcWpsApi(RpcApiBindings):
@@ -270,7 +283,8 @@ class RpcWpsApi(RpcApiBindings):
                          include_dirs=dirs,
                          libraries=["rpcwpsapi_sysqt5"],
                          library_dirs=[project.sdk_lib_dir],
-                         QT=["core"])
+                         QT=["core"],
+                         PCH=["QString", "wps/wpsapi.h"])
 
 
 class RpcWppApi(RpcApiBindings):
@@ -282,7 +296,8 @@ class RpcWppApi(RpcApiBindings):
                          "rpcwppapi",
                          include_dirs=dirs,
                          libraries=["rpcwppapi_sysqt5"],
-                         library_dirs=[project.sdk_lib_dir])
+                         library_dirs=[project.sdk_lib_dir],
+                         PCH=["wpp/wppapi.h"])
 
 
 class RpcEtApi(RpcApiBindings):
@@ -294,7 +309,8 @@ class RpcEtApi(RpcApiBindings):
                          "rpcetapi",
                          include_dirs=dirs,
                          libraries=["rpcetapi_sysqt5"],
-                         library_dirs=[project.sdk_lib_dir])
+                         library_dirs=[project.sdk_lib_dir],
+                         PCH=["et/etapi.h"])
 
 
 class RpcException(Exception):

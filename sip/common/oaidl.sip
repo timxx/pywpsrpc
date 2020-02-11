@@ -8,17 +8,8 @@
  *
 */
 
-%Include typedef.sip
-%Include objidl.sip
-
 %MappedType VARIANT /AllowNone,TypeHint="Any",TypeHintValue="None"/
 {
-%TypeHeaderCode
-    #include <pre_stddef.h>
-    #include <typedef.h>
-    #include <oaidl.h>
-%End
-
 %ConvertToTypeCode
     if (sipIsErr == NULL)
         return !PyDict_Check(sipPy); // no dict supports
@@ -180,10 +171,6 @@ typedef DISPID MEMBERID;
 typedef DWORD HREFTYPE;
 
 %ModuleHeaderCode
-#include <pre_stddef.h>
-#include <typedef.h>
-#include <oaidl.h>
-
 VARIANT* argMissing();
 %End
 
@@ -202,13 +189,6 @@ VARIANT* argMissing()
 
 struct IDispatch : public IUnknown /Abstract/
 {
-    %TypeHeaderCode
-        #include <pre_stddef.h>
-        #include <typedef.h>
-        #include <kfc/guid.h>
-        #include <oaidl.h>
-        #include <objidl.h>
-    %End
 public:
     /*
     virtual HRESULT GetTypeInfoCount(
@@ -238,13 +218,3 @@ public:
     */
 };
 
-struct ITypeInfo : public IUnknown /Abstract/
-{
-    %TypeHeaderCode
-        #include <pre_stddef.h>
-        #include <typedef.h>
-        #include <kfc/guid.h>
-        #include <oaidl.h>
-        #include <objidl.h>
-    %End
-};

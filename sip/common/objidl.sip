@@ -8,16 +8,9 @@
  *
 */
 
-%Include guid.sip
 
 struct IUnknown /Abstract/
 {
-    %TypeHeaderCode
-        #include <pre_stddef.h>
-        #include <typedef.h>
-        #include <objbase.h>
-        #include <objidl.h>
-    %End
 public:
     virtual HRESULT QueryInterface(
         /* [in] */ const IID& riid,

@@ -8,10 +8,6 @@
  *
 */
 
-%ModuleCode
-    #include <typedef.h>
-%End
-
 typedef unsigned long ULONG;
 typedef ULONG *PULONG;
 typedef unsigned short USHORT;
@@ -174,9 +170,6 @@ typedef long SCODE;
 // typedef short VARIANT_BOOL;
 %MappedType VARIANT_BOOL /TypeHint="bool"/
 {
-%TypeHeaderCode
-    #include <typedef.h>
-%End
 %ConvertToTypeCode
     if (!sipIsErr)
         return PyBool_Check(sipPy) || PyLong_Check(sipPy);

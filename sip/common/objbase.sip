@@ -8,11 +8,6 @@
  *
 */
 
-%Include guid.sip
-
-%ModuleCode
-    #include <kfc/guid.h>
-%End
 
 typedef unsigned char byte;
 typedef CLSID *LPCLSID;
@@ -26,12 +21,6 @@ typedef double DATE;
 // TODO: AllowNone ???
 %MappedType BSTR /TypeHint="str",TypeHintValue="''"/
 {
-%TypeHeaderCode
-    #include <pre_stddef.h>
-    #include <typedef.h>
-    #include <objbase.h>
-    #include <vector>
-%End
 %ConvertToTypeCode
     if (!sipIsErr)
         return PyUnicode_Check(sipPy);

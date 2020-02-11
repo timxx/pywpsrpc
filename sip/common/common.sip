@@ -8,16 +8,13 @@
  *
 */
 
-%Module(name=pywpsrpc.rpcwppapi, keyword_arguments="Optional")
-
-namespace wppapi
-{
-%TypeHeaderCode
+%ModuleHeaderCode
     #include "stdafx.h"
 %End
-};
 
-%Include common.sip
-
-
-HRESULT createWppRpcInstance(IKRpcClient **client);
+%Include typedef.sip
+%Include objbase.sip
+%Include objidl.sip
+%Include oaidl.sip
+%Include guid.sip
+%Include wpsrpcsdk.sip

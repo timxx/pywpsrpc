@@ -8,24 +8,8 @@
  *
 */
 
-%Include typedef.sip
-%Include objbase.sip
-%Include objidl.sip
-%Include oaidl.sip
-
 struct IKRpcClient /Abstract/
 {
-%TypeHeaderCode
-    #include <pre_stddef.h>
-    #include <kfc/guid.h>
-    #include <int.h>
-    #include <typedef.h>
-    #include <guiddef.h>
-    #include <objbase.h>
-    #include <wpsrpcsdk.h>
-    #include <vector>
-%End
-
 public:
     virtual HRESULT registerEvent(IDispatch *idisp, const IID &iid, DISPID id, PVOID pFunc) = 0;
     virtual HRESULT registerEvent(IDispatch *idisp, const IID &iid, const BSTR eventName, PVOID pFunc) = 0;

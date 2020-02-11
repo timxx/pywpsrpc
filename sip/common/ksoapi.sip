@@ -11,15 +11,7 @@
 namespace ksoapi
 {
 %TypeHeaderCode
-    #include <pre_stddef.h>
-    #include <kfc/guid.h>
-    #include <int.h>
-    #include <typedef.h>
-    #include <guiddef.h>
-    #include <objbase.h>
-    #include <strapi/strapi.h>
-    #include <comdef.h>
-    #include <ksoapi/ksoapi.h>
+    #include "stdafx.h"
 %End
 
 typedef float single;
