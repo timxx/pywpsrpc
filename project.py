@@ -35,10 +35,8 @@ class PyWpsRpcProject(sipbuild.Project):
             self.sip_files_dir = "sip"
 
         # must set sip_module
-        # TODO: the sip module actually comes from sip4
-        # we have to remove it
         if self.sip_module is None:
-            self.sip_module = "sip"
+            self.sip_module = "PyQt5.sip"
 
         if self.sip_include_dirs is None:
             self.sip_include_dirs = [self.root_dir + "/sip/common"]
