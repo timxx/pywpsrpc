@@ -48,10 +48,10 @@ namespace wpsapi
 
         virtual HRESULT put_Borders(
             Borders *prop) = 0;
-/*
+
         virtual HRESULT get_DropCap(
             DropCap **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_Style(
             VARIANT *prop /Out/) = 0;
 
@@ -351,5 +351,48 @@ namespace wpsapi
 
         virtual HRESULT put_CollapseHeadingByDefault(
             VARIANT_BOOL prop) = 0;
+    };
+
+    struct DropCap : public IDispatch /Abstract/
+    {
+    public:
+        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
+        %End
+
+        virtual HRESULT get_Creator(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT get_Parent(
+            IDispatch **prop /Out/) = 0;
+
+        virtual HRESULT get_Position(
+            WdDropPosition *prop /Out/) = 0;
+
+        virtual HRESULT put_Position(
+            WdDropPosition prop) = 0;
+
+        virtual HRESULT get_FontName(
+            BSTR *prop /Out/) = 0;
+
+        virtual HRESULT put_FontName(
+            BSTR prop) = 0;
+
+        virtual HRESULT get_LinesToDrop(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT put_LinesToDrop(
+            long prop) = 0;
+
+        virtual HRESULT get_DistanceFromText(
+            single *prop /Out/) = 0;
+
+        virtual HRESULT put_DistanceFromText(
+            single prop) = 0;
+
+        virtual HRESULT Clear() = 0;
+
+        virtual HRESULT Enable() = 0;
     };
 };

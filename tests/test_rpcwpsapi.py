@@ -80,6 +80,12 @@ def test():
     hr, para = paras.get_First()
     check_call("paras.get_First", hr, para)
 
+    hr, dropCap = para.get_DropCap()
+    check_call("para.get_DropCap", hr, dropCap)
+
+    hr = dropCap.put_Position(wpsapi.wdDropNormal)
+    check_call("dropCap.put_Position", hr)
+
     hr, paraRange = para.get_Range()
     check_call("para.get_Range", hr, paraRange)
 
