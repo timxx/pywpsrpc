@@ -18,13 +18,13 @@ public:
     virtual HRESULT get_Parent(IDispatch **prop /Out/) = 0;
     virtual HRESULT get_Name(BSTR *prop /Out/) = 0;
     virtual HRESULT get_Documents(Documents **prop /Out/) = 0;
-    //virtual HRESULT get_Windows(Windows **prop /Out/) = 0;
+    virtual HRESULT get_Windows(Windows **prop /Out/) = 0;
     virtual HRESULT get_ActiveDocument(_Document **prop /Out/) = 0;
     %MethodCode
         sipRes = sipCpp->get_ActiveDocument((wpsapi::Document**)&a0);
     %End
 
-    // virtual HRESULT get_ActiveWindow(Window **prop /Out/) = 0;
+    virtual HRESULT get_ActiveWindow(Window **prop /Out/) = 0;
     virtual HRESULT get_Selection(Selection **prop /Out/) = 0;
     virtual HRESULT get_WordBasic(IDispatch **prop /Out/) = 0;
 /*
@@ -223,7 +223,7 @@ public:
     virtual HRESULT AutomaticChange() = 0;
     virtual HRESULT ShowMe() = 0;
     virtual HRESULT HelpTool() = 0;
-    //virtual HRESULT NewWindow(Window **prop) = 0;
+    virtual HRESULT NewWindow(Window **prop /Out/) = 0;
     virtual HRESULT ListCommands(VARIANT_BOOL ListAllCommands) = 0;
     virtual HRESULT ShowClipboard() = 0;
     virtual HRESULT OnTime(VARIANT *When, BSTR Name, VARIANT *Tolerance) = 0;

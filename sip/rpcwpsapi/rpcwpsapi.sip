@@ -104,6 +104,10 @@ typedef float single;
 %Include TablesOfAuthorities.sip
 %Include TablesOfContents.sip
 %Include TablesOfFigures.sip
+%Include Windows.sip
+%Include Panes.sip
+%Include Pages.sip
+%Include View.sip
 
 
 HRESULT createWpsRpcInstance(IKRpcClient **client);

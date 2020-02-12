@@ -8,7 +8,6 @@
  *
 */
 
-
 namespace wpsapi
 {
     struct Range : public IDispatch /Abstract/

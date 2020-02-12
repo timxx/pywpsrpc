@@ -243,6 +243,12 @@ def test():
     hr, readOnly = doc.get_ReadOnly()
     check_call("get_ReadOnly", hr, readOnly)
 
+    hr, window = doc.get_ActiveWindow()
+    check_call("doc.get_ActiveWindow", hr, window)
+
+    hr, caption = window.get_Caption()
+    check_call("window.get_Caption", hr, caption)
+
     doc.Close()
     check_call("Close", hr)
 

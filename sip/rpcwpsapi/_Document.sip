@@ -75,7 +75,7 @@ namespace wpsapi
         virtual HRESULT get_PageSetup(PageSetup **prop /Out/) = 0;
         virtual HRESULT put_PageSetup(PageSetup *prop) = 0;
 
-        // virtual HRESULT get_Windows(Windows **prop /Out/) = 0;
+        virtual HRESULT get_Windows(Windows **prop /Out/) = 0;
 
         virtual HRESULT get_HasRoutingSlip(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_HasRoutingSlip(VARIANT_BOOL prop) = 0;
@@ -91,7 +91,7 @@ namespace wpsapi
         virtual HRESULT put_Saved(VARIANT_BOOL prop) = 0;
 
         virtual HRESULT get_Content(Range **prop /Out/) = 0;
-        // virtual HRESULT get_ActiveWindow(Window **prop /Out/) = 0;
+        virtual HRESULT get_ActiveWindow(Window **prop /Out/) = 0;
 
         virtual HRESULT get_Kind(WdDocumentKind *prop /Out/) = 0;
         virtual HRESULT put_Kind(WdDocumentKind prop) = 0;
@@ -471,7 +471,7 @@ namespace wpsapi
         virtual HRESULT get_FarEastLineBreakLanguage(WdFarEastLineBreakLanguageID *prop /Out/) = 0;
         virtual HRESULT put_FarEastLineBreakLanguage(WdFarEastLineBreakLanguageID prop) = 0;
 
-        // virtual HRESULT get_Frameset(Frameset **prop) = 0;
+        virtual HRESULT get_Frameset(Frameset **prop) = 0;
 
         virtual HRESULT get_ClickAndTypeParagraphStyle(VARIANT *prop /Out/) = 0;
         virtual HRESULT put_ClickAndTypeParagraphStyle(VARIANT *prop) = 0;
