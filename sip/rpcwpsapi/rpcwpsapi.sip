@@ -15,6 +15,8 @@ namespace wpsapi
 %TypeHeaderCode
     #include "stdafx.h"
 %End
+
+typedef float single;
 };
 
 %Include common.sip
@@ -96,6 +98,13 @@ namespace wpsapi
 %Include DocumentFields.sip
 %Include SpellingSuggestions.sip
 %Include AutoTextEntries.sip
+%Include Variables.sip
+%Include MailMerge.sip
+%Include Envelope.sip
+%Include TablesOfAuthorities.sip
+%Include TablesOfContents.sip
+%Include TablesOfFigures.sip
+
 
 HRESULT createWpsRpcInstance(IKRpcClient **client);
 

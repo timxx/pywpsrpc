@@ -57,19 +57,21 @@ namespace wpsapi
         virtual HRESULT get_FormFields(FormFields **prop /Out/) = 0;
         virtual HRESULT get_Styles(Styles **prop /Out/) = 0;
         virtual HRESULT get_Frames(Frames **prop /Out/) = 0;
-/*
+
         virtual HRESULT get_TablesOfFigures(TablesOfFigures **prop /Out/) = 0;
+
         virtual HRESULT get_Variables(Variables **prop /Out/) = 0;
+
         virtual HRESULT get_MailMerge(MailMerge **prop /Out/) = 0;
         virtual HRESULT get_Envelope(Envelope **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_FullName(BSTR *prop /Out/) = 0;
 
         virtual HRESULT get_Revisions(Revisions **prop /Out/) = 0;
-/*
+
         virtual HRESULT get_TablesOfContents(TablesOfContents **prop /Out/) = 0;
         virtual HRESULT get_TablesOfAuthorities(TablesOfAuthorities **prop /Out/) = 0;
-*/
+
         virtual HRESULT get_PageSetup(PageSetup **prop /Out/) = 0;
         virtual HRESULT put_PageSetup(PageSetup *prop) = 0;
 
@@ -82,7 +84,7 @@ namespace wpsapi
 
         virtual HRESULT get_Routed(VARIANT_BOOL *prop /Out/) = 0;
 
-        // virtual HRESULT get_TablesOfAuthoritiesCategories(TablesOfAuthoritiesCategories **prop /Out/) = 0;
+        virtual HRESULT get_TablesOfAuthoritiesCategories(TablesOfAuthoritiesCategories **prop /Out/) = 0;
         // virtual HRESULT get_Indexes(Indexes **prop /Out/) = 0;
 
         virtual HRESULT get_Saved(VARIANT_BOOL *prop /Out/) = 0;
@@ -174,7 +176,7 @@ namespace wpsapi
         virtual HRESULT get_PrintFormsData(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_PrintFormsData(VARIANT_BOOL prop) = 0;
 
-        // virtual HRESULT get_ListParagraphs(ListParagraphs **prop) = 0;
+        virtual HRESULT get_ListParagraphs(ListParagraphs **prop /Out/) = 0;
 
         virtual HRESULT put_Password(BSTR rhs) = 0;
         virtual HRESULT put_WritePassword(BSTR rhs) = 0;

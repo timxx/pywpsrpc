@@ -222,6 +222,15 @@ def test():
     hr, name = bookmark.get_Name()
     check_call("bookmark.get_Name", hr, name)
 
+    hr, tocs = doc.get_TablesOfContents()
+    check_call("doc.get_TablesOfContents", hr, tocs)
+
+    hr, bkmRange = bookmark.get_Range()
+    check_call("bookmark.get_Range", hr, bkmRange)
+
+    hr, toc = tocs.Add(bkmRange)
+    check_call("tocs.Add", hr, toc)
+
     hr = doc.SaveAs("test.docx", wpsapi.wdFormatDocument)
     check_call("SaveAs", hr)
 

@@ -8,10 +8,6 @@
  *
 */
 
-namespace wpsapi {
-    typedef float single;
-};
-
 namespace wpsapi
 {
 struct _Application : public IDispatch, public wpsapi::_Application_extend /Abstract/
