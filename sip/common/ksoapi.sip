@@ -35,3 +35,6 @@ typedef long MsoRGBType;
 %Include ksoapi/MsoChart.sip
 %Include ksoapi/SmartArt.sip
 %Include ksoapi/CustomXML.sip
+%Include ksoapi/CommandBars.sip
+%Include ksoapi/IAccessible.sip
+%Include ksoapi/_IMsoOleAccDispObj.sip

@@ -77,7 +77,7 @@ typedef float single;
 %Include Fields.sip
 %Include ListEntries.sip
 %Include TextRetrievalMode.sip
-%Include ListFormat.sip
+%Include Lists.sip
 %Include Bookmarks.sip
 %Include Revisions.sip
 %Include SynonymInfo.sip
@@ -108,6 +108,10 @@ typedef float single;
 %Include Panes.sip
 %Include Pages.sip
 %Include View.sip
+%Include RoutingSlip.sip
+%Include Indexes.sip
+%Include Versions.sip
+%Include Email.sip
 
 
 HRESULT createWpsRpcInstance(IKRpcClient **client);

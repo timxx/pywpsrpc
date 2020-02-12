@@ -631,4 +631,29 @@ namespace wpsapi
 
         virtual HRESULT get_DocumentFields(DocumentFields **prop /Out/) = 0;
     };
+
+    struct StoryRanges : public IDispatch /Abstract/
+    {
+    public:
+        virtual HRESULT get__NewEnum(
+            IUnknown **prop /Out/) = 0;
+
+        virtual HRESULT get_Count(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
+        %End
+
+        virtual HRESULT get_Creator(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT get_Parent(
+            IDispatch **prop /Out/) = 0;
+
+        virtual HRESULT Item(
+            WdStoryType Index,
+            Range **prop /Out/) = 0;
+    };
 };

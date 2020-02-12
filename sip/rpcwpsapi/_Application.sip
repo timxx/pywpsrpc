@@ -76,7 +76,11 @@ public:
     virtual HRESULT get_DisplayRecentFiles(VARIANT_BOOL *prop /Out/) = 0;
     virtual HRESULT put_DisplayRecentFiles(VARIANT_BOOL prop) = 0;
 
-    //virtual HRESULT get_CommandBars(CommandBars **prop /Out/) = 0;
+    virtual HRESULT get_CommandBars(ksoapi::_CommandBars **prop /Out/) = 0;
+    %MethodCode
+        sipRes = sipCpp->get_CommandBars((ksoapi::CommandBars**)&a0);
+    %End
+
     virtual HRESULT get_SynonymInfo(BSTR Word, VARIANT *LanguageID, SynonymInfo **prop /Out/) = 0;
     //virtual HRESULT get_VBE(VBE **prop) = 0;
 

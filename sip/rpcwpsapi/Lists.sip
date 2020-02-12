@@ -104,6 +104,31 @@ namespace wpsapi
             VARIANT *ApplyLevel = argMissing()) = 0;
     };
 
+    struct Lists : public IDispatch /Abstract/
+    {
+    public:
+        virtual HRESULT get__NewEnum(
+            IUnknown **prop /Out/) = 0;
+
+        virtual HRESULT get_Count(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
+        %End
+
+        virtual HRESULT get_Creator(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT get_Parent(
+            IDispatch **prop /Out/) = 0;
+
+        virtual HRESULT Item(
+            long Index,
+            List **prop /Out/) = 0;
+    };
+
     struct List : public IDispatch /Abstract/
     {
     public:
@@ -159,6 +184,36 @@ namespace wpsapi
             VARIANT *ContinuePreviousList = argMissing(),
             VARIANT *DefaultListBehavior = argMissing(),
             VARIANT *ApplyLevel = argMissing()) = 0;
+    };
+
+    struct ListTemplates : public IDispatch /Abstract/
+    {
+    public:
+        virtual HRESULT get__NewEnum(
+            IUnknown **prop /Out/) = 0;
+
+        virtual HRESULT get_Count(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
+        %End
+
+        virtual HRESULT get_Creator(
+            long *prop /Out/) = 0;
+
+        virtual HRESULT get_Parent(
+            IDispatch **prop /Out/) = 0;
+
+        virtual HRESULT Item(
+            VARIANT *Index,
+            ListTemplate **prop /Out/) = 0;
+
+        virtual HRESULT Add(
+            VARIANT *OutlineNumbered = argMissing(),
+            VARIANT *Name = argMissing(),
+            ListTemplate **prop /Out/ = 0) = 0;
     };
 
     struct ListTemplate : public IDispatch /Abstract/

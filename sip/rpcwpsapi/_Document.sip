@@ -80,12 +80,12 @@ namespace wpsapi
         virtual HRESULT get_HasRoutingSlip(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_HasRoutingSlip(VARIANT_BOOL prop) = 0;
 
-        // virtual HRESULT get_RoutingSlip(RoutingSlip **prop /Out/) = 0;
+        virtual HRESULT get_RoutingSlip(RoutingSlip **prop /Out/) = 0;
 
         virtual HRESULT get_Routed(VARIANT_BOOL *prop /Out/) = 0;
 
         virtual HRESULT get_TablesOfAuthoritiesCategories(TablesOfAuthoritiesCategories **prop /Out/) = 0;
-        // virtual HRESULT get_Indexes(Indexes **prop /Out/) = 0;
+        virtual HRESULT get_Indexes(Indexes **prop /Out/) = 0;
 
         virtual HRESULT get_Saved(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_Saved(VARIANT_BOOL prop) = 0;
@@ -120,8 +120,11 @@ namespace wpsapi
         virtual HRESULT get_Compatibility(WdCompatibility Type, VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_Compatibility(WdCompatibility Type, VARIANT_BOOL prop) = 0;
 
-        // virtual HRESULT get_StoryRanges(StoryRanges **prop) = 0;
-        // virtual HRESULT get_CommandBars(CommandBars **prop) = 0;
+        virtual HRESULT get_StoryRanges(StoryRanges **prop) = 0;
+        virtual HRESULT get_CommandBars(ksoapi::_CommandBars **prop) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_CommandBars((ksoapi::CommandBars**)&a0);
+        %End
 
         virtual HRESULT get_IsSubdocument(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT get_SaveFormat(long *prop /Out/) = 0;
@@ -129,8 +132,8 @@ namespace wpsapi
 
         virtual HRESULT get_Hyperlinks(Hyperlinks **prop) = 0;
         virtual HRESULT get_Shapes(Shapes **prop) = 0;
-        // virtual HRESULT get_ListTemplates(ListTemplates **prop) = 0;
-        // virtual HRESULT get_Lists(Lists **prop) = 0;
+        virtual HRESULT get_ListTemplates(ListTemplates **prop) = 0;
+        virtual HRESULT get_Lists(Lists **prop) = 0;
 
         virtual HRESULT get_UpdateStylesOnOpen(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_UpdateStylesOnOpen(VARIANT_BOOL prop) = 0;
@@ -154,7 +157,7 @@ namespace wpsapi
         virtual HRESULT get_ShowSpellingErrors(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_ShowSpellingErrors(VARIANT_BOOL prop) = 0;
 
-        // virtual HRESULT get_Versions(Versions **prop /Out/) = 0;
+        virtual HRESULT get_Versions(Versions **prop /Out/) = 0;
 
         virtual HRESULT get_ShowSummary(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_ShowSummary(VARIANT_BOOL prop) = 0;
@@ -193,7 +196,7 @@ namespace wpsapi
         virtual HRESULT get_HasMailer(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_HasMailer(VARIANT_BOOL prop) = 0;
 
-        // virtual HRESULT get_Mailer(Mailer **prop /Out/) = 0;
+        virtual HRESULT get_Mailer(Mailer **prop /Out/) = 0;
         virtual HRESULT get_ReadabilityStatistics(ReadabilityStatistics **prop) = 0;
 
         virtual HRESULT get_GrammaticalErrors(ProofreadingErrors **prop) = 0;
@@ -462,8 +465,8 @@ namespace wpsapi
         virtual HRESULT get_ActiveTheme(BSTR *prop /Out/) = 0;
         virtual HRESULT get_ActiveThemeDisplayName(BSTR *prop /Out/) = 0;
 
-        //virtual HRESULT get_Email(Email **prop) = 0;
-        virtual HRESULT get_Scripts(ksoapi::Scripts **prop) = 0;
+        virtual HRESULT get_Email(Email **prop /Out/) = 0;
+        virtual HRESULT get_Scripts(ksoapi::Scripts **prop /Out/) = 0;
 
         virtual HRESULT get_LanguageDetected(VARIANT_BOOL *prop /Out/) = 0;
         virtual HRESULT put_LanguageDetected(VARIANT_BOOL prop) = 0;
