@@ -13,19 +13,20 @@ namespace wpsapi
     struct Paragraphs : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get__NewEnum(IUnknown **prop /Out/) = 0;
+        virtual HRESULT get__NewEnum(
+            IUnknown **prop /Out/) = 0;
 
-        virtual HRESULT get_Count(long *prop /Out/) = 0;
+        virtual HRESULT get_Count(
+            long *prop /Out/) = 0;
 
-        virtual HRESULT get_First(Paragraph **prop /Out/) = 0;
+        virtual HRESULT get_First(
+            Paragraph **prop /Out/) = 0;
 
         virtual HRESULT get_Last(
             Paragraph **prop /Out/) = 0;
 
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -33,15 +34,11 @@ namespace wpsapi
         virtual HRESULT get_Parent(
             IDispatch **prop /Out/) = 0;
 
-        virtual HRESULT get_Format(_ParagraphFormat **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Format((wpsapi::ParagraphFormat**)&a0);
-        %End
+        virtual HRESULT get_Format(
+            ParagraphFormat **prop /Out/) = 0;
 
-        virtual HRESULT put_Format(_ParagraphFormat *prop) = 0;
-        %MethodCode
-            sipRes = sipCpp->put_Format((wpsapi::ParagraphFormat*)a0);
-        %End
+        virtual HRESULT put_Format(
+            ParagraphFormat *prop) = 0;
 
         virtual HRESULT get_TabStops(
             TabStops **prop /Out/) = 0;
@@ -145,7 +142,8 @@ namespace wpsapi
         virtual HRESULT put_WidowControl(
             long prop) = 0;
 
-        virtual HRESULT get_Shading(Shading **prop /Out/) = 0;
+        virtual HRESULT get_Shading(
+            Shading **prop /Out/) = 0;
 
         virtual HRESULT get_FarEastLineBreakControl(
             long *prop /Out/) = 0;
@@ -230,7 +228,9 @@ namespace wpsapi
         virtual HRESULT Reset() = 0;
 
         virtual HRESULT Space1() = 0;
+
         virtual HRESULT Space15() = 0;
+
         virtual HRESULT Space2() = 0;
 
         virtual HRESULT IndentCharWidth(
@@ -298,31 +298,8 @@ namespace wpsapi
             long prop) = 0;
 
         virtual HRESULT IncreaseSpacing() = 0;
+
         virtual HRESULT DecreaseSpacing() = 0;
-    };
 
-    struct ListParagraphs : public IDispatch /Abstract/
-    {
-    public:
-        virtual HRESULT get__NewEnum(
-            IUnknown **prop /Out/) = 0;
-
-        virtual HRESULT get_Count(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
-
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **prop /Out/) = 0;
-
-        virtual HRESULT Item(
-            long Index,
-            Paragraph **prop /Out/) = 0;
     };
 };

@@ -22,10 +22,8 @@ namespace wpsapi
         virtual HRESULT get_Color(
             ColorFormat **prop /Out/) = 0;
 
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -38,5 +36,6 @@ namespace wpsapi
 
         virtual HRESULT put_Transparency(
             single prop) = 0;
+
     };
 };

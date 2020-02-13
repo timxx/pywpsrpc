@@ -43,8 +43,7 @@ For full API references, go to [https://open.wps.cn/docs/office](https://open.wp
 
 ## Progress
 
-- [ ] WPS API bindings
-  - Working in progress, you can now open & save documents.
+- [x] WPS API bindings
 - [ ] WPP API bindings
 - [ ] ET API bindings
 - [ ] Memory managerment

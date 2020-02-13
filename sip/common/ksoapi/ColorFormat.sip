@@ -48,5 +48,6 @@ namespace ksoapi
 
         virtual HRESULT put_Brightness(
             single Brightness) = 0;
+
     };
 };

@@ -18,5 +18,6 @@ namespace ksoapi
 
         virtual HRESULT get_Creator(
             long *plCreator /Out/) = 0;
+
     };
 };

@@ -16,10 +16,8 @@ namespace wpsapi
         virtual HRESULT get_Range(
             Range **prop /Out/) = 0;
 
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -27,15 +25,11 @@ namespace wpsapi
         virtual HRESULT get_Parent(
             IDispatch **prop /Out/) = 0;
 
-        virtual HRESULT get_Format(_ParagraphFormat **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Format((wpsapi::ParagraphFormat**)&a0);
-        %End
+        virtual HRESULT get_Format(
+            ParagraphFormat **prop /Out/) = 0;
 
-        virtual HRESULT put_Format(_ParagraphFormat *prop) = 0;
-        %MethodCode
-            sipRes = sipCpp->put_Format((wpsapi::ParagraphFormat*)a0);
-        %End
+        virtual HRESULT put_Format(
+            ParagraphFormat *prop) = 0;
 
         virtual HRESULT get_TabStops(
             TabStops **prop /Out/) = 0;
@@ -142,7 +136,8 @@ namespace wpsapi
         virtual HRESULT put_WidowControl(
             long prop) = 0;
 
-        virtual HRESULT get_Shading(Shading **prop /Out/) = 0;
+        virtual HRESULT get_Shading(
+            Shading **prop /Out/) = 0;
 
         virtual HRESULT get_FarEastLineBreakControl(
             long *prop /Out/) = 0;
@@ -207,6 +202,7 @@ namespace wpsapi
         virtual HRESULT CloseUp() = 0;
 
         virtual HRESULT OpenUp() = 0;
+
         virtual HRESULT OpenOrCloseUp() = 0;
 
         virtual HRESULT TabHangingIndent(
@@ -218,7 +214,9 @@ namespace wpsapi
         virtual HRESULT Reset() = 0;
 
         virtual HRESULT Space1() = 0;
+
         virtual HRESULT Space15() = 0;
+
         virtual HRESULT Space2() = 0;
 
         virtual HRESULT IndentCharWidth(
@@ -236,10 +234,13 @@ namespace wpsapi
             Paragraph **prop /Out/ = 0) = 0;
 
         virtual HRESULT OutlinePromote() = 0;
+
         virtual HRESULT OutlineDemote() = 0;
+
         virtual HRESULT OutlineDemoteToBody() = 0;
 
         virtual HRESULT Indent() = 0;
+
         virtual HRESULT Outdent() = 0;
 
         virtual HRESULT get_CharacterUnitRightIndent(
@@ -351,48 +352,6 @@ namespace wpsapi
 
         virtual HRESULT put_CollapseHeadingByDefault(
             VARIANT_BOOL prop) = 0;
-    };
 
-    struct DropCap : public IDispatch /Abstract/
-    {
-    public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
-
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **prop /Out/) = 0;
-
-        virtual HRESULT get_Position(
-            WdDropPosition *prop /Out/) = 0;
-
-        virtual HRESULT put_Position(
-            WdDropPosition prop) = 0;
-
-        virtual HRESULT get_FontName(
-            BSTR *prop /Out/) = 0;
-
-        virtual HRESULT put_FontName(
-            BSTR prop) = 0;
-
-        virtual HRESULT get_LinesToDrop(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT put_LinesToDrop(
-            long prop) = 0;
-
-        virtual HRESULT get_DistanceFromText(
-            single *prop /Out/) = 0;
-
-        virtual HRESULT put_DistanceFromText(
-            single prop) = 0;
-
-        virtual HRESULT Clear() = 0;
-
-        virtual HRESULT Enable() = 0;
     };
 };

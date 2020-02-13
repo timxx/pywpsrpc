@@ -13,10 +13,8 @@ namespace wpsapi
     struct _ParagraphFormat : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -24,10 +22,8 @@ namespace wpsapi
         virtual HRESULT get_Parent(
             IDispatch **prop /Out/) = 0;
 
-        virtual HRESULT get_Duplicate(_ParagraphFormat **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Duplicate((wpsapi::ParagraphFormat**)&a0);
-        %End
+        virtual HRESULT get_Duplicate(
+            ParagraphFormat **prop /Out/) = 0;
 
         virtual HRESULT get_Style(
             VARIANT *prop /Out/) = 0;
@@ -185,7 +181,8 @@ namespace wpsapi
         virtual HRESULT put_Borders(
             Borders *prop) = 0;
 
-        virtual HRESULT get_Shading(Shading **prop /Out/) = 0;
+        virtual HRESULT get_Shading(
+            Shading **prop /Out/) = 0;
 
         virtual HRESULT get_OutlineLevel(
             WdOutlineLevel *prop /Out/) = 0;
@@ -284,5 +281,6 @@ namespace wpsapi
 
         virtual HRESULT put_CollapsedByDefault(
             long prop) = 0;
+
     };
 };

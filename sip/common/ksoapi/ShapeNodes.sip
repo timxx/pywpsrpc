@@ -52,21 +52,6 @@ namespace ksoapi
         virtual HRESULT SetSegmentType(
             int Index,
             MsoSegmentType SegmentType) = 0;
-    };
 
-    struct ShapeNode : public ksoapi::_IMsoDispObj /Abstract/
-    {
-    public:
-        virtual HRESULT get_Parent(
-            IDispatch **Parent /Out/) = 0;
-
-        virtual HRESULT get_EditingType(
-            MsoEditingType *EditingType /Out/) = 0;
-
-        virtual HRESULT get_Points(
-            VARIANT *Points /Out/) = 0;
-
-        virtual HRESULT get_SegmentType(
-            MsoSegmentType *SegmentType /Out/) = 0;
     };
 };

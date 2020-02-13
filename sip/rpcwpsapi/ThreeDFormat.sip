@@ -13,10 +13,8 @@ namespace wpsapi
     struct ThreeDFormat : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -196,5 +194,6 @@ namespace wpsapi
 
         virtual HRESULT put_LightAngle(
             single prop) = 0;
+
     };
 };

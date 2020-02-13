@@ -13,10 +13,8 @@ namespace wpsapi
     struct FillFormat : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -102,7 +100,8 @@ namespace wpsapi
         virtual HRESULT UserTextured(
             BSTR TextureFile) = 0;
 
-        virtual HRESULT get_GradientStops(ksoapi::GradientStops **prop /Out/) = 0;
+        virtual HRESULT get_GradientStops(
+            ksoapi::GradientStops **prop /Out/) = 0;
 
         virtual HRESULT get_TextureOffsetX(
             single *prop /Out/) = 0;
@@ -146,12 +145,14 @@ namespace wpsapi
         virtual HRESULT put_RotateWithObject(
             MsoTriState prop) = 0;
 
-        virtual HRESULT get_PictureEffects(ksoapi::PictureEffects **prop /Out/) = 0;
+        virtual HRESULT get_PictureEffects(
+            ksoapi::PictureEffects **prop /Out/) = 0;
 
         virtual HRESULT get_GradientAngle(
             single *prop /Out/) = 0;
 
         virtual HRESULT put_GradientAngle(
             single prop) = 0;
+
     };
 };

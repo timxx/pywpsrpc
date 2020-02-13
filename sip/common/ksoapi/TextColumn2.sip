@@ -30,5 +30,6 @@ namespace ksoapi
 
         virtual HRESULT put_TextDirection(
             MsoTextDirection Direction) = 0;
+
     };
 };

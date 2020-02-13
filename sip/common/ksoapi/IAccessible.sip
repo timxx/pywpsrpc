@@ -97,5 +97,6 @@ namespace ksoapi
         virtual HRESULT put_accValue(
             VARIANT varChild,
             BSTR pszValue) = 0;
+
     };
 };

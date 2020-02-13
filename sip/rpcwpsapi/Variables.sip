@@ -19,10 +19,8 @@ namespace wpsapi
         virtual HRESULT get_Count(
             long *prop /Out/) = 0;
 
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -38,34 +36,6 @@ namespace wpsapi
             BSTR Name,
             VARIANT *Value = argMissing(),
             Variable **prop /Out/ = 0) = 0;
-    };
 
-    struct Variable : public IDispatch /Abstract/
-    {
-    public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
-
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **prop /Out/) = 0;
-
-        virtual HRESULT get_Name(
-            BSTR *prop /Out/) = 0;
-
-        virtual HRESULT get_Value(
-            BSTR *prop /Out/) = 0;
-
-        virtual HRESULT put_Value(
-            BSTR prop) = 0;
-
-        virtual HRESULT get_Index(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT Delete() = 0;
     };
 };

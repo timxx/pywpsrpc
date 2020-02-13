@@ -60,5 +60,6 @@ namespace ksoapi
 
         virtual HRESULT put_ShapeHeight(
             single ShapeHeight) = 0;
+
     };
 };

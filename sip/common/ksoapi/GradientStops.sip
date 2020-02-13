@@ -38,24 +38,6 @@ namespace ksoapi
             single Transparency = 0,
             int Index = -1,
             single Brightness = 0) = 0;
-    };
 
-    struct GradientStop : public ksoapi::_IMsoDispObj /Abstract/
-    {
-    public:
-        virtual HRESULT get_Color(
-            ColorFormat **Color /Out/) = 0;
-
-        virtual HRESULT get_Position(
-            single *Position /Out/) = 0;
-
-        virtual HRESULT put_Position(
-            single Position) = 0;
-
-        virtual HRESULT get_Transparency(
-            single *Transparency /Out/) = 0;
-
-        virtual HRESULT put_Transparency(
-            single Transparency) = 0;
     };
 };

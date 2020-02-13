@@ -16,12 +16,11 @@ namespace wpsapi
         virtual HRESULT get__NewEnum(
             IUnknown **prop /Out/) = 0;
 
-        virtual HRESULT get_Count(long *prop /Out/) = 0;
+        virtual HRESULT get_Count(
+            long *prop /Out/) = 0;
 
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -48,49 +47,6 @@ namespace wpsapi
         virtual HRESULT After(
             single Position,
             TabStop **prop /Out/) = 0;
-    };
 
-    struct TabStop : public IDispatch /Abstract/
-    {
-    public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
-
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **prop /Out/) = 0;
-
-        virtual HRESULT get_Alignment(
-            WdTabAlignment *prop /Out/) = 0;
-
-        virtual HRESULT put_Alignment(
-            WdTabAlignment prop) = 0;
-
-        virtual HRESULT get_Leader(
-            WdTabLeader *prop /Out/) = 0;
-
-        virtual HRESULT put_Leader(
-            WdTabLeader prop) = 0;
-
-        virtual HRESULT get_Position(
-            single *prop /Out/) = 0;
-
-        virtual HRESULT put_Position(
-            single prop) = 0;
-
-        virtual HRESULT get_CustomTab(
-            VARIANT_BOOL *prop /Out/) = 0;
-
-        virtual HRESULT get_Next(
-            TabStop **prop /Out/) = 0;
-
-        virtual HRESULT get_Previous(
-            TabStop **prop /Out/) = 0;
-
-        virtual HRESULT Clear() = 0;
     };
 };

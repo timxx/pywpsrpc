@@ -13,10 +13,8 @@ namespace wpsapi
     struct PageNumbers : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -86,37 +84,6 @@ namespace wpsapi
 
         virtual HRESULT put_DoubleQuote(
             VARIANT_BOOL prop) = 0;
-    };
 
-    struct PageNumber : public IDispatch /Abstract/
-    {
-    public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
-
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **prop /Out/) = 0;
-
-        virtual HRESULT get_Index(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Alignment(
-            WdPageNumberAlignment *prop /Out/) = 0;
-
-        virtual HRESULT put_Alignment(
-            WdPageNumberAlignment prop) = 0;
-
-        virtual HRESULT Select() = 0;
-
-        virtual HRESULT Copy() = 0;
-
-        virtual HRESULT Cut() = 0;
-
-        virtual HRESULT Delete() = 0;
     };
 };

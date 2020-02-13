@@ -13,20 +13,17 @@ namespace wpsapi
     struct _Font : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
-        virtual HRESULT get_Creator(long *prop /Out/) = 0;
+        virtual HRESULT get_Creator(
+            long *prop /Out/) = 0;
 
         virtual HRESULT get_Parent(
             IDispatch **prop /Out/) = 0;
 
-        virtual HRESULT get_Duplicate(_Font **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Duplicate((wpsapi::Font**)&a0);
-        %End
+        virtual HRESULT get_Duplicate(
+            Font **prop /Out/) = 0;
 
         virtual HRESULT get_Bold(
             long *prop /Out/) = 0;
@@ -323,5 +320,6 @@ namespace wpsapi
 
         virtual HRESULT put_StylisticSet(
             WdStylisticSet prop) = 0;
+
     };
 };

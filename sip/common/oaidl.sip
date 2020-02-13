@@ -186,6 +186,10 @@ VARIANT* argMissing()
 }
 %End
 
+struct SAFEARRAY
+{
+
+};
 
 struct IDispatch : public IUnknown /Abstract/
 {

@@ -13,10 +13,8 @@ namespace wpsapi
     struct ShapeNodes : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -60,29 +58,6 @@ namespace wpsapi
             single Y2 = 0,
             single X3 = 0,
             single Y3 = 0) = 0;
-    };
 
-    struct ShapeNode : public IDispatch /Abstract/
-    {
-    public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
-
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **prop /Out/) = 0;
-
-        virtual HRESULT get_EditingType(
-            MsoEditingType *prop /Out/) = 0;
-
-        virtual HRESULT get_Points(
-            VARIANT *prop /Out/) = 0;
-
-        virtual HRESULT get_SegmentType(
-            MsoSegmentType *prop /Out/) = 0;
     };
 };

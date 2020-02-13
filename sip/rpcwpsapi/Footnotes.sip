@@ -19,10 +19,8 @@ namespace wpsapi
         virtual HRESULT get_Count(
             long *prop /Out/) = 0;
 
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -82,76 +80,6 @@ namespace wpsapi
         virtual HRESULT ResetContinuationSeparator() = 0;
 
         virtual HRESULT ResetContinuationNotice() = 0;
-    };
 
-    struct Footnote : public IDispatch /Abstract/
-    {
-    public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
-
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **prop /Out/) = 0;
-
-        virtual HRESULT get_Range(
-            Range **prop /Out/) = 0;
-
-        virtual HRESULT get_Reference(
-            Range **prop /Out/) = 0;
-
-        virtual HRESULT get_Index(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT Delete() = 0;
-    };
-
-    struct FootnoteOptions : public IDispatch /Abstract/
-    {
-    public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
-
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **prop /Out/) = 0;
-
-        virtual HRESULT get_Location(
-            WdFootnoteLocation *prop /Out/) = 0;
-
-        virtual HRESULT put_Location(
-            WdFootnoteLocation prop) = 0;
-
-        virtual HRESULT get_NumberStyle(
-            WdNoteNumberStyle *prop /Out/) = 0;
-
-        virtual HRESULT put_NumberStyle(
-            WdNoteNumberStyle prop) = 0;
-
-        virtual HRESULT get_StartingNumber(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT put_StartingNumber(
-            long prop) = 0;
-
-        virtual HRESULT get_NumberingRule(
-            WdNumberingRule *prop /Out/) = 0;
-
-        virtual HRESULT put_NumberingRule(
-            WdNumberingRule prop) = 0;
-
-        virtual HRESULT get_LayoutColumns(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT put_LayoutColumns(
-            long prop) = 0;
     };
 };

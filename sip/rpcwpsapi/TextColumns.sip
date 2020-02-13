@@ -19,10 +19,8 @@ namespace wpsapi
         virtual HRESULT get_Count(
             long *prop /Out/) = 0;
 
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -72,32 +70,6 @@ namespace wpsapi
 
         virtual HRESULT put_FlowDirection(
             WdFlowDirection prop) = 0;
-    };
 
-    struct TextColumn : public IDispatch /Abstract/
-    {
-    public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
-
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **prop /Out/) = 0;
-
-        virtual HRESULT get_Width(
-            single *prop /Out/) = 0;
-
-        virtual HRESULT put_Width(
-            single prop) = 0;
-
-        virtual HRESULT get_SpaceAfter(
-            single *prop /Out/) = 0;
-
-        virtual HRESULT put_SpaceAfter(
-            single prop) = 0;
     };
 };

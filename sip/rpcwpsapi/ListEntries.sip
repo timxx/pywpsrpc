@@ -13,10 +13,8 @@ namespace wpsapi
     struct ListEntries : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -40,31 +38,6 @@ namespace wpsapi
             ListEntry **prop /Out/ = 0) = 0;
 
         virtual HRESULT Clear() = 0;
-    };
 
-    struct ListEntry : public IDispatch /Abstract/
-    {
-    public:
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
-
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **prop /Out/) = 0;
-
-        virtual HRESULT get_Index(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Name(
-            BSTR *prop /Out/) = 0;
-
-        virtual HRESULT put_Name(
-            BSTR prop) = 0;
-
-        virtual HRESULT Delete() = 0;
     };
 };

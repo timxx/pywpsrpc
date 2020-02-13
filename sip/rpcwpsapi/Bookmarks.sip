@@ -31,10 +31,8 @@ namespace wpsapi
         virtual HRESULT put_ShowHidden(
             VARIANT_BOOL prop) = 0;
 
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
+        virtual HRESULT get_Application(
+            Application **prop /Out/) = 0;
 
         virtual HRESULT get_Creator(
             long *prop /Out/) = 0;
@@ -54,55 +52,6 @@ namespace wpsapi
         virtual HRESULT Exists(
             BSTR Name,
             VARIANT_BOOL *prop /Out/) = 0;
-    };
 
-    struct Bookmark : public IDispatch /Abstract/
-    {
-    public:
-        virtual HRESULT get_Name(
-            BSTR *prop /Out/) = 0;
-
-        virtual HRESULT get_Range(
-            Range **prop /Out/) = 0;
-
-        virtual HRESULT get_Empty(
-            VARIANT_BOOL *prop /Out/) = 0;
-
-        virtual HRESULT get_Start(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT put_Start(
-            long prop) = 0;
-
-        virtual HRESULT get_End(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT put_End(
-            long prop) = 0;
-
-        virtual HRESULT get_Column(
-            VARIANT_BOOL *prop /Out/) = 0;
-
-        virtual HRESULT get_StoryType(
-            WdStoryType *prop /Out/) = 0;
-
-        virtual HRESULT get_Application(_Application **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->get_Application((wpsapi::Application**)&a0);
-        %End
-
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **prop /Out/) = 0;
-
-        virtual HRESULT Select() = 0;
-
-        virtual HRESULT Delete() = 0;
-
-        virtual HRESULT Copy(
-            BSTR Name,
-            Bookmark **prop /Out/) = 0;
     };
 };
