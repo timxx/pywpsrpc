@@ -1,0 +1,1888 @@
+/**
+ * Copyright (c) 2020 Weitian Leung
+ *
+ * This file is part of pywpsrpc.
+ *
+ * This file is distributed under the MIT License.
+ * See the LICENSE file for details.
+ *
+*/
+
+namespace etapi
+{
+    struct _Application : public IDispatch /Abstract/
+    {
+    public:
+        virtual HRESULT get_Application(
+            Application **RHS /Out/) = 0;
+
+        virtual HRESULT get_Creator(
+            XlCreator *RHS /Out/) = 0;
+
+        virtual HRESULT get_Parent(
+            Application **RHS /Out/) = 0;
+
+        virtual HRESULT get_ActiveCell(
+            Range **RHS /Out/) = 0;
+
+        virtual HRESULT get_ActiveChart(
+            Chart **RHS /Out/) = 0;
+
+        virtual HRESULT get_ActiveDialog(
+            DialogSheet **RHS /Out/) = 0;
+
+        virtual HRESULT get_ActiveMenuBar(
+            MenuBar **RHS /Out/) = 0;
+
+        virtual HRESULT get_ActivePrinter(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_ActivePrinter(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_ActiveSheet(
+            IDispatch **RHS /Out/) = 0;
+
+        virtual HRESULT get_ActiveWindow(
+            Window **RHS /Out/) = 0;
+
+        virtual HRESULT get_ActiveWorkbook(
+            Workbook **RHS /Out/) = 0;
+
+        virtual HRESULT get_AddIns(
+            AddIns **RHS /Out/) = 0;
+
+        virtual HRESULT get_Assistant(
+            ksoapi::Assistant **RHS /Out/) = 0;
+
+        virtual HRESULT Calculate(
+            long lcid) = 0;
+
+        virtual HRESULT get_Cells(
+            Range **RHS /Out/) = 0;
+
+        virtual HRESULT get_Charts(
+            Sheets **RHS /Out/) = 0;
+
+        virtual HRESULT get_Columns(
+            Range **RHS /Out/) = 0;
+
+        virtual HRESULT get_CommandBars(
+            ksoapi::CommandBars **RHS /Out/) = 0;
+
+        virtual HRESULT get_DDEAppReturnCode(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT DDEExecute(
+            long Channel,
+            BSTR String,
+            long lcid) = 0;
+
+        virtual HRESULT DDEInitiate(
+            BSTR App,
+            BSTR Topic,
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT DDEPoke(
+            long Channel,
+            VARIANT Item,
+            VARIANT Data,
+            long lcid) = 0;
+
+        virtual HRESULT DDERequest(
+            long Channel,
+            BSTR Item,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT DDETerminate(
+            long Channel,
+            long lcid) = 0;
+
+        virtual HRESULT get_DialogSheets(
+            Sheets **RHS /Out/) = 0;
+
+        virtual HRESULT Evaluate(
+            VARIANT Name,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT _Evaluate(
+            VARIANT Name,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT ExecuteExcel4Macro(
+            BSTR String,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+/*
+        virtual HRESULT Intersect(
+            Range *Arg1,
+            Range *Arg2,
+            VARIANT Arg3,
+            VARIANT Arg4,
+            VARIANT Arg5,
+            VARIANT Arg6,
+            VARIANT Arg7,
+            VARIANT Arg8,
+            VARIANT Arg9,
+            VARIANT Arg10,
+            VARIANT Arg11,
+            VARIANT Arg12,
+            VARIANT Arg13,
+            VARIANT Arg14,
+            VARIANT Arg15,
+            VARIANT Arg16,
+            VARIANT Arg17,
+            VARIANT Arg18,
+            VARIANT Arg19,
+            VARIANT Arg20,
+            VARIANT Arg21,
+            VARIANT Arg22,
+            VARIANT Arg23,
+            VARIANT Arg24,
+            VARIANT Arg25,
+            VARIANT Arg26,
+            VARIANT Arg27,
+            VARIANT Arg28,
+            VARIANT Arg29,
+            VARIANT Arg30,
+            long lcid,
+            Range **RHS /Out/) = 0;
+*/
+
+        virtual HRESULT get_MenuBars(
+            MenuBars **RHS /Out/) = 0;
+
+        virtual HRESULT get_Modules(
+            Modules **RHS /Out/) = 0;
+
+        virtual HRESULT get_Names(
+            Names **RHS /Out/) = 0;
+
+        virtual HRESULT get_Range(
+            VARIANT Cell1,
+            VARIANT Cell2,
+            Range **RHS /Out/) = 0;
+
+        virtual HRESULT get_Rows(
+            Range **RHS /Out/) = 0;
+
+/*
+        virtual HRESULT Run(
+            VARIANT Macro,
+            VARIANT Arg1,
+            VARIANT Arg2,
+            VARIANT Arg3,
+            VARIANT Arg4,
+            VARIANT Arg5,
+            VARIANT Arg6,
+            VARIANT Arg7,
+            VARIANT Arg8,
+            VARIANT Arg9,
+            VARIANT Arg10,
+            VARIANT Arg11,
+            VARIANT Arg12,
+            VARIANT Arg13,
+            VARIANT Arg14,
+            VARIANT Arg15,
+            VARIANT Arg16,
+            VARIANT Arg17,
+            VARIANT Arg18,
+            VARIANT Arg19,
+            VARIANT Arg20,
+            VARIANT Arg21,
+            VARIANT Arg22,
+            VARIANT Arg23,
+            VARIANT Arg24,
+            VARIANT Arg25,
+            VARIANT Arg26,
+            VARIANT Arg27,
+            VARIANT Arg28,
+            VARIANT Arg29,
+            VARIANT Arg30,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT _Run2(
+            VARIANT Macro,
+            VARIANT Arg1,
+            VARIANT Arg2,
+            VARIANT Arg3,
+            VARIANT Arg4,
+            VARIANT Arg5,
+            VARIANT Arg6,
+            VARIANT Arg7,
+            VARIANT Arg8,
+            VARIANT Arg9,
+            VARIANT Arg10,
+            VARIANT Arg11,
+            VARIANT Arg12,
+            VARIANT Arg13,
+            VARIANT Arg14,
+            VARIANT Arg15,
+            VARIANT Arg16,
+            VARIANT Arg17,
+            VARIANT Arg18,
+            VARIANT Arg19,
+            VARIANT Arg20,
+            VARIANT Arg21,
+            VARIANT Arg22,
+            VARIANT Arg23,
+            VARIANT Arg24,
+            VARIANT Arg25,
+            VARIANT Arg26,
+            VARIANT Arg27,
+            VARIANT Arg28,
+            VARIANT Arg29,
+            VARIANT Arg30,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+*/
+        virtual HRESULT get_Selection(
+            long lcid,
+            IDispatch **RHS /Out/) = 0;
+
+        virtual HRESULT SendKeys(
+            VARIANT Keys,
+            VARIANT Wait,
+            long lcid) = 0;
+
+        virtual HRESULT get_Sheets(
+            Sheets **RHS /Out/) = 0;
+
+        virtual HRESULT get_ShortcutMenus(
+            long Index,
+            Menu **RHS /Out/) = 0;
+
+        virtual HRESULT get_ThisWorkbook(
+            long lcid,
+            Workbook **RHS /Out/) = 0;
+
+        virtual HRESULT get_Toolbars(
+            Toolbars **RHS /Out/) = 0;
+/*
+        virtual HRESULT Union(
+            Range *Arg1,
+            Range *Arg2,
+            VARIANT Arg3,
+            VARIANT Arg4,
+            VARIANT Arg5,
+            VARIANT Arg6,
+            VARIANT Arg7,
+            VARIANT Arg8,
+            VARIANT Arg9,
+            VARIANT Arg10,
+            VARIANT Arg11,
+            VARIANT Arg12,
+            VARIANT Arg13,
+            VARIANT Arg14,
+            VARIANT Arg15,
+            VARIANT Arg16,
+            VARIANT Arg17,
+            VARIANT Arg18,
+            VARIANT Arg19,
+            VARIANT Arg20,
+            VARIANT Arg21,
+            VARIANT Arg22,
+            VARIANT Arg23,
+            VARIANT Arg24,
+            VARIANT Arg25,
+            VARIANT Arg26,
+            VARIANT Arg27,
+            VARIANT Arg28,
+            VARIANT Arg29,
+            VARIANT Arg30,
+            long lcid,
+            Range **RHS /Out/) = 0;
+*/
+        virtual HRESULT get_Windows(
+            Windows **RHS /Out/) = 0;
+
+        virtual HRESULT get_Workbooks(
+            Workbooks **RHS /Out/) = 0;
+
+        virtual HRESULT get_WorksheetFunction(
+            WorksheetFunction **RHS /Out/) = 0;
+
+        virtual HRESULT get_Worksheets(
+            Sheets **RHS /Out/) = 0;
+
+        virtual HRESULT get_Excel4IntlMacroSheets(
+            Sheets **RHS /Out/) = 0;
+
+        virtual HRESULT get_Excel4MacroSheets(
+            Sheets **RHS /Out/) = 0;
+
+        virtual HRESULT ActivateMicrosoftApp(
+            XlMSApplication Index,
+            long lcid) = 0;
+
+        virtual HRESULT AddChartAutoFormat(
+            VARIANT Chart,
+            BSTR Name,
+            VARIANT Description,
+            long lcid) = 0;
+
+        virtual HRESULT AddCustomList(
+            VARIANT ListArray,
+            VARIANT ByRow,
+            long lcid) = 0;
+
+        virtual HRESULT get_AlertBeforeOverwriting(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_AlertBeforeOverwriting(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_AltStartupPath(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_AltStartupPath(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_AskToUpdateLinks(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_AskToUpdateLinks(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_EnableAnimations(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_EnableAnimations(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_AutoCorrect(
+            AutoCorrect **RHS /Out/) = 0;
+
+        virtual HRESULT get_Build(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT get_CalculateBeforeSave(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_CalculateBeforeSave(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_Calculation(
+            long lcid,
+            XlCalculation *RHS /Out/) = 0;
+
+        virtual HRESULT put_Calculation(
+            long lcid,
+            XlCalculation RHS) = 0;
+
+        virtual HRESULT get_Caller(
+            VARIANT Index,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT get_CanPlaySounds(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT get_CanRecordSounds(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT get_Caption(
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_Caption(
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_CellDragAndDrop(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_CellDragAndDrop(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT CentimetersToPoints(
+            double Centimeters,
+            long lcid,
+            double *RHS /Out/) = 0;
+
+        virtual HRESULT CheckSpelling(
+            BSTR Word,
+            VARIANT CustomDictionary,
+            VARIANT IgnoreUppercase,
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT get_ClipboardFormats(
+            VARIANT Index,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT get_DisplayClipboardWindow(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayClipboardWindow(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_ColorButtons(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ColorButtons(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_CommandUnderlines(
+            long lcid,
+            XlCommandUnderlines *RHS /Out/) = 0;
+
+        virtual HRESULT put_CommandUnderlines(
+            long lcid,
+            XlCommandUnderlines RHS) = 0;
+
+        virtual HRESULT get_ConstrainNumeric(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ConstrainNumeric(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT ConvertFormula(
+            VARIANT Formula,
+            XlReferenceStyle FromReferenceStyle,
+            VARIANT ToReferenceStyle,
+            VARIANT ToAbsolute,
+            VARIANT RelativeTo,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT get_CopyObjectsWithCells(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_CopyObjectsWithCells(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_Cursor(
+            long lcid,
+            XlMousePointer *RHS /Out/) = 0;
+
+        virtual HRESULT put_Cursor(
+            long lcid,
+            XlMousePointer RHS) = 0;
+
+        virtual HRESULT get_CustomListCount(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT get_CutCopyMode(
+            long lcid,
+            XlCutCopyMode *RHS /Out/) = 0;
+
+        virtual HRESULT put_CutCopyMode(
+            long lcid,
+            XlCutCopyMode RHS) = 0;
+
+        virtual HRESULT get_DataEntryMode(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT put_DataEntryMode(
+            long lcid,
+            long RHS) = 0;
+
+        virtual HRESULT Dummy1(
+            VARIANT Arg1,
+            VARIANT Arg2,
+            VARIANT Arg3,
+            VARIANT Arg4,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT Dummy2(
+            VARIANT Arg1,
+            VARIANT Arg2,
+            VARIANT Arg3,
+            VARIANT Arg4,
+            VARIANT Arg5,
+            VARIANT Arg6,
+            VARIANT Arg7,
+            VARIANT Arg8,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT Dummy3(
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT Dummy4(
+            VARIANT Arg1,
+            VARIANT Arg2,
+            VARIANT Arg3,
+            VARIANT Arg4,
+            VARIANT Arg5,
+            VARIANT Arg6,
+            VARIANT Arg7,
+            VARIANT Arg8,
+            VARIANT Arg9,
+            VARIANT Arg10,
+            VARIANT Arg11,
+            VARIANT Arg12,
+            VARIANT Arg13,
+            VARIANT Arg14,
+            VARIANT Arg15,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT Dummy5(
+            VARIANT Arg1,
+            VARIANT Arg2,
+            VARIANT Arg3,
+            VARIANT Arg4,
+            VARIANT Arg5,
+            VARIANT Arg6,
+            VARIANT Arg7,
+            VARIANT Arg8,
+            VARIANT Arg9,
+            VARIANT Arg10,
+            VARIANT Arg11,
+            VARIANT Arg12,
+            VARIANT Arg13,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT Dummy6(
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT Dummy7(
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT Dummy8(
+            VARIANT Arg1,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT Dummy9(
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT Dummy10(
+            VARIANT arg,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT Dummy11() = 0;
+
+        virtual HRESULT get__Default(
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_DefaultFilePath(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_DefaultFilePath(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT DeleteChartAutoFormat(
+            BSTR Name,
+            long lcid) = 0;
+
+        virtual HRESULT DeleteCustomList(
+            long ListNum,
+            long lcid) = 0;
+
+        virtual HRESULT get_Dialogs(
+            Dialogs **RHS /Out/) = 0;
+
+        virtual HRESULT get_DisplayAlerts(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayAlerts(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_DisplayFormulaBar(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayFormulaBar(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_DisplayFullScreen(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayFullScreen(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_DisplayNoteIndicator(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayNoteIndicator(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_DisplayCommentIndicator(
+            XlCommentDisplayMode *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayCommentIndicator(
+            XlCommentDisplayMode RHS) = 0;
+
+        virtual HRESULT get_DisplayExcel4Menus(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayExcel4Menus(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_DisplayRecentFiles(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayRecentFiles(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_DisplayScrollBars(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayScrollBars(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_DisplayStatusBar(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayStatusBar(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT DoubleClick(
+            long lcid) = 0;
+
+        virtual HRESULT get_EditDirectlyInCell(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_EditDirectlyInCell(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_EnableAutoComplete(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_EnableAutoComplete(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_EnableCancelKey(
+            long lcid,
+            XlEnableCancelKey *RHS /Out/) = 0;
+
+        virtual HRESULT put_EnableCancelKey(
+            long lcid,
+            XlEnableCancelKey RHS) = 0;
+
+        virtual HRESULT get_EnableSound(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_EnableSound(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_EnableTipWizard(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_EnableTipWizard(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_FileConverters(
+            VARIANT Index1,
+            VARIANT Index2,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT get_FileSearch(
+            ksoapi::FileSearch **RHS /Out/) = 0;
+
+        virtual HRESULT get_FileFind(
+            ksoapi::IFind **RHS /Out/) = 0;
+
+        virtual HRESULT _FindFile(
+            long lcid) = 0;
+
+        virtual HRESULT get_FixedDecimal(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_FixedDecimal(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_FixedDecimalPlaces(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT put_FixedDecimalPlaces(
+            long lcid,
+            long RHS) = 0;
+
+        virtual HRESULT GetCustomListContents(
+            long ListNum,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT GetCustomListNum(
+            VARIANT ListArray,
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT GetOpenFilename(
+            VARIANT FileFilter,
+            VARIANT FilterIndex,
+            VARIANT Title,
+            VARIANT ButtonText,
+            VARIANT MultiSelect,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT GetSaveAsFilename(
+            VARIANT InitialFilename,
+            VARIANT FileFilter,
+            VARIANT FilterIndex,
+            VARIANT Title,
+            VARIANT ButtonText,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT Goto(
+            VARIANT Reference,
+            VARIANT Scroll,
+            long lcid) = 0;
+
+        virtual HRESULT get_Height(
+            long lcid,
+            double *RHS /Out/) = 0;
+
+        virtual HRESULT put_Height(
+            long lcid,
+            double RHS) = 0;
+
+        virtual HRESULT Help(
+            VARIANT HelpFile,
+            VARIANT HelpContextID,
+            long lcid) = 0;
+
+        virtual HRESULT get_IgnoreRemoteRequests(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_IgnoreRemoteRequests(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT InchesToPoints(
+            double Inches,
+            long lcid,
+            double *RHS /Out/) = 0;
+
+        virtual HRESULT InputBox(
+            BSTR Prompt,
+            VARIANT Title,
+            VARIANT Default,
+            VARIANT Left,
+            VARIANT Top,
+            VARIANT HelpFile,
+            VARIANT HelpContextID,
+            VARIANT Type,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT get_Interactive(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_Interactive(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_International(
+            VARIANT Index,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT get_Iteration(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_Iteration(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_LargeButtons(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_LargeButtons(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_Left(
+            long lcid,
+            double *RHS /Out/) = 0;
+
+        virtual HRESULT put_Left(
+            long lcid,
+            double RHS) = 0;
+
+        virtual HRESULT get_LibraryPath(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT _MacroOptions(
+            VARIANT Macro,
+            VARIANT Description,
+            VARIANT HasMenu,
+            VARIANT MenuText,
+            VARIANT HasShortcutKey,
+            VARIANT ShortcutKey,
+            VARIANT Category,
+            VARIANT StatusBar,
+            VARIANT HelpContextID,
+            VARIANT HelpFile,
+            long lcid) = 0;
+
+        virtual HRESULT MailLogoff(
+            long lcid) = 0;
+
+        virtual HRESULT MailLogon(
+            VARIANT Name,
+            VARIANT Password,
+            VARIANT DownloadNewMail,
+            long lcid) = 0;
+
+        virtual HRESULT get_MailSession(
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT get_MailSystem(
+            long lcid,
+            XlMailSystem *RHS /Out/) = 0;
+
+        virtual HRESULT get_MathCoprocessorAvailable(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT get_MaxChange(
+            long lcid,
+            double *RHS /Out/) = 0;
+
+        virtual HRESULT put_MaxChange(
+            long lcid,
+            double RHS) = 0;
+
+        virtual HRESULT get_MaxIterations(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT put_MaxIterations(
+            long lcid,
+            long RHS) = 0;
+
+        virtual HRESULT get_MemoryFree(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT get_MemoryTotal(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT get_MemoryUsed(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT get_MouseAvailable(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT get_MoveAfterReturn(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_MoveAfterReturn(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_MoveAfterReturnDirection(
+            long lcid,
+            XlDirection *RHS /Out/) = 0;
+
+        virtual HRESULT put_MoveAfterReturnDirection(
+            long lcid,
+            XlDirection RHS) = 0;
+
+        virtual HRESULT get_RecentFiles(
+            RecentFiles **RHS /Out/) = 0;
+
+        virtual HRESULT get_Name(
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT NextLetter(
+            long lcid,
+            Workbook **RHS /Out/) = 0;
+
+        virtual HRESULT get_NetworkTemplatesPath(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_ODBCErrors(
+            ODBCErrors **RHS /Out/) = 0;
+
+        virtual HRESULT get_ODBCTimeout(
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT put_ODBCTimeout(
+            long RHS) = 0;
+
+        virtual HRESULT get_OnCalculate(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_OnCalculate(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_OnData(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_OnData(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_OnDoubleClick(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_OnDoubleClick(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_OnEntry(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_OnEntry(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT OnKey(
+            BSTR Key,
+            VARIANT Procedure,
+            long lcid) = 0;
+
+        virtual HRESULT OnRepeat(
+            BSTR Text,
+            BSTR Procedure,
+            long lcid) = 0;
+
+        virtual HRESULT get_OnSheetActivate(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_OnSheetActivate(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_OnSheetDeactivate(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_OnSheetDeactivate(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT OnTime(
+            VARIANT EarliestTime,
+            BSTR Procedure,
+            VARIANT LatestTime,
+            VARIANT Schedule,
+            long lcid) = 0;
+
+        virtual HRESULT OnUndo(
+            BSTR Text,
+            BSTR Procedure,
+            long lcid) = 0;
+
+        virtual HRESULT get_OnWindow(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_OnWindow(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_OperatingSystem(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_OrganizationName(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_Path(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_PathSeparator(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_PreviousSelections(
+            VARIANT Index,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT get_PivotTableSelection(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_PivotTableSelection(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_PromptForSummaryInfo(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_PromptForSummaryInfo(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT Quit() = 0;
+
+        virtual HRESULT RecordMacro(
+            VARIANT BasicCode,
+            VARIANT XlmCode,
+            long lcid) = 0;
+
+        virtual HRESULT get_RecordRelative(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT get_ReferenceStyle(
+            long lcid,
+            XlReferenceStyle *RHS /Out/) = 0;
+
+        virtual HRESULT put_ReferenceStyle(
+            long lcid,
+            XlReferenceStyle RHS) = 0;
+
+        virtual HRESULT get_RegisteredFunctions(
+            VARIANT Index1,
+            VARIANT Index2,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT RegisterXLL(
+            BSTR Filename,
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT Repeat(
+            long lcid) = 0;
+
+        virtual HRESULT ResetTipWizard(
+            long lcid) = 0;
+
+        virtual HRESULT get_RollZoom(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_RollZoom(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT Save(
+            VARIANT Filename,
+            long lcid) = 0;
+
+        virtual HRESULT SaveWorkspace(
+            VARIANT Filename,
+            long lcid) = 0;
+
+        virtual HRESULT get_ScreenUpdating(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ScreenUpdating(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT SetDefaultChart(
+            VARIANT FormatName,
+            VARIANT Gallery) = 0;
+
+        virtual HRESULT get_SheetsInNewWorkbook(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT put_SheetsInNewWorkbook(
+            long lcid,
+            long RHS) = 0;
+
+        virtual HRESULT get_ShowChartTipNames(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ShowChartTipNames(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_ShowChartTipValues(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ShowChartTipValues(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_StandardFont(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_StandardFont(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_StandardFontSize(
+            long lcid,
+            double *RHS /Out/) = 0;
+
+        virtual HRESULT put_StandardFontSize(
+            long lcid,
+            double RHS) = 0;
+
+        virtual HRESULT get_StartupPath(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_StatusBar(
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT put_StatusBar(
+            long lcid,
+            VARIANT RHS) = 0;
+
+        virtual HRESULT get_TemplatesPath(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_ShowToolTips(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ShowToolTips(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_Top(
+            long lcid,
+            double *RHS /Out/) = 0;
+
+        virtual HRESULT put_Top(
+            long lcid,
+            double RHS) = 0;
+
+        virtual HRESULT get_DefaultSaveFormat(
+            XlFileFormat *RHS /Out/) = 0;
+
+        virtual HRESULT put_DefaultSaveFormat(
+            XlFileFormat RHS) = 0;
+
+        virtual HRESULT get_TransitionMenuKey(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_TransitionMenuKey(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_TransitionMenuKeyAction(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT put_TransitionMenuKeyAction(
+            long lcid,
+            long RHS) = 0;
+
+        virtual HRESULT get_TransitionNavigKeys(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_TransitionNavigKeys(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT Undo(
+            long lcid) = 0;
+
+        virtual HRESULT get_UsableHeight(
+            long lcid,
+            double *RHS /Out/) = 0;
+
+        virtual HRESULT get_UsableWidth(
+            long lcid,
+            double *RHS /Out/) = 0;
+
+        virtual HRESULT get_UserControl(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_UserControl(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_UserName(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_UserName(
+            long lcid,
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_Value(
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_VBE(
+            VBE **RHS /Out/) = 0;
+
+        virtual HRESULT get_Version(
+            long lcid,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_Visible(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_Visible(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT Volatile(
+            VARIANT Volatile,
+            long lcid) = 0;
+
+        virtual HRESULT _Wait(
+            VARIANT Time,
+            long lcid) = 0;
+
+        virtual HRESULT get_Width(
+            long lcid,
+            double *RHS /Out/) = 0;
+
+        virtual HRESULT put_Width(
+            long lcid,
+            double RHS) = 0;
+
+        virtual HRESULT get_WindowsForPens(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT get_WindowState(
+            long lcid,
+            XlWindowState *RHS /Out/) = 0;
+
+        virtual HRESULT put_WindowState(
+            long lcid,
+            XlWindowState RHS) = 0;
+
+        virtual HRESULT get_UILanguage(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT put_UILanguage(
+            long lcid,
+            long RHS) = 0;
+
+        virtual HRESULT get_DefaultSheetDirection(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT put_DefaultSheetDirection(
+            long lcid,
+            long RHS) = 0;
+
+        virtual HRESULT get_CursorMovement(
+            long lcid,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT put_CursorMovement(
+            long lcid,
+            long RHS) = 0;
+
+        virtual HRESULT get_ControlCharacters(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ControlCharacters(
+            long lcid,
+            VARIANT_BOOL RHS) = 0;
+/*
+        virtual HRESULT _WSFunction(
+            VARIANT Arg1,
+            VARIANT Arg2,
+            VARIANT Arg3,
+            VARIANT Arg4,
+            VARIANT Arg5,
+            VARIANT Arg6,
+            VARIANT Arg7,
+            VARIANT Arg8,
+            VARIANT Arg9,
+            VARIANT Arg10,
+            VARIANT Arg11,
+            VARIANT Arg12,
+            VARIANT Arg13,
+            VARIANT Arg14,
+            VARIANT Arg15,
+            VARIANT Arg16,
+            VARIANT Arg17,
+            VARIANT Arg18,
+            VARIANT Arg19,
+            VARIANT Arg20,
+            VARIANT Arg21,
+            VARIANT Arg22,
+            VARIANT Arg23,
+            VARIANT Arg24,
+            VARIANT Arg25,
+            VARIANT Arg26,
+            VARIANT Arg27,
+            VARIANT Arg28,
+            VARIANT Arg29,
+            VARIANT Arg30,
+            long lcid,
+            VARIANT *RHS /Out/) = 0;
+*/
+        virtual HRESULT get_EnableEvents(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_EnableEvents(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_DisplayInfoWindow(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayInfoWindow(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT Wait(
+            VARIANT Time,
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT get_ExtendList(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ExtendList(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_OLEDBErrors(
+            OLEDBErrors **RHS /Out/) = 0;
+
+        virtual HRESULT GetPhonetic(
+            VARIANT Text,
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_COMAddIns(
+            ksoapi::COMAddIns **RHS /Out/) = 0;
+
+        virtual HRESULT get_DefaultWebOptions(
+            DefaultWebOptions **RHS /Out/) = 0;
+
+        virtual HRESULT get_ProductCode(
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_UserLibraryPath(
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT get_AutoPercentEntry(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_AutoPercentEntry(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_LanguageSettings(
+            ksoapi::LanguageSettings **RHS /Out/) = 0;
+
+        virtual HRESULT get_Dummy101(
+            IDispatch **RHS /Out/) = 0;
+
+        virtual HRESULT Dummy12(
+            PivotTable *p1,
+            PivotTable *p2) = 0;
+
+        virtual HRESULT get_AnswerWizard(
+            ksoapi::AnswerWizard **RHS /Out/) = 0;
+
+        virtual HRESULT CalculateFull() = 0;
+
+        virtual HRESULT FindFile(
+            long lcid,
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT get_CalculationVersion(
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT get_ShowWindowsInTaskbar(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ShowWindowsInTaskbar(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_FeatureInstall(
+            MsoFeatureInstall *RHS /Out/) = 0;
+
+        virtual HRESULT put_FeatureInstall(
+            MsoFeatureInstall RHS) = 0;
+
+        virtual HRESULT get_Ready(
+            VARIANT_BOOL *RHS /Out/) = 0;
+/*
+        virtual HRESULT Dummy13(
+            VARIANT Arg1,
+            VARIANT Arg2,
+            VARIANT Arg3,
+            VARIANT Arg4,
+            VARIANT Arg5,
+            VARIANT Arg6,
+            VARIANT Arg7,
+            VARIANT Arg8,
+            VARIANT Arg9,
+            VARIANT Arg10,
+            VARIANT Arg11,
+            VARIANT Arg12,
+            VARIANT Arg13,
+            VARIANT Arg14,
+            VARIANT Arg15,
+            VARIANT Arg16,
+            VARIANT Arg17,
+            VARIANT Arg18,
+            VARIANT Arg19,
+            VARIANT Arg20,
+            VARIANT Arg21,
+            VARIANT Arg22,
+            VARIANT Arg23,
+            VARIANT Arg24,
+            VARIANT Arg25,
+            VARIANT Arg26,
+            VARIANT Arg27,
+            VARIANT Arg28,
+            VARIANT Arg29,
+            VARIANT Arg30,
+            VARIANT *RHS /Out/) = 0;
+*/
+        virtual HRESULT get_FindFormat(
+            CellFormat **RHS /Out/) = 0;
+
+        virtual HRESULT putref_FindFormat(
+            CellFormat *RHS) = 0;
+
+        virtual HRESULT get_ReplaceFormat(
+            CellFormat **RHS /Out/) = 0;
+
+        virtual HRESULT putref_ReplaceFormat(
+            CellFormat *RHS) = 0;
+
+        virtual HRESULT get_UsedObjects(
+            UsedObjects **RHS /Out/) = 0;
+
+        virtual HRESULT get_CalculationState(
+            XlCalculationState *RHS /Out/) = 0;
+
+        virtual HRESULT get_CalculationInterruptKey(
+            XlCalculationInterruptKey *RHS /Out/) = 0;
+
+        virtual HRESULT put_CalculationInterruptKey(
+            XlCalculationInterruptKey RHS) = 0;
+
+        virtual HRESULT get_Watches(
+            Watches **RHS /Out/) = 0;
+
+        virtual HRESULT get_DisplayFunctionToolTips(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayFunctionToolTips(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_AutomationSecurity(
+            MsoAutomationSecurity *RHS /Out/) = 0;
+
+        virtual HRESULT put_AutomationSecurity(
+            MsoAutomationSecurity RHS) = 0;
+
+        virtual HRESULT get_FileDialog(
+            MsoFileDialogType fileDialogType,
+            ksoapi::FileDialog **RHS /Out/) = 0;
+
+        virtual HRESULT Dummy14() = 0;
+
+        virtual HRESULT CalculateFullRebuild() = 0;
+
+        virtual HRESULT get_DisplayPasteOptions(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayPasteOptions(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_DisplayInsertOptions(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayInsertOptions(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_GenerateGetPivotData(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_GenerateGetPivotData(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_AutoRecover(
+            AutoRecover **RHS /Out/) = 0;
+
+        virtual HRESULT get_Hwnd(
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT get_Hinstance(
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT CheckAbort(
+            VARIANT KeepAbort) = 0;
+
+        virtual HRESULT get_ErrorCheckingOptions(
+            ErrorCheckingOptions **RHS /Out/) = 0;
+
+        virtual HRESULT get_AutoFormatAsYouTypeReplaceHyperlinks(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_AutoFormatAsYouTypeReplaceHyperlinks(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_SmartTagRecognizers(
+            SmartTagRecognizers **RHS /Out/) = 0;
+
+        virtual HRESULT get_NewWorkbook(
+            ksoapi::NewFile **RHS /Out/) = 0;
+
+        virtual HRESULT get_SpellingOptions(
+            SpellingOptions **RHS /Out/) = 0;
+
+        virtual HRESULT get_Speech(
+            Speech **RHS /Out/) = 0;
+
+        virtual HRESULT get_MapPaperSize(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_MapPaperSize(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_ShowStartupDialog(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ShowStartupDialog(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_DecimalSeparator(
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_DecimalSeparator(
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_ThousandsSeparator(
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_ThousandsSeparator(
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_UseSystemSeparators(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_UseSystemSeparators(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_ThisCell(
+            Range **RHS /Out/) = 0;
+
+        virtual HRESULT get_RTD(
+            RTD **RHS /Out/) = 0;
+
+        virtual HRESULT get_DisplayDocumentActionTaskPane(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayDocumentActionTaskPane(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT DisplayXMLSourcePane(
+            VARIANT XmlMap) = 0;
+
+        virtual HRESULT get_ArbitraryXMLSupportAvailable(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT Support(
+            IDispatch *Object,
+            long ID,
+            VARIANT arg,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT Dummy20(
+            long grfCompareFunctions,
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT get_MeasurementUnit(
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT put_MeasurementUnit(
+            long RHS) = 0;
+
+        virtual HRESULT get_ShowSelectionFloaties(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ShowSelectionFloaties(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_ShowMenuFloaties(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ShowMenuFloaties(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_ShowDevTools(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ShowDevTools(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_EnableLivePreview(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_EnableLivePreview(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_DisplayDocumentInformationPanel(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayDocumentInformationPanel(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_AlwaysUseClearType(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_AlwaysUseClearType(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_WarnOnFunctionNameConflict(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_WarnOnFunctionNameConflict(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_FormulaBarHeight(
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT put_FormulaBarHeight(
+            long RHS) = 0;
+
+        virtual HRESULT get_DisplayFormulaAutoComplete(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DisplayFormulaAutoComplete(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_GenerateTableRefs(
+            long lcid,
+            XlGenerateTableRefs *RHS /Out/) = 0;
+
+        virtual HRESULT put_GenerateTableRefs(
+            long lcid,
+            XlGenerateTableRefs RHS) = 0;
+
+        virtual HRESULT get_Assistance(
+            ksoapi::IAssistance **RHS /Out/) = 0;
+
+        virtual HRESULT CalculateUntilAsyncQueriesDone() = 0;
+
+        virtual HRESULT get_EnableLargeOperationAlert(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_EnableLargeOperationAlert(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_LargeOperationCellThousandCount(
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT put_LargeOperationCellThousandCount(
+            long RHS) = 0;
+
+        virtual HRESULT get_DeferAsyncQueries(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_DeferAsyncQueries(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_MultiThreadedCalculation(
+            MultiThreadedCalculation **RHS /Out/) = 0;
+
+        virtual HRESULT SharePointVersion(
+            BSTR bstrUrl,
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT get_ActiveEncryptionSession(
+            long *RHS /Out/) = 0;
+
+        virtual HRESULT get_HighQualityModeForGraphics(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_HighQualityModeForGraphics(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_FileExportConverters(
+            FileExportConverters **RHS /Out/) = 0;
+
+        virtual HRESULT get_SmartArtLayouts(
+            ksoapi::SmartArtLayouts **RHS /Out/) = 0;
+
+        virtual HRESULT get_SmartArtQuickStyles(
+            ksoapi::SmartArtQuickStyles **RHS /Out/) = 0;
+
+        virtual HRESULT get_SmartArtColors(
+            ksoapi::SmartArtColors **RHS /Out/) = 0;
+
+        virtual HRESULT get_AddIns2(
+            AddIns2 **RHS /Out/) = 0;
+
+        virtual HRESULT get_PrintCommunication(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_PrintCommunication(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT MacroOptions(
+            VARIANT Macro,
+            VARIANT Description,
+            VARIANT HasMenu,
+            VARIANT MenuText,
+            VARIANT HasShortcutKey,
+            VARIANT ShortcutKey,
+            VARIANT Category,
+            VARIANT StatusBar,
+            VARIANT HelpContextID,
+            VARIANT HelpFile,
+            VARIANT ArgumentDescriptions,
+            long lcid) = 0;
+
+        virtual HRESULT get_UseClusterConnector(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_UseClusterConnector(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_ClusterConnector(
+            BSTR *RHS /Out/) = 0;
+
+        virtual HRESULT put_ClusterConnector(
+            BSTR RHS) = 0;
+
+        virtual HRESULT get_Quitting(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT get_Dummy22(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_Dummy22(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_Dummy23(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_Dummy23(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_ProtectedViewWindows(
+            ProtectedViewWindows **RHS /Out/) = 0;
+
+        virtual HRESULT get_ActiveProtectedViewWindow(
+            ProtectedViewWindow **RHS /Out/) = 0;
+
+        virtual HRESULT get_IsSandboxed(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT get_SaveISO8601Dates(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_SaveISO8601Dates(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_HinstancePtr(
+            VARIANT *RHS /Out/) = 0;
+
+        virtual HRESULT get_FileValidation(
+            MsoFileValidationMode *RHS /Out/) = 0;
+
+        virtual HRESULT put_FileValidation(
+            MsoFileValidationMode RHS) = 0;
+
+        virtual HRESULT get_FileValidationPivot(
+            XlFileValidationPivotMode *RHS /Out/) = 0;
+
+        virtual HRESULT put_FileValidationPivot(
+            XlFileValidationPivotMode RHS) = 0;
+
+        virtual HRESULT get_ShowQuickAnalysis(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ShowQuickAnalysis(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_QuickAnalysis(
+            QuickAnalysis **RHS /Out/) = 0;
+
+        virtual HRESULT get_FlashFill(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_FlashFill(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_EnableMacroAnimations(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_EnableMacroAnimations(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_ChartDataPointTrack(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_ChartDataPointTrack(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_FlashFillMode(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_FlashFillMode(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_MergeInstances(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_MergeInstances(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_EnableCheckFileExtensions(
+            VARIANT_BOOL *RHS /Out/) = 0;
+
+        virtual HRESULT put_EnableCheckFileExtensions(
+            VARIANT_BOOL RHS) = 0;
+
+        virtual HRESULT get_DebugTools(
+            _DebugTools **RHS /Out/) = 0;
+
+    };
+};

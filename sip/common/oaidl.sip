@@ -172,6 +172,7 @@ typedef DWORD HREFTYPE;
 
 %ModuleHeaderCode
 VARIANT* argMissing();
+VARIANT argMissing2();
 %End
 
 %ModuleCode
@@ -183,6 +184,11 @@ VARIANT* argMissing()
     V_ERROR(&s_varMissing) =0x80020004;
 
     return &s_varMissing;
+}
+
+VARIANT argMissing2()
+{
+    return *argMissing();
 }
 %End
 

@@ -1,0 +1,42 @@
+/**
+ * Copyright (c) 2020 Weitian Leung
+ *
+ * This file is part of pywpsrpc.
+ *
+ * This file is distributed under the MIT License.
+ * See the LICENSE file for details.
+ *
+*/
+
+namespace etapi
+{
+    struct _DebugTools : public IDispatch /Abstract/
+    {
+    public:
+        virtual HRESULT Dump(
+            BSTR path) = 0;
+
+        virtual HRESULT Do() = 0;
+
+        virtual HRESULT Diagnose() = 0;
+
+        virtual HRESULT Report() = 0;
+
+        virtual HRESULT Profile() = 0;
+
+        virtual HRESULT RunCommand(
+            long cmdid,
+            VARIANT param1,
+            VARIANT param2,
+            VARIANT param3) = 0;
+
+        virtual HRESULT GetResult(
+            long cmdid,
+            VARIANT param,
+            VARIANT *res /Out/) = 0;
+
+        virtual HRESULT get_Solver(
+            Solver **prop /Out/) = 0;
+
+    };
+};
