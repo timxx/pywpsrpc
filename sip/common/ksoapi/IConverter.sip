@@ -13,22 +13,22 @@ namespace ksoapi
     struct IConverter : public IUnknown /Abstract/
     {
     public:
-        virtual HRESULT  HrInitConverter(
+        virtual HRESULT HrInitConverter(
             IConverterApplicationPreferences *pcap,
             IConverterPreferences **ppcp /Out/,
             IConverterUICallback *pcuic) = 0;
 
-        virtual HRESULT  HrUninitConverter(
+        virtual HRESULT HrUninitConverter(
             IConverterUICallback *pcuic) = 0;
 
-        virtual HRESULT  HrImport(
+        virtual HRESULT HrImport(
             BSTR bstrSourcePath,
             BSTR bstrDestPath,
             IConverterApplicationPreferences *pcap,
             IConverterPreferences **ppcp /Out/,
             IConverterUICallback *pcuic) = 0;
 
-        virtual HRESULT  HrExport(
+        virtual HRESULT HrExport(
             BSTR bstrSourcePath,
             BSTR bstrDestPath,
             BSTR bstrClass,
@@ -36,14 +36,14 @@ namespace ksoapi
             IConverterPreferences **ppcp /Out/,
             IConverterUICallback *pcuic) = 0;
 
-        virtual HRESULT  HrGetFormat(
+        virtual HRESULT HrGetFormat(
             BSTR bstrPath,
             BSTR *pbstrClass /Out/,
             IConverterApplicationPreferences *pcap,
             IConverterPreferences **ppcp /Out/,
             IConverterUICallback *pcuic) = 0;
 
-        virtual HRESULT  HrGetErrorString(
+        virtual HRESULT HrGetErrorString(
             long hrErr,
             BSTR *pbstrErrorMsg /Out/,
             IConverterApplicationPreferences *pcap) = 0;

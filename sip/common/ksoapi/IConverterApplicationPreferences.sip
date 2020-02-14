@@ -13,16 +13,16 @@ namespace ksoapi
     struct IConverterApplicationPreferences : public IUnknown /Abstract/
     {
     public:
-        virtual HRESULT  HrGetLcid(
+        virtual HRESULT HrGetLcid(
             unsigned long *plcid /Out/) = 0;
 
-        virtual HRESULT  HrGetHwnd(
+        virtual HRESULT HrGetHwnd(
             long *phwnd /Out/) = 0;
 
-        virtual HRESULT  HrGetApplication(
+        virtual HRESULT HrGetApplication(
             BSTR *pbstrApplication /Out/) = 0;
 
-        virtual HRESULT  HrCheckFormat(
+        virtual HRESULT HrCheckFormat(
             int *pFormat /Out/) = 0;
 
     };

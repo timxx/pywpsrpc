@@ -13,107 +13,107 @@ namespace wpsapi
     struct IApplicationEvents4 : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT  Startup() = 0;
+        virtual HRESULT Startup() = 0;
 
-        virtual HRESULT  Quit() = 0;
+        virtual HRESULT Quit() = 0;
 
-        virtual HRESULT  DocumentChange() = 0;
+        virtual HRESULT DocumentChange() = 0;
 
-        virtual HRESULT  DocumentOpen(
+        virtual HRESULT DocumentOpen(
             Document *Doc) = 0;
 
-        virtual HRESULT  DocumentBeforeClose(
+        virtual HRESULT DocumentBeforeClose(
             Document *Doc,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  DocumentBeforePrint(
+        virtual HRESULT DocumentBeforePrint(
             Document *Doc,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  DocumentBeforeSave(
+        virtual HRESULT DocumentBeforeSave(
             Document *Doc,
             VARIANT_BOOL *SaveAsUI,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  NewDocument(
+        virtual HRESULT NewDocument(
             Document *Doc) = 0;
 
-        virtual HRESULT  WindowActivate(
+        virtual HRESULT WindowActivate(
             Document *Doc,
             Window *Wn) = 0;
 
-        virtual HRESULT  WindowDeactivate(
+        virtual HRESULT WindowDeactivate(
             Document *Doc,
             Window *Wn) = 0;
 
-        virtual HRESULT  WindowSelectionChange(
+        virtual HRESULT WindowSelectionChange(
             Selection *Sel) = 0;
 
-        virtual HRESULT  WindowBeforeRightClick(
+        virtual HRESULT WindowBeforeRightClick(
             Selection *Sel,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  WindowBeforeDoubleClick(
+        virtual HRESULT WindowBeforeDoubleClick(
             Selection *Sel,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  EPostagePropertyDialog(
+        virtual HRESULT EPostagePropertyDialog(
             Document *Doc) = 0;
 
-        virtual HRESULT  EPostageInsert(
+        virtual HRESULT EPostageInsert(
             Document *Doc) = 0;
 
-        virtual HRESULT  MailMergeAfterMerge(
+        virtual HRESULT MailMergeAfterMerge(
             Document *Doc,
             Document *DocResult) = 0;
 
-        virtual HRESULT  MailMergeAfterRecordMerge(
+        virtual HRESULT MailMergeAfterRecordMerge(
             Document *Doc) = 0;
 
-        virtual HRESULT  MailMergeBeforeMerge(
+        virtual HRESULT MailMergeBeforeMerge(
             Document *Doc,
             long StartRecord,
             long EndRecord,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  MailMergeBeforeRecordMerge(
+        virtual HRESULT MailMergeBeforeRecordMerge(
             Document *Doc,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  MailMergeDataSourceLoad(
+        virtual HRESULT MailMergeDataSourceLoad(
             Document *Doc) = 0;
 
-        virtual HRESULT  MailMergeDataSourceValidate(
+        virtual HRESULT MailMergeDataSourceValidate(
             Document *Doc,
             VARIANT_BOOL *Handled) = 0;
 
-        virtual HRESULT  MailMergeWizardSendToCustom(
+        virtual HRESULT MailMergeWizardSendToCustom(
             Document *Doc) = 0;
 
-        virtual HRESULT  MailMergeWizardStateChange(
+        virtual HRESULT MailMergeWizardStateChange(
             Document *Doc,
             int *FromState,
             int *ToState,
             VARIANT_BOOL *Handled) = 0;
 
-        virtual HRESULT  WindowSize(
+        virtual HRESULT WindowSize(
             Document *Doc,
             Window *Wn) = 0;
 
-        virtual HRESULT  XMLSelectionChange(
+        virtual HRESULT XMLSelectionChange(
             Selection *Sel,
             XMLNode *OldXMLNode,
             XMLNode *NewXMLNode,
             long *Reason) = 0;
 
-        virtual HRESULT  XMLValidationError(
+        virtual HRESULT XMLValidationError(
             XMLNode *XMLNode) = 0;
 
-        virtual HRESULT  DocumentSync(
+        virtual HRESULT DocumentSync(
             Document *Doc,
             MsoSyncEventType SyncEventType) = 0;
 
-        virtual HRESULT  EPostageInsertEx(
+        virtual HRESULT EPostageInsertEx(
             Document *Doc,
             int cpDeliveryAddrStart,
             int cpDeliveryAddrEnd,
@@ -126,29 +126,29 @@ namespace wpsapi
             VARIANT_BOOL fPrint,
             VARIANT_BOOL *fCancel /In,Out/) = 0;
 
-        virtual HRESULT  MailMergeDataSourceValidate2(
+        virtual HRESULT MailMergeDataSourceValidate2(
             Document *Doc,
             VARIANT_BOOL *Handled /In,Out/) = 0;
 
-        virtual HRESULT  ProtectedViewWindowOpen(
+        virtual HRESULT ProtectedViewWindowOpen(
             ProtectedViewWindow *PvWindow) = 0;
 
-        virtual HRESULT  ProtectedViewWindowBeforeEdit(
+        virtual HRESULT ProtectedViewWindowBeforeEdit(
             ProtectedViewWindow *PvWindow,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  ProtectedViewWindowBeforeClose(
+        virtual HRESULT ProtectedViewWindowBeforeClose(
             ProtectedViewWindow *PvWindow,
             int CloseReason,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  ProtectedViewWindowSize(
+        virtual HRESULT ProtectedViewWindowSize(
             ProtectedViewWindow *PvWindow) = 0;
 
-        virtual HRESULT  ProtectedViewWindowActivate(
+        virtual HRESULT ProtectedViewWindowActivate(
             ProtectedViewWindow *PvWindow) = 0;
 
-        virtual HRESULT  ProtectedViewWindowDeactivate(
+        virtual HRESULT ProtectedViewWindowDeactivate(
             ProtectedViewWindow *PvWindow) = 0;
 
     };

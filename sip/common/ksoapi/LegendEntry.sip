@@ -13,49 +13,49 @@ namespace ksoapi
     struct LegendEntry : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT  get_Parent(
+        virtual HRESULT get_Parent(
             IDispatch **RHS /Out/) = 0;
 
-        virtual HRESULT  Delete(
+        virtual HRESULT Delete(
             VARIANT *RHS /Out/) = 0;
 
-        virtual HRESULT  get_Font(
+        virtual HRESULT get_Font(
             ChartFont **RHS /Out/) = 0;
 
-        virtual HRESULT  get_Index(
+        virtual HRESULT get_Index(
             long *RHS /Out/) = 0;
 
-        virtual HRESULT  get_LegendKey(
+        virtual HRESULT get_LegendKey(
             IMsoLegendKey **RHS /Out/) = 0;
 
-        virtual HRESULT  Select(
+        virtual HRESULT Select(
             VARIANT *RHS /Out/) = 0;
 
-        virtual HRESULT  get_AutoScaleFont(
+        virtual HRESULT get_AutoScaleFont(
             VARIANT *RHS /Out/) = 0;
 
-        virtual HRESULT  put_AutoScaleFont(
+        virtual HRESULT put_AutoScaleFont(
             VARIANT RHS) = 0;
 
-        virtual HRESULT  get_Left(
+        virtual HRESULT get_Left(
             double *RHS /Out/) = 0;
 
-        virtual HRESULT  get_Top(
+        virtual HRESULT get_Top(
             double *RHS /Out/) = 0;
 
-        virtual HRESULT  get_Width(
+        virtual HRESULT get_Width(
             double *RHS /Out/) = 0;
 
-        virtual HRESULT  get_Height(
+        virtual HRESULT get_Height(
             double *RHS /Out/) = 0;
 
-        virtual HRESULT  get_Format(
+        virtual HRESULT get_Format(
             IMsoChartFormat **ppChartFormat /Out/) = 0;
 
-        virtual HRESULT  get_Application(
+        virtual HRESULT get_Application(
             IDispatch **ppval /Out/) = 0;
 
-        virtual HRESULT  get_Creator(
+        virtual HRESULT get_Creator(
             long *pval /Out/) = 0;
 
     };

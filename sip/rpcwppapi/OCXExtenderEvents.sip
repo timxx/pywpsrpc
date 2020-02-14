@@ -13,9 +13,9 @@ namespace wppapi
     struct OCXExtenderEvents : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT  GotFocus() = 0;
+        virtual HRESULT GotFocus() = 0;
 
-        virtual HRESULT  LostFocus() = 0;
+        virtual HRESULT LostFocus() = 0;
 
     };
 };

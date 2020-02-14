@@ -19,7 +19,7 @@ namespace wpsapi
         virtual HRESULT put_ViewPdfAuto(
             VARIANT_BOOL prop) = 0;
 
-        virtual HRESULT  get_ConvertTablesOfContents(
+        virtual HRESULT get_ConvertTablesOfContents(
             VARIANT_BOOL *prop /Out/) = 0;
 
         virtual HRESULT put_ConvertTablesOfContents(

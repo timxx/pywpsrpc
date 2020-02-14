@@ -13,13 +13,13 @@ namespace ksoapi
     struct IConverterPreferences : public IUnknown /Abstract/
     {
     public:
-        virtual HRESULT  HrGetMacroEnabled(
+        virtual HRESULT HrGetMacroEnabled(
             int *pfMacroEnabled /Out/) = 0;
 
-        virtual HRESULT  HrCheckFormat(
+        virtual HRESULT HrCheckFormat(
             int *pFormat /Out/) = 0;
 
-        virtual HRESULT  HrGetLossySave(
+        virtual HRESULT HrGetLossySave(
             int *pfLossySave /Out/) = 0;
 
     };

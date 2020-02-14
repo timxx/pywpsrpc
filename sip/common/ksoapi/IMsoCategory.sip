@@ -13,16 +13,16 @@ namespace ksoapi
     struct IMsoCategory : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT  get_Parent(
+        virtual HRESULT get_Parent(
             IDispatch **RHS /Out/) = 0;
 
-        virtual HRESULT  get_Name(
+        virtual HRESULT get_Name(
             BSTR *pbstr /Out/) = 0;
 
-        virtual HRESULT  get_IsFiltered(
+        virtual HRESULT get_IsFiltered(
             VARIANT_BOOL *pfIsFiltered /Out/) = 0;
 
-        virtual HRESULT  put_IsFiltered(
+        virtual HRESULT put_IsFiltered(
             VARIANT_BOOL pfIsFiltered) = 0;
 
     };

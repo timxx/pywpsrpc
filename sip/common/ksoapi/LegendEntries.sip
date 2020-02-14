@@ -13,26 +13,26 @@ namespace ksoapi
     struct LegendEntries : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT  get_Parent(
+        virtual HRESULT get_Parent(
             IDispatch **RHS /Out/) = 0;
 
-        virtual HRESULT  get_Count(
+        virtual HRESULT get_Count(
             long *RHS /Out/) = 0;
 
-        virtual HRESULT  Item(
+        virtual HRESULT Item(
             VARIANT Index,
             LegendEntry **RHS /Out/) = 0;
 
-        virtual HRESULT  _NewEnum(
+        virtual HRESULT _NewEnum(
             IUnknown **RHS /Out/) = 0;
 
-        virtual HRESULT  get_Application(
+        virtual HRESULT get_Application(
             IDispatch **ppval /Out/) = 0;
 
-        virtual HRESULT  get_Creator(
+        virtual HRESULT get_Creator(
             long *pval /Out/) = 0;
 
-        virtual HRESULT  get__Default(
+        virtual HRESULT get__Default(
             VARIANT Index,
             LegendEntry **RHS /Out/) = 0;
 

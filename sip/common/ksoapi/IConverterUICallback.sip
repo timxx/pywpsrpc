@@ -13,16 +13,16 @@ namespace ksoapi
     struct IConverterUICallback : public IUnknown /Abstract/
     {
     public:
-        virtual HRESULT  HrReportProgress(
+        virtual HRESULT HrReportProgress(
             unsigned int uPercentComplete) = 0;
 
-        virtual HRESULT  HrMessageBox(
+        virtual HRESULT HrMessageBox(
             BSTR bstrText,
             BSTR bstrCaption,
             unsigned int uType,
             int *pidResult /Out/) = 0;
 
-        virtual HRESULT  HrInputBox(
+        virtual HRESULT HrInputBox(
             BSTR bstrText,
             BSTR bstrCaption,
             BSTR *pbstrInput /Out/,

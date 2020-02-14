@@ -13,17 +13,17 @@ namespace ksoapi
     struct IDocumentInspector : public IUnknown /Abstract/
     {
     public:
-        virtual HRESULT  GetInfo(
+        virtual HRESULT GetInfo(
             BSTR *Name /Out/,
             BSTR *Desc /Out/) = 0;
 
-        virtual HRESULT  Inspect(
+        virtual HRESULT Inspect(
             IDispatch *Doc,
             MsoDocInspectorStatus *Status /Out/,
             BSTR *Result /Out/,
             BSTR *Action /Out/) = 0;
 
-        virtual HRESULT  Fix(
+        virtual HRESULT Fix(
             IDispatch *Doc,
             long hwnd,
             MsoDocInspectorStatus *Status /Out/,

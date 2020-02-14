@@ -216,7 +216,7 @@ public:
         LCID lcid,
         DISPID *rgDispId) = 0;
 
-    virtual HRESULT  Invoke(
+    virtual HRESULT Invoke(
         DISPID dispIdMember,
         const IID& riid,
         LCID lcid,

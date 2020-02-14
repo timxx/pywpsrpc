@@ -13,116 +13,116 @@ namespace wppapi
     struct EApplication : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT  WindowSelectionChange(
+        virtual HRESULT WindowSelectionChange(
             Selection *Sel) = 0;
 
-        virtual HRESULT  WindowBeforeRightClick(
+        virtual HRESULT WindowBeforeRightClick(
             Selection *Sel,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  WindowBeforeDoubleClick(
+        virtual HRESULT WindowBeforeDoubleClick(
             Selection *Sel,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  PresentationClose(
+        virtual HRESULT PresentationClose(
             Presentation *Pres) = 0;
 
-        virtual HRESULT  PresentationSave(
+        virtual HRESULT PresentationSave(
             Presentation *Pres) = 0;
 
-        virtual HRESULT  PresentationOpen(
+        virtual HRESULT PresentationOpen(
             Presentation *Pres) = 0;
 
-        virtual HRESULT  NewPresentation(
+        virtual HRESULT NewPresentation(
             Presentation *Pres) = 0;
 
-        virtual HRESULT  PresentationNewSlide(
+        virtual HRESULT PresentationNewSlide(
             Slide *Sld) = 0;
 
-        virtual HRESULT  WindowActivate(
+        virtual HRESULT WindowActivate(
             Presentation *Pres,
             DocumentWindow *Wn) = 0;
 
-        virtual HRESULT  WindowDeactivate(
+        virtual HRESULT WindowDeactivate(
             Presentation *Pres,
             DocumentWindow *Wn) = 0;
 
-        virtual HRESULT  SlideShowBegin(
+        virtual HRESULT SlideShowBegin(
             SlideShowWindow *Wn) = 0;
 
-        virtual HRESULT  SlideShowNextBuild(
+        virtual HRESULT SlideShowNextBuild(
             SlideShowWindow *Wn) = 0;
 
-        virtual HRESULT  SlideShowNextSlide(
+        virtual HRESULT SlideShowNextSlide(
             SlideShowWindow *Wn) = 0;
 
-        virtual HRESULT  SlideShowEnd(
+        virtual HRESULT SlideShowEnd(
             Presentation *Pres) = 0;
 
-        virtual HRESULT  PresentationPrint(
+        virtual HRESULT PresentationPrint(
             Presentation *Pres) = 0;
 
-        virtual HRESULT  SlideSelectionChanged(
+        virtual HRESULT SlideSelectionChanged(
             SlideRange *SldRange) = 0;
 
-        virtual HRESULT  ColorSchemeChanged(
+        virtual HRESULT ColorSchemeChanged(
             SlideRange *SldRange) = 0;
 
-        virtual HRESULT  PresentationBeforeSave(
+        virtual HRESULT PresentationBeforeSave(
             Presentation *Pres,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  SlideShowNextClick(
+        virtual HRESULT SlideShowNextClick(
             SlideShowWindow *Wn,
             Effect *nEffect) = 0;
 
-        virtual HRESULT  AfterNewPresentation(
+        virtual HRESULT AfterNewPresentation(
             Presentation *Pres) = 0;
 
-        virtual HRESULT  AfterPresentationOpen(
+        virtual HRESULT AfterPresentationOpen(
             Presentation *Pres) = 0;
 
-        virtual HRESULT  PresentationSync(
+        virtual HRESULT PresentationSync(
             Presentation *Pres,
             MsoSyncEventType SyncEventType) = 0;
 
-        virtual HRESULT  SlideShowOnNext(
+        virtual HRESULT SlideShowOnNext(
             SlideShowWindow *Wn) = 0;
 
-        virtual HRESULT  SlideShowOnPrevious(
+        virtual HRESULT SlideShowOnPrevious(
             SlideShowWindow *Wn) = 0;
 
-        virtual HRESULT  PresentationBeforeClose(
+        virtual HRESULT PresentationBeforeClose(
             Presentation *Pres,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  ProtectedViewWindowOpen(
+        virtual HRESULT ProtectedViewWindowOpen(
             ProtectedViewWindow *ProtViewWindow) = 0;
 
-        virtual HRESULT  ProtectedViewWindowBeforeEdit(
+        virtual HRESULT ProtectedViewWindowBeforeEdit(
             ProtectedViewWindow *ProtViewWindow,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  ProtectedViewWindowBeforeClose(
+        virtual HRESULT ProtectedViewWindowBeforeClose(
             ProtectedViewWindow *ProtViewWindow,
             PpProtectedViewCloseReason ProtectedViewCloseReason,
             VARIANT_BOOL *Cancel /In,Out/) = 0;
 
-        virtual HRESULT  ProtectedViewWindowActivate(
+        virtual HRESULT ProtectedViewWindowActivate(
             ProtectedViewWindow *ProtViewWindow) = 0;
 
-        virtual HRESULT  ProtectedViewWindowDeactivate(
+        virtual HRESULT ProtectedViewWindowDeactivate(
             ProtectedViewWindow *ProtViewWindow) = 0;
 
-        virtual HRESULT  PresentationCloseFinal(
+        virtual HRESULT PresentationCloseFinal(
             Presentation *Pres) = 0;
 
-        virtual HRESULT  AfterDragDropOnSlide(
+        virtual HRESULT AfterDragDropOnSlide(
             Slide *Sld,
             single X,
             single Y) = 0;
 
-        virtual HRESULT  AfterShapeSizeChange(
+        virtual HRESULT AfterShapeSizeChange(
             Shape *shp) = 0;
 
     };

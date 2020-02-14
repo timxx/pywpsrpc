@@ -13,11 +13,11 @@ namespace wppapi
     struct MouseTracker : public IUnknown /Abstract/
     {
     public:
-        virtual HRESULT  OnTrack(
+        virtual HRESULT OnTrack(
             single X,
             single Y) = 0;
 
-        virtual HRESULT  EndTrack(
+        virtual HRESULT EndTrack(
             single X,
             single Y) = 0;
 

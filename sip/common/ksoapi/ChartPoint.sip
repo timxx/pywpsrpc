@@ -13,140 +13,140 @@ namespace ksoapi
     struct ChartPoint : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT  get_Parent(
+        virtual HRESULT get_Parent(
             IDispatch **RHS /Out/) = 0;
 
-        virtual HRESULT  _ApplyDataLabels(
+        virtual HRESULT _ApplyDataLabels(
             XlDataLabelsType Type,
             VARIANT IMsoLegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),
             VARIANT *RHS /Out/ = 0) = 0;
 
-        virtual HRESULT  get_Border(
+        virtual HRESULT get_Border(
             IMsoBorder **RHS /Out/) = 0;
 
-        virtual HRESULT  ClearFormats(
+        virtual HRESULT ClearFormats(
             VARIANT *RHS /Out/) = 0;
 
-        virtual HRESULT  Copy(
+        virtual HRESULT Copy(
             VARIANT *RHS /Out/) = 0;
 
-        virtual HRESULT  get_DataLabel(
+        virtual HRESULT get_DataLabel(
             IMsoDataLabel **RHS /Out/) = 0;
 
-        virtual HRESULT  Delete(
+        virtual HRESULT Delete(
             VARIANT *RHS /Out/) = 0;
 
-        virtual HRESULT  get_Explosion(
+        virtual HRESULT get_Explosion(
             long *RHS /Out/) = 0;
 
-        virtual HRESULT  put_Explosion(
+        virtual HRESULT put_Explosion(
             long RHS) = 0;
 
-        virtual HRESULT  get_HasDataLabel(
+        virtual HRESULT get_HasDataLabel(
             VARIANT_BOOL *RHS /Out/) = 0;
 
-        virtual HRESULT  put_HasDataLabel(
+        virtual HRESULT put_HasDataLabel(
             VARIANT_BOOL RHS) = 0;
 
-        virtual HRESULT  get_Interior(
+        virtual HRESULT get_Interior(
             IMsoInterior **RHS /Out/) = 0;
 
-        virtual HRESULT  get_InvertIfNegative(
+        virtual HRESULT get_InvertIfNegative(
             VARIANT_BOOL *RHS /Out/) = 0;
 
-        virtual HRESULT  put_InvertIfNegative(
+        virtual HRESULT put_InvertIfNegative(
             VARIANT_BOOL RHS) = 0;
 
-        virtual HRESULT  get_MarkerBackgroundColor(
+        virtual HRESULT get_MarkerBackgroundColor(
             long *RHS /Out/) = 0;
 
-        virtual HRESULT  put_MarkerBackgroundColor(
+        virtual HRESULT put_MarkerBackgroundColor(
             long RHS) = 0;
 
-        virtual HRESULT  get_MarkerBackgroundColorIndex(
+        virtual HRESULT get_MarkerBackgroundColorIndex(
             XlColorIndex *RHS /Out/) = 0;
 
-        virtual HRESULT  put_MarkerBackgroundColorIndex(
+        virtual HRESULT put_MarkerBackgroundColorIndex(
             XlColorIndex RHS) = 0;
 
-        virtual HRESULT  get_MarkerForegroundColor(
+        virtual HRESULT get_MarkerForegroundColor(
             long *RHS /Out/) = 0;
 
-        virtual HRESULT  put_MarkerForegroundColor(
+        virtual HRESULT put_MarkerForegroundColor(
             long RHS) = 0;
 
-        virtual HRESULT  get_MarkerForegroundColorIndex(
+        virtual HRESULT get_MarkerForegroundColorIndex(
             XlColorIndex *RHS /Out/) = 0;
 
-        virtual HRESULT  put_MarkerForegroundColorIndex(
+        virtual HRESULT put_MarkerForegroundColorIndex(
             XlColorIndex RHS) = 0;
 
-        virtual HRESULT  get_MarkerSize(
+        virtual HRESULT get_MarkerSize(
             long *RHS /Out/) = 0;
 
-        virtual HRESULT  put_MarkerSize(
+        virtual HRESULT put_MarkerSize(
             long RHS) = 0;
 
-        virtual HRESULT  get_MarkerStyle(
+        virtual HRESULT get_MarkerStyle(
             XlMarkerStyle *RHS /Out/) = 0;
 
-        virtual HRESULT  put_MarkerStyle(
+        virtual HRESULT put_MarkerStyle(
             XlMarkerStyle RHS) = 0;
 
-        virtual HRESULT  Paste(
+        virtual HRESULT Paste(
             VARIANT *RHS /Out/) = 0;
 
-        virtual HRESULT  get_PictureType(
+        virtual HRESULT get_PictureType(
             XlChartPictureType *RHS /Out/) = 0;
 
-        virtual HRESULT  put_PictureType(
+        virtual HRESULT put_PictureType(
             XlChartPictureType RHS) = 0;
 
-        virtual HRESULT  get_PictureUnit(
+        virtual HRESULT get_PictureUnit(
             double *RHS /Out/) = 0;
 
-        virtual HRESULT  put_PictureUnit(
+        virtual HRESULT put_PictureUnit(
             double RHS) = 0;
 
-        virtual HRESULT  Select(
+        virtual HRESULT Select(
             VARIANT *RHS /Out/) = 0;
 
-        virtual HRESULT  get_ApplyPictToSides(
+        virtual HRESULT get_ApplyPictToSides(
             VARIANT_BOOL *RHS /Out/) = 0;
 
-        virtual HRESULT  put_ApplyPictToSides(
+        virtual HRESULT put_ApplyPictToSides(
             VARIANT_BOOL RHS) = 0;
 
-        virtual HRESULT  get_ApplyPictToFront(
+        virtual HRESULT get_ApplyPictToFront(
             VARIANT_BOOL *RHS /Out/) = 0;
 
-        virtual HRESULT  put_ApplyPictToFront(
+        virtual HRESULT put_ApplyPictToFront(
             VARIANT_BOOL RHS) = 0;
 
-        virtual HRESULT  get_ApplyPictToEnd(
+        virtual HRESULT get_ApplyPictToEnd(
             VARIANT_BOOL *RHS /Out/) = 0;
 
-        virtual HRESULT  put_ApplyPictToEnd(
+        virtual HRESULT put_ApplyPictToEnd(
             VARIANT_BOOL RHS) = 0;
 
-        virtual HRESULT  get_Shadow(
+        virtual HRESULT get_Shadow(
             VARIANT_BOOL *RHS /Out/) = 0;
 
-        virtual HRESULT  put_Shadow(
+        virtual HRESULT put_Shadow(
             VARIANT_BOOL RHS) = 0;
 
-        virtual HRESULT  get_SecondaryPlot(
+        virtual HRESULT get_SecondaryPlot(
             VARIANT_BOOL *RHS /Out/) = 0;
 
-        virtual HRESULT  put_SecondaryPlot(
+        virtual HRESULT put_SecondaryPlot(
             VARIANT_BOOL RHS) = 0;
 
-        virtual HRESULT  get_Fill(
+        virtual HRESULT get_Fill(
             ChartFillFormat **RHS /Out/) = 0;
 
-        virtual HRESULT  ApplyDataLabels(
+        virtual HRESULT ApplyDataLabels(
             XlDataLabelsType Type,
             VARIANT IMsoLegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
@@ -159,43 +159,43 @@ namespace ksoapi
             VARIANT Separator = argMissing2(),
             VARIANT *RHS /Out/ = 0) = 0;
 
-        virtual HRESULT  get_Has3DEffect(
+        virtual HRESULT get_Has3DEffect(
             VARIANT_BOOL *RHS /Out/) = 0;
 
-        virtual HRESULT  put_Has3DEffect(
+        virtual HRESULT put_Has3DEffect(
             VARIANT_BOOL RHS) = 0;
 
-        virtual HRESULT  get_Format(
+        virtual HRESULT get_Format(
             IMsoChartFormat **ppChartFormat /Out/) = 0;
 
-        virtual HRESULT  get_Application(
+        virtual HRESULT get_Application(
             IDispatch **ppval /Out/) = 0;
 
-        virtual HRESULT  get_Creator(
+        virtual HRESULT get_Creator(
             long *pval /Out/) = 0;
 
-        virtual HRESULT  get_PictureUnit2(
+        virtual HRESULT get_PictureUnit2(
             double *RHS /Out/) = 0;
 
-        virtual HRESULT  put_PictureUnit2(
+        virtual HRESULT put_PictureUnit2(
             double RHS) = 0;
 
-        virtual HRESULT  get_Name(
+        virtual HRESULT get_Name(
             BSTR *RHS /Out/) = 0;
 
-        virtual HRESULT  get_Height(
+        virtual HRESULT get_Height(
             double *pval /Out/) = 0;
 
-        virtual HRESULT  get_Width(
+        virtual HRESULT get_Width(
             double *pval /Out/) = 0;
 
-        virtual HRESULT  get_Left(
+        virtual HRESULT get_Left(
             double *pval /Out/) = 0;
 
-        virtual HRESULT  get_Top(
+        virtual HRESULT get_Top(
             double *pval /Out/) = 0;
 
-        virtual HRESULT  PieSliceLocation(
+        virtual HRESULT PieSliceLocation(
             XlPieSliceLocation loc,
             XlPieSliceIndex Index,
             double *pval /Out/) = 0;

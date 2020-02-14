@@ -13,7 +13,7 @@ namespace wppapi
     struct MouseDownHandler : public IUnknown /Abstract/
     {
     public:
-        virtual HRESULT  OnMouseDown(
+        virtual HRESULT OnMouseDown(
             IUnknown *activeWin) = 0;
 
     };
