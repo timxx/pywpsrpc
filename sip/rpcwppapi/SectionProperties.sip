@@ -45,8 +45,8 @@ namespace wppapi
 
         virtual HRESULT AddSection(
             int sectionIndex,
-            VARIANT sectionName,
-            int *Section /Out/) = 0;
+            VARIANT sectionName = argMissing2(),
+            int *Section /Out/ = 0) = 0;
 
         virtual HRESULT Move(
             int sectionIndex,

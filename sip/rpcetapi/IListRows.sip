@@ -23,8 +23,8 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT _Add(
-            VARIANT Position,
-            ListRow **RHS /Out/) = 0;
+            VARIANT Position = argMissing2(),
+            ListRow **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__Default(
             VARIANT Index,
@@ -41,9 +41,9 @@ namespace etapi
             long *RHS /Out/) = 0;
 
         virtual HRESULT Add(
-            VARIANT Position,
-            VARIANT AlwaysInsert,
-            ListRow **RHS /Out/) = 0;
+            VARIANT Position = argMissing2(),
+            VARIANT AlwaysInsert = argMissing2(),
+            ListRow **RHS /Out/ = 0) = 0;
 
     };
 };

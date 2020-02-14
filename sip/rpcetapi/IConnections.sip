@@ -34,8 +34,8 @@ namespace etapi
             BSTR Description,
             VARIANT ConnectionString,
             VARIANT CommandText,
-            VARIANT lCmdtype,
-            WorkbookConnection **RHS /Out/) = 0;
+            VARIANT lCmdtype = argMissing2(),
+            WorkbookConnection **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Item(
             VARIANT Index,
@@ -53,16 +53,16 @@ namespace etapi
             BSTR Description,
             VARIANT ConnectionString,
             VARIANT CommandText,
-            VARIANT lCmdtype,
-            VARIANT CreateModelConnection,
-            VARIANT ImportRelationships,
-            WorkbookConnection **RHS /Out/) = 0;
+            VARIANT lCmdtype = argMissing2(),
+            VARIANT CreateModelConnection = argMissing2(),
+            VARIANT ImportRelationships = argMissing2(),
+            WorkbookConnection **RHS /Out/ = 0) = 0;
 
         virtual HRESULT AddFromFile(
             BSTR Filename,
-            VARIANT CreateModelConnection,
-            VARIANT ImportRelationships,
-            WorkbookConnection **RHS /Out/) = 0;
+            VARIANT CreateModelConnection = argMissing2(),
+            VARIANT ImportRelationships = argMissing2(),
+            WorkbookConnection **RHS /Out/ = 0) = 0;
 
     };
 };

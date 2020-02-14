@@ -18,22 +18,22 @@ namespace wppapi
 
         virtual HRESULT Add(
             XlTrendlineType Type,
-            VARIANT Order,
-            VARIANT Period,
-            VARIANT Forward,
-            VARIANT Backward,
-            VARIANT Intercept,
-            VARIANT DisplayEquation,
-            VARIANT DisplayRSquared,
-            VARIANT Name,
-            Trendline **RHS /Out/) = 0;
+            VARIANT Order = argMissing2(),
+            VARIANT Period = argMissing2(),
+            VARIANT Forward = argMissing2(),
+            VARIANT Backward = argMissing2(),
+            VARIANT Intercept = argMissing2(),
+            VARIANT DisplayEquation = argMissing2(),
+            VARIANT DisplayRSquared = argMissing2(),
+            VARIANT Name = argMissing2(),
+            Trendline **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;
 
         virtual HRESULT Item(
-            VARIANT Index,
-            Trendline **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            Trendline **RHS /Out/ = 0) = 0;
 
         virtual HRESULT _NewEnum(
             IUnknown **RHS /Out/) = 0;
@@ -45,8 +45,8 @@ namespace wppapi
             Application **Application /Out/) = 0;
 
         virtual HRESULT _Default(
-            VARIANT Index,
-            Trendline **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            Trendline **RHS /Out/ = 0) = 0;
 
     };
 };

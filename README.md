@@ -45,7 +45,7 @@ For full API references, go to [https://open.wps.cn/docs/office](https://open.wp
 
 - [x] WPS API bindings
 - [x] WPP API bindings
-- [ ] ET API bindings
+- [x] ET API bindings
 - [ ] Memory managerment
   - It seems that the bingings now cause memory leaks.
 - [x] Packaging

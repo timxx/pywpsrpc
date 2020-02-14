@@ -89,8 +89,8 @@ namespace wpsapi
             TickLabels **prop /Out/) = 0;
 
         virtual HRESULT SeriesCollection(
-            VARIANT Index,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_SeriesLines(
             SeriesLines **prop /Out/) = 0;
@@ -168,14 +168,14 @@ namespace wpsapi
             IDispatch **prop /Out/) = 0;
 
         virtual HRESULT CategoryCollection(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT FullCategoryCollection(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
     };
 };

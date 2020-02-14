@@ -24,8 +24,8 @@ namespace etapi
 
         virtual HRESULT Add(
             BSTR Schema,
-            VARIANT RootElementName,
-            XmlMap **RHS /Out/) = 0;
+            VARIANT RootElementName = argMissing2(),
+            XmlMap **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__Default(
             VARIANT Index,

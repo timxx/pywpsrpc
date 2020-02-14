@@ -24,8 +24,8 @@ namespace etapi
 
         virtual HRESULT ChangeScenario(
             VARIANT ChangingCells,
-            VARIANT Values,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Values = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ChangingCells(
             Range **RHS /Out/) = 0;
@@ -64,8 +64,8 @@ namespace etapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT get_Values(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
     };
 };

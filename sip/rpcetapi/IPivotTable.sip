@@ -23,15 +23,15 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT AddFields(
-            VARIANT RowFields,
-            VARIANT ColumnFields,
-            VARIANT PageFields,
-            VARIANT AddToTable,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT RowFields = argMissing2(),
+            VARIANT ColumnFields = argMissing2(),
+            VARIANT PageFields = argMissing2(),
+            VARIANT AddToTable = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ColumnFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ColumnGrand(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -43,15 +43,15 @@ namespace etapi
             Range **RHS /Out/) = 0;
 
         virtual HRESULT ShowPages(
-            VARIANT PageField,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT PageField = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_DataBodyRange(
             Range **RHS /Out/) = 0;
 
         virtual HRESULT get_DataFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_DataLabelRange(
             Range **RHS /Out/) = 0;
@@ -69,8 +69,8 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT get_HiddenFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_InnerDetail(
             BSTR *RHS /Out/) = 0;
@@ -85,8 +85,8 @@ namespace etapi
             BSTR RHS) = 0;
 
         virtual HRESULT get_PageFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_PageRange(
             Range **RHS /Out/) = 0;
@@ -95,8 +95,8 @@ namespace etapi
             Range **RHS /Out/) = 0;
 
         virtual HRESULT PivotFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_RefreshDate(
             DATE *RHS /Out/) = 0;
@@ -108,8 +108,8 @@ namespace etapi
             VARIANT_BOOL *RHS /Out/) = 0;
 
         virtual HRESULT get_RowFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_RowGrand(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -145,8 +145,8 @@ namespace etapi
             BSTR RHS) = 0;
 
         virtual HRESULT get_VisibleFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_CacheIndex(
             long *RHS /Out/) = 0;
@@ -224,22 +224,22 @@ namespace etapi
             PivotFormulas **RHS /Out/) = 0;
 
         virtual HRESULT PivotTableWizard(
-            VARIANT SourceType,
-            VARIANT SourceData,
-            VARIANT TableDestination,
-            VARIANT TableName,
-            VARIANT RowGrand,
-            VARIANT ColumnGrand,
-            VARIANT SaveData,
-            VARIANT HasAutoFormat,
-            VARIANT AutoPage,
-            VARIANT Reserved,
-            VARIANT BackgroundQuery,
-            VARIANT OptimizeCache,
-            VARIANT PageFieldOrder,
-            VARIANT PageFieldWrapCount,
-            VARIANT ReadData,
-            VARIANT Connection) = 0;
+            VARIANT SourceType = argMissing2(),
+            VARIANT SourceData = argMissing2(),
+            VARIANT TableDestination = argMissing2(),
+            VARIANT TableName = argMissing2(),
+            VARIANT RowGrand = argMissing2(),
+            VARIANT ColumnGrand = argMissing2(),
+            VARIANT SaveData = argMissing2(),
+            VARIANT HasAutoFormat = argMissing2(),
+            VARIANT AutoPage = argMissing2(),
+            VARIANT Reserved = argMissing2(),
+            VARIANT BackgroundQuery = argMissing2(),
+            VARIANT OptimizeCache = argMissing2(),
+            VARIANT PageFieldOrder = argMissing2(),
+            VARIANT PageFieldWrapCount = argMissing2(),
+            VARIANT ReadData = argMissing2(),
+            VARIANT Connection = argMissing2()) = 0;
 
         virtual HRESULT get_SubtotalHiddenPageItems(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -346,7 +346,7 @@ namespace etapi
         virtual HRESULT PivotSelect(
             BSTR Name,
             XlPTSelectionMode Mode,
-            VARIANT UseStandardName) = 0;
+            VARIANT UseStandardName = argMissing2()) = 0;
 
         virtual HRESULT get_PivotSelectionStandard(
             BSTR *RHS /Out/) = 0;
@@ -355,36 +355,36 @@ namespace etapi
             BSTR RHS) = 0;
 /*
         virtual HRESULT GetPivotData(
-            VARIANT DataField,
-            VARIANT Field1,
-            VARIANT Item1,
-            VARIANT Field2,
-            VARIANT Item2,
-            VARIANT Field3,
-            VARIANT Item3,
-            VARIANT Field4,
-            VARIANT Item4,
-            VARIANT Field5,
-            VARIANT Item5,
-            VARIANT Field6,
-            VARIANT Item6,
-            VARIANT Field7,
-            VARIANT Item7,
-            VARIANT Field8,
-            VARIANT Item8,
-            VARIANT Field9,
-            VARIANT Item9,
-            VARIANT Field10,
-            VARIANT Item10,
-            VARIANT Field11,
-            VARIANT Item11,
-            VARIANT Field12,
-            VARIANT Item12,
-            VARIANT Field13,
-            VARIANT Item13,
-            VARIANT Field14,
-            VARIANT Item14,
-            Range **RHS /Out/) = 0;
+            VARIANT DataField = argMissing2(),
+            VARIANT Field1 = argMissing2(),
+            VARIANT Item1 = argMissing2(),
+            VARIANT Field2 = argMissing2(),
+            VARIANT Item2 = argMissing2(),
+            VARIANT Field3 = argMissing2(),
+            VARIANT Item3 = argMissing2(),
+            VARIANT Field4 = argMissing2(),
+            VARIANT Item4 = argMissing2(),
+            VARIANT Field5 = argMissing2(),
+            VARIANT Item5 = argMissing2(),
+            VARIANT Field6 = argMissing2(),
+            VARIANT Item6 = argMissing2(),
+            VARIANT Field7 = argMissing2(),
+            VARIANT Item7 = argMissing2(),
+            VARIANT Field8 = argMissing2(),
+            VARIANT Item8 = argMissing2(),
+            VARIANT Field9 = argMissing2(),
+            VARIANT Item9 = argMissing2(),
+            VARIANT Field10 = argMissing2(),
+            VARIANT Item10 = argMissing2(),
+            VARIANT Field11 = argMissing2(),
+            VARIANT Item11 = argMissing2(),
+            VARIANT Field12 = argMissing2(),
+            VARIANT Item12 = argMissing2(),
+            VARIANT Field13 = argMissing2(),
+            VARIANT Item13 = argMissing2(),
+            VARIANT Field14 = argMissing2(),
+            VARIANT Item14 = argMissing2(),
+            Range **RHS /Out/ = 0) = 0;
 */
         virtual HRESULT get_DataPivotField(
             PivotField **RHS /Out/) = 0;
@@ -397,9 +397,9 @@ namespace etapi
 
         virtual HRESULT AddDataField(
             IDispatch *Field,
-            VARIANT Caption,
-            VARIANT Function,
-            PivotField **RHS /Out/) = 0;
+            VARIANT Caption = argMissing2(),
+            VARIANT Function = argMissing2(),
+            PivotField **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_MDX(
             BSTR *RHS /Out/) = 0;
@@ -421,36 +421,36 @@ namespace etapi
 /*
         virtual HRESULT Dummy15(
             VARIANT Arg1,
-            VARIANT Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT Arg5,
-            VARIANT Arg6,
-            VARIANT Arg7,
-            VARIANT Arg8,
-            VARIANT Arg9,
-            VARIANT Arg10,
-            VARIANT Arg11,
-            VARIANT Arg12,
-            VARIANT Arg13,
-            VARIANT Arg14,
-            VARIANT Arg15,
-            VARIANT Arg16,
-            VARIANT Arg17,
-            VARIANT Arg18,
-            VARIANT Arg19,
-            VARIANT Arg20,
-            VARIANT Arg21,
-            VARIANT Arg22,
-            VARIANT Arg23,
-            VARIANT Arg24,
-            VARIANT Arg25,
-            VARIANT Arg26,
-            VARIANT Arg27,
-            VARIANT Arg28,
-            VARIANT Arg29,
-            VARIANT Arg30,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Arg2 = argMissing2(),
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT Arg5 = argMissing2(),
+            VARIANT Arg6 = argMissing2(),
+            VARIANT Arg7 = argMissing2(),
+            VARIANT Arg8 = argMissing2(),
+            VARIANT Arg9 = argMissing2(),
+            VARIANT Arg10 = argMissing2(),
+            VARIANT Arg11 = argMissing2(),
+            VARIANT Arg12 = argMissing2(),
+            VARIANT Arg13 = argMissing2(),
+            VARIANT Arg14 = argMissing2(),
+            VARIANT Arg15 = argMissing2(),
+            VARIANT Arg16 = argMissing2(),
+            VARIANT Arg17 = argMissing2(),
+            VARIANT Arg18 = argMissing2(),
+            VARIANT Arg19 = argMissing2(),
+            VARIANT Arg20 = argMissing2(),
+            VARIANT Arg21 = argMissing2(),
+            VARIANT Arg22 = argMissing2(),
+            VARIANT Arg23 = argMissing2(),
+            VARIANT Arg24 = argMissing2(),
+            VARIANT Arg25 = argMissing2(),
+            VARIANT Arg26 = argMissing2(),
+            VARIANT Arg27 = argMissing2(),
+            VARIANT Arg28 = argMissing2(),
+            VARIANT Arg29 = argMissing2(),
+            VARIANT Arg30 = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 */
         virtual HRESULT get_EnableFieldList(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -475,11 +475,11 @@ namespace etapi
 
         virtual HRESULT CreateCubeFile(
             BSTR File,
-            VARIANT Measures,
-            VARIANT Levels,
-            VARIANT Members,
-            VARIANT Properties,
-            BSTR *RHS /Out/) = 0;
+            VARIANT Measures = argMissing2(),
+            VARIANT Levels = argMissing2(),
+            VARIANT Members = argMissing2(),
+            VARIANT Properties = argMissing2(),
+            BSTR *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_DisplayEmptyRow(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -725,9 +725,9 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT PivotValueCell(
-            VARIANT rowline,
-            VARIANT columnline,
-            PivotValueCell **RHS /Out/) = 0;
+            VARIANT rowline = argMissing2(),
+            VARIANT columnline = argMissing2(),
+            PivotValueCell **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Hidden(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -737,24 +737,24 @@ namespace etapi
 
         virtual HRESULT DrillDown(
             PivotItem *PivotItem,
-            VARIANT PivotLine) = 0;
+            VARIANT PivotLine = argMissing2()) = 0;
 
         virtual HRESULT DrillUp(
             PivotItem *PivotItem,
-            VARIANT PivotLine,
-            VARIANT LevelUniqueName) = 0;
+            VARIANT PivotLine = argMissing2(),
+            VARIANT LevelUniqueName = argMissing2()) = 0;
 
         virtual HRESULT DrillTo(
             PivotItem *PivotItem,
             CubeField *CubeField,
-            VARIANT PivotLine) = 0;
+            VARIANT PivotLine = argMissing2()) = 0;
 
         virtual HRESULT Dummy2(
             VARIANT Arg1,
-            VARIANT Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Arg2 = argMissing2(),
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
     };
 };

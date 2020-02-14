@@ -25,8 +25,8 @@ namespace ksoapi
 
         virtual HRESULT Add(
             BSTR FolderName,
-            VARIANT ParentFolder,
-            SharedWorkspaceFolder **ppFolder /Out/) = 0;
+            VARIANT ParentFolder = argMissing2(),
+            SharedWorkspaceFolder **ppFolder /Out/ = 0) = 0;
 
         virtual HRESULT get_Parent(
             IDispatch **ppidisp /Out/) = 0;

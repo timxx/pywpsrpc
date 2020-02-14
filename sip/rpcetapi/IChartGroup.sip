@@ -98,8 +98,8 @@ namespace etapi
             TickLabels **RHS /Out/) = 0;
 
         virtual HRESULT SeriesCollection(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_SeriesLines(
             SeriesLines **RHS /Out/) = 0;
@@ -168,14 +168,14 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT FullCategoryCollection(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT CategoryCollection(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
     };
 };

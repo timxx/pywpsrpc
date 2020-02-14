@@ -24,8 +24,8 @@ namespace etapi
 
         virtual HRESULT Add(
             BSTR Name,
-            VARIANT iDataType,
-            Parameter **RHS /Out/) = 0;
+            VARIANT iDataType = argMissing2(),
+            Parameter **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;

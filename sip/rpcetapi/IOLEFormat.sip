@@ -31,7 +31,7 @@ namespace etapi
             BSTR *RHS /Out/) = 0;
 
         virtual HRESULT Verb(
-            VARIANT Verb) = 0;
+            VARIANT Verb = argMissing2()) = 0;
 
     };
 };

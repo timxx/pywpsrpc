@@ -40,8 +40,8 @@ namespace wppapi
             int *FromFile /Out/) = 0;
 
         virtual HRESULT Range(
-            VARIANT Index,
-            SlideRange **Range /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            SlideRange **Range /Out/ = 0) = 0;
 
         virtual HRESULT Paste(
             int Index,

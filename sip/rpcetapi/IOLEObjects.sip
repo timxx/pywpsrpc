@@ -91,8 +91,8 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Select(
-            VARIANT Replace,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Replace = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT SendToBack(
             VARIANT *RHS /Out/) = 0;
@@ -168,18 +168,18 @@ namespace etapi
         virtual void  _Dummy41() = 0;
 
         virtual HRESULT Add(
-            VARIANT ClassType,
-            VARIANT Filename,
-            VARIANT Link,
-            VARIANT DisplayAsIcon,
-            VARIANT IconFileName,
-            VARIANT IconIndex,
-            VARIANT IconLabel,
-            VARIANT Left,
-            VARIANT Top,
-            VARIANT Width,
-            VARIANT Height,
-            OLEObject **RHS /Out/) = 0;
+            VARIANT ClassType = argMissing2(),
+            VARIANT Filename = argMissing2(),
+            VARIANT Link = argMissing2(),
+            VARIANT DisplayAsIcon = argMissing2(),
+            VARIANT IconFileName = argMissing2(),
+            VARIANT IconIndex = argMissing2(),
+            VARIANT IconLabel = argMissing2(),
+            VARIANT Left = argMissing2(),
+            VARIANT Top = argMissing2(),
+            VARIANT Width = argMissing2(),
+            VARIANT Height = argMissing2(),
+            OLEObject **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;

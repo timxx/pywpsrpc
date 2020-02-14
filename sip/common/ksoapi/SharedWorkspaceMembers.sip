@@ -27,8 +27,8 @@ namespace ksoapi
             BSTR Email,
             BSTR DomainName,
             BSTR DisplayName,
-            VARIANT Role,
-            SharedWorkspaceMember **ppMember /Out/) = 0;
+            VARIANT Role = argMissing2(),
+            SharedWorkspaceMember **ppMember /Out/ = 0) = 0;
 
         virtual HRESULT get_Parent(
             IDispatch **ppidisp /Out/) = 0;

@@ -68,9 +68,9 @@ namespace etapi
 
         virtual HRESULT ChangeFileAccess(
             XlFileAccess Mode,
-            VARIANT WritePassword,
-            VARIANT Notify,
-            long lcid) = 0;
+            VARIANT WritePassword = argMissing2(),
+            VARIANT Notify = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT ChangeLink(
             BSTR Name,
@@ -97,14 +97,14 @@ namespace etapi
             BSTR RHS) = 0;
 
         virtual HRESULT get_Colors(
-            VARIANT Index,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT put_Colors(
-            VARIANT Index,
-            long lcid,
-            VARIANT RHS) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            VARIANT RHS = argMissing2()) = 0;
 
         virtual HRESULT get_CommandBars(
             ksoapi::CommandBars **RHS /Out/) = 0;
@@ -208,15 +208,15 @@ namespace etapi
         virtual HRESULT LinkInfo(
             BSTR Name,
             XlLinkInfo LinkInfo,
-            VARIANT Type,
-            VARIANT EditionRef,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Type = argMissing2(),
+            VARIANT EditionRef = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT LinkSources(
-            VARIANT Type,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Type = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Mailer(
             Mailer **RHS /Out/) = 0;
@@ -267,9 +267,9 @@ namespace etapi
 
         virtual HRESULT OpenLinks(
             BSTR Name,
-            VARIANT ReadOnly,
-            VARIANT Type,
-            long lcid) = 0;
+            VARIANT ReadOnly = argMissing2(),
+            VARIANT Type = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Path(
             long lcid,
@@ -291,8 +291,8 @@ namespace etapi
             PivotCaches **RHS /Out/) = 0;
 
         virtual HRESULT Post(
-            VARIANT DestName,
-            long lcid) = 0;
+            VARIANT DestName = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_PrecisionAsDisplayed(
             long lcid,
@@ -303,31 +303,31 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT __PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            long lcid) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT PrintPreview(
-            VARIANT EnableChanges,
-            long lcid) = 0;
+            VARIANT EnableChanges = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT _Protect(
-            VARIANT Password,
-            VARIANT Structure,
-            VARIANT Windows) = 0;
+            VARIANT Password = argMissing2(),
+            VARIANT Structure = argMissing2(),
+            VARIANT Windows = argMissing2()) = 0;
 
         virtual HRESULT _ProtectSharing(
-            VARIANT Filename,
-            VARIANT Password,
-            VARIANT WriteResPassword,
-            VARIANT ReadOnlyRecommended,
-            VARIANT CreateBackup,
-            VARIANT SharingPassword) = 0;
+            VARIANT Filename = argMissing2(),
+            VARIANT Password = argMissing2(),
+            VARIANT WriteResPassword = argMissing2(),
+            VARIANT ReadOnlyRecommended = argMissing2(),
+            VARIANT CreateBackup = argMissing2(),
+            VARIANT SharingPassword = argMissing2()) = 0;
 
         virtual HRESULT get_ProtectStructure(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -376,22 +376,22 @@ namespace etapi
             long lcid) = 0;
 
         virtual HRESULT _SaveAs(
-            VARIANT Filename,
-            VARIANT FileFormat,
-            VARIANT Password,
-            VARIANT WriteResPassword,
-            VARIANT ReadOnlyRecommended,
-            VARIANT CreateBackup,
-            XlSaveAsAccessMode AccessMode,
-            VARIANT ConflictResolution,
-            VARIANT AddToMru,
-            VARIANT TextCodepage,
-            VARIANT TextVisualLayout,
-            long lcid) = 0;
+            VARIANT Filename = argMissing2(),
+            VARIANT FileFormat = argMissing2(),
+            VARIANT Password = argMissing2(),
+            VARIANT WriteResPassword = argMissing2(),
+            VARIANT ReadOnlyRecommended = argMissing2(),
+            VARIANT CreateBackup = argMissing2(),
+            XlSaveAsAccessMode AccessMode = etapi::xlNoChange,
+            VARIANT ConflictResolution = argMissing2(),
+            VARIANT AddToMru = argMissing2(),
+            VARIANT TextCodepage = argMissing2(),
+            VARIANT TextVisualLayout = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT SaveCopyAs(
-            VARIANT Filename,
-            long lcid) = 0;
+            VARIANT Filename = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Saved(
             long lcid,
@@ -411,19 +411,19 @@ namespace etapi
 
         virtual HRESULT SendMail(
             VARIANT Recipients,
-            VARIANT Subject,
-            VARIANT ReturnReceipt,
-            long lcid) = 0;
+            VARIANT Subject = argMissing2(),
+            VARIANT ReturnReceipt = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT SendMailer(
-            VARIANT FileFormat,
-            XlPriority Priority,
-            long lcid) = 0;
+            VARIANT FileFormat = argMissing2(),
+            XlPriority Priority = etapi::xlPriorityNormal,
+            long lcid = 0) = 0;
 
         virtual HRESULT SetLinkOnData(
             BSTR Name,
-            VARIANT Procedure,
-            long lcid) = 0;
+            VARIANT Procedure = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Sheets(
             Sheets **RHS /Out/) = 0;
@@ -456,19 +456,19 @@ namespace etapi
             BSTR RHS) = 0;
 
         virtual HRESULT Unprotect(
-            VARIANT Password,
-            long lcid) = 0;
+            VARIANT Password = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT UnprotectSharing(
-            VARIANT SharingPassword) = 0;
+            VARIANT SharingPassword = argMissing2()) = 0;
 
         virtual HRESULT UpdateFromFile(
-            long lcid) = 0;
+            long lcid = 0) = 0;
 
         virtual HRESULT UpdateLink(
-            VARIANT Name,
-            VARIANT Type,
-            long lcid) = 0;
+            VARIANT Name = argMissing2(),
+            VARIANT Type = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_UpdateRemoteReferences(
             long lcid,
@@ -518,9 +518,9 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT HighlightChangesOptions(
-            VARIANT When,
-            VARIANT Who,
-            VARIANT Where) = 0;
+            VARIANT When = argMissing2(),
+            VARIANT Who = argMissing2(),
+            VARIANT Where = argMissing2()) = 0;
 
         virtual HRESULT get_HighlightChangesOnScreen(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -542,36 +542,36 @@ namespace etapi
 
         virtual HRESULT PurgeChangeHistoryNow(
             long Days,
-            VARIANT SharingPassword) = 0;
+            VARIANT SharingPassword = argMissing2()) = 0;
 
         virtual HRESULT AcceptAllChanges(
-            VARIANT When,
-            VARIANT Who,
-            VARIANT Where) = 0;
+            VARIANT When = argMissing2(),
+            VARIANT Who = argMissing2(),
+            VARIANT Where = argMissing2()) = 0;
 
         virtual HRESULT RejectAllChanges(
-            VARIANT When,
-            VARIANT Who,
-            VARIANT Where) = 0;
+            VARIANT When = argMissing2(),
+            VARIANT Who = argMissing2(),
+            VARIANT Where = argMissing2()) = 0;
 
         virtual HRESULT PivotTableWizard(
-            VARIANT SourceType,
-            VARIANT SourceData,
-            VARIANT TableDestination,
-            VARIANT TableName,
-            VARIANT RowGrand,
-            VARIANT ColumnGrand,
-            VARIANT SaveData,
-            VARIANT HasAutoFormat,
-            VARIANT AutoPage,
-            VARIANT Reserved,
-            VARIANT BackgroundQuery,
-            VARIANT OptimizeCache,
-            VARIANT PageFieldOrder,
-            VARIANT PageFieldWrapCount,
-            VARIANT ReadData,
-            VARIANT Connection,
-            long lcid) = 0;
+            VARIANT SourceType = argMissing2(),
+            VARIANT SourceData = argMissing2(),
+            VARIANT TableDestination = argMissing2(),
+            VARIANT TableName = argMissing2(),
+            VARIANT RowGrand = argMissing2(),
+            VARIANT ColumnGrand = argMissing2(),
+            VARIANT SaveData = argMissing2(),
+            VARIANT HasAutoFormat = argMissing2(),
+            VARIANT AutoPage = argMissing2(),
+            VARIANT Reserved = argMissing2(),
+            VARIANT BackgroundQuery = argMissing2(),
+            VARIANT OptimizeCache = argMissing2(),
+            VARIANT PageFieldOrder = argMissing2(),
+            VARIANT PageFieldWrapCount = argMissing2(),
+            VARIANT ReadData = argMissing2(),
+            VARIANT Connection = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT ResetColors() = 0;
 
@@ -580,12 +580,12 @@ namespace etapi
 
         virtual HRESULT FollowHyperlink(
             BSTR Address,
-            VARIANT SubAddress,
-            VARIANT NewWindow,
-            VARIANT AddHistory,
-            VARIANT ExtraInfo,
-            VARIANT Method,
-            VARIANT HeaderInfo) = 0;
+            VARIANT SubAddress = argMissing2(),
+            VARIANT NewWindow = argMissing2(),
+            VARIANT AddHistory = argMissing2(),
+            VARIANT ExtraInfo = argMissing2(),
+            VARIANT Method = argMissing2(),
+            VARIANT HeaderInfo = argMissing2()) = 0;
 
         virtual HRESULT AddToFavorites() = 0;
 
@@ -593,15 +593,15 @@ namespace etapi
             VARIANT_BOOL *RHS /Out/) = 0;
 
         virtual HRESULT _PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            VARIANT PrToFileName,
-            long lcid) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            VARIANT PrToFileName = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT WebPagePreview() = 0;
 
@@ -654,19 +654,19 @@ namespace etapi
         virtual HRESULT Dummy16() = 0;
 
         virtual HRESULT SaveAs(
-            VARIANT Filename,
-            VARIANT FileFormat,
-            VARIANT Password,
-            VARIANT WriteResPassword,
-            VARIANT ReadOnlyRecommended,
-            VARIANT CreateBackup,
-            XlSaveAsAccessMode AccessMode,
-            VARIANT ConflictResolution,
-            VARIANT AddToMru,
-            VARIANT TextCodepage,
-            VARIANT TextVisualLayout,
-            VARIANT Local,
-            long lcid) = 0;
+            VARIANT Filename = argMissing2(),
+            VARIANT FileFormat = argMissing2(),
+            VARIANT Password = argMissing2(),
+            VARIANT WriteResPassword = argMissing2(),
+            VARIANT ReadOnlyRecommended = argMissing2(),
+            VARIANT CreateBackup = argMissing2(),
+            XlSaveAsAccessMode AccessMode = etapi::xlNoChange,
+            VARIANT ConflictResolution = argMissing2(),
+            VARIANT AddToMru = argMissing2(),
+            VARIANT TextCodepage = argMissing2(),
+            VARIANT TextVisualLayout = argMissing2(),
+            VARIANT Local = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_EnableAutoRecover(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -685,21 +685,21 @@ namespace etapi
             BSTR *RHS /Out/) = 0;
 
         virtual HRESULT CheckIn(
-            VARIANT SaveChanges,
-            VARIANT Comments,
-            VARIANT MakePublic) = 0;
+            VARIANT SaveChanges = argMissing2(),
+            VARIANT Comments = argMissing2(),
+            VARIANT MakePublic = argMissing2()) = 0;
 
         virtual HRESULT CanCheckIn(
             VARIANT_BOOL *RHS /Out/) = 0;
 
         virtual HRESULT SendForReview(
-            VARIANT Recipients,
-            VARIANT Subject,
-            VARIANT ShowMessage,
-            VARIANT IncludeAttachment) = 0;
+            VARIANT Recipients = argMissing2(),
+            VARIANT Subject = argMissing2(),
+            VARIANT ShowMessage = argMissing2(),
+            VARIANT IncludeAttachment = argMissing2()) = 0;
 
         virtual HRESULT ReplyWithChanges(
-            VARIANT ShowMessage) = 0;
+            VARIANT ShowMessage = argMissing2()) = 0;
 
         virtual HRESULT EndReview() = 0;
 
@@ -725,10 +725,10 @@ namespace etapi
             long *RHS /Out/) = 0;
 
         virtual HRESULT SetPasswordEncryptionOptions(
-            VARIANT PasswordEncryptionProvider,
-            VARIANT PasswordEncryptionAlgorithm,
-            VARIANT PasswordEncryptionKeyLength,
-            VARIANT PasswordEncryptionFileProperties) = 0;
+            VARIANT PasswordEncryptionProvider = argMissing2(),
+            VARIANT PasswordEncryptionAlgorithm = argMissing2(),
+            VARIANT PasswordEncryptionKeyLength = argMissing2(),
+            VARIANT PasswordEncryptionFileProperties = argMissing2()) = 0;
 
         virtual HRESULT get_PasswordEncryptionFileProperties(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -740,9 +740,9 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Protect(
-            VARIANT Password,
-            VARIANT Structure,
-            VARIANT Windows) = 0;
+            VARIANT Password = argMissing2(),
+            VARIANT Structure = argMissing2(),
+            VARIANT Windows = argMissing2()) = 0;
 
         virtual HRESULT get_SmartTagOptions(
             SmartTagOptions **RHS /Out/) = 0;
@@ -759,9 +759,9 @@ namespace etapi
             ksoapi::Sync **RHS /Out/) = 0;
 
         virtual HRESULT SendFaxOverInternet(
-            VARIANT Recipients,
-            VARIANT Subject,
-            VARIANT ShowMessage) = 0;
+            VARIANT Recipients = argMissing2(),
+            VARIANT Subject = argMissing2(),
+            VARIANT ShowMessage = argMissing2()) = 0;
 
         virtual HRESULT get_XmlNamespaces(
             XmlNamespaces **RHS /Out/) = 0;
@@ -772,9 +772,9 @@ namespace etapi
         virtual HRESULT XmlImport(
             BSTR Url,
             XmlMap **ImportMap /Out/,
-            VARIANT Overwrite,
-            VARIANT Destination,
-            XlXmlImportResult *RHS /Out/) = 0;
+            VARIANT Overwrite = argMissing2(),
+            VARIANT Destination = argMissing2(),
+            XlXmlImportResult *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_SmartDocument(
             ksoapi::SmartDocument **RHS /Out/) = 0;
@@ -797,9 +797,9 @@ namespace etapi
         virtual HRESULT XmlImportXml(
             BSTR Data,
             XmlMap **ImportMap /Out/,
-            VARIANT Overwrite,
-            VARIANT Destination,
-            XlXmlImportResult *RHS /Out/) = 0;
+            VARIANT Overwrite = argMissing2(),
+            VARIANT Destination = argMissing2(),
+            XlXmlImportResult *RHS /Out/ = 0) = 0;
 
         virtual HRESULT SaveAsXMLData(
             BSTR Filename,
@@ -820,10 +820,10 @@ namespace etapi
             ksoapi::SignatureSet **RHS /Out/) = 0;
 
         virtual HRESULT CheckInWithVersion(
-            VARIANT SaveChanges,
-            VARIANT Comments,
-            VARIANT MakePublic,
-            VARIANT VersionType) = 0;
+            VARIANT SaveChanges = argMissing2(),
+            VARIANT Comments = argMissing2(),
+            VARIANT MakePublic = argMissing2(),
+            VARIANT VersionType = argMissing2()) = 0;
 
         virtual HRESULT get_ServerPolicy(
             ksoapi::ServerPolicy **RHS /Out/) = 0;
@@ -840,16 +840,16 @@ namespace etapi
             ksoapi::WorkflowTemplates **RHS /Out/) = 0;
 
         virtual HRESULT PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            VARIANT PrToFileName,
-            VARIANT IgnorePrintAreas,
-            long lcid) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            VARIANT PrToFileName = argMissing2(),
+            VARIANT IgnorePrintAreas = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_ServerViewableItems(
             ServerViewableItems **RHS /Out/) = 0;
@@ -912,14 +912,14 @@ namespace etapi
 
         virtual HRESULT ExportAsFixedFormat(
             XlFixedFormatType Type,
-            VARIANT Filename,
-            VARIANT Quality,
-            VARIANT IncludeDocProperties,
-            VARIANT IgnorePrintAreas,
-            VARIANT From,
-            VARIANT To,
-            VARIANT OpenAfterPublish,
-            VARIANT FixedFormatExtClassPtr) = 0;
+            VARIANT Filename = argMissing2(),
+            VARIANT Quality = argMissing2(),
+            VARIANT IncludeDocProperties = argMissing2(),
+            VARIANT IgnorePrintAreas = argMissing2(),
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT OpenAfterPublish = argMissing2(),
+            VARIANT FixedFormatExtClassPtr = argMissing2()) = 0;
 
         virtual HRESULT get_IconSets(
             IconSets **RHS /Out/) = 0;
@@ -943,13 +943,13 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT ProtectSharing(
-            VARIANT Filename,
-            VARIANT Password,
-            VARIANT WriteResPassword,
-            VARIANT ReadOnlyRecommended,
-            VARIANT CreateBackup,
-            VARIANT SharingPassword,
-            VARIANT FileFormat) = 0;
+            VARIANT Filename = argMissing2(),
+            VARIANT Password = argMissing2(),
+            VARIANT WriteResPassword = argMissing2(),
+            VARIANT ReadOnlyRecommended = argMissing2(),
+            VARIANT CreateBackup = argMissing2(),
+            VARIANT SharingPassword = argMissing2(),
+            VARIANT FileFormat = argMissing2()) = 0;
 
         virtual HRESULT get_SlicerCaches(
             SlicerCaches **RHS /Out/) = 0;

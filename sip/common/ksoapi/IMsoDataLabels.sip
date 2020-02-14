@@ -35,9 +35,9 @@ namespace ksoapi
             ChartFillFormat **RHS /Out/) = 0;
 
         virtual HRESULT  get_Characters(
-            VARIANT Start,
-            VARIANT Length,
-            IMsoCharacters **RHS /Out/) = 0;
+            VARIANT Start = argMissing2(),
+            VARIANT Length = argMissing2(),
+            IMsoCharacters **RHS /Out/ = 0) = 0;
 
         virtual HRESULT  get_Font(
             ChartFont **RHS /Out/) = 0;

@@ -41,7 +41,7 @@ namespace etapi
 
         virtual HRESULT InstallManifest(
             BSTR Path,
-            VARIANT InstallForAllUsers) = 0;
+            VARIANT InstallForAllUsers = argMissing2()) = 0;
 
     };
 };

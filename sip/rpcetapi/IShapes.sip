@@ -133,18 +133,18 @@ namespace etapi
             Shape **RHS /Out/) = 0;
 
         virtual HRESULT AddOLEObject(
-            VARIANT ClassType,
-            VARIANT Filename,
-            VARIANT Link,
-            VARIANT DisplayAsIcon,
-            VARIANT IconFileName,
-            VARIANT IconIndex,
-            VARIANT IconLabel,
-            VARIANT Left,
-            VARIANT Top,
-            VARIANT Width,
-            VARIANT Height,
-            Shape **RHS /Out/) = 0;
+            VARIANT ClassType = argMissing2(),
+            VARIANT Filename = argMissing2(),
+            VARIANT Link = argMissing2(),
+            VARIANT DisplayAsIcon = argMissing2(),
+            VARIANT IconFileName = argMissing2(),
+            VARIANT IconIndex = argMissing2(),
+            VARIANT IconLabel = argMissing2(),
+            VARIANT Left = argMissing2(),
+            VARIANT Top = argMissing2(),
+            VARIANT Width = argMissing2(),
+            VARIANT Height = argMissing2(),
+            Shape **RHS /Out/ = 0) = 0;
 
         virtual HRESULT AddDiagram(
             MsoDiagramType Type,
@@ -162,30 +162,30 @@ namespace etapi
             Shape **RHS /Out/) = 0;
 
         virtual HRESULT AddChart(
-            VARIANT XlChartType,
-            VARIANT Left,
-            VARIANT Top,
-            VARIANT Width,
-            VARIANT Height,
-            Shape **RHS /Out/) = 0;
+            VARIANT XlChartType = argMissing2(),
+            VARIANT Left = argMissing2(),
+            VARIANT Top = argMissing2(),
+            VARIANT Width = argMissing2(),
+            VARIANT Height = argMissing2(),
+            Shape **RHS /Out/ = 0) = 0;
 
         virtual HRESULT AddSmartArt(
             ksoapi::SmartArtLayout *Layout,
-            VARIANT Left,
-            VARIANT Top,
-            VARIANT Width,
-            VARIANT Height,
-            Shape **RHS /Out/) = 0;
+            VARIANT Left = argMissing2(),
+            VARIANT Top = argMissing2(),
+            VARIANT Width = argMissing2(),
+            VARIANT Height = argMissing2(),
+            Shape **RHS /Out/ = 0) = 0;
 
         virtual HRESULT AddChart2(
-            VARIANT Style,
-            VARIANT XlChartType,
-            VARIANT Left,
-            VARIANT Top,
-            VARIANT Width,
-            VARIANT Height,
-            VARIANT NewLayout,
-            Shape **RHS /Out/) = 0;
+            VARIANT Style = argMissing2(),
+            VARIANT XlChartType = argMissing2(),
+            VARIANT Left = argMissing2(),
+            VARIANT Top = argMissing2(),
+            VARIANT Width = argMissing2(),
+            VARIANT Height = argMissing2(),
+            VARIANT NewLayout = argMissing2(),
+            Shape **RHS /Out/ = 0) = 0;
 
         virtual HRESULT AddPicture2(
             BSTR Filename,

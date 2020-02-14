@@ -24,10 +24,10 @@ namespace etapi
 
         virtual HRESULT Add(
             XlDVType Type,
-            VARIANT AlertStyle,
-            VARIANT Operator,
-            VARIANT Formula1,
-            VARIANT Formula2) = 0;
+            VARIANT AlertStyle = argMissing2(),
+            VARIANT Operator = argMissing2(),
+            VARIANT Formula1 = argMissing2(),
+            VARIANT Formula2 = argMissing2()) = 0;
 
         virtual HRESULT get_AlertStyle(
             long *RHS /Out/) = 0;
@@ -83,11 +83,11 @@ namespace etapi
             BSTR *RHS /Out/) = 0;
 
         virtual HRESULT Modify(
-            VARIANT Type,
-            VARIANT AlertStyle,
-            VARIANT Operator,
-            VARIANT Formula1,
-            VARIANT Formula2) = 0;
+            VARIANT Type = argMissing2(),
+            VARIANT AlertStyle = argMissing2(),
+            VARIANT Operator = argMissing2(),
+            VARIANT Formula1 = argMissing2(),
+            VARIANT Formula2 = argMissing2()) = 0;
 
         virtual HRESULT get_Operator(
             long *RHS /Out/) = 0;

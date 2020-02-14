@@ -38,23 +38,23 @@ namespace ksoapi
             VARIANT_BOOL On,
             BSTR Callback,
             long PrivateX,
-            VARIANT Animation,
-            VARIANT CustomTeaser,
-            VARIANT Top,
-            VARIANT Left,
-            VARIANT Bottom,
-            VARIANT Right,
-            long *plWizID /Out/) = 0;
+            VARIANT Animation = argMissing2(),
+            VARIANT CustomTeaser = argMissing2(),
+            VARIANT Top = argMissing2(),
+            VARIANT Left = argMissing2(),
+            VARIANT Bottom = argMissing2(),
+            VARIANT Right = argMissing2(),
+            long *plWizID /Out/ = 0) = 0;
 
         virtual HRESULT EndWizard(
             long WizardID,
             VARIANT_BOOL varfSuccess,
-            VARIANT Animation) = 0;
+            VARIANT Animation = argMissing2()) = 0;
 
         virtual HRESULT ActivateWizard(
             long WizardID,
             MsoWizardActType act,
-            VARIANT Animation) = 0;
+            VARIANT Animation = argMissing2()) = 0;
 
         virtual HRESULT ResetTips() = 0;
 

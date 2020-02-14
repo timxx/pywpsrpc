@@ -26,12 +26,12 @@ namespace etapi
             long *RHS /Out/) = 0;
 
         virtual HRESULT get_Item(
-            VARIANT Level,
-            SlicerCacheLevel **RHS /Out/) = 0;
+            VARIANT Level = argMissing2(),
+            SlicerCacheLevel **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__Default(
-            VARIANT Level,
-            SlicerCacheLevel **RHS /Out/) = 0;
+            VARIANT Level = argMissing2(),
+            SlicerCacheLevel **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__NewEnum(
             IUnknown **RHS /Out/) = 0;

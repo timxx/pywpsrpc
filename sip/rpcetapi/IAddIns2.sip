@@ -24,8 +24,8 @@ namespace etapi
 
         virtual HRESULT Add(
             BSTR Filename,
-            VARIANT CopyFile,
-            AddIn **RHS /Out/) = 0;
+            VARIANT CopyFile = argMissing2(),
+            AddIn **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;

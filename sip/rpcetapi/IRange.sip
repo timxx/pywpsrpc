@@ -32,38 +32,38 @@ namespace etapi
             VARIANT RHS) = 0;
 
         virtual HRESULT get_Address(
-            VARIANT RowAbsolute,
-            VARIANT ColumnAbsolute,
-            XlReferenceStyle ReferenceStyle,
-            VARIANT External,
-            VARIANT RelativeTo,
-            long lcid,
-            BSTR *RHS /Out/) = 0;
+            VARIANT RowAbsolute = argMissing2(),
+            VARIANT ColumnAbsolute = argMissing2(),
+            XlReferenceStyle ReferenceStyle = etapi::xlA1,
+            VARIANT External = argMissing2(),
+            VARIANT RelativeTo = argMissing2(),
+            long lcid = 0,
+            BSTR *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_AddressLocal(
-            VARIANT RowAbsolute,
-            VARIANT ColumnAbsolute,
-            XlReferenceStyle ReferenceStyle,
-            VARIANT External,
-            VARIANT RelativeTo,
-            BSTR *RHS /Out/) = 0;
+            VARIANT RowAbsolute = argMissing2(),
+            VARIANT ColumnAbsolute = argMissing2(),
+            XlReferenceStyle ReferenceStyle = etapi::xlA1,
+            VARIANT External = argMissing2(),
+            VARIANT RelativeTo = argMissing2(),
+            BSTR *RHS /Out/ = 0) = 0;
 
         virtual HRESULT AdvancedFilter(
             XlFilterAction Action,
-            VARIANT CriteriaRange,
-            VARIANT CopyToRange,
-            VARIANT Unique,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT CriteriaRange = argMissing2(),
+            VARIANT CopyToRange = argMissing2(),
+            VARIANT Unique = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT ApplyNames(
-            VARIANT Names,
-            VARIANT IgnoreRelativeAbsolute,
-            VARIANT UseRowColumnNames,
-            VARIANT OmitColumn,
-            VARIANT OmitRow,
-            XlApplyNamesOrder Order,
-            VARIANT AppendLast,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Names = argMissing2(),
+            VARIANT IgnoreRelativeAbsolute = argMissing2(),
+            VARIANT UseRowColumnNames = argMissing2(),
+            VARIANT OmitColumn = argMissing2(),
+            VARIANT OmitRow = argMissing2(),
+            XlApplyNamesOrder Order = etapi::xlColumnThenRow,
+            VARIANT AppendLast = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT ApplyOutlineStyles(
             VARIANT *RHS /Out/) = 0;
@@ -81,35 +81,35 @@ namespace etapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT AutoFilter(
-            VARIANT Field,
-            VARIANT Criteria1,
-            XlAutoFilterOperator Operator,
-            VARIANT Criteria2,
-            VARIANT VisibleDropDown,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Field = argMissing2(),
+            VARIANT Criteria1 = argMissing2(),
+            XlAutoFilterOperator Operator = etapi::xlAnd,
+            VARIANT Criteria2 = argMissing2(),
+            VARIANT VisibleDropDown = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT AutoFit(
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT AutoFormat(
             XlRangeAutoFormat Format,
-            VARIANT Number,
-            VARIANT Font,
-            VARIANT Alignment,
-            VARIANT Border,
-            VARIANT Pattern,
-            VARIANT Width,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Number = argMissing2(),
+            VARIANT Font = argMissing2(),
+            VARIANT Alignment = argMissing2(),
+            VARIANT Border = argMissing2(),
+            VARIANT Pattern = argMissing2(),
+            VARIANT Width = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT AutoOutline(
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT _BorderAround(
-            VARIANT LineStyle,
-            XlBorderWeight Weight,
-            XlColorIndex ColorIndex,
-            VARIANT Color,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT LineStyle = argMissing2(),
+            XlBorderWeight Weight = etapi::xlMedium,
+            XlColorIndex ColorIndex = etapi::xlColorIndexAutomatic,
+            VARIANT Color = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Borders(
             Borders **RHS /Out/) = 0;
@@ -121,16 +121,16 @@ namespace etapi
             Range **RHS /Out/) = 0;
 
         virtual HRESULT get_Characters(
-            VARIANT Start,
-            VARIANT Length,
-            Characters **RHS /Out/) = 0;
+            VARIANT Start = argMissing2(),
+            VARIANT Length = argMissing2(),
+            Characters **RHS /Out/ = 0) = 0;
 
         virtual HRESULT CheckSpelling(
-            VARIANT CustomDictionary,
-            VARIANT IgnoreUppercase,
-            VARIANT AlwaysSuggest,
-            VARIANT SpellLang,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT CustomDictionary = argMissing2(),
+            VARIANT IgnoreUppercase = argMissing2(),
+            VARIANT AlwaysSuggest = argMissing2(),
+            VARIANT SpellLang = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Clear(
             VARIANT *RHS /Out/) = 0;
@@ -164,22 +164,22 @@ namespace etapi
             VARIANT RHS) = 0;
 
         virtual HRESULT Consolidate(
-            VARIANT Sources,
-            VARIANT Function,
-            VARIANT TopRow,
-            VARIANT LeftColumn,
-            VARIANT CreateLinks,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Sources = argMissing2(),
+            VARIANT Function = argMissing2(),
+            VARIANT TopRow = argMissing2(),
+            VARIANT LeftColumn = argMissing2(),
+            VARIANT CreateLinks = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Copy(
-            VARIANT Destination,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Destination = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT CopyFromRecordset(
             IUnknown *Data,
-            VARIANT MaxRows,
-            VARIANT MaxColumns,
-            long *RHS /Out/) = 0;
+            VARIANT MaxRows = argMissing2(),
+            VARIANT MaxColumns = argMissing2(),
+            long *RHS /Out/ = 0) = 0;
 
         virtual HRESULT CopyPicture(
             XlPictureAppearance Appearance,
@@ -190,20 +190,20 @@ namespace etapi
             long *RHS /Out/) = 0;
 
         virtual HRESULT CreateNames(
-            VARIANT Top,
-            VARIANT Left,
-            VARIANT Bottom,
-            VARIANT Right,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Top = argMissing2(),
+            VARIANT Left = argMissing2(),
+            VARIANT Bottom = argMissing2(),
+            VARIANT Right = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT CreatePublisher(
-            VARIANT Edition,
-            XlPictureAppearance Appearance,
-            VARIANT ContainsPICT,
-            VARIANT ContainsBIFF,
-            VARIANT ContainsRTF,
-            VARIANT ContainsVALU,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Edition = argMissing2(),
+            XlPictureAppearance Appearance = etapi::xlPrinter,
+            VARIANT ContainsPICT = argMissing2(),
+            VARIANT ContainsBIFF = argMissing2(),
+            VARIANT ContainsRTF = argMissing2(),
+            VARIANT ContainsVALU = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_CurrentArray(
             Range **RHS /Out/) = 0;
@@ -212,33 +212,33 @@ namespace etapi
             Range **RHS /Out/) = 0;
 
         virtual HRESULT Cut(
-            VARIANT Destination,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Destination = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT DataSeries(
-            VARIANT Rowcol,
-            XlDataSeriesType Type,
-            XlDataSeriesDate Date,
-            VARIANT Step,
-            VARIANT Stop,
-            VARIANT Trend,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Rowcol = argMissing2(),
+            XlDataSeriesType Type = etapi::xlAutoFill,
+            XlDataSeriesDate Date = etapi::xlDay,
+            VARIANT Step = argMissing2(),
+            VARIANT Stop = argMissing2(),
+            VARIANT Trend = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__Default(
-            VARIANT RowIndex,
-            VARIANT ColumnIndex,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT RowIndex = argMissing2(),
+            VARIANT ColumnIndex = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT put__Default(
-            VARIANT RowIndex,
-            VARIANT ColumnIndex,
-            long lcid,
-            VARIANT RHS) = 0;
+            VARIANT RowIndex = argMissing2(),
+            VARIANT ColumnIndex = argMissing2(),
+            long lcid = 0,
+            VARIANT RHS = argMissing2()) = 0;
 
         virtual HRESULT Delete(
-            VARIANT Shift,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Shift = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Dependents(
             Range **RHS /Out/) = 0;
@@ -255,12 +255,12 @@ namespace etapi
         virtual HRESULT EditionOptions(
             XlEditionType Type,
             XlEditionOptionsOption Option,
-            VARIANT Name,
-            VARIANT Reference,
-            XlPictureAppearance Appearance,
-            XlPictureAppearance ChartSize,
-            VARIANT Format,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Name = argMissing2(),
+            VARIANT Reference = argMissing2(),
+            XlPictureAppearance Appearance = etapi::xlPrinter,
+            XlPictureAppearance ChartSize = etapi::xlPrinter,
+            VARIANT Format = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_End(
             XlDirection Direction,
@@ -286,23 +286,23 @@ namespace etapi
 
         virtual HRESULT Find(
             VARIANT What,
-            VARIANT After,
-            VARIANT LookIn,
-            VARIANT LookAt,
-            VARIANT SearchOrder,
-            XlSearchDirection SearchDirection,
-            VARIANT MatchCase,
-            VARIANT MatchByte,
-            VARIANT SearchFormat,
-            Range **RHS /Out/) = 0;
+            VARIANT After = argMissing2(),
+            VARIANT LookIn = argMissing2(),
+            VARIANT LookAt = argMissing2(),
+            VARIANT SearchOrder = argMissing2(),
+            XlSearchDirection SearchDirection = etapi::xlNext,
+            VARIANT MatchCase = argMissing2(),
+            VARIANT MatchByte = argMissing2(),
+            VARIANT SearchFormat = argMissing2(),
+            Range **RHS /Out/ = 0) = 0;
 
         virtual HRESULT FindNext(
-            VARIANT After,
-            Range **RHS /Out/) = 0;
+            VARIANT After = argMissing2(),
+            Range **RHS /Out/ = 0) = 0;
 
         virtual HRESULT FindPrevious(
-            VARIANT After,
-            Range **RHS /Out/) = 0;
+            VARIANT After = argMissing2(),
+            Range **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Font(
             Font **RHS /Out/) = 0;
@@ -362,11 +362,11 @@ namespace etapi
             VARIANT_BOOL *RHS /Out/) = 0;
 
         virtual HRESULT Group(
-            VARIANT Start,
-            VARIANT End,
-            VARIANT By,
-            VARIANT Periods,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Start = argMissing2(),
+            VARIANT End = argMissing2(),
+            VARIANT By = argMissing2(),
+            VARIANT Periods = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_HasArray(
             VARIANT *RHS /Out/) = 0;
@@ -399,24 +399,24 @@ namespace etapi
             long InsertAmount) = 0;
 
         virtual HRESULT Insert(
-            VARIANT Shift,
-            VARIANT CopyOrigin,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Shift = argMissing2(),
+            VARIANT CopyOrigin = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Interior(
             Interior **RHS /Out/) = 0;
 
         virtual HRESULT get_Item(
             VARIANT RowIndex,
-            VARIANT ColumnIndex,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT ColumnIndex = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT put_Item(
             VARIANT RowIndex,
-            VARIANT ColumnIndex,
-            long lcid,
-            VARIANT RHS) = 0;
+            VARIANT ColumnIndex = argMissing2(),
+            long lcid = 0,
+            VARIANT RHS = argMissing2()) = 0;
 
         virtual HRESULT Justify(
             VARIANT *RHS /Out/) = 0;
@@ -440,7 +440,7 @@ namespace etapi
             VARIANT RHS) = 0;
 
         virtual HRESULT Merge(
-            VARIANT Across) = 0;
+            VARIANT Across = argMissing2()) = 0;
 
         virtual HRESULT UnMerge() = 0;
 
@@ -460,10 +460,10 @@ namespace etapi
             VARIANT RHS) = 0;
 
         virtual HRESULT NavigateArrow(
-            VARIANT TowardPrecedent,
-            VARIANT ArrowNumber,
-            VARIANT LinkNumber,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT TowardPrecedent = argMissing2(),
+            VARIANT ArrowNumber = argMissing2(),
+            VARIANT LinkNumber = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__NewEnum(
             IUnknown **RHS /Out/) = 0;
@@ -472,10 +472,10 @@ namespace etapi
             Range **RHS /Out/) = 0;
 
         virtual HRESULT NoteText(
-            VARIANT Text,
-            VARIANT Start,
-            VARIANT Length,
-            BSTR *RHS /Out/) = 0;
+            VARIANT Text = argMissing2(),
+            VARIANT Start = argMissing2(),
+            VARIANT Length = argMissing2(),
+            BSTR *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_NumberFormat(
             VARIANT *RHS /Out/) = 0;
@@ -490,9 +490,9 @@ namespace etapi
             VARIANT RHS) = 0;
 
         virtual HRESULT get_Offset(
-            VARIANT RowOffset,
-            VARIANT ColumnOffset,
-            Range **RHS /Out/) = 0;
+            VARIANT RowOffset = argMissing2(),
+            VARIANT ColumnOffset = argMissing2(),
+            Range **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Orientation(
             VARIANT *RHS /Out/) = 0;
@@ -513,16 +513,16 @@ namespace etapi
             long RHS) = 0;
 
         virtual HRESULT Parse(
-            VARIANT ParseLine,
-            VARIANT Destination,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT ParseLine = argMissing2(),
+            VARIANT Destination = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT _PasteSpecial(
             XlPasteType Paste,
             XlPasteSpecialOperation Operation,
-            VARIANT SkipBlanks,
-            VARIANT Transpose,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT SkipBlanks = argMissing2(),
+            VARIANT Transpose = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_PivotField(
             PivotField **RHS /Out/) = 0;
@@ -543,26 +543,26 @@ namespace etapi
             Range **RHS /Out/) = 0;
 
         virtual HRESULT __PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT PrintPreview(
-            VARIANT EnableChanges,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT EnableChanges = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_QueryTable(
             QueryTable **RHS /Out/) = 0;
 
         virtual HRESULT get_Range(
             VARIANT Cell1,
-            VARIANT Cell2,
-            Range **RHS /Out/) = 0;
+            VARIANT Cell2 = argMissing2(),
+            Range **RHS /Out/ = 0) = 0;
 
         virtual HRESULT RemoveSubtotal(
             VARIANT *RHS /Out/) = 0;
@@ -570,18 +570,18 @@ namespace etapi
         virtual HRESULT Replace(
             VARIANT What,
             VARIANT Replacement,
-            VARIANT LookAt,
-            VARIANT SearchOrder,
-            VARIANT MatchCase,
-            VARIANT MatchByte,
-            VARIANT SearchFormat,
-            VARIANT ReplaceFormat,
-            VARIANT_BOOL *RHS /Out/) = 0;
+            VARIANT LookAt = argMissing2(),
+            VARIANT SearchOrder = argMissing2(),
+            VARIANT MatchCase = argMissing2(),
+            VARIANT MatchByte = argMissing2(),
+            VARIANT SearchFormat = argMissing2(),
+            VARIANT ReplaceFormat = argMissing2(),
+            VARIANT_BOOL *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Resize(
-            VARIANT RowSize,
-            VARIANT ColumnSize,
-            Range **RHS /Out/) = 0;
+            VARIANT RowSize = argMissing2(),
+            VARIANT ColumnSize = argMissing2(),
+            Range **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Row(
             long *RHS /Out/) = 0;
@@ -600,37 +600,37 @@ namespace etapi
             Range **RHS /Out/) = 0;
 /*
         virtual HRESULT Run(
-            VARIANT Arg1,
-            VARIANT Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT Arg5,
-            VARIANT Arg6,
-            VARIANT Arg7,
-            VARIANT Arg8,
-            VARIANT Arg9,
-            VARIANT Arg10,
-            VARIANT Arg11,
-            VARIANT Arg12,
-            VARIANT Arg13,
-            VARIANT Arg14,
-            VARIANT Arg15,
-            VARIANT Arg16,
-            VARIANT Arg17,
-            VARIANT Arg18,
-            VARIANT Arg19,
-            VARIANT Arg20,
-            VARIANT Arg21,
-            VARIANT Arg22,
-            VARIANT Arg23,
-            VARIANT Arg24,
-            VARIANT Arg25,
-            VARIANT Arg26,
-            VARIANT Arg27,
-            VARIANT Arg28,
-            VARIANT Arg29,
-            VARIANT Arg30,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Arg1 = argMissing2(),
+            VARIANT Arg2 = argMissing2(),
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT Arg5 = argMissing2(),
+            VARIANT Arg6 = argMissing2(),
+            VARIANT Arg7 = argMissing2(),
+            VARIANT Arg8 = argMissing2(),
+            VARIANT Arg9 = argMissing2(),
+            VARIANT Arg10 = argMissing2(),
+            VARIANT Arg11 = argMissing2(),
+            VARIANT Arg12 = argMissing2(),
+            VARIANT Arg13 = argMissing2(),
+            VARIANT Arg14 = argMissing2(),
+            VARIANT Arg15 = argMissing2(),
+            VARIANT Arg16 = argMissing2(),
+            VARIANT Arg17 = argMissing2(),
+            VARIANT Arg18 = argMissing2(),
+            VARIANT Arg19 = argMissing2(),
+            VARIANT Arg20 = argMissing2(),
+            VARIANT Arg21 = argMissing2(),
+            VARIANT Arg22 = argMissing2(),
+            VARIANT Arg23 = argMissing2(),
+            VARIANT Arg24 = argMissing2(),
+            VARIANT Arg25 = argMissing2(),
+            VARIANT Arg26 = argMissing2(),
+            VARIANT Arg27 = argMissing2(),
+            VARIANT Arg28 = argMissing2(),
+            VARIANT Arg29 = argMissing2(),
+            VARIANT Arg30 = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 */
         virtual HRESULT Select(
             VARIANT *RHS /Out/) = 0;
@@ -639,8 +639,8 @@ namespace etapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT ShowDependents(
-            VARIANT Remove,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Remove = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ShowDetail(
             VARIANT *RHS /Out/) = 0;
@@ -652,8 +652,8 @@ namespace etapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT ShowPrecedents(
-            VARIANT Remove,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Remove = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ShrinkToFit(
             VARIANT *RHS /Out/) = 0;
@@ -662,48 +662,48 @@ namespace etapi
             VARIANT RHS) = 0;
 
         virtual HRESULT Sort(
-            VARIANT Key1,
-            XlSortOrder Order1,
-            VARIANT Key2,
-            VARIANT Type,
-            XlSortOrder Order2,
-            VARIANT Key3,
-            XlSortOrder Order3,
-            XlYesNoGuess Header,
-            VARIANT OrderCustom,
-            VARIANT MatchCase,
-            XlSortOrientation Orientation,
-            XlSortMethod SortMethod,
-            XlSortDataOption DataOption1,
-            XlSortDataOption DataOption2,
-            XlSortDataOption DataOption3,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Key1 = argMissing2(),
+            XlSortOrder Order1 = etapi::xlAscending,
+            VARIANT Key2 = argMissing2(),
+            VARIANT Type = argMissing2(),
+            XlSortOrder Order2 = etapi::xlAscending,
+            VARIANT Key3 = argMissing2(),
+            XlSortOrder Order3 = etapi::xlAscending,
+            XlYesNoGuess Header = etapi::xlNo,
+            VARIANT OrderCustom = argMissing2(),
+            VARIANT MatchCase = argMissing2(),
+            XlSortOrientation Orientation = etapi::xlSortRows,
+            XlSortMethod SortMethod = etapi::xlPinYin,
+            XlSortDataOption DataOption1 = etapi::xlSortNormal,
+            XlSortDataOption DataOption2 = etapi::xlSortNormal,
+            XlSortDataOption DataOption3 = etapi::xlSortNormal,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT SortSpecial(
             XlSortMethod SortMethod,
-            VARIANT Key1,
-            XlSortOrder Order1,
-            VARIANT Type,
-            VARIANT Key2,
-            XlSortOrder Order2,
-            VARIANT Key3,
-            XlSortOrder Order3,
-            XlYesNoGuess Header,
-            VARIANT OrderCustom,
-            VARIANT MatchCase,
-            XlSortOrientation Orientation,
-            XlSortDataOption DataOption1,
-            XlSortDataOption DataOption2,
-            XlSortDataOption DataOption3,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Key1 = argMissing2(),
+            XlSortOrder Order1 = etapi::xlAscending,
+            VARIANT Type = argMissing2(),
+            VARIANT Key2 = argMissing2(),
+            XlSortOrder Order2 = etapi::xlAscending,
+            VARIANT Key3 = argMissing2(),
+            XlSortOrder Order3 = etapi::xlAscending,
+            XlYesNoGuess Header = etapi::xlNo,
+            VARIANT OrderCustom = argMissing2(),
+            VARIANT MatchCase = argMissing2(),
+            XlSortOrientation Orientation = etapi::xlSortRows,
+            XlSortDataOption DataOption1 = etapi::xlSortNormal ,
+            XlSortDataOption DataOption2 = etapi::xlSortNormal,
+            XlSortDataOption DataOption3 = etapi::xlSortNormal,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_SoundNote(
             SoundNote **RHS /Out/) = 0;
 
         virtual HRESULT SpecialCells(
             XlCellType Type,
-            VARIANT Value,
-            Range **RHS /Out/) = 0;
+            VARIANT Value = argMissing2(),
+            Range **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Style(
             VARIANT *RHS /Out/) = 0;
@@ -720,38 +720,38 @@ namespace etapi
             long GroupBy,
             XlConsolidationFunction Function,
             VARIANT TotalList,
-            VARIANT Replace,
-            VARIANT PageBreaks,
-            XlSummaryRow SummaryBelowData,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Replace = argMissing2(),
+            VARIANT PageBreaks = argMissing2(),
+            XlSummaryRow SummaryBelowData = etapi::xlSummaryAbove,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Summary(
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT Table(
-            VARIANT RowInput,
-            VARIANT ColumnInput,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT RowInput = argMissing2(),
+            VARIANT ColumnInput = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Text(
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT TextToColumns(
-            VARIANT Destination,
-            XlTextParsingType DataType,
-            XlTextQualifier TextQualifier,
-            VARIANT ConsecutiveDelimiter,
-            VARIANT Tab,
-            VARIANT Semicolon,
-            VARIANT Comma,
-            VARIANT Space,
-            VARIANT Other,
-            VARIANT OtherChar,
-            VARIANT FieldInfo,
-            VARIANT DecimalSeparator,
-            VARIANT ThousandsSeparator,
-            VARIANT TrailingMinusNumbers,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Destination = argMissing2(),
+            XlTextParsingType DataType = etapi::xlDelimited,
+            XlTextQualifier TextQualifier = etapi::xlTextQualifierNone,
+            VARIANT ConsecutiveDelimiter = argMissing2(),
+            VARIANT Tab = argMissing2(),
+            VARIANT Semicolon = argMissing2(),
+            VARIANT Comma = argMissing2(),
+            VARIANT Space = argMissing2(),
+            VARIANT Other = argMissing2(),
+            VARIANT OtherChar = argMissing2(),
+            VARIANT FieldInfo = argMissing2(),
+            VARIANT DecimalSeparator = argMissing2(),
+            VARIANT ThousandsSeparator = argMissing2(),
+            VARIANT TrailingMinusNumbers = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Top(
             VARIANT *RHS /Out/) = 0;
@@ -775,14 +775,14 @@ namespace etapi
             Validation **RHS /Out/) = 0;
 
         virtual HRESULT get_Value(
-            VARIANT RangeValueDataType,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT RangeValueDataType = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT put_Value(
-            VARIANT RangeValueDataType,
-            long lcid,
-            VARIANT RHS) = 0;
+            VARIANT RangeValueDataType = argMissing2(),
+            long lcid = 0,
+            VARIANT RHS = argMissing2()) = 0;
 
         virtual HRESULT get_Value2(
             long lcid,
@@ -811,8 +811,8 @@ namespace etapi
             VARIANT RHS) = 0;
 
         virtual HRESULT AddComment(
-            VARIANT Text,
-            Comment **RHS /Out/) = 0;
+            VARIANT Text = argMissing2(),
+            Comment **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Comment(
             Comment **RHS /Out/) = 0;
@@ -846,15 +846,15 @@ namespace etapi
             BSTR RHS) = 0;
 
         virtual HRESULT _PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            VARIANT PrToFileName,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            VARIANT PrToFileName = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_PivotCell(
             PivotCell **RHS /Out/) = 0;
@@ -868,15 +868,15 @@ namespace etapi
             SmartTags **RHS /Out/) = 0;
 
         virtual HRESULT Speak(
-            VARIANT SpeakDirection,
-            VARIANT SpeakFormulas) = 0;
+            VARIANT SpeakDirection = argMissing2(),
+            VARIANT SpeakFormulas = argMissing2()) = 0;
 
         virtual HRESULT PasteSpecial(
             XlPasteType Paste,
             XlPasteSpecialOperation Operation,
-            VARIANT SkipBlanks,
-            VARIANT Transpose,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT SkipBlanks = argMissing2(),
+            VARIANT Transpose = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_AllowEdit(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -891,33 +891,33 @@ namespace etapi
             Actions **RHS /Out/) = 0;
 
         virtual HRESULT RemoveDuplicates(
-            VARIANT Columns,
+            VARIANT Columns = argMissing2(),
             XlYesNoGuess Header = etapi::xlNo) = 0;
 
         virtual HRESULT PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            VARIANT PrToFileName,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            VARIANT PrToFileName = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_MDX(
             BSTR *RHS /Out/) = 0;
 
         virtual HRESULT ExportAsFixedFormat(
             XlFixedFormatType Type,
-            VARIANT Filename,
-            VARIANT Quality,
-            VARIANT IncludeDocProperties,
-            VARIANT IgnorePrintAreas,
-            VARIANT From,
-            VARIANT To,
-            VARIANT OpenAfterPublish,
-            VARIANT FixedFormatExtClassPtr) = 0;
+            VARIANT Filename = argMissing2(),
+            VARIANT Quality = argMissing2(),
+            VARIANT IncludeDocProperties = argMissing2(),
+            VARIANT IgnorePrintAreas = argMissing2(),
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT OpenAfterPublish = argMissing2(),
+            VARIANT FixedFormatExtClassPtr = argMissing2()) = 0;
 
         virtual HRESULT get_CountLarge(
             VARIANT *RHS /Out/) = 0;
@@ -934,12 +934,12 @@ namespace etapi
             DisplayFormat **RHS /Out/) = 0;
 
         virtual HRESULT BorderAround(
-            VARIANT LineStyle,
-            XlBorderWeight Weight,
-            XlColorIndex ColorIndex,
-            VARIANT Color,
-            VARIANT ThemeColor,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT LineStyle = argMissing2(),
+            XlBorderWeight Weight = etapi::xlMedium,
+            XlColorIndex ColorIndex = etapi::xlColorIndexAutomatic,
+            VARIANT Color = argMissing2(),
+            VARIANT ThemeColor = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT AllocateChanges() = 0;
 

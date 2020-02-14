@@ -97,8 +97,8 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Select(
-            VARIANT Replace,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Replace = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT SendToBack(
             VARIANT *RHS /Out/) = 0;
@@ -132,8 +132,8 @@ namespace etapi
 
         virtual HRESULT AddItem(
             VARIANT Text,
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Display3DShading(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -157,12 +157,12 @@ namespace etapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT get_List(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT put_List(
-            VARIANT Index,
-            VARIANT RHS) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT RHS = argMissing2()) = 0;
 
         virtual HRESULT get_ListCount(
             long *RHS /Out/) = 0;
@@ -190,16 +190,16 @@ namespace etapi
 
         virtual HRESULT RemoveItem(
             long Index,
-            VARIANT Count,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Count = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Selected(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT put_Selected(
-            VARIANT Index,
-            VARIANT RHS) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT RHS = argMissing2()) = 0;
 
         virtual HRESULT get_Value(
             long *RHS /Out/) = 0;

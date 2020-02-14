@@ -38,8 +38,8 @@ namespace etapi
             Font **RHS /Out/) = 0;
 
         virtual HRESULT LegendEntries(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Position(
             XlLegendPosition *RHS /Out/) = 0;

@@ -19,19 +19,19 @@ namespace wpsapi
         virtual HRESULT Add(
             VARIANT Source,
             XlRowCol Rowcol,
-            VARIANT SeriesLabels,
-            VARIANT CategoryLabels,
-            VARIANT Replace,
-            Series **prop /Out/) = 0;
+            VARIANT SeriesLabels = argMissing2(),
+            VARIANT CategoryLabels = argMissing2(),
+            VARIANT Replace = argMissing2(),
+            Series **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *prop /Out/) = 0;
 
         virtual HRESULT Extend(
             VARIANT Source,
-            VARIANT Rowcol,
-            VARIANT CategoryLabels,
-            VARIANT *prop /Out/) = 0;
+            VARIANT Rowcol = argMissing2(),
+            VARIANT CategoryLabels = argMissing2(),
+            VARIANT *prop /Out/ = 0) = 0;
 
         virtual HRESULT Item(
             VARIANT Index,

@@ -20,9 +20,9 @@ namespace wpsapi
             BSTR prop) = 0;
 
         virtual HRESULT get_Characters(
-            VARIANT Start,
-            VARIANT Length,
-            ChartCharacters **prop /Out/) = 0;
+            VARIANT Start = argMissing2(),
+            VARIANT Length = argMissing2(),
+            ChartCharacters **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_Font(
             ChartFont **prop /Out/) = 0;

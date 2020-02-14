@@ -25,9 +25,9 @@ namespace ksoapi
 
         virtual HRESULT Add(
             BSTR URL,
-            VARIANT Description,
-            VARIANT Notes,
-            SharedWorkspaceLink **ppLink /Out/) = 0;
+            VARIANT Description = argMissing2(),
+            VARIANT Notes = argMissing2(),
+            SharedWorkspaceLink **ppLink /Out/ = 0) = 0;
 
         virtual HRESULT get_Parent(
             IDispatch **ppidisp /Out/) = 0;

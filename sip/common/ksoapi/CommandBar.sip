@@ -34,12 +34,12 @@ namespace ksoapi
             VARIANT_BOOL pvarfEnabled) = 0;
 
         virtual HRESULT FindControl(
-            VARIANT Type,
-            VARIANT Id,
-            VARIANT Tag,
-            VARIANT Visible,
-            VARIANT Recursive,
-            CommandBarControl **ppcbc /Out/) = 0;
+            VARIANT Type = argMissing2(),
+            VARIANT Id = argMissing2(),
+            VARIANT Tag = argMissing2(),
+            VARIANT Visible = argMissing2(),
+            VARIANT Recursive = argMissing2(),
+            CommandBarControl **ppcbc /Out/ = 0) = 0;
 
         virtual HRESULT get_Height(
             int *pdy /Out/) = 0;
@@ -95,8 +95,8 @@ namespace ksoapi
         virtual HRESULT Reset() = 0;
 
         virtual HRESULT ShowPopup(
-            VARIANT x,
-            VARIANT y) = 0;
+            VARIANT x = argMissing2(),
+            VARIANT y = argMissing2()) = 0;
 
         virtual HRESULT get_Top(
             int *pypTop /Out/) = 0;

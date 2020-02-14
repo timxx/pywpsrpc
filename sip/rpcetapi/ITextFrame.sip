@@ -53,9 +53,9 @@ namespace etapi
             MsoTextOrientation RHS) = 0;
 
         virtual HRESULT Characters(
-            VARIANT Start,
-            VARIANT Length,
-            Characters **RHS /Out/) = 0;
+            VARIANT Start = argMissing2(),
+            VARIANT Length = argMissing2(),
+            Characters **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_HorizontalAlignment(
             XlHAlign *RHS /Out/) = 0;

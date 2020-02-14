@@ -24,11 +24,11 @@ namespace etapi
 
         virtual HRESULT Query(
             BSTR ServiceID,
-            VARIANT QueryString,
-            VARIANT QueryLanguage,
-            VARIANT UseSelection,
-            VARIANT LaunchQuery,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT QueryString = argMissing2(),
+            VARIANT QueryLanguage = argMissing2(),
+            VARIANT UseSelection = argMissing2(),
+            VARIANT LaunchQuery = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT IsResearchService(
             BSTR ServiceID,

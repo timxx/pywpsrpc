@@ -27,10 +27,10 @@ namespace etapi
             MsoEditingType EditingType,
             single X1,
             single Y1,
-            VARIANT X2,
-            VARIANT Y2,
-            VARIANT X3,
-            VARIANT Y3) = 0;
+            VARIANT X2 = argMissing2(),
+            VARIANT Y2 = argMissing2(),
+            VARIANT X3 = argMissing2(),
+            VARIANT Y3 = argMissing2()) = 0;
 
         virtual HRESULT ConvertToShape(
             Shape **RHS /Out/) = 0;

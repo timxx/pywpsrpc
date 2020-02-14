@@ -25,10 +25,10 @@ namespace etapi
         virtual HRESULT Add(
             IDispatch *Anchor,
             BSTR Address,
-            VARIANT SubAddress,
-            VARIANT ScreenTip,
-            VARIANT TextToDisplay,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT SubAddress = argMissing2(),
+            VARIANT ScreenTip = argMissing2(),
+            VARIANT TextToDisplay = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;

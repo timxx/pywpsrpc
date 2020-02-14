@@ -25,19 +25,19 @@ namespace etapi
         virtual HRESULT Add(
             BSTR Name,
             VARIANT ChangingCells,
-            VARIANT Values,
-            VARIANT Comment,
-            VARIANT Locked,
-            VARIANT Hidden,
-            Scenario **RHS /Out/) = 0;
+            VARIANT Values = argMissing2(),
+            VARIANT Comment = argMissing2(),
+            VARIANT Locked = argMissing2(),
+            VARIANT Hidden = argMissing2(),
+            Scenario **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;
 
         virtual HRESULT CreateSummary(
             XlSummaryReportType ReportType,
-            VARIANT ResultCells,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT ResultCells = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Item(
             VARIANT Index,

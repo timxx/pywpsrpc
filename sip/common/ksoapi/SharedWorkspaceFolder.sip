@@ -17,7 +17,7 @@ namespace ksoapi
             BSTR *FolderName /Out/) = 0;
 
         virtual HRESULT Delete(
-            VARIANT DeleteEventIfFolderContainsFiles) = 0;
+            VARIANT DeleteEventIfFolderContainsFiles = argMissing2()) = 0;
 
         virtual HRESULT get_Parent(
             IDispatch **ppidisp /Out/) = 0;

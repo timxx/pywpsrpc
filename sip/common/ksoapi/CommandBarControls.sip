@@ -14,12 +14,12 @@ namespace ksoapi
     {
     public:
         virtual HRESULT Add(
-            VARIANT Type,
-            VARIANT Id,
-            VARIANT Parameter,
-            VARIANT Before,
-            VARIANT Temporary,
-            CommandBarControl **ppcbc /Out/) = 0;
+            VARIANT Type = argMissing2(),
+            VARIANT Id = argMissing2(),
+            VARIANT Parameter = argMissing2(),
+            VARIANT Before = argMissing2(),
+            VARIANT Temporary = argMissing2(),
+            CommandBarControl **ppcbc /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             int *pcToolbarControls /Out/) = 0;

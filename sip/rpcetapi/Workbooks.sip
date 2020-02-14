@@ -42,37 +42,37 @@ namespace etapi
 
         virtual HRESULT _Open(
             BSTR Filename,
-            VARIANT UpdateLinks,
-            VARIANT ReadOnly,
-            VARIANT Format,
-            VARIANT Password,
-            VARIANT WriteResPassword,
-            VARIANT IgnoreReadOnlyRecommended,
-            VARIANT Origin,
-            VARIANT Delimiter,
-            VARIANT Editable,
-            VARIANT Notify,
-            VARIANT Converter,
-            VARIANT AddToMru,
-            long lcid,
-            Workbook **RHS /Out/) = 0;
+            VARIANT UpdateLinks = argMissing2(),
+            VARIANT ReadOnly = argMissing2(),
+            VARIANT Format = argMissing2(),
+            VARIANT Password = argMissing2(),
+            VARIANT WriteResPassword = argMissing2(),
+            VARIANT IgnoreReadOnlyRecommended = argMissing2(),
+            VARIANT Origin = argMissing2(),
+            VARIANT Delimiter = argMissing2(),
+            VARIANT Editable = argMissing2(),
+            VARIANT Notify = argMissing2(),
+            VARIANT Converter = argMissing2(),
+            VARIANT AddToMru = argMissing2(),
+            long lcid = 0,
+            Workbook **RHS /Out/ = 0) = 0;
 
         virtual HRESULT __OpenText(
             BSTR Filename,
-            VARIANT Origin,
-            VARIANT StartRow,
-            VARIANT DataType,
-            XlTextQualifier TextQualifier,
-            VARIANT ConsecutiveDelimiter,
-            VARIANT Tab,
-            VARIANT Semicolon,
-            VARIANT Comma,
-            VARIANT Space,
-            VARIANT Other,
-            VARIANT OtherChar,
-            VARIANT FieldInfo,
-            VARIANT TextVisualLayout,
-            long lcid) = 0;
+            VARIANT Origin = argMissing2(),
+            VARIANT StartRow = argMissing2(),
+            VARIANT DataType = argMissing2(),
+            XlTextQualifier TextQualifier = etapi::xlTextQualifierNone,
+            VARIANT ConsecutiveDelimiter = argMissing2(),
+            VARIANT Tab = argMissing2(),
+            VARIANT Semicolon = argMissing2(),
+            VARIANT Comma = argMissing2(),
+            VARIANT Space = argMissing2(),
+            VARIANT Other = argMissing2(),
+            VARIANT OtherChar = argMissing2(),
+            VARIANT FieldInfo = argMissing2(),
+            VARIANT TextVisualLayout = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get__Default(
             VARIANT Index,
@@ -80,70 +80,70 @@ namespace etapi
 
         virtual HRESULT _OpenText(
             BSTR Filename,
-            VARIANT Origin,
-            VARIANT StartRow,
-            VARIANT DataType,
-            XlTextQualifier TextQualifier,
-            VARIANT ConsecutiveDelimiter,
-            VARIANT Tab,
-            VARIANT Semicolon,
-            VARIANT Comma,
-            VARIANT Space,
-            VARIANT Other,
-            VARIANT OtherChar,
-            VARIANT FieldInfo,
-            VARIANT TextVisualLayout,
-            VARIANT DecimalSeparator,
-            VARIANT ThousandsSeparator,
-            long lcid) = 0;
+            VARIANT Origin = argMissing2(),
+            VARIANT StartRow = argMissing2(),
+            VARIANT DataType = argMissing2(),
+            XlTextQualifier TextQualifier = etapi::xlTextQualifierNone,
+            VARIANT ConsecutiveDelimiter = argMissing2(),
+            VARIANT Tab = argMissing2(),
+            VARIANT Semicolon = argMissing2(),
+            VARIANT Comma = argMissing2(),
+            VARIANT Space = argMissing2(),
+            VARIANT Other = argMissing2(),
+            VARIANT OtherChar = argMissing2(),
+            VARIANT FieldInfo = argMissing2(),
+            VARIANT TextVisualLayout = argMissing2(),
+            VARIANT DecimalSeparator = argMissing2(),
+            VARIANT ThousandsSeparator = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT Open(
             BSTR Filename,
-            VARIANT UpdateLinks,
-            VARIANT ReadOnly,
-            VARIANT Format,
-            VARIANT Password,
-            VARIANT WriteResPassword,
-            VARIANT IgnoreReadOnlyRecommended,
-            VARIANT Origin,
-            VARIANT Delimiter,
-            VARIANT Editable,
-            VARIANT Notify,
-            VARIANT Converter,
-            VARIANT AddToMru,
-            VARIANT Local,
-            VARIANT CorruptLoad,
-            long lcid,
-            Workbook **RHS /Out/) = 0;
+            VARIANT UpdateLinks = argMissing2(),
+            VARIANT ReadOnly = argMissing2(),
+            VARIANT Format = argMissing2(),
+            VARIANT Password = argMissing2(),
+            VARIANT WriteResPassword = argMissing2(),
+            VARIANT IgnoreReadOnlyRecommended = argMissing2(),
+            VARIANT Origin = argMissing2(),
+            VARIANT Delimiter = argMissing2(),
+            VARIANT Editable = argMissing2(),
+            VARIANT Notify = argMissing2(),
+            VARIANT Converter = argMissing2(),
+            VARIANT AddToMru = argMissing2(),
+            VARIANT Local = argMissing2(),
+            VARIANT CorruptLoad = argMissing2(),
+            long lcid = 0,
+            Workbook **RHS /Out/ = 0) = 0;
 
         virtual HRESULT OpenText(
             BSTR Filename,
-            VARIANT Origin,
-            VARIANT StartRow,
-            VARIANT DataType,
-            XlTextQualifier TextQualifier,
-            VARIANT ConsecutiveDelimiter,
-            VARIANT Tab,
-            VARIANT Semicolon,
-            VARIANT Comma,
-            VARIANT Space,
-            VARIANT Other,
-            VARIANT OtherChar,
-            VARIANT FieldInfo,
-            VARIANT TextVisualLayout,
-            VARIANT DecimalSeparator,
-            VARIANT ThousandsSeparator,
-            VARIANT TrailingMinusNumbers,
-            VARIANT Local,
-            long lcid) = 0;
+            VARIANT Origin = argMissing2(),
+            VARIANT StartRow = argMissing2(),
+            VARIANT DataType = argMissing2(),
+            XlTextQualifier TextQualifier = etapi::xlTextQualifierNone,
+            VARIANT ConsecutiveDelimiter = argMissing2(),
+            VARIANT Tab = argMissing2(),
+            VARIANT Semicolon = argMissing2(),
+            VARIANT Comma = argMissing2(),
+            VARIANT Space = argMissing2(),
+            VARIANT Other = argMissing2(),
+            VARIANT OtherChar = argMissing2(),
+            VARIANT FieldInfo = argMissing2(),
+            VARIANT TextVisualLayout = argMissing2(),
+            VARIANT DecimalSeparator = argMissing2(),
+            VARIANT ThousandsSeparator = argMissing2(),
+            VARIANT TrailingMinusNumbers = argMissing2(),
+            VARIANT Local = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT OpenDatabase(
             BSTR Filename,
-            VARIANT CommandText,
-            VARIANT CommandType,
-            VARIANT BackgroundQuery,
-            VARIANT ImportDataAs,
-            Workbook **RHS /Out/) = 0;
+            VARIANT CommandText = argMissing2(),
+            VARIANT CommandType = argMissing2(),
+            VARIANT BackgroundQuery = argMissing2(),
+            VARIANT ImportDataAs = argMissing2(),
+            Workbook **RHS /Out/ = 0) = 0;
 
         virtual HRESULT CheckOut(
             BSTR Filename) = 0;
@@ -154,14 +154,14 @@ namespace etapi
 
         virtual HRESULT _OpenXML(
             BSTR Filename,
-            VARIANT Stylesheets,
-            Workbook **RHS /Out/) = 0;
+            VARIANT Stylesheets = argMissing2(),
+            Workbook **RHS /Out/ = 0) = 0;
 
         virtual HRESULT OpenXML(
             BSTR Filename,
-            VARIANT Stylesheets,
-            VARIANT LoadOption,
-            Workbook **RHS /Out/) = 0;
+            VARIANT Stylesheets = argMissing2(),
+            VARIANT LoadOption = argMissing2(),
+            Workbook **RHS /Out/ = 0) = 0;
 
     };
 };

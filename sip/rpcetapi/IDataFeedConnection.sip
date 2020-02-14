@@ -100,8 +100,8 @@ namespace etapi
 
         virtual HRESULT SaveAsODC(
             BSTR ODCFileName,
-            VARIANT Description,
-            VARIANT Keywords) = 0;
+            VARIANT Description = argMissing2(),
+            VARIANT Keywords = argMissing2()) = 0;
 
     };
 };

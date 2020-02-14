@@ -79,9 +79,9 @@ namespace etapi
             VARIANT_BOOL *RHS /Out/) = 0;
 
         virtual HRESULT Edit(
-            VARIANT WriteResPassword,
-            VARIANT UpdateLinks,
-            Workbook **RHS /Out/) = 0;
+            VARIANT WriteResPassword = argMissing2(),
+            VARIANT UpdateLinks = argMissing2(),
+            Workbook **RHS /Out/ = 0) = 0;
 
     };
 };

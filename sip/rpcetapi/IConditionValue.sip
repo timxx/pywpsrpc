@@ -24,7 +24,7 @@ namespace etapi
 
         virtual HRESULT Modify(
             XlConditionValueTypes newtype,
-            VARIANT newvalue) = 0;
+            VARIANT newvalue = argMissing2()) = 0;
 
         virtual HRESULT get_Type(
             XlConditionValueTypes *RHS /Out/) = 0;

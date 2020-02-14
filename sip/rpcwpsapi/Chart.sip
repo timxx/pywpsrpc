@@ -93,14 +93,14 @@ namespace wpsapi
             XlDisplayBlanksAs prop) = 0;
 
         virtual HRESULT get_ChartGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT SeriesCollection(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_SubType(
             long lcid,
@@ -124,16 +124,16 @@ namespace wpsapi
 
         virtual HRESULT ApplyDataLabels(
             XlDataLabelsType Type,
-            VARIANT LegendKey,
-            VARIANT AutoText,
-            VARIANT HasLeaderLines,
-            VARIANT ShowSeriesName,
-            VARIANT ShowCategoryName,
-            VARIANT ShowValue,
-            VARIANT ShowPercentage,
-            VARIANT ShowBubbleSize,
-            VARIANT Separator,
-            long lcid) = 0;
+            VARIANT LegendKey = argMissing2(),
+            VARIANT AutoText = argMissing2(),
+            VARIANT HasLeaderLines = argMissing2(),
+            VARIANT ShowSeriesName = argMissing2(),
+            VARIANT ShowCategoryName = argMissing2(),
+            VARIANT ShowValue = argMissing2(),
+            VARIANT ShowPercentage = argMissing2(),
+            VARIANT ShowBubbleSize = argMissing2(),
+            VARIANT Separator = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_ChartType(
             XlChartType *prop /Out/) = 0;
@@ -149,7 +149,7 @@ namespace wpsapi
 
         virtual HRESULT ApplyCustomType(
             XlChartType ChartType,
-            VARIANT TypeName) = 0;
+            VARIANT TypeName = argMissing2()) = 0;
 
         virtual HRESULT GetChartElement(
             long x,
@@ -160,7 +160,7 @@ namespace wpsapi
 
         virtual HRESULT SetSourceData(
             BSTR Source,
-            VARIANT PlotBy) = 0;
+            VARIANT PlotBy = argMissing2()) = 0;
 
         virtual HRESULT get_PlotBy(
             XlRowCol *prop /Out/) = 0;
@@ -181,22 +181,22 @@ namespace wpsapi
             Legend **prop /Out/) = 0;
 
         virtual HRESULT Axes(
-            VARIANT Type,
-            XlAxisGroup AxisGroup,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Type = argMissing2(),
+            XlAxisGroup AxisGroup = wpsapi:: xlPrimary,
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_HasAxis(
-            VARIANT Index1,
-            VARIANT Index2,
-            long lcid,
-            VARIANT *prop /Out/) = 0;
+            VARIANT Index1 = argMissing2(),
+            VARIANT Index2 = argMissing2(),
+            long lcid = 0,
+            VARIANT *prop /Out/ = 0) = 0;
 
         virtual HRESULT put_HasAxis(
-            VARIANT Index1,
-            VARIANT Index2,
-            long lcid,
-            VARIANT prop) = 0;
+            VARIANT Index1 = argMissing2(),
+            VARIANT Index2 = argMissing2(),
+            long lcid = 0,
+            VARIANT prop = argMissing2()) = 0;
 
         virtual HRESULT get_Walls(
             long lcid,
@@ -224,7 +224,7 @@ namespace wpsapi
 
         virtual HRESULT AutoFormat(
             long Gallery,
-            VARIANT Format) = 0;
+            VARIANT Format = argMissing2()) = 0;
 
         virtual HRESULT get_AutoScaling(
             long lcid,
@@ -238,18 +238,18 @@ namespace wpsapi
             BSTR FileName) = 0;
 
         virtual HRESULT ChartWizard(
-            VARIANT Source,
-            VARIANT Gallery,
-            VARIANT Format,
-            VARIANT PlotBy,
-            VARIANT CategoryLabels,
-            VARIANT SeriesLabels,
-            VARIANT HasLegend,
-            VARIANT Title,
-            VARIANT CategoryTitle,
-            VARIANT ValueTitle,
-            VARIANT ExtraTitle,
-            long lcid) = 0;
+            VARIANT Source = argMissing2(),
+            VARIANT Gallery = argMissing2(),
+            VARIANT Format = argMissing2(),
+            VARIANT PlotBy = argMissing2(),
+            VARIANT CategoryLabels = argMissing2(),
+            VARIANT SeriesLabels = argMissing2(),
+            VARIANT HasLegend = argMissing2(),
+            VARIANT Title = argMissing2(),
+            VARIANT CategoryTitle = argMissing2(),
+            VARIANT ValueTitle = argMissing2(),
+            VARIANT ExtraTitle = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT CopyPicture(
             XlPictureAppearance Appearance,
@@ -261,8 +261,8 @@ namespace wpsapi
             DataTable **prop /Out/) = 0;
 
         virtual HRESULT Paste(
-            VARIANT Type,
-            long lcid) = 0;
+            VARIANT Type = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_BarShape(
             XlBarShape *prop /Out/) = 0;
@@ -272,9 +272,9 @@ namespace wpsapi
 
         virtual HRESULT Export(
             BSTR FileName,
-            VARIANT FilterName,
-            VARIANT Interactive,
-            VARIANT_BOOL *prop /Out/) = 0;
+            VARIANT FilterName = argMissing2(),
+            VARIANT Interactive = argMissing2(),
+            VARIANT_BOOL *prop /Out/ = 0) = 0;
 
         virtual HRESULT SetDefaultChart(
             VARIANT Name) = 0;
@@ -316,7 +316,7 @@ namespace wpsapi
 
         virtual HRESULT ApplyLayout(
             long Layout,
-            VARIANT ChartType) = 0;
+            VARIANT ChartType = argMissing2()) = 0;
 
         virtual HRESULT Refresh() = 0;
 
@@ -340,78 +340,78 @@ namespace wpsapi
             ChartGroup **prop /Out/) = 0;
 
         virtual HRESULT AreaGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_Bar3DGroup(
-            long lcid,
-            ChartGroup **prop /Out/) = 0;
+            long lcid = 0,
+            ChartGroup **prop /Out/ = 0) = 0;
 
         virtual HRESULT BarGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_Column3DGroup(
             long lcid,
             ChartGroup **prop /Out/) = 0;
 
         virtual HRESULT ColumnGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_Line3DGroup(
             long lcid,
             ChartGroup **prop /Out/) = 0;
 
         virtual HRESULT LineGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_Pie3DGroup(
             long lcid,
             ChartGroup **prop /Out/) = 0;
 
         virtual HRESULT PieGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT DoughnutGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT RadarGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_SurfaceGroup(
             long lcid,
             ChartGroup **prop /Out/) = 0;
 
         virtual HRESULT XYGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT Delete(
             long lcid,
             VARIANT *prop /Out/) = 0;
 
         virtual HRESULT Copy(
-            VARIANT Before,
-            VARIANT After,
-            long lcid) = 0;
+            VARIANT Before = argMissing2(),
+            VARIANT After = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT Select(
-            VARIANT Replace,
-            long lcid,
-            VARIANT *prop /Out/) = 0;
+            VARIANT Replace = argMissing2(),
+            long lcid = 0,
+            VARIANT *prop /Out/ = 0) = 0;
 
         virtual HRESULT get_ShowReportFilterFieldButtons(
             VARIANT_BOOL *prop /Out/) = 0;
@@ -444,9 +444,9 @@ namespace wpsapi
             VARIANT_BOOL prop) = 0;
 
         virtual HRESULT FullSeriesCollection(
-            VARIANT Index,
-            long lcid,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_CategoryLabelLevel(
             XlCategoryLabelLevel *prop /Out/) = 0;

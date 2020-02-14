@@ -24,8 +24,8 @@ namespace etapi
 
         virtual HRESULT Add(
             BSTR Name,
-            VARIANT BasedOn,
-            Style **RHS /Out/) = 0;
+            VARIANT BasedOn = argMissing2(),
+            Style **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;

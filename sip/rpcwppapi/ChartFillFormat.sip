@@ -84,10 +84,10 @@ namespace wppapi
             MsoFillType *RHS /Out/) = 0;
 
         virtual HRESULT UserPicture(
-            VARIANT PictureFile,
-            VARIANT PictureFormat,
-            VARIANT PictureStackUnit,
-            VARIANT PicturePlacement) = 0;
+            VARIANT PictureFile = argMissing2(),
+            VARIANT PictureFormat = argMissing2(),
+            VARIANT PictureStackUnit = argMissing2(),
+            VARIANT PicturePlacement = argMissing2()) = 0;
 
         virtual HRESULT get_Visible(
             MsoTriState *RHS /Out/) = 0;

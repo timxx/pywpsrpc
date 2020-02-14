@@ -91,8 +91,8 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Select(
-            VARIANT Replace,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Replace = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT SendToBack(
             VARIANT *RHS /Out/) = 0;
@@ -139,8 +139,8 @@ namespace etapi
 
         virtual HRESULT AddItem(
             VARIANT Text,
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ArrowHeadLength(
             VARIANT *RHS /Out/) = 0;
@@ -182,16 +182,16 @@ namespace etapi
             BSTR RHS) = 0;
 
         virtual HRESULT get_Characters(
-            VARIANT Start,
-            VARIANT Length,
-            Characters **RHS /Out/) = 0;
+            VARIANT Start = argMissing2(),
+            VARIANT Length = argMissing2(),
+            Characters **RHS /Out/ = 0) = 0;
 
         virtual HRESULT CheckSpelling(
-            VARIANT CustomDictionary,
-            VARIANT IgnoreUppercase,
-            VARIANT AlwaysSuggest,
-            VARIANT SpellLang,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT CustomDictionary = argMissing2(),
+            VARIANT IgnoreUppercase = argMissing2(),
+            VARIANT AlwaysSuggest = argMissing2(),
+            VARIANT SpellLang = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__Default(
             long *RHS /Out/) = 0;
@@ -270,8 +270,8 @@ namespace etapi
         virtual void  _Dummy54() = 0;
 
         virtual HRESULT List(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual void  _Dummy56() = 0;
 
@@ -334,15 +334,15 @@ namespace etapi
 
         virtual HRESULT RemoveItem(
             long Index,
-            VARIANT Count,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Count = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Reshape(
             long Vertex,
             VARIANT Insert,
-            VARIANT Left,
-            VARIANT Top,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Left = argMissing2(),
+            VARIANT Top = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_RoundedCorners(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -351,8 +351,8 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Selected(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Shadow(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -388,9 +388,9 @@ namespace etapi
             VARIANT RHS) = 0;
 
         virtual HRESULT Vertices(
-            VARIANT Index1,
-            VARIANT Index2,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index1 = argMissing2(),
+            VARIANT Index2 = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ReadingOrder(
             long *RHS /Out/) = 0;
@@ -409,8 +409,8 @@ namespace etapi
             GroupObject **RHS /Out/) = 0;
 
         virtual HRESULT LinkCombo(
-            VARIANT Link,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Link = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT _NewEnum(
             IUnknown **RHS /Out/) = 0;

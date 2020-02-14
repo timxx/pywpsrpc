@@ -16,66 +16,66 @@ namespace etapi
         virtual HRESULT SolverAdd(
             VARIANT CellRef,
             int Relation,
-            VARIANT FormulaText,
-            int *errorParam /Out/) = 0;
+            VARIANT FormulaText = argMissing2(),
+            int *errorParam /Out/ = 0) = 0;
 
         virtual HRESULT SolverChange(
             VARIANT CellRef,
             int Relation,
-            VARIANT FormulaText,
-            int *errorParam /Out/) = 0;
+            VARIANT FormulaText = argMissing2(),
+            int *errorParam /Out/ = 0) = 0;
 
         virtual HRESULT SolverDelete(
             VARIANT CellRef,
             int Relation,
-            VARIANT FormulaText,
-            int *errorParam /Out/) = 0;
+            VARIANT FormulaText = argMissing2(),
+            int *errorParam /Out/ = 0) = 0;
 
         virtual HRESULT SolverFinish(
-            VARIANT KeepFinal,
-            VARIANT ReportArry,
-            VARIANT OutlineReports,
-            int *errorParam /Out/) = 0;
+            VARIANT KeepFinal = argMissing2(),
+            VARIANT ReportArry = argMissing2(),
+            VARIANT OutlineReports = argMissing2(),
+            int *errorParam /Out/ = 0) = 0;
 
         virtual HRESULT SolverOk(
-            VARIANT SetCell,
-            VARIANT MaxMinVal,
-            VARIANT ValueOf,
-            VARIANT ByChange,
-            VARIANT Engine,
-            VARIANT EngineDesc,
-            int *errorParam /Out/) = 0;
+            VARIANT SetCell = argMissing2(),
+            VARIANT MaxMinVal = argMissing2(),
+            VARIANT ValueOf = argMissing2(),
+            VARIANT ByChange = argMissing2(),
+            VARIANT Engine = argMissing2(),
+            VARIANT EngineDesc = argMissing2(),
+            int *errorParam /Out/ = 0) = 0;
 /*
         virtual HRESULT SolverOptions(
-            VARIANT MaxTime,
-            VARIANT Iterations,
-            VARIANT Precision,
-            VARIANT AssumeLinear,
-            VARIANT StepThru,
-            VARIANT Estimates,
-            VARIANT Derivatives,
-            VARIANT SearchOption,
-            VARIANT IntTolerance,
-            VARIANT Scaling,
-            VARIANT Convergence,
-            VARIANT AssumeNonNeg,
-            VARIANT PopulationSize,
-            VARIANT randomSeed,
-            VARIANT MultiStart,
-            VARIANT RequireBounds,
-            VARIANT MutationRate,
-            VARIANT MaxSubproblems,
-            VARIANT MaxIntegerSols,
-            VARIANT SolveWithout,
-            VARIANT MaxTimeNoImp,
-            int *errorParam /Out/) = 0;
+            VARIANT MaxTime = argMissing2(),
+            VARIANT Iterations = argMissing2(),
+            VARIANT Precision = argMissing2(),
+            VARIANT AssumeLinear = argMissing2(),
+            VARIANT StepThru = argMissing2(),
+            VARIANT Estimates = argMissing2(),
+            VARIANT Derivatives = argMissing2(),
+            VARIANT SearchOption = argMissing2(),
+            VARIANT IntTolerance = argMissing2(),
+            VARIANT Scaling = argMissing2(),
+            VARIANT Convergence = argMissing2(),
+            VARIANT AssumeNonNeg = argMissing2(),
+            VARIANT PopulationSize = argMissing2(),
+            VARIANT randomSeed = argMissing2(),
+            VARIANT MultiStart = argMissing2(),
+            VARIANT RequireBounds = argMissing2(),
+            VARIANT MutationRate = argMissing2(),
+            VARIANT MaxSubproblems = argMissing2(),
+            VARIANT MaxIntegerSols = argMissing2(),
+            VARIANT SolveWithout = argMissing2(),
+            VARIANT MaxTimeNoImp = argMissing2(),
+            int *errorParam /Out/ = 0) = 0;
 */
         virtual HRESULT SolverReset() = 0;
 
         virtual HRESULT SolverSolve(
-            VARIANT UserFinish,
-            VARIANT ShowRef,
-            int *SolverResult /Out/) = 0;
+            VARIANT UserFinish = argMissing2(),
+            VARIANT ShowRef = argMissing2(),
+            int *SolverResult /Out/ = 0) = 0;
 
     };
 };

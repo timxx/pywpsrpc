@@ -125,34 +125,34 @@ namespace etapi
         virtual HRESULT Intersect(
             Range *Arg1,
             Range *Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT Arg5,
-            VARIANT Arg6,
-            VARIANT Arg7,
-            VARIANT Arg8,
-            VARIANT Arg9,
-            VARIANT Arg10,
-            VARIANT Arg11,
-            VARIANT Arg12,
-            VARIANT Arg13,
-            VARIANT Arg14,
-            VARIANT Arg15,
-            VARIANT Arg16,
-            VARIANT Arg17,
-            VARIANT Arg18,
-            VARIANT Arg19,
-            VARIANT Arg20,
-            VARIANT Arg21,
-            VARIANT Arg22,
-            VARIANT Arg23,
-            VARIANT Arg24,
-            VARIANT Arg25,
-            VARIANT Arg26,
-            VARIANT Arg27,
-            VARIANT Arg28,
-            VARIANT Arg29,
-            VARIANT Arg30,
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT Arg5 = argMissing2(),
+            VARIANT Arg6 = argMissing2(),
+            VARIANT Arg7 = argMissing2(),
+            VARIANT Arg8 = argMissing2(),
+            VARIANT Arg9 = argMissing2(),
+            VARIANT Arg10 = argMissing2(),
+            VARIANT Arg11 = argMissing2(),
+            VARIANT Arg12 = argMissing2(),
+            VARIANT Arg13 = argMissing2(),
+            VARIANT Arg14 = argMissing2(),
+            VARIANT Arg15 = argMissing2(),
+            VARIANT Arg16 = argMissing2(),
+            VARIANT Arg17 = argMissing2(),
+            VARIANT Arg18 = argMissing2(),
+            VARIANT Arg19 = argMissing2(),
+            VARIANT Arg20 = argMissing2(),
+            VARIANT Arg21 = argMissing2(),
+            VARIANT Arg22 = argMissing2(),
+            VARIANT Arg23 = argMissing2(),
+            VARIANT Arg24 = argMissing2(),
+            VARIANT Arg25 = argMissing2(),
+            VARIANT Arg26 = argMissing2(),
+            VARIANT Arg27 = argMissing2(),
+            VARIANT Arg28 = argMissing2(),
+            VARIANT Arg29 = argMissing2(),
+            VARIANT Arg30 = argMissing2(),
             long lcid,
             Range **RHS /Out/) = 0;
 */
@@ -168,79 +168,79 @@ namespace etapi
 
         virtual HRESULT get_Range(
             VARIANT Cell1,
-            VARIANT Cell2,
-            Range **RHS /Out/) = 0;
+            VARIANT Cell2 = argMissing2(),
+            Range **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Rows(
             Range **RHS /Out/) = 0;
 
 /*
         virtual HRESULT Run(
-            VARIANT Macro,
-            VARIANT Arg1,
-            VARIANT Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT Arg5,
-            VARIANT Arg6,
-            VARIANT Arg7,
-            VARIANT Arg8,
-            VARIANT Arg9,
-            VARIANT Arg10,
-            VARIANT Arg11,
-            VARIANT Arg12,
-            VARIANT Arg13,
-            VARIANT Arg14,
-            VARIANT Arg15,
-            VARIANT Arg16,
-            VARIANT Arg17,
-            VARIANT Arg18,
-            VARIANT Arg19,
-            VARIANT Arg20,
-            VARIANT Arg21,
-            VARIANT Arg22,
-            VARIANT Arg23,
-            VARIANT Arg24,
-            VARIANT Arg25,
-            VARIANT Arg26,
-            VARIANT Arg27,
-            VARIANT Arg28,
-            VARIANT Arg29,
-            VARIANT Arg30,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Macro = argMissing2(),
+            VARIANT Arg1 = argMissing2(),
+            VARIANT Arg2 = argMissing2(),
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT Arg5 = argMissing2(),
+            VARIANT Arg6 = argMissing2(),
+            VARIANT Arg7 = argMissing2(),
+            VARIANT Arg8 = argMissing2(),
+            VARIANT Arg9 = argMissing2(),
+            VARIANT Arg10 = argMissing2(),
+            VARIANT Arg11 = argMissing2(),
+            VARIANT Arg12 = argMissing2(),
+            VARIANT Arg13 = argMissing2(),
+            VARIANT Arg14 = argMissing2(),
+            VARIANT Arg15 = argMissing2(),
+            VARIANT Arg16 = argMissing2(),
+            VARIANT Arg17 = argMissing2(),
+            VARIANT Arg18 = argMissing2(),
+            VARIANT Arg19 = argMissing2(),
+            VARIANT Arg20 = argMissing2(),
+            VARIANT Arg21 = argMissing2(),
+            VARIANT Arg22 = argMissing2(),
+            VARIANT Arg23 = argMissing2(),
+            VARIANT Arg24 = argMissing2(),
+            VARIANT Arg25 = argMissing2(),
+            VARIANT Arg26 = argMissing2(),
+            VARIANT Arg27 = argMissing2(),
+            VARIANT Arg28 = argMissing2(),
+            VARIANT Arg29 = argMissing2(),
+            VARIANT Arg30 = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT _Run2(
-            VARIANT Macro,
-            VARIANT Arg1,
-            VARIANT Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT Arg5,
-            VARIANT Arg6,
-            VARIANT Arg7,
-            VARIANT Arg8,
-            VARIANT Arg9,
-            VARIANT Arg10,
-            VARIANT Arg11,
-            VARIANT Arg12,
-            VARIANT Arg13,
-            VARIANT Arg14,
-            VARIANT Arg15,
-            VARIANT Arg16,
-            VARIANT Arg17,
-            VARIANT Arg18,
-            VARIANT Arg19,
-            VARIANT Arg20,
-            VARIANT Arg21,
-            VARIANT Arg22,
-            VARIANT Arg23,
-            VARIANT Arg24,
-            VARIANT Arg25,
-            VARIANT Arg26,
-            VARIANT Arg27,
-            VARIANT Arg28,
-            VARIANT Arg29,
-            VARIANT Arg30,
+            VARIANT Macro = argMissing2(),
+            VARIANT Arg1 = argMissing2(),
+            VARIANT Arg2 = argMissing2(),
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT Arg5 = argMissing2(),
+            VARIANT Arg6 = argMissing2(),
+            VARIANT Arg7 = argMissing2(),
+            VARIANT Arg8 = argMissing2(),
+            VARIANT Arg9 = argMissing2(),
+            VARIANT Arg10 = argMissing2(),
+            VARIANT Arg11 = argMissing2(),
+            VARIANT Arg12 = argMissing2(),
+            VARIANT Arg13 = argMissing2(),
+            VARIANT Arg14 = argMissing2(),
+            VARIANT Arg15 = argMissing2(),
+            VARIANT Arg16 = argMissing2(),
+            VARIANT Arg17 = argMissing2(),
+            VARIANT Arg18 = argMissing2(),
+            VARIANT Arg19 = argMissing2(),
+            VARIANT Arg20 = argMissing2(),
+            VARIANT Arg21 = argMissing2(),
+            VARIANT Arg22 = argMissing2(),
+            VARIANT Arg23 = argMissing2(),
+            VARIANT Arg24 = argMissing2(),
+            VARIANT Arg25 = argMissing2(),
+            VARIANT Arg26 = argMissing2(),
+            VARIANT Arg27 = argMissing2(),
+            VARIANT Arg28 = argMissing2(),
+            VARIANT Arg29 = argMissing2(),
+            VARIANT Arg30 = argMissing2(),
             long lcid,
             VARIANT *RHS /Out/) = 0;
 */
@@ -250,8 +250,8 @@ namespace etapi
 
         virtual HRESULT SendKeys(
             VARIANT Keys,
-            VARIANT Wait,
-            long lcid) = 0;
+            VARIANT Wait = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Sheets(
             Sheets **RHS /Out/) = 0;
@@ -270,34 +270,34 @@ namespace etapi
         virtual HRESULT Union(
             Range *Arg1,
             Range *Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT Arg5,
-            VARIANT Arg6,
-            VARIANT Arg7,
-            VARIANT Arg8,
-            VARIANT Arg9,
-            VARIANT Arg10,
-            VARIANT Arg11,
-            VARIANT Arg12,
-            VARIANT Arg13,
-            VARIANT Arg14,
-            VARIANT Arg15,
-            VARIANT Arg16,
-            VARIANT Arg17,
-            VARIANT Arg18,
-            VARIANT Arg19,
-            VARIANT Arg20,
-            VARIANT Arg21,
-            VARIANT Arg22,
-            VARIANT Arg23,
-            VARIANT Arg24,
-            VARIANT Arg25,
-            VARIANT Arg26,
-            VARIANT Arg27,
-            VARIANT Arg28,
-            VARIANT Arg29,
-            VARIANT Arg30,
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT Arg5 = argMissing2(),
+            VARIANT Arg6 = argMissing2(),
+            VARIANT Arg7 = argMissing2(),
+            VARIANT Arg8 = argMissing2(),
+            VARIANT Arg9 = argMissing2(),
+            VARIANT Arg10 = argMissing2(),
+            VARIANT Arg11 = argMissing2(),
+            VARIANT Arg12 = argMissing2(),
+            VARIANT Arg13 = argMissing2(),
+            VARIANT Arg14 = argMissing2(),
+            VARIANT Arg15 = argMissing2(),
+            VARIANT Arg16 = argMissing2(),
+            VARIANT Arg17 = argMissing2(),
+            VARIANT Arg18 = argMissing2(),
+            VARIANT Arg19 = argMissing2(),
+            VARIANT Arg20 = argMissing2(),
+            VARIANT Arg21 = argMissing2(),
+            VARIANT Arg22 = argMissing2(),
+            VARIANT Arg23 = argMissing2(),
+            VARIANT Arg24 = argMissing2(),
+            VARIANT Arg25 = argMissing2(),
+            VARIANT Arg26 = argMissing2(),
+            VARIANT Arg27 = argMissing2(),
+            VARIANT Arg28 = argMissing2(),
+            VARIANT Arg29 = argMissing2(),
+            VARIANT Arg30 = argMissing2(),
             long lcid,
             Range **RHS /Out/) = 0;
 */
@@ -326,13 +326,13 @@ namespace etapi
         virtual HRESULT AddChartAutoFormat(
             VARIANT Chart,
             BSTR Name,
-            VARIANT Description,
-            long lcid) = 0;
+            VARIANT Description = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT AddCustomList(
             VARIANT ListArray,
-            VARIANT ByRow,
-            long lcid) = 0;
+            VARIANT ByRow = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_AlertBeforeOverwriting(
             long lcid,
@@ -390,9 +390,9 @@ namespace etapi
             XlCalculation RHS) = 0;
 
         virtual HRESULT get_Caller(
-            VARIANT Index,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_CanPlaySounds(
             long lcid,
@@ -423,15 +423,15 @@ namespace etapi
 
         virtual HRESULT CheckSpelling(
             BSTR Word,
-            VARIANT CustomDictionary,
-            VARIANT IgnoreUppercase,
-            long lcid,
-            VARIANT_BOOL *RHS /Out/) = 0;
+            VARIANT CustomDictionary = argMissing2(),
+            VARIANT IgnoreUppercase = argMissing2(),
+            long lcid = 0,
+            VARIANT_BOOL *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ClipboardFormats(
-            VARIANT Index,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_DisplayClipboardWindow(
             long lcid,
@@ -466,11 +466,11 @@ namespace etapi
         virtual HRESULT ConvertFormula(
             VARIANT Formula,
             XlReferenceStyle FromReferenceStyle,
-            VARIANT ToReferenceStyle,
-            VARIANT ToAbsolute,
-            VARIANT RelativeTo,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT ToReferenceStyle = argMissing2(),
+            VARIANT ToAbsolute = argMissing2(),
+            VARIANT RelativeTo = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_CopyObjectsWithCells(
             long lcid,
@@ -509,59 +509,59 @@ namespace etapi
             long RHS) = 0;
 
         virtual HRESULT Dummy1(
-            VARIANT Arg1,
-            VARIANT Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Arg1 = argMissing2(),
+            VARIANT Arg2 = argMissing2(),
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Dummy2(
-            VARIANT Arg1,
-            VARIANT Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT Arg5,
-            VARIANT Arg6,
-            VARIANT Arg7,
-            VARIANT Arg8,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Arg1 = argMissing2(),
+            VARIANT Arg2 = argMissing2(),
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT Arg5 = argMissing2(),
+            VARIANT Arg6 = argMissing2(),
+            VARIANT Arg7 = argMissing2(),
+            VARIANT Arg8 = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Dummy3(
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT Dummy4(
-            VARIANT Arg1,
-            VARIANT Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT Arg5,
-            VARIANT Arg6,
-            VARIANT Arg7,
-            VARIANT Arg8,
-            VARIANT Arg9,
-            VARIANT Arg10,
-            VARIANT Arg11,
-            VARIANT Arg12,
-            VARIANT Arg13,
-            VARIANT Arg14,
-            VARIANT Arg15,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Arg1 = argMissing2(),
+            VARIANT Arg2 = argMissing2(),
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT Arg5 = argMissing2(),
+            VARIANT Arg6 = argMissing2(),
+            VARIANT Arg7 = argMissing2(),
+            VARIANT Arg8 = argMissing2(),
+            VARIANT Arg9 = argMissing2(),
+            VARIANT Arg10 = argMissing2(),
+            VARIANT Arg11 = argMissing2(),
+            VARIANT Arg12 = argMissing2(),
+            VARIANT Arg13 = argMissing2(),
+            VARIANT Arg14 = argMissing2(),
+            VARIANT Arg15 = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Dummy5(
-            VARIANT Arg1,
-            VARIANT Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT Arg5,
-            VARIANT Arg6,
-            VARIANT Arg7,
-            VARIANT Arg8,
-            VARIANT Arg9,
-            VARIANT Arg10,
-            VARIANT Arg11,
-            VARIANT Arg12,
-            VARIANT Arg13,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Arg1 = argMissing2(),
+            VARIANT Arg2 = argMissing2(),
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT Arg5 = argMissing2(),
+            VARIANT Arg6 = argMissing2(),
+            VARIANT Arg7 = argMissing2(),
+            VARIANT Arg8 = argMissing2(),
+            VARIANT Arg9 = argMissing2(),
+            VARIANT Arg10 = argMissing2(),
+            VARIANT Arg11 = argMissing2(),
+            VARIANT Arg12 = argMissing2(),
+            VARIANT Arg13 = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Dummy6(
             VARIANT *RHS /Out/) = 0;
@@ -570,15 +570,15 @@ namespace etapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT Dummy8(
-            VARIANT Arg1,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Arg1 = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Dummy9(
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT Dummy10(
-            VARIANT arg,
-            VARIANT_BOOL *RHS /Out/) = 0;
+            VARIANT arg = argMissing2(),
+            VARIANT_BOOL *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Dummy11() = 0;
 
@@ -710,10 +710,10 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT get_FileConverters(
-            VARIANT Index1,
-            VARIANT Index2,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index1 = argMissing2(),
+            VARIANT Index2 = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_FileSearch(
             ksoapi::FileSearch **RHS /Out/) = 0;
@@ -751,27 +751,27 @@ namespace etapi
             long *RHS /Out/) = 0;
 
         virtual HRESULT GetOpenFilename(
-            VARIANT FileFilter,
-            VARIANT FilterIndex,
-            VARIANT Title,
-            VARIANT ButtonText,
-            VARIANT MultiSelect,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT FileFilter = argMissing2(),
+            VARIANT FilterIndex = argMissing2(),
+            VARIANT Title = argMissing2(),
+            VARIANT ButtonText = argMissing2(),
+            VARIANT MultiSelect = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT GetSaveAsFilename(
-            VARIANT InitialFilename,
-            VARIANT FileFilter,
-            VARIANT FilterIndex,
-            VARIANT Title,
-            VARIANT ButtonText,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT InitialFilename = argMissing2(),
+            VARIANT FileFilter = argMissing2(),
+            VARIANT FilterIndex = argMissing2(),
+            VARIANT Title = argMissing2(),
+            VARIANT ButtonText = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Goto(
-            VARIANT Reference,
-            VARIANT Scroll,
-            long lcid) = 0;
+            VARIANT Reference = argMissing2(),
+            VARIANT Scroll = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Height(
             long lcid,
@@ -782,9 +782,9 @@ namespace etapi
             double RHS) = 0;
 
         virtual HRESULT Help(
-            VARIANT HelpFile,
-            VARIANT HelpContextID,
-            long lcid) = 0;
+            VARIANT HelpFile = argMissing2(),
+            VARIANT HelpContextID = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_IgnoreRemoteRequests(
             long lcid,
@@ -801,15 +801,15 @@ namespace etapi
 
         virtual HRESULT InputBox(
             BSTR Prompt,
-            VARIANT Title,
-            VARIANT Default,
-            VARIANT Left,
-            VARIANT Top,
-            VARIANT HelpFile,
-            VARIANT HelpContextID,
-            VARIANT Type,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Title = argMissing2(),
+            VARIANT Default = argMissing2(),
+            VARIANT Left = argMissing2(),
+            VARIANT Top = argMissing2(),
+            VARIANT HelpFile = argMissing2(),
+            VARIANT HelpContextID = argMissing2(),
+            VARIANT Type = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Interactive(
             long lcid,
@@ -820,9 +820,9 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT get_International(
-            VARIANT Index,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Iteration(
             long lcid,
@@ -851,26 +851,26 @@ namespace etapi
             BSTR *RHS /Out/) = 0;
 
         virtual HRESULT _MacroOptions(
-            VARIANT Macro,
-            VARIANT Description,
-            VARIANT HasMenu,
-            VARIANT MenuText,
-            VARIANT HasShortcutKey,
-            VARIANT ShortcutKey,
-            VARIANT Category,
-            VARIANT StatusBar,
-            VARIANT HelpContextID,
-            VARIANT HelpFile,
-            long lcid) = 0;
+            VARIANT Macro = argMissing2(),
+            VARIANT Description = argMissing2(),
+            VARIANT HasMenu = argMissing2(),
+            VARIANT MenuText = argMissing2(),
+            VARIANT HasShortcutKey = argMissing2(),
+            VARIANT ShortcutKey = argMissing2(),
+            VARIANT Category = argMissing2(),
+            VARIANT StatusBar = argMissing2(),
+            VARIANT HelpContextID = argMissing2(),
+            VARIANT HelpFile = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT MailLogoff(
             long lcid) = 0;
 
         virtual HRESULT MailLogon(
-            VARIANT Name,
-            VARIANT Password,
-            VARIANT DownloadNewMail,
-            long lcid) = 0;
+            VARIANT Name = argMissing2(),
+            VARIANT Password = argMissing2(),
+            VARIANT DownloadNewMail = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_MailSession(
             long lcid,
@@ -989,8 +989,8 @@ namespace etapi
 
         virtual HRESULT OnKey(
             BSTR Key,
-            VARIANT Procedure,
-            long lcid) = 0;
+            VARIANT Procedure = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT OnRepeat(
             BSTR Text,
@@ -1016,9 +1016,9 @@ namespace etapi
         virtual HRESULT OnTime(
             VARIANT EarliestTime,
             BSTR Procedure,
-            VARIANT LatestTime,
-            VARIANT Schedule,
-            long lcid) = 0;
+            VARIANT LatestTime = argMissing2(),
+            VARIANT Schedule = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT OnUndo(
             BSTR Text,
@@ -1050,9 +1050,9 @@ namespace etapi
             BSTR *RHS /Out/) = 0;
 
         virtual HRESULT get_PreviousSelections(
-            VARIANT Index,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_PivotTableSelection(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -1071,9 +1071,9 @@ namespace etapi
         virtual HRESULT Quit() = 0;
 
         virtual HRESULT RecordMacro(
-            VARIANT BasicCode,
-            VARIANT XlmCode,
-            long lcid) = 0;
+            VARIANT BasicCode = argMissing2(),
+            VARIANT XlmCode = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_RecordRelative(
             long lcid,
@@ -1088,10 +1088,10 @@ namespace etapi
             XlReferenceStyle RHS) = 0;
 
         virtual HRESULT get_RegisteredFunctions(
-            VARIANT Index1,
-            VARIANT Index2,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index1 = argMissing2(),
+            VARIANT Index2 = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT RegisterXLL(
             BSTR Filename,
@@ -1111,12 +1111,12 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Save(
-            VARIANT Filename,
-            long lcid) = 0;
+            VARIANT Filename = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT SaveWorkspace(
-            VARIANT Filename,
-            long lcid) = 0;
+            VARIANT Filename = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_ScreenUpdating(
             long lcid,
@@ -1127,8 +1127,8 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT SetDefaultChart(
-            VARIANT FormatName,
-            VARIANT Gallery) = 0;
+            VARIANT FormatName = argMissing2(),
+            VARIANT Gallery = argMissing2()) = 0;
 
         virtual HRESULT get_SheetsInNewWorkbook(
             long lcid,
@@ -1270,8 +1270,8 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Volatile(
-            VARIANT Volatile,
-            long lcid) = 0;
+            VARIANT Volatile = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT _Wait(
             VARIANT Time,
@@ -1330,36 +1330,36 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 /*
         virtual HRESULT _WSFunction(
-            VARIANT Arg1,
-            VARIANT Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT Arg5,
-            VARIANT Arg6,
-            VARIANT Arg7,
-            VARIANT Arg8,
-            VARIANT Arg9,
-            VARIANT Arg10,
-            VARIANT Arg11,
-            VARIANT Arg12,
-            VARIANT Arg13,
-            VARIANT Arg14,
-            VARIANT Arg15,
-            VARIANT Arg16,
-            VARIANT Arg17,
-            VARIANT Arg18,
-            VARIANT Arg19,
-            VARIANT Arg20,
-            VARIANT Arg21,
-            VARIANT Arg22,
-            VARIANT Arg23,
-            VARIANT Arg24,
-            VARIANT Arg25,
-            VARIANT Arg26,
-            VARIANT Arg27,
-            VARIANT Arg28,
-            VARIANT Arg29,
-            VARIANT Arg30,
+            VARIANT Arg1 = argMissing2(),
+            VARIANT Arg2 = argMissing2(),
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT Arg5 = argMissing2(),
+            VARIANT Arg6 = argMissing2(),
+            VARIANT Arg7 = argMissing2(),
+            VARIANT Arg8 = argMissing2(),
+            VARIANT Arg9 = argMissing2(),
+            VARIANT Arg10 = argMissing2(),
+            VARIANT Arg11 = argMissing2(),
+            VARIANT Arg12 = argMissing2(),
+            VARIANT Arg13 = argMissing2(),
+            VARIANT Arg14 = argMissing2(),
+            VARIANT Arg15 = argMissing2(),
+            VARIANT Arg16 = argMissing2(),
+            VARIANT Arg17 = argMissing2(),
+            VARIANT Arg18 = argMissing2(),
+            VARIANT Arg19 = argMissing2(),
+            VARIANT Arg20 = argMissing2(),
+            VARIANT Arg21 = argMissing2(),
+            VARIANT Arg22 = argMissing2(),
+            VARIANT Arg23 = argMissing2(),
+            VARIANT Arg24 = argMissing2(),
+            VARIANT Arg25 = argMissing2(),
+            VARIANT Arg26 = argMissing2(),
+            VARIANT Arg27 = argMissing2(),
+            VARIANT Arg28 = argMissing2(),
+            VARIANT Arg29 = argMissing2(),
+            VARIANT Arg30 = argMissing2(),
             long lcid,
             VARIANT *RHS /Out/) = 0;
 */
@@ -1390,8 +1390,8 @@ namespace etapi
             OLEDBErrors **RHS /Out/) = 0;
 
         virtual HRESULT GetPhonetic(
-            VARIANT Text,
-            BSTR *RHS /Out/) = 0;
+            VARIANT Text = argMissing2(),
+            BSTR *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_COMAddIns(
             ksoapi::COMAddIns **RHS /Out/) = 0;
@@ -1450,36 +1450,36 @@ namespace etapi
 /*
         virtual HRESULT Dummy13(
             VARIANT Arg1,
-            VARIANT Arg2,
-            VARIANT Arg3,
-            VARIANT Arg4,
-            VARIANT Arg5,
-            VARIANT Arg6,
-            VARIANT Arg7,
-            VARIANT Arg8,
-            VARIANT Arg9,
-            VARIANT Arg10,
-            VARIANT Arg11,
-            VARIANT Arg12,
-            VARIANT Arg13,
-            VARIANT Arg14,
-            VARIANT Arg15,
-            VARIANT Arg16,
-            VARIANT Arg17,
-            VARIANT Arg18,
-            VARIANT Arg19,
-            VARIANT Arg20,
-            VARIANT Arg21,
-            VARIANT Arg22,
-            VARIANT Arg23,
-            VARIANT Arg24,
-            VARIANT Arg25,
-            VARIANT Arg26,
-            VARIANT Arg27,
-            VARIANT Arg28,
-            VARIANT Arg29,
-            VARIANT Arg30,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Arg2 = argMissing2(),
+            VARIANT Arg3 = argMissing2(),
+            VARIANT Arg4 = argMissing2(),
+            VARIANT Arg5 = argMissing2(),
+            VARIANT Arg6 = argMissing2(),
+            VARIANT Arg7 = argMissing2(),
+            VARIANT Arg8 = argMissing2(),
+            VARIANT Arg9 = argMissing2(),
+            VARIANT Arg10 = argMissing2(),
+            VARIANT Arg11 = argMissing2(),
+            VARIANT Arg12 = argMissing2(),
+            VARIANT Arg13 = argMissing2(),
+            VARIANT Arg14 = argMissing2(),
+            VARIANT Arg15 = argMissing2(),
+            VARIANT Arg16 = argMissing2(),
+            VARIANT Arg17 = argMissing2(),
+            VARIANT Arg18 = argMissing2(),
+            VARIANT Arg19 = argMissing2(),
+            VARIANT Arg20 = argMissing2(),
+            VARIANT Arg21 = argMissing2(),
+            VARIANT Arg22 = argMissing2(),
+            VARIANT Arg23 = argMissing2(),
+            VARIANT Arg24 = argMissing2(),
+            VARIANT Arg25 = argMissing2(),
+            VARIANT Arg26 = argMissing2(),
+            VARIANT Arg27 = argMissing2(),
+            VARIANT Arg28 = argMissing2(),
+            VARIANT Arg29 = argMissing2(),
+            VARIANT Arg30 = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 */
         virtual HRESULT get_FindFormat(
             CellFormat **RHS /Out/) = 0;
@@ -1556,7 +1556,7 @@ namespace etapi
             long *RHS /Out/) = 0;
 
         virtual HRESULT CheckAbort(
-            VARIANT KeepAbort) = 0;
+            VARIANT KeepAbort = argMissing2()) = 0;
 
         virtual HRESULT get_ErrorCheckingOptions(
             ErrorCheckingOptions **RHS /Out/) = 0;
@@ -1622,7 +1622,7 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT DisplayXMLSourcePane(
-            VARIANT XmlMap) = 0;
+            VARIANT XmlMap = argMissing2()) = 0;
 
         virtual HRESULT get_ArbitraryXMLSupportAvailable(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -1630,8 +1630,8 @@ namespace etapi
         virtual HRESULT Support(
             IDispatch *Object,
             long ID,
-            VARIANT arg,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT arg = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Dummy20(
             long grfCompareFunctions,
@@ -1766,18 +1766,18 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT MacroOptions(
-            VARIANT Macro,
-            VARIANT Description,
-            VARIANT HasMenu,
-            VARIANT MenuText,
-            VARIANT HasShortcutKey,
-            VARIANT ShortcutKey,
-            VARIANT Category,
-            VARIANT StatusBar,
-            VARIANT HelpContextID,
-            VARIANT HelpFile,
-            VARIANT ArgumentDescriptions,
-            long lcid) = 0;
+            VARIANT Macro = argMissing2(),
+            VARIANT Description = argMissing2(),
+            VARIANT HasMenu = argMissing2(),
+            VARIANT MenuText = argMissing2(),
+            VARIANT HasShortcutKey = argMissing2(),
+            VARIANT ShortcutKey = argMissing2(),
+            VARIANT Category = argMissing2(),
+            VARIANT StatusBar = argMissing2(),
+            VARIANT HelpContextID = argMissing2(),
+            VARIANT HelpFile = argMissing2(),
+            VARIANT ArgumentDescriptions = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_UseClusterConnector(
             VARIANT_BOOL *RHS /Out/) = 0;

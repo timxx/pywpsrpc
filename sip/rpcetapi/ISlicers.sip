@@ -38,14 +38,14 @@ namespace etapi
 
         virtual HRESULT Add(
             VARIANT SlicerDestination,
-            VARIANT Level,
-            VARIANT Name,
-            VARIANT Caption,
-            VARIANT Top,
-            VARIANT Left,
-            VARIANT Width,
-            VARIANT Height,
-            Slicer **RHS /Out/) = 0;
+            VARIANT Level = argMissing2(),
+            VARIANT Name = argMissing2(),
+            VARIANT Caption = argMissing2(),
+            VARIANT Top = argMissing2(),
+            VARIANT Left = argMissing2(),
+            VARIANT Width = argMissing2(),
+            VARIANT Height = argMissing2(),
+            Slicer **RHS /Out/ = 0) = 0;
 
     };
 };

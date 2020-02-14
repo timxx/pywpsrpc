@@ -38,10 +38,10 @@ namespace etapi
 
         virtual HRESULT Open(
             BSTR Filename,
-            VARIANT Password,
-            VARIANT AddToMru,
-            VARIANT RepairMode,
-            ProtectedViewWindow **RHS /Out/) = 0;
+            VARIANT Password = argMissing2(),
+            VARIANT AddToMru = argMissing2(),
+            VARIANT RepairMode = argMissing2(),
+            ProtectedViewWindow **RHS /Out/ = 0) = 0;
 
     };
 };

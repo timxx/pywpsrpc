@@ -15,17 +15,17 @@ namespace ksoapi
     public:
         virtual HRESULT Add(
             BSTR FileName,
-            VARIANT Section,
-            VARIANT DisplayName,
-            VARIANT Action,
-            VARIANT_BOOL *pvarf /Out/) = 0;
+            VARIANT Section = argMissing2(),
+            VARIANT DisplayName = argMissing2(),
+            VARIANT Action = argMissing2(),
+            VARIANT_BOOL *pvarf /Out/ = 0) = 0;
 
         virtual HRESULT Remove(
             BSTR FileName,
-            VARIANT Section,
-            VARIANT DisplayName,
-            VARIANT Action,
-            VARIANT_BOOL *pvarf /Out/) = 0;
+            VARIANT Section = argMissing2(),
+            VARIANT DisplayName = argMissing2(),
+            VARIANT Action = argMissing2(),
+            VARIANT_BOOL *pvarf /Out/ = 0) = 0;
 
     };
 };

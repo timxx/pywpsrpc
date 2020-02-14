@@ -38,8 +38,8 @@ namespace etapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT get_ReplacementList(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT put_ReplacementList(
             VARIANT Index,

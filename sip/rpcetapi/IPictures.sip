@@ -91,8 +91,8 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Select(
-            VARIANT Replace,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Replace = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT SendToBack(
             VARIANT *RHS /Out/) = 0;
@@ -156,8 +156,8 @@ namespace etapi
 
         virtual HRESULT Insert(
             BSTR Filename,
-            VARIANT Converter,
-            Picture **RHS /Out/) = 0;
+            VARIANT Converter = argMissing2(),
+            Picture **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Item(
             VARIANT Index,
@@ -167,8 +167,8 @@ namespace etapi
             IUnknown **RHS /Out/) = 0;
 
         virtual HRESULT Paste(
-            VARIANT Link,
-            Picture **RHS /Out/) = 0;
+            VARIANT Link = argMissing2(),
+            Picture **RHS /Out/ = 0) = 0;
 
     };
 };

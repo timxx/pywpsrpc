@@ -32,15 +32,15 @@ namespace ksoapi
             IDispatch **ppidisp /Out/) = 0;
 
         virtual HRESULT AddNonVisibleSignature(
-            VARIANT varSigProv,
-            Signature **ppidisp /Out/) = 0;
+            VARIANT varSigProv = argMissing2(),
+            Signature **ppidisp /Out/ = 0) = 0;
 
         virtual HRESULT get_CanAddSignatureLine(
             VARIANT_BOOL *pvarfCanAddSigLine /Out/) = 0;
 
         virtual HRESULT AddSignatureLine(
-            VARIANT varSigProv,
-            Signature **ppidisp /Out/) = 0;
+            VARIANT varSigProv = argMissing2(),
+            Signature **ppidisp /Out/ = 0) = 0;
 
         virtual HRESULT get_Subset(
             MsoSignatureSubset *psubset /Out/) = 0;

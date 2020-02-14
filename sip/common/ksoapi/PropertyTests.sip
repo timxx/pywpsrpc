@@ -24,8 +24,8 @@ namespace ksoapi
         virtual HRESULT Add(
             BSTR Name,
             MsoCondition Condition,
-            VARIANT Value,
-            VARIANT SecondValue,
+            VARIANT Value = argMissing2(),
+            VARIANT SecondValue = argMissing2(),
             MsoConnector Connector = ksoapi::msoConnectorAnd) = 0;
 
         virtual HRESULT Remove(

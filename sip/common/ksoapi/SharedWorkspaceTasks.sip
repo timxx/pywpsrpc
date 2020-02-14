@@ -22,12 +22,12 @@ namespace ksoapi
 
         virtual HRESULT Add(
             BSTR Title,
-            VARIANT Status,
-            VARIANT Priority,
-            VARIANT Assignee,
-            VARIANT Description,
-            VARIANT DueDate,
-            SharedWorkspaceTask **ppTask /Out/) = 0;
+            VARIANT Status = argMissing2(),
+            VARIANT Priority = argMissing2(),
+            VARIANT Assignee = argMissing2(),
+            VARIANT Description = argMissing2(),
+            VARIANT DueDate = argMissing2(),
+            SharedWorkspaceTask **ppTask /Out/ = 0) = 0;
 
         virtual HRESULT get_Parent(
             IDispatch **ppidisp /Out/) = 0;

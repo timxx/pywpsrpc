@@ -97,8 +97,8 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Select(
-            VARIANT Replace,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Replace = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT SendToBack(
             VARIANT *RHS /Out/) = 0;
@@ -176,11 +176,11 @@ namespace etapi
         virtual void  _Dummy38() = 0;
 
         virtual HRESULT CheckSpelling(
-            VARIANT CustomDictionary,
-            VARIANT IgnoreUppercase,
-            VARIANT AlwaysSuggest,
-            VARIANT SpellLang,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT CustomDictionary = argMissing2(),
+            VARIANT IgnoreUppercase = argMissing2(),
+            VARIANT AlwaysSuggest = argMissing2(),
+            VARIANT SpellLang = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__Default(
             long *RHS /Out/) = 0;

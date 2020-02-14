@@ -99,7 +99,7 @@ namespace etapi
 
         virtual HRESULT _AddMemberPropertyField(
             BSTR Property,
-            VARIANT PropertyOrder) = 0;
+            VARIANT PropertyOrder = argMissing2()) = 0;
 
         virtual HRESULT get_EnableMultiplePageItems(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -123,8 +123,8 @@ namespace etapi
 
         virtual HRESULT AddMemberPropertyField(
             BSTR Property,
-            VARIANT PropertyOrder,
-            VARIANT PropertyDisplayedIn) = 0;
+            VARIANT PropertyOrder = argMissing2(),
+            VARIANT PropertyDisplayedIn = argMissing2()) = 0;
 
         virtual HRESULT get_IncludeNewItemsInFilter(
             VARIANT_BOOL *RHS /Out/) = 0;

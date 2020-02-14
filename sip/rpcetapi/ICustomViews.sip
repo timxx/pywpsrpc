@@ -31,9 +31,9 @@ namespace etapi
 
         virtual HRESULT Add(
             BSTR ViewName,
-            VARIANT PrintSettings,
-            VARIANT RowColSettings,
-            CustomView **RHS /Out/) = 0;
+            VARIANT PrintSettings = argMissing2(),
+            VARIANT RowColSettings = argMissing2(),
+            CustomView **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__Default(
             VARIANT ViewName,

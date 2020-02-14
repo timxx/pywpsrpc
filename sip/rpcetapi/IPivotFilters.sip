@@ -38,26 +38,26 @@ namespace etapi
 
         virtual HRESULT Add(
             XlPivotFilterType Type,
-            VARIANT DataField,
-            VARIANT Value1,
-            VARIANT Value2,
-            VARIANT Order,
-            VARIANT Name,
-            VARIANT Description,
-            VARIANT MemberPropertyField,
-            PivotFilter **RHS /Out/) = 0;
+            VARIANT DataField = argMissing2(),
+            VARIANT Value1 = argMissing2(),
+            VARIANT Value2 = argMissing2(),
+            VARIANT Order = argMissing2(),
+            VARIANT Name = argMissing2(),
+            VARIANT Description = argMissing2(),
+            VARIANT MemberPropertyField = argMissing2(),
+            PivotFilter **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Add2(
             XlPivotFilterType Type,
-            VARIANT DataField,
-            VARIANT Value1,
-            VARIANT Value2,
-            VARIANT Order,
-            VARIANT Name,
-            VARIANT Description,
-            VARIANT MemberPropertyField,
-            VARIANT WholeDayFilter,
-            PivotFilter **RHS /Out/) = 0;
+            VARIANT DataField = argMissing2(),
+            VARIANT Value1 = argMissing2(),
+            VARIANT Value2 = argMissing2(),
+            VARIANT Order = argMissing2(),
+            VARIANT Name = argMissing2(),
+            VARIANT Description = argMissing2(),
+            VARIANT MemberPropertyField = argMissing2(),
+            VARIANT WholeDayFilter = argMissing2(),
+            PivotFilter **RHS /Out/ = 0) = 0;
 
     };
 };

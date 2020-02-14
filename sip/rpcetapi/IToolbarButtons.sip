@@ -23,15 +23,15 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT Add(
-            VARIANT Button,
-            VARIANT Before,
-            VARIANT OnAction,
-            VARIANT Pushed,
-            VARIANT Enabled,
-            VARIANT StatusBar,
-            VARIANT HelpFile,
-            VARIANT HelpContextID,
-            ToolbarButton **RHS /Out/) = 0;
+            VARIANT Button = argMissing2(),
+            VARIANT Before = argMissing2(),
+            VARIANT OnAction = argMissing2(),
+            VARIANT Pushed = argMissing2(),
+            VARIANT Enabled = argMissing2(),
+            VARIANT StatusBar = argMissing2(),
+            VARIANT HelpFile = argMissing2(),
+            VARIANT HelpContextID = argMissing2(),
+            ToolbarButton **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;

@@ -31,7 +31,7 @@ namespace etapi
         virtual HRESULT Delete() = 0;
 
         virtual HRESULT Unprotect(
-            VARIANT Password) = 0;
+            VARIANT Password = argMissing2()) = 0;
 
         virtual HRESULT get_Users(
             UserAccessList **RHS /Out/) = 0;

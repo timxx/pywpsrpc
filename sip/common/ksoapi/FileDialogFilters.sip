@@ -27,15 +27,15 @@ namespace ksoapi
             FileDialogFilter **Item /Out/) = 0;
 
         virtual HRESULT Delete(
-            VARIANT filter) = 0;
+            VARIANT filter = argMissing2()) = 0;
 
         virtual HRESULT Clear() = 0;
 
         virtual HRESULT Add(
             BSTR Description,
             BSTR Extensions,
-            VARIANT Position,
-            FileDialogFilter **Add /Out/) = 0;
+            VARIANT Position = argMissing2(),
+            FileDialogFilter **Add /Out/ = 0) = 0;
 
     };
 };

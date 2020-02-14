@@ -41,9 +41,9 @@ namespace wppapi
             BSTR RHS) = 0;
 
         virtual HRESULT get_Characters(
-            VARIANT Start,
-            VARIANT Length,
-            ChartCharacters **RHS /Out/) = 0;
+            VARIANT Start = argMissing2(),
+            VARIANT Length = argMissing2(),
+            ChartCharacters **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Font(
             ChartFont **RHS /Out/) = 0;

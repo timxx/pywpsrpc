@@ -15,7 +15,7 @@ namespace ksoapi
     public:
         virtual HRESULT AddItem(
             BSTR Text,
-            VARIANT Index) = 0;
+            VARIANT Index = argMissing2()) = 0;
 
         virtual HRESULT Clear() = 0;
 

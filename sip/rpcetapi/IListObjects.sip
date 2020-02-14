@@ -24,11 +24,11 @@ namespace etapi
 
         virtual HRESULT _Add(
             XlListObjectSourceType SourceType,
-            VARIANT Source,
-            VARIANT LinkSource,
-            XlYesNoGuess XlListObjectHasHeaders,
-            VARIANT Destination,
-            ListObject **RHS /Out/) = 0;
+            VARIANT Source = argMissing2(),
+            VARIANT LinkSource = argMissing2(),
+            XlYesNoGuess XlListObjectHasHeaders = etapi::xlNo,
+            VARIANT Destination = argMissing2(),
+            ListObject **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__Default(
             VARIANT Index,
@@ -46,12 +46,12 @@ namespace etapi
 
         virtual HRESULT Add(
             XlListObjectSourceType SourceType,
-            VARIANT Source,
-            VARIANT LinkSource,
-            XlYesNoGuess XlListObjectHasHeaders,
-            VARIANT Destination,
-            VARIANT TableStyleName,
-            ListObject **RHS /Out/) = 0;
+            VARIANT Source = argMissing2(),
+            VARIANT LinkSource = argMissing2(),
+            XlYesNoGuess XlListObjectHasHeaders = etapi::xlNo,
+            VARIANT Destination = argMissing2(),
+            VARIANT TableStyleName = argMissing2(),
+            ListObject **RHS /Out/ = 0) = 0;
 
     };
 };

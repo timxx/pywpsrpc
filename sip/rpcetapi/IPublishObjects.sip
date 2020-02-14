@@ -25,12 +25,12 @@ namespace etapi
         virtual HRESULT Add(
             XlSourceType SourceType,
             BSTR Filename,
-            VARIANT Sheet,
-            VARIANT Source,
-            VARIANT HtmlType,
-            VARIANT DivID,
-            VARIANT Title,
-            PublishObject **RHS /Out/) = 0;
+            VARIANT Sheet = argMissing2(),
+            VARIANT Source = argMissing2(),
+            VARIANT HtmlType = argMissing2(),
+            VARIANT DivID = argMissing2(),
+            VARIANT Title = argMissing2(),
+            PublishObject **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;

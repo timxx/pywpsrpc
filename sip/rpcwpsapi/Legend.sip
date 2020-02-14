@@ -32,8 +32,8 @@ namespace wpsapi
             ChartFont **prop /Out/) = 0;
 
         virtual HRESULT LegendEntries(
-            VARIANT Index,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_Position(
             XlLegendPosition *prop /Out/) = 0;

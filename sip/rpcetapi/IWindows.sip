@@ -24,10 +24,10 @@ namespace etapi
 
         virtual HRESULT Arrange(
             XlArrangeStyle ArrangeStyle,
-            VARIANT ActiveWorkbook,
-            VARIANT SyncHorizontal,
-            VARIANT SyncVertical,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT ActiveWorkbook = argMissing2(),
+            VARIANT SyncHorizontal = argMissing2(),
+            VARIANT SyncVertical = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;

@@ -26,11 +26,11 @@ namespace ksoapi
         virtual HRESULT  Add(
             BSTR Name,
             VARIANT_BOOL LinkToContent,
-            VARIANT Type,
-            VARIANT Value,
-            VARIANT LinkSource,
-            long lcid,
-            DocumentProperty **ppIDocProp /Out/) = 0;
+            VARIANT Type = argMissing2(),
+            VARIANT Value = argMissing2(),
+            VARIANT LinkSource = argMissing2(),
+            long lcid = 0,
+            DocumentProperty **ppIDocProp /Out/ = 0) = 0;
 
         virtual HRESULT  get__NewEnum(
             IUnknown **ppunkEnum /Out/) = 0;

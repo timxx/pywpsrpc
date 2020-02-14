@@ -29,7 +29,7 @@ namespace etapi
             single RHS) = 0;
 
         virtual HRESULT get_ColorType(
-           MsoPictureColorType *RHS /Out/) = 0;
+            MsoPictureColorType *RHS /Out/) = 0;
 
         virtual HRESULT put_ColorType(
             MsoPictureColorType RHS) = 0;

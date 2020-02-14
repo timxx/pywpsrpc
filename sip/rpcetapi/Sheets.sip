@@ -23,17 +23,17 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT Add(
-            VARIANT Before,
-            VARIANT After,
-            VARIANT Count,
-            VARIANT Type,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Before = argMissing2(),
+            VARIANT After = argMissing2(),
+            VARIANT Count = argMissing2(),
+            VARIANT Type = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Copy(
-            VARIANT Before,
-            VARIANT After,
-            long lcid) = 0;
+            VARIANT Before = argMissing2(),
+            VARIANT After = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;
@@ -51,30 +51,30 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT Move(
-            VARIANT Before,
-            VARIANT After,
-            long lcid) = 0;
+            VARIANT Before = argMissing2(),
+            VARIANT After = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get__NewEnum(
             IUnknown **RHS /Out/) = 0;
 
         virtual HRESULT __PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            long lcid) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT PrintPreview(
-            VARIANT EnableChanges,
-            long lcid) = 0;
+            VARIANT EnableChanges = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT Select(
-            VARIANT Replace,
-            long lcid) = 0;
+            VARIANT Replace = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_HPageBreaks(
             HPageBreaks **RHS /Out/) = 0;
@@ -95,34 +95,34 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT _PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            VARIANT PrToFileName,
-            long lcid) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            VARIANT PrToFileName = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            VARIANT PrToFileName,
-            VARIANT IgnorePrintAreas,
-            long lcid) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            VARIANT PrToFileName = argMissing2(),
+            VARIANT IgnorePrintAreas = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT Add2(
-            VARIANT Before,
-            VARIANT After,
-            VARIANT Count,
-            VARIANT NewLayout,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Before = argMissing2(),
+            VARIANT After = argMissing2(),
+            VARIANT Count = argMissing2(),
+            VARIANT NewLayout = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
     };
 };

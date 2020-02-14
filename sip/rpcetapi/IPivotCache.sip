@@ -130,10 +130,10 @@ namespace etapi
 
         virtual HRESULT CreatePivotTable(
             VARIANT TableDestination,
-            VARIANT TableName,
-            VARIANT ReadData,
-            VARIANT DefaultVersion,
-            PivotTable **RHS /Out/) = 0;
+            VARIANT TableName = argMissing2(),
+            VARIANT ReadData = argMissing2(),
+            VARIANT DefaultVersion = argMissing2(),
+            PivotTable **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_UseLocalConnection(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -178,8 +178,8 @@ namespace etapi
 
         virtual HRESULT SaveAsODC(
             BSTR ODCFileName,
-            VARIANT Description,
-            VARIANT Keywords) = 0;
+            VARIANT Description = argMissing2(),
+            VARIANT Keywords = argMissing2()) = 0;
 
         virtual HRESULT get_WorkbookConnection(
             WorkbookConnection **RHS /Out/) = 0;
@@ -195,12 +195,12 @@ namespace etapi
 
         virtual HRESULT CreatePivotChart(
             VARIANT ChartDestination,
-            VARIANT XlChartType,
-            VARIANT Left,
-            VARIANT Top,
-            VARIANT Width,
-            VARIANT Height,
-            Shape **RHS /Out/) = 0;
+            VARIANT XlChartType = argMissing2(),
+            VARIANT Left = argMissing2(),
+            VARIANT Top = argMissing2(),
+            VARIANT Width = argMissing2(),
+            VARIANT Height = argMissing2(),
+            Shape **RHS /Out/ = 0) = 0;
 
     };
 };

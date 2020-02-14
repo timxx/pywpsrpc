@@ -141,16 +141,16 @@ namespace wpsapi
 
         virtual HRESULT ApplyDataLabels(
             XlDataLabelsType Type,
-            VARIANT LegendKey,
-            VARIANT AutoText,
-            VARIANT HasLeaderLines,
-            VARIANT ShowSeriesName,
-            VARIANT ShowCategoryName,
-            VARIANT ShowValue,
-            VARIANT ShowPercentage,
-            VARIANT ShowBubbleSize,
-            VARIANT Separator,
-            VARIANT *prop /Out/) = 0;
+            VARIANT LegendKey = argMissing2(),
+            VARIANT AutoText = argMissing2(),
+            VARIANT HasLeaderLines = argMissing2(),
+            VARIANT ShowSeriesName = argMissing2(),
+            VARIANT ShowCategoryName = argMissing2(),
+            VARIANT ShowValue = argMissing2(),
+            VARIANT ShowPercentage = argMissing2(),
+            VARIANT ShowBubbleSize = argMissing2(),
+            VARIANT Separator = argMissing2(),
+            VARIANT *prop /Out/ = 0) = 0;
 
         virtual HRESULT get_Has3DEffect(
             VARIANT_BOOL *prop /Out/) = 0;

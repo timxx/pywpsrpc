@@ -35,10 +35,10 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Text(
-            VARIANT Text,
-            VARIANT Start,
-            VARIANT Overwrite,
-            BSTR *RHS /Out/) = 0;
+            VARIANT Text = argMissing2(),
+            VARIANT Start = argMissing2(),
+            VARIANT Overwrite = argMissing2(),
+            BSTR *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Delete() = 0;
 

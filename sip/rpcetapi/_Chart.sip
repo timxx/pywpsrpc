@@ -26,9 +26,9 @@ namespace etapi
             long lcid) = 0;
 
         virtual HRESULT Copy(
-            VARIANT Before,
-            VARIANT After,
-            long lcid) = 0;
+            VARIANT Before = argMissing2(),
+            VARIANT After = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT Delete(
             long lcid) = 0;
@@ -47,9 +47,9 @@ namespace etapi
             long *RHS /Out/) = 0;
 
         virtual HRESULT Move(
-            VARIANT Before,
-            VARIANT After,
-            long lcid) = 0;
+            VARIANT Before = argMissing2(),
+            VARIANT After = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Name(
             BSTR *RHS /Out/) = 0;
@@ -91,26 +91,26 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT __PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            long lcid) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT PrintPreview(
-            VARIANT EnableChanges,
-            long lcid) = 0;
+            VARIANT EnableChanges = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT _Protect(
-            VARIANT Password,
-            VARIANT DrawingObjects,
-            VARIANT Contents,
-            VARIANT Scenarios,
-            VARIANT UserInterfaceOnly,
-            long lcid) = 0;
+            VARIANT Password = argMissing2(),
+            VARIANT DrawingObjects = argMissing2(),
+            VARIANT Contents = argMissing2(),
+            VARIANT Scenarios = argMissing2(),
+            VARIANT UserInterfaceOnly = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_ProtectContents(
             long lcid,
@@ -128,23 +128,23 @@ namespace etapi
 
         virtual HRESULT _SaveAs(
             BSTR Filename,
-            VARIANT FileFormat,
-            VARIANT Password,
-            VARIANT WriteResPassword,
-            VARIANT ReadOnlyRecommended,
-            VARIANT CreateBackup,
-            VARIANT AddToMru,
-            VARIANT TextCodepage,
-            VARIANT TextVisualLayout,
-            long lcid) = 0;
+            VARIANT FileFormat = argMissing2(),
+            VARIANT Password = argMissing2(),
+            VARIANT WriteResPassword = argMissing2(),
+            VARIANT ReadOnlyRecommended = argMissing2(),
+            VARIANT CreateBackup = argMissing2(),
+            VARIANT AddToMru = argMissing2(),
+            VARIANT TextCodepage = argMissing2(),
+            VARIANT TextVisualLayout = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT Select(
-            VARIANT Replace,
-            long lcid) = 0;
+            VARIANT Replace = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT Unprotect(
-            VARIANT Password,
-            long lcid) = 0;
+            VARIANT Password = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Visible(
             long lcid,
@@ -159,28 +159,28 @@ namespace etapi
 
         virtual HRESULT _ApplyDataLabels(
             XlDataLabelsType Type,
-            VARIANT LegendKey,
-            VARIANT AutoText,
-            VARIANT HasLeaderLines,
-            long lcid) = 0;
+            VARIANT LegendKey = argMissing2(),
+            VARIANT AutoText = argMissing2(),
+            VARIANT HasLeaderLines = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT Arcs(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Area3DGroup(
             long lcid,
             ChartGroup **RHS /Out/) = 0;
 
         virtual HRESULT AreaGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT AutoFormat(
             long Gallery,
-            VARIANT Format) = 0;
+            VARIANT Format = argMissing2()) = 0;
 
         virtual HRESULT get_AutoScaling(
             long lcid,
@@ -191,10 +191,10 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Axes(
-            VARIANT Type,
-            XlAxisGroup AxisGroup,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Type = argMissing2(),
+            XlAxisGroup AxisGroup = etapi::xlPrimary,
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT SetBackgroundPicture(
             BSTR Filename) = 0;
@@ -204,67 +204,67 @@ namespace etapi
             ChartGroup **RHS /Out/) = 0;
 
         virtual HRESULT BarGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Buttons(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ChartArea(
             long lcid,
             ChartArea **RHS /Out/) = 0;
 
         virtual HRESULT ChartGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT ChartObjects(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ChartTitle(
             long lcid,
             ChartTitle **RHS /Out/) = 0;
 
         virtual HRESULT ChartWizard(
-            VARIANT Source,
-            VARIANT Gallery,
-            VARIANT Format,
-            VARIANT PlotBy,
-            VARIANT CategoryLabels,
-            VARIANT SeriesLabels,
-            VARIANT HasLegend,
-            VARIANT Title,
-            VARIANT CategoryTitle,
-            VARIANT ValueTitle,
-            VARIANT ExtraTitle,
-            long lcid) = 0;
+            VARIANT Source = argMissing2(),
+            VARIANT Gallery = argMissing2(),
+            VARIANT Format = argMissing2(),
+            VARIANT PlotBy = argMissing2(),
+            VARIANT CategoryLabels = argMissing2(),
+            VARIANT SeriesLabels = argMissing2(),
+            VARIANT HasLegend = argMissing2(),
+            VARIANT Title = argMissing2(),
+            VARIANT CategoryTitle = argMissing2(),
+            VARIANT ValueTitle = argMissing2(),
+            VARIANT ExtraTitle = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT CheckBoxes(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT CheckSpelling(
-            VARIANT CustomDictionary,
-            VARIANT IgnoreUppercase,
-            VARIANT AlwaysSuggest,
-            VARIANT SpellLang,
-            long lcid) = 0;
+            VARIANT CustomDictionary = argMissing2(),
+            VARIANT IgnoreUppercase = argMissing2(),
+            VARIANT AlwaysSuggest = argMissing2(),
+            VARIANT SpellLang = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Column3DGroup(
             long lcid,
             ChartGroup **RHS /Out/) = 0;
 
         virtual HRESULT ColumnGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT CopyPicture(
             XlPictureAppearance Appearance,
@@ -277,14 +277,14 @@ namespace etapi
             Corners **RHS /Out/) = 0;
 
         virtual HRESULT CreatePublisher(
-            VARIANT Edition,
-            XlPictureAppearance Appearance,
-            XlPictureAppearance Size,
-            VARIANT ContainsPICT,
-            VARIANT ContainsBIFF,
-            VARIANT ContainsRTF,
-            VARIANT ContainsVALU,
-            long lcid) = 0;
+            VARIANT Edition = argMissing2(),
+            XlPictureAppearance Appearance = etapi::xlPrinter,
+            XlPictureAppearance Size = etapi::xlPrinter,
+            VARIANT ContainsPICT = argMissing2(),
+            VARIANT ContainsBIFF = argMissing2(),
+            VARIANT ContainsRTF = argMissing2(),
+            VARIANT ContainsVALU = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_DataTable(
             DataTable **RHS /Out/) = 0;
@@ -309,24 +309,24 @@ namespace etapi
             XlDisplayBlanksAs RHS) = 0;
 
         virtual HRESULT DoughnutGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Drawings(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT DrawingObjects(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT DropDowns(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Elevation(
             long lcid,
@@ -359,26 +359,26 @@ namespace etapi
             long RHS) = 0;
 
         virtual HRESULT GroupBoxes(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT GroupObjects(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_HasAxis(
-            VARIANT Index1,
-            VARIANT Index2,
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index1 = argMissing2(),
+            VARIANT Index2 = argMissing2(),
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT put_HasAxis(
-            VARIANT Index1,
-            VARIANT Index2,
-            long lcid,
-            VARIANT RHS) = 0;
+            VARIANT Index1 = argMissing2(),
+            VARIANT Index2 = argMissing2(),
+            long lcid = 0,
+            VARIANT RHS = argMissing2()) = 0;
 
         virtual HRESULT get_HasDataTable(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -414,9 +414,9 @@ namespace etapi
             Hyperlinks **RHS /Out/) = 0;
 
         virtual HRESULT Labels(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Legend(
             long lcid,
@@ -427,43 +427,43 @@ namespace etapi
             ChartGroup **RHS /Out/) = 0;
 
         virtual HRESULT LineGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Lines(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT ListBoxes(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Location(
             XlChartLocation Where,
-            VARIANT Name,
-            Chart **RHS /Out/) = 0;
+            VARIANT Name = argMissing2(),
+            Chart **RHS /Out/ = 0) = 0;
 
         virtual HRESULT OLEObjects(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT OptionButtons(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Ovals(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Paste(
-            VARIANT Type,
-            long lcid) = 0;
+            VARIANT Type = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Perspective(
             long lcid,
@@ -474,18 +474,18 @@ namespace etapi
             long RHS) = 0;
 
         virtual HRESULT Pictures(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Pie3DGroup(
             long lcid,
             ChartGroup **RHS /Out/) = 0;
 
         virtual HRESULT PieGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_PlotArea(
             long lcid,
@@ -500,14 +500,14 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT RadarGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Rectangles(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_RightAngleAxes(
             long lcid,
@@ -526,14 +526,14 @@ namespace etapi
             VARIANT RHS) = 0;
 
         virtual HRESULT ScrollBars(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT SeriesCollection(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_SizeWithWindow(
             long lcid,
@@ -550,9 +550,9 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Spinners(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_SubType(
             long lcid,
@@ -567,9 +567,9 @@ namespace etapi
             ChartGroup **RHS /Out/) = 0;
 
         virtual HRESULT TextBoxes(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Type(
             long lcid,
@@ -587,7 +587,7 @@ namespace etapi
 
         virtual HRESULT ApplyCustomType(
             XlChartType ChartType,
-            VARIANT TypeName) = 0;
+            VARIANT TypeName = argMissing2()) = 0;
 
         virtual HRESULT get_Walls(
             long lcid,
@@ -602,9 +602,9 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT XYGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_BarShape(
             XlBarShape *RHS /Out/) = 0;
@@ -653,13 +653,13 @@ namespace etapi
 
         virtual HRESULT SetSourceData(
             Range *Source,
-            VARIANT PlotBy) = 0;
+            VARIANT PlotBy = argMissing2()) = 0;
 
         virtual HRESULT Export(
             BSTR Filename,
-            VARIANT FilterName,
-            VARIANT Interactive,
-            VARIANT_BOOL *RHS /Out/) = 0;
+            VARIANT FilterName = argMissing2(),
+            VARIANT Interactive = argMissing2(),
+            VARIANT_BOOL *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Refresh() = 0;
 
@@ -676,15 +676,15 @@ namespace etapi
             ksoapi::Scripts **RHS /Out/) = 0;
 
         virtual HRESULT _PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            VARIANT PrToFileName,
-            long lcid) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            VARIANT PrToFileName = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Tab(
             Tab **RHS /Out/) = 0;
@@ -694,39 +694,39 @@ namespace etapi
 
         virtual HRESULT ApplyDataLabels(
             XlDataLabelsType Type,
-            VARIANT LegendKey,
-            VARIANT AutoText,
-            VARIANT HasLeaderLines,
-            VARIANT ShowSeriesName,
-            VARIANT ShowCategoryName,
-            VARIANT ShowValue,
-            VARIANT ShowPercentage,
-            VARIANT ShowBubbleSize,
-            VARIANT Separator,
-            long lcid) = 0;
+            VARIANT LegendKey = argMissing2(),
+            VARIANT AutoText = argMissing2(),
+            VARIANT HasLeaderLines = argMissing2(),
+            VARIANT ShowSeriesName = argMissing2(),
+            VARIANT ShowCategoryName = argMissing2(),
+            VARIANT ShowValue = argMissing2(),
+            VARIANT ShowPercentage = argMissing2(),
+            VARIANT ShowBubbleSize = argMissing2(),
+            VARIANT Separator = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT SaveAs(
             BSTR Filename,
-            VARIANT FileFormat,
-            VARIANT Password,
-            VARIANT WriteResPassword,
-            VARIANT ReadOnlyRecommended,
-            VARIANT CreateBackup,
-            VARIANT AddToMru,
-            VARIANT TextCodepage,
-            VARIANT TextVisualLayout,
-            VARIANT Local) = 0;
+            VARIANT FileFormat = argMissing2(),
+            VARIANT Password = argMissing2(),
+            VARIANT WriteResPassword = argMissing2(),
+            VARIANT ReadOnlyRecommended = argMissing2(),
+            VARIANT CreateBackup = argMissing2(),
+            VARIANT AddToMru = argMissing2(),
+            VARIANT TextCodepage = argMissing2(),
+            VARIANT TextVisualLayout = argMissing2(),
+            VARIANT Local = argMissing2()) = 0;
 
         virtual HRESULT Protect(
-            VARIANT Password,
-            VARIANT DrawingObjects,
-            VARIANT Contents,
-            VARIANT Scenarios,
-            VARIANT UserInterfaceOnly) = 0;
+            VARIANT Password = argMissing2(),
+            VARIANT DrawingObjects = argMissing2(),
+            VARIANT Contents = argMissing2(),
+            VARIANT Scenarios = argMissing2(),
+            VARIANT UserInterfaceOnly = argMissing2()) = 0;
 
         virtual HRESULT ApplyLayout(
             long Layout,
-            VARIANT ChartType) = 0;
+            VARIANT ChartType = argMissing2()) = 0;
 
         virtual HRESULT SetElement(
             MsoChartElementType Element) = 0;
@@ -744,15 +744,15 @@ namespace etapi
             Walls **RHS /Out/) = 0;
 
         virtual HRESULT PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            VARIANT PrToFileName,
-            long lcid) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            VARIANT PrToFileName = argMissing2(),
+            long lcid = 0) = 0;
 
         virtual HRESULT ApplyChartTemplate(
             BSTR Filename) = 0;
@@ -765,14 +765,14 @@ namespace etapi
 
         virtual HRESULT ExportAsFixedFormat(
             XlFixedFormatType Type,
-            VARIANT Filename,
-            VARIANT Quality,
-            VARIANT IncludeDocProperties,
-            VARIANT IgnorePrintAreas,
-            VARIANT From,
-            VARIANT To,
-            VARIANT OpenAfterPublish,
-            VARIANT FixedFormatExtClassPtr) = 0;
+            VARIANT Filename = argMissing2(),
+            VARIANT Quality = argMissing2(),
+            VARIANT IncludeDocProperties = argMissing2(),
+            VARIANT IgnorePrintAreas = argMissing2(),
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT OpenAfterPublish = argMissing2(),
+            VARIANT FixedFormatExtClassPtr = argMissing2()) = 0;
 
         virtual HRESULT get_ChartStyle(
             VARIANT *RHS /Out/) = 0;
@@ -828,9 +828,9 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT FullSeriesCollection(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_CategoryLabelLevel(
             XlCategoryLabelLevel *RHS /Out/) = 0;

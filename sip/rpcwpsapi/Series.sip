@@ -32,8 +32,8 @@ namespace wpsapi
             VARIANT *prop /Out/) = 0;
 
         virtual HRESULT DataLabels(
-            VARIANT Index,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT Delete(
             VARIANT *prop /Out/) = 0;
@@ -42,9 +42,9 @@ namespace wpsapi
             XlErrorBarDirection Direction,
             XlErrorBarInclude Include,
             XlErrorBarType Type,
-            VARIANT Amount,
-            VARIANT MinusValues,
-            VARIANT *prop /Out/) = 0;
+            VARIANT Amount = argMissing2(),
+            VARIANT MinusValues = argMissing2(),
+            VARIANT *prop /Out/ = 0) = 0;
 
         virtual HRESULT get_ErrorBars(
             ErrorBars **prop /Out/) = 0;
@@ -167,8 +167,8 @@ namespace wpsapi
             long prop) = 0;
 
         virtual HRESULT Points(
-            VARIANT Index,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT Select(
             VARIANT *prop /Out/) = 0;
@@ -180,8 +180,8 @@ namespace wpsapi
             VARIANT_BOOL prop) = 0;
 
         virtual HRESULT Trendlines(
-            VARIANT Index,
-            IDispatch **prop /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_Type(
             long *prop /Out/) = 0;
@@ -263,16 +263,16 @@ namespace wpsapi
 
         virtual HRESULT ApplyDataLabels(
             XlDataLabelsType Type,
-            VARIANT LegendKey,
-            VARIANT AutoText,
-            VARIANT HasLeaderLines,
-            VARIANT ShowSeriesName,
-            VARIANT ShowCategoryName,
-            VARIANT ShowValue,
-            VARIANT ShowPercentage,
-            VARIANT ShowBubbleSize,
-            VARIANT Separator,
-            VARIANT *prop /Out/) = 0;
+            VARIANT LegendKey = argMissing2(),
+            VARIANT AutoText = argMissing2(),
+            VARIANT HasLeaderLines = argMissing2(),
+            VARIANT ShowSeriesName = argMissing2(),
+            VARIANT ShowCategoryName = argMissing2(),
+            VARIANT ShowValue = argMissing2(),
+            VARIANT ShowPercentage = argMissing2(),
+            VARIANT ShowBubbleSize = argMissing2(),
+            VARIANT Separator = argMissing2(),
+            VARIANT *prop /Out/ = 0) = 0;
 
         virtual HRESULT get_Format(
             ChartFormat **prop /Out/) = 0;

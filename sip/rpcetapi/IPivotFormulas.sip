@@ -42,8 +42,8 @@ namespace etapi
 
         virtual HRESULT Add(
             BSTR Formula,
-            VARIANT UseStandardFormula,
-            PivotFormula **RHS /Out/) = 0;
+            VARIANT UseStandardFormula = argMissing2(),
+            PivotFormula **RHS /Out/ = 0) = 0;
 
     };
 };

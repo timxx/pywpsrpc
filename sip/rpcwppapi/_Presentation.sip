@@ -248,8 +248,8 @@ namespace wppapi
 
         virtual HRESULT CheckIn(
             VARIANT_BOOL SaveChanges,
-            VARIANT Comments,
-            VARIANT MakePublic) = 0;
+            VARIANT Comments = argMissing2(),
+            VARIANT MakePublic = argMissing2()) = 0;
 
         virtual HRESULT CanCheckIn(
             VARIANT_BOOL *CanCheckIn /Out/) = 0;
@@ -267,7 +267,7 @@ namespace wppapi
             BSTR Recipients,
             BSTR Subject,
             VARIANT_BOOL ShowMessage,
-            VARIANT IncludeAttachment) = 0;
+            VARIANT IncludeAttachment = argMissing2()) = 0;
 
         virtual HRESULT ReplyWithChanges(
             VARIANT_BOOL ShowMessage = -1) = 0;
@@ -358,9 +358,9 @@ namespace wppapi
 
         virtual HRESULT CheckInWithVersion(
             VARIANT_BOOL SaveChanges,
-            VARIANT Comments,
-            VARIANT MakePublic,
-            VARIANT VersionType) = 0;
+            VARIANT Comments = argMissing2(),
+            VARIANT MakePublic = argMissing2(),
+            VARIANT VersionType = argMissing2()) = 0;
 
         virtual HRESULT ExportAsFixedFormat(
             BSTR Path,
@@ -378,7 +378,7 @@ namespace wppapi
             VARIANT_BOOL DocStructureTags,
             VARIANT_BOOL BitmapMissingFonts,
             VARIANT_BOOL UseISO19005_1,
-            VARIANT ExternalExporter) = 0;
+            VARIANT ExternalExporter = argMissing2()) = 0;
 
         virtual HRESULT get_ServerPolicy(
             ksoapi::ServerPolicy **ServerPolicy /Out/) = 0;
@@ -497,7 +497,7 @@ namespace wppapi
             VARIANT_BOOL BitmapMissingFonts,
             VARIANT_BOOL UseISO19005_1,
             VARIANT_BOOL IncludeMarkup,
-            VARIANT ExternalExporter) = 0;
+            VARIANT ExternalExporter = argMissing2()) = 0;
 
         virtual HRESULT get_Guides(
             Guides **Guides /Out/) = 0;

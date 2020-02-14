@@ -24,9 +24,9 @@ namespace etapi
 
         virtual HRESULT _Modify(
             XlFormatConditionType Type,
-            VARIANT Operator,
-            VARIANT Formula1,
-            VARIANT Formula2) = 0;
+            VARIANT Operator = argMissing2(),
+            VARIANT Formula1 = argMissing2(),
+            VARIANT Formula2 = argMissing2()) = 0;
 
         virtual HRESULT get_Type(
             long *RHS /Out/) = 0;
@@ -53,11 +53,11 @@ namespace etapi
 
         virtual HRESULT Modify(
             XlFormatConditionType Type,
-            VARIANT Operator,
-            VARIANT Formula1,
-            VARIANT Formula2,
-            VARIANT String,
-            VARIANT Operator2) = 0;
+            VARIANT Operator = argMissing2(),
+            VARIANT Formula1 = argMissing2(),
+            VARIANT Formula2 = argMissing2(),
+            VARIANT String = argMissing2(),
+            VARIANT Operator2 = argMissing2()) = 0;
 
         virtual HRESULT get_Text(
             BSTR *RHS /Out/) = 0;

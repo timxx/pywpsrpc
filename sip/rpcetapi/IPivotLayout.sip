@@ -23,32 +23,32 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT get_ColumnFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_DataFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_PageFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_RowFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_HiddenFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_VisibleFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_PivotFields(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_CubeFields(
             CubeFields **RHS /Out/) = 0;
@@ -66,10 +66,10 @@ namespace etapi
             BSTR RHS) = 0;
 
         virtual HRESULT AddFields(
-            VARIANT RowFields,
-            VARIANT ColumnFields,
-            VARIANT PageFields,
-            VARIANT AppendField) = 0;
+            VARIANT RowFields = argMissing2(),
+            VARIANT ColumnFields = argMissing2(),
+            VARIANT PageFields = argMissing2(),
+            VARIANT AppendField = argMissing2()) = 0;
 
     };
 };

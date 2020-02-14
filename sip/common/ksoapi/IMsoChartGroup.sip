@@ -89,8 +89,8 @@ namespace ksoapi
             IDispatch **ppRadarAxisLabels /Out/) = 0;
 
         virtual HRESULT SeriesCollection(
-            VARIANT Index,
-            IDispatch **ppSeriesCollection /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **ppSeriesCollection /Out/ = 0) = 0;
 
         virtual HRESULT get_SeriesLines(
             IMsoSeriesLines **ppSeriesLines /Out/) = 0;
@@ -168,12 +168,12 @@ namespace ksoapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT CategoryCollection(
-            VARIANT Index,
-            IDispatch **ppcatcollection /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **ppcatcollection /Out/ = 0) = 0;
 
         virtual HRESULT FullCategoryCollection(
-            VARIANT Index,
-            IDispatch **ppcatcollection /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **ppcatcollection /Out/ = 0) = 0;
 
     };
 };

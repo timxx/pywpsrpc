@@ -117,8 +117,8 @@ namespace etapi
         virtual HRESULT Delete() = 0;
 
         virtual HRESULT Refresh(
-            VARIANT BackgroundQuery,
-            VARIANT_BOOL *RHS /Out/) = 0;
+            VARIANT BackgroundQuery = argMissing2(),
+            VARIANT_BOOL *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Parameters(
             Parameters **RHS /Out/) = 0;
@@ -364,8 +364,8 @@ namespace etapi
 
         virtual HRESULT SaveAsODC(
             BSTR ODCFileName,
-            VARIANT Description,
-            VARIANT Keywords) = 0;
+            VARIANT Description = argMissing2(),
+            VARIANT Keywords = argMissing2()) = 0;
 
         virtual HRESULT get_ListObject(
             ListObject **RHS /Out/) = 0;

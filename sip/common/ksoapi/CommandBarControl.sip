@@ -32,12 +32,12 @@ namespace ksoapi
             IDispatch **ppidisp /Out/) = 0;
 
         virtual HRESULT Copy(
-            VARIANT Bar,
-            VARIANT Before,
-            CommandBarControl **ppcbc /Out/) = 0;
+            VARIANT Bar = argMissing2(),
+            VARIANT Before = argMissing2(),
+            CommandBarControl **ppcbc /Out/ = 0) = 0;
 
         virtual HRESULT Delete(
-            VARIANT Temporary) = 0;
+            VARIANT Temporary = argMissing2()) = 0;
 
         virtual HRESULT get_DescriptionText(
             BSTR *pbstrText /Out/) = 0;
@@ -81,9 +81,9 @@ namespace ksoapi
             long *pid /Out/) = 0;
 
         virtual HRESULT Move(
-            VARIANT Bar,
-            VARIANT Before,
-            CommandBarControl **ppcbc /Out/) = 0;
+            VARIANT Bar = argMissing2(),
+            VARIANT Before = argMissing2(),
+            CommandBarControl **ppcbc /Out/ = 0) = 0;
 
         virtual HRESULT get_Left(
             int *px /Out/) = 0;

@@ -18,10 +18,10 @@ namespace ksoapi
 
         virtual HRESULT  _ApplyDataLabels(
             XlDataLabelsType Type,
-            VARIANT IMsoLegendKey,
-            VARIANT AutoText,
-            VARIANT HasLeaderLines,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT IMsoLegendKey = argMissing2(),
+            VARIANT AutoText = argMissing2(),
+            VARIANT HasLeaderLines = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT  get_Border(
             IMsoBorder **RHS /Out/) = 0;
@@ -148,16 +148,16 @@ namespace ksoapi
 
         virtual HRESULT  ApplyDataLabels(
             XlDataLabelsType Type,
-            VARIANT IMsoLegendKey,
-            VARIANT AutoText,
-            VARIANT HasLeaderLines,
-            VARIANT ShowSeriesName,
-            VARIANT ShowCategoryName,
-            VARIANT ShowValue,
-            VARIANT ShowPercentage,
-            VARIANT ShowBubbleSize,
-            VARIANT Separator,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT IMsoLegendKey = argMissing2(),
+            VARIANT AutoText = argMissing2(),
+            VARIANT HasLeaderLines = argMissing2(),
+            VARIANT ShowSeriesName = argMissing2(),
+            VARIANT ShowCategoryName = argMissing2(),
+            VARIANT ShowValue = argMissing2(),
+            VARIANT ShowPercentage = argMissing2(),
+            VARIANT ShowBubbleSize = argMissing2(),
+            VARIANT Separator = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT  get_Has3DEffect(
             VARIANT_BOOL *RHS /Out/) = 0;

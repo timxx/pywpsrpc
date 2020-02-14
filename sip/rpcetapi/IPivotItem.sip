@@ -23,8 +23,8 @@ namespace etapi
             PivotField **RHS /Out/) = 0;
 
         virtual HRESULT get_ChildItems(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_DataRange(
             Range **RHS /Out/) = 0;

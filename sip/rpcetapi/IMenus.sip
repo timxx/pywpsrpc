@@ -24,9 +24,9 @@ namespace etapi
 
         virtual HRESULT Add(
             BSTR Caption,
-            VARIANT Before,
-            VARIANT Restore,
-            Menu **RHS /Out/) = 0;
+            VARIANT Before = argMissing2(),
+            VARIANT Restore = argMissing2(),
+            Menu **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;

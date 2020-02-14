@@ -117,8 +117,8 @@ namespace wppapi
         virtual HRESULT SelectAll() = 0;
 
         virtual HRESULT Range(
-            VARIANT Index,
-            ShapeRange **Range /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            ShapeRange **Range /Out/ = 0) = 0;
 
         virtual HRESULT get_HasTitle(
             MsoTriState *HasTitle /Out/) = 0;

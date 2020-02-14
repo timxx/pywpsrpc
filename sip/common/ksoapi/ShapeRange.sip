@@ -74,7 +74,7 @@ namespace ksoapi
             MsoScaleFrom fScale = ksoapi::msoScaleFromTopLeft) = 0;
 
         virtual HRESULT Select(
-            VARIANT Replace) = 0;
+            VARIANT Replace = argMissing2()) = 0;
 
         virtual HRESULT SetShapesDefaultProperties() = 0;
 

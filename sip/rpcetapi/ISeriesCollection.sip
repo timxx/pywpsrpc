@@ -25,19 +25,19 @@ namespace etapi
         virtual HRESULT Add(
             VARIANT Source,
             XlRowCol Rowcol,
-            VARIANT SeriesLabels,
-            VARIANT CategoryLabels,
-            VARIANT Replace,
-            Series **RHS /Out/) = 0;
+            VARIANT SeriesLabels = argMissing2(),
+            VARIANT CategoryLabels = argMissing2(),
+            VARIANT Replace = argMissing2(),
+            Series **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;
 
         virtual HRESULT Extend(
             VARIANT Source,
-            VARIANT Rowcol,
-            VARIANT CategoryLabels,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Rowcol = argMissing2(),
+            VARIANT CategoryLabels = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Item(
             VARIANT Index,
@@ -48,11 +48,11 @@ namespace etapi
 
         virtual HRESULT Paste(
             XlRowCol Rowcol,
-            VARIANT SeriesLabels,
-            VARIANT CategoryLabels,
-            VARIANT Replace,
-            VARIANT NewSeries,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT SeriesLabels = argMissing2(),
+            VARIANT CategoryLabels = argMissing2(),
+            VARIANT Replace = argMissing2(),
+            VARIANT NewSeries = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT NewSeries(
             Series **RHS /Out/) = 0;

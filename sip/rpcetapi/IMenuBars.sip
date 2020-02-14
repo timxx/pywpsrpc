@@ -23,8 +23,8 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT Add(
-            VARIANT Name,
-            MenuBar **RHS /Out/) = 0;
+            VARIANT Name = argMissing2(),
+            MenuBar **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;

@@ -48,15 +48,15 @@ namespace etapi
         virtual HRESULT ScaleHeight(
             single Factor,
             MsoTriState RelativeToOriginalSize,
-            VARIANT Scale) = 0;
+            VARIANT Scale = argMissing2()) = 0;
 
         virtual HRESULT ScaleWidth(
             single Factor,
             MsoTriState RelativeToOriginalSize,
-            VARIANT Scale) = 0;
+            VARIANT Scale = argMissing2()) = 0;
 
         virtual HRESULT Select(
-            VARIANT Replace) = 0;
+            VARIANT Replace = argMissing2()) = 0;
 
         virtual HRESULT SetShapesDefaultProperties() = 0;
 
@@ -218,8 +218,8 @@ namespace etapi
         virtual HRESULT Cut() = 0;
 
         virtual HRESULT CopyPicture(
-            VARIANT Appearance,
-            VARIANT Format) = 0;
+            VARIANT Appearance = argMissing2(),
+            VARIANT Format = argMissing2()) = 0;
 
         virtual HRESULT get_ControlFormat(
             ControlFormat **RHS /Out/) = 0;

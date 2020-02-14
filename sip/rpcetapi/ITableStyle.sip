@@ -52,8 +52,8 @@ namespace etapi
         virtual HRESULT Delete() = 0;
 
         virtual HRESULT Duplicate(
-            VARIANT NewTableStyleName,
-            TableStyle **RHS /Out/) = 0;
+            VARIANT NewTableStyleName = argMissing2(),
+            TableStyle **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ShowAsAvailableSlicerStyle(
             VARIANT_BOOL *RHS /Out/) = 0;

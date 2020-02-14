@@ -24,13 +24,13 @@ namespace etapi
 
         virtual HRESULT AddItem(
             BSTR Text,
-            VARIANT Index) = 0;
+            VARIANT Index = argMissing2()) = 0;
 
         virtual HRESULT RemoveAllItems() = 0;
 
         virtual HRESULT RemoveItem(
             long Index,
-            VARIANT Count) = 0;
+            VARIANT Count = argMissing2()) = 0;
 
         virtual HRESULT get_DropDownLines(
             long *RHS /Out/) = 0;
@@ -57,8 +57,8 @@ namespace etapi
             BSTR RHS) = 0;
 
         virtual HRESULT List(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ListCount(
             long *RHS /Out/) = 0;

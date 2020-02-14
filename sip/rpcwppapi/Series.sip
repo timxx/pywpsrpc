@@ -32,8 +32,8 @@ namespace wppapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT DataLabels(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Delete(
             VARIANT *RHS /Out/) = 0;
@@ -42,9 +42,9 @@ namespace wppapi
             XlErrorBarDirection Direction,
             XlErrorBarInclude Include,
             XlErrorBarType Type,
-            VARIANT Amount,
-            VARIANT MinusValues,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Amount = argMissing2(),
+            VARIANT MinusValues = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ErrorBars(
             ErrorBars **RHS /Out/) = 0;
@@ -161,8 +161,8 @@ namespace wppapi
             long RHS) = 0;
 
         virtual HRESULT Points(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Select(
             VARIANT *RHS /Out/) = 0;
@@ -174,8 +174,8 @@ namespace wppapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Trendlines(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Type(
             long *RHS /Out/) = 0;
@@ -272,23 +272,23 @@ namespace wppapi
 
         virtual HRESULT _ApplyDataLabels(
             XlDataLabelsType Type,
-            VARIANT LegendKey,
-            VARIANT AutoText,
-            VARIANT HasLeaderLines,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT LegendKey = argMissing2(),
+            VARIANT AutoText = argMissing2(),
+            VARIANT HasLeaderLines = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT ApplyDataLabels(
             XlDataLabelsType Type,
-            VARIANT LegendKey,
-            VARIANT AutoText,
-            VARIANT HasLeaderLines,
-            VARIANT ShowSeriesName,
-            VARIANT ShowCategoryName,
-            VARIANT ShowValue,
-            VARIANT ShowPercentage,
-            VARIANT ShowBubbleSize,
-            VARIANT Separator,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT LegendKey = argMissing2(),
+            VARIANT AutoText = argMissing2(),
+            VARIANT HasLeaderLines = argMissing2(),
+            VARIANT ShowSeriesName = argMissing2(),
+            VARIANT ShowCategoryName = argMissing2(),
+            VARIANT ShowValue = argMissing2(),
+            VARIANT ShowPercentage = argMissing2(),
+            VARIANT ShowBubbleSize = argMissing2(),
+            VARIANT Separator = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_PictureUnit(
             long *RHS /Out/) = 0;

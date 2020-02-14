@@ -39,31 +39,31 @@ namespace etapi
         virtual HRESULT _Add(
             BSTR Name,
             BSTR Formula,
-            VARIANT SolveOrder,
-            VARIANT Type,
-            CalculatedMember **RHS /Out/) = 0;
+            VARIANT SolveOrder = argMissing2(),
+            VARIANT Type = argMissing2(),
+            CalculatedMember **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Add(
             BSTR Name,
             VARIANT Formula,
-            VARIANT SolveOrder,
-            VARIANT Type,
-            VARIANT Dynamic,
-            VARIANT DisplayFolder,
-            VARIANT HierarchizeDistinct,
-            CalculatedMember **RHS /Out/) = 0;
+            VARIANT SolveOrder = argMissing2(),
+            VARIANT Type = argMissing2(),
+            VARIANT Dynamic = argMissing2(),
+            VARIANT DisplayFolder = argMissing2(),
+            VARIANT HierarchizeDistinct = argMissing2(),
+            CalculatedMember **RHS /Out/ = 0) = 0;
 
         virtual HRESULT AddCalculatedMember(
             BSTR Name,
             VARIANT Formula,
-            VARIANT SolveOrder,
-            VARIANT Type,
-            VARIANT DisplayFolder,
-            VARIANT MeasureGroup,
-            VARIANT ParentHierarchy,
-            VARIANT ParentMember,
-            VARIANT NumberFormat,
-            CalculatedMember **RHS /Out/) = 0;
+            VARIANT SolveOrder = argMissing2(),
+            VARIANT Type = argMissing2(),
+            VARIANT DisplayFolder = argMissing2(),
+            VARIANT MeasureGroup = argMissing2(),
+            VARIANT ParentHierarchy = argMissing2(),
+            VARIANT ParentMember = argMissing2(),
+            VARIANT NumberFormat = argMissing2(),
+            CalculatedMember **RHS /Out/ = 0) = 0;
 
     };
 };

@@ -25,8 +25,8 @@ namespace ksoapi
 
         virtual HRESULT Add(
             BSTR XML,
-            VARIANT SchemaCollection,
-            CustomXMLPart **ppPart /Out/) = 0;
+            VARIANT SchemaCollection = argMissing2(),
+            CustomXMLPart **ppPart /Out/ = 0) = 0;
 
         virtual HRESULT SelectByID(
             BSTR Id,

@@ -35,10 +35,10 @@ namespace etapi
         virtual HRESULT Add(
             PivotCache *PivotCache,
             VARIANT TableDestination,
-            VARIANT TableName,
-            VARIANT ReadData,
-            VARIANT DefaultVersion,
-            PivotTable **RHS /Out/) = 0;
+            VARIANT TableName = argMissing2(),
+            VARIANT ReadData = argMissing2(),
+            VARIANT DefaultVersion = argMissing2(),
+            PivotTable **RHS /Out/ = 0) = 0;
 
     };
 };

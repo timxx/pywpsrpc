@@ -24,20 +24,20 @@ namespace etapi
 
         virtual HRESULT Add(
             BSTR Caption,
-            VARIANT OnAction,
-            VARIANT ShortcutKey,
-            VARIANT Before,
-            VARIANT Restore,
-            VARIANT StatusBar,
-            VARIANT HelpFile,
-            VARIANT HelpContextID,
-            MenuItem **RHS /Out/) = 0;
+            VARIANT OnAction = argMissing2(),
+            VARIANT ShortcutKey = argMissing2(),
+            VARIANT Before = argMissing2(),
+            VARIANT Restore = argMissing2(),
+            VARIANT StatusBar = argMissing2(),
+            VARIANT HelpFile = argMissing2(),
+            VARIANT HelpContextID = argMissing2(),
+            MenuItem **RHS /Out/ = 0) = 0;
 
         virtual HRESULT AddMenu(
             BSTR Caption,
-            VARIANT Before,
-            VARIANT Restore,
-            Menu **RHS /Out/) = 0;
+            VARIANT Before = argMissing2(),
+            VARIANT Restore = argMissing2(),
+            Menu **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;

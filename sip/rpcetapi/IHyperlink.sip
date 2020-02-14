@@ -51,11 +51,11 @@ namespace etapi
         virtual HRESULT Delete() = 0;
 
         virtual HRESULT Follow(
-            VARIANT NewWindow,
-            VARIANT AddHistory,
-            VARIANT ExtraInfo,
-            VARIANT Method,
-            VARIANT HeaderInfo) = 0;
+            VARIANT NewWindow = argMissing2(),
+            VARIANT AddHistory = argMissing2(),
+            VARIANT ExtraInfo = argMissing2(),
+            VARIANT Method = argMissing2(),
+            VARIANT HeaderInfo = argMissing2()) = 0;
 
         virtual HRESULT get_EmailSubject(
             BSTR *RHS /Out/) = 0;

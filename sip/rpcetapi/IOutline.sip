@@ -29,9 +29,9 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT ShowLevels(
-            VARIANT RowLevels,
-            VARIANT ColumnLevels,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT RowLevels = argMissing2(),
+            VARIANT ColumnLevels = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_SummaryColumn(
             XlSummaryColumn *RHS /Out/) = 0;

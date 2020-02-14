@@ -31,14 +31,14 @@ namespace etapi
 
         virtual HRESULT Add(
             XlFormatConditionType Type,
-            VARIANT Operator,
-            VARIANT Formula1,
-            VARIANT Formula2,
-            VARIANT String,
-            VARIANT TextOperator,
-            VARIANT DateOperator,
-            VARIANT ScopeType,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Operator = argMissing2(),
+            VARIANT Formula1 = argMissing2(),
+            VARIANT Formula2 = argMissing2(),
+            VARIANT String = argMissing2(),
+            VARIANT TextOperator = argMissing2(),
+            VARIANT DateOperator = argMissing2(),
+            VARIANT ScopeType = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__Default(
             VARIANT Index,

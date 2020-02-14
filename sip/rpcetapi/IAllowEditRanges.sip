@@ -23,8 +23,8 @@ namespace etapi
         virtual HRESULT Add(
             BSTR Title,
             Range *Range,
-            VARIANT Password,
-            AllowEditRange **RHS /Out/) = 0;
+            VARIANT Password = argMissing2(),
+            AllowEditRange **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__Default(
             VARIANT Index,

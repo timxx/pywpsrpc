@@ -49,10 +49,10 @@ namespace ksoapi
             VARIANT_BOOL *pvarfSigned /Out/) = 0;
 
         virtual HRESULT Sign(
-            VARIANT varSigImg,
-            VARIANT varDelSuggSigner,
-            VARIANT varDelSuggSignerLine2,
-            VARIANT varDelSuggSignerEmail) = 0;
+            VARIANT varSigImg = argMissing2(),
+            VARIANT varDelSuggSigner = argMissing2(),
+            VARIANT varDelSuggSignerLine2 = argMissing2(),
+            VARIANT varDelSuggSignerEmail = argMissing2()) = 0;
 
         virtual HRESULT get_Details(
             SignatureInfo **ppsiginfo /Out/) = 0;

@@ -24,11 +24,11 @@ namespace etapi
 
         virtual HRESULT Add(
             Range *Key,
-            VARIANT SortOn,
-            VARIANT Order,
-            VARIANT CustomOrder,
-            VARIANT DataOption,
-            SortField **RHS /Out/) = 0;
+            VARIANT SortOn = argMissing2(),
+            VARIANT Order = argMissing2(),
+            VARIANT CustomOrder = argMissing2(),
+            VARIANT DataOption = argMissing2(),
+            SortField **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Item(
             VARIANT Index,

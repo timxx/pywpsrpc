@@ -34,8 +34,8 @@ namespace etapi
         virtual HRESULT SetValue(
             XmlMap *Map,
             BSTR XPath,
-            VARIANT SelectionNamespace,
-            VARIANT Repeating) = 0;
+            VARIANT SelectionNamespace = argMissing2(),
+            VARIANT Repeating = argMissing2()) = 0;
 
         virtual HRESULT Clear() = 0;
 

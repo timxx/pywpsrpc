@@ -28,8 +28,8 @@ namespace etapi
         virtual HRESULT Add(
             VARIANT Connection,
             Range *Destination,
-            VARIANT Sql,
-            QueryTable **RHS /Out/) = 0;
+            VARIANT Sql = argMissing2(),
+            QueryTable **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Item(
             VARIANT Index,

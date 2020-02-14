@@ -86,18 +86,18 @@ namespace etapi
 
         virtual HRESULT Import(
             BSTR Url,
-            VARIANT Overwrite,
-            XlXmlImportResult *RHS /Out/) = 0;
+            VARIANT Overwrite = argMissing2(),
+            XlXmlImportResult *RHS /Out/ = 0) = 0;
 
         virtual HRESULT ImportXml(
             BSTR XmlData,
-            VARIANT Overwrite,
-            XlXmlImportResult *RHS /Out/) = 0;
+            VARIANT Overwrite = argMissing2(),
+            XlXmlImportResult *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Export(
             BSTR Url,
-            VARIANT Overwrite,
-            XlXmlExportResult *RHS /Out/) = 0;
+            VARIANT Overwrite = argMissing2(),
+            XlXmlExportResult *RHS /Out/ = 0) = 0;
 
         virtual HRESULT ExportXml(
             BSTR *Data /Out/,

@@ -25,7 +25,7 @@ namespace etapi
         virtual HRESULT Delete() = 0;
 
         virtual HRESULT Publish(
-            VARIANT Create) = 0;
+            VARIANT Create = argMissing2()) = 0;
 
         virtual HRESULT get_DivID(
             BSTR *RHS /Out/) = 0;

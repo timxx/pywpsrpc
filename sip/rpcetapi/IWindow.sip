@@ -50,10 +50,10 @@ namespace etapi
             VARIANT RHS) = 0;
 
         virtual HRESULT Close(
-            VARIANT SaveChanges,
-            VARIANT Filename,
-            VARIANT RouteWorkbook,
-            VARIANT_BOOL *RHS /Out/) = 0;
+            VARIANT SaveChanges = argMissing2(),
+            VARIANT Filename = argMissing2(),
+            VARIANT RouteWorkbook = argMissing2(),
+            VARIANT_BOOL *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_DisplayFormulas(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -143,11 +143,11 @@ namespace etapi
             long *RHS /Out/) = 0;
 
         virtual HRESULT LargeScroll(
-            VARIANT Down,
-            VARIANT Up,
-            VARIANT ToRight,
-            VARIANT ToLeft,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Down = argMissing2(),
+            VARIANT Up = argMissing2(),
+            VARIANT ToRight = argMissing2(),
+            VARIANT ToLeft = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Left(
             double *RHS /Out/) = 0;
@@ -168,19 +168,19 @@ namespace etapi
             Panes **RHS /Out/) = 0;
 
         virtual HRESULT _PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            VARIANT PrToFileName,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            VARIANT PrToFileName = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT PrintPreview(
-            VARIANT EnableChanges,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT EnableChanges = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_RangeSelection(
             Range **RHS /Out/) = 0;
@@ -198,9 +198,9 @@ namespace etapi
             long RHS) = 0;
 
         virtual HRESULT ScrollWorkbookTabs(
-            VARIANT Sheets,
-            VARIANT Position,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Sheets = argMissing2(),
+            VARIANT Position = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_SelectedSheets(
             Sheets **RHS /Out/) = 0;
@@ -209,11 +209,11 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT SmallScroll(
-            VARIANT Down,
-            VARIANT Up,
-            VARIANT ToRight,
-            VARIANT ToLeft,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Down = argMissing2(),
+            VARIANT Up = argMissing2(),
+            VARIANT ToRight = argMissing2(),
+            VARIANT ToLeft = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Split(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -326,7 +326,7 @@ namespace etapi
             long Top,
             long Width,
             long Height,
-            VARIANT Start) = 0;
+            VARIANT Start = argMissing2()) = 0;
 
         virtual HRESULT get_SheetViews(
             SheetViews **RHS /Out/) = 0;
@@ -335,15 +335,15 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT PrintOut(
-            VARIANT From,
-            VARIANT To,
-            VARIANT Copies,
-            VARIANT Preview,
-            VARIANT ActivePrinter,
-            VARIANT PrintToFile,
-            VARIANT Collate,
-            VARIANT PrToFileName,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT From = argMissing2(),
+            VARIANT To = argMissing2(),
+            VARIANT Copies = argMissing2(),
+            VARIANT Preview = argMissing2(),
+            VARIANT ActivePrinter = argMissing2(),
+            VARIANT PrintToFile = argMissing2(),
+            VARIANT Collate = argMissing2(),
+            VARIANT PrToFileName = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_DisplayRuler(
             VARIANT_BOOL *RHS /Out/) = 0;

@@ -25,9 +25,9 @@ namespace ksoapi
             BSTR DisplayName,
             BSTR Type,
             BSTR SIPId,
-            VARIANT ItemData,
-            VARIANT SubItems,
-            PickerResult **Result /Out/) = 0;
+            VARIANT ItemData = argMissing2(),
+            VARIANT SubItems = argMissing2(),
+            PickerResult **Result /Out/ = 0) = 0;
 
         virtual HRESULT get__NewEnum(
             IUnknown **_NewEnum /Out/) = 0;

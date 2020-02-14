@@ -19,19 +19,19 @@ namespace ksoapi
         virtual HRESULT  Add(
             VARIANT Source,
             XlRowCol Rowcol,
-            VARIANT SeriesLabels,
-            VARIANT CategoryLabels,
-            VARIANT Replace,
-            IMsoSeries **RHS /Out/) = 0;
+            VARIANT SeriesLabels = argMissing2(),
+            VARIANT CategoryLabels = argMissing2(),
+            VARIANT Replace = argMissing2(),
+            IMsoSeries **RHS /Out/ = 0) = 0;
 
         virtual HRESULT  get_Count(
             long *RHS /Out/) = 0;
 
         virtual HRESULT  Extend(
             VARIANT Source,
-            VARIANT Rowcol,
-            VARIANT CategoryLabels,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Rowcol = argMissing2(),
+            VARIANT CategoryLabels = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT  Item(
             VARIANT Index,
@@ -42,11 +42,11 @@ namespace ksoapi
 
         virtual HRESULT  Paste(
             XlRowCol Rowcol,
-            VARIANT SeriesLabels,
-            VARIANT CategoryLabels,
-            VARIANT Replace,
-            VARIANT NewSeries,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT SeriesLabels = argMissing2(),
+            VARIANT CategoryLabels = argMissing2(),
+            VARIANT Replace = argMissing2(),
+            VARIANT NewSeries = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT  NewSeries(
             IMsoSeries **RHS /Out/) = 0;

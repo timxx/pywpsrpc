@@ -29,11 +29,11 @@ namespace etapi
             long *RHS /Out/) = 0;
 
         virtual HRESULT LargeScroll(
-            VARIANT Down,
-            VARIANT Up,
-            VARIANT ToRight,
-            VARIANT ToLeft,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Down = argMissing2(),
+            VARIANT Up = argMissing2(),
+            VARIANT ToRight = argMissing2(),
+            VARIANT ToLeft = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ScrollColumn(
             long *RHS /Out/) = 0;
@@ -48,11 +48,11 @@ namespace etapi
             long RHS) = 0;
 
         virtual HRESULT SmallScroll(
-            VARIANT Down,
-            VARIANT Up,
-            VARIANT ToRight,
-            VARIANT ToLeft,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Down = argMissing2(),
+            VARIANT Up = argMissing2(),
+            VARIANT ToRight = argMissing2(),
+            VARIANT ToLeft = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_VisibleRange(
             Range **RHS /Out/) = 0;
@@ -62,7 +62,7 @@ namespace etapi
             long Top,
             long Width,
             long Height,
-            VARIANT Start) = 0;
+            VARIANT Start = argMissing2()) = 0;
 
         virtual HRESULT PointsToScreenPixelsX(
             long Points,

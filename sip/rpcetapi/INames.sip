@@ -23,32 +23,32 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT Add(
-            VARIANT name,
-            VARIANT RefersTo,
-            VARIANT Visible,
-            VARIANT MacroType,
-            VARIANT ShortcutKey,
-            VARIANT Category,
-            VARIANT NameLocal,
-            VARIANT RefersToLocal,
-            VARIANT CategoryLocal,
-            VARIANT RefersToR1C1,
-            VARIANT RefersToR1C1Local,
-            Name **RHS /Out/) = 0;
+            VARIANT name = argMissing2(),
+            VARIANT RefersTo = argMissing2(),
+            VARIANT Visible = argMissing2(),
+            VARIANT MacroType = argMissing2(),
+            VARIANT ShortcutKey = argMissing2(),
+            VARIANT Category = argMissing2(),
+            VARIANT NameLocal = argMissing2(),
+            VARIANT RefersToLocal = argMissing2(),
+            VARIANT CategoryLocal = argMissing2(),
+            VARIANT RefersToR1C1 = argMissing2(),
+            VARIANT RefersToR1C1Local = argMissing2(),
+            Name **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Item(
-            VARIANT Index,
-            VARIANT IndexLocal,
-            VARIANT RefersTo,
-            long lcid,
-            Name **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT IndexLocal = argMissing2(),
+            VARIANT RefersTo = argMissing2(),
+            long lcid = 0,
+            Name **RHS /Out/ = 0) = 0;
 
         virtual HRESULT _Default(
-            VARIANT Index,
-            VARIANT IndexLocal,
-            VARIANT RefersTo,
-            long lcid,
-            Name **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT IndexLocal = argMissing2(),
+            VARIANT RefersTo = argMissing2(),
+            long lcid = 0,
+            Name **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;

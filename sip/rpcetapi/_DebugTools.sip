@@ -26,9 +26,9 @@ namespace etapi
 
         virtual HRESULT RunCommand(
             long cmdid,
-            VARIANT param1,
-            VARIANT param2,
-            VARIANT param3) = 0;
+            VARIANT param1 = argMissing2(),
+            VARIANT param2 = argMissing2(),
+            VARIANT param3 = argMissing2()) = 0;
 
         virtual HRESULT GetResult(
             long cmdid,

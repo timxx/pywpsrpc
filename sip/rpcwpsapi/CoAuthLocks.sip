@@ -33,9 +33,9 @@ namespace wpsapi
             CoAuthLock **prop /Out/) = 0;
 
         virtual HRESULT Add(
-            VARIANT Range,
-            WdLockType Type,
-            CoAuthLock **prop /Out/) = 0;
+            VARIANT Range = argMissing2(),
+            WdLockType Type = wpsapi::wdLockNone,
+            CoAuthLock **prop /Out/ = 0) = 0;
 
         virtual HRESULT RemoveEphemeralLocks() = 0;
 

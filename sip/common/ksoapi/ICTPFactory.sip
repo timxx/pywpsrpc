@@ -16,8 +16,8 @@ namespace ksoapi
         virtual HRESULT CreateCTP(
             BSTR CTPAxID,
             BSTR CTPTitle,
-            VARIANT CTPParentWindow,
-            _CustomTaskPane **CTPInst /Out/) = 0;
+            VARIANT CTPParentWindow = argMissing2(),
+            _CustomTaskPane **CTPInst /Out/ = 0) = 0;
 
     };
 };

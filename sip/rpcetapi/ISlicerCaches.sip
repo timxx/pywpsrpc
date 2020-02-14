@@ -39,15 +39,15 @@ namespace etapi
         virtual HRESULT Add(
             VARIANT Source,
             VARIANT SourceField,
-            VARIANT Name,
-            SlicerCache **RHS /Out/) = 0;
+            VARIANT Name = argMissing2(),
+            SlicerCache **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Add2(
             VARIANT Source,
             VARIANT SourceField,
-            VARIANT Name,
-            VARIANT SlicerCacheType,
-            SlicerCache **RHS /Out/) = 0;
+            VARIANT Name = argMissing2(),
+            VARIANT SlicerCacheType = argMissing2(),
+            SlicerCache **RHS /Out/ = 0) = 0;
 
     };
 };

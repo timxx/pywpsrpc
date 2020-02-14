@@ -15,9 +15,9 @@ namespace etapi
     public:
         virtual HRESULT Speak(
             BSTR Text,
-            VARIANT SpeakAsync,
-            VARIANT SpeakXML,
-            VARIANT Purge) = 0;
+            VARIANT SpeakAsync = argMissing2(),
+            VARIANT SpeakXML = argMissing2(),
+            VARIANT Purge = argMissing2()) = 0;
 
         virtual HRESULT get_Direction(
             XlSpeakDirection *RHS /Out/) = 0;

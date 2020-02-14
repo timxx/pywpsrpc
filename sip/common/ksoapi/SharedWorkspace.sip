@@ -37,8 +37,8 @@ namespace ksoapi
         virtual HRESULT Refresh() = 0;
 
         virtual HRESULT CreateNew(
-            VARIANT URL,
-            VARIANT Name) = 0;
+            VARIANT URL = argMissing2(),
+            VARIANT Name = argMissing2()) = 0;
 
         virtual HRESULT Delete() = 0;
 

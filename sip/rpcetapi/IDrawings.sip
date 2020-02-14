@@ -91,8 +91,8 @@ namespace etapi
             VARIANT_BOOL RHS) = 0;
 
         virtual HRESULT Select(
-            VARIANT Replace,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Replace = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT SendToBack(
             VARIANT *RHS /Out/) = 0;
@@ -148,16 +148,16 @@ namespace etapi
             BSTR RHS) = 0;
 
         virtual HRESULT get_Characters(
-            VARIANT Start,
-            VARIANT Length,
-            Characters **RHS /Out/) = 0;
+            VARIANT Start = argMissing2(),
+            VARIANT Length = argMissing2(),
+            Characters **RHS /Out/ = 0) = 0;
 
         virtual HRESULT CheckSpelling(
-            VARIANT CustomDictionary,
-            VARIANT IgnoreUppercase,
-            VARIANT AlwaysSuggest,
-            VARIANT SpellLang,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT CustomDictionary = argMissing2(),
+            VARIANT IgnoreUppercase = argMissing2(),
+            VARIANT AlwaysSuggest = argMissing2(),
+            VARIANT SpellLang = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Font(
             Font **RHS /Out/) = 0;
@@ -221,9 +221,9 @@ namespace etapi
         virtual HRESULT Reshape(
             long Vertex,
             VARIANT_BOOL Insert,
-            VARIANT Left,
-            VARIANT Top,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Left = argMissing2(),
+            VARIANT Top = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual void  _Dummy46() = 0;
 

@@ -44,8 +44,8 @@ namespace etapi
         virtual HRESULT GetMeasure(
             VARIANT AttributeHierarchy,
             XlConsolidationFunction Function,
-            VARIANT Caption,
-            CubeField **RHS /Out/) = 0;
+            VARIANT Caption = argMissing2(),
+            CubeField **RHS /Out/ = 0) = 0;
 
     };
 };

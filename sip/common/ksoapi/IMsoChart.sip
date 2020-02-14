@@ -104,30 +104,30 @@ namespace ksoapi
             VARIANT_BOOL *pres /Out/) = 0;
 
         virtual HRESULT UnProtect(
-            VARIANT Password) = 0;
+            VARIANT Password = argMissing2()) = 0;
 
         virtual HRESULT Protect(
-            VARIANT Password,
-            VARIANT DrawingObjects,
-            VARIANT Contents,
-            VARIANT Scenarios,
-            VARIANT UserInterfaceOnly) = 0;
+            VARIANT Password = argMissing2(),
+            VARIANT DrawingObjects = argMissing2(),
+            VARIANT Contents = argMissing2(),
+            VARIANT Scenarios = argMissing2(),
+            VARIANT UserInterfaceOnly = argMissing2()) = 0;
 
         virtual HRESULT get_ChartGroups(
-            VARIANT *pvarIndex,
-            VARIANT varIgallery,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT *pvarIndex = argMissing(),
+            VARIANT varIgallery = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT SeriesCollection(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT _ApplyDataLabels(
             XlDataLabelsType Type,
-            VARIANT IMsoLegendKey,
-            VARIANT AutoText,
-            VARIANT HasLeaderLines) = 0;
+            VARIANT IMsoLegendKey = argMissing2(),
+            VARIANT AutoText = argMissing2(),
+            VARIANT HasLeaderLines = argMissing2()) = 0;
 
         virtual HRESULT get_SubType(
             long *RHS /Out/) = 0;
@@ -146,15 +146,15 @@ namespace ksoapi
 
         virtual HRESULT ApplyDataLabels(
             XlDataLabelsType Type,
-            VARIANT IMsoLegendKey,
-            VARIANT AutoText,
-            VARIANT HasLeaderLines,
-            VARIANT ShowSeriesName,
-            VARIANT ShowCategoryName,
-            VARIANT ShowValue,
-            VARIANT ShowPercentage,
-            VARIANT ShowBubbleSize,
-            VARIANT Separator) = 0;
+            VARIANT IMsoLegendKey = argMissing2(),
+            VARIANT AutoText = argMissing2(),
+            VARIANT HasLeaderLines = argMissing2(),
+            VARIANT ShowSeriesName = argMissing2(),
+            VARIANT ShowCategoryName = argMissing2(),
+            VARIANT ShowValue = argMissing2(),
+            VARIANT ShowPercentage = argMissing2(),
+            VARIANT ShowBubbleSize = argMissing2(),
+            VARIANT Separator = argMissing2()) = 0;
 
         virtual HRESULT get_ChartType(
             XlChartType *RHS /Out/) = 0;
@@ -170,7 +170,7 @@ namespace ksoapi
 
         virtual HRESULT ApplyCustomType(
             XlChartType ChartType,
-            VARIANT TypeName) = 0;
+            VARIANT TypeName = argMissing2()) = 0;
 
         virtual HRESULT GetChartElement(
             long x,
@@ -181,7 +181,7 @@ namespace ksoapi
 
         virtual HRESULT SetSourceData(
             BSTR Source,
-            VARIANT PlotBy) = 0;
+            VARIANT PlotBy = argMissing2()) = 0;
 
         virtual HRESULT get_PlotBy(
             XlRowCol *PlotBy /Out/) = 0;
@@ -199,19 +199,19 @@ namespace ksoapi
             IMsoLegend **RHS /Out/) = 0;
 
         virtual HRESULT Axes(
-            VARIANT Type,
-            XlAxisGroup AxisGroup,
-            IDispatch **ppAxes /Out/) = 0;
+            VARIANT Type = argMissing2(),
+            XlAxisGroup AxisGroup = ksoapi::xlPrimary,
+            IDispatch **ppAxes /Out/ = 0) = 0;
 
         virtual HRESULT put_HasAxis(
-            VARIANT axisType,
-            VARIANT AxisGroup,
-            VARIANT pval) = 0;
+            VARIANT axisType = argMissing2(),
+            VARIANT AxisGroup = argMissing2(),
+            VARIANT pval = argMissing2()) = 0;
 
         virtual HRESULT get_HasAxis(
-            VARIANT axisType,
-            VARIANT AxisGroup,
-            VARIANT *pval /Out/) = 0;
+            VARIANT axisType = argMissing2(),
+            VARIANT AxisGroup = argMissing2(),
+            VARIANT *pval /Out/ = 0) = 0;
 
         virtual HRESULT get_Walls(
             VARIANT_BOOL fBackWall,
@@ -234,7 +234,7 @@ namespace ksoapi
 
         virtual HRESULT AutoFormat(
             long rGallery,
-            VARIANT varFormat) = 0;
+            VARIANT varFormat = argMissing2()) = 0;
 
         virtual HRESULT get_AutoScaling(
             VARIANT_BOOL *f /Out/) = 0;
@@ -246,18 +246,18 @@ namespace ksoapi
             BSTR bstr) = 0;
 
         virtual HRESULT ChartWizard(
-            VARIANT varSource,
-            VARIANT varGallery,
-            VARIANT varFormat,
-            VARIANT varPlotBy,
-            VARIANT varCategoryLabels,
-            VARIANT varSeriesLabels,
-            VARIANT varHasLegend,
-            VARIANT varTitle,
-            VARIANT varCategoryTitle,
-            VARIANT varValueTitle,
-            VARIANT varExtraTitle,
-            long LocaleID) = 0;
+            VARIANT varSource = argMissing2(),
+            VARIANT varGallery = argMissing2(),
+            VARIANT varFormat = argMissing2(),
+            VARIANT varPlotBy = argMissing2(),
+            VARIANT varCategoryLabels = argMissing2(),
+            VARIANT varSeriesLabels = argMissing2(),
+            VARIANT varHasLegend = argMissing2(),
+            VARIANT varTitle = argMissing2(),
+            VARIANT varCategoryTitle = argMissing2(),
+            VARIANT varValueTitle = argMissing2(),
+            VARIANT varExtraTitle = argMissing2(),
+            long LocaleID = 0) = 0;
 
         virtual HRESULT CopyPicture(
             int Appearance,
@@ -280,8 +280,8 @@ namespace ksoapi
             VARIANT *pvar /Out/) = 0;
 
         virtual HRESULT Paste(
-            VARIANT varType,
-            long LocaleID) = 0;
+            VARIANT varType = argMissing2(),
+            long LocaleID = 0) = 0;
 
         virtual HRESULT get_BarShape(
             XlBarShape *pShape /Out/) = 0;
@@ -291,9 +291,9 @@ namespace ksoapi
 
         virtual HRESULT Export(
             BSTR bstr,
-            VARIANT varFilterName,
-            VARIANT varInteractive,
-            VARIANT_BOOL *f /Out/) = 0;
+            VARIANT varFilterName = argMissing2(),
+            VARIANT varInteractive = argMissing2(),
+            VARIANT_BOOL *f /Out/ = 0) = 0;
 
         virtual HRESULT SetDefaultChart(
             VARIANT varName) = 0;
@@ -337,7 +337,7 @@ namespace ksoapi
 
         virtual HRESULT ApplyLayout(
             long Layout,
-            VARIANT varChartType) = 0;
+            VARIANT varChartType = argMissing2()) = 0;
 
         virtual HRESULT get_Selection(
             IDispatch **RHS /Out/) = 0;
@@ -367,64 +367,64 @@ namespace ksoapi
             IMsoChartGroup **RHS /Out/) = 0;
 
         virtual HRESULT AreaGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Bar3DGroup(
             long lcid,
             IMsoChartGroup **RHS /Out/) = 0;
 
         virtual HRESULT BarGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Column3DGroup(
             long lcid,
             IMsoChartGroup **RHS /Out/) = 0;
 
         virtual HRESULT ColumnGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Line3DGroup(
             long lcid,
             IMsoChartGroup **RHS /Out/) = 0;
 
         virtual HRESULT LineGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Pie3DGroup(
             long lcid,
             IMsoChartGroup **RHS /Out/) = 0;
 
         virtual HRESULT PieGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT DoughnutGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT RadarGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_SurfaceGroup(
             long lcid,
             IMsoChartGroup **RHS /Out/) = 0;
 
         virtual HRESULT XYGroups(
-            VARIANT Index,
-            long lcid,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            long lcid = 0,
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Delete(
             VARIANT *RHS /Out/) = 0;
@@ -433,8 +433,8 @@ namespace ksoapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT Select(
-            VARIANT Replace,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Replace = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_ShowReportFilterFieldButtons(
             VARIANT_BOOL *res /Out/) = 0;
@@ -470,8 +470,8 @@ namespace ksoapi
             VARIANT_BOOL rhs) = 0;
 
         virtual HRESULT FullSeriesCollection(
-            VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT put_CategoryLabelLevel(
             XlCategoryLabelLevel plevel) = 0;

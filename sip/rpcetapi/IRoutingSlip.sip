@@ -35,12 +35,12 @@ namespace etapi
             VARIANT RHS) = 0;
 
         virtual HRESULT get_Recipients(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT put_Recipients(
-            VARIANT Index,
-            VARIANT RHS) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT RHS = argMissing2()) = 0;
 
         virtual HRESULT Reset(
             VARIANT *RHS /Out/) = 0;

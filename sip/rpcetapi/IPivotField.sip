@@ -32,8 +32,8 @@ namespace etapi
             PivotField **RHS /Out/) = 0;
 
         virtual HRESULT get_ChildItems(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_CurrentPage(
             VARIANT *RHS /Out/) = 0;
@@ -63,8 +63,8 @@ namespace etapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT get_HiddenItems(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_LabelRange(
             Range **RHS /Out/) = 0;
@@ -97,12 +97,12 @@ namespace etapi
             PivotField **RHS /Out/) = 0;
 
         virtual HRESULT get_ParentItems(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT PivotItems(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Position(
             VARIANT *RHS /Out/) = 0;
@@ -114,12 +114,12 @@ namespace etapi
             BSTR *RHS /Out/) = 0;
 
         virtual HRESULT get_Subtotals(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT put_Subtotals(
-            VARIANT Index,
-            VARIANT RHS) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT RHS = argMissing2()) = 0;
 
         virtual HRESULT get_BaseField(
             VARIANT *RHS /Out/) = 0;
@@ -143,8 +143,8 @@ namespace etapi
             BSTR RHS) = 0;
 
         virtual HRESULT get_VisibleItems(
-            VARIANT Index,
-            VARIANT *RHS /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT CalculatedItems(
             CalculatedItems **RHS /Out/) = 0;
@@ -322,7 +322,7 @@ namespace etapi
 
         virtual HRESULT AddPageItem(
             BSTR Item,
-            VARIANT ClearList) = 0;
+            VARIANT ClearList = argMissing2()) = 0;
 
         virtual HRESULT get_Hidden(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -410,8 +410,8 @@ namespace etapi
         virtual HRESULT AutoSort(
             long Order,
             BSTR Field,
-            VARIANT PivotLine,
-            VARIANT CustomSubtotal) = 0;
+            VARIANT PivotLine = argMissing2(),
+            VARIANT CustomSubtotal = argMissing2()) = 0;
 
         virtual HRESULT get_SourceCaption(
             BSTR *RHS /Out/) = 0;

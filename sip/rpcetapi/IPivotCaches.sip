@@ -38,14 +38,14 @@ namespace etapi
 
         virtual HRESULT Add(
             XlPivotTableSourceType SourceType,
-            VARIANT SourceData,
-            PivotCache **RHS /Out/) = 0;
+            VARIANT SourceData = argMissing2(),
+            PivotCache **RHS /Out/ = 0) = 0;
 
         virtual HRESULT Create(
             XlPivotTableSourceType SourceType,
-            VARIANT SourceData,
-            VARIANT Version,
-            PivotCache **RHS /Out/) = 0;
+            VARIANT SourceData = argMissing2(),
+            VARIANT Version = argMissing2(),
+            PivotCache **RHS /Out/ = 0) = 0;
 
     };
 };

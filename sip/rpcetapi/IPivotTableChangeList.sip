@@ -39,10 +39,10 @@ namespace etapi
         virtual HRESULT Add(
             BSTR Tuple,
             double Value,
-            VARIANT AllocationValue,
-            VARIANT AllocationMethod,
-            VARIANT AllocationWeightExpression,
-            ValueChange **RHS /Out/) = 0;
+            VARIANT AllocationValue = argMissing2(),
+            VARIANT AllocationMethod = argMissing2(),
+            VARIANT AllocationWeightExpression = argMissing2(),
+            ValueChange **RHS /Out/ = 0) = 0;
 
     };
 };

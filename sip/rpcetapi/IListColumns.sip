@@ -23,8 +23,8 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT Add(
-            VARIANT Position,
-            ListColumn **RHS /Out/) = 0;
+            VARIANT Position = argMissing2(),
+            ListColumn **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__Default(
             VARIANT Index,

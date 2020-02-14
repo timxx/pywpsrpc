@@ -20,11 +20,11 @@ namespace ksoapi
             CommandBar **ppcb /Out/) = 0;
 
         virtual HRESULT Add(
-            VARIANT Name,
-            VARIANT Position,
-            VARIANT MenuBar,
-            VARIANT Temporary,
-            CommandBar **ppcb /Out/) = 0;
+            VARIANT Name = argMissing2(),
+            VARIANT Position = argMissing2(),
+            VARIANT MenuBar = argMissing2(),
+            VARIANT Temporary = argMissing2(),
+            CommandBar **ppcb /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             int *pcToolbars /Out/) = 0;
@@ -42,11 +42,11 @@ namespace ksoapi
             VARIANT_BOOL pvarfDisplayKeys) = 0;
 
         virtual HRESULT FindControl(
-            VARIANT Type,
-            VARIANT Id,
-            VARIANT Tag,
-            VARIANT Visible,
-            CommandBarControl **ppcbc /Out/) = 0;
+            VARIANT Type = argMissing2(),
+            VARIANT Id = argMissing2(),
+            VARIANT Tag = argMissing2(),
+            VARIANT Visible = argMissing2(),
+            CommandBarControl **ppcbc /Out/ = 0) = 0;
 
         virtual HRESULT get_Item(
             VARIANT Index,
@@ -89,19 +89,19 @@ namespace ksoapi
             VARIANT_BOOL pvarfAdaptiveMenus) = 0;
 
         virtual HRESULT FindControls(
-            VARIANT Type,
-            VARIANT Id,
-            VARIANT Tag,
-            VARIANT Visible,
-            CommandBarControls **ppcbcs /Out/) = 0;
+            VARIANT Type = argMissing2(),
+            VARIANT Id = argMissing2(),
+            VARIANT Tag = argMissing2(),
+            VARIANT Visible = argMissing2(),
+            CommandBarControls **ppcbcs /Out/ = 0) = 0;
 
         virtual HRESULT AddEx(
-            VARIANT TbidOrName,
-            VARIANT Position,
-            VARIANT MenuBar,
-            VARIANT Temporary,
-            VARIANT TbtrProtection,
-            CommandBar **ppcb /Out/) = 0;
+            VARIANT TbidOrName = argMissing2(),
+            VARIANT Position = argMissing2(),
+            VARIANT MenuBar = argMissing2(),
+            VARIANT Temporary = argMissing2(),
+            VARIANT TbtrProtection = argMissing2(),
+            CommandBar **ppcb /Out/ = 0) = 0;
 
         virtual HRESULT get_DisplayFonts(
             VARIANT_BOOL *pvarfDisplayFonts /Out/) = 0;

@@ -28,9 +28,9 @@ namespace ksoapi
 
         virtual HRESULT Add(
             BSTR UserId,
-            VARIANT Permission,
-            VARIANT ExpirationDate,
-            UserPermission **UserPerm /Out/) = 0;
+            VARIANT Permission = argMissing2(),
+            VARIANT ExpirationDate = argMissing2(),
+            UserPermission **UserPerm /Out/ = 0) = 0;
 
         virtual HRESULT ApplyPolicy(
             BSTR FileName) = 0;
