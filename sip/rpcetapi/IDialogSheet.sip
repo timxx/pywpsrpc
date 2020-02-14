@@ -159,23 +159,23 @@ namespace etapi
         virtual HRESULT get_Shapes(
             Shapes **RHS /Out/) = 0;
 
-        virtual void  _Dummy29() = 0;
+        virtual void _Dummy29() = 0;
 
         virtual HRESULT Arcs(
             VARIANT Index = argMissing2(),
             long lcid = 0,
             IDispatch **RHS /Out/ = 0) = 0;
 
-        virtual void  _Dummy31() = 0;
+        virtual void _Dummy31() = 0;
 
-        virtual void  _Dummy32() = 0;
+        virtual void _Dummy32() = 0;
 
         virtual HRESULT Buttons(
             VARIANT Index = argMissing2(),
             long lcid = 0,
             IDispatch **RHS /Out/ = 0) = 0;
 
-        virtual void  _Dummy34() = 0;
+        virtual void _Dummy34() = 0;
 
         virtual HRESULT get_EnableCalculation(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -183,7 +183,7 @@ namespace etapi
         virtual HRESULT put_EnableCalculation(
             VARIANT_BOOL RHS) = 0;
 
-        virtual void  _Dummy36() = 0;
+        virtual void _Dummy36() = 0;
 
         virtual HRESULT ChartObjects(
             VARIANT Index = argMissing2(),
@@ -202,17 +202,17 @@ namespace etapi
             VARIANT SpellLang = argMissing2(),
             long lcid = 0) = 0;
 
-        virtual void  _Dummy40() = 0;
+        virtual void _Dummy40() = 0;
 
-        virtual void  _Dummy41() = 0;
+        virtual void _Dummy41() = 0;
 
-        virtual void  _Dummy42() = 0;
+        virtual void _Dummy42() = 0;
 
-        virtual void  _Dummy43() = 0;
+        virtual void _Dummy43() = 0;
 
-        virtual void  _Dummy44() = 0;
+        virtual void _Dummy44() = 0;
 
-        virtual void  _Dummy45() = 0;
+        virtual void _Dummy45() = 0;
 
         virtual HRESULT get_DisplayAutomaticPageBreaks(
             long lcid,
@@ -277,7 +277,7 @@ namespace etapi
             long lcid,
             VARIANT *RHS /Out/) = 0;
 
-        virtual void  _Dummy56() = 0;
+        virtual void _Dummy56() = 0;
 
         virtual HRESULT ResetAllPageBreaks() = 0;
 
@@ -314,18 +314,18 @@ namespace etapi
             long lcid = 0,
             IDispatch **RHS /Out/ = 0) = 0;
 
-        virtual void  _Dummy65() = 0;
+        virtual void _Dummy65() = 0;
 
-        virtual void  _Dummy66() = 0;
+        virtual void _Dummy66() = 0;
 
-        virtual void  _Dummy67() = 0;
+        virtual void _Dummy67() = 0;
 
         virtual HRESULT OptionButtons(
             VARIANT Index = argMissing2(),
             long lcid = 0,
             IDispatch **RHS /Out/ = 0) = 0;
 
-        virtual void  _Dummy69() = 0;
+        virtual void _Dummy69() = 0;
 
         virtual HRESULT Ovals(
             VARIANT Index = argMissing2(),
@@ -351,20 +351,20 @@ namespace etapi
             long lcid = 0,
             IDispatch **RHS /Out/ = 0) = 0;
 
-        virtual void  _Dummy74() = 0;
+        virtual void _Dummy74() = 0;
 
-        virtual void  _Dummy75() = 0;
+        virtual void _Dummy75() = 0;
 
-        virtual void  _Dummy76() = 0;
+        virtual void _Dummy76() = 0;
 
         virtual HRESULT Rectangles(
             VARIANT Index = argMissing2(),
             long lcid = 0,
             IDispatch **RHS /Out/ = 0) = 0;
 
-        virtual void  _Dummy78() = 0;
+        virtual void _Dummy78() = 0;
 
-        virtual void  _Dummy79() = 0;
+        virtual void _Dummy79() = 0;
 
         virtual HRESULT get_ScrollArea(
             BSTR *RHS /Out/) = 0;
@@ -377,29 +377,29 @@ namespace etapi
             long lcid = 0,
             IDispatch **RHS /Out/ = 0) = 0;
 
-        virtual void  _Dummy82() = 0;
+        virtual void _Dummy82() = 0;
 
-        virtual void  _Dummy83() = 0;
+        virtual void _Dummy83() = 0;
 
         virtual HRESULT Spinners(
             VARIANT Index = argMissing2(),
             long lcid = 0,
             IDispatch **RHS /Out/ = 0) = 0;
 
-        virtual void  _Dummy85() = 0;
+        virtual void _Dummy85() = 0;
 
-        virtual void  _Dummy86() = 0;
+        virtual void _Dummy86() = 0;
 
         virtual HRESULT TextBoxes(
             VARIANT Index = argMissing2(),
             long lcid = 0,
             IDispatch **RHS /Out/ = 0) = 0;
 
-        virtual void  _Dummy88() = 0;
+        virtual void _Dummy88() = 0;
 
-        virtual void  _Dummy89() = 0;
+        virtual void _Dummy89() = 0;
 
-        virtual void  _Dummy90() = 0;
+        virtual void _Dummy90() = 0;
 
         virtual HRESULT get_HPageBreaks(
             HPageBreaks **RHS /Out/) = 0;
@@ -523,11 +523,11 @@ namespace etapi
             VARIANT AllowFiltering = argMissing2(),
             VARIANT AllowUsingPivotTables = argMissing2()) = 0;
 
-        virtual void  _Dummy113() = 0;
+        virtual void _Dummy113() = 0;
 
-        virtual void  _Dummy114() = 0;
+        virtual void _Dummy114() = 0;
 
-        virtual void  _Dummy115() = 0;
+        virtual void _Dummy115() = 0;
 
         virtual HRESULT PrintOut(
             VARIANT From = argMissing2(),

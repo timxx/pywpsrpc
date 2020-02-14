@@ -166,7 +166,7 @@ namespace etapi
         virtual HRESULT put_Accelerator(
             VARIANT RHS) = 0;
 
-        virtual void  _Dummy33() = 0;
+        virtual void _Dummy33() = 0;
 
         virtual HRESULT get_PhoneticAccelerator(
             VARIANT *RHS /Out/) = 0;

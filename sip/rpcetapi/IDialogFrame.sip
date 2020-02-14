@@ -22,24 +22,24 @@ namespace etapi
         virtual HRESULT get_Parent(
             IDispatch **RHS /Out/) = 0;
 
-        virtual void  _Dummy3() = 0;
+        virtual void _Dummy3() = 0;
 
-        virtual void  _Dummy4() = 0;
+        virtual void _Dummy4() = 0;
 
-        virtual void  _Dummy5() = 0;
+        virtual void _Dummy5() = 0;
 
         virtual HRESULT CopyPicture(
             XlPictureAppearance Appearance,
             XlCopyPictureFormat Format,
             VARIANT *RHS /Out/) = 0;
 
-        virtual void  _Dummy7() = 0;
+        virtual void _Dummy7() = 0;
 
-        virtual void  _Dummy8() = 0;
+        virtual void _Dummy8() = 0;
 
-        virtual void  _Dummy9() = 0;
+        virtual void _Dummy9() = 0;
 
-        virtual void  _Dummy10() = 0;
+        virtual void _Dummy10() = 0;
 
         virtual HRESULT get_Height(
             double *RHS /Out/) = 0;
@@ -47,7 +47,7 @@ namespace etapi
         virtual HRESULT put_Height(
             double RHS) = 0;
 
-        virtual void  _Dummy12() = 0;
+        virtual void _Dummy12() = 0;
 
         virtual HRESULT get_Left(
             double *RHS /Out/) = 0;
@@ -73,15 +73,15 @@ namespace etapi
         virtual HRESULT put_OnAction(
             BSTR RHS) = 0;
 
-        virtual void  _Dummy17() = 0;
+        virtual void _Dummy17() = 0;
 
-        virtual void  _Dummy18() = 0;
+        virtual void _Dummy18() = 0;
 
         virtual HRESULT Select(
             VARIANT Replace = argMissing2(),
             VARIANT *RHS /Out/ = 0) = 0;
 
-        virtual void  _Dummy20() = 0;
+        virtual void _Dummy20() = 0;
 
         virtual HRESULT get_Top(
             double *RHS /Out/) = 0;
@@ -89,9 +89,9 @@ namespace etapi
         virtual HRESULT put_Top(
             double RHS) = 0;
 
-        virtual void  _Dummy22() = 0;
+        virtual void _Dummy22() = 0;
 
-        virtual void  _Dummy23() = 0;
+        virtual void _Dummy23() = 0;
 
         virtual HRESULT get_Width(
             double *RHS /Out/) = 0;
@@ -99,7 +99,7 @@ namespace etapi
         virtual HRESULT put_Width(
             double RHS) = 0;
 
-        virtual void  _Dummy25() = 0;
+        virtual void _Dummy25() = 0;
 
         virtual HRESULT get_ShapeRange(
             ShapeRange **RHS /Out/) = 0;

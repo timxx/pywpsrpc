@@ -22,7 +22,7 @@ namespace etapi
         virtual HRESULT get_Parent(
             IDispatch **RHS /Out/) = 0;
 
-        virtual void  _Dummy3() = 0;
+        virtual void _Dummy3() = 0;
 
         virtual HRESULT BringToFront(
             VARIANT *RHS /Out/) = 0;
@@ -56,7 +56,7 @@ namespace etapi
         virtual HRESULT put_Height(
             double RHS) = 0;
 
-        virtual void  _Dummy12() = 0;
+        virtual void _Dummy12() = 0;
 
         virtual HRESULT get_Left(
             double *RHS /Out/) = 0;
@@ -70,7 +70,7 @@ namespace etapi
         virtual HRESULT put_Locked(
             VARIANT_BOOL RHS) = 0;
 
-        virtual void  _Dummy15() = 0;
+        virtual void _Dummy15() = 0;
 
         virtual HRESULT get_OnAction(
             BSTR *RHS /Out/) = 0;
@@ -103,7 +103,7 @@ namespace etapi
         virtual HRESULT put_Top(
             double RHS) = 0;
 
-        virtual void  _Dummy22() = 0;
+        virtual void _Dummy22() = 0;
 
         virtual HRESULT get_Visible(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -123,9 +123,9 @@ namespace etapi
         virtual HRESULT get_ShapeRange(
             ShapeRange **RHS /Out/) = 0;
 
-        virtual void  _Dummy27() = 0;
+        virtual void _Dummy27() = 0;
 
-        virtual void  _Dummy28() = 0;
+        virtual void _Dummy28() = 0;
 
         virtual HRESULT get_AddIndent(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -133,7 +133,7 @@ namespace etapi
         virtual HRESULT put_AddIndent(
             VARIANT_BOOL RHS) = 0;
 
-        virtual void  _Dummy30() = 0;
+        virtual void _Dummy30() = 0;
 
         virtual HRESULT get_ArrowHeadLength(
             VARIANT *RHS /Out/) = 0;
@@ -162,11 +162,11 @@ namespace etapi
         virtual HRESULT get_Border(
             Border **RHS /Out/) = 0;
 
-        virtual void  _Dummy36() = 0;
+        virtual void _Dummy36() = 0;
 
-        virtual void  _Dummy37() = 0;
+        virtual void _Dummy37() = 0;
 
-        virtual void  _Dummy38() = 0;
+        virtual void _Dummy38() = 0;
 
         virtual HRESULT CheckSpelling(
             VARIANT CustomDictionary = argMissing2(),
@@ -181,22 +181,22 @@ namespace etapi
         virtual HRESULT put__Default(
             long RHS) = 0;
 
-        virtual void  _Dummy41() = 0;
+        virtual void _Dummy41() = 0;
 
-        virtual void  _Dummy42() = 0;
+        virtual void _Dummy42() = 0;
 
-        virtual void  _Dummy43() = 0;
+        virtual void _Dummy43() = 0;
 
-        virtual void  _Dummy44() = 0;
+        virtual void _Dummy44() = 0;
 
-        virtual void  _Dummy45() = 0;
+        virtual void _Dummy45() = 0;
 
         virtual HRESULT get_Font(
             Font **RHS /Out/) = 0;
 
-        virtual void  _Dummy47() = 0;
+        virtual void _Dummy47() = 0;
 
-        virtual void  _Dummy48() = 0;
+        virtual void _Dummy48() = 0;
 
         virtual HRESULT get_HorizontalAlignment(
             VARIANT *RHS /Out/) = 0;
@@ -204,34 +204,34 @@ namespace etapi
         virtual HRESULT put_HorizontalAlignment(
             VARIANT RHS) = 0;
 
-        virtual void  _Dummy50() = 0;
+        virtual void _Dummy50() = 0;
 
         virtual HRESULT get_Interior(
             Interior **RHS /Out/) = 0;
 
-        virtual void  _Dummy52() = 0;
+        virtual void _Dummy52() = 0;
 
-        virtual void  _Dummy53() = 0;
+        virtual void _Dummy53() = 0;
 
-        virtual void  _Dummy54() = 0;
+        virtual void _Dummy54() = 0;
 
-        virtual void  _Dummy55() = 0;
+        virtual void _Dummy55() = 0;
 
-        virtual void  _Dummy56() = 0;
+        virtual void _Dummy56() = 0;
 
-        virtual void  _Dummy57() = 0;
+        virtual void _Dummy57() = 0;
 
-        virtual void  _Dummy58() = 0;
+        virtual void _Dummy58() = 0;
 
-        virtual void  _Dummy59() = 0;
+        virtual void _Dummy59() = 0;
 
-        virtual void  _Dummy60() = 0;
+        virtual void _Dummy60() = 0;
 
-        virtual void  _Dummy61() = 0;
+        virtual void _Dummy61() = 0;
 
-        virtual void  _Dummy62() = 0;
+        virtual void _Dummy62() = 0;
 
-        virtual void  _Dummy63() = 0;
+        virtual void _Dummy63() = 0;
 
         virtual HRESULT get_Orientation(
             VARIANT *RHS /Out/) = 0;
@@ -239,13 +239,13 @@ namespace etapi
         virtual HRESULT put_Orientation(
             VARIANT RHS) = 0;
 
-        virtual void  _Dummy65() = 0;
+        virtual void _Dummy65() = 0;
 
-        virtual void  _Dummy66() = 0;
+        virtual void _Dummy66() = 0;
 
-        virtual void  _Dummy67() = 0;
+        virtual void _Dummy67() = 0;
 
-        virtual void  _Dummy68() = 0;
+        virtual void _Dummy68() = 0;
 
         virtual HRESULT get_RoundedCorners(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -253,7 +253,7 @@ namespace etapi
         virtual HRESULT put_RoundedCorners(
             VARIANT_BOOL RHS) = 0;
 
-        virtual void  _Dummy70() = 0;
+        virtual void _Dummy70() = 0;
 
         virtual HRESULT get_Shadow(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -261,14 +261,14 @@ namespace etapi
         virtual HRESULT put_Shadow(
             VARIANT_BOOL RHS) = 0;
 
-        virtual void  _Dummy72() = 0;
+        virtual void _Dummy72() = 0;
 
-        virtual void  _Dummy73() = 0;
+        virtual void _Dummy73() = 0;
 
         virtual HRESULT Ungroup(
             IDispatch **RHS /Out/) = 0;
 
-        virtual void  _Dummy75() = 0;
+        virtual void _Dummy75() = 0;
 
         virtual HRESULT get_VerticalAlignment(
             VARIANT *RHS /Out/) = 0;
@@ -276,7 +276,7 @@ namespace etapi
         virtual HRESULT put_VerticalAlignment(
             VARIANT RHS) = 0;
 
-        virtual void  _Dummy77() = 0;
+        virtual void _Dummy77() = 0;
 
         virtual HRESULT get_ReadingOrder(
             long *RHS /Out/) = 0;

@@ -22,7 +22,7 @@ namespace etapi
         virtual HRESULT get_Parent(
             IDispatch **RHS /Out/) = 0;
 
-        virtual void  _Dummy3() = 0;
+        virtual void _Dummy3() = 0;
 
         virtual HRESULT BringToFront(
             VARIANT *RHS /Out/) = 0;
@@ -56,7 +56,7 @@ namespace etapi
         virtual HRESULT put_Height(
             double RHS) = 0;
 
-        virtual void  _Dummy12() = 0;
+        virtual void _Dummy12() = 0;
 
         virtual HRESULT get_Left(
             double *RHS /Out/) = 0;
@@ -70,7 +70,7 @@ namespace etapi
         virtual HRESULT put_Locked(
             VARIANT_BOOL RHS) = 0;
 
-        virtual void  _Dummy15() = 0;
+        virtual void _Dummy15() = 0;
 
         virtual HRESULT get_OnAction(
             BSTR *RHS /Out/) = 0;
@@ -103,7 +103,7 @@ namespace etapi
         virtual HRESULT put_Top(
             double RHS) = 0;
 
-        virtual void  _Dummy22() = 0;
+        virtual void _Dummy22() = 0;
 
         virtual HRESULT get_Visible(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -216,7 +216,7 @@ namespace etapi
         virtual HRESULT put_Shadow(
             VARIANT_BOOL RHS) = 0;
 
-        virtual void  _Dummy44() = 0;
+        virtual void _Dummy44() = 0;
 
         virtual HRESULT Reshape(
             long Vertex,
@@ -225,7 +225,7 @@ namespace etapi
             VARIANT Top = argMissing2(),
             VARIANT *RHS /Out/ = 0) = 0;
 
-        virtual void  _Dummy46() = 0;
+        virtual void _Dummy46() = 0;
 
         virtual HRESULT Add(
             double X1,

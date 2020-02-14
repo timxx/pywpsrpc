@@ -217,7 +217,7 @@ namespace etapi
         virtual HRESULT get_Interior(
             Interior **RHS /Out/) = 0;
 
-        virtual void  _Dummy43() = 0;
+        virtual void _Dummy43() = 0;
 
     };
 };

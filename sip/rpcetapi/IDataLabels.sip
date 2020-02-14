@@ -40,9 +40,9 @@ namespace etapi
         virtual HRESULT get_Fill(
             ChartFillFormat **RHS /Out/) = 0;
 
-        virtual void  _Dummy9() = 0;
+        virtual void _Dummy9() = 0;
 
-        virtual void  _Dummy10() = 0;
+        virtual void _Dummy10() = 0;
 
         virtual HRESULT get_Font(
             Font **RHS /Out/) = 0;
@@ -53,7 +53,7 @@ namespace etapi
         virtual HRESULT put_HorizontalAlignment(
             VARIANT RHS) = 0;
 
-        virtual void  _Dummy13() = 0;
+        virtual void _Dummy13() = 0;
 
         virtual HRESULT get_Orientation(
             VARIANT *RHS /Out/) = 0;
@@ -67,9 +67,9 @@ namespace etapi
         virtual HRESULT put_Shadow(
             VARIANT_BOOL RHS) = 0;
 
-        virtual void  _Dummy16() = 0;
+        virtual void _Dummy16() = 0;
 
-        virtual void  _Dummy17() = 0;
+        virtual void _Dummy17() = 0;
 
         virtual HRESULT get_VerticalAlignment(
             VARIANT *RHS /Out/) = 0;

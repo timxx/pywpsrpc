@@ -34,7 +34,7 @@ namespace etapi
         virtual HRESULT get_SourceWorkbookConnection(
             WorkbookConnection **RHS /Out/) = 0;
 
-        virtual void  _Dummy7() = 0;
+        virtual void _Dummy7() = 0;
 
         virtual HRESULT Refresh() = 0;
 

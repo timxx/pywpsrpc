@@ -100,7 +100,7 @@ namespace etapi
             VARIANT Collate = argMissing2(),
             long lcid = 0) = 0;
 
-        virtual void  _Dummy18() = 0;
+        virtual void _Dummy18() = 0;
 
         virtual HRESULT _Protect(
             VARIANT Password = argMissing2(),
@@ -114,13 +114,13 @@ namespace etapi
             long lcid,
             VARIANT_BOOL *RHS /Out/) = 0;
 
-        virtual void  _Dummy21() = 0;
+        virtual void _Dummy21() = 0;
 
         virtual HRESULT get_ProtectionMode(
             long lcid,
             VARIANT_BOOL *RHS /Out/) = 0;
 
-        virtual void  _Dummy23() = 0;
+        virtual void _Dummy23() = 0;
 
         virtual HRESULT _SaveAs(
             BSTR Filename,

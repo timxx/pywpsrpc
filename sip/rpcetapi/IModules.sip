@@ -39,7 +39,7 @@ namespace etapi
         virtual HRESULT Delete(
             long lcid) = 0;
 
-        virtual void  _Dummy7() = 0;
+        virtual void _Dummy7() = 0;
 
         virtual HRESULT get_Item(
             VARIANT Index,
@@ -63,7 +63,7 @@ namespace etapi
             VARIANT Collate = argMissing2(),
             long lcid = 0) = 0;
 
-        virtual void  _Dummy12() = 0;
+        virtual void _Dummy12() = 0;
 
         virtual HRESULT Select(
             VARIANT Replace = argMissing2(),

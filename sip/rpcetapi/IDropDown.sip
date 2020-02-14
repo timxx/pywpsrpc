@@ -179,7 +179,7 @@ namespace etapi
         virtual HRESULT put_ListIndex(
             long RHS) = 0;
 
-        virtual void  _Dummy36() = 0;
+        virtual void _Dummy36() = 0;
 
         virtual HRESULT RemoveAllItems(
             VARIANT *RHS /Out/) = 0;

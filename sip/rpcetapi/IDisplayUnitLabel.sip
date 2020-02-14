@@ -108,7 +108,7 @@ namespace etapi
         virtual HRESULT put_AutoScaleFont(
             VARIANT RHS) = 0;
 
-        virtual void  _Dummy21() = 0;
+        virtual void _Dummy21() = 0;
 
         virtual HRESULT get_Position(
             XlChartElementPosition *RHS /Out/) = 0;

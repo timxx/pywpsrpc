@@ -39,7 +39,7 @@ namespace etapi
         virtual HRESULT Delete(
             long lcid) = 0;
 
-        virtual void  _Dummy7() = 0;
+        virtual void _Dummy7() = 0;
 
         virtual HRESULT get_Item(
             VARIANT Index,
