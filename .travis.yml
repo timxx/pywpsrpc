@@ -12,7 +12,7 @@ python:
 
 cache:
   directories:
-    - $HOME/.cache
+    - $HOME/.cache/wpssdk
     - $HOME/.cache/pip
 
 os:
@@ -22,8 +22,6 @@ addons:
   apt:
     update: true
     packages:
-    #- sip-dev
-    #- python3-sip-dev
     - g++
     - qtbase5-dev
     - qttools5-dev
@@ -31,12 +29,12 @@ addons:
     - qt5-default
 
 before_install:
-  - test -d "$HOME/.cache" || mkdir "$HOME/.cache"
-  - test -f "$HOME/.cache/wps.deb" || wget http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9080/wps-office_11.1.0.9080.XA_amd64.deb -O $HOME/.cache/wps.deb
-  - dpkg -l wps-office || sudo dpkg -i $HOME/.cache/wps.deb
+  - test -d "$HOME/.cache/wpssdk" || mkdir -p "$HOME/.cache/wpssdk"
+  - test -f "$HOME/.cache/wpssdk/wps.deb" || wget http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9080/wps-office_11.1.0.9080.XA_amd64.deb -O $HOME/.cache/wpssdk/wps.deb
+  - dpkg -l wps-office || sudo dpkg -i $HOME/.cache/wpssdk/wps.deb
 
 install:
   - pip install sip
 
 script:
-  - sip-build --verbose
+  - sip-wheel --verbose
