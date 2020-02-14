@@ -36,16 +36,12 @@ class PyWpsRpcProject(sipbuild.Project):
 
         # must set sip_module
         if self.sip_module is None:
-            self.sip_module = "PyQt5.sip"
+            self.sip_module = "pywpsrpc.sip"
 
         if self.sip_include_dirs is None:
             self.sip_include_dirs = [self.root_dir + "/sip/common"]
 
         super().apply_nonuser_defaults(tool)
-
-    def get_bindings_dir(self):
-        # override the default behavior
-        return self.name + "/bindings"
 
     def get_dunder_init(self):
         dunder_init = ""
@@ -182,6 +178,8 @@ class RpcApiBuilder(sipbuild.Builder):
                     "RpcApiBuilder cannot build '{0}' buildables".format(type(buildable).__name__))
 
             sub_dirs.append(buildable.name)
+
+        self._gen_sip_project(sub_dirs, installed)
 
         self.project.progress("Generating the top-level project")
 
@@ -332,3 +330,50 @@ class RpcApiBuilder(sipbuild.Builder):
             args = ["make", "-j%s" % os.cpu_count()]
 
         self.project.run_command(args, fatal=True)
+
+    def _gen_sip_project(self, sub_dirs, installed):
+        self.project.progress("Generating the sip project")
+
+        sub_dir = self.project.build_dir + "/sip"
+        os.makedirs(sub_dir, exist_ok=True)
+
+        sources = sipbuild.module.copy_nonshared_sources(
+            self.project.abi_version, sub_dir)
+
+        # seems we don't need it
+        bool_cpp = sub_dir + "/bool.cpp"
+        if bool_cpp in sources:
+            sources.remove(bool_cpp)
+
+        # use copy_sip_h instead?
+        shutil.copy(self.project.build_dir + "/sip.h", sub_dir)
+
+        target_dir = self.project.target_dir + "/" + self.project.name
+
+        with open(sub_dir + "/sip.pro", "w+") as f:
+            f.write("TEMPLATE = lib\n")
+
+            f.write("CONFIG += plugin no_plugin_name_prefix warn_on\n")
+            f.write("CONFIG += release\n")
+
+            f.write("QT =\n")
+            f.write("TARGET = sip\n\n")
+
+            f.write("INCLUDEPATH += %s\n\n" % self.project.py_include_dir)
+
+            with open(sub_dir + "/sip.exp", "w+") as exp:
+                exp.write("{ global: PyInit_sip; local: *; };")
+
+            f.write("QMAKE_LFLAGS += -Wl,--version-script=sip.exp\n\n")
+
+            rpc_dir = os.path.join(self.project.build_dir, self.project.name)
+            os.makedirs(rpc_dir, exist_ok=True)
+            f.write("QMAKE_POST_LINK = $(COPY_FILE) $(TARGET) %s\n\n" % rpc_dir)
+
+            f.write("SOURCES = %s\n\n" % " \\\n\t".join(sources))
+
+            f.write("target.path = %s\n" % target_dir)
+            f.write("INSTALLS += target\n\n")
+
+        sub_dirs.append(sub_dir)
+        installed.append(target_dir + "/sip.so")

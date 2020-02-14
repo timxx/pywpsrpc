@@ -26,7 +26,7 @@ For full API references, go to [https://open.wps.cn/docs/office](https://open.wp
   - Qt5 (the SDK required both for building & running)
   - WPS Office for Linux 11.1.0.9080+
   - sip 5.x or sip 4.x (for building)
-  - PyQt5-sip or python-sip (for running)
+  - python-sip (for running, sip 4.x only)
   - qmake (for building)
   - gcc (for building)
 
