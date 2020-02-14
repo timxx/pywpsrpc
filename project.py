@@ -179,7 +179,7 @@ class RpcApiBuilder(sipbuild.Builder):
 
             sub_dirs.append(buildable.name)
 
-        self._gen_sip_project(sub_dirs, installed)
+        self._gen_sip_project(target_dir, sub_dirs, installed)
 
         self.project.progress("Generating the top-level project")
 
@@ -331,7 +331,7 @@ class RpcApiBuilder(sipbuild.Builder):
 
         self.project.run_command(args, fatal=True)
 
-    def _gen_sip_project(self, sub_dirs, installed):
+    def _gen_sip_project(self, target_dir, sub_dirs, installed):
         self.project.progress("Generating the sip project")
 
         sub_dir = self.project.build_dir + "/sip"
@@ -347,8 +347,6 @@ class RpcApiBuilder(sipbuild.Builder):
 
         # use copy_sip_h instead?
         shutil.copy(self.project.build_dir + "/sip.h", sub_dir)
-
-        target_dir = self.project.target_dir + "/" + self.project.name
 
         with open(sub_dir + "/sip.pro", "w+") as f:
             f.write("TEMPLATE = lib\n")
@@ -372,8 +370,8 @@ class RpcApiBuilder(sipbuild.Builder):
 
             f.write("SOURCES = %s\n\n" % " \\\n\t".join(sources))
 
-            f.write("target.path = %s\n" % target_dir)
+            f.write("target.path = %s\n" % (target_dir + "/" + self.project.name))
             f.write("INSTALLS += target\n\n")
 
         sub_dirs.append(sub_dir)
-        installed.append(target_dir + "/sip.so")
+        installed.append(target_dir + "/" + self.project.name + "/sip.so")
