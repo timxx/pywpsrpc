@@ -84,6 +84,7 @@ class RpcApiBindings(sipbuild.Bindings):
             for pch in self.PCH:
                 f.write("#include <%s>\n" % pch)
 
+            f.write("#include <wpsapiex.h>\n")
             f.write("#include <vector>\n\n")
             f.write("#endif\n")
 

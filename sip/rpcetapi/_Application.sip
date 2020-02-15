@@ -1884,5 +1884,9 @@ namespace etapi
         virtual HRESULT get_DebugTools(
             _DebugTools **RHS /Out/) = 0;
 
+        virtual HRESULT get_ApplicationEx(wpsapiex::_ApplicationEx **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->QueryInterface(wpsapiex::IID__EtApplicationEx, (void**)&a0);
+        %End
     };
 };

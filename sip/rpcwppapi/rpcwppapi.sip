@@ -24,6 +24,13 @@ typedef long MsoRGBType;
 
 %Include common.sip
 %Include ksoapi.sip
+
+%Include wpsapiex.sip
+%Include wpsapiex/_PresentationEx.sip
+%Include wpsapiex/_WppApplicationEx.sip
+%Include wpsapiex/PresentationsEx.sip
+%Include wpsapiex/WppApplicationEventsEx.sip
+
 %Include enums.sip
 %Include Collection.sip
 %Include _Application.sip
@@ -255,6 +262,23 @@ namespace wppapi
 
     class VBE;
     class VBProject;
+};
+
+namespace wpsapiex
+{
+    class PresentationEx /Abstract,NoDefaultCtors/
+    {
+    %ConvertToSubClassCode
+        sipType = sipType_wpsapiex__PresentationEx;
+    %End
+    };
+
+    class WppApplicationEx /Abstract,NoDefaultCtors/
+    {
+    %ConvertToSubClassCode
+        sipType = sipType_wpsapiex__WppApplicationEx;
+    %End
+    };
 };
 
 HRESULT createWppRpcInstance(IKRpcClient **client);

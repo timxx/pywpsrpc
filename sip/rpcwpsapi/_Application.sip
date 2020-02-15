@@ -947,11 +947,15 @@ namespace wpsapi
         virtual HRESULT put_ShowAnimation(
             VARIANT_BOOL prop) = 0;
 
-      virtual HRESULT get_OfdExportOptions(
-          OfdExportOptions **prop) = 0;
+        virtual HRESULT get_OfdExportOptions(
+            OfdExportOptions **prop) = 0;
 
-      virtual HRESULT get_PdfExportOptions(
-          PdfExportOptions **prop) = 0;
+        virtual HRESULT get_PdfExportOptions(
+            PdfExportOptions **prop) = 0;
 
+        virtual HRESULT get_ApplicationEx(wpsapiex::_ApplicationEx **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->QueryInterface(wpsapiex::IID__WpsApplicationEx, (void**)&a0);
+        %End
     };
 };

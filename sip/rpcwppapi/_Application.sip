@@ -287,5 +287,9 @@ namespace wppapi
         virtual HRESULT put_DisplayGuides(
             MsoTriState DisplayGridLines) = 0;
 
+        virtual HRESULT get_ApplicationEx(wpsapiex::_ApplicationEx **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->QueryInterface(wpsapiex::IID__WppApplicationEx, (void**)&a0);
+        %End
     };
 };
