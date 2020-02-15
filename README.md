@@ -16,9 +16,8 @@ The C++ SDK headers was taken from [wps_cpp](https://dev.tencent.com/u/zouyingfe
 Copyright @ 2012-2019, Kingsoft office,All rights reserved.
 ```
 
-For full API references, go to [https://open.wps.cn/docs/office](https://open.wps.cn/docs/office).
-
-**The project is under heavy development**.
+For full API references, go to [https://open.wps.cn/docs/office](https://open.wps.cn/docs/office)
+or [https://docs.microsoft.com/en-us/office/vba/api/overview/](https://docs.microsoft.com/en-us/office/vba/api/overview/).
 
 
 ## Requirements
@@ -41,16 +40,12 @@ For full API references, go to [https://open.wps.cn/docs/office](https://open.wp
 
   append --verbose for getting the progress of building
 
-## Progress
+## TODO
 
-- [x] WPS API bindings
-- [x] WPP API bindings
-- [x] ET API bindings
-- [ ] Memory managerment
-  - It seems that the bingings now cause memory leaks.
-- [x] Packaging
-  - run `sip-wheel` to make the whl package for sip5
-- [ ] Python attribute bindings
-  - Since now the SDK **DOES NOT** provide the IDispatch way's invoke, we have to find out a way to make it easy calling those get_XXX & put_XXX mehtods
-- [ ] Examples
-    - For now, only [test_rpcwpsapi.py](./tests/test_rpcwpsapi.py) is available for developing testing.
+- Memory managerment
+
+  It seems that the bingings now cause memory leaks.
+
+- Python attribute bindings
+
+  Since now the SDK **DOES NOT** provide the IDispatch way's invoke, we have to find out a way to make it easy calling those get_XXX & put_XXX mehtods
