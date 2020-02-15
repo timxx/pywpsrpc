@@ -216,6 +216,16 @@ class RpcApiBuilder(sipbuild.Builder):
             sip_ksoapi.files.extend(sip_ksoapi_files)
             self._install(f, sip_ksoapi, target_dir, installed)
 
+            wpsapiex_subdir = os.path.join(common_subdir, "wpsapiex")
+            sip_wpsapiex = sipbuild.Installable(
+                "sip_wpsapiex", target_subdir=wpsapiex_subdir)
+            wpsapiex_dir = os.path.join(common_dir, "wpsapiex")
+            sip_wpsapiex_files = [(wpsapiex_dir + "/" + f)
+                                for f in os.listdir(wpsapiex_dir) if f.endswith(".sip")]
+
+            sip_wpsapiex.files.extend(sip_wpsapiex_files)
+            self._install(f, sip_wpsapiex, target_dir, installed)
+
             # for distinfo
             inventory_file = self.project.build_dir + "/inventory.txt"
             with open(inventory_file, "w+") as inventory:
@@ -376,5 +386,5 @@ class RpcApiBuilder(sipbuild.Builder):
             f.write("target.path = %s\n" % (target_dir + "/" + self.project.name))
             f.write("INSTALLS += target\n\n")
 
-        sub_dirs.append(sub_dir)
+        sub_dirs.append("sip")
         installed.append(target_dir + "/" + self.project.name + "/sip.so")

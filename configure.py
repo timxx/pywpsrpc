@@ -109,19 +109,8 @@ class PyWpsRpcProject:
             installed.extend([f.replace(common_dir, common_binding_dir)
                               for f in sip_common_files])
 
-            ksoapi_dir = os.path.join(common_dir, "ksoapi")
-            ksoapi_binding_dir = os.path.join(
-                self.target_dir, "bindings", "common", "ksoapi")
-            sip_ksoapi_files = [(ksoapi_dir + "/" + f)
-                                for f in os.listdir(ksoapi_dir) if f.endswith(".sip")]
-
-            f.write("sip_ksoapi.path = %s\n" % ksoapi_binding_dir)
-            f.write("sip_ksoapi.files = %s\n" %
-                    " \\\n\t".join(sip_ksoapi_files))
-            f.write("INSTALLS += sip_ksoapi\n\n")
-
-            installed.extend([f.replace(ksoapi_dir, ksoapi_binding_dir)
-                              for f in sip_ksoapi_files])
+            self._install_common_subdir(f, common_dir, "ksoapi", installed)
+            self._install_common_subdir(f, common_dir, "wpsapiex", installed)
 
         with open(inventory_file, "w+") as f:
             f.write('\n'.join(installed))
@@ -175,6 +164,7 @@ class PyWpsRpcProject:
             for pch in binding.PCH:
                 f.write("#include <%s>\n" % pch)
 
+            f.write("#include <wpsapiex.h>\n")
             f.write("#include <vector>\n\n")
             f.write("#endif\n")
 
@@ -253,6 +243,22 @@ class PyWpsRpcProject:
             args = ["make", "-j%s" % os.cpu_count()]
 
         self.run_command(args, fatal=True, verbose=self.verbose)
+
+    def _install_common_subdir(self, f, common_dir, subdir, installed):
+        target_dir = os.path.join(common_dir, subdir)
+        binding_dir = os.path.join(
+            self.target_dir, "bindings", "common", subdir)
+        sip_files = [(target_dir + "/" + f)
+                     for f in os.listdir(target_dir) if f.endswith(".sip")]
+
+        f.write("sip_%s.path = %s\n" % (subdir, binding_dir))
+        f.write("sip_%s.files = %s\n" %
+                (subdir, " \\\n\t".join(sip_files)))
+        f.write("INSTALLS += sip_%s\n\n" % subdir)
+
+        installed.extend([f.replace(target_dir, binding_dir)
+                          for f in sip_files])
+
 
 
 class RpcApiBindings:
