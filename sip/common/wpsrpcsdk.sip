@@ -14,13 +14,29 @@ public:
     virtual HRESULT registerEvent(IDispatch *idisp, const IID &iid, DISPID id, PVOID pFunc) = 0;
     virtual HRESULT registerEvent(IDispatch *idisp, const IID &iid, const BSTR eventName, PVOID pFunc) = 0;
 
-    virtual HRESULT getWpsApplication(IUnknown **app /Out/) = 0;
-    virtual HRESULT getEtApplication(IUnknown **app /Out/) = 0;
-    virtual HRESULT getWppApplication(IUnknown **app /Out/) = 0;
+%If (Module_rpcwpsapi)
+    virtual HRESULT getWpsApplication(wpsapi::_Application **app /Out/) = 0;
+    %MethodCode
+        sipRes = sipCpp->getWpsApplication((IUnknown **)&a0);
+    %End
+%End
+
+%If (Module_rpcwppapi)
+    virtual HRESULT getWppApplication(wppapi::_Application **app /Out/) = 0;
+    %MethodCode
+        sipRes = sipCpp->getWppApplication((IUnknown **)&a0);
+    %End
+%End
+
+%If (Module_rpcetapi)
+    virtual HRESULT getEtApplication(etapi::_Application **app /Out/) = 0;
+    %MethodCode
+        sipRes = sipCpp->getEtApplication((IUnknown **)&a0);
+    %End
+%End
 
     virtual HRESULT setProcessPath(const BSTR exePath) = 0;
 
-    // virtual HRESULT setProcessArgs(int argc, BSTR args[]) = 0;
     virtual HRESULT setProcessArgs(SIP_PYLIST args /TypeHint="List[str]"/) = 0;
     %MethodCode
         Py_ssize_t argc = PyList_Size(a0);

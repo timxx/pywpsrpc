@@ -9,7 +9,7 @@ from pywpsrpc.rpcwpsapi import wpsapi
 
 
 def check_call(funcName, hr, value=None):
-    if hr != 0:
+    if hr != rpcwpsapi.S_OK:
         print("call {} failed with code: {}".format(funcName, hr))
         sys.exit(-1)
     if value != None:
@@ -25,7 +25,8 @@ def test():
     hr = rpc.setProcessArgs([os.path.dirname(os.path.realpath(__file__)) + "/../__init__.py"])
     check_call("setProcessArgs", hr)
 
-    wpsApp = rpcwpsapi.getWpsApplication(rpc)
+    hr, wpsApp = rpc.getWpsApplication()
+    check_call("rpc.getWpsApplication", hr, wpsApp)
 
     hr, pid = rpc.getProcessPid()
     check_call("getProcessPid", hr, pid)

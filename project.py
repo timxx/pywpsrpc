@@ -73,6 +73,8 @@ class RpcApiBindings(sipbuild.Bindings):
         super().apply_user_defaults(tool)
 
     def generate(self):
+        self.tags.append("Module_%s" % self.name)
+
         buildable = super().generate()
 
         pch_file = os.path.join(buildable.build_dir, "stdafx.h")

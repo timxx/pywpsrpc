@@ -163,6 +163,7 @@ class PyWpsRpcProject:
                 "-f",
                 "-c", build_subdir,
                 "-I", self.root_dir + "/sip/common",
+                "-t", "Module_%s" % binding.name,
                 self.root_dir + "/sip/" + binding.sip_file]
 
         self.run_command(args)

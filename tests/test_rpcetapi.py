@@ -10,7 +10,7 @@ from pywpsrpc import rpcetapi
 
 
 def check_call(funcName, hr, value=None):
-    if hr != 0:
+    if rpcetapi.FAILED(hr):
         print("call {} failed with code: {}".format(funcName, hr))
         sys.exit(-1)
     if value != None:
@@ -23,8 +23,8 @@ def test():
     hr, rpc = rpcetapi.createEtRpcInstance()
     check_call("rpcetapi.createEtRpcInstance", hr, rpc)
 
-    app = rpcetapi.getEtApplication(rpc)
-    print(app)
+    hr, app = rpc.getEtApplication()
+    check_call("rpc.getEtApplication", hr, app)
 
     hr, pid = rpc.getProcessPid()
     check_call("rpc.getProcessPid", hr, pid)

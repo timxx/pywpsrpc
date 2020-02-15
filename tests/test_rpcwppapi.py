@@ -10,7 +10,7 @@ from pywpsrpc import rpcwppapi
 
 
 def check_call(funcName, hr, value=None):
-    if hr != 0:
+    if not rpcwppapi.SUCCEEDED(hr):
         print("call {} failed with code: {}".format(funcName, hr))
         sys.exit(-1)
     if value != None:
@@ -23,8 +23,8 @@ def test():
     hr, rpc = rpcwppapi.createWppRpcInstance()
     check_call("rpcwppapi.createWppRpcInstance", hr, rpc)
 
-    app = rpcwppapi.getWppApplication(rpc)
-    print(app)
+    hr, app = rpc.getWppApplication()
+    check_call("rpc.getWppApplication", hr, app)
 
     hr, pid = rpc.getProcessPid()
     check_call("rpc.getProcessPid", hr, pid)

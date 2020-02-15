@@ -10,6 +10,8 @@
 
 %Module(name=pywpsrpc.rpcetapi, keyword_arguments="Optional")
 
+%Platforms {Module_rpcwpsapi Module_rpcwppapi Module_rpcetapi}
+
 namespace etapi
 {
 %TypeHeaderCode
@@ -777,10 +779,3 @@ namespace etapi
 
 HRESULT createEtRpcInstance(IKRpcClient **client);
 
-etapi::_Application* getEtApplication(IKRpcClient *client);
-%MethodCode
-    etapi::_Application* pApp = nullptr;
-    a0->getEtApplication((IUnknown **)&pApp);
-
-    sipRes = pApp;
-%End

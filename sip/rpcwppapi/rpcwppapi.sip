@@ -10,6 +10,8 @@
 
 %Module(name=pywpsrpc.rpcwppapi, keyword_arguments="Optional")
 
+%Platforms {Module_rpcwpsapi Module_rpcwppapi Module_rpcetapi}
+
 namespace wppapi
 {
 %TypeHeaderCode
@@ -256,11 +258,3 @@ namespace wppapi
 };
 
 HRESULT createWppRpcInstance(IKRpcClient **client);
-
-wppapi::_Application* getWppApplication(IKRpcClient *client);
-%MethodCode
-    wppapi::_Application* pApp = nullptr;
-    a0->getWppApplication((IUnknown **)&pApp);
-
-    sipRes = pApp;
-%End
