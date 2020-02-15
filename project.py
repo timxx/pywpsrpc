@@ -269,7 +269,7 @@ class RpcApiBuilder(sipbuild.Builder):
 
         with open(buildable.build_dir + "/" + buildable.target + ".pro", "w+") as f:
             f.write("TEMPLATE = lib\n")
-            f.write("CONFIG += plugin no_plugin_name_prefix warn_on\n")
+            f.write("CONFIG += plugin no_plugin_name_prefix warn_off\n")
             f.write("CONFIG += %s\n" % ("debug" if buildable.debug else "release"))
             f.write("CONFIG += c++11 precompile_header\n")
             f.write("%s\n" % ' '.join(buildable.builder_settings))
@@ -296,7 +296,8 @@ class RpcApiBuilder(sipbuild.Builder):
 
             f.write("QMAKE_LFLAGS += -Wl,--version-script=%s.exp\n" % buildable.target)
             #f.write("QMAKE_LFLAGS_PLUGIN += -Wl,--no-undefined\n")
-            f.write("QMAKE_CXXFLAGS += -Wno-attributes\n")
+            f.write("QMAKE_CXXFLAGS += -Wno-attributes -Wno-delete-non-virtual-dtor\n")
+            f.write("QMAKE_CXXFLAGS += -Wno-delete-incomplete -Wno-unused-variable\n")
             f.write("QMAKE_RPATHDIR += $ORIGIN /opt/kingsoft/wps-office/office6\n")
             f.write("QMAKE_RPATHDIR += /usr/lib/office6\n\n")
 

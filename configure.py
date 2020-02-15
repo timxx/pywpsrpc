@@ -174,7 +174,7 @@ class PyWpsRpcProject:
         build_subdir = os.path.join(self.build_dir, binding.name)
         with open(os.path.join(build_subdir, binding.name + ".pro"), "w+") as f:
             f.write("TEMPLATE = lib\n")
-            f.write("CONFIG += plugin no_plugin_name_prefix warn_on\n")
+            f.write("CONFIG += plugin no_plugin_name_prefix warn_off\n")
             f.write("CONFIG += %s\n" % ("debug" if self.debug else "release"))
             f.write("CONFIG += c++11 precompile_header\n")
             f.write("QT = %s\n" % (' '.join(binding.QT) if binding.QT else ''))
@@ -199,7 +199,8 @@ class PyWpsRpcProject:
             f.write("QMAKE_LFLAGS += -Wl,--version-script=%s.exp\n" %
                     binding.name)
             #f.write("QMAKE_LFLAGS_PLUGIN += -Wl,--no-undefined\n")
-            f.write("QMAKE_CXXFLAGS += -Wno-attributes\n")
+            f.write("QMAKE_CXXFLAGS += -Wno-attributes -Wno-delete-non-virtual-dtor\n")
+            f.write("QMAKE_CXXFLAGS += -Wno-delete-incomplete -Wno-unused-variable\n")
             f.write("QMAKE_RPATHDIR += $ORIGIN /opt/kingsoft/wps-office/office6\n")
             f.write("QMAKE_RPATHDIR += /usr/lib/office6\n\n")
 
