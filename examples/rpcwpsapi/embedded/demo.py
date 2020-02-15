@@ -13,11 +13,14 @@
 
 import sys
 
-from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
-from pywpsrpc.rpcwpsapi import (FAILED, S_OK)
+from pywpsrpc.rpcwpsapi import (createWpsRpcInstance,
+                                wpsapi,
+                                FAILED,
+                                SUCCEEDED)
 
 from PySide2.QtWidgets import *
 from PySide2.QtCore import *
+from PySide2.QtGui import QWindow
 
 
 class WpsWindow(QWidget):
@@ -27,6 +30,18 @@ class WpsWindow(QWidget):
 
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.setAttribute(Qt.WA_NativeWindow, True)
+
+        layout = QVBoxLayout(self)
+
+        self._container = None
+
+    def setContainer(self, container):
+        if self._container:
+            self.layout().removeWidget(self._container)
+            self._container = None
+
+        self.layout().addWidget(container)
+        self._container = container
 
 
 class MyWindow(QWidget):
@@ -57,7 +72,7 @@ class MyWindow(QWidget):
 
     def _onOpenWps(self):
         if self._wpsApp:
-            retrn
+            return
 
         hr, rpc = createWpsRpcInstance()
         if FAILED(hr):
@@ -70,6 +85,7 @@ class MyWindow(QWidget):
                 "{}".format(self._wpsWnd.width()),
                 "{}".format(self._wpsWnd.height())
                 ]
+
         rpc.setProcessArgs(args)
 
         hr, self._wpsApp = rpc.getWpsApplication()
@@ -77,6 +93,17 @@ class MyWindow(QWidget):
             QMessageBox.critical(
                 self, "Open Wps", "Failed to call getWpsApplication")
             return
+
+        hr, appEx = self._wpsApp.get_ApplicationEx()
+        if SUCCEEDED(hr):
+            hr, wid = appEx.get_EmbedWid()
+            if SUCCEEDED(hr):
+                container = QWidget.createWindowContainer(
+                    QWindow.fromWinId(wid), self)
+                self._wpsWnd.setContainer(container)
+                # FIXME: the container isn't place correctly
+                if not self.isMaximized():
+                    self.resize(self.width() + 1, self.height())
 
         self.btnOpenDoc.setEnabled(True)
 
@@ -104,6 +131,11 @@ class MyWindow(QWidget):
         if FAILED(hr):
             QMessageBox.critical(
                 self, "Demo", "Failed to call open document '%s'" % filePath)
+
+    def closeEvent(self, event):
+        if self._wpsApp:
+            self._wpsApp.Quit()
+        event.accept()
 
 
 def main():
