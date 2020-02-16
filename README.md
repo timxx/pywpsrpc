@@ -49,3 +49,7 @@ or [https://docs.microsoft.com/en-us/office/vba/api/overview/](https://docs.micr
 - Python attribute bindings
 
   Since now the SDK **DOES NOT** provide the IDispatch way's invoke, we have to find out a way to make it easy calling those get_XXX & put_XXX mehtods
+
+- Implement the registerEvent
+
+  We need binding the C++ function pointer

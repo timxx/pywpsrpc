@@ -11,8 +11,8 @@
 struct IKRpcClient /Abstract/
 {
 public:
-    virtual HRESULT registerEvent(IDispatch *idisp, const IID &iid, DISPID id, PVOID pFunc) = 0;
-    virtual HRESULT registerEvent(IDispatch *idisp, const IID &iid, const BSTR eventName, PVOID pFunc) = 0;
+    // virtual HRESULT registerEvent(IDispatch *idisp, const IID &iid, DISPID id, PVOID pFunc) = 0;
+    // virtual HRESULT registerEvent(IDispatch *idisp, const IID &iid, const BSTR eventName, PVOID pFunc) = 0;
 
 %If (Module_rpcwpsapi)
     virtual HRESULT getWpsApplication(wpsapi::_Application **app /Out/) = 0;
