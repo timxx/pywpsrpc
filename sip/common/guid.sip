@@ -50,11 +50,10 @@ struct GUID
             sipCpp->Data4[i] = 0;
     %End
 
-    GUID(SIP_PYOBJECT str);
+    GUID(SIP_PYOBJECT str /TypeHint="str"/);
     %MethodCode
-        Py_ssize_t len = 0;
-        const char *str = PyUnicode_AsUTF8AndSize(a0, &len);
-        if (!str || len != 36)
+        const char *str = sipString_AsASCIIString(&a0);
+        if (!str || strlen(str) != 36)
             return nullptr;
 
         sipCpp = new GUID();

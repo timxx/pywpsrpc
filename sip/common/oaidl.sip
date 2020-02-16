@@ -117,7 +117,7 @@
     case VT_R8:
         return PyFloat_FromDouble(V_R8(sipCpp));
     case VT_BSTR:
-        return PyUnicode_FromKindAndData(PyUnicode_2BYTE_KIND, V_BSTR(sipCpp), SysStringLen(V_BSTR(sipCpp)));
+        return sipConvertFromType(V_BSTR(sipCpp), sipType_BSTR, sipTransferObj);
     case VT_DISPATCH:
         return sipConvertFromType(V_DISPATCH(sipCpp), sipType_IDispatch, sipTransferObj);
     case VT_ERROR:

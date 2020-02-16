@@ -8,7 +8,7 @@
  *
 */
 
-%Module(name=pywpsrpc.rpcwpsapi, keyword_arguments="Optional")
+%Module(name=pywpsrpc.rpcwpsapi, keyword_arguments="Optional", use_limited_api=True)
 
 %Platforms {Module_rpcwpsapi Module_rpcwppapi Module_rpcetapi}
 

@@ -63,7 +63,72 @@ typedef double DATE;
 %End
 
 %ConvertFromTypeCode
-    return PyUnicode_FromKindAndData(PyUnicode_2BYTE_KIND,
-        *sipCpp, SysStringLen(*sipCpp));
+    auto _isSurrogate = [](WCHAR wch) -> bool
+    {
+        return (wch - 0xD800u) < 0x0800u;
+    };
+
+    auto _isHighSurrogate = [](WCHAR wch) -> bool
+    {
+        return (wch & 0xFFFFFC00) == 0xD800;
+    };
+
+    auto _isLowSurrogate = [](WCHAR wch) -> bool
+    {
+        return (wch & 0xFFFFFC00) == 0xDC00;
+    };
+
+    auto _toUtf32 = [&](const WCHAR *str, size_t len, uint &maxChar) -> std::vector<wchar_t>
+    {
+        std::vector<wchar_t> buffer;
+
+        size_t i = 0;
+        while (i < len)
+        {
+            const WCHAR wch = str[i++];
+            if (!_isSurrogate(wch))
+            {
+                buffer.push_back(wch);
+                if (wch > maxChar)
+                    maxChar = (wch <= 0xFF) ? 0xFF : 0xFFFF;
+            }
+            else
+            {
+                if (_isHighSurrogate(wch) && (i < len) && _isLowSurrogate(str[i]))
+                {
+                    wchar_t ucs4 = (wch << 10) + str[i] - 0x35FDC00;
+                    buffer.push_back(ucs4);
+
+                    maxChar = 0x10FFFF;
+                    ++i;
+                }
+                else
+                {
+                    // maybe invalid encoding
+                    // buffer.push_back(0);
+                }
+            }
+        }
+
+        return buffer;
+    };
+
+    size_t len = SysStringLen(*sipCpp);
+    if (len == 0)
+        return Py_None;
+
+    uint maxChar = 0x7F;
+    std::vector<wchar_t> buffer = _toUtf32(*sipCpp, len, maxChar);
+
+    int kind = 0;
+    void *data = nullptr;
+    PyObject *obj = sipUnicodeNew(len, maxChar, &kind, &data);
+    if (!obj)
+        return nullptr;
+
+    for (size_t i = 0; i < buffer.size(); ++i)
+        sipUnicodeWrite(kind, data, i, buffer[i]);
+
+    return obj;
 %End
 };
