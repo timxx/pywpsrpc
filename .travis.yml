@@ -37,8 +37,11 @@ install:
   - pip install sip
 
 script:
+  - rm -fr .git .gitigore .vscode .travis.yml
+  - sip-sdist
   - sip-wheel --verbose
   - mkdir dist
+  - mv pywpsrpc-*.tar.gz dist
   - mv pywpsrpc-*.whl dist
 
 deploy:
