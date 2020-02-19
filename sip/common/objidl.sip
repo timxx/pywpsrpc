@@ -11,12 +11,4 @@
 
 struct IUnknown /Abstract/
 {
-public:
-/*
-    virtual HRESULT QueryInterface(
-        const IID& riid,
-        void **ppvObject /Out/) = 0;
-*/
-    virtual ULONG AddRef() = 0;
-    virtual ULONG Release() = 0;
 };
