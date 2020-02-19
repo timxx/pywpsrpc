@@ -15,7 +15,7 @@
 
 BSTR _SysAllocString(const OLECHAR* psz);
 UINT _SysStringLen(BSTR bstr);
-void _XSysFreeString(BSTR bstr);
+void _SysFreeString(BSTR bstr);
 
 UINT32 _SafeArrayGetElemsize(SAFEARRAY *psa);
 HRESULT _SafeArrayGetElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv);
@@ -62,7 +62,7 @@ UINT _SysStringLen(BSTR bstr)
     return fnStrLen(bstr);
 }
 
-void _XSysFreeString(BSTR bstr)
+void _SysFreeString(BSTR bstr)
 {
     typedef void (*pfnSysFreeString)(BSTR);
     static pfnSysFreeString fnFreeStr = (pfnSysFreeString)sipImportSymbol("SysFreeString");
@@ -136,4 +136,19 @@ static bool FAILED(HRESULT hr)
     return hr < 0;
 }
 
+static void IUnknown_CollectingWrapperEventHandler(sipSimpleWrapper *sipSelf)
+{
+    if (!sipIsOwnedByPython(sipSelf))
+    {
+        IUnknown* cppPtr = reinterpret_cast<IUnknown*>(sipGetAddress(sipSelf));
+        if (cppPtr)
+            cppPtr->Release();
+    }
+}
+%End
+
+%PostInitialisationCode
+sipRegisterEventHandler(sipEventCollectingWrapper,
+    sipType_IUnknown,
+    (void *)IUnknown_CollectingWrapperEventHandler);
 %End
