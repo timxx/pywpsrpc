@@ -21,21 +21,9 @@ namespace wpsapi
 typedef float single;
 };
 
-%Include common.sip
-%Include ksoapi.sip
-
-%Include wpsapiex.sip
-%Include wpsapiex/_DocumentEx.sip
-%Include wpsapiex/_WpsApplicationEx.sip
-%Include wpsapiex/DocumentsEx.sip
-%Include wpsapiex/HeaderFooterEx.sip
-%Include wpsapiex/Heading.sip
-%Include wpsapiex/Headings.sip
-%Include wpsapiex/PrintoutPageEx.sip
-%Include wpsapiex/RangeEx.sip
-%Include wpsapiex/WaterMark.sip
-%Include wpsapiex/WaterMarks.sip
-%Include wpsapiex/WpsApplicationEventsEx.sip
+%Import common.sip
+%Include wpsrpcsdk.sip
+%Include export.sip
 
 %Include enums.sip
 %Include mso_enum.sip
@@ -474,23 +462,6 @@ namespace wpsapi
 
     class VBE;
     class VBProject;
-};
-
-namespace wpsapiex
-{
-    class WpsApplicationEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__WpsApplicationEx;
-    %End
-    };
-
-    class DocumentEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__DocumentEx;
-    %End
-    };
 };
 
 HRESULT createWpsRpcInstance(IKRpcClient **client);

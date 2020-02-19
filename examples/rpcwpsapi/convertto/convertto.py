@@ -14,7 +14,8 @@ import os
 import sys
 import argparse
 
-from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi, FAILED)
+from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
+from pywpsrpc.common import FAILED
 
 
 formats = {

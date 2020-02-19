@@ -6,11 +6,11 @@ import os
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../build")
 
 from pywpsrpc.rpcetapi import etapi
-from pywpsrpc import rpcetapi
+from pywpsrpc import (rpcetapi, common)
 
 
 def check_call(funcName, hr, value=None):
-    if rpcetapi.FAILED(hr):
+    if common.FAILED(hr):
         print("call {} failed with code: {}".format(funcName, hr))
         sys.exit(-1)
     if value != None:

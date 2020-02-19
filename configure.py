@@ -36,7 +36,7 @@ class PyWpsRpcProject:
         else:
             self.sdk_lib_dir = "/opt/kingsoft/wps-office/office6"
 
-        self.bindings_factories = [RpcWpsApi, RpcWppApi, RpcEtApi]
+        self.bindings_factories = [RpcCommon, RpcWpsApi, RpcWppApi, RpcEtApi]
 
     def _find_sip(self):
         return shutil.which("sip")
@@ -93,24 +93,6 @@ class PyWpsRpcProject:
             f.write("INSTALLS += init\n\n")
 
             installed.append(self.target_dir + "/__init__.py")
-
-            # install the non-target files
-            common_dir = os.path.join(self.root_dir, "sip", "common")
-            common_binding_dir = os.path.join(
-                self.target_dir, "bindings", "common")
-            sip_common_files = [(common_dir + "/" + f)
-                                for f in os.listdir(common_dir) if f.endswith(".sip")]
-
-            f.write("sip_common.path = %s\n" % common_binding_dir)
-            f.write("sip_common.files = %s\n" %
-                    " \\\n\t".join(sip_common_files))
-            f.write("INSTALLS += sip_common\n\n")
-
-            installed.extend([f.replace(common_dir, common_binding_dir)
-                              for f in sip_common_files])
-
-            self._install_common_subdir(f, common_dir, "ksoapi", installed)
-            self._install_common_subdir(f, common_dir, "wpsapiex", installed)
 
         with open(inventory_file, "w+") as f:
             f.write('\n'.join(installed))
@@ -185,10 +167,13 @@ class PyWpsRpcProject:
                 f.write("INCLUDEPATH += %s\n" % dir)
             f.write("INCLUDEPATH += %s\n\n" % self.py_include_dir)
 
-            for dir in binding.library_dirs:
-                f.write("LIBS += -L%s\n" % dir)
-            for lib in binding.libraries:
-                f.write("LIBS += -l%s\n" % lib)
+            if binding.library_dirs:
+                for dir in binding.library_dirs:
+                    f.write("LIBS += -L%s\n" % dir)
+
+            if binding.libraries:
+                for lib in binding.libraries:
+                    f.write("LIBS += -l%s\n" % lib)
 
             f.write('\n')
 
@@ -226,8 +211,8 @@ class PyWpsRpcProject:
             installed.append(self.target_dir + "/%s.so" % binding.name)
 
             sip_dir = os.path.join(self.root_dir, "sip", binding.name)
-            sip_files = [(sip_dir + "/" + f)
-                         for f in os.listdir(sip_dir) if f.endswith(".sip")]
+            sip_files = [os.path.join(dp, f) for dp, dn, fn in os.walk(
+                sip_dir) for f in fn if f.endswith(".sip")]
             sip_binding_dir = self.target_dir + "/bindings/" + binding.name
 
             f.write("sip.path = %s\n" % sip_binding_dir)
@@ -244,21 +229,6 @@ class PyWpsRpcProject:
             args = ["make", "-j%s" % os.cpu_count()]
 
         self.run_command(args, fatal=True, verbose=self.verbose)
-
-    def _install_common_subdir(self, f, common_dir, subdir, installed):
-        target_dir = os.path.join(common_dir, subdir)
-        binding_dir = os.path.join(
-            self.target_dir, "bindings", "common", subdir)
-        sip_files = [(target_dir + "/" + f)
-                     for f in os.listdir(target_dir) if f.endswith(".sip")]
-
-        f.write("sip_%s.path = %s\n" % (subdir, binding_dir))
-        f.write("sip_%s.files = %s\n" %
-                (subdir, " \\\n\t".join(sip_files)))
-        f.write("INSTALLS += sip_%s\n\n" % subdir)
-
-        installed.extend([f.replace(target_dir, binding_dir)
-                          for f in sip_files])
 
 
 
@@ -279,6 +249,24 @@ class RpcApiBindings:
                 "library_dirs",
                 "QT",
                 "PCH"]
+
+
+class RpcCommon(RpcApiBindings):
+
+    def __init__(self, project):
+        dirs = [project.sdk_inc_dir, project.sdk_inc_dir + "/common"]
+        super().__init__(project,
+                         "common",
+                         include_dirs=dirs,
+                         PCH=["pre_stddef.h",
+                              "kfc/guid.h",
+                              "int.h",
+                              "typedef.h",
+                              "guiddef.h",
+                              "objbase.h",
+                              "strapi/strapi.h",
+                              "comdef.h",
+                              "ksoapi/ksoapi.h"])
 
 
 class RpcWpsApi(RpcApiBindings):

@@ -22,14 +22,9 @@ typedef float single;
 typedef long MsoRGBType;
 };
 
-%Include common.sip
-%Include ksoapi.sip
-
-%Include wpsapiex.sip
-%Include wpsapiex/_PresentationEx.sip
-%Include wpsapiex/_WppApplicationEx.sip
-%Include wpsapiex/PresentationsEx.sip
-%Include wpsapiex/WppApplicationEventsEx.sip
+%Import common.sip
+%Include wpsrpcsdk.sip
+%Include export.sip
 
 %Include enums.sip
 %Include Collection.sip
@@ -262,23 +257,6 @@ namespace wppapi
 
     class VBE;
     class VBProject;
-};
-
-namespace wpsapiex
-{
-    class PresentationEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__PresentationEx;
-    %End
-    };
-
-    class WppApplicationEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__WppApplicationEx;
-    %End
-    };
 };
 
 HRESULT createWppRpcInstance(IKRpcClient **client);

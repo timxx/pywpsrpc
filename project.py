@@ -18,7 +18,7 @@ class PyWpsRpcProject(sipbuild.Project):
     def __init__(self):
         super().__init__(dunder_init=True)
 
-        self.bindings_factories = [RpcWpsApi, RpcWppApi, RpcEtApi]
+        self.bindings_factories = [RpcCommon, RpcWpsApi, RpcWppApi, RpcEtApi]
         self.sdk_inc_dir = os.path.join(self.root_dir, "include")
 
         # For Arch Linux
@@ -95,6 +95,24 @@ class RpcApiBindings(sipbuild.Bindings):
         buildable.headers.append(pch_file)
 
         return buildable
+
+
+class RpcCommon(RpcApiBindings):
+
+    def __init__(self, project):
+        dirs = [project.sdk_inc_dir, project.sdk_inc_dir + "/common"]
+        super().__init__(project,
+                         "common",
+                         include_dirs=dirs,
+                         PCH=["pre_stddef.h",
+                              "kfc/guid.h",
+                              "int.h",
+                              "typedef.h",
+                              "guiddef.h",
+                              "objbase.h",
+                              "strapi/strapi.h",
+                              "comdef.h",
+                              "ksoapi/ksoapi.h"])
 
 
 class RpcWpsApi(RpcApiBindings):
@@ -198,37 +216,17 @@ class RpcApiBuilder(sipbuild.Builder):
             for installable in self.project.installables:
                 self._install(f, installable, target_dir, installed)
 
-            # install the non-target files
+            # FIXME:
             common_subdir = os.path.join(
                 self.project.get_bindings_dir(), "common")
             sip_common = sipbuild.Installable(
                 "sip_common", target_subdir=common_subdir)
             common_dir = os.path.join(self.project.root_dir, "sip", "common")
-            sip_common_files = [(common_dir + "/" + f)
-                                for f in os.listdir(common_dir) if f.endswith(".sip")]
+            sip_common_files = [common_dir + "/export.sip",
+                                common_dir + "/wpsrpcsdk.sip"]
             sip_common.files.extend(sip_common_files)
 
             self._install(f, sip_common, target_dir, installed)
-
-            ksoapi_subdir = os.path.join(common_subdir, "ksoapi")
-            sip_ksoapi = sipbuild.Installable(
-                "sip_ksoapi", target_subdir=ksoapi_subdir)
-            ksoapi_dir = os.path.join(common_dir, "ksoapi")
-            sip_ksoapi_files = [(ksoapi_dir + "/" + f)
-                                for f in os.listdir(ksoapi_dir) if f.endswith(".sip")]
-
-            sip_ksoapi.files.extend(sip_ksoapi_files)
-            self._install(f, sip_ksoapi, target_dir, installed)
-
-            wpsapiex_subdir = os.path.join(common_subdir, "wpsapiex")
-            sip_wpsapiex = sipbuild.Installable(
-                "sip_wpsapiex", target_subdir=wpsapiex_subdir)
-            wpsapiex_dir = os.path.join(common_dir, "wpsapiex")
-            sip_wpsapiex_files = [(wpsapiex_dir + "/" + f)
-                                for f in os.listdir(wpsapiex_dir) if f.endswith(".sip")]
-
-            sip_wpsapiex.files.extend(sip_wpsapiex_files)
-            self._install(f, sip_wpsapiex, target_dir, installed)
 
             # for distinfo
             inventory_file = self.project.build_dir + "/inventory.txt"

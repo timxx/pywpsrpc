@@ -56,7 +56,7 @@ typedef double DATE;
     };
     wchar_t *str = sipUnicode_AsWString(sipPy);
     BSTR *bstr = new BSTR;
-    *bstr = SysAllocString(_toUtf16(str).data());
+    *bstr = _SysAllocString(_toUtf16(str).data());
     *sipCppPtr = bstr;
 
     return sipGetState(sipTransferObj);
@@ -113,7 +113,7 @@ typedef double DATE;
         return buffer;
     };
 
-    size_t len = SysStringLen(*sipCpp);
+    size_t len = _SysStringLen(*sipCpp);
     if (len == 0)
         return Py_None;
 

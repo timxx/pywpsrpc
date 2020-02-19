@@ -5,11 +5,12 @@ import os
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../build")
 from pywpsrpc import rpcwpsapi
+from pywpsrpc import common
 from pywpsrpc.rpcwpsapi import wpsapi
 
 
 def check_call(funcName, hr, value=None):
-    if hr != rpcwpsapi.S_OK:
+    if hr != common.S_OK:
         print("call {} failed with code: {}".format(funcName, hr))
         sys.exit(-1)
     if value != None:

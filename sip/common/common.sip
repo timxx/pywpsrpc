@@ -8,8 +8,19 @@
  *
 */
 
+%Module(name=pywpsrpc.common, keyword_arguments="Optional", use_limited_api=True)
+
 %ModuleHeaderCode
     #include "stdafx.h"
+
+BSTR _SysAllocString(const OLECHAR* psz);
+UINT _SysStringLen(BSTR bstr);
+void _XSysFreeString(BSTR bstr);
+
+UINT32 _SafeArrayGetElemsize(SAFEARRAY *psa);
+HRESULT _SafeArrayGetElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv);
+_SAFEARRAY_PTR _SafeArrayCreateVector(VARTYPE vt, INT32 lLbound, UINT32 cElements);
+HRESULT _SafeArrayPutElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv);
 %End
 
 %Include typedef.sip
@@ -17,7 +28,8 @@
 %Include objidl.sip
 %Include oaidl.sip
 %Include guid.sip
-%Include wpsrpcsdk.sip
+%Include ksoapi.sip
+%Include wpsapiex.sip
 
 HRESULT S_OK;
 HRESULT S_FALSE;
@@ -33,6 +45,63 @@ bool SUCCEEDED(HRESULT hr);
 bool FAILED(HRESULT hr);
 
 %ModuleCode
+
+BSTR _SysAllocString(const OLECHAR* psz)
+{
+    typedef BSTR (*pfnSysAllocString)(const OLECHAR*);
+    static pfnSysAllocString fnAllocStr = (pfnSysAllocString)sipImportSymbol("SysAllocString");
+
+    return fnAllocStr(psz);
+}
+
+UINT _SysStringLen(BSTR bstr)
+{
+    typedef UINT (*pfnSysStringLen)(BSTR);
+    static pfnSysStringLen fnStrLen = (pfnSysStringLen)sipImportSymbol("SysStringLen");
+
+    return fnStrLen(bstr);
+}
+
+void _XSysFreeString(BSTR bstr)
+{
+    typedef void (*pfnSysFreeString)(BSTR);
+    static pfnSysFreeString fnFreeStr = (pfnSysFreeString)sipImportSymbol("SysFreeString");
+
+    fnFreeStr(bstr);
+}
+
+UINT32 _SafeArrayGetElemsize(SAFEARRAY *psa)
+{
+    typedef UINT32 (*pfnSafeArrayGetElemsize)(SAFEARRAY*);
+    static pfnSafeArrayGetElemsize fnGetSize = (pfnSafeArrayGetElemsize)sipImportSymbol("SafeArrayGetElemsize");
+
+    return fnGetSize(psa);
+}
+
+HRESULT _SafeArrayGetElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv)
+{
+    typedef HRESULT (*pfnSafeArrayGetElement)(SAFEARRAY *, INT32 *, void *);
+    static pfnSafeArrayGetElement fnGetEle = (pfnSafeArrayGetElement)sipImportSymbol("SafeArrayGetElement");
+
+    return fnGetEle(psa, rgIndices, pv);
+}
+
+_SAFEARRAY_PTR _SafeArrayCreateVector(VARTYPE vt, INT32 lLbound, UINT32 cElements)
+{
+    typedef _SAFEARRAY_PTR (*pfnSafeArrayCreateVector)(VARTYPE, INT32, UINT32);
+    static pfnSafeArrayCreateVector fnCreateVec = (pfnSafeArrayCreateVector)sipImportSymbol("SafeArrayCreateVector");
+
+    return fnCreateVec(vt, lLbound, cElements);
+}
+
+HRESULT _SafeArrayPutElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv)
+{
+    typedef HRESULT (*pfnSafeArrayPutElement)(SAFEARRAY *, INT32 *, void *);
+    static pfnSafeArrayPutElement fnPutEle = (pfnSafeArrayPutElement)sipImportSymbol("SafeArrayPutElement");
+
+    return fnPutEle(psa, rgIndices, pv);
+}
+
 
 #define _HRESULT_CONST(name, value) \
     static const HRESULT name = value;

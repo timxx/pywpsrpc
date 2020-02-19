@@ -13,10 +13,8 @@
 
 import sys
 
-from pywpsrpc.rpcwpsapi import (createWpsRpcInstance,
-                                wpsapi,
-                                FAILED,
-                                SUCCEEDED)
+from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
+from pywpsrpc.common import (FAILED, SUCCEEDED)
 
 from PySide2.QtWidgets import *
 from PySide2.QtCore import *

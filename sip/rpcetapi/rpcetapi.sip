@@ -21,15 +21,9 @@ namespace etapi
 typedef float single;
 };
 
-%Include common.sip
-%Include ksoapi.sip
-
-%Include wpsapiex.sip
-%Include wpsapiex/_EtApplicationEx.sip
-%Include wpsapiex/_WorkbookEx.sip
-%Include wpsapiex/EtApplicationEventsEx.sip
-%Include wpsapiex/EtRangeEx.sip
-%Include wpsapiex/WorkbooksEx.sip
+%Import common.sip
+%Include wpsrpcsdk.sip
+%Include export.sip
 
 %Include enums.sip
 %Include mso_enum.sip
@@ -783,23 +777,6 @@ namespace etapi
 
     class VBE;
     class VBProject;
-};
-
-namespace wpsapiex
-{
-    class EtApplicationEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__EtApplicationEx;
-    %End
-    };
-
-    class WorkbookEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__WorkbookEx;
-    %End
-    };
 };
 
 HRESULT createEtRpcInstance(IKRpcClient **client);

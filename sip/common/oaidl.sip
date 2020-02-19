@@ -59,7 +59,7 @@
     {
         V_VT(pVar) = VT_ARRAY;
         Py_ssize_t count = PyList_Size(sipPy);
-        SAFEARRAY* arr = SafeArrayCreateVector(VT_VARIANT, 0, count);
+        SAFEARRAY* arr = _SafeArrayCreateVector(VT_VARIANT, 0, count);
 
         for (int i = 0; i < count; ++i)
         {
@@ -67,7 +67,7 @@
             VARIANT *pEle = reinterpret_cast<VARIANT *>(sipConvertToType(item,
                 sipType_VARIANT, sipTransferObj, SIP_NO_CONVERTORS, 0, sipIsErr));
             sipReleaseType(pEle, sipType_VARIANT, 0);
-            SafeArrayPutElement(arr, &i, pEle);
+            _SafeArrayPutElement(arr, &i, pEle);
         }
         V_ARRAY(pVar) = arr;
     }
@@ -142,13 +142,13 @@
         return PyLong_FromUnsignedLongLong(V_UI8(sipCpp));
     case VT_ARRAY:
         {
-            UINT nSize = SafeArrayGetElemsize(V_ARRAY(sipCpp));
+            UINT nSize = _SafeArrayGetElemsize(V_ARRAY(sipCpp));
             PyObject *pyList = PyList_New(nSize);
             for (UINT i = 0; i < nSize; ++i)
             {
                 VARIANT var;
                 INT index = i;
-                HRESULT hr = SafeArrayGetElement(V_ARRAY(sipCpp), &index, &var);
+                HRESULT hr = _SafeArrayGetElement(V_ARRAY(sipCpp), &index, &var);
                 if (hr == S_OK)
                 {
                     PyObject *pyObj = sipConvertFromType(&var, sipType_VARIANT, sipTransferObj);
