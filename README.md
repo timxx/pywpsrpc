@@ -30,26 +30,60 @@ or [https://docs.microsoft.com/en-us/office/vba/api/overview/](https://docs.micr
   - gcc (for building)
 
 ## How to build
-  - For sip 5.x (recommended)
 
-    run `sip-build` under the project root directory
+Run `sip-build` (for sip 5.x) or `python configure.py` (for sip 4.x) under the project root directory
 
-  - For sip 4.x
+append *--verbose* for getting the progress of building
 
-    run `python configure.py` under the project root directory
 
-  append --verbose for getting the progress of building
+## Installation
+The pywpsrpc can be installed from PyPi:
 
-## TODO
+`pip install pywpsrpc`
 
-- Memory managerment
+You can also install from the source:
 
-  It seems that the bingings now cause memory leaks.
+```
+# the easy way, you may need the root privilege
+sip-install
 
-- Python attribute bindings
+# or package first, and then install the whl by pip
+sip-wheel
+```
 
-  Since now the SDK **DOES NOT** provide the IDispatch way's invoke, we have to find out a way to make it easy calling those get_XXX & put_XXX mehtods
+## Quick Start
 
-- Implement the registerEvent
+```
+# First import the module you want
+# rpcwpsapi contains the interfaces for WPS
+# rpcwppapi is for WPP
+# and rpcetapi for ET
+# the common module contains the shared interfaces, you can not use it alone.
 
-  We need binding the C++ function pointer
+# you always need the createXXXRpcInstance, so first import
+# take wps for example here
+from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
+
+# now create the rpc instance
+hr, rpc = createWpsRpcInstance()
+
+# all the calls returns the error code as the first value
+# you can check it for failes
+# 0 means all fines, you can use the common module's S_OK,
+# FAILED or SUCCEEDED to check
+
+# get the application and you get everything...
+hr, app = rpc.getWpsApplication()
+
+# Add blank doc e.g.
+_, docs = app.get_Documents()
+_, doc = docs.Add()
+
+# append text...
+hr, selection = app.get_Selection()
+selection.InsertAfter("Hello, world")
+
+# bold the "Hello, world"
+_, font = selection.get_Font()
+font.put_Bold(True)
+```
