@@ -94,7 +94,7 @@
     }
     else
     {
-        printf("TODO: not yet unsupported type for VARIANT\n");
+        printf("TODO: unsupported type for VARIANT\n");
         delete pVar;
         return 0;
     }

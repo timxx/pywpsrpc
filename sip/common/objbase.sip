@@ -55,10 +55,14 @@ typedef double DATE;
         return buffer;
     };
     wchar_t *str = sipUnicode_AsWString(sipPy);
-    BSTR *bstr = new BSTR;
-    *bstr = _SysAllocString(_toUtf16(str).data());
-    *sipCppPtr = bstr;
+    if (str)
+    {
+        BSTR *bstr = new BSTR;
+        *bstr = _SysAllocString(_toUtf16(str).data());
+        *sipCppPtr = bstr;
 
+        sipFree(str);
+    }
     return sipGetState(sipTransferObj);
 %End
 
@@ -113,7 +117,7 @@ typedef double DATE;
         return buffer;
     };
 
-    size_t len = _SysStringLen(*sipCpp);
+    size_t len = *sipCpp ? _SysStringLen(*sipCpp) : 0;
     if (len == 0)
         return Py_None;
 

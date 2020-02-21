@@ -41,19 +41,21 @@ public:
     %MethodCode
         Py_ssize_t argc = PyList_Size(a0);
         std::vector<BSTR> bstrArgs;
-        std::vector<BSTR*> bstrPtrs;
 
         for (int i = 0; i < argc; ++i)
         {
             PyObject *strObj = PyList_GetItem(a0, i);
+            int state = 0;
             BSTR* pStr = reinterpret_cast<BSTR*>(sipConvertToType(strObj,
-                sipType_BSTR, nullptr, SIP_NO_CONVERTORS, 0, &sipIsErr));
-
-            bstrArgs.push_back(pStr ? *pStr : nullptr);
-            bstrPtrs.push_back(pStr);
+                sipType_BSTR, nullptr, SIP_NO_CONVERTORS, &state, &sipIsErr));
 
             if (sipIsErr)
                 break;
+
+            BSTR bstr = SysAllocStringLen(pStr ? *pStr : __X(""), pStr ? SysStringLen(*pStr) : 0);
+            bstrArgs.push_back(bstr);
+
+            sipReleaseType(pStr, sipType_BSTR, state);
         }
 
         sipRes = E_FAIL;
@@ -61,11 +63,7 @@ public:
             sipRes = sipCpp->setProcessArgs(argc, bstrArgs.data());
 
         for (int i = 0; i < argc; ++i)
-        {
             SysFreeString(bstrArgs[i]);
-            sipReleaseType(bstrPtrs[i], sipType_BSTR, 0);
-        }
-
     %End
     virtual HRESULT getProcessPid(LONGLONG *pid /Out/) = 0;
 

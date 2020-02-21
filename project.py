@@ -114,6 +114,44 @@ class RpcCommon(RpcApiBindings):
                               "comdef.h",
                               "ksoapi/ksoapi.h"])
 
+    def generate(self):
+        buildable = super().generate()
+
+        # hack the code to fix the BSTR memory leak!!!
+        # FIXME: the right way is write the %MethodCode for
+        # each method that contains the BSTR argument...
+        bstr_cpp = os.path.join(
+            buildable.build_dir,
+            "sip" + buildable.target + "BSTR.cpp")
+
+        tmp_file = bstr_cpp + ".tmp"
+
+        f_in = open(bstr_cpp, "rb")
+        f_out = open(tmp_file, "wb+")
+
+        release_pattern = b"static void release_BSTR(void *ptr, int)\n"
+
+        state = 0
+        for line in f_in:
+            if state == 0 and line == release_pattern:
+                state = 1
+            elif state == 1 and line == b'{\n':
+                f_out.write(line)
+                f_out.write(b"    BSTR *pBstr = reinterpret_cast<BSTR*>(ptr);\n")
+                f_out.write(b"    if (*pBstr)\n")
+                f_out.write(b"        _SysFreeString(*pBstr);\n")
+                state = 2
+                continue
+
+            f_out.write(line)
+
+        f_in.close()
+        f_out.close()
+
+        shutil.move(tmp_file, bstr_cpp)
+
+        return buildable
+
 
 class RpcWpsApi(RpcApiBindings):
 
