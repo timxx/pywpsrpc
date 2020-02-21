@@ -24,14 +24,13 @@ or [https://docs.microsoft.com/en-us/office/vba/api/overview/](https://docs.micr
   - Python 3.5+
   - Qt5 (the SDK required both for building & running)
   - WPS Office for Linux 11.1.0.9080+
-  - sip 5.x or sip 4.x (for building)
-  - python-sip (for running, sip 4.x only)
+  - sip 5.0+ (for building)
   - qmake (for building)
   - gcc (for building)
 
 ## How to build
 
-Run `sip-build` (for sip 5.x) or `python configure.py` (for sip 4.x) under the project root directory
+Run `sip-build` under the project root directory
 
 append *--verbose* for getting the progress of building
 
