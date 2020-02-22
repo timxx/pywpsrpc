@@ -116,6 +116,7 @@ class RpcCommon(RpcApiBindings):
 
     def generate(self):
         buildable = super().generate()
+        self._fix_sip(buildable)
 
         # hack the code to fix the BSTR memory leak!!!
         # FIXME: the right way is write the %MethodCode for
@@ -151,6 +152,35 @@ class RpcCommon(RpcApiBindings):
         shutil.move(tmp_file, bstr_cpp)
 
         return buildable
+
+    def _fix_sip(self, buildable):
+        for installable in buildable.installables:
+            if installable.name != "sip":
+                continue
+
+            self._fix_subdir_sip(buildable, installable)
+
+            # These two files include in other module
+            common_dir = os.path.join(self.project.root_dir, "sip", "common")
+            installable.files.append(common_dir + "/export.sip")
+            installable.files.append(common_dir + "/wpsrpcsdk.sip")
+
+            break
+
+    def _fix_subdir_sip(self, buildable, sip_installable):
+        subdirs = ["ksoapi", "wpsapiex"]
+        for subdir in subdirs:
+            sub_installable = sipbuild.Installable(
+                "sip_" + subdir,
+                target_subdir=sip_installable.target_subdir + "/" + subdir)
+
+            sub_path = "/" + subdir + "/"
+            sub_installable.files = [
+                f for f in sip_installable.files if sub_path in f]
+
+            sip_installable.files = [f for f in sip_installable.files
+                                     if f not in sub_installable.files]
+            buildable.installables.append(sub_installable)
 
 
 class RpcWpsApi(RpcApiBindings):
@@ -253,18 +283,6 @@ class RpcApiBuilder(sipbuild.Builder):
 
             for installable in self.project.installables:
                 self._install(f, installable, target_dir, installed)
-
-            # FIXME:
-            common_subdir = os.path.join(
-                self.project.get_bindings_dir(), "common")
-            sip_common = sipbuild.Installable(
-                "sip_common", target_subdir=common_subdir)
-            common_dir = os.path.join(self.project.root_dir, "sip", "common")
-            sip_common_files = [common_dir + "/export.sip",
-                                common_dir + "/wpsrpcsdk.sip"]
-            sip_common.files.extend(sip_common_files)
-
-            self._install(f, sip_common, target_dir, installed)
 
             py_subdir = os.path.join(target_dir, self.project.name)
             sip_py = sipbuild.Installable("sip_py", target_subdir=py_subdir)
