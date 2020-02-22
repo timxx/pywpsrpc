@@ -14,7 +14,8 @@
 import sys
 
 from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
-from pywpsrpc.common import (FAILED, SUCCEEDED)
+from pywpsrpc.common import FAILED
+from pywpsrpc import RpcProxy
 
 from PySide2.QtWidgets import *
 from PySide2.QtCore import *
@@ -86,22 +87,20 @@ class MyWindow(QWidget):
 
         rpc.setProcessArgs(args)
 
-        hr, self._wpsApp = rpc.getWpsApplication()
-        if FAILED(hr):
+        self._wpsApp = RpcProxy(rpc.getWpsApplication())
+        if not self._wpsApp:
             QMessageBox.critical(
                 self, "Open Wps", "Failed to call getWpsApplication")
             return
 
-        hr, appEx = self._wpsApp.get_ApplicationEx()
-        if SUCCEEDED(hr):
-            hr, wid = appEx.get_EmbedWid()
-            if SUCCEEDED(hr):
-                container = QWidget.createWindowContainer(
-                    QWindow.fromWinId(wid), self)
-                self._wpsWnd.setContainer(container)
-                # FIXME: the container isn't place correctly
-                if not self.isMaximized():
-                    self.resize(self.width() + 1, self.height())
+        appEx = self._wpsApp.ApplicationEx
+        if appEx:
+            container = QWidget.createWindowContainer(
+                QWindow.fromWinId(appEx.EmbedWid), self)
+            self._wpsWnd.setContainer(container)
+            # FIXME: the container isn't place correctly
+            if not self.isMaximized():
+                self.resize(self.width() + 1, self.height())
 
         self.btnOpenDoc.setEnabled(True)
 
@@ -119,14 +118,8 @@ class MyWindow(QWidget):
         if not filePath:
             return
 
-        hr, docs = self._wpsApp.get_Documents()
-        if FAILED(hr):
-            QMessageBox.critical(
-                self, "Demo", "Failed to call get_Documents")
-            return
-
-        hr, doc = docs.Open(filePath)
-        if FAILED(hr):
+        doc = self._wpsApp.Documents.Open(filePath)
+        if not doc:
             QMessageBox.critical(
                 self, "Demo", "Failed to call open document '%s'" % filePath)
 

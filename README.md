@@ -63,6 +63,9 @@ sip-wheel
 # take wps for example here
 from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
 
+# use the RpcProxy to make things easy...
+from pywpsrpc import RpcProxy
+
 # now create the rpc instance
 hr, rpc = createWpsRpcInstance()
 
@@ -70,19 +73,25 @@ hr, rpc = createWpsRpcInstance()
 # you can check it for failes
 # 0 means all fines, you can use the common module's S_OK,
 # FAILED or SUCCEEDED to check
+# recommend use the RpcProxy instead
 
 # get the application and you get everything...
-hr, app = rpc.getWpsApplication()
+# here we use the RpcProxy to wrap the application
+# otherwise, you have to call Release on each instance
+# and handle the hr for every call...
+app = RpcProxy(rpc.getWpsApplication())
 
 # Add blank doc e.g.
-_, docs = app.get_Documents()
-_, doc = docs.Add()
+doc = app.Documents.Add()
 
 # append text...
-hr, selection = app.get_Selection()
+selection = app.Selection
 selection.InsertAfter("Hello, world")
 
 # bold the "Hello, world"
-_, font = selection.get_Font()
-font.put_Bold(True)
+selection.Font.Bold = True
+
+# Quit the application if you don't need anymore
+# use wpsapi.wdDoNotSaveChanges to ignore the changes
+app.Quit(wpsapi.wdDoNotSaveChanges)
 ```

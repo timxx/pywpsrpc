@@ -120,3 +120,6 @@ class RpcProxy(object):
             if hr != S_OK and self._use_exception:
                 raise RpcException("Call '{}.put_{}({})' failed.".format(
                     self._object.__class__.__name__, name, value), hr)
+
+    def __bool__(self):
+        return not self._object is None
