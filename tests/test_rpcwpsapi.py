@@ -23,7 +23,7 @@ def test():
     hr, rpc = rpcwpsapi.createWpsRpcInstance()
     check_call("createWpsRpcInstance", hr, rpc)
 
-    hr = rpc.setProcessArgs([os.path.dirname(os.path.realpath(__file__)) + "/../__init__.py"])
+    hr = rpc.setProcessArgs([os.path.dirname(os.path.realpath(__file__)) + "/../pyproject.toml"])
     check_call("setProcessArgs", hr)
 
     hr, wpsApp = rpc.getWpsApplication()

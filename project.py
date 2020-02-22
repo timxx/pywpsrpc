@@ -45,7 +45,7 @@ class PyWpsRpcProject(sipbuild.Project):
 
     def get_dunder_init(self):
         dunder_init = ""
-        with open(os.path.join(self.root_dir, "__init__.py")) as f:
+        with open(os.path.join(self.root_dir, "py", "__init__.py")) as f:
             dunder_init = f.read()
 
         return dunder_init
@@ -265,6 +265,19 @@ class RpcApiBuilder(sipbuild.Builder):
             sip_common.files.extend(sip_common_files)
 
             self._install(f, sip_common, target_dir, installed)
+
+            py_subdir = os.path.join(target_dir, self.project.name)
+            sip_py = sipbuild.Installable("sip_py", target_subdir=py_subdir)
+            py_dir = os.path.join(self.project.root_dir, "py")
+            sip_py_files = [(py_dir + "/" + f) for f in os.listdir(py_dir)
+                            if f.endswith(".py") and f != "__init__.py"]
+            sip_py.files.extend(sip_py_files)
+            self._install(f, sip_py, target_dir, installed)
+
+            fake_root = os.path.join(self.project.build_dir, self.project.name)
+            for py in sip_py.files:
+                shutil.copy(py, fake_root)
+            shutil.copy(os.path.join(py_dir, "__init__.py"), fake_root)
 
             # for distinfo
             inventory_file = self.project.build_dir + "/inventory.txt"
