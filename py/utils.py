@@ -29,12 +29,20 @@ class RpcException(Exception):
 
 class RpcMethod(object):
 
-    def __init__(self, method, use_exception=False):
+    def __init__(self, method, obj, use_exception=False):
         if not isinstance(method, BuiltinFunctionType):
             raise RpcException("RpcMethod required builtin function or method")
 
         self._method = method
+        self._object = obj
         self._use_exception = use_exception
+
+        # AddRef to avoid Releasing before the method be called
+        # such as app.Documents.Add()
+        self._object.AddRef()
+
+    def __del__(self):
+        self._object.Release()
 
     def __call__(self, *args, **kwargs):
         ret = self._method(*args, **kwargs)
@@ -69,25 +77,29 @@ class RpcProxy(object):
         If use_exception set to True then any call failed will raise an exception.
         """
 
-        def _check_iunkown(obj):
+        def _check_iunknown(obj):
             if not isinstance(obj, IUnknown):
                 raise RpcException("RpcProxy required an IUnknown instance")
 
         if isinstance(obj, tuple):
             if obj[0] == S_OK:
-                _check_iunkown(obj[1])
+                _check_iunknown(obj[1])
                 self._object = obj[1]
             else:
                 self._object = None
         else:
-            _check_iunkown(obj)
+            _check_iunknown(obj)
             self._object = obj
 
         self._use_exception = use_exception
 
+    def __del__(self):
+        self._object.Release()
+
     def __getattr__(self, name):
         if hasattr(self._object, name):
-            return RpcMethod(getattr(self._object, name), self._use_exception)
+            return RpcMethod(getattr(self._object, name),
+                             self._object, self._use_exception)
 
         hr, value = getattr(self._object, "get_" + name)()
         if hr != S_OK:

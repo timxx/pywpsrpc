@@ -135,20 +135,4 @@ static bool FAILED(HRESULT hr)
 {
     return hr < 0;
 }
-
-static void IUnknown_CollectingWrapperEventHandler(sipSimpleWrapper *sipSelf)
-{
-    if (!sipIsOwnedByPython(sipSelf))
-    {
-        IUnknown* cppPtr = reinterpret_cast<IUnknown*>(sipGetAddress(sipSelf));
-        if (cppPtr)
-            cppPtr->Release();
-    }
-}
-%End
-
-%PostInitialisationCode
-sipRegisterEventHandler(sipEventCollectingWrapper,
-    sipType_IUnknown,
-    (void *)IUnknown_CollectingWrapperEventHandler);
 %End
