@@ -10,8 +10,6 @@
 
 %Module(name=pywpsrpc.rpcwppapi, keyword_arguments="Optional", use_limited_api=True)
 
-%Platforms {Module_rpcwpsapi Module_rpcwppapi Module_rpcetapi}
-
 namespace wppapi
 {
 %TypeHeaderCode
@@ -23,9 +21,9 @@ typedef long MsoRGBType;
 };
 
 %Import common.sip
-%Include wpsrpcsdk.sip
 %Include export.sip
 
+%Include IKRpcClient.sip
 %Include enums.sip
 %Include Collection.sip
 %Include _Application.sip
@@ -257,6 +255,8 @@ namespace wppapi
 
     class VBE;
     class VBProject;
+
+    const IID IID_EApplication;
 };
 
 HRESULT createWppRpcInstance(IKRpcClient **client);

@@ -10,8 +10,6 @@
 
 %Module(name=pywpsrpc.rpcetapi, keyword_arguments="Optional", use_limited_api=True)
 
-%Platforms {Module_rpcwpsapi Module_rpcwppapi Module_rpcetapi}
-
 namespace etapi
 {
 %TypeHeaderCode
@@ -22,9 +20,9 @@ typedef float single;
 };
 
 %Import common.sip
-%Include wpsrpcsdk.sip
 %Include export.sip
 
+%Include IKRpcClient.sip
 %Include enums.sip
 %Include mso_enum.sip
 %Include Adjustments.sip
@@ -777,6 +775,8 @@ namespace etapi
 
     class VBE;
     class VBProject;
+
+    const IID DIID_AppEvents;
 };
 
 HRESULT createEtRpcInstance(IKRpcClient **client);

@@ -160,10 +160,9 @@ class RpcCommon(RpcApiBindings):
 
             self._fix_subdir_sip(buildable, installable)
 
-            # These two files include in other module
+            # The export.sip include in other module
             common_dir = os.path.join(self.project.root_dir, "sip", "common")
             installable.files.append(common_dir + "/export.sip")
-            installable.files.append(common_dir + "/wpsrpcsdk.sip")
 
             break
 
