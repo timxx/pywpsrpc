@@ -8,10 +8,6 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../build")
 from pywpsrpc.common import FAILED
 from pywpsrpc import RpcProxy
 
-from pywpsrpc.rpcetapi import (createEtRpcInstance, etapi)
-from pywpsrpc.rpcwppapi import (createWppRpcInstance, wppapi)
-from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
-
 
 can_close_doc = False
 
@@ -26,7 +22,27 @@ def _onDocumentBeforeSave(doc, saveAsUi, cancel):
     return saveAsUi, True
 
 
+def _onDocumentChange():
+    print("_onDocumentChange")
+
+
+def _onDocumentOpen(doc):
+    print("_onDocumentOpen:", RpcProxy(doc).Name)
+
+
+def _onNewDocument(doc):
+    print("_onNewDocument:", RpcProxy(doc).Name)
+
+
+def _onQuit():
+    print("_onQuit")
+
+
 def test_rpcwpsapi():
+    try:
+        from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
+    except ImportError:
+        return
     hr, rpc = createWpsRpcInstance()
     if FAILED(hr):
         print("createWpsRpcInstance failed with hr: ", hr)
@@ -47,9 +63,35 @@ def test_rpcwpsapi():
 
     print("registerEvent:", hex(hr & 0xFFFFFFFF))
 
+    hr = rpc.registerEvent(app._object,
+                           wpsapi.DIID_ApplicationEvents4,
+                           "DocumentChange",
+                           _onDocumentChange)
+
+    hr = rpc.registerEvent(app._object,
+                           wpsapi.DIID_ApplicationEvents4,
+                           "DocumentOpen",
+                           _onDocumentOpen)
+
+    hr = rpc.registerEvent(app._object,
+                           wpsapi.DIID_ApplicationEvents4,
+                           "NewDocument",
+                           _onNewDocument)
+
+    hr = rpc.registerEvent(app._object,
+                           wpsapi.DIID_ApplicationEvents4,
+                           "Quit",
+                           _onQuit)
+
     doc = app.Documents.Add()
     # the doc should not be saved
     doc.SaveAs2("test.doc")
+
+    # DocumentChange
+    doc2 = app.Documents.Add()
+
+    doc3 = app.Documents.Open(os.path.realpath(__file__))
+
     # the doc should not be closed
     doc.Close()
 
@@ -69,6 +111,11 @@ def _onPresentationClose(Pres):
 
 
 def test_rpcwppapi():
+    try:
+        from pywpsrpc.rpcwppapi import (createWppRpcInstance, wppapi)
+    except ImportError:
+        return
+
     hr, rpc = createWppRpcInstance()
     if FAILED(hr):
         print("createWppRpcInstance failed with hr: ", hr)
@@ -110,6 +157,11 @@ def _onWorkbookBeforeSave(wb, saveAsUi, cancel):
 
 
 def test_rpcetapi():
+    try:
+        from pywpsrpc.rpcetapi import (createEtRpcInstance, etapi)
+    except ImportError:
+        return
+
     hr, rpc = createEtRpcInstance()
     if FAILED(hr):
         print("createEtRpcInstance failed with hr: ", hr)

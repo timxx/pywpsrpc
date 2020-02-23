@@ -79,14 +79,15 @@ struct IKRpcClient /Abstract/
 
     #define _GET_PY_FUNCS(name) _getPyFuncs(__X(#name), (void*)_##name)
 
-    static HRESULT _DocumentBeforeClose(wpsapi::_Document *Doc, VARIANT_BOOL *Cancel)
+    static HRESULT _DocumentCancelEvent(
+        wpsapi::_Document *Doc,
+        VARIANT_BOOL *Cancel,
+        const PyFuncs &pyFuncs)
     {
-        HRESULT hr = E_FAIL;
-        SIP_BLOCK_THREADS
+        if (pyFuncs.empty())
+            return E_FAIL;
 
-        std::list<PyObject*> pyFuncs = _GET_PY_FUNCS(DocumentBeforeClose);
-        if (!pyFuncs.empty())
-            hr = S_OK;
+        SIP_BLOCK_THREADS
 
         PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
 
@@ -110,7 +111,56 @@ struct IKRpcClient /Abstract/
         }
 
         SIP_UNBLOCK_THREADS
-        return hr;
+        return S_OK;
+    }
+
+    static HRESULT _NoArgEvent(const PyFuncs &pyFuncs)
+    {
+        if (pyFuncs.empty())
+            return E_FAIL;
+
+        SIP_BLOCK_THREADS
+
+        for (auto &pyFunc : pyFuncs)
+        {
+            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, nullptr);
+            if (ret)
+            {
+                PyErr_Clear();
+                Py_DECREF(ret);
+            }
+        }
+
+        SIP_UNBLOCK_THREADS
+        return S_OK;
+    }
+
+    static HRESULT _DocumentEvent(wpsapi::_Document *Doc, const PyFuncs &pyFuncs)
+    {
+        if (pyFuncs.empty())
+            return E_FAIL;
+
+        SIP_BLOCK_THREADS
+
+        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
+
+        for (auto &pyFunc : pyFuncs)
+        {
+            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyDoc, nullptr);
+            if (ret)
+            {
+                PyErr_Clear();
+                Py_DECREF(ret);
+            }
+        }
+
+        SIP_UNBLOCK_THREADS
+        return S_OK;
+    }
+
+    static HRESULT _DocumentBeforeClose(wpsapi::_Document *Doc, VARIANT_BOOL *Cancel)
+    {
+        return _DocumentCancelEvent(Doc, Cancel, _GET_PY_FUNCS(DocumentBeforeClose));
     }
 
     static HRESULT _DocumentBeforeSave(wpsapi::_Document *Doc, VARIANT_BOOL *SaveAsUI, VARIANT_BOOL *Cancel)
@@ -156,16 +206,72 @@ struct IKRpcClient /Abstract/
         return hr;
     }
 
+    static HRESULT _DocumentBeforePrint(wpsapi::_Document *Doc, VARIANT_BOOL *Cancel)
+    {
+        return _DocumentCancelEvent(Doc, Cancel, _GET_PY_FUNCS(DocumentBeforePrint));
+    }
+
+    static HRESULT _DocumentChange()
+    {
+        return _NoArgEvent(_GET_PY_FUNCS(DocumentChange));
+    }
+
+    static HRESULT _DocumentOpen(wpsapi::_Document *Doc)
+    {
+        return _DocumentEvent(Doc, _GET_PY_FUNCS(DocumentOpen));
+    }
+
+    static HRESULT _NewDocument(wpsapi::_Document *Doc)
+    {
+        return _DocumentEvent(Doc, _GET_PY_FUNCS(NewDocument));
+    }
+
+    static HRESULT _DocumentSync(wpsapi::_Document *Doc, wpsapi::MsoSyncEventType SyncEventType)
+    {
+        auto pyFuncs = _GET_PY_FUNCS(DocumentSync);
+        if (pyFuncs.empty())
+            return E_FAIL;
+
+        SIP_BLOCK_THREADS
+
+        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
+        for (auto &pyFunc : pyFuncs)
+        {
+            PyObject *ret = PyObject_CallFunction(pyFunc, "(OI)", pyDoc, SyncEventType);
+            if (ret)
+            {
+                PyErr_Clear();
+                Py_DECREF(ret);
+            }
+        }
+
+        SIP_UNBLOCK_THREADS
+        return S_OK;
+    }
+
+    static HRESULT _Quit()
+    {
+        return _NoArgEvent(_GET_PY_FUNCS(Quit));
+    }
 
     #define _FUNC(name) std::make_pair(__X(#name), (void *)_##name)
     static void* _registerFunc(const IID &iid, const BSTR eventName, PyObject *pyFunc)
     {
         if (g_eventMap.empty())
         {
-            EventFuncs events;
-            events[_FUNC(DocumentBeforeClose)] = PyFuncs();
-            events[_FUNC(DocumentBeforeSave)] = PyFuncs();
-            g_eventMap[wpsapi::DIID_ApplicationEvents4] = events;
+            // ApplicationEvents4
+            {
+                EventFuncs events;
+                events[_FUNC(DocumentBeforeClose)] = PyFuncs();
+                events[_FUNC(DocumentBeforeSave)] = PyFuncs();
+                events[_FUNC(DocumentBeforePrint)] = PyFuncs();
+                events[_FUNC(DocumentChange)] = PyFuncs();
+                events[_FUNC(DocumentOpen)] = PyFuncs();
+                events[_FUNC(NewDocument)] = PyFuncs();
+                events[_FUNC(DocumentSync)] = PyFuncs();
+                events[_FUNC(Quit)] = PyFuncs(); // no works...
+                g_eventMap[wpsapi::DIID_ApplicationEvents4] = events;
+            }
         }
 
         auto itEvents = g_eventMap.find(iid);
