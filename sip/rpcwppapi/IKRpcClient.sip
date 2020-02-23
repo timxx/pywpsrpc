@@ -79,19 +79,16 @@ struct IKRpcClient /Abstract/
 
     #define _GET_PY_FUNCS(name) _getPyFuncs(__X(#name), (void*)_##name)
 
-    static HRESULT _PresentationSave(wppapi::_Presentation *Pres)
+    static HRESULT _PyObjectEvent(PyObject *pyObject, const PyFuncs &pyFuncs)
     {
-        HRESULT hr = E_FAIL;
+        if (pyFuncs.empty())
+            return E_FAIL;
+
         SIP_BLOCK_THREADS
 
-        std::list<PyObject*> pyFuncs = _GET_PY_FUNCS(PresentationSave);
-        if (!pyFuncs.empty())
-            hr = S_OK;
-
-        PyObject *pyPres = Pres == nullptr ? Py_None : sipConvertFromType(Pres, sipType_wppapi__Presentation, 0);
         for (auto &pyFunc : pyFuncs)
         {
-            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyPres, nullptr);
+            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyObject, nullptr);
             if (ret)
             {
                 PyErr_Clear();
@@ -100,22 +97,114 @@ struct IKRpcClient /Abstract/
         }
 
         SIP_UNBLOCK_THREADS
-        return hr;
+        return S_OK;
+    }
+
+    static inline HRESULT _PresentationEvent(wppapi::_Presentation *Pres, const PyFuncs &pyFuncs)
+    {
+        PyObject *pyPres = Pres == nullptr ? Py_None : sipConvertFromType(Pres, sipType_wppapi__Presentation, 0);
+        return _PyObjectEvent(pyPres, pyFuncs);
+    }
+
+    static HRESULT _PresentationCancelEvent(wppapi::_Presentation *Pres, VARIANT_BOOL *Cancel, const PyFuncs &pyFuncs)
+    {
+        if (pyFuncs.empty())
+            return E_FAIL;
+
+        SIP_BLOCK_THREADS
+
+        PyObject *pyPres = Pres == nullptr ? Py_None : sipConvertFromType(Pres, sipType_wppapi__Presentation, 0);
+        for (auto &pyFunc : pyFuncs)
+        {
+            PyObject *pyCancel = (Cancel && *Cancel) ? Py_True : Py_False;
+            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyPres, pyCancel, nullptr);
+            if (ret)
+            {
+                if (PyBool_Check(ret))
+                {
+                    PyErr_Clear();
+
+                    // shall we break if *Cancel is VARIANT_TRUE?
+                    if (Cancel)
+                        *Cancel = (ret == Py_True) ? VARIANT_TRUE : VARIANT_FALSE;
+                }
+
+                Py_DECREF(ret);
+            }
+        }
+
+        SIP_UNBLOCK_THREADS
+        return S_OK;
+    }
+
+    static HRESULT _PresentationSave(wppapi::_Presentation *Pres)
+    {
+        return _PresentationEvent(Pres, _GET_PY_FUNCS(PresentationSave));
     }
 
     static HRESULT _PresentationClose(wppapi::_Presentation *Pres)
     {
-        HRESULT hr = E_FAIL;
-        SIP_BLOCK_THREADS
+        return _PresentationEvent(Pres, _GET_PY_FUNCS(PresentationClose));
+    }
 
-        std::list<PyObject*> pyFuncs = _GET_PY_FUNCS(PresentationClose);
-        if (!pyFuncs.empty())
-            hr = S_OK;
+    static HRESULT _AfterNewPresentation(wppapi::_Presentation *Pres)
+    {
+        return _PresentationEvent(Pres, _GET_PY_FUNCS(AfterNewPresentation));
+    }
+
+    static HRESULT _AfterPresentationOpen(wppapi::_Presentation *Pres)
+    {
+        return _PresentationEvent(Pres, _GET_PY_FUNCS(AfterPresentationOpen));
+    }
+
+    static HRESULT _NewPresentation(wppapi::_Presentation *Pres)
+    {
+        return _PresentationEvent(Pres, _GET_PY_FUNCS(NewPresentation));
+    }
+
+    static HRESULT _PresentationBeforeClose(wppapi::_Presentation *Pres, VARIANT_BOOL *Cancel)
+    {
+        return _PresentationCancelEvent(Pres, Cancel, _GET_PY_FUNCS(PresentationBeforeClose));
+    }
+
+    static HRESULT _PresentationBeforeSave(wppapi::_Presentation *Pres, VARIANT_BOOL *Cancel)
+    {
+        return _PresentationCancelEvent(Pres, Cancel, _GET_PY_FUNCS(PresentationBeforeSave));
+    }
+
+    static HRESULT _PresentationCloseFinal(wppapi::_Presentation *Pres)
+    {
+        return _PresentationEvent(Pres, _GET_PY_FUNCS(PresentationCloseFinal));
+    }
+
+    static HRESULT _PresentationNewSlide(wppapi::_Slide *Sld)
+    {
+        PyObject *pySld = Sld ? sipConvertFromType(Sld, sipType_wppapi__Slide, 0) : Py_None;
+        return _PyObjectEvent(pySld, _GET_PY_FUNCS(PresentationNewSlide));
+    }
+
+    static HRESULT _PresentationOpen(wppapi::_Presentation *Pres)
+    {
+        return _PresentationEvent(Pres, _GET_PY_FUNCS(PresentationOpen));
+    }
+
+    static HRESULT _PresentationPrint(wppapi::_Presentation *Pres)
+    {
+        return _PresentationEvent(Pres, _GET_PY_FUNCS(PresentationPrint));
+    }
+
+    static HRESULT _PresentationSync(wppapi::_Presentation *Pres, wppapi::MsoSyncEventType SyncEventType)
+    {
+        auto pyFuncs = _GET_PY_FUNCS(PresentationSync);
+        if (pyFuncs.empty())
+            return E_FAIL;
+
+        SIP_BLOCK_THREADS
 
         PyObject *pyPres = Pres == nullptr ? Py_None : sipConvertFromType(Pres, sipType_wppapi__Presentation, 0);
         for (auto &pyFunc : pyFuncs)
         {
-            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyPres, nullptr);
+            PyObject *ret = PyObject_CallFunction(pyFunc, "(OI)", pyPres, SyncEventType);
             if (ret)
             {
                 PyErr_Clear();
@@ -124,7 +213,7 @@ struct IKRpcClient /Abstract/
         }
 
         SIP_UNBLOCK_THREADS
-        return hr;
+        return S_OK;
     }
 
     #define _FUNC(name) std::make_pair(__X(#name), (void *)_##name)
@@ -135,6 +224,16 @@ struct IKRpcClient /Abstract/
             EventFuncs events;
             events[_FUNC(PresentationSave)] = PyFuncs();
             events[_FUNC(PresentationClose)] = PyFuncs();
+            events[_FUNC(AfterNewPresentation)] = PyFuncs();
+            events[_FUNC(AfterPresentationOpen)] = PyFuncs();
+            events[_FUNC(NewPresentation)] = PyFuncs();
+            events[_FUNC(PresentationBeforeClose)] = PyFuncs();
+            events[_FUNC(PresentationBeforeSave)] = PyFuncs();
+            events[_FUNC(PresentationCloseFinal)] = PyFuncs();
+            events[_FUNC(PresentationNewSlide)] = PyFuncs();
+            events[_FUNC(PresentationOpen)] = PyFuncs();
+            events[_FUNC(PresentationPrint)] = PyFuncs();
+            events[_FUNC(PresentationSync)] = PyFuncs();
             g_eventMap[wppapi::IID_EApplication] = events;
         }
 

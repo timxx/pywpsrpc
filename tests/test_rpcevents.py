@@ -27,10 +27,12 @@ def _onDocumentChange():
 
 
 def _onDocumentOpen(doc):
+    doc.AddRef()
     print("_onDocumentOpen:", RpcProxy(doc).Name)
 
 
 def _onNewDocument(doc):
+    doc.AddRef()
     print("_onNewDocument:", RpcProxy(doc).Name)
 
 
@@ -110,6 +112,21 @@ def _onPresentationClose(Pres):
     print("_onPresentationClose: ", Pres)
 
 
+def _onAfterNewPresentation(Pres):
+    Pres.AddRef()
+    print("_onAfterNewPresentation: ", RpcProxy(Pres).Name)
+
+
+def _onAfterPresentationOpen(Pres):
+    Pres.AddRef()
+    print("_onAfterPresentationOpen: ", RpcProxy(Pres).Name)
+
+
+def _onNewPresentation(Pres):
+    Pres.AddRef()
+    print("_onNewPresentation: ", RpcProxy(Pres).Name)
+
+
 def test_rpcwppapi():
     try:
         from pywpsrpc.rpcwppapi import (createWppRpcInstance, wppapi)
@@ -136,9 +153,28 @@ def test_rpcwppapi():
 
     print("registerEvent:", hex(hr & 0xFFFFFFFF))
 
+    hr = rpc.registerEvent(app._object,
+                           wppapi.IID_EApplication,
+                           "AfterNewPresentation",
+                           _onAfterNewPresentation)
+
+    hr = rpc.registerEvent(app._object,
+                           wppapi.IID_EApplication,
+                           "AfterPresentationOpen",
+                           _onAfterPresentationOpen)
+
+    hr = rpc.registerEvent(app._object,
+                           wppapi.IID_EApplication,
+                           "NewPresentation",
+                           _onNewPresentation)
+
     pres = app.Presentations.Add(wppapi.msoTrue)
     pres.SaveAs("test.ppt")
     pres.Close()
+
+    pres = app.Presentations.Open(
+        "test.ppt", wppapi.msoFalse,
+        wppapi.msoFalse, wppapi.msoTrue)
 
     app.Quit()
 
@@ -153,7 +189,22 @@ def _onWorkbookBeforeClose(wb, cancel):
 
 def _onWorkbookBeforeSave(wb, saveAsUi, cancel):
     print("_onWorkbookBeforeSave: ", wb, saveAsUi, cancel)
-    return saveAsUi, True
+    return saveAsUi, not can_close_wb
+
+
+def _onWorkbookAfterSave(wb, success):
+    wb.AddRef()
+    print("_onWorkbookAfterSave: ", RpcProxy(wb).Name, success)
+
+
+def _onNewWorkbook(wb):
+    wb.AddRef()
+    print("_onNewWorkbook: ", RpcProxy(wb).Name)
+
+
+def _onWorkbookOpen(wb):
+    wb.AddRef()
+    print("_onWorkbookOpen: ", RpcProxy(wb).Name)
 
 
 def test_rpcetapi():
@@ -182,6 +233,21 @@ def test_rpcetapi():
 
     print("registerEvent:", hex(hr & 0xFFFFFFFF))
 
+    hr = rpc.registerEvent(app._object,
+                           etapi.DIID_AppEvents,
+                           "WorkbookAfterSave",
+                           _onWorkbookAfterSave)
+
+    hr = rpc.registerEvent(app._object,
+                           etapi.DIID_AppEvents,
+                           "NewWorkbook",
+                           _onNewWorkbook)
+
+    hr = rpc.registerEvent(app._object,
+                           etapi.DIID_AppEvents,
+                           "WorkbookOpen",
+                           _onWorkbookOpen)
+
     wb = app.Workbooks.Add()
     # the doc should not be saved
     wb.SaveAs("test.xls")
@@ -191,6 +257,12 @@ def test_rpcetapi():
     # now make it works
     global can_close_wb
     can_close_wb = True
+
+    # save again
+    wb.SaveAs("test2.xls")
+    wb.Close()
+
+    wb = app.Workbooks.Open("test2.xls")
 
     app.Quit()
 

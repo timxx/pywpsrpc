@@ -79,14 +79,12 @@ struct IKRpcClient /Abstract/
 
     #define _GET_PY_FUNCS(name) _getPyFuncs(__X(#name), (void*)_##name)
 
-    static HRESULT _WorkbookBeforeClose(etapi::_Workbook *Wb, VARIANT_BOOL *Cancel)
+    static HRESULT _WorkbookCancelEvent(etapi::_Workbook *Wb, VARIANT_BOOL *Cancel, const PyFuncs &pyFuncs)
     {
-        HRESULT hr = E_FAIL;
-        SIP_BLOCK_THREADS
+        if (pyFuncs.empty())
+            return E_FAIL;
 
-        std::list<PyObject*> pyFuncs = _GET_PY_FUNCS(WorkbookBeforeClose);
-        if (!pyFuncs.empty())
-            hr = S_OK;
+        SIP_BLOCK_THREADS
 
         PyObject *pyWb = Wb == nullptr ? Py_None : sipConvertFromType(Wb, sipType_etapi__Workbook, 0);
         for (auto &pyFunc : pyFuncs)
@@ -109,7 +107,56 @@ struct IKRpcClient /Abstract/
         }
 
         SIP_UNBLOCK_THREADS
-        return hr;
+        return S_OK;
+    }
+
+    static HRESULT _WorkbookEvent(etapi::_Workbook *Wb, const PyFuncs &pyFuncs)
+    {
+        if (pyFuncs.empty())
+            return E_FAIL;
+
+        SIP_BLOCK_THREADS
+
+        PyObject *pyWb = Wb == nullptr ? Py_None : sipConvertFromType(Wb, sipType_etapi__Workbook, 0);
+        for (auto &pyFunc : pyFuncs)
+        {
+            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyWb, nullptr);
+            if (ret)
+            {
+                PyErr_Clear();
+                Py_DECREF(ret);
+            }
+        }
+
+        SIP_UNBLOCK_THREADS
+        return S_OK;
+    }
+
+    static HRESULT _WorkbookEvent1(etapi::_Workbook *Wb, PyObject *arg, const PyFuncs &pyFuncs)
+    {
+        if (pyFuncs.empty())
+            return E_FAIL;
+
+        SIP_BLOCK_THREADS
+
+        PyObject *pyWb = Wb == nullptr ? Py_None : sipConvertFromType(Wb, sipType_etapi__Workbook, 0);
+        for (auto &pyFunc : pyFuncs)
+        {
+            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyWb, arg, nullptr);
+            if (ret)
+            {
+                PyErr_Clear();
+                Py_DECREF(ret);
+            }
+        }
+
+        SIP_UNBLOCK_THREADS
+        return S_OK;
+    }
+
+    static HRESULT _WorkbookBeforeClose(etapi::_Workbook *Wb, VARIANT_BOOL *Cancel)
+    {
+        return _WorkbookCancelEvent(Wb, Cancel, _GET_PY_FUNCS(WorkbookBeforeClose));
     }
 
     static HRESULT _WorkbookBeforeSave(etapi::_Workbook* Wb, VARIANT_BOOL *SaveAsUI, VARIANT_BOOL *Cancel)
@@ -154,6 +201,33 @@ struct IKRpcClient /Abstract/
         return hr;
     }
 
+    static HRESULT _WorkbookAfterSave(etapi::_Workbook *Wb, VARIANT_BOOL Success)
+    {
+        PyObject *pySuccess = (Success == VARIANT_FALSE) ? Py_False : Py_True;
+        return _WorkbookEvent1(Wb, pySuccess, _GET_PY_FUNCS(WorkbookAfterSave));
+    }
+
+    static HRESULT _WorkbookBeforePrint(etapi::_Workbook *Wb, VARIANT_BOOL *Cancel)
+    {
+        return _WorkbookCancelEvent(Wb, Cancel, _GET_PY_FUNCS(WorkbookBeforePrint));
+    }
+
+    static HRESULT _WorkbookNewSheet(etapi::_Workbook *Wb, etapi::_Worksheet *Sh)
+    {
+        PyObject *pySh = Sh ? sipConvertFromType(Sh, sipType_etapi__Worksheet, 0) : Py_None;
+        return _WorkbookEvent1(Wb, pySh, _GET_PY_FUNCS(WorkbookNewSheet));
+    }
+
+    static HRESULT _NewWorkbook(etapi::_Workbook *Wb)
+    {
+        return _WorkbookEvent(Wb, _GET_PY_FUNCS(NewWorkbook));
+    }
+
+    static HRESULT _WorkbookOpen(etapi::_Workbook *Wb)
+    {
+        return _WorkbookEvent(Wb, _GET_PY_FUNCS(WorkbookOpen));
+    }
+
     #define _FUNC(name) std::make_pair(__X(#name), (void *)_##name)
     static void* _registerFunc(const IID &iid, const BSTR eventName, PyObject *pyFunc)
     {
@@ -162,6 +236,11 @@ struct IKRpcClient /Abstract/
             EventFuncs events;
             events[_FUNC(WorkbookBeforeClose)] = PyFuncs();
             events[_FUNC(WorkbookBeforeSave)] = PyFuncs();
+            events[_FUNC(WorkbookAfterSave)] = PyFuncs();
+            events[_FUNC(WorkbookBeforePrint)] = PyFuncs();
+            events[_FUNC(WorkbookNewSheet)] = PyFuncs();
+            events[_FUNC(NewWorkbook)] = PyFuncs();
+            events[_FUNC(WorkbookOpen)] = PyFuncs();
             g_eventMap[etapi::DIID_AppEvents] = events;
         }
 
