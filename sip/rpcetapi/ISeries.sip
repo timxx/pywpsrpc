@@ -23,7 +23,7 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT _ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = etapi::xlDataLabelsShowNone,
             VARIANT LegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),
@@ -275,7 +275,7 @@ namespace etapi
             LeaderLines **RHS /Out/) = 0;
 
         virtual HRESULT ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = etapi::xlDataLabelsShowNone,
             VARIANT LegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),

@@ -85,7 +85,7 @@ namespace wppapi
 
         virtual HRESULT ApplyStyle(
             BSTR StyleID = 0,
-            VARIANT_BOOL SaveFormatting = 0) = 0;
+            VARIANT_BOOL SaveFormatting = VARIANT_FALSE) = 0;
 
         virtual HRESULT get_AlternativeText(
             BSTR *AlternativeText /Out/) = 0;

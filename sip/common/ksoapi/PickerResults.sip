@@ -24,7 +24,7 @@ namespace ksoapi
             BSTR Id,
             BSTR DisplayName,
             BSTR Type,
-            BSTR SIPId,
+            BSTR SIPId = 0,
             VARIANT ItemData = argMissing2(),
             VARIANT SubItems = argMissing2(),
             PickerResult **Result /Out/ = 0) = 0;

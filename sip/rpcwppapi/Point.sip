@@ -155,14 +155,14 @@ namespace wppapi
             Application **Application /Out/) = 0;
 
         virtual HRESULT _ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = wppapi::xlDataLabelsShowNone,
             VARIANT LegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),
             VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = wppapi::xlDataLabelsShowNone,
             VARIANT LegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),
@@ -197,8 +197,8 @@ namespace wppapi
 
         virtual HRESULT PieSliceLocation(
             XlPieSliceLocation loc,
-            XlPieSliceIndex Index,
-            double *pval /Out/) = 0;
+            XlPieSliceIndex Index = wppapi::xlOuterCounterClockwisePoint,
+            double *pval /Out/ = 0) = 0;
 
     };
 };

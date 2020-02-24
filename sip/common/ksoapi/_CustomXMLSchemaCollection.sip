@@ -28,11 +28,11 @@ namespace ksoapi
             BSTR *pbstrNamespaceURI /Out/) = 0;
 
         virtual HRESULT Add(
-            BSTR NamespaceURI,
-            BSTR Alias,
-            BSTR FileName,
-            VARIANT_BOOL InstallForAllUsers,
-            CustomXMLSchema **ppSchema /Out/) = 0;
+            BSTR NamespaceURI = 0,
+            BSTR Alias = 0,
+            BSTR FileName = 0,
+            VARIANT_BOOL InstallForAllUsers = VARIANT_FALSE,
+            CustomXMLSchema **ppSchema /Out/ = 0) = 0;
 
         virtual HRESULT AddCollection(
             CustomXMLSchemaCollection *SchemaCollection) = 0;

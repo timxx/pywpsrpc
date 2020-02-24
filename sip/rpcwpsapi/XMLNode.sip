@@ -38,8 +38,8 @@ namespace wpsapi
             BSTR *prop /Out/) = 0;
 
         virtual HRESULT get_XML(
-            VARIANT_BOOL DataOnly,
-            BSTR *prop /Out/) = 0;
+            VARIANT_BOOL DataOnly = VARIANT_FALSE,
+            BSTR *prop /Out/ = 0) = 0;
 
         virtual HRESULT get_NextSibling(
             XMLNode **prop /Out/) = 0;
@@ -79,15 +79,15 @@ namespace wpsapi
 
         virtual HRESULT SelectSingleNode(
             BSTR XPath,
-            BSTR PrefixMapping,
-            VARIANT_BOOL FastSearchSkippingTextNodes,
-            XMLNode **prop /Out/) = 0;
+            BSTR PrefixMapping = 0,
+            VARIANT_BOOL FastSearchSkippingTextNodes = VARIANT_FALSE,
+            XMLNode **prop /Out/ = 0) = 0;
 
         virtual HRESULT SelectNodes(
             BSTR XPath,
-            BSTR PrefixMapping,
-            VARIANT_BOOL FastSearchSkippingTextNodes,
-            XMLNodes **prop /Out/) = 0;
+            BSTR PrefixMapping = 0,
+            VARIANT_BOOL FastSearchSkippingTextNodes = VARIANT_FALSE,
+            XMLNodes **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_ChildNodeSuggestions(
             XMLChildNodeSuggestions **prop /Out/) = 0;
@@ -102,8 +102,8 @@ namespace wpsapi
             SmartTag **prop /Out/) = 0;
 
         virtual HRESULT get_ValidationErrorText(
-            VARIANT_BOOL Advanced,
-            BSTR *prop /Out/) = 0;
+            VARIANT_BOOL Advanced = VARIANT_FALSE,
+            BSTR *prop /Out/ = 0) = 0;
 
         virtual HRESULT get_PlaceholderText(
             BSTR *prop /Out/) = 0;

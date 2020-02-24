@@ -42,8 +42,8 @@ namespace ksoapi
 
         virtual HRESULT Move(
             MsoMoveRow MsoMoveRow,
-            int RowNbr,
-            int *rval /Out/) = 0;
+            int RowNbr = 0,
+            int *rval /Out/ = 0) = 0;
 
         virtual HRESULT Open(
             BSTR bstrSrc = 0,

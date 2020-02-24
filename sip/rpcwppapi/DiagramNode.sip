@@ -20,9 +20,9 @@ namespace wppapi
             long *plCreator /Out/) = 0;
 
         virtual HRESULT AddNode(
-            MsoRelativeNodePosition Pos,
-            MsoDiagramNodeType NodeType,
-            DiagramNode **NewNode /Out/) = 0;
+            MsoRelativeNodePosition Pos = wppapi::msoBeforeNode,
+            MsoDiagramNodeType NodeType = wppapi::msoDiagramNode,
+            DiagramNode **NewNode /Out/ = 0) = 0;
 
         virtual HRESULT Delete() = 0;
 
@@ -40,8 +40,8 @@ namespace wppapi
         virtual HRESULT CloneNode(
             VARIANT_BOOL CopyChildren,
             DiagramNode *TargetNode,
-            MsoRelativeNodePosition Pos,
-            DiagramNode **Node /Out/) = 0;
+            MsoRelativeNodePosition Pos = wppapi::msoBeforeNode,
+            DiagramNode **Node /Out/ = 0) = 0;
 
         virtual HRESULT TransferChildren(
             DiagramNode *ReceivingNode) = 0;

@@ -24,11 +24,11 @@ namespace wpsapi
 
         virtual HRESULT Query(
             BSTR ServiceID,
-            BSTR QueryString,
-            WdLanguageID QueryLanguage,
-            VARIANT_BOOL UseSelection,
-            VARIANT_BOOL LaunchQuery,
-            VARIANT *prop /Out/) = 0;
+            BSTR QueryString = 0,
+            WdLanguageID QueryLanguage = wpsapi::wdLanguageNone,
+            VARIANT_BOOL UseSelection = VARIANT_FALSE,
+            VARIANT_BOOL LaunchQuery = VARIANT_FALSE,
+            VARIANT *prop /Out/ = 0) = 0;
 
         virtual HRESULT SetLanguagePair(
             WdLanguageID LanguageFrom,

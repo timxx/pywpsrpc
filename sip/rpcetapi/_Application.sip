@@ -153,8 +153,8 @@ namespace etapi
             VARIANT Arg28 = argMissing2(),
             VARIANT Arg29 = argMissing2(),
             VARIANT Arg30 = argMissing2(),
-            long lcid,
-            Range **RHS /Out/) = 0;
+            long lcid = 0,
+            Range **RHS /Out/ = 0) = 0;
 */
 
         virtual HRESULT get_MenuBars(
@@ -241,8 +241,8 @@ namespace etapi
             VARIANT Arg28 = argMissing2(),
             VARIANT Arg29 = argMissing2(),
             VARIANT Arg30 = argMissing2(),
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 */
         virtual HRESULT get_Selection(
             long lcid,
@@ -298,8 +298,8 @@ namespace etapi
             VARIANT Arg28 = argMissing2(),
             VARIANT Arg29 = argMissing2(),
             VARIANT Arg30 = argMissing2(),
-            long lcid,
-            Range **RHS /Out/) = 0;
+            long lcid = 0,
+            Range **RHS /Out/ = 0) = 0;
 */
         virtual HRESULT get_Windows(
             Windows **RHS /Out/) = 0;
@@ -1360,8 +1360,8 @@ namespace etapi
             VARIANT Arg28 = argMissing2(),
             VARIANT Arg29 = argMissing2(),
             VARIANT Arg30 = argMissing2(),
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 */
         virtual HRESULT get_EnableEvents(
             VARIANT_BOOL *RHS /Out/) = 0;
@@ -1884,9 +1884,5 @@ namespace etapi
         virtual HRESULT get_DebugTools(
             _DebugTools **RHS /Out/) = 0;
 
-        virtual HRESULT get_ApplicationEx(wpsapiex::_ApplicationEx **prop /Out/) = 0;
-        %MethodCode
-            sipRes = sipCpp->QueryInterface(wpsapiex::IID__EtApplicationEx, (void**)&a0);
-        %End
     };
 };

@@ -27,16 +27,16 @@ namespace etapi
 
         virtual HRESULT Item(
             XlAxisType Type,
-            XlAxisGroup AxisGroup,
-            Axis **RHS /Out/) = 0;
+            XlAxisGroup AxisGroup = etapi::xlPrimary,
+            Axis **RHS /Out/ = 0) = 0;
 
         virtual HRESULT _NewEnum(
             IUnknown **RHS /Out/) = 0;
 
         virtual HRESULT _Default(
             XlAxisType Type,
-            XlAxisGroup AxisGroup,
-            Axis **RHS /Out/) = 0;
+            XlAxisGroup AxisGroup = etapi::xlPrimary,
+            Axis **RHS /Out/ = 0) = 0;
 
     };
 };

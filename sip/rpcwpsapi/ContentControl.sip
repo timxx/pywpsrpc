@@ -51,7 +51,7 @@ namespace wpsapi
         virtual HRESULT Cut() = 0;
 
         virtual HRESULT Delete(
-            VARIANT_BOOL DeleteContents = 0) = 0;
+            VARIANT_BOOL DeleteContents = VARIANT_FALSE) = 0;
 
         virtual HRESULT get_DropdownListEntries(
             ContentControlListEntries **prop /Out/) = 0;

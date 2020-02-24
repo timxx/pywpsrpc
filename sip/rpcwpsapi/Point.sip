@@ -140,7 +140,7 @@ namespace wpsapi
             ChartFillFormat **prop /Out/) = 0;
 
         virtual HRESULT ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = wpsapi::xlDataLabelsShowNone,
             VARIANT LegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),
@@ -190,8 +190,8 @@ namespace wpsapi
 
         virtual HRESULT PieSliceLocation(
             XlPieSliceLocation loc,
-            XlPieSliceIndex Index,
-            double *prop /Out/) = 0;
+            XlPieSliceIndex Index = wpsapi::xlOuterCounterClockwisePoint,
+            double *prop /Out/ = 0) = 0;
 
     };
 };

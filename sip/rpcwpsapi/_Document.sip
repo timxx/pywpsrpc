@@ -904,9 +904,9 @@ namespace wpsapi
             VARIANT *AddToRecentFiles = argMissing()) = 0;
 
         virtual HRESULT CheckIn(
-            VARIANT_BOOL SaveChanges,
+            VARIANT_BOOL SaveChanges = VARIANT_FALSE,
             VARIANT *Comments = argMissing(),
-            VARIANT_BOOL MakePublic = 0) = 0;
+            VARIANT_BOOL MakePublic = VARIANT_FALSE) = 0;
 
         virtual HRESULT CanCheckin(
             VARIANT_BOOL *prop /Out/) = 0;
@@ -1177,15 +1177,15 @@ namespace wpsapi
 
         virtual HRESULT SelectSingleNode(
             BSTR XPath,
-            BSTR PrefixMapping,
-            VARIANT_BOOL FastSearchSkippingTextNodes,
-            XMLNode **prop /Out/) = 0;
+            BSTR PrefixMapping = 0,
+            VARIANT_BOOL FastSearchSkippingTextNodes = VARIANT_FALSE,
+            XMLNode **prop /Out/ = 0) = 0;
 
         virtual HRESULT SelectNodes(
             BSTR XPath,
-            BSTR PrefixMapping,
-            VARIANT_BOOL FastSearchSkippingTextNodes,
-            XMLNodes **prop /Out/) = 0;
+            BSTR PrefixMapping = 0,
+            VARIANT_BOOL FastSearchSkippingTextNodes = VARIANT_FALSE,
+            XMLNodes **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_XMLSchemaViolations(
             XMLNodes **prop /Out/) = 0;
@@ -1232,7 +1232,7 @@ namespace wpsapi
             WdRemoveDocInfoType RemoveDocInfoType) = 0;
 
         virtual HRESULT CheckInWithVersion(
-            VARIANT_BOOL SaveChanges,
+            VARIANT_BOOL SaveChanges = VARIANT_FALSE,
             VARIANT *Comments = argMissing(),
             VARIANT_BOOL MakePublic = VARIANT_TRUE,
             VARIANT *VersionType = argMissing()) = 0;
@@ -1399,18 +1399,18 @@ namespace wpsapi
         virtual HRESULT ExportAsFixedFormat(
             BSTR OutputFileName,
             WdExportFormat ExportFormat,
-            VARIANT_BOOL OpenAfterExport,
-            WdExportOptimizeFor OptimizeFor,
-            WdExportRange Range,
-            long From,
-            long To,
-            WdExportItem Item,
-            VARIANT_BOOL IncludeDocProps,
-            VARIANT_BOOL KeepIRM,
-            WdExportCreateBookmarks CreateBookmarks,
-            VARIANT_BOOL DocStructureTags,
-            VARIANT_BOOL BitmapMissingFonts,
-            VARIANT_BOOL UseISO19005_1,
+            VARIANT_BOOL OpenAfterExport = VARIANT_FALSE,
+            WdExportOptimizeFor OptimizeFor = wpsapi::wdExportOptimizeForPrint,
+            WdExportRange Range = wpsapi::wdExportAllDocument,
+            long From = 0,
+            long To = 0,
+            WdExportItem Item = wpsapi::wdExportDocumentContent,
+            VARIANT_BOOL IncludeDocProps = VARIANT_FALSE,
+            VARIANT_BOOL KeepIRM = VARIANT_TRUE,
+            WdExportCreateBookmarks CreateBookmarks = wpsapi::wdExportCreateNoBookmarks,
+            VARIANT_BOOL DocStructureTags = VARIANT_TRUE,
+            VARIANT_BOOL BitmapMissingFonts = VARIANT_TRUE,
+            VARIANT_BOOL UseISO19005_1 = VARIANT_FALSE,
             VARIANT *FixedFormatExtClassPtr = argMissing()) = 0;
 
         virtual HRESULT FreezeLayout() = 0;

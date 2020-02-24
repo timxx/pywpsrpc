@@ -24,8 +24,8 @@ namespace wppapi
             Row **Item /Out/) = 0;
 
         virtual HRESULT Add(
-            int BeforeRow,
-            Row **Add /Out/) = 0;
+            int BeforeRow = 0,
+            Row **Add /Out/ = 0) = 0;
 
     };
 };

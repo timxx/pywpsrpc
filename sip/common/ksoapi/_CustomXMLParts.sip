@@ -24,7 +24,7 @@ namespace ksoapi
             CustomXMLPart **ppPart /Out/) = 0;
 
         virtual HRESULT Add(
-            BSTR XML,
+            BSTR XML = 0,
             VARIANT SchemaCollection = argMissing2(),
             CustomXMLPart **ppPart /Out/ = 0) = 0;
 

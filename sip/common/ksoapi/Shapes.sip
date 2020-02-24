@@ -67,9 +67,9 @@ namespace ksoapi
             MsoTriState SaveWithDocument,
             single Left,
             single Top,
-            single Width,
-            single Height,
-            Shape **Picture /Out/) = 0;
+            single Width = 0,
+            single Height = 0,
+            Shape **Picture /Out/ = 0) = 0;
 
         virtual HRESULT AddPolyline(
             VARIANT SafeArrayOfPoints,
@@ -136,12 +136,12 @@ namespace ksoapi
             Shape **Shape /Out/) = 0;
 
         virtual HRESULT AddChart(
-            XlChartType Type,
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            Shape **Chart /Out/) = 0;
+            XlChartType Type = ksoapi::xlSuggestedChart,
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            Shape **Chart /Out/ = 0) = 0;
 
         virtual HRESULT AddTable(
             int NumRows,
@@ -154,21 +154,21 @@ namespace ksoapi
 
         virtual HRESULT AddSmartArt(
             SmartArtLayout *Layout,
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            Shape **SmartArt /Out/) = 0;
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            Shape **SmartArt /Out/ = 0) = 0;
 
         virtual HRESULT AddChart2(
-            int Style,
-            XlChartType Type,
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            VARIANT_BOOL NewLayout,
-            Shape **Chart /Out/) = 0;
+            int Style = 0,
+            XlChartType Type = ksoapi::xlSuggestedChart,
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            VARIANT_BOOL NewLayout = VARIANT_FALSE,
+            Shape **Chart /Out/ = 0) = 0;
 
         virtual HRESULT AddPicture2(
             BSTR FileName,
@@ -176,10 +176,10 @@ namespace ksoapi
             MsoTriState SaveWithDocument,
             single Left,
             single Top,
-            single Width,
-            single Height,
-            MsoPictureCompress Compress,
-            Shape **Picture /Out/) = 0;
+            single Width = 0,
+            single Height = 0,
+            MsoPictureCompress Compress = ksoapi::msoPictureCompressDocDefault,
+            Shape **Picture /Out/ = 0) = 0;
 
     };
 };

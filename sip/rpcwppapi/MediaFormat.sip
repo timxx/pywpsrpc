@@ -68,7 +68,7 @@ namespace wppapi
             BSTR FilePath) = 0;
 
         virtual HRESULT Resample(
-            VARIANT_BOOL Trim = 0,
+            VARIANT_BOOL Trim = VARIANT_FALSE,
             int SampleHeight = 768,
             int SampleWidth = 1280,
             long VideoFrameRate = 24,

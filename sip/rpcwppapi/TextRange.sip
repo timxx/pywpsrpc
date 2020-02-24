@@ -41,34 +41,34 @@ namespace wppapi
             single *BoundHeight /Out/) = 0;
 
         virtual HRESULT Paragraphs(
-            int Start,
-            int Length,
-            TextRange **Paragraphs /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange **Paragraphs /Out/ = 0) = 0;
 
         virtual HRESULT Sentences(
-            int Start,
-            int Length,
-            TextRange **Sentences /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange **Sentences /Out/ = 0) = 0;
 
         virtual HRESULT Words(
-            int Start,
-            int Length,
-            TextRange **Words /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange **Words /Out/ = 0) = 0;
 
         virtual HRESULT Characters(
-            int Start,
-            int Length,
-            TextRange **Characters /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange **Characters /Out/ = 0) = 0;
 
         virtual HRESULT Lines(
-            int Start,
-            int Length,
-            TextRange **Lines /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange **Lines /Out/ = 0) = 0;
 
         virtual HRESULT Runs(
-            int Start,
-            int Length,
-            TextRange **Runs /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange **Runs /Out/ = 0) = 0;
 
         virtual HRESULT TrimText(
             TextRange **TrimText /Out/) = 0;
@@ -80,17 +80,17 @@ namespace wppapi
             BSTR Text) = 0;
 
         virtual HRESULT InsertAfter(
-            BSTR NewText,
-            TextRange **After /Out/) = 0;
+            BSTR NewText = 0,
+            TextRange **After /Out/ = 0) = 0;
 
         virtual HRESULT InsertBefore(
-            BSTR NewText,
-            TextRange **Before /Out/) = 0;
+            BSTR NewText = 0,
+            TextRange **Before /Out/ = 0) = 0;
 
         virtual HRESULT InsertDateTime(
             PpDateTimeFormat DateTimeFormat,
-            MsoTriState InsertAsField,
-            TextRange **DateTime /Out/) = 0;
+            MsoTriState InsertAsField = wppapi::msoFalse,
+            TextRange **DateTime /Out/ = 0) = 0;
 
         virtual HRESULT InsertSlideNumber(
             TextRange **SlideNumber /Out/) = 0;
@@ -98,8 +98,8 @@ namespace wppapi
         virtual HRESULT InsertSymbol(
             BSTR FontName,
             int CharNumber,
-            MsoTriState Unicode,
-            TextRange **Symbol /Out/) = 0;
+            MsoTriState Unicode = wppapi::msoFalse,
+            TextRange **Symbol /Out/ = 0) = 0;
 
         virtual HRESULT get_Font(
             Font **Font /Out/) = 0;
@@ -133,18 +133,18 @@ namespace wppapi
 
         virtual HRESULT Find(
             BSTR FindWhat,
-            int After,
-            MsoTriState MatchCase,
-            MsoTriState WholeWords,
-            TextRange **Find /Out/) = 0;
+            int After = 0,
+            MsoTriState MatchCase = wppapi::msoTrue,
+            MsoTriState WholeWords = wppapi::msoTrue,
+            TextRange **Find /Out/ = 0) = 0;
 
         virtual HRESULT Replace(
             BSTR FindWhat,
             BSTR ReplaceWhat,
-            int After,
-            MsoTriState MatchCase,
-            MsoTriState WholeWords,
-            TextRange **Replace /Out/) = 0;
+            int After = 0,
+            MsoTriState MatchCase = wppapi::msoTrue,
+            MsoTriState WholeWords = wppapi::msoTrue,
+            TextRange **Replace /Out/ = 0) = 0;
 
         virtual HRESULT RotatedBounds(
             single *X1 /Out/,
@@ -167,13 +167,13 @@ namespace wppapi
         virtual HRESULT LtrRun() = 0;
 
         virtual HRESULT PasteSpecial(
-            PpPasteDataType DataType,
-            MsoTriState DisplayAsIcon,
-            BSTR IconFileName,
-            int IconIndex,
-            BSTR IconLabel,
-            MsoTriState Link,
-            TextRange **PasteSpecial /Out/) = 0;
+            PpPasteDataType DataType = wppapi::ppPasteDefault,
+            MsoTriState DisplayAsIcon = wppapi::msoFalse,
+            BSTR IconFileName = 0,
+            int IconIndex = 0,
+            BSTR IconLabel = 0,
+            MsoTriState Link = wppapi::msoFalse,
+            TextRange **PasteSpecial /Out/ = 0) = 0;
 
     };
 };

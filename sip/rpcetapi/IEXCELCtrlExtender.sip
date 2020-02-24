@@ -44,9 +44,9 @@ namespace etapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT CopyPicture(
-            XlPictureAppearance Appearance,
-            XlCopyPictureFormat Format,
-            VARIANT *RHS /Out/) = 0;
+            XlPictureAppearance Appearance = etapi::xlPrinter,
+            XlCopyPictureFormat Format = etapi::xlPicture,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Cut(
             VARIANT *RHS /Out/) = 0;
@@ -173,8 +173,8 @@ namespace etapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT Verb(
-            XlOLEVerb Verb,
-            VARIANT *RHS /Out/) = 0;
+            XlOLEVerb Verb = etapi::xlVerbOpen,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_LinkedCell(
             BSTR *RHS /Out/) = 0;

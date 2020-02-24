@@ -21,9 +21,9 @@ namespace ksoapi
             DiagramNode **Node /Out/) = 0;
 
         virtual HRESULT AddNode(
-            VARIANT Index,
-            MsoDiagramNodeType NodeType,
-            DiagramNode **NewNode /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            MsoDiagramNodeType NodeType = ksoapi::msoDiagramNode,
+            DiagramNode **NewNode /Out/ = 0) = 0;
 
         virtual HRESULT SelectAll() = 0;
 

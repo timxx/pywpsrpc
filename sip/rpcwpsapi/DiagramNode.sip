@@ -44,9 +44,9 @@ namespace wpsapi
             Shape **prop /Out/) = 0;
 
         virtual HRESULT AddNode(
-            MsoRelativeNodePosition Pos,
-            MsoDiagramNodeType NodeType,
-            DiagramNode **prop /Out/) = 0;
+            MsoRelativeNodePosition Pos = (wpsapi::MsoRelativeNodePosition)-1,
+            MsoDiagramNodeType NodeType = wpsapi::msoDiagramNode,
+            DiagramNode **prop /Out/ = 0) = 0;
 
         virtual HRESULT Delete() = 0;
 
@@ -64,8 +64,8 @@ namespace wpsapi
         virtual HRESULT CloneNode(
             VARIANT_BOOL copyChildren,
             DiagramNode **TargetNode /Out/,
-            MsoRelativeNodePosition Pos,
-            DiagramNode **prop /Out/) = 0;
+            MsoRelativeNodePosition Pos = (wpsapi::MsoRelativeNodePosition)-1,
+            DiagramNode **prop /Out/ = 0) = 0;
 
         virtual HRESULT TransferChildren(
             DiagramNode **ReceivingNode /Out/) = 0;

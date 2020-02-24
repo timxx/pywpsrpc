@@ -35,7 +35,7 @@ namespace etapi
             long *RHS /Out/) = 0;
 
         virtual HRESULT CreateSummary(
-            XlSummaryReportType ReportType,
+            XlSummaryReportType ReportType = etapi::xlSummaryPivotTable,
             VARIANT ResultCells = argMissing2(),
             VARIANT *RHS /Out/ = 0) = 0;
 

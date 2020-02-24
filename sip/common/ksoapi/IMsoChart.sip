@@ -124,7 +124,7 @@ namespace ksoapi
             IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT _ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = ksoapi::xlDataLabelsShowNone,
             VARIANT IMsoLegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2()) = 0;
@@ -145,7 +145,7 @@ namespace ksoapi
             IMsoCorners **RHS /Out/) = 0;
 
         virtual HRESULT ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = ksoapi::xlDataLabelsShowNone,
             VARIANT IMsoLegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),
@@ -214,8 +214,8 @@ namespace ksoapi
             VARIANT *pval /Out/ = 0) = 0;
 
         virtual HRESULT get_Walls(
-            VARIANT_BOOL fBackWall,
-            IMsoWalls **ppwalls /Out/) = 0;
+            VARIANT_BOOL fBackWall = VARIANT_FALSE,
+            IMsoWalls **ppwalls /Out/ = 0) = 0;
 
         virtual HRESULT get_Floor(
             IMsoFloor **ppfloor /Out/) = 0;
@@ -260,10 +260,10 @@ namespace ksoapi
             long LocaleID = 0) = 0;
 
         virtual HRESULT CopyPicture(
-            int Appearance,
-            int Format,
-            int Size,
-            long LocaleID) = 0;
+            int Appearance = 0,
+            int Format = 0,
+            int Size = 0,
+            long LocaleID = 0) = 0;
 
         virtual HRESULT get_DataTable(
             IMsoDataTable **RHS /Out/) = 0;

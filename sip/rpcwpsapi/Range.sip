@@ -642,8 +642,8 @@ namespace wpsapi
 
         virtual HRESULT TCSCConverter(
             WdTCSCConverterDirection direction = wpsapi::wdTCSCConverterDirectionAuto,
-            VARIANT_BOOL CommonTerms = 0,
-            VARIANT_BOOL UseVariants = 0) = 0;
+            VARIANT_BOOL CommonTerms = VARIANT_FALSE,
+            VARIANT_BOOL UseVariants = VARIANT_FALSE) = 0;
 
         virtual HRESULT get_LanguageDetected(
             VARIANT_BOOL *prop /Out/) = 0;
@@ -758,8 +758,8 @@ namespace wpsapi
             Editors **prop /Out/) = 0;
 
         virtual HRESULT get_XML(
-            VARIANT_BOOL DataOnly,
-            BSTR *prop /Out/) = 0;
+            VARIANT_BOOL DataOnly = VARIANT_FALSE,
+            BSTR *prop /Out/ = 0) = 0;
 
         virtual HRESULT get_EnhMetaFileBits(
             VARIANT *prop /Out/) = 0;
@@ -825,21 +825,21 @@ namespace wpsapi
 
         virtual HRESULT ImportFragment(
             BSTR FileName,
-            VARIANT_BOOL MatchDestination = 0) = 0;
+            VARIANT_BOOL MatchDestination = VARIANT_FALSE) = 0;
 
         virtual HRESULT ExportAsFixedFormat(
             BSTR OutputFileName,
             WdExportFormat ExportFormat,
-            VARIANT_BOOL OpenAfterExport,
-            WdExportOptimizeFor OptimizeFor,
-            VARIANT_BOOL ExportCurrentPage,
-            WdExportItem Item,
-            VARIANT_BOOL IncludeDocProps,
-            VARIANT_BOOL KeepIRM,
-            WdExportCreateBookmarks CreateBookmarks,
-            VARIANT_BOOL DocStructureTags,
-            VARIANT_BOOL BitmapMissingFonts,
-            VARIANT_BOOL UseISO19005_1,
+            VARIANT_BOOL OpenAfterExport = VARIANT_FALSE,
+            WdExportOptimizeFor OptimizeFor = wpsapi::wdExportOptimizeForPrint,
+            VARIANT_BOOL ExportCurrentPage = VARIANT_FALSE,
+            WdExportItem Item = wpsapi::wdExportDocumentContent,
+            VARIANT_BOOL IncludeDocProps = VARIANT_FALSE,
+            VARIANT_BOOL KeepIRM = VARIANT_TRUE,
+            WdExportCreateBookmarks CreateBookmarks = wpsapi::wdExportCreateNoBookmarks,
+            VARIANT_BOOL DocStructureTags = VARIANT_TRUE,
+            VARIANT_BOOL BitmapMissingFonts = VARIANT_TRUE,
+            VARIANT_BOOL UseISO19005_1 = VARIANT_FALSE,
             VARIANT *FixedFormatExtClassPtr = argMissing()) = 0;
 
         virtual HRESULT get_Locks(

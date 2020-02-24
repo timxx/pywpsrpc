@@ -24,8 +24,8 @@ namespace wppapi
             AnimationPoint **Item /Out/) = 0;
 
         virtual HRESULT Add(
-            int Index,
-            AnimationPoint **Add /Out/) = 0;
+            int Index = 0,
+            AnimationPoint **Add /Out/ = 0) = 0;
 
         virtual HRESULT get_Smooth(
             MsoTriState *Smooth /Out/) = 0;

@@ -13,7 +13,7 @@ namespace ksoapi
     struct DocumentProperties : public IDispatch /Abstract/
     {
     public:
-        virtual IDispatch * get_Parent() = 0;
+        virtual IDispatch *get_Parent() = 0;
 
         virtual HRESULT get_Item(
             VARIANT Index,

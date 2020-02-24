@@ -109,8 +109,8 @@ namespace wppapi
         virtual HRESULT FollowHyperlink(
             BSTR Address,
             BSTR SubAddress = 0,
-            VARIANT_BOOL NewWindow = 0,
-            VARIANT_BOOL AddHistory = -1,
+            VARIANT_BOOL NewWindow = VARIANT_FALSE,
+            VARIANT_BOOL AddHistory = VARIANT_TRUE,
             BSTR ExtraInfo = 0,
             MsoExtraInfoMethod Method = wppapi::msoMethodGet,
             BSTR HeaderInfo = 0) = 0;
@@ -247,7 +247,7 @@ namespace wppapi
             BSTR Path) = 0;
 
         virtual HRESULT CheckIn(
-            VARIANT_BOOL SaveChanges,
+            VARIANT_BOOL SaveChanges = VARIANT_FALSE,
             VARIANT Comments = argMissing2(),
             VARIANT MakePublic = argMissing2()) = 0;
 
@@ -264,13 +264,13 @@ namespace wppapi
             MsoTriState RemovePersonalInformation) = 0;
 
         virtual HRESULT SendForReview(
-            BSTR Recipients,
-            BSTR Subject,
-            VARIANT_BOOL ShowMessage,
+            BSTR Recipients = 0,
+            BSTR Subject = 0,
+            VARIANT_BOOL ShowMessage = VARIANT_FALSE,
             VARIANT IncludeAttachment = argMissing2()) = 0;
 
         virtual HRESULT ReplyWithChanges(
-            VARIANT_BOOL ShowMessage = -1) = 0;
+            VARIANT_BOOL ShowMessage = VARIANT_TRUE) = 0;
 
         virtual HRESULT EndReview() = 0;
 
@@ -324,7 +324,7 @@ namespace wppapi
         virtual HRESULT SendFaxOverInternet(
             BSTR Recipients = 0,
             BSTR Subject = 0,
-            VARIANT_BOOL ShowMessage = 0) = 0;
+            VARIANT_BOOL ShowMessage = VARIANT_FALSE) = 0;
 
         virtual HRESULT get_DocumentLibraryVersions(
             ksoapi::DocumentLibraryVersions **DocumentLibraryVersions /Out/) = 0;
@@ -357,7 +357,7 @@ namespace wppapi
             PpRemoveDocInfoType Type) = 0;
 
         virtual HRESULT CheckInWithVersion(
-            VARIANT_BOOL SaveChanges,
+            VARIANT_BOOL SaveChanges = VARIANT_FALSE,
             VARIANT Comments = argMissing2(),
             VARIANT MakePublic = argMissing2(),
             VARIANT VersionType = argMissing2()) = 0;
@@ -365,19 +365,19 @@ namespace wppapi
         virtual HRESULT ExportAsFixedFormat(
             BSTR Path,
             PpFixedFormatType FixedFormatType,
-            PpFixedFormatIntent Intent,
-            MsoTriState FrameSlides,
-            PpPrintHandoutOrder HandoutOrder,
-            PpPrintOutputType OutputType,
-            MsoTriState PrintHiddenSlides,
-            PrintRange *PrintRange,
-            PpPrintRangeType RangeType,
-            BSTR SlideShowName,
-            VARIANT_BOOL IncludeDocProperties,
-            VARIANT_BOOL KeepIRMSettings,
-            VARIANT_BOOL DocStructureTags,
-            VARIANT_BOOL BitmapMissingFonts,
-            VARIANT_BOOL UseISO19005_1,
+            PpFixedFormatIntent Intent = wppapi::ppFixedFormatIntentPrint,
+            MsoTriState FrameSlides = wppapi::msoTrue,
+            PpPrintHandoutOrder HandoutOrder = wppapi::ppPrintHandoutVerticalFirst,
+            PpPrintOutputType OutputType = wppapi::ppPrintOutputSlides,
+            MsoTriState PrintHiddenSlides = wppapi::msoFalse,
+            PrintRange *PrintRange = 0,
+            PpPrintRangeType RangeType = wppapi::ppPrintAll,
+            BSTR SlideShowName = 0,
+            VARIANT_BOOL IncludeDocProperties = VARIANT_FALSE,
+            VARIANT_BOOL KeepIRMSettings = VARIANT_TRUE,
+            VARIANT_BOOL DocStructureTags = VARIANT_TRUE,
+            VARIANT_BOOL BitmapMissingFonts = VARIANT_TRUE,
+            VARIANT_BOOL UseISO19005_1 = VARIANT_FALSE,
             VARIANT ExternalExporter = argMissing2()) = 0;
 
         virtual HRESULT get_ServerPolicy(
@@ -417,8 +417,8 @@ namespace wppapi
 
         virtual HRESULT PublishSlides(
             BSTR SlideLibraryUrl,
-            VARIANT_BOOL Overwrite = 0,
-            VARIANT_BOOL UseSlideOrder = 0) = 0;
+            VARIANT_BOOL Overwrite = VARIANT_FALSE,
+            VARIANT_BOOL UseSlideOrder = VARIANT_FALSE) = 0;
 
         virtual HRESULT get_EncryptionProvider(
             BSTR *EncryptionProvider /Out/) = 0;
@@ -483,20 +483,20 @@ namespace wppapi
         virtual HRESULT ExportAsFixedFormat2(
             BSTR Path,
             PpFixedFormatType FixedFormatType,
-            PpFixedFormatIntent Intent,
-            MsoTriState FrameSlides,
-            PpPrintHandoutOrder HandoutOrder,
-            PpPrintOutputType OutputType,
-            MsoTriState PrintHiddenSlides,
-            PrintRange *PrintRange,
-            PpPrintRangeType RangeType,
-            BSTR SlideShowName,
-            VARIANT_BOOL IncludeDocProperties,
-            VARIANT_BOOL KeepIRMSettings,
-            VARIANT_BOOL DocStructureTags,
-            VARIANT_BOOL BitmapMissingFonts,
-            VARIANT_BOOL UseISO19005_1,
-            VARIANT_BOOL IncludeMarkup,
+            PpFixedFormatIntent Intent = wppapi::ppFixedFormatIntentPrint,
+            MsoTriState FrameSlides = wppapi::msoTrue,
+            PpPrintHandoutOrder HandoutOrder = wppapi::ppPrintHandoutVerticalFirst,
+            PpPrintOutputType OutputType = wppapi::ppPrintOutputSlides,
+            MsoTriState PrintHiddenSlides = wppapi::msoFalse,
+            PrintRange *PrintRange = 0,
+            PpPrintRangeType RangeType = wppapi::ppPrintAll,
+            BSTR SlideShowName = 0,
+            VARIANT_BOOL IncludeDocProperties = VARIANT_FALSE,
+            VARIANT_BOOL KeepIRMSettings = VARIANT_TRUE,
+            VARIANT_BOOL DocStructureTags = VARIANT_TRUE,
+            VARIANT_BOOL BitmapMissingFonts = VARIANT_TRUE,
+            VARIANT_BOOL UseISO19005_1 = VARIANT_FALSE,
+            VARIANT_BOOL IncludeMarkup = VARIANT_FALSE,
             VARIANT ExternalExporter = argMissing2()) = 0;
 
         virtual HRESULT get_Guides(

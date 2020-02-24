@@ -24,8 +24,8 @@ namespace wppapi
             Sequence **Item /Out/) = 0;
 
         virtual HRESULT Add(
-            int Index,
-            Sequence **Add /Out/) = 0;
+            int Index = 0,
+            Sequence **Add /Out/ = 0) = 0;
 
     };
 };

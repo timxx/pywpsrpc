@@ -28,12 +28,12 @@ namespace ksoapi
 
         virtual HRESULT Add(
             IDispatch *Anchor,
-            MsoScriptLocation Location,
-            MsoScriptLanguage Language,
-            BSTR Id,
-            BSTR Extended,
-            BSTR ScriptText,
-            Script **Add /Out/) = 0;
+            MsoScriptLocation Location = ksoapi::msoScriptLocationInHead,
+            MsoScriptLanguage Language = ksoapi::msoScriptLanguageVisualBasic,
+            BSTR Id = 0,
+            BSTR Extended = 0,
+            BSTR ScriptText = 0,
+            Script **Add /Out/ = 0) = 0;
 
         virtual HRESULT Delete() = 0;
 

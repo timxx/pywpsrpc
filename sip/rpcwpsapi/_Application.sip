@@ -619,8 +619,8 @@ namespace wpsapi
         virtual HRESULT ToggleKeyboard() = 0;
 
         virtual HRESULT Keyboard(
-            long LangId,
-            long *prop /Out/) = 0;
+            long LangId = 0,
+            long *prop /Out/ = 0) = 0;
 
         virtual HRESULT ProductCode(
             BSTR *prop /Out/) = 0;
@@ -819,41 +819,41 @@ namespace wpsapi
         virtual HRESULT CompareDocuments(
             Document *OriginalDocument,
             Document *RevisedDocument,
-            WdCompareDestination Destination,
-            WdGranularity Granularity,
-            VARIANT_BOOL CompareFormatting,
-            VARIANT_BOOL CompareCaseChanges,
-            VARIANT_BOOL CompareWhitespace,
-            VARIANT_BOOL CompareTables,
-            VARIANT_BOOL CompareHeaders,
-            VARIANT_BOOL CompareFootnotes,
-            VARIANT_BOOL CompareTextboxes,
-            VARIANT_BOOL CompareFields,
-            VARIANT_BOOL CompareComments,
-            VARIANT_BOOL CompareMoves,
-            BSTR RevisedAuthor,
-            VARIANT_BOOL IgnoreAllComparisonWarnings,
-            Document **prop /Out/) = 0;
+            WdCompareDestination Destination = wpsapi::wdCompareDestinationOriginal,
+            WdGranularity Granularity = wpsapi::wdGranularityCharLevel,
+            VARIANT_BOOL CompareFormatting = VARIANT_FALSE,
+            VARIANT_BOOL CompareCaseChanges = VARIANT_FALSE,
+            VARIANT_BOOL CompareWhitespace = VARIANT_FALSE,
+            VARIANT_BOOL CompareTables = VARIANT_FALSE,
+            VARIANT_BOOL CompareHeaders = VARIANT_FALSE,
+            VARIANT_BOOL CompareFootnotes = VARIANT_FALSE,
+            VARIANT_BOOL CompareTextboxes = VARIANT_FALSE,
+            VARIANT_BOOL CompareFields = VARIANT_FALSE,
+            VARIANT_BOOL CompareComments = VARIANT_FALSE,
+            VARIANT_BOOL CompareMoves = VARIANT_FALSE,
+            BSTR RevisedAuthor = 0,
+            VARIANT_BOOL IgnoreAllComparisonWarnings = VARIANT_FALSE,
+            Document **prop /Out/ = 0) = 0;
 
         virtual HRESULT MergeDocuments(
             Document *OriginalDocument,
             Document *RevisedDocument,
-            WdCompareDestination Destination,
-            WdGranularity Granularity,
-            VARIANT_BOOL CompareFormatting,
-            VARIANT_BOOL CompareCaseChanges,
-            VARIANT_BOOL CompareWhitespace,
-            VARIANT_BOOL CompareTables,
-            VARIANT_BOOL CompareHeaders,
-            VARIANT_BOOL CompareFootnotes,
-            VARIANT_BOOL CompareTextboxes,
-            VARIANT_BOOL CompareFields,
-            VARIANT_BOOL CompareComments,
-            VARIANT_BOOL CompareMoves,
-            BSTR OriginalAuthor,
-            BSTR RevisedAuthor,
-            WdMergeFormatFrom FormatFrom,
-            Document **prop /Out/) = 0;
+            WdCompareDestination Destination = wpsapi::wdCompareDestinationOriginal,
+            WdGranularity Granularity = wpsapi::wdGranularityCharLevel,
+            VARIANT_BOOL CompareFormatting = VARIANT_FALSE,
+            VARIANT_BOOL CompareCaseChanges = VARIANT_FALSE,
+            VARIANT_BOOL CompareWhitespace = VARIANT_FALSE,
+            VARIANT_BOOL CompareTables = VARIANT_FALSE,
+            VARIANT_BOOL CompareHeaders = VARIANT_FALSE,
+            VARIANT_BOOL CompareFootnotes = VARIANT_FALSE,
+            VARIANT_BOOL CompareTextboxes = VARIANT_FALSE,
+            VARIANT_BOOL CompareFields = VARIANT_FALSE,
+            VARIANT_BOOL CompareComments = VARIANT_FALSE,
+            VARIANT_BOOL CompareMoves = VARIANT_FALSE,
+            BSTR OriginalAuthor = 0,
+            BSTR RevisedAuthor = 0,
+            WdMergeFormatFrom FormatFrom = wpsapi::wdMergeFormatFromOriginal,
+            Document **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_Bibliography(
             Bibliography **prop /Out/) = 0;

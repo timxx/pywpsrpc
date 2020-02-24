@@ -18,8 +18,8 @@ namespace ksoapi
 
         virtual HRESULT get_Item(
             XlAxisType Type,
-            XlAxisGroup AxisGroup,
-            IMsoAxis **RHS /Out/) = 0;
+            XlAxisGroup AxisGroup = ksoapi::xlPrimary,
+            IMsoAxis **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get__NewEnum(
             IUnknown **pval /Out/) = 0;
@@ -32,8 +32,8 @@ namespace ksoapi
 
         virtual HRESULT get__Default(
             XlAxisType Type,
-            XlAxisGroup AxisGroup,
-            IMsoAxis **RHS /Out/) = 0;
+            XlAxisGroup AxisGroup = ksoapi::xlPrimary,
+            IMsoAxis **RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Parent(
             IDispatch **RHS /Out/) = 0;

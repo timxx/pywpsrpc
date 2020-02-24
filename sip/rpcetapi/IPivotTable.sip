@@ -345,7 +345,7 @@ namespace etapi
 
         virtual HRESULT PivotSelect(
             BSTR Name,
-            XlPTSelectionMode Mode,
+            XlPTSelectionMode Mode = etapi::xlLabelOnly,
             VARIANT UseStandardName = argMissing2()) = 0;
 
         virtual HRESULT get_PivotSelectionStandard(

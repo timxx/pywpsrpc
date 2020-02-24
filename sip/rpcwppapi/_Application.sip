@@ -173,13 +173,13 @@ namespace wppapi
 
         virtual HRESULT GetOptionFlag(
             long Option,
-            VARIANT_BOOL Persist,
-            VARIANT_BOOL *GetOptionFlag /Out/) = 0;
+            VARIANT_BOOL Persist = VARIANT_FALSE,
+            VARIANT_BOOL *GetOptionFlag /Out/ = 0) = 0;
 
         virtual HRESULT SetOptionFlag(
             long Option,
             VARIANT_BOOL State,
-            VARIANT_BOOL Persist = 0) = 0;
+            VARIANT_BOOL Persist = VARIANT_FALSE) = 0;
 
         virtual HRESULT get_FileDialog(
             MsoFileDialogType Type,

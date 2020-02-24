@@ -29,9 +29,9 @@ namespace etapi
         virtual void _Dummy5() = 0;
 
         virtual HRESULT CopyPicture(
-            XlPictureAppearance Appearance,
-            XlCopyPictureFormat Format,
-            VARIANT *RHS /Out/) = 0;
+            XlPictureAppearance Appearance = etapi::xlPrinter,
+            XlCopyPictureFormat Format = etapi::xlPicture,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual void _Dummy7() = 0;
 

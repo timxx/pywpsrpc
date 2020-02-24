@@ -21,9 +21,9 @@ namespace etapi
             DiagramNode **ppNode /Out/) = 0;
 
         virtual HRESULT AddNode(
-            VARIANT Index,
-            MsoDiagramNodeType nodeType,
-            DiagramNode **ppNewNode /Out/) = 0;
+            VARIANT Index = argMissing2(),
+            MsoDiagramNodeType nodeType = etapi::msoDiagramNode,
+            DiagramNode **ppNewNode /Out/ = 0) = 0;
 
         virtual HRESULT SelectAll() = 0;
 

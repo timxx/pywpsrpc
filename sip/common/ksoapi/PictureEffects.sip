@@ -25,8 +25,8 @@ namespace ksoapi
 
         virtual HRESULT Insert(
             MsoPictureEffectType EffectType,
-            int Position,
-            PictureEffect **Effect /Out/) = 0;
+            int Position = 0,
+            PictureEffect **Effect /Out/ = 0) = 0;
 
         virtual HRESULT Delete(
             int Index = -1) = 0;

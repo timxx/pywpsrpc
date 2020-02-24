@@ -43,8 +43,8 @@ namespace etapi
 
         virtual HRESULT FillAcrossSheets(
             Range *Range,
-            XlFillWith Type,
-            long lcid) = 0;
+            XlFillWith Type = etapi::xlFillWithAll,
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Item(
             VARIANT Index,

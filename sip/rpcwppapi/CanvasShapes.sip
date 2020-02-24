@@ -73,9 +73,9 @@ namespace wppapi
             MsoTriState SaveWithDocument,
             single Left,
             single Top,
-            single Width,
-            single Height,
-            Shape **Picture /Out/) = 0;
+            single Width = 0,
+            single Height = 0,
+            Shape **Picture /Out/ = 0) = 0;
 
         virtual HRESULT AddPolyline(
             VARIANT SafeArrayOfPoints,

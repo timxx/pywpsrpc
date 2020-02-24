@@ -28,11 +28,11 @@ namespace ksoapi
             MsoFilterComparison Comparison,
             MsoFilterConjunction Conjunction,
             BSTR bstrCompareTo = 0,
-            VARIANT_BOOL DeferUpdate = 0) = 0;
+            VARIANT_BOOL DeferUpdate = VARIANT_FALSE) = 0;
 
         virtual HRESULT Delete(
             long Index,
-            VARIANT_BOOL DeferUpdate = 0) = 0;
+            VARIANT_BOOL DeferUpdate = VARIANT_FALSE) = 0;
 
     };
 };

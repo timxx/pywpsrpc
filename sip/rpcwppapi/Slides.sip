@@ -35,17 +35,17 @@ namespace wppapi
         virtual HRESULT InsertFromFile(
             BSTR FileName,
             int Index,
-            int SlideStart,
-            int SlideEnd,
-            int *FromFile /Out/) = 0;
+            int SlideStart = 0,
+            int SlideEnd = 0,
+            int *FromFile /Out/ = 0) = 0;
 
         virtual HRESULT Range(
             VARIANT Index = argMissing2(),
             SlideRange **Range /Out/ = 0) = 0;
 
         virtual HRESULT Paste(
-            int Index,
-            SlideRange **Paste /Out/) = 0;
+            int Index = 0,
+            SlideRange **Paste /Out/ = 0) = 0;
 
         virtual HRESULT AddSlide(
             int Index,

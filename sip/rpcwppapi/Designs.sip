@@ -25,18 +25,18 @@ namespace wppapi
 
         virtual HRESULT Add(
             BSTR designName,
-            int Index,
-            Design **Add /Out/) = 0;
+            int Index = 0,
+            Design **Add /Out/ = 0) = 0;
 
         virtual HRESULT Load(
             BSTR TemplateName,
-            int Index,
-            Design **Load /Out/) = 0;
+            int Index = 0,
+            Design **Load /Out/ = 0) = 0;
 
         virtual HRESULT Clone(
             Design *pOriginal,
-            int Index,
-            Design **Clone /Out/) = 0;
+            int Index = 0,
+            Design **Clone /Out/ = 0) = 0;
 
     };
 };

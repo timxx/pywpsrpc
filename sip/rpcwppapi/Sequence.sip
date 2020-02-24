@@ -26,15 +26,15 @@ namespace wppapi
         virtual HRESULT AddEffect(
             Shape *Shape,
             MsoAnimEffect effectId,
-            MsoAnimateByLevel Level,
-            MsoAnimTriggerType trigger,
-            int Index,
-            Effect **Effect /Out/) = 0;
+            MsoAnimateByLevel Level = wppapi::msoAnimateLevelNone,
+            MsoAnimTriggerType trigger = wppapi::msoAnimTriggerNone,
+            int Index = 0,
+            Effect **Effect /Out/ = 0) = 0;
 
         virtual HRESULT Clone(
             Effect *effect,
-            int Index,
-            Effect **Clone /Out/) = 0;
+            int Index = 0,
+            Effect **Clone /Out/ = 0) = 0;
 
         virtual HRESULT FindFirstAnimationFor(
             Shape *Shape,
@@ -52,9 +52,9 @@ namespace wppapi
         virtual HRESULT ConvertToAfterEffect(
             Effect *effect,
             MsoAnimAfterEffect After,
-            MsoRGBType DimColor,
-            PpColorSchemeIndex DimSchemeColor,
-            Effect **ConvertToAfterEffect /Out/) = 0;
+            MsoRGBType DimColor = 0,
+            PpColorSchemeIndex DimSchemeColor = wppapi::ppSchemeColorMixed,
+            Effect **ConvertToAfterEffect /Out/ = 0) = 0;
 
         virtual HRESULT ConvertToAnimateBackground(
             Effect *effect,
@@ -76,9 +76,9 @@ namespace wppapi
             MsoAnimEffect effectId,
             MsoAnimTriggerType trigger,
             Shape *pTriggerShape,
-            BSTR bookmark,
-            MsoAnimateByLevel Level,
-            Effect **TriggerEffect /Out/) = 0;
+            BSTR bookmark = 0,
+            MsoAnimateByLevel Level = wppapi::msoAnimateLevelNone,
+            Effect **TriggerEffect /Out/ = 0) = 0;
 
     };
 };

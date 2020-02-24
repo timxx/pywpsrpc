@@ -41,7 +41,7 @@ namespace wpsapi
 
         virtual HRESULT InstallManifest(
             BSTR Path,
-            VARIANT_BOOL InstallForAllUsers = 0) = 0;
+            VARIANT_BOOL InstallForAllUsers = VARIANT_FALSE) = 0;
 
     };
 };

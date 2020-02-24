@@ -262,7 +262,7 @@ namespace wpsapi
             LeaderLines **prop /Out/) = 0;
 
         virtual HRESULT ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = wpsapi::xlDataLabelsShowNone,
             VARIANT LegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),

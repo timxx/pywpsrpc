@@ -123,7 +123,7 @@ namespace wpsapi
             Corners **prop /Out/) = 0;
 
         virtual HRESULT ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = wpsapi::xlDataLabelsShowNone,
             VARIANT LegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),
@@ -182,7 +182,7 @@ namespace wpsapi
 
         virtual HRESULT Axes(
             VARIANT Type = argMissing2(),
-            XlAxisGroup AxisGroup = wpsapi:: xlPrimary,
+            XlAxisGroup AxisGroup = wpsapi::xlPrimary,
             long lcid = 0,
             IDispatch **prop /Out/ = 0) = 0;
 
@@ -252,10 +252,10 @@ namespace wpsapi
             long lcid = 0) = 0;
 
         virtual HRESULT CopyPicture(
-            XlPictureAppearance Appearance,
-            XlCopyPictureFormat Format,
-            XlPictureAppearance Size,
-            long lcid) = 0;
+            XlPictureAppearance Appearance = wpsapi::xlPrinter,
+            XlCopyPictureFormat Format = wpsapi::xlPicture,
+            XlPictureAppearance Size = wpsapi::xlPrinter,
+            long lcid = 0) = 0;
 
         virtual HRESULT get_DataTable(
             DataTable **prop /Out/) = 0;

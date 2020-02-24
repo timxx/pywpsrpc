@@ -69,8 +69,8 @@ namespace wppapi
         virtual HRESULT Close() = 0;
 
         virtual HRESULT Edit(
-            BSTR ModifyPassword,
-            Presentation **Edit /Out/) = 0;
+            BSTR ModifyPassword = 0,
+            Presentation **Edit /Out/ = 0) = 0;
 
         virtual HRESULT get_HWND(
             long *HWND /Out/) = 0;

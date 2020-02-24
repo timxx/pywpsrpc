@@ -77,8 +77,8 @@ namespace etapi
 
         virtual HRESULT AutoFill(
             Range *Destination,
-            XlAutoFillType Type,
-            VARIANT *RHS /Out/) = 0;
+            XlAutoFillType Type = etapi::xlFillDefault,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT AutoFilter(
             VARIANT Field = argMissing2(),
@@ -92,7 +92,7 @@ namespace etapi
             VARIANT *RHS /Out/) = 0;
 
         virtual HRESULT AutoFormat(
-            XlRangeAutoFormat Format,
+            XlRangeAutoFormat Format = etapi::xlRangeAutoFormatNone,
             VARIANT Number = argMissing2(),
             VARIANT Font = argMissing2(),
             VARIANT Alignment = argMissing2(),
@@ -182,9 +182,9 @@ namespace etapi
             long *RHS /Out/ = 0) = 0;
 
         virtual HRESULT CopyPicture(
-            XlPictureAppearance Appearance,
-            XlCopyPictureFormat Format,
-            VARIANT *RHS /Out/) = 0;
+            XlPictureAppearance Appearance = etapi::xlPrinter,
+            XlCopyPictureFormat Format = etapi::xlPicture,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;
@@ -518,8 +518,8 @@ namespace etapi
             VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT _PasteSpecial(
-            XlPasteType Paste,
-            XlPasteSpecialOperation Operation,
+            XlPasteType Paste = etapi::xlPasteAll,
+            XlPasteSpecialOperation Operation = etapi::xlPasteSpecialOperationNone,
             VARIANT SkipBlanks = argMissing2(),
             VARIANT Transpose = argMissing2(),
             VARIANT *RHS /Out/ = 0) = 0;
@@ -680,7 +680,7 @@ namespace etapi
             VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT SortSpecial(
-            XlSortMethod SortMethod,
+            XlSortMethod SortMethod = etapi::xlPinYin,
             VARIANT Key1 = argMissing2(),
             XlSortOrder Order1 = etapi::xlAscending,
             VARIANT Type = argMissing2(),
@@ -713,8 +713,8 @@ namespace etapi
 
         virtual HRESULT SubscribeTo(
             BSTR Edition,
-            XlSubscribeToFormat Format,
-            VARIANT *RHS /Out/) = 0;
+            XlSubscribeToFormat Format = etapi::xlSubscribeToPicture,
+            VARIANT *RHS /Out/ = 0) = 0;
 
         virtual HRESULT Subtotal(
             long GroupBy,
@@ -872,8 +872,8 @@ namespace etapi
             VARIANT SpeakFormulas = argMissing2()) = 0;
 
         virtual HRESULT PasteSpecial(
-            XlPasteType Paste,
-            XlPasteSpecialOperation Operation,
+            XlPasteType Paste = etapi::xlPasteAll,
+            XlPasteSpecialOperation Operation = etapi::xlPasteSpecialOperationNone,
             VARIANT SkipBlanks = argMissing2(),
             VARIANT Transpose = argMissing2(),
             VARIANT *RHS /Out/ = 0) = 0;

@@ -23,7 +23,7 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT _Add(
-            XlListObjectSourceType SourceType,
+            XlListObjectSourceType SourceType = etapi::xlSrcExternal,
             VARIANT Source = argMissing2(),
             VARIANT LinkSource = argMissing2(),
             XlYesNoGuess XlListObjectHasHeaders = etapi::xlNo,
@@ -45,7 +45,7 @@ namespace etapi
             long *RHS /Out/) = 0;
 
         virtual HRESULT Add(
-            XlListObjectSourceType SourceType,
+            XlListObjectSourceType SourceType = etapi::xlSrcExternal,
             VARIANT Source = argMissing2(),
             VARIANT LinkSource = argMissing2(),
             XlYesNoGuess XlListObjectHasHeaders = etapi::xlNo,

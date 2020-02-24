@@ -171,7 +171,7 @@ namespace wpsapi
             Shape **prop /Out/ = 0) = 0;
 
         virtual HRESULT AddChart(
-            XlChartType Type,
+            XlChartType Type = wpsapi::xlSuggestedChart,
             VARIANT *Left = argMissing(),
             VARIANT *Top = argMissing(),
             VARIANT *Width = argMissing(),
@@ -202,8 +202,8 @@ namespace wpsapi
             Shape **prop /Out/ = 0) = 0;
 
         virtual HRESULT AddChart2(
-            long Style,
-            XlChartType Type,
+            long Style = 0,
+            XlChartType Type = wpsapi::xlSuggestedChart,
             VARIANT *Left = argMissing(),
             VARIANT *Top = argMissing(),
             VARIANT *Width = argMissing(),

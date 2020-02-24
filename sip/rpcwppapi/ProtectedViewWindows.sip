@@ -25,9 +25,9 @@ namespace wppapi
 
         virtual HRESULT Open(
             BSTR FileName,
-            BSTR ReadPassword,
-            MsoTriState OpenAndRepair,
-            ProtectedViewWindow **Open /Out/) = 0;
+            BSTR ReadPassword = 0,
+            MsoTriState OpenAndRepair = wppapi::msoFalse,
+            ProtectedViewWindow **Open /Out/ = 0) = 0;
 
     };
 };

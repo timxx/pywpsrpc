@@ -20,8 +20,8 @@ namespace ksoapi
 
         virtual HRESULT FormatDate(
             DATE date,
-            BSTR pFormat,
-            BSTR *pDateString /Out/) = 0;
+            BSTR pFormat = 0,
+            BSTR *pDateString /Out/ = 0) = 0;
 
         virtual HRESULT ShowHelp(
             VARIANT *pvarId = argMissing()) = 0;

@@ -18,8 +18,8 @@ namespace wpsapi
 
         virtual HRESULT Item(
             XlAxisType Type,
-            XlAxisGroup AxisGroup,
-            Axis **prop /Out/) = 0;
+            XlAxisGroup AxisGroup = wpsapi::xlPrimary,
+            Axis **prop /Out/ = 0) = 0;
 
         virtual HRESULT _NewEnum(
             IUnknown **prop /Out/) = 0;
@@ -32,8 +32,8 @@ namespace wpsapi
 
         virtual HRESULT _Default(
             XlAxisType Type,
-            XlAxisGroup AxisGroup,
-            Axis **prop /Out/) = 0;
+            XlAxisGroup AxisGroup = wpsapi::xlPrimary,
+            Axis **prop /Out/ = 0) = 0;
 
         virtual HRESULT get_Parent(
             IDispatch **prop /Out/) = 0;

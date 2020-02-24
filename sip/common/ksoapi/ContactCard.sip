@@ -22,7 +22,7 @@ namespace ksoapi
             long RectangleTop,
             long RectangleBottom,
             long HorizontalPosition,
-            VARIANT_BOOL ShowWithDelay = 0) = 0;
+            VARIANT_BOOL ShowWithDelay = VARIANT_FALSE) = 0;
 
     };
 };

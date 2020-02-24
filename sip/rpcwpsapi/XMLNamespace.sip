@@ -26,31 +26,31 @@ namespace wpsapi
             BSTR *prop /Out/) = 0;
 
         virtual HRESULT get_Location(
-            VARIANT_BOOL AllUsers,
-            BSTR *prop /Out/) = 0;
+            VARIANT_BOOL AllUsers = VARIANT_FALSE,
+            BSTR *prop /Out/ = 0) = 0;
 
         virtual HRESULT put_Location(
-            VARIANT_BOOL AllUsers,
-            BSTR prop) = 0;
+            VARIANT_BOOL AllUsers = VARIANT_FALSE,
+            BSTR prop = 0) = 0;
 
         virtual HRESULT get_Alias(
-            VARIANT_BOOL AllUsers,
-            BSTR *prop /Out/) = 0;
+            VARIANT_BOOL AllUsers = VARIANT_FALSE,
+            BSTR *prop /Out/ = 0) = 0;
 
         virtual HRESULT put_Alias(
-            VARIANT_BOOL AllUsers,
-            BSTR prop) = 0;
+            VARIANT_BOOL AllUsers = VARIANT_FALSE,
+            BSTR prop = 0) = 0;
 
         virtual HRESULT get_XSLTransforms(
             XSLTransforms **prop /Out/) = 0;
 
         virtual HRESULT get_DefaultTransform(
-            VARIANT_BOOL AllUsers,
-            XSLTransform **prop /Out/) = 0;
+            VARIANT_BOOL AllUsers = VARIANT_FALSE,
+            XSLTransform **prop /Out/ = 0) = 0;
 
         virtual HRESULT put_DefaultTransform(
-            VARIANT_BOOL AllUsers,
-            XSLTransform *prop) = 0;
+            VARIANT_BOOL AllUsers = VARIANT_FALSE,
+            XSLTransform *prop = 0) = 0;
 
         virtual HRESULT AttachToDocument(
             VARIANT *Document) = 0;

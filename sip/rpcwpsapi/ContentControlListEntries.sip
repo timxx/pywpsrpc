@@ -36,9 +36,9 @@ namespace wpsapi
 
         virtual HRESULT Add(
             BSTR Text,
-            BSTR Value,
-            long Index,
-            ContentControlListEntry **prop /Out/) = 0;
+            BSTR Value = 0,
+            long Index = 0,
+            ContentControlListEntry **prop /Out/ = 0) = 0;
 
     };
 };

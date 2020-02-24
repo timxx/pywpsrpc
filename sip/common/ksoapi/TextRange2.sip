@@ -33,34 +33,34 @@ namespace ksoapi
             IDispatch **Parent /Out/) = 0;
 
         virtual HRESULT get_Paragraphs(
-            int Start,
-            int Length,
-            TextRange2 **Range /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange2 **Range /Out/ = 0) = 0;
 
         virtual HRESULT get_Sentences(
-            int Start,
-            int Length,
-            TextRange2 **Range /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange2 **Range /Out/ = 0) = 0;
 
         virtual HRESULT get_Words(
-            int Start,
-            int Length,
-            TextRange2 **Range /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange2 **Range /Out/ = 0) = 0;
 
         virtual HRESULT get_Characters(
-            int Start,
-            int Length,
-            TextRange2 **Range /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange2 **Range /Out/ = 0) = 0;
 
         virtual HRESULT get_Lines(
-            int Start,
-            int Length,
-            TextRange2 **Range /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange2 **Range /Out/ = 0) = 0;
 
         virtual HRESULT get_Runs(
-            int Start,
-            int Length,
-            TextRange2 **Range /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange2 **Range /Out/ = 0) = 0;
 
         virtual HRESULT get_ParagraphFormat(
             ParagraphFormat2 **Format /Out/) = 0;
@@ -90,18 +90,18 @@ namespace ksoapi
             TextRange2 **TrimText /Out/) = 0;
 
         virtual HRESULT InsertAfter(
-            BSTR NewText,
-            TextRange2 **TextRange /Out/) = 0;
+            BSTR NewText = 0,
+            TextRange2 **TextRange /Out/ = 0) = 0;
 
         virtual HRESULT InsertBefore(
-            BSTR NewText,
-            TextRange2 **TextRange /Out/) = 0;
+            BSTR NewText = 0,
+            TextRange2 **TextRange /Out/ = 0) = 0;
 
         virtual HRESULT InsertSymbol(
             BSTR FontName,
             int CharNumber,
-            MsoTriState Unicode,
-            TextRange2 **TextRange /Out/) = 0;
+            MsoTriState Unicode = ksoapi::msoTrue,
+            TextRange2 **TextRange /Out/ = 0) = 0;
 
         virtual HRESULT Select() = 0;
 
@@ -127,18 +127,18 @@ namespace ksoapi
 
         virtual HRESULT Find(
             BSTR FindWhat,
-            int After,
-            MsoTriState MatchCase,
-            MsoTriState WholeWords,
-            TextRange2 **TextRange /Out/) = 0;
+            int After = 0,
+            MsoTriState MatchCase = ksoapi::msoTrue,
+            MsoTriState WholeWords = ksoapi::msoTrue,
+            TextRange2 **TextRange /Out/ = 0) = 0;
 
         virtual HRESULT Replace(
             BSTR FindWhat,
             BSTR ReplaceWhat,
-            int After,
-            MsoTriState MatchCase,
-            MsoTriState WholeWords,
-            TextRange2 **TextRange /Out/) = 0;
+            int After = 0,
+            MsoTriState MatchCase = ksoapi::msoTrue,
+            MsoTriState WholeWords = ksoapi::msoTrue,
+            TextRange2 **TextRange /Out/ = 0) = 0;
 
         virtual HRESULT RotatedBounds(
             single *X1 /Out/,
@@ -161,15 +161,15 @@ namespace ksoapi
         virtual HRESULT LtrRun() = 0;
 
         virtual HRESULT get_MathZones(
-            int Start,
-            int Length,
-            TextRange2 **Range /Out/) = 0;
+            int Start = 0,
+            int Length = 0,
+            TextRange2 **Range /Out/ = 0) = 0;
 
         virtual HRESULT InsertChartField(
             MsoChartFieldType ChartFieldType,
-            BSTR Formula,
-            int Position,
-            TextRange2 **Range /Out/) = 0;
+            BSTR Formula = 0,
+            int Position = 0,
+            TextRange2 **Range /Out/ = 0) = 0;
 
     };
 };

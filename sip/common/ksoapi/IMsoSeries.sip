@@ -17,7 +17,7 @@ namespace ksoapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT _ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = ksoapi::xlDataLabelsShowNone,
             VARIANT IMsoLegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),
@@ -269,7 +269,7 @@ namespace ksoapi
             IMsoLeaderLines **RHS /Out/) = 0;
 
         virtual HRESULT ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = ksoapi::xlDataLabelsShowNone,
             VARIANT IMsoLegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),

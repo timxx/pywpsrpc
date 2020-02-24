@@ -74,7 +74,7 @@ namespace wpsapi
             InlineShape **prop /Out/ = 0) = 0;
 
         virtual HRESULT AddChart(
-            XlChartType Type,
+            XlChartType Type = wpsapi::xlSuggestedChart,
             VARIANT *Range = argMissing(),
             InlineShape **prop /Out/ = 0) = 0;
 
@@ -93,8 +93,8 @@ namespace wpsapi
             InlineShape **prop /Out/ = 0) = 0;
 
         virtual HRESULT AddChart2(
-            long Style,
-            XlChartType Type,
+            long Style = 0,
+            XlChartType Type = wpsapi::xlSuggestedChart,
             VARIANT *Range = argMissing(),
             VARIANT *NewLayout = argMissing(),
             InlineShape **prop /Out/ = 0) = 0;

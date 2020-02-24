@@ -152,8 +152,8 @@ namespace etapi
             VARIANT Arg28 = argMissing2(),
             VARIANT Arg29 = argMissing2(),
             VARIANT Arg30 = argMissing2(),
-            long lcid,
-            Range **RHS /Out/) = 0;
+            long lcid = 0,
+            Range **RHS /Out/ = 0) = 0;
 */
         virtual HRESULT get_MenuBars(
             MenuBars **RHS /Out/) = 0;
@@ -238,8 +238,8 @@ namespace etapi
             VARIANT Arg28 = argMissing2(),
             VARIANT Arg29 = argMissing2(),
             VARIANT Arg30 = argMissing2(),
-            long lcid,
-            VARIANT *RHS /Out/) = 0;
+            long lcid = 0,
+            VARIANT *RHS /Out/ = 0) = 0;
 */
         virtual HRESULT get_Selection(
             long lcid,
@@ -295,8 +295,8 @@ namespace etapi
             VARIANT Arg28 = argMissing2(),
             VARIANT Arg29 = argMissing2(),
             VARIANT Arg30 = argMissing2(),
-            long lcid,
-            Range **RHS /Out/) = 0;
+            long lcid = 0,
+            Range **RHS /Out/ = 0) = 0;
 */
         virtual HRESULT get_Windows(
             Windows **RHS /Out/) = 0;

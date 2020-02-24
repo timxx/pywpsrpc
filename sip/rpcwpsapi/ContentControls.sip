@@ -33,7 +33,7 @@ namespace wpsapi
             ContentControl **prop /Out/) = 0;
 
         virtual HRESULT Add(
-            WdContentControlType Type,
+            WdContentControlType Type = wpsapi::wdContentControlRichText,
             VARIANT *Range = argMissing(),
             ContentControl **prop /Out/ = 0) = 0;
 

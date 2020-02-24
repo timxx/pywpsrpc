@@ -75,8 +75,8 @@ namespace etapi
         virtual HRESULT ChangeLink(
             BSTR Name,
             BSTR NewName,
-            XlLinkType Type,
-            long lcid) = 0;
+            XlLinkType Type = etapi::xlLinkTypeExcelLinks,
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Charts(
             Sheets **RHS /Out/) = 0;

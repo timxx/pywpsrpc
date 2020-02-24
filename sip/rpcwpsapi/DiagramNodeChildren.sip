@@ -40,8 +40,8 @@ namespace wpsapi
 
         virtual HRESULT AddNode(
             VARIANT *Index,
-            MsoDiagramNodeType NodeType,
-            DiagramNode **prop /Out/) = 0;
+            MsoDiagramNodeType NodeType = wpsapi::msoDiagramNode,
+            DiagramNode **prop /Out/ = 0) = 0;
 
         virtual HRESULT SelectAll() = 0;
 

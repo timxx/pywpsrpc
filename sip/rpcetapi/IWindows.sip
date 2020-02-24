@@ -23,7 +23,7 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT Arrange(
-            XlArrangeStyle ArrangeStyle,
+            XlArrangeStyle ArrangeStyle = etapi::xlArrangeStyleCascade,
             VARIANT ActiveWorkbook = argMissing2(),
             VARIANT SyncHorizontal = argMissing2(),
             VARIANT SyncVertical = argMissing2(),

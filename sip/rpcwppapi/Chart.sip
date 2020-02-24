@@ -17,7 +17,7 @@ namespace wppapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = wppapi::xlDataLabelsShowNone,
             VARIANT LegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),
@@ -199,7 +199,7 @@ namespace wppapi
             Application **Application /Out/) = 0;
 
         virtual HRESULT _ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = wppapi::xlDataLabelsShowNone,
             VARIANT LegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),
@@ -252,10 +252,10 @@ namespace wppapi
             long lcid = 0) = 0;
 
         virtual HRESULT CopyPicture(
-            XlPictureAppearance Appearance,
-            XlCopyPictureFormat Format,
-            XlPictureAppearance Size,
-            long LocaleID) = 0;
+            XlPictureAppearance Appearance = wppapi::xlPrinter,
+            XlCopyPictureFormat Format = wppapi::xlPicture,
+            XlPictureAppearance Size = wppapi::xlPrinter,
+            long LocaleID = 0) = 0;
 
         virtual HRESULT get_Corners(
             long lcid,

@@ -166,8 +166,8 @@ namespace wppapi
 
         virtual HRESULT PublishSlides(
             BSTR SlideLibraryUrl,
-            VARIANT_BOOL Overwrite = 0,
-            VARIANT_BOOL UseSlideOrder = 0) = 0;
+            VARIANT_BOOL Overwrite = VARIANT_FALSE,
+            VARIANT_BOOL UseSlideOrder = VARIANT_FALSE) = 0;
 
         virtual HRESULT MoveToSectionStart(
             int toSection) = 0;

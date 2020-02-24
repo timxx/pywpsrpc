@@ -14,7 +14,7 @@ namespace ksoapi
     {
     public:
         virtual HRESULT Close(
-            VARIANT_BOOL ApplyWebComponentChanges = 0) = 0;
+            VARIANT_BOOL ApplyWebComponentChanges = VARIANT_FALSE) = 0;
 
         virtual HRESULT AddTrustedDomain(
             BSTR Domain) = 0;

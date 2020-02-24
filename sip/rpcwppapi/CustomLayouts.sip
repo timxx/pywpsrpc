@@ -28,8 +28,8 @@ namespace wppapi
             CustomLayout **Add /Out/) = 0;
 
         virtual HRESULT Paste(
-            int Index,
-            CustomLayout **Paste /Out/) = 0;
+            int Index = 0,
+            CustomLayout **Paste /Out/ = 0) = 0;
 
     };
 };

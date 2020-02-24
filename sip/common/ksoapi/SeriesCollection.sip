@@ -18,7 +18,7 @@ namespace ksoapi
 
         virtual HRESULT Add(
             VARIANT Source,
-            XlRowCol Rowcol,
+            XlRowCol Rowcol = ksoapi::xlColumns,
             VARIANT SeriesLabels = argMissing2(),
             VARIANT CategoryLabels = argMissing2(),
             VARIANT Replace = argMissing2(),
@@ -41,7 +41,7 @@ namespace ksoapi
             IUnknown **RHS /Out/) = 0;
 
         virtual HRESULT Paste(
-            XlRowCol Rowcol,
+            XlRowCol Rowcol = ksoapi::xlColumns,
             VARIANT SeriesLabels = argMissing2(),
             VARIANT CategoryLabels = argMissing2(),
             VARIANT Replace = argMissing2(),

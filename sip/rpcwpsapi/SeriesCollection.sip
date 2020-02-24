@@ -18,7 +18,7 @@ namespace wpsapi
 
         virtual HRESULT Add(
             VARIANT Source,
-            XlRowCol Rowcol,
+            XlRowCol Rowcol = wpsapi::xlColumns,
             VARIANT SeriesLabels = argMissing2(),
             VARIANT CategoryLabels = argMissing2(),
             VARIANT Replace = argMissing2(),

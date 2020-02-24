@@ -14,9 +14,9 @@ namespace ksoapi
     {
     public:
         virtual HRESULT AddNode(
-            MsoRelativeNodePosition Pos,
-            MsoDiagramNodeType NodeType,
-            DiagramNode **NewNode /Out/) = 0;
+            MsoRelativeNodePosition Pos = ksoapi::msoBeforeNode,
+            MsoDiagramNodeType NodeType = ksoapi::msoDiagramNode,
+            DiagramNode **NewNode /Out/ = 0) = 0;
 
         virtual HRESULT Delete() = 0;
 
@@ -34,8 +34,8 @@ namespace ksoapi
         virtual HRESULT CloneNode(
             VARIANT_BOOL CopyChildren,
             DiagramNode *TargetNode,
-            MsoRelativeNodePosition Pos,
-            DiagramNode **Node /Out/) = 0;
+            MsoRelativeNodePosition Pos = ksoapi::msoBeforeNode,
+            DiagramNode **Node /Out/ = 0) = 0;
 
         virtual HRESULT TransferChildren(
             DiagramNode *ReceivingNode) = 0;

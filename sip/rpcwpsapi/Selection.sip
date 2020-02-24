@@ -718,8 +718,8 @@ namespace wpsapi
             Editors **prop /Out/) = 0;
 
         virtual HRESULT get_XML(
-            VARIANT_BOOL DataOnly,
-            BSTR *prop /Out/) = 0;
+            VARIANT_BOOL DataOnly = VARIANT_FALSE,
+            BSTR *prop /Out/ = 0) = 0;
 
         virtual HRESULT get_EnhMetaFileBits(
             VARIANT *prop /Out/) = 0;
@@ -771,16 +771,16 @@ namespace wpsapi
         virtual HRESULT ExportAsFixedFormat(
             BSTR OutputFileName,
             WdExportFormat ExportFormat,
-            VARIANT_BOOL OpenAfterExport,
-            WdExportOptimizeFor OptimizeFor,
-            VARIANT_BOOL ExportCurrentPage,
-            WdExportItem Item,
-            VARIANT_BOOL IncludeDocProps,
-            VARIANT_BOOL KeepIRM,
-            WdExportCreateBookmarks CreateBookmarks,
-            VARIANT_BOOL DocStructureTags,
-            VARIANT_BOOL BitmapMissingFonts,
-            VARIANT_BOOL UseISO19005_1,
+            VARIANT_BOOL OpenAfterExport = VARIANT_FALSE,
+            WdExportOptimizeFor OptimizeFor = wpsapi::wdExportOptimizeForPrint,
+            VARIANT_BOOL ExportCurrentPage = VARIANT_FALSE,
+            WdExportItem Item = wpsapi::wdExportDocumentContent,
+            VARIANT_BOOL IncludeDocProps = VARIANT_FALSE,
+            VARIANT_BOOL KeepIRM = VARIANT_TRUE,
+            WdExportCreateBookmarks CreateBookmarks = wpsapi::wdExportCreateNoBookmarks,
+            VARIANT_BOOL DocStructureTags = VARIANT_TRUE,
+            VARIANT_BOOL BitmapMissingFonts = VARIANT_TRUE,
+            VARIANT_BOOL UseISO19005_1 = VARIANT_FALSE,
             VARIANT *FixedFormatExtClassPtr = argMissing()) = 0;
 
         virtual HRESULT ReadingModeGrowFont() = 0;

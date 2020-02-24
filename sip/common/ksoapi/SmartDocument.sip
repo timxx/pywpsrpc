@@ -26,7 +26,7 @@ namespace ksoapi
             BSTR pbstrUrl) = 0;
 
         virtual HRESULT PickSolution(
-            VARIANT_BOOL ConsiderAllSchemas = 0) = 0;
+            VARIANT_BOOL ConsiderAllSchemas = VARIANT_FALSE) = 0;
 
         virtual HRESULT RefreshPane() = 0;
 

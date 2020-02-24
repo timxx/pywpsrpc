@@ -23,7 +23,7 @@ namespace wppapi
             BSTR ServiceID,
             VARIANT *QueryString = argMissing(),
             VARIANT *QueryLanguage = argMissing(),
-            VARIANT_BOOL UseSelection = 0,
+            VARIANT_BOOL UseSelection = VARIANT_FALSE,
             VARIANT_BOOL LaunchQuery = -1) = 0;
 
         virtual HRESULT SetLanguagePair(

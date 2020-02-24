@@ -17,7 +17,7 @@ namespace ksoapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT Add(
-            XlTrendlineType Type,
+            XlTrendlineType Type = ksoapi::xlLinear,
             VARIANT Order = argMissing2(),
             VARIANT Period = argMissing2(),
             VARIANT Forward = argMissing2(),

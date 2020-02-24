@@ -73,9 +73,9 @@ namespace wppapi
             MsoTriState SaveWithDocument,
             single Left,
             single Top,
-            single Width,
-            single Height,
-            Shape **Picture /Out/) = 0;
+            single Width = 0,
+            single Height = 0,
+            Shape **Picture /Out/ = 0) = 0;
 
         virtual HRESULT AddPolyline(
             VARIANT SafeArrayOfPoints,
@@ -133,41 +133,41 @@ namespace wppapi
             Placeholders **Placeholders /Out/) = 0;
 
         virtual HRESULT AddOLEObject(
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            BSTR ClassName,
-            BSTR FileName,
-            MsoTriState DisplayAsIcon,
-            BSTR IconFileName,
-            int IconIndex,
-            BSTR IconLabel,
-            MsoTriState Link,
-            Shape **OLEObject /Out/) = 0;
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            BSTR ClassName = 0,
+            BSTR FileName = 0,
+            MsoTriState DisplayAsIcon = wppapi::msoFalse,
+            BSTR IconFileName = 0,
+            int IconIndex = 0,
+            BSTR IconLabel = 0,
+            MsoTriState Link = wppapi::msoFalse,
+            Shape **OLEObject /Out/ = 0) = 0;
 
         virtual HRESULT AddComment(
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            Shape **Comment /Out/) = 0;
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            Shape **Comment /Out/ = 0) = 0;
 
         virtual HRESULT AddPlaceholder(
             PpPlaceholderType Type,
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            Shape **Placeholder /Out/) = 0;
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            Shape **Placeholder /Out/ = 0) = 0;
 
         virtual HRESULT AddMediaObject(
             BSTR FileName,
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            Shape **MediaObject /Out/) = 0;
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            Shape **MediaObject /Out/ = 0) = 0;
 
         virtual HRESULT Paste(
             ShapeRange **Paste /Out/) = 0;
@@ -175,20 +175,20 @@ namespace wppapi
         virtual HRESULT AddTable(
             int NumRows,
             int NumColumns,
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            Shape **Table /Out/) = 0;
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            Shape **Table /Out/ = 0) = 0;
 
         virtual HRESULT PasteSpecial(
-            PpPasteDataType DataType,
-            MsoTriState DisplayAsIcon,
-            BSTR IconFileName,
-            int IconIndex,
-            BSTR IconLabel,
-            MsoTriState Link,
-            ShapeRange **PasteSpecial /Out/) = 0;
+            PpPasteDataType DataType = wppapi::ppPasteDefault,
+            MsoTriState DisplayAsIcon = wppapi::msoFalse,
+            BSTR IconFileName = 0,
+            int IconIndex = 0,
+            BSTR IconLabel = 0,
+            MsoTriState Link = wppapi::msoFalse,
+            ShapeRange **PasteSpecial /Out/ = 0) = 0;
 
         virtual HRESULT AddDiagram(
             MsoDiagramType Type,
@@ -206,48 +206,48 @@ namespace wppapi
             Shape **Shape /Out/) = 0;
 
         virtual HRESULT AddChart(
-            XlChartType Type,
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            Shape **Chart /Out/) = 0;
+            XlChartType Type = wppapi::xlSuggestedChart,
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            Shape **Chart /Out/ = 0) = 0;
 
         virtual HRESULT AddMediaObject2(
             BSTR FileName,
-            MsoTriState LinkToFile,
-            MsoTriState SaveWithDocument,
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            Shape **MediaObject2 /Out/) = 0;
+            MsoTriState LinkToFile = wppapi::msoFalse,
+            MsoTriState SaveWithDocument = wppapi::msoTrue,
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            Shape **MediaObject2 /Out/ = 0) = 0;
 
         virtual HRESULT AddMediaObjectFromEmbedTag(
             BSTR EmbedTag,
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            Shape **MediaObjectFromEmbedTag /Out/) = 0;
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            Shape **MediaObjectFromEmbedTag /Out/ = 0) = 0;
 
         virtual HRESULT AddSmartArt(
             ksoapi::SmartArtLayout *Layout,
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            Shape **SmartArt /Out/) = 0;
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            Shape **SmartArt /Out/ = 0) = 0;
 
         virtual HRESULT AddChart2(
-            int Style,
-            XlChartType Type,
-            single Left,
-            single Top,
-            single Width,
-            single Height,
-            VARIANT_BOOL NewLayout,
-            Shape **Chart /Out/) = 0;
+            int Style = 0,
+            XlChartType Type = wppapi::xlSuggestedChart,
+            single Left = 0,
+            single Top = 0,
+            single Width = 0,
+            single Height = 0,
+            VARIANT_BOOL NewLayout = VARIANT_FALSE,
+            Shape **Chart /Out/ = 0) = 0;
 
         virtual HRESULT AddPicture2(
             BSTR FileName,
@@ -255,10 +255,10 @@ namespace wppapi
             MsoTriState SaveWithDocument,
             single Left,
             single Top,
-            single Width,
-            single Height,
-            MsoPictureCompress compress,
-            Shape **Picture /Out/) = 0;
+            single Width = 0,
+            single Height = 0,
+            MsoPictureCompress compress = wppapi::msoPictureCompressDocDefault,
+            Shape **Picture /Out/ = 0) = 0;
 
     };
 };

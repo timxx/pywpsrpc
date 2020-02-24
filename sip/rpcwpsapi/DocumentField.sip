@@ -64,7 +64,7 @@ namespace wpsapi
         virtual HRESULT Select() = 0;
 
         virtual HRESULT Delete(
-            VARIANT_BOOL DeleteWithContent = 0) = 0;
+            VARIANT_BOOL DeleteWithContent = VARIANT_FALSE) = 0;
 
     };
 };

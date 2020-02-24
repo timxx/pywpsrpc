@@ -32,9 +32,9 @@ namespace ksoapi
             PickerResults **Results /Out/) = 0;
 
         virtual HRESULT Show(
-            VARIANT_BOOL IsMultiSelect,
-            PickerResults *ExistingResults,
-            PickerResults **Results /Out/) = 0;
+            VARIANT_BOOL IsMultiSelect = VARIANT_FALSE,
+            PickerResults *ExistingResults = 0,
+            PickerResults **Results /Out/ = 0) = 0;
 
         virtual HRESULT Resolve(
             BSTR TokenText,

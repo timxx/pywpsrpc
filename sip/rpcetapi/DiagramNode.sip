@@ -14,9 +14,9 @@ namespace etapi
     {
     public:
         virtual HRESULT AddNode(
-            MsoRelativeNodePosition pos,
-            MsoDiagramNodeType nodeType,
-            DiagramNode **NewNode /Out/) = 0;
+            MsoRelativeNodePosition pos = etapi::msoBeforeNode,
+            MsoDiagramNodeType nodeType = etapi::msoDiagramNode,
+            DiagramNode **NewNode /Out/ = 0) = 0;
 
         virtual HRESULT Delete() = 0;
 
@@ -34,8 +34,8 @@ namespace etapi
         virtual HRESULT CloneNode(
             VARIANT_BOOL copyChildren,
             DiagramNode *pTargetNode,
-            MsoRelativeNodePosition pos,
-            DiagramNode **ppNode /Out/) = 0;
+            MsoRelativeNodePosition pos = etapi::msoBeforeNode,
+            DiagramNode **ppNode /Out/ = 0) = 0;
 
         virtual HRESULT TransferChildren(
             DiagramNode *pReceivingNode) = 0;

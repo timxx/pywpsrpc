@@ -148,8 +148,8 @@ namespace wpsapi
             BSTR ProviderID,
             BSTR PostURL,
             BSTR BlogName,
-            BSTR PostID,
-            Document **prop /Out/) = 0;
+            BSTR PostID = 0,
+            Document **prop /Out/ = 0) = 0;
 
     };
 };

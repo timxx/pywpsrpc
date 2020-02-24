@@ -17,9 +17,9 @@ namespace ksoapi
             IDispatch **Parent /Out/) = 0;
 
         virtual HRESULT AddNode(
-            MsoSmartArtNodePosition Position,
-            MsoSmartArtNodeType Type,
-            SmartArtNode **NewNode /Out/) = 0;
+            MsoSmartArtNodePosition Position = ksoapi::msoSmartArtNodeDefault,
+            MsoSmartArtNodeType Type = ksoapi::msoSmartArtNodeTypeDefault,
+            SmartArtNode **NewNode /Out/ = 0) = 0;
 
         virtual HRESULT Delete() = 0;
 

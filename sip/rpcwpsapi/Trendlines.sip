@@ -17,7 +17,7 @@ namespace wpsapi
             IDispatch **prop /Out/) = 0;
 
         virtual HRESULT Add(
-            XlTrendlineType Type,
+            XlTrendlineType Type = wpsapi::xlExponential,
             VARIANT Order = argMissing2(),
             VARIANT Period = argMissing2(),
             VARIANT Forward = argMissing2(),

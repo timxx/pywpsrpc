@@ -25,8 +25,8 @@ namespace wppapi
 
         virtual HRESULT Add(
             MsoAnimType Type,
-            int Index,
-            AnimationBehavior **Add /Out/) = 0;
+            int Index = 0,
+            AnimationBehavior **Add /Out/ = 0) = 0;
 
     };
 };

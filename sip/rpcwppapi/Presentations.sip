@@ -24,22 +24,22 @@ namespace wppapi
             Presentation **Item /Out/) = 0;
 
         virtual HRESULT Add(
-            MsoTriState WithWindow,
-            Presentation **Add /Out/) = 0;
+            MsoTriState WithWindow = wppapi::msoCTrue,
+            Presentation **Add /Out/ = 0) = 0;
 
         virtual HRESULT OpenOld(
             BSTR FileName,
-            MsoTriState ReadOnly,
-            MsoTriState Untitled,
-            MsoTriState WithWindow,
-            Presentation **OpenOld /Out/) = 0;
+            MsoTriState ReadOnly = wppapi::msoFalse,
+            MsoTriState Untitled = wppapi::msoFalse,
+            MsoTriState WithWindow = wppapi::msoTrue,
+            Presentation **OpenOld /Out/ = 0) = 0;
 
         virtual HRESULT Open(
             BSTR FileName,
-            MsoTriState ReadOnly,
-            MsoTriState Untitled,
-            MsoTriState WithWindow,
-            Presentation **Open /Out/) = 0;
+            MsoTriState ReadOnly = wppapi::msoFalse,
+            MsoTriState Untitled = wppapi::msoFalse,
+            MsoTriState WithWindow = wppapi::msoTrue,
+            Presentation **Open /Out/ = 0) = 0;
 
         virtual HRESULT CheckOut(
             BSTR FileName) = 0;
@@ -50,11 +50,11 @@ namespace wppapi
 
         virtual HRESULT Open2007(
             BSTR FileName,
-            MsoTriState ReadOnly,
-            MsoTriState Untitled,
-            MsoTriState WithWindow,
-            MsoTriState OpenAndRepair,
-            Presentation **Open2007 /Out/) = 0;
+            MsoTriState ReadOnly = wppapi::msoFalse,
+            MsoTriState Untitled = wppapi::msoFalse,
+            MsoTriState WithWindow = wppapi::msoTrue,
+            MsoTriState OpenAndRepair = wppapi::msoFalse,
+            Presentation **Open2007 /Out/ = 0) = 0;
 
     };
 };

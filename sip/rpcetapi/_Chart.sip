@@ -158,7 +158,7 @@ namespace etapi
             Shapes **RHS /Out/) = 0;
 
         virtual HRESULT _ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = etapi::xlDataLabelsShowNone,
             VARIANT LegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),
@@ -267,10 +267,10 @@ namespace etapi
             IDispatch **RHS /Out/ = 0) = 0;
 
         virtual HRESULT CopyPicture(
-            XlPictureAppearance Appearance,
-            XlCopyPictureFormat Format,
-            XlPictureAppearance Size,
-            long lcid) = 0;
+            XlPictureAppearance Appearance = etapi::xlPrinter,
+            XlCopyPictureFormat Format = etapi::xlPicture,
+            XlPictureAppearance Size = etapi::xlPrinter,
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Corners(
             long lcid,
@@ -693,7 +693,7 @@ namespace etapi
             ksoapi::MsoEnvelope **RHS /Out/) = 0;
 
         virtual HRESULT ApplyDataLabels(
-            XlDataLabelsType Type,
+            XlDataLabelsType Type = etapi::xlDataLabelsShowNone,
             VARIANT LegendKey = argMissing2(),
             VARIANT AutoText = argMissing2(),
             VARIANT HasLeaderLines = argMissing2(),

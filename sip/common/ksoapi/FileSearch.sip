@@ -62,10 +62,10 @@ namespace ksoapi
             BSTR LookInRetVal) = 0;
 
         virtual HRESULT Execute(
-            MsoSortBy SortBy,
-            MsoSortOrder SortOrder,
-            VARIANT_BOOL AlwaysAccurate,
-            int *pRet /Out/) = 0;
+            MsoSortBy SortBy = ksoapi::msoSortByNone,
+            MsoSortOrder SortOrder = ksoapi::msoSortOrderAscending,
+            VARIANT_BOOL AlwaysAccurate = VARIANT_FALSE,
+            int *pRet /Out/ = 0) = 0;
 
         virtual HRESULT NewSearch() = 0;
 
