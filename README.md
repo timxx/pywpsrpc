@@ -91,6 +91,19 @@ selection.InsertAfter("Hello, world")
 # bold the "Hello, world"
 selection.Font.Bold = True
 
+# get a notify about saving
+rpc.registerEvent(app._object,
+                  wpsapi.DIID_ApplicationEvents4,
+                  "DocumentBeforeSave",
+                  onDocumentBeforeSave)
+
+def onDocumentBeforeSave(doc, saveAsUi, cancel):
+    # to discard the saving, return cancel as True
+    return saveAsUi, cancel
+
+# save the doc, onDocumentBeforeSave will be called
+doc.SaveAs2("test.docx")
+
 # Quit the application if you don't need anymore
 # use wpsapi.wdDoNotSaveChanges to ignore the changes
 app.Quit(wpsapi.wdDoNotSaveChanges)
