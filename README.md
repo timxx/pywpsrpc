@@ -1,6 +1,8 @@
 # pywpsrpc
 
 [![Build Status](https://travis-ci.org/timxx/pywpsrpc.svg?branch=master)](https://travis-ci.org/timxx/pywpsrpc)
+[![PyPI version](https://img.shields.io/pypi/v/pywpsrpc.svg)](https://pypi.org/project/pywpsrpc/)
+[![Python version](https://img.shields.io/badge/python-3.5+-green.svg)](http://python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Python bindings for WPS Office RPC (for Linux version only).
