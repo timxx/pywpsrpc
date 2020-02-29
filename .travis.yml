@@ -1,13 +1,10 @@
 language: python
-dist: bionic
+dist: xenial
 
 arch:
   - amd64
 
 python:
-  - "3.5"
-  - "3.6"
-  - "3.7"
   - "3.8"
 
 cache:
@@ -24,8 +21,6 @@ addons:
     packages:
     - g++
     - qtbase5-dev
-    - qttools5-dev
-    - qttools5-dev-tools
     - qt5-default
 
 before_install:
