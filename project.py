@@ -365,6 +365,8 @@ class RpcApiBuilder(sipbuild.Builder):
                 exp.write("{ global: PyInit_%s; local: *; };" % buildable.target)
 
             f.write("QMAKE_LFLAGS += -Wl,--version-script=%s.exp\n" % buildable.target)
+            if not buildable.debug:
+                f.write("QMAKE_LFLAGS += -s\n")
             #f.write("QMAKE_LFLAGS_PLUGIN += -Wl,--no-undefined\n")
             f.write("QMAKE_CXXFLAGS += -Wno-attributes -Wno-delete-non-virtual-dtor\n")
             f.write("QMAKE_CXXFLAGS += -Wno-delete-incomplete -Wno-unused-variable\n")
@@ -441,7 +443,7 @@ class RpcApiBuilder(sipbuild.Builder):
             with open(sub_dir + "/sip.exp", "w+") as exp:
                 exp.write("{ global: PyInit_sip; local: *; };")
 
-            f.write("QMAKE_LFLAGS += -Wl,--version-script=sip.exp\n\n")
+            f.write("QMAKE_LFLAGS += -Wl,--version-script=sip.exp -s\n\n")
 
             rpc_dir = os.path.join(self.project.build_dir, self.project.name)
             os.makedirs(rpc_dir, exist_ok=True)
