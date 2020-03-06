@@ -424,11 +424,6 @@ class RpcApiBuilder(sipbuild.Builder):
         sources = sipbuild.module.copy_nonshared_sources(
             self.project.abi_version, sub_dir)
 
-        # seems we don't need it
-        bool_cpp = sub_dir + "/bool.cpp"
-        if bool_cpp in sources:
-            sources.remove(bool_cpp)
-
         # use copy_sip_h instead?
         shutil.copy(self.project.build_dir + "/sip.h", sub_dir)
 
