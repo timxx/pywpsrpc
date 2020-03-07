@@ -5,7 +5,7 @@ import os
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../build")
 
-from pywpsrpc.common import FAILED
+from pywpsrpc.common import (FAILED, wpsapiex)
 from pywpsrpc import RpcProxy
 
 
@@ -127,6 +127,10 @@ def _onNewPresentation(Pres):
     print("_onNewPresentation: ", RpcProxy(Pres).Name)
 
 
+def _onDocumentAfterPrint(Pres, PageEx):
+    print("_onDocumentAfterPrint")
+
+
 def test_rpcwppapi():
     try:
         from pywpsrpc.rpcwppapi import (createWppRpcInstance, wppapi)
@@ -168,6 +172,12 @@ def test_rpcwppapi():
                            "NewPresentation",
                            _onNewPresentation)
 
+    appEx = app.ApplicationEx
+    hr = rpc.registerEvent(appEx._object,
+                           wpsapiex.DIID_ApplicationEventsEx,
+                           "DocumentAfterPrint",
+                           _onDocumentAfterPrint)
+
     pres = app.Presentations.Add(wppapi.msoTrue)
     pres.SaveAs("test.ppt")
     pres.Close()
@@ -175,6 +185,8 @@ def test_rpcwppapi():
     pres = app.Presentations.Open(
         "test.ppt", wppapi.msoFalse,
         wppapi.msoFalse, wppapi.msoTrue)
+
+    pres.PrintOut()
 
     app.Quit()
 

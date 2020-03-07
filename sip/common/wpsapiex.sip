@@ -94,4 +94,19 @@ namespace wpsapiex
     };
 
     typedef float single;
+
+    const IID DIID_ApplicationEventsEx;
 };
+
+%ModuleCode
+namespace wpsapiex
+{
+    // the DIID_ApplicationEventsEx defined in those rpc modules
+    // we have to define one for common module to avoid undefined
+    const IID DIID_ApplicationEventsEx =
+    {
+         0xFB001E43, 0x0460, 0x4D96,
+         { 0x98, 0x76, 0x75, 0xC9, 0x1C, 0xD4, 0x1B, 0x0A }
+    };
+}
+%End

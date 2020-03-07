@@ -100,6 +100,27 @@ struct IKRpcClient /Abstract/
         return S_OK;
     }
 
+    static HRESULT _PyObjectArgEvent(PyObject *pyObject, PyObject *arg, const PyFuncs &pyFuncs)
+    {
+        if (pyFuncs.empty())
+            return E_FAIL;
+
+        SIP_BLOCK_THREADS
+
+        for (auto &pyFunc : pyFuncs)
+        {
+            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyObject, arg, nullptr);
+            if (ret)
+            {
+                PyErr_Clear();
+                Py_DECREF(ret);
+            }
+        }
+
+        SIP_UNBLOCK_THREADS
+        return S_OK;
+    }
+
     static inline HRESULT _PresentationEvent(wppapi::_Presentation *Pres, const PyFuncs &pyFuncs)
     {
         PyObject *pyPres = Pres == nullptr ? Py_None : sipConvertFromType(Pres, sipType_wppapi__Presentation, 0);
@@ -216,25 +237,42 @@ struct IKRpcClient /Abstract/
         return S_OK;
     }
 
+    static HRESULT _DocumentAfterPrint(wppapi::_Presentation *Pres, wpsapiex::PrintoutPageEx *pageEx)
+    {
+        PyObject *pyPres = Pres ? sipConvertFromType(Pres, sipType_wppapi__Presentation, 0) : Py_None;
+        PyObject *pyPageEx = pageEx ? sipConvertFromType(pageEx, sipFindType("PrintoutPageEx"), 0) : Py_None;
+        return _PyObjectArgEvent(pyPres, pyPageEx, _GET_PY_FUNCS(DocumentAfterPrint));
+    }
+
     #define _FUNC(name) std::make_pair(__X(#name), (void *)_##name)
     static void* _registerFunc(const IID &iid, const BSTR eventName, PyObject *pyFunc)
     {
         if (g_eventMap.empty())
         {
-            EventFuncs events;
-            events[_FUNC(PresentationSave)] = PyFuncs();
-            events[_FUNC(PresentationClose)] = PyFuncs();
-            events[_FUNC(AfterNewPresentation)] = PyFuncs();
-            events[_FUNC(AfterPresentationOpen)] = PyFuncs();
-            events[_FUNC(NewPresentation)] = PyFuncs();
-            events[_FUNC(PresentationBeforeClose)] = PyFuncs();
-            events[_FUNC(PresentationBeforeSave)] = PyFuncs();
-            events[_FUNC(PresentationCloseFinal)] = PyFuncs();
-            events[_FUNC(PresentationNewSlide)] = PyFuncs();
-            events[_FUNC(PresentationOpen)] = PyFuncs();
-            events[_FUNC(PresentationPrint)] = PyFuncs();
-            events[_FUNC(PresentationSync)] = PyFuncs();
-            g_eventMap[wppapi::IID_EApplication] = events;
+            // IID_EApplication
+            {
+                EventFuncs events;
+                events[_FUNC(PresentationSave)] = PyFuncs();
+                events[_FUNC(PresentationClose)] = PyFuncs();
+                events[_FUNC(AfterNewPresentation)] = PyFuncs();
+                events[_FUNC(AfterPresentationOpen)] = PyFuncs();
+                events[_FUNC(NewPresentation)] = PyFuncs();
+                events[_FUNC(PresentationBeforeClose)] = PyFuncs();
+                events[_FUNC(PresentationBeforeSave)] = PyFuncs();
+                events[_FUNC(PresentationCloseFinal)] = PyFuncs();
+                events[_FUNC(PresentationNewSlide)] = PyFuncs();
+                events[_FUNC(PresentationOpen)] = PyFuncs();
+                events[_FUNC(PresentationPrint)] = PyFuncs();
+                events[_FUNC(PresentationSync)] = PyFuncs();
+                g_eventMap[wppapi::IID_EApplication] = events;
+            }
+
+            // const DIID_ApplicationEventsEx
+            {
+                EventFuncs events;
+                events[_FUNC(DocumentAfterPrint)] = PyFuncs();
+                g_eventMap[wpsapiex::DIID_ApplicationEventsEx] = events;
+            }
         }
 
         auto itEvents = g_eventMap.find(iid);
