@@ -94,7 +94,8 @@ class RpcProxy(object):
         self._use_exception = use_exception
 
     def __del__(self):
-        self._object.Release()
+        if self._object:
+            self._object.Release()
 
     def __getattr__(self, name):
         if hasattr(self._object, name):
