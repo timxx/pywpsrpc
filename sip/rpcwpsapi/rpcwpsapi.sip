@@ -8,7 +8,7 @@
  *
 */
 
-%Module(name=pywpsrpc.rpcwpsapi, keyword_arguments="Optional", use_limited_api=True)
+%Module(name=pywpsrpc.rpcwpsapi, keyword_arguments="Optional")
 
 namespace wpsapi
 {

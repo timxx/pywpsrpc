@@ -8,7 +8,7 @@
  *
 */
 
-%Module(name=pywpsrpc.common, keyword_arguments="Optional", use_limited_api=True)
+%Module(name=pywpsrpc.common, keyword_arguments="Optional")
 
 %ModuleHeaderCode
     #include "stdafx.h"
