@@ -28,8 +28,10 @@ class RpcException(Exception):
 
 
 class RpcMethod(object):
+    __slots__ = ["_method", "_object", "_use_exception"]
 
     def __init__(self, method, obj, use_exception=False):
+        self._object = None
         if not isinstance(method, BuiltinFunctionType):
             raise RpcException("RpcMethod required builtin function or method")
 
@@ -42,7 +44,8 @@ class RpcMethod(object):
         self._object.AddRef()
 
     def __del__(self):
-        self._object.Release()
+        if self._object:
+            self._object.Release()
 
     def __call__(self, *args, **kwargs):
         ret = self._method(*args, **kwargs)
@@ -69,8 +72,13 @@ class RpcMethod(object):
 
         return ret == S_OK
 
+    @property
+    def __doc__(self):
+        return self._method.__doc__
+
 
 class RpcProxy(object):
+    __slots__ = ["_object", "_use_exception"]
 
     def __init__(self, obj, use_exception=False):
         """ The obj can be (hr, IUnknown) or IUnknown.
@@ -81,12 +89,11 @@ class RpcProxy(object):
             if not isinstance(obj, IUnknown):
                 raise RpcException("RpcProxy required an IUnknown instance")
 
+        self._object = None
         if isinstance(obj, tuple):
             if obj[0] == S_OK:
                 _check_iunknown(obj[1])
                 self._object = obj[1]
-            else:
-                self._object = None
         else:
             _check_iunknown(obj)
             self._object = obj
@@ -98,6 +105,9 @@ class RpcProxy(object):
             self._object.Release()
 
     def __getattr__(self, name):
+        if name.startswith("_"):
+            return getattr(self._object, name)
+
         if hasattr(self._object, name):
             return RpcMethod(getattr(self._object, name),
                              self._object, self._use_exception)
