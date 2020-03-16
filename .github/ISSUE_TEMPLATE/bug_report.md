@@ -21,5 +21,5 @@ If applicable, add screenshots to help explain your problem.
 
 **Environment**
  - Distribution: [e.g. Ubuntu 18.04]
- - Version: [e.g. 1.0.2]
+ - Versions: [e.g. pywpsrpc 1.0.2, WPS Office 11.1.0.9126]
  - Installed from pip: [yes/build from source]
