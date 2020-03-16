@@ -17,9 +17,10 @@ def main():
         sys.exit(-1)
 
     app = RpcProxy(rpc.getWpsApplication())
+    print(app.last_error)
 
     # get the raw object
-    obj = app._object
+    obj = app.rpc_object
     print(obj)
 
     print(app.Build)
@@ -37,7 +38,10 @@ def main():
 
     doc.Close(SaveChanges=wpsapi.wdDoNotSaveChanges)
 
-    app._use_exception = True
+    doc = app.ActiveDocument
+    print(app.last_error)
+
+    app.use_exception = True
     try:
         # should be failed since no Documents opened.
         doc = app.ActiveDocument

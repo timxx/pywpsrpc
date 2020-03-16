@@ -53,7 +53,7 @@ def convert_to(paths, format, abort_on_fails=False):
     app.Visible = False
 
     docs = app.Documents
-    docs._use_exception = abort_on_fails
+    docs.use_exception = abort_on_fails
 
     for path in paths:
         abs_path = os.path.realpath(path)

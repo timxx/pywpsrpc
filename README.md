@@ -72,7 +72,7 @@ from pywpsrpc import RpcProxy
 hr, rpc = createWpsRpcInstance()
 
 # all the calls returns the error code as the first value
-# you can check it for failes
+# you can check it for fails
 # 0 means all fines, you can use the common module's S_OK,
 # FAILED or SUCCEEDED to check
 # recommend use the RpcProxy instead
@@ -94,7 +94,7 @@ selection.InsertAfter("Hello, world")
 selection.Font.Bold = True
 
 # get a notify about saving
-rpc.registerEvent(app._object,
+rpc.registerEvent(app.rpc_object,
                   wpsapi.DIID_ApplicationEvents4,
                   "DocumentBeforeSave",
                   onDocumentBeforeSave)

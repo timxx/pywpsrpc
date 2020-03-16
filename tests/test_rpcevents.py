@@ -52,35 +52,35 @@ def test_rpcwpsapi():
 
     app = RpcProxy(rpc.getWpsApplication())
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            wpsapi.DIID_ApplicationEvents4,
                            "DocumentBeforeClose",
                            _onDocumentBeforeClose)
     print("registerEvent:", hex(hr & 0xFFFFFFFF))
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            wpsapi.DIID_ApplicationEvents4,
                            "DocumentBeforeSave",
                            _onDocumentBeforeSave)
 
     print("registerEvent:", hex(hr & 0xFFFFFFFF))
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            wpsapi.DIID_ApplicationEvents4,
                            "DocumentChange",
                            _onDocumentChange)
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            wpsapi.DIID_ApplicationEvents4,
                            "DocumentOpen",
                            _onDocumentOpen)
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            wpsapi.DIID_ApplicationEvents4,
                            "NewDocument",
                            _onNewDocument)
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            wpsapi.DIID_ApplicationEvents4,
                            "Quit",
                            _onQuit)
@@ -144,36 +144,36 @@ def test_rpcwppapi():
 
     app = RpcProxy(rpc.getWppApplication())
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            wppapi.IID_EApplication,
                            "PresentationSave",
                            _onPresentationSave)
     print("registerEvent:", hex(hr & 0xFFFFFFFF))
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            wppapi.IID_EApplication,
                            "PresentationClose",
                            _onPresentationClose)
 
     print("registerEvent:", hex(hr & 0xFFFFFFFF))
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            wppapi.IID_EApplication,
                            "AfterNewPresentation",
                            _onAfterNewPresentation)
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            wppapi.IID_EApplication,
                            "AfterPresentationOpen",
                            _onAfterPresentationOpen)
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            wppapi.IID_EApplication,
                            "NewPresentation",
                            _onNewPresentation)
 
     appEx = app.ApplicationEx
-    hr = rpc.registerEvent(appEx._object,
+    hr = rpc.registerEvent(appEx.rpc_object,
                            wpsapiex.DIID_ApplicationEventsEx,
                            "DocumentAfterPrint",
                            _onDocumentAfterPrint)
@@ -232,30 +232,30 @@ def test_rpcetapi():
 
     app = RpcProxy(rpc.getEtApplication())
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            etapi.DIID_AppEvents,
                            "WorkbookBeforeClose",
                            _onWorkbookBeforeClose)
     print("registerEvent:", hex(hr & 0xFFFFFFFF))
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            etapi.DIID_AppEvents,
                            "WorkbookBeforeSave",
                            _onWorkbookBeforeSave)
 
     print("registerEvent:", hex(hr & 0xFFFFFFFF))
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            etapi.DIID_AppEvents,
                            "WorkbookAfterSave",
                            _onWorkbookAfterSave)
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            etapi.DIID_AppEvents,
                            "NewWorkbook",
                            _onNewWorkbook)
 
-    hr = rpc.registerEvent(app._object,
+    hr = rpc.registerEvent(app.rpc_object,
                            etapi.DIID_AppEvents,
                            "WorkbookOpen",
                            _onWorkbookOpen)
