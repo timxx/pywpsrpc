@@ -104,6 +104,7 @@ class RpcCommon(RpcApiBindings):
         super().__init__(project,
                          "common",
                          include_dirs=dirs,
+                         QT=["core"],
                          PCH=["pre_stddef.h",
                               "kfc/guid.h",
                               "int.h",

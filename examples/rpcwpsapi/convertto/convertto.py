@@ -15,7 +15,7 @@ import sys
 import argparse
 
 from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
-from pywpsrpc.common import S_OK
+from pywpsrpc.common import (S_OK, QtApp)
 from pywpsrpc import RpcProxy
 
 
@@ -102,18 +102,15 @@ def main():
 
     args = parser.parse_args()
 
+    QtApp.init(sys.argv)
+
     try:
         convert_to(args.path, args.format, args.abort)
     except ConvertException as e:
         print(e)
 
+    QtApp.destroy()
+
 
 if __name__ == "__main__":
-    try:
-        from PySide2.QtCore import QCoreApplication
-        # silent the "QEventLoop: Cannot be used without QApplication"
-        qApp = QCoreApplication(sys.argv)
-    except:
-        pass
-
     main()
