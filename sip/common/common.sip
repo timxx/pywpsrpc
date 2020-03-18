@@ -12,6 +12,8 @@
 
 %ModuleHeaderCode
     #include "stdafx.h"
+    #include <QCoreApplication>
+    #include <atomic>
 
 BSTR _SysAllocString(const OLECHAR* psz);
 UINT _SysStringLen(BSTR bstr);
@@ -22,11 +24,18 @@ HRESULT _SafeArrayGetElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv);
 _SAFEARRAY_PTR _SafeArrayCreateVector(VARTYPE vt, INT32 lLbound, UINT32 cElements);
 HRESULT _SafeArrayPutElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv);
 
-namespace QtApp
+class QtApp
 {
-    void init(PyObject *args);
-    void destroy();
-}
+public:
+    QtApp(PyObject *args);
+    ~QtApp();
+
+private:
+    static int argc;
+    static char **argv;
+    static QCoreApplication *qtApp;
+    static std::atomic<int> ref;
+};
 %End
 
 %Include typedef.sip
@@ -50,10 +59,11 @@ HRESULT E_NOTIMPL;
 bool SUCCEEDED(HRESULT hr);
 bool FAILED(HRESULT hr);
 
-namespace QtApp
+class QtApp /NoDefaultCtors/
 {
-    void init(PyObject *args /TypeHint="List[str]"/);
-    void destroy();
+public:
+    QtApp(PyObject *args /TypeHint="List[str]"/);
+    ~QtApp();
 };
 
 %ModuleCode
@@ -149,88 +159,88 @@ static bool FAILED(HRESULT hr)
 }
 
 // to avoid depends on python's Qt (PySide2, PyQt5 etc.)
-#include <QCoreApplication>
 #include <QString>
 
-static int g_argc;
-static char **g_argv;
-static QCoreApplication *g_qApp;
+int QtApp::argc = 0;
+char **QtApp::argv = nullptr;
+QCoreApplication *QtApp::qtApp = nullptr;
+std::atomic<int> QtApp::ref;
 
-namespace QtApp
+
+QtApp::QtApp(PyObject *args)
 {
-    void init(PyObject *args)
+    ++ref;
+    if (qtApp)
+        return;
+
+    argc = PyList_Size(args);
+    argv = new char *[argc + 1];
+
+    for (int i = 0; i < argc; ++i)
     {
-        if (!g_qApp)
+        PyObject *item = PyList_GetItem(args, i);
+        char *arg = nullptr;
+
+        if (PyUnicode_Check(item))
         {
-            g_argc = PyList_Size(args);
-            g_argv = new char *[g_argc + 1];
+            int char_size = 0;
+            Py_ssize_t len = 0;
+            void *data = sipUnicodeData(item, &char_size, &len);
 
-            for (int i = 0; i < g_argc; ++i)
+            switch (char_size)
             {
-                PyObject *item = PyList_GetItem(args, i);
-                char *arg = nullptr;
+            case 1:
+                arg = strdup(reinterpret_cast<char*>(data));
+                break;
 
-                if (PyUnicode_Check(item))
+            case 2:
                 {
-                    int char_size = 0;
-                    Py_ssize_t len = 0;
-                    void *data = sipUnicodeData(item, &char_size, &len);
-
-                    switch (char_size)
-                    {
-                    case 1:
-                        arg = strdup(reinterpret_cast<char*>(data));
-                        break;
-
-                    case 2:
-                        {
-                            QString qStr(reinterpret_cast<QChar*>(data), len);
-                            const QByteArray ba = qStr.toLocal8Bit();
-                            arg = strdup(ba.constData());
-                        }
-                        break;
-
-                    case 4:
-                        {
-                            QString qStr = QString::fromUcs4(reinterpret_cast<uint*>(data), len);
-                            const QByteArray ba = qStr.toLocal8Bit();
-                            arg = strdup(ba.constData());
-                        }
-                        break;
-                    }
+                    QString qStr(reinterpret_cast<QChar*>(data), len);
+                    const QByteArray ba = qStr.toLocal8Bit();
+                    arg = strdup(ba.constData());
                 }
-                else if (SIPBytes_Check(item))
+                break;
+
+            case 4:
                 {
-                    arg = strdup(SIPBytes_AsString(item));
+                    QString qStr = QString::fromUcs4(reinterpret_cast<uint*>(data), len);
+                    const QByteArray ba = qStr.toLocal8Bit();
+                    arg = strdup(ba.constData());
                 }
-
-                g_argv[i] = arg;
+                break;
             }
-
-            g_argv[g_argc] = nullptr;
-
-            g_qApp = new QCoreApplication(g_argc, g_argv);
         }
+        else if (SIPBytes_Check(item))
+        {
+            arg = strdup(SIPBytes_AsString(item));
+        }
+
+        argv[i] = arg;
     }
 
-    void destroy()
+    argv[argc] = nullptr;
+
+    qtApp = new QCoreApplication(argc, argv);
+}
+
+QtApp::~QtApp()
+{
+    --ref;
+    if (ref == 0 && qtApp)
     {
-        if (g_qApp)
+        delete qtApp;
+
+        for (int i = 0; i < argc; ++i)
         {
-            delete g_qApp;
-
-            for (int i = 0; i < g_argc; ++i)
-            {
-                if (g_argv[i])
-                    free(g_argv[i]);
-            }
-
-            delete [] g_argv;
-
-            g_qApp = nullptr;
-            g_argc = 0;
-            g_argv = nullptr;
+            if (argv[i])
+                free(argv[i]);
         }
+
+        delete [] argv;
+
+        qtApp = nullptr;
+        argc = 0;
+        argv = nullptr;
     }
 }
 

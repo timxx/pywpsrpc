@@ -102,14 +102,12 @@ def main():
 
     args = parser.parse_args()
 
-    QtApp.init(sys.argv)
+    qApp = QtApp(sys.argv)
 
     try:
         convert_to(args.path, args.format, args.abort)
     except ConvertException as e:
         print(e)
-
-    QtApp.destroy()
 
 
 if __name__ == "__main__":
