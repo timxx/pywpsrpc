@@ -22,6 +22,9 @@ For full API references, go to [https://open.wps.cn/docs/office](https://open.wp
 or [https://docs.microsoft.com/en-us/office/vba/api/overview/](https://docs.microsoft.com/en-us/office/vba/api/overview/).
 
 
+For pywpsrpc document, go to the [wiki](https://github.com/timxx/pywpsrpc/wiki) page.
+
+
 ## Requirements
   - Python 3.5+
   - Qt5 (the SDK required both for building & running)
