@@ -81,6 +81,25 @@ class RpcMethod(object):
 class RpcProxy(object):
     __slots__ = ["_object", "_use_exception", "_last_hr"]
 
+    class Iterator(object):
+        def __init__(self, proxy):
+            self._proxy = proxy
+            # starts from 1 not 0
+            self._index = 1
+            self._count = len(proxy)
+
+        def __iter__(self):
+            return self
+
+        def __next__(self):
+            if self._index > self._count:
+                raise StopIteration
+
+            value = self._proxy[self._index]
+            self._index += 1
+
+            return value
+
     def __init__(self, obj, use_exception=False):
         """ The obj can be (hr, IUnknown) or IUnknown.
         If use_exception set to True then any call failed will raise an exception.
@@ -140,7 +159,23 @@ class RpcProxy(object):
             self._last_hr = hr
 
     def __bool__(self):
-        return not self._object is None
+        return self._object is not None
+
+    def __len__(self):
+        return len(self._object)
+
+    def __getitem__(self, index):
+        item = self._object.__getitem__(index)
+        if isinstance(item, IUnknown):
+            item = RpcProxy(item, self._use_exception)
+
+        return item
+
+    def __iter__(self):
+        if hasattr(self._object, "__iter__"):
+            return iter(self._object)
+
+        return RpcProxy.Iterator(self)
 
     @property
     def rpc_object(self):

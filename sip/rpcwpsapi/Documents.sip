@@ -151,5 +151,24 @@ namespace wpsapi
             BSTR PostID = 0,
             Document **prop /Out/ = 0) = 0;
 
+        int __len__() const;
+        %MethodCode
+            long lCount = 0;
+            HRESULT hr = sipCpp->get_Count(&lCount);
+            if (hr != S_OK)
+                lCount = 0;
+
+            sipRes = lCount;
+        %End
+
+        Document* __getitem__(VARIANT *index) const;
+        %MethodCode
+            wpsapi::Document *prop = nullptr;
+            HRESULT hr = sipCpp->Item(a0, &prop);
+            if (hr != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
     };
 };

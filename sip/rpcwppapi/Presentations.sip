@@ -56,5 +56,14 @@ namespace wppapi
             MsoTriState OpenAndRepair = wppapi::msoFalse,
             Presentation **Open2007 /Out/ = 0) = 0;
 
+        Presentation* __getitem__(VARIANT index) const;
+        %MethodCode
+            wppapi::Presentation *prop = nullptr;
+            HRESULT hr = sipCpp->Item(*a0, &prop);
+            if (hr != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
     };
 };

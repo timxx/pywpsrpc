@@ -23,5 +23,14 @@ namespace wppapi
         virtual HRESULT get_Count(
             long *Count /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            long lCount = 0;
+            HRESULT hr = sipCpp->get_Count(&lCount);
+            if (hr != S_OK)
+                lCount = 0;
+
+            sipRes = lCount;
+        %End
     };
 };
