@@ -676,7 +676,7 @@ namespace wpsapi
 
         virtual HRESULT InsertStyleSeparator() = 0;
 
-        virtual HRESULT Sort(
+        virtual PyObject* Sort(
             VARIANT *ExcludeHeader = argMissing(),
             VARIANT *FieldNumber = argMissing(),
             VARIANT *SortFieldType = argMissing(),
@@ -698,14 +698,111 @@ namespace wpsapi
             VARIANT *LanguageID = argMissing(),
             VARIANT *SubFieldNumber = argMissing()/*,
             VARIANT *SubFieldNumber2 = argMissing(),
-            VARIANT *SubFieldNumber3 = argMissing()*/) = 0;
+            VARIANT *SubFieldNumber3 = argMissing()*/) = 0 /NoArgParser/;
+%Docstring
+Sort(self, ExcludeHeader: Any = None, FieldNumber: Any = None, SortFieldType: Any = None, SortOrder: Any = None, FieldNumber2: Any = None, SortFieldType2: Any = None, SortOrder2: Any = None, FieldNumber3: Any = None, SortFieldType3: Any = None, SortOrder3: Any = None, SortColumn: Any = None, Separator: Any = None, CaseSensitive: Any = None, BidiSort: Any = None, IgnoreThe: Any = None, IgnoreKashida: Any = None, IgnoreDiacritics: Any = None, IgnoreHe: Any = None, LanguageID: Any = None, SubFieldNumber: Any = None, SubFieldNumber2: Any = None, SubFieldNumber3: Any = None) -> int
+%End
         %MethodCode
-            // FIXME: increase the value of MAX_NR_ARGS
-            sipRes = sipCpp->Sort(a0, a1, a2, a3, a4, a5,
-                a6, a7, a8, a9, a10,
-                a11, a12, a13, a14, a15,
-                a16, a17, a18, a19,
-                argMissing(), argMissing());
+            VARIANT* args[22];
+            Py_ssize_t posArgsCount = PyTuple_Size(sipArgs);
+            for (int i = posArgsCount; i < 22; ++i)
+                args[i] = argMissing();
+
+            std::vector<std::pair<int, int>> indexes;
+
+            for (Py_ssize_t i = 0; i < posArgsCount; ++i)
+            {
+                PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
+                int state = 0;
+                args[i] = reinterpret_cast<VARIANT *>(
+                    sipConvertToType(pyArg, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, 0));
+
+                indexes.push_back(std::make_pair(i, state));
+            }
+
+            auto _kwdPos = [](const char *name) -> int
+            {
+                static const char * const s_kwds[] =
+                {
+                    "ExcludeHeader",
+                    "FieldNumber",
+                    "SortFieldType",
+                    "SortOrder",
+                    "FieldNumber2",
+                    "SortFieldType2",
+                    "SortOrder2",
+                    "FieldNumber3",
+                    "SortFieldType3",
+                    "SortOrder3",
+                    "SortColumn",
+                    "Separator",
+                    "CaseSensitive",
+                    "BidiSort",
+                    "IgnoreThe",
+                    "IgnoreKashida",
+                    "IgnoreDiacritics",
+                    "IgnoreHe",
+                    "LanguageID",
+                    "SubFieldNumber",
+                    "SubFieldNumber2",
+                    "SubFieldNumber3"
+                };
+
+                const int count = sizeof(s_kwds) / sizeof(s_kwds[0]);
+                for (int i = 0; i < count; ++i)
+                {
+                    if (strncmp(name, s_kwds[i], strlen(s_kwds[i])) == 0)
+                        return i;
+                }
+
+                return -1;
+            };
+
+            Py_ssize_t pos = 0;
+            PyObject *pyName = nullptr;
+            PyObject *pyValue = nullptr;
+            while (PyDict_Next(sipKwds, &pos, &pyName, &pyValue))
+            {
+                PyObject *pyEncName = pyName;
+                const char *name = sipString_AsASCIIString(&pyEncName);
+
+                int argPos = _kwdPos(name);
+                if (argPos == -1)
+                {
+                    PyErr_Format(PyExc_TypeError,
+                        "'%s' is not a valid keyword argument", name);
+                    return nullptr;
+                }
+
+                if (argPos < posArgsCount)
+                {
+                    PyErr_Format(PyExc_TypeError,
+                        "'%s' has already been given as a positional argument\n",
+                        name);
+                    return nullptr;
+                }
+
+                int state = 0;
+                args[argPos] = reinterpret_cast<VARIANT *>(
+                    sipConvertToType(pyValue, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, 0));
+
+                indexes.push_back(std::make_pair(argPos, state));
+            }
+
+            wpsapi::Selection *sipCpp = reinterpret_cast<wpsapi::Selection *>(
+                sipGetCppPtr((sipSimpleWrapper *)sipSelf, sipType_wpsapi_Selection));
+
+            HRESULT hr = sipCpp->Sort(
+                args[0], args[1], args[2], args[3], args[4], args[5],
+                args[6], args[7], args[8], args[9], args[10],
+                args[11], args[12], args[13], args[14], args[15],
+                args[16], args[17], args[18], args[19], args[20],
+                args[21]);
+
+            for (const auto &index : indexes)
+                sipReleaseType(args[index.first], sipType_VARIANT, index.second);
+
+            return PyLong_FromLong(hr);
         %End
 
         virtual HRESULT get_XMLNodes(

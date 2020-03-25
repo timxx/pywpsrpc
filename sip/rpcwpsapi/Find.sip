@@ -243,7 +243,7 @@ namespace wpsapi
         virtual HRESULT put_IgnorePunct(
             VARIANT_BOOL prop) = 0;
 
-        virtual HRESULT HitHighlight(
+        virtual PyObject* HitHighlight(
             VARIANT *FindText,
             VARIANT *HighlightColor = argMissing(),
             VARIANT *TextColor = argMissing(),
@@ -263,22 +263,27 @@ namespace wpsapi
             VARIANT *MatchControl = argMissing(),
             VARIANT *IgnoreSpace = argMissing(),
             VARIANT *IgnorePunct = argMissing(),
-            // VARIANT *HanjaPhoneticHangul = argMissing(),
-            VARIANT_BOOL *prop /Out/ = 0) = 0;
+            VARIANT *HanjaPhoneticHangul = argMissing()) = 0;
         %MethodCode
-            // FIXME: increase the value of MAX_NR_ARGS
-            sipRes = sipCpp->HitHighlight(a0, a1, a2, a3, a4, a5,
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            *prop = VARIANT_FALSE;
+
+            HRESULT hr = sipCpp->HitHighlight(a0, a1, a2, a3, a4, a5,
                 a6, a7, a8, a9, a10,
                 a11, a12, a13, a14, a15,
-                a16, a17, a18,
-                argMissing(),
-                a19);
+                a16, a17, a18, a19,
+                prop);
+
+            sipRes = sipBuildResult(0,
+                "(iN)",
+                hr, prop,
+                sipType_VARIANT_BOOL, SIP_NULLPTR);
         %End
 
         virtual HRESULT ClearHitHighlight(
             VARIANT_BOOL *prop /Out/) = 0;
 
-        virtual HRESULT Execute2007(
+        virtual PyObject* Execute2007(
             VARIANT *FindText = argMissing(),
             VARIANT *MatchCase = argMissing(),
             VARIANT *MatchWholeWord = argMissing(),
@@ -298,16 +303,21 @@ namespace wpsapi
             VARIANT *MatchSuffix = argMissing(),
             VARIANT *MatchPhrase = argMissing(),
             VARIANT *IgnoreSpace = argMissing(),
-            // VARIANT *IgnorePunct = argMissing(),
-            VARIANT_BOOL *prop /Out/ = 0) = 0;
+            VARIANT *IgnorePunct = argMissing()) = 0;
         %MethodCode
-            // FIXME: increase the value of MAX_NR_ARGS
-            sipRes = sipCpp->Execute2007(a0, a1, a2, a3, a4, a5,
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            *prop = VARIANT_FALSE;
+
+            HRESULT hr = sipCpp->Execute2007(a0, a1, a2, a3, a4, a5,
                 a6, a7, a8, a9, a10,
                 a11, a12, a13, a14, a15,
-                a16, a17, a18,
-                argMissing(),
-                a19);
+                a16, a17, a18, a19,
+                prop);
+
+            sipRes = sipBuildResult(0,
+                "(iN)",
+                hr, prop,
+                sipType_VARIANT_BOOL, SIP_NULLPTR);
         %End
         virtual HRESULT get_HanjaPhoneticHangul(
             VARIANT_BOOL *prop /Out/) = 0;
