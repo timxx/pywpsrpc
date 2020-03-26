@@ -57,7 +57,7 @@ sip-wheel
 
 ## Quick Start
 
-```
+``` python
 # First import the module you want
 # rpcwpsapi contains the interfaces for WPS
 # rpcwppapi is for WPP
