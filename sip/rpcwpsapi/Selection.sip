@@ -703,8 +703,16 @@ namespace wpsapi
 Sort(self, ExcludeHeader: Any = None, FieldNumber: Any = None, SortFieldType: Any = None, SortOrder: Any = None, FieldNumber2: Any = None, SortFieldType2: Any = None, SortOrder2: Any = None, FieldNumber3: Any = None, SortFieldType3: Any = None, SortOrder3: Any = None, SortColumn: Any = None, Separator: Any = None, CaseSensitive: Any = None, BidiSort: Any = None, IgnoreThe: Any = None, IgnoreKashida: Any = None, IgnoreDiacritics: Any = None, IgnoreHe: Any = None, LanguageID: Any = None, SubFieldNumber: Any = None, SubFieldNumber2: Any = None, SubFieldNumber3: Any = None) -> int
 %End
         %MethodCode
-            VARIANT* args[22];
             Py_ssize_t posArgsCount = PyTuple_Size(sipArgs);
+            if (posArgsCount > 22)
+            {
+                PyErr_Format(PyExc_TypeError,
+                            "Sort() takes from 0 to 22 positional arguments but %d were given\n",
+                            posArgsCount);
+                return nullptr;
+            }
+
+            VARIANT* args[22];
             for (int i = posArgsCount; i < 22; ++i)
                 args[i] = argMissing();
 
@@ -714,8 +722,9 @@ Sort(self, ExcludeHeader: Any = None, FieldNumber: Any = None, SortFieldType: An
             {
                 PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
                 int state = 0;
+                int isError = 0;
                 args[i] = reinterpret_cast<VARIANT *>(
-                    sipConvertToType(pyArg, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, 0));
+                    sipConvertToType(pyArg, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
 
                 indexes.push_back(std::make_pair(i, state));
             }
@@ -751,42 +760,46 @@ Sort(self, ExcludeHeader: Any = None, FieldNumber: Any = None, SortFieldType: An
                 const int count = sizeof(s_kwds) / sizeof(s_kwds[0]);
                 for (int i = 0; i < count; ++i)
                 {
-                    if (strncmp(name, s_kwds[i], strlen(s_kwds[i])) == 0)
+                    if (strcmp(name, s_kwds[i]) == 0)
                         return i;
                 }
 
                 return -1;
             };
 
-            Py_ssize_t pos = 0;
-            PyObject *pyName = nullptr;
-            PyObject *pyValue = nullptr;
-            while (PyDict_Next(sipKwds, &pos, &pyName, &pyValue))
+            if (sipKwds)
             {
-                PyObject *pyEncName = pyName;
-                const char *name = sipString_AsASCIIString(&pyEncName);
-
-                int argPos = _kwdPos(name);
-                if (argPos == -1)
+                Py_ssize_t pos = 0;
+                PyObject *pyName = nullptr;
+                PyObject *pyValue = nullptr;
+                while (PyDict_Next(sipKwds, &pos, &pyName, &pyValue))
                 {
-                    PyErr_Format(PyExc_TypeError,
-                        "'%s' is not a valid keyword argument", name);
-                    return nullptr;
+                    PyObject *pyEncName = pyName;
+                    const char *name = sipString_AsASCIIString(&pyEncName);
+
+                    int argPos = _kwdPos(name);
+                    if (argPos == -1)
+                    {
+                        PyErr_Format(PyExc_TypeError,
+                            "'%s' is not a valid keyword argument", name);
+                        return nullptr;
+                    }
+
+                    if (argPos < posArgsCount)
+                    {
+                        PyErr_Format(PyExc_TypeError,
+                            "'%s' has already been given as a positional argument\n",
+                            name);
+                        return nullptr;
+                    }
+
+                    int state = 0;
+                    int isError = 0;
+                    args[argPos] = reinterpret_cast<VARIANT *>(
+                        sipConvertToType(pyValue, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
+
+                    indexes.push_back(std::make_pair(argPos, state));
                 }
-
-                if (argPos < posArgsCount)
-                {
-                    PyErr_Format(PyExc_TypeError,
-                        "'%s' has already been given as a positional argument\n",
-                        name);
-                    return nullptr;
-                }
-
-                int state = 0;
-                args[argPos] = reinterpret_cast<VARIANT *>(
-                    sipConvertToType(pyValue, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, 0));
-
-                indexes.push_back(std::make_pair(argPos, state));
             }
 
             wpsapi::Selection *sipCpp = reinterpret_cast<wpsapi::Selection *>(
