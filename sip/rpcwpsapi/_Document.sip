@@ -699,9 +699,9 @@ namespace wpsapi
         virtual HRESULT ClosePrintPreview() = 0;
 
         virtual HRESULT CheckConsistency() = 0;
-/*
-        virtual HRESULT CreateLetterContent(
-            BSTR DateFormat,
+
+        virtual PyObject* CreateLetterContent(
+            /*BSTR DateFormat,
             VARIANT_BOOL IncludeHeaderFooter,
             BSTR PageDesign,
             WdLetterStyle LetterStyle,
@@ -732,8 +732,230 @@ namespace wpsapi
             VARIANT *SenderCode = argMissing(),
             VARIANT *SenderGender = argMissing(),
             VARIANT *SenderReference = argMissing(),
-            LetterContent **prop /Out/ = 0) = 0;
-*/
+            LetterContent **prop /Out/ = 0*/) = 0 /NoArgParser/;
+        %Docstring(format="deindented")
+            CreateLetterContent(self, str, bool, str, wpsapi.WdLetterStyle, bool, wpsapi.WdLetterheadLocation, float, str, str, str, wpsapi.WdSalutationType, str, str, str, str, str, str, str, str, str, str, str, int, InfoBlock: Any = None, RecipientCode: Any = None, RecipientGender: Any = None, ReturnAddressShortForm: Any = None, SenderCity: Any = None, SenderCode: Any = None, SenderGender: Any = None, SenderReference: Any = None)
+        %End
+        %MethodCode
+            Py_ssize_t posArgsCount = PyTuple_Size(sipArgs);
+            if (posArgsCount < 23 || posArgsCount > 31)
+            {
+                PyErr_Format(PyExc_TypeError,
+                    "Run() takes from 23 to 31 positional arguments but %d were given\n",
+                    posArgsCount);
+                return nullptr;
+            }
+
+            auto _toBstr = [&](int i, kfc::ks_bstr &bstr) -> bool
+            {
+                PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
+                if (!PyUnicode_Check(pyArg))
+                {
+                    PyErr_Format(PyExc_TypeError,
+                        "The %d positional argument requires 'str' not '%s'.",
+                        i, Py_TYPE(pyArg)->tp_name);
+                    return false;
+                }
+
+                int state = 0;
+                int isError = 0;
+                BSTR* pBstr = (BSTR*)sipConvertToType(pyArg, sipType_BSTR, 0, SIP_NO_CONVERTORS, &state, &isError);
+
+                if (!isError && pBstr)
+                {
+                    bstr.assign(*pBstr, SysStringLen(*pBstr));
+                    sipReleaseType(pBstr, sipType_BSTR, state);
+                }
+
+                return true;
+            };
+
+            auto _toBool = [&](int i, VARIANT_BOOL &var) -> bool
+            {
+                PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
+                if (!PyBool_Check(pyArg))
+                {
+                    PyErr_Format(PyExc_TypeError,
+                        "The %d positional argument requires 'bool' not '%s'.",
+                        i, Py_TYPE(pyArg)->tp_name);
+                    return false;
+                }
+
+                int state = 0;
+                int isError = 0;
+                VARIANT_BOOL* pBool = (VARIANT_BOOL*)sipConvertToType(pyArg, sipType_VARIANT_BOOL, 0, SIP_NO_CONVERTORS, &state, &isError);
+
+                if (!isError && pBool)
+                {
+                    var = *pBool;
+                    sipReleaseType(pBool, sipType_VARIANT_BOOL, state);
+                }
+
+                return true;
+            };
+
+            auto _toInt = [&](int i, int &value) -> bool
+            {
+                PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
+                if (!PyLong_Check(pyArg))
+                {
+                    PyErr_Format(PyExc_TypeError,
+                        "The %d positional argument requires 'int' not '%s'.",
+                        i, Py_TYPE(pyArg)->tp_name);
+                    return false;
+                }
+
+                value = PyLong_AsLong(pyArg);
+
+                return true;
+            };
+
+            auto _toFloat = [&](int i, float &value) -> bool
+            {
+                PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
+                if (!PyFloat_Check(pyArg))
+                {
+                    PyErr_Format(PyExc_TypeError,
+                        "The %d positional argument requires 'float' not '%s'.",
+                        i, Py_TYPE(pyArg)->tp_name);
+                    return false;
+                }
+
+                value = PyFloat_AsDouble(pyArg);
+
+                return true;
+            };
+
+            #define _CHECK_(cond)   do { if (!(cond)) return nullptr; } while(0)
+            #define _BSTR_ARG(i, name) kfc::ks_bstr name; _CHECK_(_toBstr(i, name))
+            #define _BOOL_ARG(i, name) VARIANT_BOOL name; _CHECK_(_toBool(i, name))
+            #define _INT_ARG(i, name) int name; _CHECK_(_toInt(i, name))
+            #define _FLOAT_ARG(i, name) float name; _CHECK_(_toFloat(i, name))
+
+            _BSTR_ARG(0, DateFormat);
+            _BOOL_ARG(1, IncludeHeaderFooter);
+            _BSTR_ARG(2, PageDesign);
+            _INT_ARG(3, LetterStyle);
+            _BOOL_ARG(4, Letterhead);
+            _INT_ARG(5, LetterheadLocation);
+            _FLOAT_ARG(6, LetterheadSize);
+            _BSTR_ARG(7, RecipientName);
+            _BSTR_ARG(8, RecipientAddress);
+            _BSTR_ARG(9, Salutation);
+            _INT_ARG(10, SalutationType);
+            _BSTR_ARG(11, RecipientReference);
+            _BSTR_ARG(12, MailingInstructions);
+            _BSTR_ARG(13, AttentionLine);
+            _BSTR_ARG(14, Subject);
+            _BSTR_ARG(15, CCList);
+            _BSTR_ARG(16, ReturnAddress);
+            _BSTR_ARG(17, SenderName);
+            _BSTR_ARG(18, Closing);
+            _BSTR_ARG(19, SenderCompany);
+            _BSTR_ARG(20, SenderJobTitle);
+            _BSTR_ARG(21, SenderInitials);
+            _INT_ARG(22, EnclosureNumber);
+
+            VARIANT* args[8];
+            for (int i = posArgsCount - 23; i < 8; ++i)
+                args[i] = argMissing();
+
+            std::vector<std::pair<int, int>> indexes;
+
+            for (Py_ssize_t i = 23; i < posArgsCount; ++i)
+            {
+                PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
+                int state = 0;
+                int isError = 0;
+                args[i - 23] = reinterpret_cast<VARIANT *>(
+                    sipConvertToType(pyArg, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
+
+                indexes.push_back(std::make_pair(i - 23, state));
+            }
+
+            auto _kwdPos = [](const char *name) -> int
+            {
+                static const char * const s_kwds[] =
+                {
+                    "InfoBlock",
+                    "RecipientCode",
+                    "RecipientGender",
+                    "ReturnAddressShortForm",
+                    "SenderCity",
+                    "SenderCode",
+                    "SenderGender",
+                    "SenderReference",
+                };
+
+                const int count = sizeof(s_kwds) / sizeof(s_kwds[0]);
+                for (int i = 0; i < count; ++i)
+                {
+                    if (strcmp(name, s_kwds[i]) == 0)
+                        return i;
+                }
+
+                return -1;
+            };
+
+            if (sipKwds)
+            {
+                Py_ssize_t pos = 0;
+                PyObject *pyName = nullptr;
+                PyObject *pyValue = nullptr;
+                while (PyDict_Next(sipKwds, &pos, &pyName, &pyValue))
+                {
+                    PyObject *pyEncName = pyName;
+                    const char *name = sipString_AsASCIIString(&pyEncName);
+
+                    int argPos = _kwdPos(name);
+                    if (argPos == -1)
+                    {
+                        PyErr_Format(PyExc_TypeError,
+                            "'%s' is not a valid keyword argument", name);
+                        return nullptr;
+                    }
+
+                    if ((argPos + 23) < posArgsCount)
+                    {
+                        PyErr_Format(PyExc_TypeError,
+                            "'%s' has already been given as a positional argument\n",
+                            name);
+                        return nullptr;
+                    }
+
+                    int state = 0;
+                    int isError = 0;
+                    args[argPos] = reinterpret_cast<VARIANT *>(
+                        sipConvertToType(pyValue, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
+
+                    indexes.push_back(std::make_pair(argPos, state));
+                }
+            }
+
+            wpsapi::_Document *sipCpp = reinterpret_cast<wpsapi::_Document *>(
+                sipGetCppPtr((sipSimpleWrapper *)sipSelf, sipType_wpsapi__Document));
+
+            wpsapi::LetterContent* prop = nullptr;
+
+            HRESULT hr = sipCpp->CreateLetterContent(DateFormat,
+                IncludeHeaderFooter, PageDesign,
+                (wpsapi::WdLetterStyle)LetterStyle, Letterhead,
+                (wpsapi::WdLetterheadLocation)LetterheadLocation,
+                LetterheadSize, RecipientName, RecipientAddress, Salutation,
+                (wpsapi::WdSalutationType)SalutationType,
+                RecipientReference, MailingInstructions, AttentionLine, Subject, CCList,
+                ReturnAddress, SenderName, Closing, SenderCompany, SenderJobTitle,
+                SenderInitials, EnclosureNumber,
+                args[0], args[1], args[2], args[3], args[4],
+                args[5], args[6], args[7],
+                &prop);
+
+            for (const auto &index : indexes)
+                sipReleaseType(args[index.first], sipType_VARIANT, index.second);
+
+            return sipBuildResult(0, "(iD)", hr, prop, sipType_wpsapi_LetterContent, SIP_NULLPTR);
+        %End
+
         virtual HRESULT AcceptAllRevisions() = 0;
 
         virtual HRESULT RejectAllRevisions() = 0;

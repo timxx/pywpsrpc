@@ -759,7 +759,7 @@ Run(self, str, varg1: Any = None, varg2: Any = None, varg3: Any = None, varg4: A
         int isError = 0;
         BSTR* bstr = (BSTR*)sipConvertToType(pyArg, sipType_BSTR, 0, SIP_NO_CONVERTORS, &state, &isError);
 
-        if (!isError and bstr)
+        if (!isError && bstr)
         {
             MacroName.assign(*bstr, SysStringLen(*bstr));
 
