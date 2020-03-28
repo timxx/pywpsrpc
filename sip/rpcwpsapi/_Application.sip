@@ -691,9 +691,9 @@ namespace wpsapi
             VARIANT *PrintZoomRow = argMissing(),
             VARIANT *PrintZoomPaperWidth = argMissing(),
             VARIANT *PrintZoomPaperHeight = argMissing()) = 0;
-/*
-        virtual HRESULT Run(
-            BSTR MacroName,
+
+        virtual PyObject* Run(
+            /* BSTR MacroName,
             VARIANT *varg1 = argMissing(),
             VARIANT *varg2 = argMissing(),
             VARIANT *varg3 = argMissing(),
@@ -724,8 +724,140 @@ namespace wpsapi
             VARIANT *varg28 = argMissing(),
             VARIANT *varg29 = argMissing(),
             VARIANT *varg30 = argMissing(),
-            VARIANT *prop /Out/ = 0) = 0;
-*/
+            VARIANT *prop /Out/ = 0 */) = 0 /NoArgParser/;
+%Docstring
+Run(self, str, varg1: Any = None, varg2: Any = None, varg3: Any = None, varg4: Any = None, varg5: Any = None, varg6: Any = None, varg7: Any = None, varg8: Any = None, varg9: Any = None, varg10: Any = None, varg11: Any = None, varg12: Any = None, varg13: Any = None, varg14: Any = None, varg15: Any = None, varg16: Any = None, varg17: Any = None, varg18: Any = None, varg19: Any = None, varg20: Any = None, varg21: Any = None, varg22: Any = None, varg23: Any = None, varg24: Any = None, varg25: Any = None, varg26: Any = None, varg27: Any = None, varg28: Any = None, varg29: Any = None, varg30: Any = None)
+%End
+
+%MethodCode
+    Py_ssize_t posArgsCount = PyTuple_Size(sipArgs);
+    if (posArgsCount < 1 || posArgsCount > 31)
+    {
+        PyErr_Format(PyExc_TypeError,
+                    "Run() takes from 1 to 31 positional arguments but %d were given\n",
+                    posArgsCount);
+        return nullptr;
+    }
+
+    kfc::ks_bstr MacroName;
+    VARIANT* args[30];
+    for (int i = posArgsCount - 1; i < 30; ++i)
+        args[i] = argMissing();
+
+    if (posArgsCount > 0)
+    {
+        PyObject *pyArg = PyTuple_GetItem(sipArgs, 0);
+        if (!PyUnicode_Check(pyArg))
+        {
+            PyErr_Format(PyExc_TypeError,
+                "The 0 positional argument requires 'str' not '%s'.",
+                Py_TYPE(pyArg)->tp_name);
+            return nullptr;
+        }
+
+        int state = 0;
+        int isError = 0;
+        BSTR* bstr = (BSTR*)sipConvertToType(pyArg, sipType_BSTR, 0, SIP_NO_CONVERTORS, &state, &isError);
+
+        if (!isError and bstr)
+        {
+            MacroName.assign(*bstr, SysStringLen(*bstr));
+
+            sipReleaseType(bstr, sipType_BSTR, state);
+        }
+    }
+
+    std::vector<std::pair<int, int>> indexes;
+
+    for (Py_ssize_t i = 1; i < posArgsCount; ++i)
+    {
+        PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
+        int state = 0;
+        int isError = 0;
+        args[i - 1] = reinterpret_cast<VARIANT *>(
+            sipConvertToType(pyArg, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
+
+        indexes.push_back(std::make_pair(i - 1, state));
+    }
+
+    auto _kwdPos = [](const char *name) -> int
+    {
+        static const char * const s_kwds[] =
+        {
+            "varg1", "varg2", "varg3", "varg4", "varg5",
+            "varg6", "varg7", "varg8", "varg9", "varg10",
+            "varg11", "varg12", "varg13", "varg14", "varg15",
+            "varg16", "varg17", "varg18", "varg19", "varg20",
+            "varg21", "varg22", "varg23", "varg24", "varg25",
+            "varg26", "varg27", "varg28", "varg29", "varg30"
+        };
+
+        const int count = sizeof(s_kwds) / sizeof(s_kwds[0]);
+        for (int i = 0; i < count; ++i)
+        {
+            if (strcmp(name, s_kwds[i]) == 0)
+                return i;
+        }
+
+        return -1;
+    };
+
+    if (sipKwds)
+    {
+        Py_ssize_t pos = 0;
+        PyObject *pyName = nullptr;
+        PyObject *pyValue = nullptr;
+        while (PyDict_Next(sipKwds, &pos, &pyName, &pyValue))
+        {
+            PyObject *pyEncName = pyName;
+            const char *name = sipString_AsASCIIString(&pyEncName);
+
+            int argPos = _kwdPos(name);
+            if (argPos == -1)
+            {
+                PyErr_Format(PyExc_TypeError,
+                    "'%s' is not a valid keyword argument", name);
+                return nullptr;
+            }
+
+            if ((argPos + 1) < posArgsCount)
+            {
+                PyErr_Format(PyExc_TypeError,
+                    "'%s' has already been given as a positional argument\n",
+                    name);
+                return nullptr;
+            }
+
+            int state = 0;
+            int isError = 0;
+            args[argPos] = reinterpret_cast<VARIANT *>(
+                sipConvertToType(pyValue, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
+
+            indexes.push_back(std::make_pair(argPos, state));
+        }
+    }
+
+    wpsapi::_Application *sipCpp = reinterpret_cast<wpsapi::_Application *>(
+        sipGetCppPtr((sipSimpleWrapper *)sipSelf, sipType_wpsapi__Application));
+
+    VARIANT *prop = new VARIANT;
+    VariantInit(prop);
+
+    HRESULT hr = sipCpp->Run(MacroName,
+        args[0], args[1], args[2], args[3], args[4], args[5],
+        args[6], args[7], args[8], args[9], args[10],
+        args[11], args[12], args[13], args[14], args[15],
+        args[16], args[17], args[18], args[19], args[20],
+        args[21], args[22], args[23], args[24], args[25],
+        args[26], args[27], args[28], args[29],
+        prop);
+
+    for (const auto &index : indexes)
+        sipReleaseType(args[index.first], sipType_VARIANT, index.second);
+
+    return sipBuildResult(0, "(iN)", hr, prop, sipType_VARIANT, SIP_NULLPTR);
+%End
+
         virtual HRESULT PrintOut(
             VARIANT *Background = argMissing(),
             VARIANT *Append = argMissing(),
