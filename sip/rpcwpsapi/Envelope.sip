@@ -12,6 +12,134 @@ namespace wpsapi
 {
     struct Envelope : public IDispatch /Abstract/
     {
+    %TypeCode
+        static PyObject* _insertOrPrint(PyObject *sipSelf, PyObject *sipArgs, PyObject *sipKwds, bool isInsert)
+        {
+            Py_ssize_t posArgsCount = PyTuple_Size(sipArgs);
+            if (posArgsCount > 28)
+            {
+                PyErr_Format(PyExc_TypeError,
+                    "%s() takes from 0 to 28 positional arguments but %d were given\n",
+                    isInsert ? "Insert" : "PrintOut", posArgsCount);
+                return nullptr;
+            }
+
+            VARIANT *args[28];
+
+            for (int i = posArgsCount; i < 28; ++i)
+                args[i] = argMissing();
+
+            std::vector<std::pair<int, int>> indexes;
+
+            for (Py_ssize_t i = 0; i < posArgsCount; ++i)
+            {
+                PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
+                int state = 0;
+                int isError = 0;
+                args[i] = reinterpret_cast<VARIANT *>(
+                    sipConvertToType(pyArg, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
+
+                indexes.push_back(std::make_pair(i, state));
+            }
+
+            auto _kwdPos = [](const char *name) -> int
+            {
+                static const char * const s_kwds[] =
+                {
+                    "ExtractAddress",
+                    "Address",
+                    "AutoText",
+                    "OmitReturnAddress",
+                    "ReturnAddress",
+                    "ReturnAutoText",
+                    "PrintBarCode",
+                    "PrintFIMA",
+                    "Size",
+                    "Height",
+                    "Width",
+                    "FeedSource",
+                    "AddressFromLeft",
+                    "AddressFromTop",
+                    "ReturnAddressFromLeft",
+                    "ReturnAddressFromTop",
+                    "DefaultFaceUp",
+                    "DefaultOrientation",
+                    "PrintEPostage",
+                    "Vertical",
+                    "RecipientNamefromLeft",
+                    "RecipientNamefromTop",
+                    "RecipientPostalfromLeft",
+                    "RecipientPostalfromTop",
+                    "SenderNamefromLeft",
+                    "SenderNamefromTop",
+                    "SenderPostalfromLeft",
+                    "SenderPostalfromTop"
+                };
+
+                const int count = sizeof(s_kwds) / sizeof(s_kwds[0]);
+                for (int i = 0; i < count; ++i)
+                {
+                    if (strcmp(name, s_kwds[i]) == 0)
+                        return i;
+                }
+
+                return -1;
+            };
+
+            if (sipKwds)
+            {
+                Py_ssize_t pos = 0;
+                PyObject *pyName = nullptr;
+                PyObject *pyValue = nullptr;
+                while (PyDict_Next(sipKwds, &pos, &pyName, &pyValue))
+                {
+                    PyObject *pyEncName = pyName;
+                    const char *name = sipString_AsASCIIString(&pyEncName);
+
+                    int argPos = _kwdPos(name);
+                    if (argPos == -1)
+                    {
+                        PyErr_Format(PyExc_TypeError,
+                            "'%s' is not a valid keyword argument", name);
+                        return nullptr;
+                    }
+
+                    if (argPos < posArgsCount)
+                    {
+                        PyErr_Format(PyExc_TypeError,
+                            "'%s' has already been given as a positional argument\n",
+                            name);
+                        return nullptr;
+                    }
+
+                    int state = 0;
+                    int isError = 0;
+                    args[argPos] = reinterpret_cast<VARIANT *>(
+                        sipConvertToType(pyValue, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
+
+                    indexes.push_back(std::make_pair(argPos, state));
+                }
+            }
+
+            wpsapi::Envelope *sipCpp = reinterpret_cast<wpsapi::Envelope *>(
+                sipGetCppPtr((sipSimpleWrapper *)sipSelf, sipType_wpsapi_Envelope));
+
+            auto func = isInsert ? (&wpsapi::Envelope::Insert) : (&wpsapi::Envelope::PrintOut);
+
+            HRESULT hr = (sipCpp->*func)(args[0], args[1], args[2], args[3], args[4],
+                args[5], args[6], args[7], args[8], args[9],
+                args[10], args[11], args[12], args[13], args[14],
+                args[15], args[16], args[17], args[18], args[19],
+                args[20], args[21], args[22], args[23], args[24],
+                args[25], args[26], args[27]);
+
+            for (const auto &index : indexes)
+                sipReleaseType(args[index.first], sipType_VARIANT, index.second);
+
+            return PyLong_FromLong(hr);
+        }
+    %End
+
     public:
         virtual HRESULT get_Application(
             Application **prop /Out/) = 0;
@@ -209,9 +337,9 @@ namespace wpsapi
 
         virtual HRESULT put_SenderPostalfromTop(
             single prop) = 0;
-/*
+
         virtual HRESULT Insert(
-            VARIANT *ExtractAddress = argMissing(),
+            /* VARIANT *ExtractAddress = argMissing(),
             VARIANT *Address = argMissing(),
             VARIANT *AutoText = argMissing(),
             VARIANT *OmitReturnAddress = argMissing(),
@@ -238,10 +366,16 @@ namespace wpsapi
             VARIANT *SenderNamefromLeft = argMissing(),
             VARIANT *SenderNamefromTop = argMissing(),
             VARIANT *SenderPostalfromLeft = argMissing(),
-            VARIANT *SenderPostalfromTop = argMissing()) = 0;
+            VARIANT *SenderPostalfromTop = argMissing() */) = 0 /NoArgParser/;
+        %Docstring(format="deindented")
+            Insert(self, ExtractAddress: Any = None, Address: Any = None, AutoText: Any = None, OmitReturnAddress: Any = None, ReturnAddress: Any = None, ReturnAutoText: Any = None, PrintBarCode: Any = None, PrintFIMA: Any = None, Size: Any = None, Height: Any = None, Width: Any = None, FeedSource: Any = None, AddressFromLeft: Any = None, AddressFromTop: Any = None, ReturnAddressFromLeft: Any = None, ReturnAddressFromTop: Any = None, DefaultFaceUp: Any = None, DefaultOrientation: Any = None, PrintEPostage: Any = None, Vertical: Any = None, RecipientNamefromLeft: Any = None, RecipientNamefromTop: Any = None, RecipientPostalfromLeft: Any = None, RecipientPostalfromTop: Any = None, SenderNamefromLeft: Any = None, SenderNamefromTop: Any = None, SenderPostalfromLeft: Any = None, SenderPostalfromTop: Any = None)
+        %End
+        %MethodCode
+            return _insertOrPrint(sipSelf, sipArgs, sipKwds, true);
+        %End
 
         virtual HRESULT PrintOut(
-            VARIANT *ExtractAddress = argMissing(),
+            /* VARIANT *ExtractAddress = argMissing(),
             VARIANT *Address = argMissing(),
             VARIANT *AutoText = argMissing(),
             VARIANT *OmitReturnAddress = argMissing(),
@@ -268,7 +402,12 @@ namespace wpsapi
             VARIANT *SenderNamefromLeft = argMissing(),
             VARIANT *SenderNamefromTop = argMissing(),
             VARIANT *SenderPostalfromLeft = argMissing(),
-            VARIANT *SenderPostalfromTop = argMissing()) = 0;
-*/
+            VARIANT *SenderPostalfromTop = argMissing() */) = 0 /NoArgParser/;
+        %Docstring(format="deindented")
+            PrintOut(self, ExtractAddress: Any = None, Address: Any = None, AutoText: Any = None, OmitReturnAddress: Any = None, ReturnAddress: Any = None, ReturnAutoText: Any = None, PrintBarCode: Any = None, PrintFIMA: Any = None, Size: Any = None, Height: Any = None, Width: Any = None, FeedSource: Any = None, AddressFromLeft: Any = None, AddressFromTop: Any = None, ReturnAddressFromLeft: Any = None, ReturnAddressFromTop: Any = None, DefaultFaceUp: Any = None, DefaultOrientation: Any = None, PrintEPostage: Any = None, Vertical: Any = None, RecipientNamefromLeft: Any = None, RecipientNamefromTop: Any = None, RecipientPostalfromLeft: Any = None, RecipientPostalfromTop: Any = None, SenderNamefromLeft: Any = None, SenderNamefromTop: Any = None, SenderPostalfromLeft: Any = None, SenderPostalfromTop: Any = None)
+        %End
+        %MethodCode
+            return _insertOrPrint(sipSelf, sipArgs, sipKwds, false);
+        %End
     };
 };
