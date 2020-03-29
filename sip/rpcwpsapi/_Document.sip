@@ -734,7 +734,7 @@ namespace wpsapi
             VARIANT *SenderReference = argMissing(),
             LetterContent **prop /Out/ = 0*/) = 0 /NoArgParser/;
         %Docstring(format="deindented")
-            CreateLetterContent(self, str, bool, str, wpsapi.WdLetterStyle, bool, wpsapi.WdLetterheadLocation, float, str, str, str, wpsapi.WdSalutationType, str, str, str, str, str, str, str, str, str, str, str, int, InfoBlock: Any = None, RecipientCode: Any = None, RecipientGender: Any = None, ReturnAddressShortForm: Any = None, SenderCity: Any = None, SenderCode: Any = None, SenderGender: Any = None, SenderReference: Any = None)
+            CreateLetterContent(self, str, bool, str, wpsapi.WdLetterStyle, bool, wpsapi.WdLetterheadLocation, float, str, str, str, wpsapi.WdSalutationType, str, str, str, str, str, str, str, str, str, str, str, int, InfoBlock: Any = None, RecipientCode: Any = None, RecipientGender: Any = None, ReturnAddressShortForm: Any = None, SenderCity: Any = None, SenderCode: Any = None, SenderGender: Any = None, SenderReference: Any = None) -> Tuple[int, wpsapi.LetterContent]
         %End
         %MethodCode
             Py_ssize_t posArgsCount = PyTuple_Size(sipArgs);

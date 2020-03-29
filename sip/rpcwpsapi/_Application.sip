@@ -726,7 +726,7 @@ namespace wpsapi
             VARIANT *varg30 = argMissing(),
             VARIANT *prop /Out/ = 0 */) = 0 /NoArgParser/;
 %Docstring
-Run(self, str, varg1: Any = None, varg2: Any = None, varg3: Any = None, varg4: Any = None, varg5: Any = None, varg6: Any = None, varg7: Any = None, varg8: Any = None, varg9: Any = None, varg10: Any = None, varg11: Any = None, varg12: Any = None, varg13: Any = None, varg14: Any = None, varg15: Any = None, varg16: Any = None, varg17: Any = None, varg18: Any = None, varg19: Any = None, varg20: Any = None, varg21: Any = None, varg22: Any = None, varg23: Any = None, varg24: Any = None, varg25: Any = None, varg26: Any = None, varg27: Any = None, varg28: Any = None, varg29: Any = None, varg30: Any = None)
+Run(self, str, varg1: Any = None, varg2: Any = None, varg3: Any = None, varg4: Any = None, varg5: Any = None, varg6: Any = None, varg7: Any = None, varg8: Any = None, varg9: Any = None, varg10: Any = None, varg11: Any = None, varg12: Any = None, varg13: Any = None, varg14: Any = None, varg15: Any = None, varg16: Any = None, varg17: Any = None, varg18: Any = None, varg19: Any = None, varg20: Any = None, varg21: Any = None, varg22: Any = None, varg23: Any = None, varg24: Any = None, varg25: Any = None, varg26: Any = None, varg27: Any = None, varg28: Any = None, varg29: Any = None, varg30: Any = None) -> Tuple[int, Any]
 %End
 
 %MethodCode
