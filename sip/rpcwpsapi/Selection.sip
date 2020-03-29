@@ -717,90 +717,37 @@ Sort(self, ExcludeHeader: Any = None, FieldNumber: Any = None, SortFieldType: An
                 args[i] = argMissing();
 
             std::vector<std::pair<int, int>> indexes;
+            if (!parseVariantArgs(sipArgs, args, indexes))
+                return nullptr;
 
-            for (Py_ssize_t i = 0; i < posArgsCount; ++i)
+            static const char * const s_kwds[] =
             {
-                PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
-                int state = 0;
-                int isError = 0;
-                args[i] = reinterpret_cast<VARIANT *>(
-                    sipConvertToType(pyArg, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
-
-                indexes.push_back(std::make_pair(i, state));
-            }
-
-            auto _kwdPos = [](const char *name) -> int
-            {
-                static const char * const s_kwds[] =
-                {
-                    "ExcludeHeader",
-                    "FieldNumber",
-                    "SortFieldType",
-                    "SortOrder",
-                    "FieldNumber2",
-                    "SortFieldType2",
-                    "SortOrder2",
-                    "FieldNumber3",
-                    "SortFieldType3",
-                    "SortOrder3",
-                    "SortColumn",
-                    "Separator",
-                    "CaseSensitive",
-                    "BidiSort",
-                    "IgnoreThe",
-                    "IgnoreKashida",
-                    "IgnoreDiacritics",
-                    "IgnoreHe",
-                    "LanguageID",
-                    "SubFieldNumber",
-                    "SubFieldNumber2",
-                    "SubFieldNumber3"
-                };
-
-                const int count = sizeof(s_kwds) / sizeof(s_kwds[0]);
-                for (int i = 0; i < count; ++i)
-                {
-                    if (strcmp(name, s_kwds[i]) == 0)
-                        return i;
-                }
-
-                return -1;
+                "ExcludeHeader",
+                "FieldNumber",
+                "SortFieldType",
+                "SortOrder",
+                "FieldNumber2",
+                "SortFieldType2",
+                "SortOrder2",
+                "FieldNumber3",
+                "SortFieldType3",
+                "SortOrder3",
+                "SortColumn",
+                "Separator",
+                "CaseSensitive",
+                "BidiSort",
+                "IgnoreThe",
+                "IgnoreKashida",
+                "IgnoreDiacritics",
+                "IgnoreHe",
+                "LanguageID",
+                "SubFieldNumber",
+                "SubFieldNumber2",
+                "SubFieldNumber3"
             };
-
-            if (sipKwds)
-            {
-                Py_ssize_t pos = 0;
-                PyObject *pyName = nullptr;
-                PyObject *pyValue = nullptr;
-                while (PyDict_Next(sipKwds, &pos, &pyName, &pyValue))
-                {
-                    PyObject *pyEncName = pyName;
-                    const char *name = sipString_AsASCIIString(&pyEncName);
-
-                    int argPos = _kwdPos(name);
-                    if (argPos == -1)
-                    {
-                        PyErr_Format(PyExc_TypeError,
-                            "'%s' is not a valid keyword argument", name);
-                        return nullptr;
-                    }
-
-                    if (argPos < posArgsCount)
-                    {
-                        PyErr_Format(PyExc_TypeError,
-                            "'%s' has already been given as a positional argument\n",
-                            name);
-                        return nullptr;
-                    }
-
-                    int state = 0;
-                    int isError = 0;
-                    args[argPos] = reinterpret_cast<VARIANT *>(
-                        sipConvertToType(pyValue, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
-
-                    indexes.push_back(std::make_pair(argPos, state));
-                }
-            }
+            const int kwdsCount = sizeof(s_kwds) / sizeof(s_kwds[0]);
+            if (!parseVariantKwds(sipKwds, s_kwds, kwdsCount, args, posArgsCount, indexes))
+                return nullptr;
 
             wpsapi::Selection *sipCpp = reinterpret_cast<wpsapi::Selection *>(
                 sipGetCppPtr((sipSimpleWrapper *)sipSelf, sipType_wpsapi_Selection));

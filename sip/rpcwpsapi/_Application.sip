@@ -768,74 +768,22 @@ Run(self, str, varg1: Any = None, varg2: Any = None, varg3: Any = None, varg4: A
     }
 
     std::vector<std::pair<int, int>> indexes;
+    if (!parseVariantArgs(sipArgs, args, indexes, 1))
+        return nullptr;
 
-    for (Py_ssize_t i = 1; i < posArgsCount; ++i)
+    static const char * const s_kwds[] =
     {
-        PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
-        int state = 0;
-        int isError = 0;
-        args[i - 1] = reinterpret_cast<VARIANT *>(
-            sipConvertToType(pyArg, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
-
-        indexes.push_back(std::make_pair(i - 1, state));
-    }
-
-    auto _kwdPos = [](const char *name) -> int
-    {
-        static const char * const s_kwds[] =
-        {
-            "varg1", "varg2", "varg3", "varg4", "varg5",
-            "varg6", "varg7", "varg8", "varg9", "varg10",
-            "varg11", "varg12", "varg13", "varg14", "varg15",
-            "varg16", "varg17", "varg18", "varg19", "varg20",
-            "varg21", "varg22", "varg23", "varg24", "varg25",
-            "varg26", "varg27", "varg28", "varg29", "varg30"
-        };
-
-        const int count = sizeof(s_kwds) / sizeof(s_kwds[0]);
-        for (int i = 0; i < count; ++i)
-        {
-            if (strcmp(name, s_kwds[i]) == 0)
-                return i;
-        }
-
-        return -1;
+        "varg1", "varg2", "varg3", "varg4", "varg5",
+        "varg6", "varg7", "varg8", "varg9", "varg10",
+        "varg11", "varg12", "varg13", "varg14", "varg15",
+        "varg16", "varg17", "varg18", "varg19", "varg20",
+        "varg21", "varg22", "varg23", "varg24", "varg25",
+        "varg26", "varg27", "varg28", "varg29", "varg30"
     };
+    const int kwdsCount = sizeof(s_kwds) / sizeof(s_kwds[0]);
 
-    if (sipKwds)
-    {
-        Py_ssize_t pos = 0;
-        PyObject *pyName = nullptr;
-        PyObject *pyValue = nullptr;
-        while (PyDict_Next(sipKwds, &pos, &pyName, &pyValue))
-        {
-            PyObject *pyEncName = pyName;
-            const char *name = sipString_AsASCIIString(&pyEncName);
-
-            int argPos = _kwdPos(name);
-            if (argPos == -1)
-            {
-                PyErr_Format(PyExc_TypeError,
-                    "'%s' is not a valid keyword argument", name);
-                return nullptr;
-            }
-
-            if ((argPos + 1) < posArgsCount)
-            {
-                PyErr_Format(PyExc_TypeError,
-                    "'%s' has already been given as a positional argument\n",
-                    name);
-                return nullptr;
-            }
-
-            int state = 0;
-            int isError = 0;
-            args[argPos] = reinterpret_cast<VARIANT *>(
-                sipConvertToType(pyValue, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
-
-            indexes.push_back(std::make_pair(argPos, state));
-        }
-    }
+    if (!parseVariantKwds(sipKwds, s_kwds, kwdsCount, args, posArgsCount, indexes, 1))
+        return nullptr;
 
     wpsapi::_Application *sipCpp = reinterpret_cast<wpsapi::_Application *>(
         sipGetCppPtr((sipSimpleWrapper *)sipSelf, sipType_wpsapi__Application));

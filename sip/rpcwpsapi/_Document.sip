@@ -741,7 +741,7 @@ namespace wpsapi
             if (posArgsCount < 23 || posArgsCount > 31)
             {
                 PyErr_Format(PyExc_TypeError,
-                    "Run() takes from 23 to 31 positional arguments but %d were given\n",
+                    "CreateLetterContent() takes from 23 to 31 positional arguments but %d were given\n",
                     posArgsCount);
                 return nullptr;
             }
@@ -861,76 +861,24 @@ namespace wpsapi
                 args[i] = argMissing();
 
             std::vector<std::pair<int, int>> indexes;
+            if (!parseVariantArgs(sipArgs, args, indexes, 23))
+                return nullptr;
 
-            for (Py_ssize_t i = 23; i < posArgsCount; ++i)
+            static const char * const s_kwds[] =
             {
-                PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
-                int state = 0;
-                int isError = 0;
-                args[i - 23] = reinterpret_cast<VARIANT *>(
-                    sipConvertToType(pyArg, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
-
-                indexes.push_back(std::make_pair(i - 23, state));
-            }
-
-            auto _kwdPos = [](const char *name) -> int
-            {
-                static const char * const s_kwds[] =
-                {
-                    "InfoBlock",
-                    "RecipientCode",
-                    "RecipientGender",
-                    "ReturnAddressShortForm",
-                    "SenderCity",
-                    "SenderCode",
-                    "SenderGender",
-                    "SenderReference",
-                };
-
-                const int count = sizeof(s_kwds) / sizeof(s_kwds[0]);
-                for (int i = 0; i < count; ++i)
-                {
-                    if (strcmp(name, s_kwds[i]) == 0)
-                        return i;
-                }
-
-                return -1;
+                "InfoBlock",
+                "RecipientCode",
+                "RecipientGender",
+                "ReturnAddressShortForm",
+                "SenderCity",
+                "SenderCode",
+                "SenderGender",
+                "SenderReference",
             };
+            const int kwdsCount = sizeof(s_kwds) / sizeof(s_kwds[0]);
 
-            if (sipKwds)
-            {
-                Py_ssize_t pos = 0;
-                PyObject *pyName = nullptr;
-                PyObject *pyValue = nullptr;
-                while (PyDict_Next(sipKwds, &pos, &pyName, &pyValue))
-                {
-                    PyObject *pyEncName = pyName;
-                    const char *name = sipString_AsASCIIString(&pyEncName);
-
-                    int argPos = _kwdPos(name);
-                    if (argPos == -1)
-                    {
-                        PyErr_Format(PyExc_TypeError,
-                            "'%s' is not a valid keyword argument", name);
-                        return nullptr;
-                    }
-
-                    if ((argPos + 23) < posArgsCount)
-                    {
-                        PyErr_Format(PyExc_TypeError,
-                            "'%s' has already been given as a positional argument\n",
-                            name);
-                        return nullptr;
-                    }
-
-                    int state = 0;
-                    int isError = 0;
-                    args[argPos] = reinterpret_cast<VARIANT *>(
-                        sipConvertToType(pyValue, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
-
-                    indexes.push_back(std::make_pair(argPos, state));
-                }
-            }
+            if (!parseVariantKwds(sipKwds, s_kwds, kwdsCount, args, posArgsCount, indexes, 23))
+                return nullptr;
 
             wpsapi::_Document *sipCpp = reinterpret_cast<wpsapi::_Document *>(
                 sipGetCppPtr((sipSimpleWrapper *)sipSelf, sipType_wpsapi__Document));
