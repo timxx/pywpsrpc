@@ -63,7 +63,6 @@ typedef float single;
 %Include IStyle.sip
 %Include IStyles.sip
 %Include IBorders.sip
-%Include _Global.sip
 %Include IAddIn.sip
 %Include IAddIns.sip
 %Include IToolbar.sip

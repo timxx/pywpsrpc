@@ -27,7 +27,6 @@ typedef long MsoRGBType;
 %Include enums.sip
 %Include Collection.sip
 %Include _Application.sip
-%Include _Global.sip
 %Include ColorFormat.sip
 %Include SlideShowWindow.sip
 %Include Selection.sip

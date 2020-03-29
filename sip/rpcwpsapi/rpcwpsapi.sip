@@ -27,7 +27,6 @@ typedef float single;
 %Include mso_enum.sip
 %Include _Application_extend.sip
 %Include _Application.sip
-%Include _Global.sip
 %Include FontNames.sip
 %Include Languages.sip
 %Include Language.sip
@@ -434,13 +433,6 @@ namespace wpsapi
     {
     %ConvertToSubClassCode
         sipType = sipType_wpsapi__ParagraphFormat;
-    %End
-    };
-
-    class Global /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapi__Global;
     %End
     };
 
