@@ -27,7 +27,8 @@ bool parseVariantArgs(
     PyObject *sipArgs,
     VARIANT *args[],
     std::vector<std::pair<int, int>> &indexes,
-    int offset = 0);
+    int offset = 0,
+    Py_ssize_t maxArg = -1);
 
 bool parseVariantKwds(
     PyObject *sipKwds,
@@ -59,9 +60,12 @@ bool parseVariantArgs(
     PyObject *sipArgs,
     VARIANT *args[],
     std::vector<std::pair<int, int>> &indexes,
-    int offset)
+    int offset,
+    Py_ssize_t maxArg)
 {
     Py_ssize_t posArgsCount = PyTuple_Size(sipArgs);
+    if (maxArg != -1 && posArgsCount > maxArg)
+        posArgsCount = maxArg;
 
     for (Py_ssize_t i = offset; i < posArgsCount; ++i)
     {

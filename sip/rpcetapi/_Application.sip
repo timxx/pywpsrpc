@@ -12,6 +12,178 @@ namespace etapi
 {
     struct _Application : public IDispatch /Abstract/
     {
+    %TypeCode
+        bool _parseVariantKwdsWithLcid(
+            PyObject *sipKwds,
+            const char * const kwdNames[],
+            int kwdNamesCount,
+            VARIANT *args[],
+            long *lcid,
+            Py_ssize_t posArgsCount,
+            std::vector<std::pair<int, int>> &indexes,
+            int offset)
+        {
+            if (!sipKwds)
+                return true;
+
+            auto _kwdPos = [&](const char *name) -> int
+            {
+                if (strcmp(name, "lcid") == 0)
+                    return kwdNamesCount;
+
+                for (int i = 0; i < kwdNamesCount; ++i)
+                {
+                    if (strcmp(name, kwdNames[i]) == 0)
+                        return i;
+                }
+
+                return -1;
+            };
+
+            Py_ssize_t pos = 0;
+            PyObject *pyName = nullptr;
+            PyObject *pyValue = nullptr;
+            while (PyDict_Next(sipKwds, &pos, &pyName, &pyValue))
+            {
+                PyObject *pyEncName = pyName;
+                const char *name = sipString_AsASCIIString(&pyEncName);
+
+                int argPos = _kwdPos(name);
+                if (argPos == -1)
+                {
+                    PyErr_Format(PyExc_TypeError,
+                        "'%s' is not a valid keyword argument", name);
+                    return false;
+                }
+
+                if ((argPos + offset) < posArgsCount)
+                {
+                    PyErr_Format(PyExc_TypeError,
+                        "'%s' has already been given as a positional argument\n",
+                        name);
+                    return false;
+                }
+
+                if (argPos == kwdNamesCount)
+                {
+                    if (!PyLong_Check(pyValue))
+                    {
+                        PyErr_Format(PyExc_TypeError,
+                            "The lcid argument requires 'int' not '%s'.",
+                            Py_TYPE(pyValue)->tp_name);
+                        return false;
+                    }
+                    *lcid = PyLong_AsLong(pyValue);
+                }
+                else
+                {
+                    int state = 0;
+                    int isError = 0;
+                    args[argPos] = reinterpret_cast<VARIANT *>(
+                        sipConvertToType(pyValue, sipType_VARIANT, 0, SIP_NO_CONVERTORS, &state, &isError));
+
+                    indexes.push_back(std::make_pair(argPos, state));
+                }
+            }
+
+            return true;
+        }
+
+        static PyObject* _IntersectOrUnion(PyObject *sipSelf, PyObject *sipArgs, PyObject *sipKwds, bool isIntersect)
+        {
+            Py_ssize_t posArgsCount = PyTuple_Size(sipArgs);
+            if (posArgsCount < 2 || posArgsCount > 31)
+            {
+                PyErr_Format(PyExc_TypeError,
+                    "%s() takes from 2 to 31 positional arguments but %d were given\n",
+                    isIntersect ? "Intersect" : "Union", posArgsCount);
+                return nullptr;
+            }
+
+            etapi::Range *rgArgs[2];
+            std::vector<int> rgState;
+            for (int i = 0; i < 2; ++i)
+            {
+                PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
+                if (Py_TYPE(pyArg) != sipTypeAsPyTypeObject(sipType_etapi_Range))
+                {
+                    PyErr_Format(PyExc_TypeError,
+                            "The %d positional argument requires 'etapi.Range' not '%s'.",
+                            i,  Py_TYPE(pyArg)->tp_name);
+                    return nullptr;
+                }
+
+                int state = 0;
+                int isError = 0;
+                rgArgs[i] = reinterpret_cast<etapi::Range*>(
+                    sipConvertToType(pyArg, sipType_etapi_Range, 0, SIP_NO_CONVERTORS, &state, &isError));
+
+                rgState.push_back(state);
+            }
+
+            VARIANT* args[28];
+            for (int i = posArgsCount - 2; i < 28; ++i)
+                args[i] = argMissing();
+
+            std::vector<std::pair<int, int>> indexes;
+            if (!parseVariantArgs(sipArgs, args, indexes, 2, 30))
+                return nullptr;
+
+            long lcid = 0;
+            if (posArgsCount == 31)
+            {
+                PyObject *pyArg = PyTuple_GetItem(sipArgs, 30);
+                if (!PyLong_Check(pyArg))
+                {
+                    PyErr_Format(PyExc_TypeError,
+                        "The 30 positional argument requires 'int' not '%s'.",
+                        Py_TYPE(pyArg)->tp_name);
+                    return nullptr;
+                }
+                lcid = PyLong_AsLong(pyArg);
+            }
+
+            static const char * const s_kwds[] =
+            {
+                "Arg3", "Arg4", "Arg5",
+                "Arg6", "Arg7", "Arg8", "Arg9", "Arg10",
+                "Arg11", "Arg12", "Arg13", "Arg14", "Arg15",
+                "Arg16", "Arg17", "Arg18", "Arg19", "Arg20",
+                "Arg21", "Arg22", "Arg23", "Arg24", "Arg25",
+                "Arg26", "Arg27", "Arg28", "Arg29", "Arg30"
+            };
+            const int kwdsCount = sizeof(s_kwds) / sizeof(s_kwds[0]);
+
+            if (!_parseVariantKwdsWithLcid(sipKwds, s_kwds, kwdsCount, args, &lcid, posArgsCount, indexes, 2))
+                return nullptr;
+
+            etapi::_Application *sipCpp = reinterpret_cast<etapi::_Application *>(
+                sipGetCppPtr((sipSimpleWrapper *)sipSelf, sipType_etapi__Application));
+
+            etapi::Range *prop = nullptr;
+
+            auto func = isIntersect ? (&etapi::_Application::Intersect) : (&etapi::_Application::Union);
+
+            HRESULT hr = (sipCpp->*func)(
+                rgArgs[0], rgArgs[1],
+                *args[0], *args[1], *args[2], *args[3], *args[4], *args[5],
+                *args[6], *args[7], *args[8], *args[9], *args[10],
+                *args[11], *args[12], *args[13], *args[14], *args[15],
+                *args[16], *args[17], *args[18], *args[19], *args[20],
+                *args[21], *args[22], *args[23], *args[24], *args[25],
+                *args[26], *args[27],
+                lcid, &prop);
+
+            for (const auto &index : indexes)
+                sipReleaseType(args[index.first], sipType_VARIANT, index.second);
+
+            for (int i = 0; i < 2; ++i)
+                sipReleaseType(rgArgs[i], sipType_etapi_Range, rgState[i]);
+
+            return sipBuildResult(0, "(iD)", hr, prop, sipType_etapi_Range, SIP_NULLPTR);
+        }
+    %End
+
     public:
         virtual HRESULT get_Application(
             Application **RHS /Out/) = 0;
@@ -121,9 +293,8 @@ namespace etapi
             long lcid,
             VARIANT *RHS /Out/) = 0;
 
-/*
         virtual HRESULT Intersect(
-            Range *Arg1,
+            /* Range *Arg1,
             Range *Arg2,
             VARIANT Arg3 = argMissing2(),
             VARIANT Arg4 = argMissing2(),
@@ -154,8 +325,13 @@ namespace etapi
             VARIANT Arg29 = argMissing2(),
             VARIANT Arg30 = argMissing2(),
             long lcid = 0,
-            Range **RHS /Out/ = 0) = 0;
-*/
+            Range **RHS /Out/ = 0 */) = 0 /NoArgParser/;
+        %Docstring(format="deindented")
+            Intersect(self, Arg1: etapi.Range, Arg2: etapi.Range, Arg3: Any = None ... Arg30: Any = None, lcid: int = 0) -> Tuple[int, etapi.Range]
+        %End
+        %MethodCode
+            return _IntersectOrUnion(sipSelf, sipArgs, sipKwds, true);
+        %End
 
         virtual HRESULT get_MenuBars(
             MenuBars **RHS /Out/) = 0;
@@ -266,9 +442,9 @@ namespace etapi
 
         virtual HRESULT get_Toolbars(
             Toolbars **RHS /Out/) = 0;
-/*
+
         virtual HRESULT Union(
-            Range *Arg1,
+            /*Range *Arg1,
             Range *Arg2,
             VARIANT Arg3 = argMissing2(),
             VARIANT Arg4 = argMissing2(),
@@ -299,8 +475,14 @@ namespace etapi
             VARIANT Arg29 = argMissing2(),
             VARIANT Arg30 = argMissing2(),
             long lcid = 0,
-            Range **RHS /Out/ = 0) = 0;
-*/
+            Range **RHS /Out/ = 0 */) = 0 /NoArgParser/;
+        %Docstring(format="deindented")
+            Union(self, Arg1: etapi.Range, Arg2: etapi.Range, Arg3: Any = None ... Arg30: Any = None, lcid: int = 0) -> Tuple[int, etapi.Range]
+        %End
+        %MethodCode
+            return _IntersectOrUnion(sipSelf, sipArgs, sipKwds, false);
+        %End
+
         virtual HRESULT get_Windows(
             Windows **RHS /Out/) = 0;
 
