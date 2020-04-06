@@ -290,6 +290,14 @@ def test():
     hr, visible = wpsApp.get_Visible()
     check_call("get_Visible", hr, visible)
 
+    if not wpsApp.openDocument(os.path.dirname(os.path.realpath(__file__)) + "/../pyproject.toml", True):
+        print("Can't open document")
+
+    print(wpsApp.insertDocumentField("test"))
+    print(wpsApp.insertDocumentField("公文域"))
+    print(wpsApp.getAllDocumentField())
+    print(wpsApp.getForceBackUpEnabled())
+
     hr = wpsApp.Quit(wpsapi.wdDoNotSaveChanges)
     check_call("Quit", hr)
 
