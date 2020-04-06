@@ -21,7 +21,7 @@ namespace etapi
             long *lcid,
             Py_ssize_t posArgsCount,
             std::vector<std::pair<int, int>> &indexes,
-            int offset)
+            int offset = 0)
         {
             if (!sipKwds)
                 return true;
@@ -350,9 +350,8 @@ namespace etapi
         virtual HRESULT get_Rows(
             Range **RHS /Out/) = 0;
 
-/*
         virtual HRESULT Run(
-            VARIANT Macro = argMissing2(),
+            /*VARIANT Macro = argMissing2(),
             VARIANT Arg1 = argMissing2(),
             VARIANT Arg2 = argMissing2(),
             VARIANT Arg3 = argMissing2(),
@@ -383,10 +382,66 @@ namespace etapi
             VARIANT Arg28 = argMissing2(),
             VARIANT Arg29 = argMissing2(),
             VARIANT Arg30 = argMissing2(),
-            VARIANT *RHS /Out/ = 0) = 0;
+            VARIANT *RHS /Out/ = 0*/) = 0 /NoArgParser/;
+        %Docstring(format="deindented")
+            Run(self, Macro: Any = None, Arg1: Any = None ... Arg30: Any = None) -> Tuple[int, Any]
+        %End
+        %MethodCode
+            Py_ssize_t posArgsCount = PyTuple_Size(sipArgs);
+            if (posArgsCount > 31)
+            {
+                PyErr_Format(PyExc_TypeError,
+                    "Run() takes from 0 to 31 positional arguments but %d were given\n",
+                    posArgsCount);
+                return nullptr;
+            }
+
+            VARIANT* args[31];
+            for (int i = posArgsCount; i < 31; ++i)
+                args[i] = argMissing();
+
+            std::vector<std::pair<int, int>> indexes;
+            if (!parseVariantArgs(sipArgs, args, indexes))
+                return nullptr;
+
+            static const char * const s_kwds[] =
+            {
+                "Macro",
+                "Arg1", "Arg2", "Arg3", "Arg4", "Arg5",
+                "Arg6", "Arg7", "Arg8", "Arg9", "Arg10",
+                "Arg11", "Arg12", "Arg13", "Arg14", "Arg15",
+                "Arg16", "Arg17", "Arg18", "Arg19", "Arg20",
+                "Arg21", "Arg22", "Arg23", "Arg24", "Arg25",
+                "Arg26", "Arg27", "Arg28", "Arg29", "Arg30"
+            };
+            const int kwdsCount = sizeof(s_kwds) / sizeof(s_kwds[0]);
+
+            if (!parseVariantKwds(sipKwds, s_kwds, kwdsCount, args, posArgsCount, indexes))
+                return nullptr;
+
+            etapi::_Application *sipCpp = reinterpret_cast<etapi::_Application *>(
+                sipGetCppPtr((sipSimpleWrapper *)sipSelf, sipType_etapi__Application));
+
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+
+            HRESULT hr = sipCpp->Run(
+                *args[0], *args[1], *args[2], *args[3], *args[4], *args[5],
+                *args[6], *args[7], *args[8], *args[9], *args[10],
+                *args[11], *args[12], *args[13], *args[14], *args[15],
+                *args[16], *args[17], *args[18], *args[19], *args[20],
+                *args[21], *args[22], *args[23], *args[24], *args[25],
+                *args[26], *args[27], *args[28], *args[29], *args[30],
+                prop);
+
+            for (const auto &index : indexes)
+                sipReleaseType(args[index.first], sipType_VARIANT, index.second);
+
+            return sipBuildResult(0, "(iN)", hr, prop, sipType_VARIANT, SIP_NULLPTR);
+        %End
 
         virtual HRESULT _Run2(
-            VARIANT Macro = argMissing2(),
+            /*VARIANT Macro = argMissing2(),
             VARIANT Arg1 = argMissing2(),
             VARIANT Arg2 = argMissing2(),
             VARIANT Arg3 = argMissing2(),
@@ -418,8 +473,66 @@ namespace etapi
             VARIANT Arg29 = argMissing2(),
             VARIANT Arg30 = argMissing2(),
             long lcid = 0,
-            VARIANT *RHS /Out/ = 0) = 0;
-*/
+            VARIANT *RHS /Out/ = 0 */) = 0 /NoArgParser/;
+        %Docstring(format="deindented")
+            _Run2(self, Macro: Any = None, Arg1: Any = None ... Arg30: Any = None, lcid: int = 0) -> Tuple[int, Any]
+        %End
+        %MethodCode
+            Py_ssize_t posArgsCount = PyTuple_Size(sipArgs);
+            if (posArgsCount > 32)
+            {
+                PyErr_Format(PyExc_TypeError,
+                    "_Run2() takes from 0 to 32 positional arguments but %d were given\n",
+                    posArgsCount);
+                return nullptr;
+            }
+
+            VARIANT* args[31];
+            for (int i = posArgsCount; i < 31; ++i)
+                args[i] = argMissing();
+
+            std::vector<std::pair<int, int>> indexes;
+            if (!parseVariantArgs(sipArgs, args, indexes))
+                return nullptr;
+
+            long lcid = 0;
+
+            static const char * const s_kwds[] =
+            {
+                "Macro",
+                "Arg1", "Arg2", "Arg3", "Arg4", "Arg5",
+                "Arg6", "Arg7", "Arg8", "Arg9", "Arg10",
+                "Arg11", "Arg12", "Arg13", "Arg14", "Arg15",
+                "Arg16", "Arg17", "Arg18", "Arg19", "Arg20",
+                "Arg21", "Arg22", "Arg23", "Arg24", "Arg25",
+                "Arg26", "Arg27", "Arg28", "Arg29", "Arg30"
+            };
+            const int kwdsCount = sizeof(s_kwds) / sizeof(s_kwds[0]);
+
+            if (!_parseVariantKwdsWithLcid(sipKwds, s_kwds, kwdsCount, args, &lcid, posArgsCount, indexes))
+                return nullptr;
+
+            etapi::_Application *sipCpp = reinterpret_cast<etapi::_Application *>(
+                sipGetCppPtr((sipSimpleWrapper *)sipSelf, sipType_etapi__Application));
+
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+
+            HRESULT hr = sipCpp->_Run2(
+                *args[0], *args[1], *args[2], *args[3], *args[4], *args[5],
+                *args[6], *args[7], *args[8], *args[9], *args[10],
+                *args[11], *args[12], *args[13], *args[14], *args[15],
+                *args[16], *args[17], *args[18], *args[19], *args[20],
+                *args[21], *args[22], *args[23], *args[24], *args[25],
+                *args[26], *args[27], *args[28], *args[29], *args[30],
+                lcid, prop);
+
+            for (const auto &index : indexes)
+                sipReleaseType(args[index.first], sipType_VARIANT, index.second);
+
+            return sipBuildResult(0, "(iN)", hr, prop, sipType_VARIANT, SIP_NULLPTR);
+        %End
+
         virtual HRESULT get_Selection(
             long lcid,
             IDispatch **RHS /Out/) = 0;
