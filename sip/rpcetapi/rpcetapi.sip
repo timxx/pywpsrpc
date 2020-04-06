@@ -47,7 +47,6 @@ typedef float single;
 %Include IWindows.sip
 %Include IAppEvents.sip
 %Include _Application.sip
-%Include IWorksheetFunction.sip
 %Include IRange.sip
 %Include IChartEvents.sip
 %Include _Chart.sip
