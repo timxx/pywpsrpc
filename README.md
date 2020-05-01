@@ -96,15 +96,15 @@ selection.InsertAfter("Hello, world")
 # bold the "Hello, world"
 selection.Font.Bold = True
 
+def onDocumentBeforeSave(doc, saveAsUi, cancel):
+    # to discard the saving, return cancel as True
+    return saveAsUi, cancel
+
 # get a notify about saving
 rpc.registerEvent(app.rpc_object,
                   wpsapi.DIID_ApplicationEvents4,
                   "DocumentBeforeSave",
                   onDocumentBeforeSave)
-
-def onDocumentBeforeSave(doc, saveAsUi, cancel):
-    # to discard the saving, return cancel as True
-    return saveAsUi, cancel
 
 # save the doc, onDocumentBeforeSave will be called
 doc.SaveAs2("test.docx")
