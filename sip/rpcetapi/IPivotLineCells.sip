@@ -33,8 +33,25 @@ namespace etapi
             VARIANT Index,
             PivotCell **RHS /Out/) = 0;
 
+        PivotCell* __getitem__(VARIANT index) const;
+        %MethodCode
+            etapi::PivotCell *prop = nullptr;
+            if (sipCpp->get_Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;
+
+        int __len__() const;
+        %MethodCode
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
 
         virtual HRESULT get_Full(
             VARIANT_BOOL *RHS /Out/) = 0;

@@ -43,5 +43,13 @@ namespace etapi
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
     };
 };

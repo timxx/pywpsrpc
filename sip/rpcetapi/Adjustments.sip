@@ -19,9 +19,26 @@ namespace etapi
         virtual HRESULT get_Count(
             int *Count /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            int count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
         virtual HRESULT get_Item(
             int Index,
             single *Val /Out/) = 0;
+
+        single __getitem__(int index) const;
+        %MethodCode
+            etapi::single prop = 0;
+            if (sipCpp->get_Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
 
         virtual HRESULT put_Item(
             int Index,

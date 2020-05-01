@@ -26,6 +26,15 @@ namespace etapi
             VARIANT Index,
             Error **RHS /Out/) = 0;
 
+        Error* __getitem__(VARIANT index) const;
+        %MethodCode
+            etapi::Error *prop = nullptr;
+            if (sipCpp->get_Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT get__Default(
             VARIANT Index,
             Error **RHS /Out/) = 0;

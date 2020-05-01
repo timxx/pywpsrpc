@@ -16,6 +16,14 @@ namespace etapi
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
         virtual HRESULT get__Default(
             VARIANT Index,
             IconCriterion **RHS /Out/) = 0;
@@ -26,6 +34,15 @@ namespace etapi
         virtual HRESULT get_Item(
             VARIANT Index,
             IconCriterion **RHS /Out/) = 0;
+
+        IconCriterion* __getitem__(VARIANT index) const;
+        %MethodCode
+            etapi::IconCriterion *prop = nullptr;
+            if (sipCpp->get_Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
 
     };
 };

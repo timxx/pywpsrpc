@@ -20,6 +20,15 @@ namespace etapi
             VARIANT Index,
             DiagramNode **ppdn /Out/) = 0;
 
+        DiagramNode* __getitem__(VARIANT index) const;
+        %MethodCode
+            etapi::DiagramNode *prop = nullptr;
+            if (sipCpp->Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT SelectAll() = 0;
 
         virtual HRESULT get_Parent(
@@ -27,6 +36,14 @@ namespace etapi
 
         virtual HRESULT get_Count(
             int *pcDiagramNodes /Out/) = 0;
+
+        int __len__() const;
+        %MethodCode
+            int count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
 
     };
 };

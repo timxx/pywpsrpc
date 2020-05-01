@@ -189,12 +189,35 @@ namespace etapi
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
         virtual HRESULT Group(
             GroupObject **RHS /Out/) = 0;
 
         virtual HRESULT Item(
             VARIANT Index,
             VARIANT *RHS /Out/) = 0;
+
+        VARIANT __getitem__(VARIANT index) const;
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            if (sipCpp->Item(*a0, prop) != S_OK)
+            {
+                delete prop;
+                sipIsErr = 1;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
 
         virtual HRESULT _NewEnum(
             IUnknown **RHS /Out/) = 0;

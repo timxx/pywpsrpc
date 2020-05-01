@@ -33,9 +33,26 @@ namespace etapi
         virtual HRESULT get_Count(
             long *RHS /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
         virtual HRESULT get_Item(
             VARIANT Index,
             Workbook **RHS /Out/) = 0;
+
+        Workbook* __getitem__(VARIANT index) const;
+        %MethodCode
+            etapi::Workbook *prop = nullptr;
+            if (sipCpp->get_Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
 
         virtual HRESULT get__NewEnum(
             IUnknown **RHS /Out/) = 0;
@@ -162,25 +179,5 @@ namespace etapi
             VARIANT Stylesheets = argMissing2(),
             VARIANT LoadOption = argMissing2(),
             Workbook **RHS /Out/ = 0) = 0;
-
-        int __len__() const;
-        %MethodCode
-            long lCount = 0;
-            HRESULT hr = sipCpp->get_Count(&lCount);
-            if (hr != S_OK)
-                lCount = 0;
-
-            sipRes = lCount;
-        %End
-
-        Workbook* __getitem__(VARIANT index) const;
-        %MethodCode
-            etapi::Workbook *prop = nullptr;
-            HRESULT hr = sipCpp->get_Item(*a0, &prop);
-            if (hr != S_OK)
-                sipIsErr = 1;
-            else
-                sipRes = prop;
-        %End
     };
 };
