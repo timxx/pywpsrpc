@@ -17,8 +17,25 @@ namespace ksoapi
             int Index,
             ScopeFolder **ScopeFolderRet /Out/) = 0;
 
+        ScopeFolder* __getitem__(int index) const;
+        %MethodCode
+            ksoapi::ScopeFolder *prop = nullptr;
+            if (sipCpp->get_Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT get_Count(
             int *iCountRetVal /Out/) = 0;
+
+        int __len__() const;
+        %MethodCode
+            int count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
 
         virtual HRESULT Add(
             ScopeFolder *ScopeFolder) = 0;

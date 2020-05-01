@@ -29,6 +29,14 @@ namespace ksoapi
         virtual HRESULT get_Count(
             int *pcToolbars /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            int count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
         virtual HRESULT get_DisplayTooltips(
             VARIANT_BOOL *pvarfDisplayTooltips /Out/) = 0;
 
@@ -51,6 +59,15 @@ namespace ksoapi
         virtual HRESULT get_Item(
             VARIANT Index,
             CommandBar **ppcb /Out/) = 0;
+
+        CommandBar* __getitem__(VARIANT index) const;
+        %MethodCode
+            ksoapi::CommandBar *prop = nullptr;
+            if (sipCpp->get_Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
 
         virtual HRESULT get_LargeButtons(
             VARIANT_BOOL *pvarfLargeButtons /Out/) = 0;

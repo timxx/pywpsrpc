@@ -20,8 +20,30 @@ namespace ksoapi
             int Index,
             BSTR *pbstr /Out/) = 0;
 
+        BSTR __getitem__(int index) const;
+        %MethodCode
+            BSTR *prop = new BSTR;
+            if (sipCpp->get_Item(a0, prop) != S_OK)
+            {
+                delete prop;
+                sipIsErr = 1;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
         virtual HRESULT get_Count(
             int *pCount /Out/) = 0;
+
+        int __len__() const;
+        %MethodCode
+            int count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
 
         virtual HRESULT Add(
             BSTR FileName) = 0;

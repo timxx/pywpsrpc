@@ -19,9 +19,26 @@ namespace ksoapi
         virtual HRESULT get_Count(
             long *cCategory /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
         virtual HRESULT Item(
             VARIANT Index,
             IMsoCategory **ppcategory /Out/) = 0;
+
+        IMsoCategory* __getitem__(VARIANT index) const;
+        %MethodCode
+            ksoapi::IMsoCategory *prop = nullptr;
+            if (sipCpp->Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
 
         virtual HRESULT get_Application(
             IDispatch **ppval /Out/) = 0;

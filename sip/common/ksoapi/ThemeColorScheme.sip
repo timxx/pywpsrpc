@@ -19,6 +19,14 @@ namespace ksoapi
         virtual HRESULT get_Count(
             int *Count /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            int count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
         virtual HRESULT Colors(
             MsoThemeColorSchemeIndex Index,
             ThemeColor **Color /Out/) = 0;

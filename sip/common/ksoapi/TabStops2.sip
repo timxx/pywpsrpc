@@ -17,6 +17,15 @@ namespace ksoapi
             VARIANT Index,
             TabStop2 **TabStop /Out/) = 0;
 
+        TabStop2* __getitem__(VARIANT index) const;
+        %MethodCode
+            ksoapi::TabStop2 *prop = nullptr;
+            if (sipCpp->Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT get_Parent(
             IDispatch **Parent /Out/) = 0;
 
@@ -27,6 +36,14 @@ namespace ksoapi
 
         virtual HRESULT get_Count(
             int *Count /Out/) = 0;
+
+        int __len__() const;
+        %MethodCode
+            int count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
 
         virtual HRESULT get_DefaultSpacing(
             single *Spacing /Out/) = 0;

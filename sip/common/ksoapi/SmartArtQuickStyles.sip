@@ -20,11 +20,28 @@ namespace ksoapi
             VARIANT Index,
             SmartArtQuickStyle **Style /Out/) = 0;
 
+        SmartArtQuickStyle* __getitem__(VARIANT index) const;
+        %MethodCode
+            ksoapi::SmartArtQuickStyle *prop = nullptr;
+            if (sipCpp->get_Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT get_Parent(
             IDispatch **Parent /Out/) = 0;
 
         virtual HRESULT get_Count(
             int *Count /Out/) = 0;
+
+        int __len__() const;
+        %MethodCode
+            int count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
 
     };
 };

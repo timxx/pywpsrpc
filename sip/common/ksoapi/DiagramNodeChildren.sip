@@ -20,6 +20,15 @@ namespace ksoapi
             VARIANT Index,
             DiagramNode **Node /Out/) = 0;
 
+        DiagramNode* __getitem__(VARIANT index) const;
+        %MethodCode
+            ksoapi::DiagramNode *prop = nullptr;
+            if (sipCpp->Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT AddNode(
             VARIANT Index = argMissing2(),
             MsoDiagramNodeType NodeType = ksoapi::msoDiagramNode,
@@ -32,6 +41,14 @@ namespace ksoapi
 
         virtual HRESULT get_Count(
             int *iDiagramNodes /Out/) = 0;
+
+        int __len__() const;
+        %MethodCode
+            int count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
 
         virtual HRESULT get_FirstChild(
             DiagramNode **First /Out/) = 0;
