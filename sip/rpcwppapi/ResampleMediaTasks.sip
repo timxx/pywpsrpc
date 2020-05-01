@@ -17,6 +17,15 @@ namespace wppapi
             int Index,
             ResampleMediaTask **Item /Out/) = 0;
 
+        ResampleMediaTask* __getitem__(int index) const;
+        %MethodCode
+            wppapi::ResampleMediaTask *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Pause() = 0;
 
         virtual HRESULT Cancel() = 0;

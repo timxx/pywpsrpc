@@ -23,6 +23,15 @@ namespace wppapi
             VARIANT *Index,
             AddIn **Item /Out/) = 0;
 
+        AddIn* __getitem__(VARIANT *index) const;
+        %MethodCode
+            wppapi::AddIn *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             BSTR FileName,
             AddIn **Add /Out/) = 0;

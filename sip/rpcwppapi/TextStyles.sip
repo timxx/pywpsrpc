@@ -23,5 +23,14 @@ namespace wppapi
             PpTextStyleType Type,
             TextStyle **Item /Out/) = 0;
 
+        TextStyle* __getitem__(PpTextStyleType index) const;
+        %MethodCode
+            wppapi::TextStyle *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
     };
 };

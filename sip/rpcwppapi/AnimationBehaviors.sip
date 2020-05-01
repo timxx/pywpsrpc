@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             AnimationBehavior **Item /Out/) = 0;
 
+        AnimationBehavior* __getitem__(int index) const;
+        %MethodCode
+            wppapi::AnimationBehavior *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             MsoAnimType Type,
             int Index = 0,

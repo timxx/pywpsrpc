@@ -23,5 +23,14 @@ namespace wppapi
             int Index,
             PublishObject **Item /Out/) = 0;
 
+        PublishObject* __getitem__(int index) const;
+        %MethodCode
+            wppapi::PublishObject *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
     };
 };

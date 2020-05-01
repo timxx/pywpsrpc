@@ -17,6 +17,15 @@ namespace wppapi
             int Index,
             MediaBookmark **Item /Out/) = 0;
 
+        MediaBookmark* __getitem__(int index) const;
+        %MethodCode
+            wppapi::MediaBookmark *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             long Position,
             BSTR Name,

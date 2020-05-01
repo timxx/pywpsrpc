@@ -25,12 +25,10 @@ namespace wppapi
 
         int __len__() const;
         %MethodCode
-            long lCount = 0;
-            HRESULT hr = sipCpp->get_Count(&lCount);
-            if (hr != S_OK)
-                lCount = 0;
-
-            sipRes = lCount;
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
         %End
     };
 };

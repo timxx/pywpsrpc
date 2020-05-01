@@ -23,6 +23,15 @@ namespace wppapi
             VARIANT Index,
             CustomLayout **Item /Out/) = 0;
 
+        CustomLayout* __getitem__(VARIANT index) const;
+        %MethodCode
+            wppapi::CustomLayout *prop = nullptr;
+            if (sipCpp->Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             int Index,
             CustomLayout **Add /Out/) = 0;

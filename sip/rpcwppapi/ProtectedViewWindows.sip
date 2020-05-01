@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             ProtectedViewWindow **Item /Out/) = 0;
 
+        ProtectedViewWindow* __getitem__(int index) const;
+        %MethodCode
+            wppapi::ProtectedViewWindow *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Open(
             BSTR FileName,
             BSTR ReadPassword = 0,

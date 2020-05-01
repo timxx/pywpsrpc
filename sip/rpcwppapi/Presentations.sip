@@ -23,6 +23,15 @@ namespace wppapi
             VARIANT Index,
             Presentation **Item /Out/) = 0;
 
+        Presentation* __getitem__(VARIANT index) const;
+        %MethodCode
+            wppapi::Presentation *prop = nullptr;
+            if (sipCpp->Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             MsoTriState WithWindow = wppapi::msoCTrue,
             Presentation **Add /Out/ = 0) = 0;

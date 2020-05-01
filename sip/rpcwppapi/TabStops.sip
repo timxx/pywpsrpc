@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             TabStop **Item /Out/) = 0;
 
+        TabStop* __getitem__(int index) const;
+        %MethodCode
+            wppapi::TabStop *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT get_DefaultSpacing(
             single *DefaultSpacing /Out/) = 0;
 

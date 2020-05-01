@@ -23,5 +23,14 @@ namespace wppapi
             int Index,
             RulerLevel **Item /Out/) = 0;
 
+        RulerLevel* __getitem__(int index) const;
+        %MethodCode
+            wppapi::RulerLevel *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
     };
 };

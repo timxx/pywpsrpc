@@ -17,5 +17,14 @@ namespace wppapi
             VARIANT Index,
             FileConverter **Item /Out/) = 0;
 
+        FileConverter* __getitem__(VARIANT index) const;
+        %MethodCode
+            wppapi::FileConverter *prop = nullptr;
+            if (sipCpp->Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
     };
 };

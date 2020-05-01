@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             Sequence **Item /Out/) = 0;
 
+        Sequence* __getitem__(int index) const;
+        %MethodCode
+            wppapi::Sequence *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             int Index = 0,
             Sequence **Add /Out/ = 0) = 0;

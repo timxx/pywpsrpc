@@ -106,6 +106,15 @@ namespace wppapi
             VARIANT Index,
             Slide **Item /Out/) = 0;
 
+        Slide* __getitem__(VARIANT index) const;
+        %MethodCode
+            wppapi::Slide *prop = nullptr;
+            if (sipCpp->Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT get__NewEnum(
             IUnknown **_NewEnum /Out/) = 0;
 
@@ -115,6 +124,14 @@ namespace wppapi
 
         virtual HRESULT get_Count(
             long *Count /Out/) = 0;
+
+        int __len__() const;
+        %MethodCode
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
 
         virtual HRESULT get_Scripts(
             ksoapi::Scripts **Scripts /Out/) = 0;

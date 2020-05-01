@@ -23,5 +23,14 @@ namespace wppapi
             int Level,
             TextStyleLevel **Item /Out/) = 0;
 
+        TextStyleLevel* __getitem__(int index) const;
+        %MethodCode
+            wppapi::TextStyleLevel *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
     };
 };

@@ -23,5 +23,14 @@ namespace wppapi
             PpMouseActivation Index,
             ActionSetting **Item /Out/) = 0;
 
+        ActionSetting* __getitem__(PpMouseActivation index) const;
+        %MethodCode
+            wppapi::ActionSetting *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
     };
 };

@@ -20,6 +20,15 @@ namespace wppapi
             int Index,
             Pane **Item /Out/) = 0;
 
+        Pane* __getitem__(int index) const;
+        %MethodCode
+            wppapi::Pane *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT get_Parent(
             IDispatch **Parent /Out/) = 0;
 

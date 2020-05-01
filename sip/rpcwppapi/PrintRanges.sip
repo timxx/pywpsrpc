@@ -27,6 +27,15 @@ namespace wppapi
             int Index,
             PrintRange **Item /Out/) = 0;
 
+        PrintRange* __getitem__(int index) const;
+        %MethodCode
+            wppapi::PrintRange *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT get_Parent(
             IDispatch **Parent /Out/) = 0;
 

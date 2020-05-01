@@ -23,5 +23,19 @@ namespace wppapi
             int Index,
             BSTR *Item /Out/) = 0;
 
+        BSTR __getitem__(int index) const;
+        %MethodCode
+            BSTR *prop = new BSTR;
+            if (sipCpp->Item(a0, prop) != S_OK)
+            {
+                delete prop;
+                sipIsErr = 1;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
     };
 };

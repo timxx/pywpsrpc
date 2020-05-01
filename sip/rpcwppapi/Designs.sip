@@ -23,6 +23,15 @@ namespace wppapi
             VARIANT Index,
             Design **Item /Out/) = 0;
 
+        Design* __getitem__(VARIANT index) const;
+        %MethodCode
+            wppapi::Design *prop = nullptr;
+            if (sipCpp->Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             BSTR designName,
             int Index = 0,

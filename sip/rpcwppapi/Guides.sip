@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             Guide **Item /Out/) = 0;
 
+        Guide* __getitem__(int index) const;
+        %MethodCode
+            wppapi::Guide *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             PpGuideOrientation Orientation,
             single Position,

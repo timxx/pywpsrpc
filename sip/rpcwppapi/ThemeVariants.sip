@@ -23,5 +23,14 @@ namespace wppapi
             int Index,
             ThemeVariant **Item /Out/) = 0;
 
+        ThemeVariant* __getitem__(int index) const;
+        %MethodCode
+            wppapi::ThemeVariant *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
     };
 };

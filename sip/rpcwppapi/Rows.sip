@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             Row **Item /Out/) = 0;
 
+        Row* __getitem__(int index) const;
+        %MethodCode
+            wppapi::Row *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             int BeforeRow = 0,
             Row **Add /Out/ = 0) = 0;

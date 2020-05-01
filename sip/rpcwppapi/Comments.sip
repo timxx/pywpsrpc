@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             Comment **Item /Out/) = 0;
 
+        Comment* __getitem__(int index) const;
+        %MethodCode
+            wppapi::Comment *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             single Left,
             single Top,

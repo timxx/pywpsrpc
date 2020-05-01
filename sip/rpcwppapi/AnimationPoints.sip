@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             AnimationPoint **Item /Out/) = 0;
 
+        AnimationPoint* __getitem__(int index) const;
+        %MethodCode
+            wppapi::AnimationPoint *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             int Index = 0,
             AnimationPoint **Add /Out/ = 0) = 0;

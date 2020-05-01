@@ -23,6 +23,15 @@ namespace wppapi
             VARIANT Index,
             Font **Item /Out/) = 0;
 
+        Font* __getitem__(VARIANT index) const;
+        %MethodCode
+            wppapi::Font *prop = nullptr;
+            if (sipCpp->Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Replace(
             BSTR Original,
             BSTR Replacement) = 0;

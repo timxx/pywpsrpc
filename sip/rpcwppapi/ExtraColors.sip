@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             MsoRGBType *Item /Out/) = 0;
 
+        MsoRGBType __getitem__(int index) const;
+        %MethodCode
+            wppapi::MsoRGBType prop = 0;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             MsoRGBType Type) = 0;
 

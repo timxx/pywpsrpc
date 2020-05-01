@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             DocumentWindow **Item /Out/) = 0;
 
+        DocumentWindow* __getitem__(int index) const;
+        %MethodCode
+            wppapi::DocumentWindow *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Arrange(
             PpArrangeStyle arrangeStyle = wppapi::ppArrangeTiled) = 0;
 

@@ -23,5 +23,14 @@ namespace wppapi
             int Index,
             SlideShowWindow **Item /Out/) = 0;
 
+        SlideShowWindow* __getitem__(int index) const;
+        %MethodCode
+            wppapi::SlideShowWindow *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
     };
 };

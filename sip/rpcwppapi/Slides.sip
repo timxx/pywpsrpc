@@ -23,6 +23,15 @@ namespace wppapi
             VARIANT Index,
             Slide **Item /Out/) = 0;
 
+        Slide* __getitem__(VARIANT index) const;
+        %MethodCode
+            wppapi::Slide *prop = nullptr;
+            if (sipCpp->Item(*a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT FindBySlideID(
             long SlideID,
             Slide **FindBySlideID /Out/) = 0;

@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             Cell **Item /Out/) = 0;
 
+        Cell* __getitem__(int index) const;
+        %MethodCode
+            wppapi::Cell *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT get_Borders(
             Borders **Borders /Out/) = 0;
 

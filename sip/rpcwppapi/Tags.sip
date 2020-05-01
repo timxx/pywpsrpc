@@ -23,6 +23,20 @@ namespace wppapi
             BSTR Name,
             BSTR *Item /Out/) = 0;
 
+        BSTR __getitem__(BSTR index) const;
+        %MethodCode
+            BSTR *prop = new BSTR;
+            if (sipCpp->Item(*a0, prop) != S_OK)
+            {
+                delete prop;
+                sipIsErr = 1;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
         virtual HRESULT Add(
             BSTR Name,
             BSTR Value) = 0;

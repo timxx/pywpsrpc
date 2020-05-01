@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             Effect **Item /Out/) = 0;
 
+        Effect* __getitem__(int index) const;
+        %MethodCode
+            wppapi::Effect *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT AddEffect(
             Shape *Shape,
             MsoAnimEffect effectId,

@@ -23,5 +23,14 @@ namespace wppapi
             PpBorderType BorderType,
             LineFormat **Item /Out/) = 0;
 
+        LineFormat* __getitem__(PpBorderType index) const;
+        %MethodCode
+            wppapi::LineFormat *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
     };
 };

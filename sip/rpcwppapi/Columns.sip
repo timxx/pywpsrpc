@@ -23,6 +23,15 @@ namespace wppapi
             int Index,
             Column **Item /Out/) = 0;
 
+        Column* __getitem__(int index) const;
+        %MethodCode
+            wppapi::Column *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT Add(
             int BeforeColumn = 0,
             Column **Add /Out/ = 0) = 0;
