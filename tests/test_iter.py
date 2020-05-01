@@ -33,6 +33,10 @@ def test_wps():
     doc = docs[name]
     print("doc", doc.Name)
 
+    doc = docs.Open(os.path.dirname(os.path.realpath(__file__)) + "/../pyproject.toml", ReadOnly=True)
+    for para in doc.Paragraphs:
+        print(para.Range.Text)
+
     app.Quit()
 
 

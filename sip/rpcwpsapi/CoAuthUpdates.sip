@@ -25,12 +25,29 @@ namespace wpsapi
         virtual HRESULT get_Count(
             long *prop /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
         virtual HRESULT get__NewEnum(
             IUnknown **prop /Out/) = 0;
 
         virtual HRESULT Item(
             long Index,
             CoAuthUpdate **prop /Out/) = 0;
+
+        CoAuthUpdate* __getitem__(long index) const;
+        %MethodCode
+            wpsapi::CoAuthUpdate *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
 
     };
 };

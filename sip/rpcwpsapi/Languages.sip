@@ -19,6 +19,14 @@ namespace wpsapi
         virtual HRESULT get_Count(
             long *prop /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
         virtual HRESULT get_Application(
             Application **prop /Out/) = 0;
 
@@ -31,6 +39,15 @@ namespace wpsapi
         virtual HRESULT Item(
             VARIANT *Index,
             Language **prop /Out/) = 0;
+
+        Language* __getitem__(VARIANT *index) const;
+        %MethodCode
+            wpsapi::Language *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
 
     };
 };

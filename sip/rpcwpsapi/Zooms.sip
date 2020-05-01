@@ -26,5 +26,14 @@ namespace wpsapi
             WdViewType Index,
             Zoom **prop /Out/) = 0;
 
+        Zoom* __getitem__(WdViewType index) const;
+        %MethodCode
+            wpsapi::Zoom *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
     };
 };

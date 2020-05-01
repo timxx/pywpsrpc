@@ -25,6 +25,14 @@ namespace wpsapi
         virtual HRESULT get_Count(
             long *prop /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
         virtual HRESULT get_Locked(
             long *prop /Out/) = 0;
 
@@ -37,6 +45,15 @@ namespace wpsapi
         virtual HRESULT Item(
             long Index,
             Field **prop /Out/) = 0;
+
+        Field* __getitem__(long index) const;
+        %MethodCode
+            wpsapi::Field *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
 
         virtual HRESULT ToggleShowCodes() = 0;
 

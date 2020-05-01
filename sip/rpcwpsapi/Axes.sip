@@ -16,6 +16,14 @@ namespace wpsapi
         virtual HRESULT get_Count(
             long *prop /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
         virtual HRESULT Item(
             XlAxisType Type,
             XlAxisGroup AxisGroup = wpsapi::xlPrimary,

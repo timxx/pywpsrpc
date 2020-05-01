@@ -28,9 +28,26 @@ namespace wpsapi
         virtual HRESULT get_Count(
             long *prop /Out/) = 0;
 
+        int __len__() const;
+        %MethodCode
+            long count = 0;
+            if (sipCpp->get_Count(&count) != S_OK)
+                count = 0;
+            sipRes = count;
+        %End
+
         virtual HRESULT Item(
             long Index,
             OMathFunction **prop /Out/) = 0;
+
+        OMathFunction* __getitem__(long index) const;
+        %MethodCode
+            wpsapi::OMathFunction *prop = nullptr;
+            if (sipCpp->Item(a0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
 
         virtual HRESULT Add(
             Range *Range,
