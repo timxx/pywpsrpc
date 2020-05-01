@@ -3,7 +3,7 @@
 import sys
 import os
 
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../build")
+sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + "/../build")
 
 from pywpsrpc.rpcwppapi import wppapi
 from pywpsrpc import (rpcwppapi, common)
