@@ -21,7 +21,7 @@ class RpcException(Exception):
 
     def __str__(self):
         text = "RpcException: {}".format(self._text)
-        if not self._hr is None:
+        if self._hr is not None:
             text += " ({})".format(hex(self._hr & 0xffffffff))
 
         return text
