@@ -56,12 +56,17 @@ namespace etapi
 
         virtual HRESULT get_Item(
             VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
-
-        IDispatch* __getitem__(VARIANT index) const;
+            _Worksheet **RHS /Out/) = 0;
         %MethodCode
-            IDispatch *prop = nullptr;
-            if (sipCpp->get_Item(*a0, &prop) != S_OK)
+            etapi::_Worksheet *prop = nullptr;
+            HRESULT hr = sipCpp->get_Item(*a0, (IDispatch**)&prop);
+            return sipBuildResult(0, "(iD)", hr, prop, sipType_etapi_Worksheet, SIP_NULLPTR);
+        %End
+
+        _Worksheet* __getitem__(VARIANT index) const;
+        %MethodCode
+            etapi::_Worksheet *prop = nullptr;
+            if (sipCpp->get_Item(*a0, (IDispatch**)&prop) != S_OK)
                 sipIsErr = 1;
             else
                 sipRes = prop;

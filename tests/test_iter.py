@@ -74,6 +74,8 @@ def test_et():
 
     for wb in wbs:
         print(wb.Name)
+        for sheet in wb.Sheets:
+            print(sheet.Name)
 
     app.Quit()
 

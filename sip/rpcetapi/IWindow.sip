@@ -41,7 +41,12 @@ namespace etapi
             Pane **RHS /Out/) = 0;
 
         virtual HRESULT get_ActiveSheet(
-            IDispatch **RHS /Out/) = 0;
+            _Worksheet **RHS /Out/) = 0;
+        %MethodCode
+            etapi::_Worksheet *prop = nullptr;
+            HRESULT hr = sipCpp->get_ActiveSheet((IDispatch**)&prop);
+            return sipBuildResult(0, "(iD)", hr, prop, sipType_etapi_Worksheet, SIP_NULLPTR);
+        %End
 
         virtual HRESULT get_Caption(
             VARIANT *RHS /Out/) = 0;
