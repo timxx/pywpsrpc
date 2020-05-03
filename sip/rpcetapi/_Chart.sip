@@ -857,5 +857,2169 @@ namespace etapi
 
         virtual HRESULT ClearToMatchColorStyle() = 0;
 
+        Application* getApplication();
+        %MethodCode
+            etapi::Application *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        XlCreator getCreator();
+        %MethodCode
+            etapi::XlCreator prop = (etapi::XlCreator)0;
+            HRESULT hr = sipCpp->get_Creator(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Creator()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Creator, get=getCreator)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        BSTR getCodeName();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_CodeName(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_CodeName()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=CodeName, get=getCodeName)
+
+        BSTR get_CodeName();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get__CodeName(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get__CodeName()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* set_CodeName(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put__CodeName(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put__CodeName()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=_CodeName, get=get_CodeName, set=set_CodeName)
+
+        long getIndex();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_Index(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Index()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Index, get=getIndex)
+
+        BSTR getName();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_Name(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Name()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setName(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Name(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Name()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Name, get=getName, set=setName)
+
+        IDispatch* getNext();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Next(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Next()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Next, get=getNext)
+
+        BSTR getOnDoubleClick();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_OnDoubleClick(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_OnDoubleClick()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setOnDoubleClick(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_OnDoubleClick(0, *a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_OnDoubleClick()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=OnDoubleClick, get=getOnDoubleClick, set=setOnDoubleClick)
+
+        BSTR getOnSheetActivate();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_OnSheetActivate(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_OnSheetActivate()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setOnSheetActivate(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_OnSheetActivate(0, *a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_OnSheetActivate()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=OnSheetActivate, get=getOnSheetActivate, set=setOnSheetActivate)
+
+        BSTR getOnSheetDeactivate();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_OnSheetDeactivate(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_OnSheetDeactivate()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setOnSheetDeactivate(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_OnSheetDeactivate(0, *a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_OnSheetDeactivate()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=OnSheetDeactivate, get=getOnSheetDeactivate, set=setOnSheetDeactivate)
+
+        PageSetup* getPageSetup();
+        %MethodCode
+            etapi::PageSetup *prop = nullptr;
+            HRESULT hr = sipCpp->get_PageSetup(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PageSetup()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=PageSetup, get=getPageSetup)
+
+        IDispatch* getPrevious();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Previous(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Previous()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Previous, get=getPrevious)
+
+        VARIANT_BOOL getProtectContents();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ProtectContents(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ProtectContents()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ProtectContents, get=getProtectContents)
+
+        VARIANT_BOOL getProtectDrawingObjects();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ProtectDrawingObjects(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ProtectDrawingObjects()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ProtectDrawingObjects, get=getProtectDrawingObjects)
+
+        VARIANT_BOOL getProtectionMode();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ProtectionMode(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ProtectionMode()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ProtectionMode, get=getProtectionMode)
+
+        XlSheetVisibility getVisible();
+        %MethodCode
+            etapi::XlSheetVisibility prop = (etapi::XlSheetVisibility)0;
+            HRESULT hr = sipCpp->get_Visible(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Visible()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setVisible(XlSheetVisibility prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Visible(0, a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Visible()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Visible, get=getVisible, set=setVisible)
+
+        Shapes* getShapes();
+        %MethodCode
+            etapi::Shapes *prop = nullptr;
+            HRESULT hr = sipCpp->get_Shapes(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Shapes()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Shapes, get=getShapes)
+
+        ChartGroup* getArea3DGroup();
+        %MethodCode
+            etapi::ChartGroup *prop = nullptr;
+            HRESULT hr = sipCpp->get_Area3DGroup(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Area3DGroup()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Area3DGroup, get=getArea3DGroup)
+
+        VARIANT_BOOL getAutoScaling();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_AutoScaling(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AutoScaling()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setAutoScaling(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_AutoScaling(0, *a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_AutoScaling()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=AutoScaling, get=getAutoScaling, set=setAutoScaling)
+
+        ChartGroup* getBar3DGroup();
+        %MethodCode
+            etapi::ChartGroup *prop = nullptr;
+            HRESULT hr = sipCpp->get_Bar3DGroup(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Bar3DGroup()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Bar3DGroup, get=getBar3DGroup)
+
+        ChartArea* getChartArea();
+        %MethodCode
+            etapi::ChartArea *prop = nullptr;
+            HRESULT hr = sipCpp->get_ChartArea(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ChartArea()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ChartArea, get=getChartArea)
+
+        ChartTitle* getChartTitle();
+        %MethodCode
+            etapi::ChartTitle *prop = nullptr;
+            HRESULT hr = sipCpp->get_ChartTitle(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ChartTitle()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ChartTitle, get=getChartTitle)
+
+        ChartGroup* getColumn3DGroup();
+        %MethodCode
+            etapi::ChartGroup *prop = nullptr;
+            HRESULT hr = sipCpp->get_Column3DGroup(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Column3DGroup()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Column3DGroup, get=getColumn3DGroup)
+
+        Corners* getCorners();
+        %MethodCode
+            etapi::Corners *prop = nullptr;
+            HRESULT hr = sipCpp->get_Corners(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Corners()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Corners, get=getCorners)
+
+        DataTable* getDataTable();
+        %MethodCode
+            etapi::DataTable *prop = nullptr;
+            HRESULT hr = sipCpp->get_DataTable(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DataTable()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=DataTable, get=getDataTable)
+
+        long getDepthPercent();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_DepthPercent(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DepthPercent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDepthPercent(long prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DepthPercent(0, a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DepthPercent()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DepthPercent, get=getDepthPercent, set=setDepthPercent)
+
+        XlDisplayBlanksAs getDisplayBlanksAs();
+        %MethodCode
+            etapi::XlDisplayBlanksAs prop = (etapi::XlDisplayBlanksAs)0;
+            HRESULT hr = sipCpp->get_DisplayBlanksAs(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DisplayBlanksAs()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDisplayBlanksAs(XlDisplayBlanksAs prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DisplayBlanksAs(0, a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DisplayBlanksAs()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DisplayBlanksAs, get=getDisplayBlanksAs, set=setDisplayBlanksAs)
+
+        long getElevation();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_Elevation(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Elevation()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setElevation(long prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Elevation(0, a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Elevation()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Elevation, get=getElevation, set=setElevation)
+
+        Floor* getFloor();
+        %MethodCode
+            etapi::Floor *prop = nullptr;
+            HRESULT hr = sipCpp->get_Floor(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Floor()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Floor, get=getFloor)
+
+        long getGapDepth();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_GapDepth(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_GapDepth()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setGapDepth(long prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_GapDepth(0, a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_GapDepth()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=GapDepth, get=getGapDepth, set=setGapDepth)
+
+        VARIANT_BOOL getHasDataTable();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_HasDataTable(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_HasDataTable()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setHasDataTable(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_HasDataTable(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_HasDataTable()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=HasDataTable, get=getHasDataTable, set=setHasDataTable)
+
+        VARIANT_BOOL getHasLegend();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_HasLegend(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_HasLegend()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setHasLegend(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_HasLegend(0, *a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_HasLegend()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=HasLegend, get=getHasLegend, set=setHasLegend)
+
+        VARIANT_BOOL getHasTitle();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_HasTitle(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_HasTitle()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setHasTitle(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_HasTitle(0, *a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_HasTitle()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=HasTitle, get=getHasTitle, set=setHasTitle)
+
+        long getHeightPercent();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_HeightPercent(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_HeightPercent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setHeightPercent(long prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_HeightPercent(0, a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_HeightPercent()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=HeightPercent, get=getHeightPercent, set=setHeightPercent)
+
+        Hyperlinks* getHyperlinks();
+        %MethodCode
+            etapi::Hyperlinks *prop = nullptr;
+            HRESULT hr = sipCpp->get_Hyperlinks(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Hyperlinks()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Hyperlinks, get=getHyperlinks)
+
+        Legend* getLegend();
+        %MethodCode
+            etapi::Legend *prop = nullptr;
+            HRESULT hr = sipCpp->get_Legend(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Legend()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Legend, get=getLegend)
+
+        ChartGroup* getLine3DGroup();
+        %MethodCode
+            etapi::ChartGroup *prop = nullptr;
+            HRESULT hr = sipCpp->get_Line3DGroup(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Line3DGroup()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Line3DGroup, get=getLine3DGroup)
+
+        long getPerspective();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_Perspective(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Perspective()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setPerspective(long prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Perspective(0, a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Perspective()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Perspective, get=getPerspective, set=setPerspective)
+
+        ChartGroup* getPie3DGroup();
+        %MethodCode
+            etapi::ChartGroup *prop = nullptr;
+            HRESULT hr = sipCpp->get_Pie3DGroup(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Pie3DGroup()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Pie3DGroup, get=getPie3DGroup)
+
+        PlotArea* getPlotArea();
+        %MethodCode
+            etapi::PlotArea *prop = nullptr;
+            HRESULT hr = sipCpp->get_PlotArea(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PlotArea()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=PlotArea, get=getPlotArea)
+
+        VARIANT_BOOL getPlotVisibleOnly();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_PlotVisibleOnly(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PlotVisibleOnly()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setPlotVisibleOnly(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_PlotVisibleOnly(0, *a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_PlotVisibleOnly()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=PlotVisibleOnly, get=getPlotVisibleOnly, set=setPlotVisibleOnly)
+
+        VARIANT getRightAngleAxes();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_RightAngleAxes(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RightAngleAxes()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRightAngleAxes(VARIANT prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_RightAngleAxes(0, *a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_RightAngleAxes()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=RightAngleAxes, get=getRightAngleAxes, set=setRightAngleAxes)
+
+        VARIANT getRotation();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_Rotation(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Rotation()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRotation(VARIANT prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Rotation(0, *a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Rotation()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Rotation, get=getRotation, set=setRotation)
+
+        VARIANT_BOOL getSizeWithWindow();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_SizeWithWindow(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SizeWithWindow()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSizeWithWindow(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SizeWithWindow(0, *a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SizeWithWindow()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SizeWithWindow, get=getSizeWithWindow, set=setSizeWithWindow)
+
+        VARIANT_BOOL getShowWindow();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ShowWindow(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ShowWindow()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setShowWindow(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ShowWindow(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ShowWindow()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ShowWindow, get=getShowWindow, set=setShowWindow)
+
+        long getSubType();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_SubType(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SubType()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSubType(long prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SubType(0, a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SubType()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SubType, get=getSubType, set=setSubType)
+
+        ChartGroup* getSurfaceGroup();
+        %MethodCode
+            etapi::ChartGroup *prop = nullptr;
+            HRESULT hr = sipCpp->get_SurfaceGroup(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SurfaceGroup()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=SurfaceGroup, get=getSurfaceGroup)
+
+        long getType();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_Type(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Type()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setType(long prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Type(0, a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Type()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Type, get=getType, set=setType)
+
+        XlChartType getChartType();
+        %MethodCode
+            etapi::XlChartType prop = (etapi::XlChartType)0;
+            HRESULT hr = sipCpp->get_ChartType(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ChartType()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setChartType(XlChartType prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ChartType(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ChartType()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ChartType, get=getChartType, set=setChartType)
+
+        Walls* getWalls();
+        %MethodCode
+            etapi::Walls *prop = nullptr;
+            HRESULT hr = sipCpp->get_Walls(0, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Walls()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Walls, get=getWalls)
+
+        VARIANT_BOOL getWallsAndGridlines2D();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_WallsAndGridlines2D(0, prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_WallsAndGridlines2D()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setWallsAndGridlines2D(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_WallsAndGridlines2D(0, *a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_WallsAndGridlines2D()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=WallsAndGridlines2D, get=getWallsAndGridlines2D, set=setWallsAndGridlines2D)
+
+        XlBarShape getBarShape();
+        %MethodCode
+            etapi::XlBarShape prop = (etapi::XlBarShape)0;
+            HRESULT hr = sipCpp->get_BarShape(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_BarShape()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setBarShape(XlBarShape prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_BarShape(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_BarShape()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=BarShape, get=getBarShape, set=setBarShape)
+
+        XlRowCol getPlotBy();
+        %MethodCode
+            etapi::XlRowCol prop = (etapi::XlRowCol)0;
+            HRESULT hr = sipCpp->get_PlotBy(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PlotBy()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setPlotBy(XlRowCol prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_PlotBy(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_PlotBy()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=PlotBy, get=getPlotBy, set=setPlotBy)
+
+        VARIANT_BOOL getProtectFormatting();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ProtectFormatting(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ProtectFormatting()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setProtectFormatting(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ProtectFormatting(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ProtectFormatting()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ProtectFormatting, get=getProtectFormatting, set=setProtectFormatting)
+
+        VARIANT_BOOL getProtectData();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ProtectData(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ProtectData()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setProtectData(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ProtectData(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ProtectData()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ProtectData, get=getProtectData, set=setProtectData)
+
+        VARIANT_BOOL getProtectGoalSeek();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ProtectGoalSeek(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ProtectGoalSeek()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setProtectGoalSeek(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ProtectGoalSeek(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ProtectGoalSeek()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ProtectGoalSeek, get=getProtectGoalSeek, set=setProtectGoalSeek)
+
+        VARIANT_BOOL getProtectSelection();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ProtectSelection(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ProtectSelection()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setProtectSelection(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ProtectSelection(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ProtectSelection()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ProtectSelection, get=getProtectSelection, set=setProtectSelection)
+
+        PivotLayout* getPivotLayout();
+        %MethodCode
+            etapi::PivotLayout *prop = nullptr;
+            HRESULT hr = sipCpp->get_PivotLayout(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PivotLayout()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=PivotLayout, get=getPivotLayout)
+
+        VARIANT_BOOL getHasPivotFields();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_HasPivotFields(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_HasPivotFields()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setHasPivotFields(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_HasPivotFields(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_HasPivotFields()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=HasPivotFields, get=getHasPivotFields, set=setHasPivotFields)
+
+        ksoapi::Scripts* getScripts();
+        %MethodCode
+            ksoapi::Scripts *prop = nullptr;
+            HRESULT hr = sipCpp->get_Scripts(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Scripts()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Scripts, get=getScripts)
+
+        Tab* getTab();
+        %MethodCode
+            etapi::Tab *prop = nullptr;
+            HRESULT hr = sipCpp->get_Tab(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Tab()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Tab, get=getTab)
+
+        ksoapi::MsoEnvelope* getMailEnvelope();
+        %MethodCode
+            ksoapi::MsoEnvelope *prop = nullptr;
+            HRESULT hr = sipCpp->get_MailEnvelope(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_MailEnvelope()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=MailEnvelope, get=getMailEnvelope)
+
+        VARIANT_BOOL getShowDataLabelsOverMaximum();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ShowDataLabelsOverMaximum(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ShowDataLabelsOverMaximum()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setShowDataLabelsOverMaximum(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ShowDataLabelsOverMaximum(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ShowDataLabelsOverMaximum()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ShowDataLabelsOverMaximum, get=getShowDataLabelsOverMaximum, set=setShowDataLabelsOverMaximum)
+
+        Walls* getSideWall();
+        %MethodCode
+            etapi::Walls *prop = nullptr;
+            HRESULT hr = sipCpp->get_SideWall(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SideWall()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=SideWall, get=getSideWall)
+
+        Walls* getBackWall();
+        %MethodCode
+            etapi::Walls *prop = nullptr;
+            HRESULT hr = sipCpp->get_BackWall(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_BackWall()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=BackWall, get=getBackWall)
+
+        VARIANT getChartStyle();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_ChartStyle(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ChartStyle()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setChartStyle(VARIANT prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ChartStyle(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ChartStyle()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ChartStyle, get=getChartStyle, set=setChartStyle)
+
+        long getPrintedCommentPages();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_PrintedCommentPages(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PrintedCommentPages()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=PrintedCommentPages, get=getPrintedCommentPages)
+
+        VARIANT_BOOL getDummy24();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_Dummy24(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Dummy24()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDummy24(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Dummy24(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Dummy24()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Dummy24, get=getDummy24, set=setDummy24)
+
+        VARIANT_BOOL getDummy25();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_Dummy25(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Dummy25()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDummy25(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Dummy25(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Dummy25()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Dummy25, get=getDummy25, set=setDummy25)
+
+        VARIANT_BOOL getShowReportFilterFieldButtons();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ShowReportFilterFieldButtons(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ShowReportFilterFieldButtons()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setShowReportFilterFieldButtons(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ShowReportFilterFieldButtons(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ShowReportFilterFieldButtons()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ShowReportFilterFieldButtons, get=getShowReportFilterFieldButtons, set=setShowReportFilterFieldButtons)
+
+        VARIANT_BOOL getShowLegendFieldButtons();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ShowLegendFieldButtons(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ShowLegendFieldButtons()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setShowLegendFieldButtons(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ShowLegendFieldButtons(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ShowLegendFieldButtons()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ShowLegendFieldButtons, get=getShowLegendFieldButtons, set=setShowLegendFieldButtons)
+
+        VARIANT_BOOL getShowAxisFieldButtons();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ShowAxisFieldButtons(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ShowAxisFieldButtons()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setShowAxisFieldButtons(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ShowAxisFieldButtons(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ShowAxisFieldButtons()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ShowAxisFieldButtons, get=getShowAxisFieldButtons, set=setShowAxisFieldButtons)
+
+        VARIANT_BOOL getShowValueFieldButtons();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ShowValueFieldButtons(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ShowValueFieldButtons()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setShowValueFieldButtons(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ShowValueFieldButtons(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ShowValueFieldButtons()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ShowValueFieldButtons, get=getShowValueFieldButtons, set=setShowValueFieldButtons)
+
+        VARIANT_BOOL getShowAllFieldButtons();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ShowAllFieldButtons(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ShowAllFieldButtons()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setShowAllFieldButtons(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ShowAllFieldButtons(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ShowAllFieldButtons()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ShowAllFieldButtons, get=getShowAllFieldButtons, set=setShowAllFieldButtons)
+
+        XlCategoryLabelLevel getCategoryLabelLevel();
+        %MethodCode
+            etapi::XlCategoryLabelLevel prop = (etapi::XlCategoryLabelLevel)0;
+            HRESULT hr = sipCpp->get_CategoryLabelLevel(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_CategoryLabelLevel()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setCategoryLabelLevel(XlCategoryLabelLevel prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_CategoryLabelLevel(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_CategoryLabelLevel()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=CategoryLabelLevel, get=getCategoryLabelLevel, set=setCategoryLabelLevel)
+
+        XlSeriesNameLevel getSeriesNameLevel();
+        %MethodCode
+            etapi::XlSeriesNameLevel prop = (etapi::XlSeriesNameLevel)0;
+            HRESULT hr = sipCpp->get_SeriesNameLevel(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SeriesNameLevel()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSeriesNameLevel(XlSeriesNameLevel prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SeriesNameLevel(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SeriesNameLevel()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SeriesNameLevel, get=getSeriesNameLevel, set=setSeriesNameLevel)
+
+        VARIANT_BOOL getHasHiddenContent();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_HasHiddenContent(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_HasHiddenContent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=HasHiddenContent, get=getHasHiddenContent)
+
+        VARIANT getChartColor();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_ChartColor(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ChartColor()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setChartColor(VARIANT prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ChartColor(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ChartColor()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ChartColor, get=getChartColor, set=setChartColor)
     };
 };

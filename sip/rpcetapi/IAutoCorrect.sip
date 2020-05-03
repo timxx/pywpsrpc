@@ -87,5 +87,338 @@ namespace etapi
         virtual HRESULT put_AutoFillFormulasInLists(
             VARIANT_BOOL RHS) = 0;
 
+        Application* getApplication();
+        %MethodCode
+            etapi::Application *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        XlCreator getCreator();
+        %MethodCode
+            etapi::XlCreator prop = (etapi::XlCreator)0;
+            HRESULT hr = sipCpp->get_Creator(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Creator()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Creator, get=getCreator)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        VARIANT_BOOL getCapitalizeNamesOfDays();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_CapitalizeNamesOfDays(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_CapitalizeNamesOfDays()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setCapitalizeNamesOfDays(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_CapitalizeNamesOfDays(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_CapitalizeNamesOfDays()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=CapitalizeNamesOfDays, get=getCapitalizeNamesOfDays, set=setCapitalizeNamesOfDays)
+
+        VARIANT_BOOL getReplaceText();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ReplaceText(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ReplaceText()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setReplaceText(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ReplaceText(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ReplaceText()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ReplaceText, get=getReplaceText, set=setReplaceText)
+
+        VARIANT_BOOL getTwoInitialCapitals();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_TwoInitialCapitals(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_TwoInitialCapitals()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setTwoInitialCapitals(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_TwoInitialCapitals(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_TwoInitialCapitals()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=TwoInitialCapitals, get=getTwoInitialCapitals, set=setTwoInitialCapitals)
+
+        VARIANT_BOOL getCorrectSentenceCap();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_CorrectSentenceCap(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_CorrectSentenceCap()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setCorrectSentenceCap(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_CorrectSentenceCap(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_CorrectSentenceCap()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=CorrectSentenceCap, get=getCorrectSentenceCap, set=setCorrectSentenceCap)
+
+        VARIANT_BOOL getCorrectCapsLock();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_CorrectCapsLock(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_CorrectCapsLock()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setCorrectCapsLock(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_CorrectCapsLock(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_CorrectCapsLock()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=CorrectCapsLock, get=getCorrectCapsLock, set=setCorrectCapsLock)
+
+        VARIANT_BOOL getDisplayAutoCorrectOptions();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_DisplayAutoCorrectOptions(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DisplayAutoCorrectOptions()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDisplayAutoCorrectOptions(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DisplayAutoCorrectOptions(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DisplayAutoCorrectOptions()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DisplayAutoCorrectOptions, get=getDisplayAutoCorrectOptions, set=setDisplayAutoCorrectOptions)
+
+        VARIANT_BOOL getAutoExpandListRange();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_AutoExpandListRange(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AutoExpandListRange()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setAutoExpandListRange(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_AutoExpandListRange(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_AutoExpandListRange()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=AutoExpandListRange, get=getAutoExpandListRange, set=setAutoExpandListRange)
+
+        VARIANT_BOOL getAutoFillFormulasInLists();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_AutoFillFormulasInLists(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AutoFillFormulasInLists()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setAutoFillFormulasInLists(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_AutoFillFormulasInLists(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_AutoFillFormulasInLists()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=AutoFillFormulasInLists, get=getAutoFillFormulasInLists, set=setAutoFillFormulasInLists)
     };
 };

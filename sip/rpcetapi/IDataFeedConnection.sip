@@ -103,5 +103,479 @@ namespace etapi
             VARIANT Description = argMissing2(),
             VARIANT Keywords = argMissing2()) = 0;
 
+        Application* getApplication();
+        %MethodCode
+            etapi::Application *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        XlCreator getCreator();
+        %MethodCode
+            etapi::XlCreator prop = (etapi::XlCreator)0;
+            HRESULT hr = sipCpp->get_Creator(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Creator()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Creator, get=getCreator)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        VARIANT_BOOL getAlwaysUseConnectionFile();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_AlwaysUseConnectionFile(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AlwaysUseConnectionFile()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setAlwaysUseConnectionFile(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_AlwaysUseConnectionFile(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_AlwaysUseConnectionFile()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=AlwaysUseConnectionFile, get=getAlwaysUseConnectionFile, set=setAlwaysUseConnectionFile)
+
+        VARIANT getCommandText();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_CommandText(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_CommandText()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setCommandText(VARIANT prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_CommandText(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_CommandText()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=CommandText, get=getCommandText, set=setCommandText)
+
+        XlCmdType getCommandType();
+        %MethodCode
+            etapi::XlCmdType prop = (etapi::XlCmdType)0;
+            HRESULT hr = sipCpp->get_CommandType(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_CommandType()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setCommandType(XlCmdType prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_CommandType(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_CommandType()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=CommandType, get=getCommandType, set=setCommandType)
+
+        VARIANT getConnection();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_Connection(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Connection()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setConnection(VARIANT prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Connection(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Connection()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Connection, get=getConnection, set=setConnection)
+
+        VARIANT_BOOL getEnableRefresh();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_EnableRefresh(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_EnableRefresh()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setEnableRefresh(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_EnableRefresh(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_EnableRefresh()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=EnableRefresh, get=getEnableRefresh, set=setEnableRefresh)
+
+        DATE getRefreshDate();
+        %MethodCode
+            DATE prop = 0;
+            HRESULT hr = sipCpp->get_RefreshDate(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RefreshDate()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=RefreshDate, get=getRefreshDate)
+
+        VARIANT_BOOL getRefreshing();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_Refreshing(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Refreshing()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Refreshing, get=getRefreshing)
+
+        VARIANT_BOOL getRefreshOnFileOpen();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_RefreshOnFileOpen(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RefreshOnFileOpen()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRefreshOnFileOpen(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_RefreshOnFileOpen(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_RefreshOnFileOpen()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=RefreshOnFileOpen, get=getRefreshOnFileOpen, set=setRefreshOnFileOpen)
+
+        long getRefreshPeriod();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_RefreshPeriod(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RefreshPeriod()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRefreshPeriod(long prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_RefreshPeriod(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_RefreshPeriod()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=RefreshPeriod, get=getRefreshPeriod, set=setRefreshPeriod)
+
+        VARIANT_BOOL getSavePassword();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_SavePassword(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SavePassword()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSavePassword(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SavePassword(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SavePassword()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SavePassword, get=getSavePassword, set=setSavePassword)
+
+        XlCredentialsMethod getServerCredentialsMethod();
+        %MethodCode
+            etapi::XlCredentialsMethod prop = (etapi::XlCredentialsMethod)0;
+            HRESULT hr = sipCpp->get_ServerCredentialsMethod(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ServerCredentialsMethod()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setServerCredentialsMethod(XlCredentialsMethod prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ServerCredentialsMethod(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ServerCredentialsMethod()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ServerCredentialsMethod, get=getServerCredentialsMethod, set=setServerCredentialsMethod)
+
+        BSTR getSourceConnectionFile();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_SourceConnectionFile(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SourceConnectionFile()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSourceConnectionFile(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SourceConnectionFile(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SourceConnectionFile()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SourceConnectionFile, get=getSourceConnectionFile, set=setSourceConnectionFile)
+
+        BSTR getSourceDataFile();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_SourceDataFile(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SourceDataFile()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSourceDataFile(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SourceDataFile(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SourceDataFile()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SourceDataFile, get=getSourceDataFile, set=setSourceDataFile)
     };
 };

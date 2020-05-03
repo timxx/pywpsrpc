@@ -38,5 +38,22 @@ namespace etapi
         virtual HRESULT get_Solver(
             Solver **prop /Out/) = 0;
 
+        Solver* getSolver();
+        %MethodCode
+            etapi::Solver *prop = nullptr;
+            HRESULT hr = sipCpp->get_Solver(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Solver()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Solver, get=getSolver)
     };
 };

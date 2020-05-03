@@ -47,5 +47,39 @@ namespace etapi
 
         virtual HRESULT Load() = 0;
 
+        VARIANT_BOOL getShowSignaturesPane();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ShowSignaturesPane(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ShowSignaturesPane()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setShowSignaturesPane(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ShowSignaturesPane(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ShowSignaturesPane()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ShowSignaturesPane, get=getShowSignaturesPane, set=setShowSignaturesPane)
     };
 };

@@ -40,5 +40,166 @@ namespace etapi
         virtual HRESULT get_Lastpoint(
             SparkColor **RHS /Out/) = 0;
 
+        Application* getApplication();
+        %MethodCode
+            etapi::Application *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        XlCreator getCreator();
+        %MethodCode
+            etapi::XlCreator prop = (etapi::XlCreator)0;
+            HRESULT hr = sipCpp->get_Creator(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Creator()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Creator, get=getCreator)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        SparkColor* getNegative();
+        %MethodCode
+            etapi::SparkColor *prop = nullptr;
+            HRESULT hr = sipCpp->get_Negative(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Negative()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Negative, get=getNegative)
+
+        SparkColor* getMarkers();
+        %MethodCode
+            etapi::SparkColor *prop = nullptr;
+            HRESULT hr = sipCpp->get_Markers(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Markers()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Markers, get=getMarkers)
+
+        SparkColor* getHighpoint();
+        %MethodCode
+            etapi::SparkColor *prop = nullptr;
+            HRESULT hr = sipCpp->get_Highpoint(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Highpoint()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Highpoint, get=getHighpoint)
+
+        SparkColor* getLowpoint();
+        %MethodCode
+            etapi::SparkColor *prop = nullptr;
+            HRESULT hr = sipCpp->get_Lowpoint(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Lowpoint()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Lowpoint, get=getLowpoint)
+
+        SparkColor* getFirstpoint();
+        %MethodCode
+            etapi::SparkColor *prop = nullptr;
+            HRESULT hr = sipCpp->get_Firstpoint(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Firstpoint()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Firstpoint, get=getFirstpoint)
+
+        SparkColor* getLastpoint();
+        %MethodCode
+            etapi::SparkColor *prop = nullptr;
+            HRESULT hr = sipCpp->get_Lastpoint(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Lastpoint()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Lastpoint, get=getLastpoint)
     };
 };
