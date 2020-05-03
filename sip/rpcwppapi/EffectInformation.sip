@@ -43,5 +43,184 @@ namespace wppapi
         virtual HRESULT get_TextUnitEffect(
             MsoAnimTextUnitEffect *TextUnitEffect /Out/) = 0;
 
+        Application* getApplication();
+        %MethodCode
+            wppapi::Application *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        MsoAnimAfterEffect getAfterEffect();
+        %MethodCode
+            wppapi::MsoAnimAfterEffect prop = (wppapi::MsoAnimAfterEffect)0;
+            HRESULT hr = sipCpp->get_AfterEffect(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AfterEffect()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=AfterEffect, get=getAfterEffect)
+
+        MsoTriState getAnimateBackground();
+        %MethodCode
+            wppapi::MsoTriState prop = (wppapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_AnimateBackground(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AnimateBackground()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=AnimateBackground, get=getAnimateBackground)
+
+        MsoTriState getAnimateTextInReverse();
+        %MethodCode
+            wppapi::MsoTriState prop = (wppapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_AnimateTextInReverse(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AnimateTextInReverse()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=AnimateTextInReverse, get=getAnimateTextInReverse)
+
+        MsoAnimateByLevel getBuildByLevelEffect();
+        %MethodCode
+            wppapi::MsoAnimateByLevel prop = (wppapi::MsoAnimateByLevel)0;
+            HRESULT hr = sipCpp->get_BuildByLevelEffect(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_BuildByLevelEffect()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=BuildByLevelEffect, get=getBuildByLevelEffect)
+
+        ColorFormat* getDim();
+        %MethodCode
+            wppapi::ColorFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_Dim(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Dim()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Dim, get=getDim)
+
+        PlaySettings* getPlaySettings();
+        %MethodCode
+            wppapi::PlaySettings *prop = nullptr;
+            HRESULT hr = sipCpp->get_PlaySettings(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PlaySettings()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=PlaySettings, get=getPlaySettings)
+
+        SoundEffect* getSoundEffect();
+        %MethodCode
+            wppapi::SoundEffect *prop = nullptr;
+            HRESULT hr = sipCpp->get_SoundEffect(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SoundEffect()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=SoundEffect, get=getSoundEffect)
+
+        MsoAnimTextUnitEffect getTextUnitEffect();
+        %MethodCode
+            wppapi::MsoAnimTextUnitEffect prop = (wppapi::MsoAnimTextUnitEffect)0;
+            HRESULT hr = sipCpp->get_TextUnitEffect(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_TextUnitEffect()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=TextUnitEffect, get=getTextUnitEffect)
     };
 };

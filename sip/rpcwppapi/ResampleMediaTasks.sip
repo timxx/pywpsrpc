@@ -35,5 +35,22 @@ namespace wppapi
         virtual HRESULT get_PercentComplete(
             long *PercentComplete /Out/) = 0;
 
+        long getPercentComplete();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_PercentComplete(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PercentComplete()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=PercentComplete, get=getPercentComplete)
     };
 };

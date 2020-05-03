@@ -134,5 +134,429 @@ namespace wppapi
         virtual HRESULT get_MediaControlsHeight(
             single *MediaControlsHeight /Out/) = 0;
 
+        Application* getApplication();
+        %MethodCode
+            wppapi::Application *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        int getZoom();
+        %MethodCode
+            int prop = 0;
+            HRESULT hr = sipCpp->get_Zoom(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Zoom()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Zoom, get=getZoom)
+
+        Slide* getSlide();
+        %MethodCode
+            wppapi::Slide *prop = nullptr;
+            HRESULT hr = sipCpp->get_Slide(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Slide()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Slide, get=getSlide)
+
+        PpSlideShowPointerType getPointerType();
+        %MethodCode
+            wppapi::PpSlideShowPointerType prop = (wppapi::PpSlideShowPointerType)0;
+            HRESULT hr = sipCpp->get_PointerType(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PointerType()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setPointerType(PpSlideShowPointerType prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_PointerType(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_PointerType()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=PointerType, get=getPointerType, set=setPointerType)
+
+        PpSlideShowState getState();
+        %MethodCode
+            wppapi::PpSlideShowState prop = (wppapi::PpSlideShowState)0;
+            HRESULT hr = sipCpp->get_State(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_State()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setState(PpSlideShowState prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_State(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_State()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=State, get=getState, set=setState)
+
+        MsoTriState getAcceleratorsEnabled();
+        %MethodCode
+            wppapi::MsoTriState prop = (wppapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_AcceleratorsEnabled(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AcceleratorsEnabled()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setAcceleratorsEnabled(MsoTriState prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_AcceleratorsEnabled(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_AcceleratorsEnabled()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=AcceleratorsEnabled, get=getAcceleratorsEnabled, set=setAcceleratorsEnabled)
+
+        single getPresentationElapsedTime();
+        %MethodCode
+            wppapi::single prop = 0;
+            HRESULT hr = sipCpp->get_PresentationElapsedTime(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PresentationElapsedTime()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=PresentationElapsedTime, get=getPresentationElapsedTime)
+
+        single getSlideElapsedTime();
+        %MethodCode
+            wppapi::single prop = 0;
+            HRESULT hr = sipCpp->get_SlideElapsedTime(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SlideElapsedTime()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSlideElapsedTime(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SlideElapsedTime(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SlideElapsedTime()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SlideElapsedTime, get=getSlideElapsedTime, set=setSlideElapsedTime)
+
+        Slide* getLastSlideViewed();
+        %MethodCode
+            wppapi::Slide *prop = nullptr;
+            HRESULT hr = sipCpp->get_LastSlideViewed(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_LastSlideViewed()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=LastSlideViewed, get=getLastSlideViewed)
+
+        PpSlideShowAdvanceMode getAdvanceMode();
+        %MethodCode
+            wppapi::PpSlideShowAdvanceMode prop = (wppapi::PpSlideShowAdvanceMode)0;
+            HRESULT hr = sipCpp->get_AdvanceMode(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AdvanceMode()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=AdvanceMode, get=getAdvanceMode)
+
+        ColorFormat* getPointerColor();
+        %MethodCode
+            wppapi::ColorFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_PointerColor(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PointerColor()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=PointerColor, get=getPointerColor)
+
+        MsoTriState getIsNamedShow();
+        %MethodCode
+            wppapi::MsoTriState prop = (wppapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_IsNamedShow(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_IsNamedShow()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=IsNamedShow, get=getIsNamedShow)
+
+        BSTR getSlideShowName();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_SlideShowName(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SlideShowName()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=SlideShowName, get=getSlideShowName)
+
+        int getCurrentShowPosition();
+        %MethodCode
+            int prop = 0;
+            HRESULT hr = sipCpp->get_CurrentShowPosition(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_CurrentShowPosition()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=CurrentShowPosition, get=getCurrentShowPosition)
+
+        MsoTriState getMediaControlsVisible();
+        %MethodCode
+            wppapi::MsoTriState prop = (wppapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_MediaControlsVisible(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_MediaControlsVisible()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=MediaControlsVisible, get=getMediaControlsVisible)
+
+        single getMediaControlsLeft();
+        %MethodCode
+            wppapi::single prop = 0;
+            HRESULT hr = sipCpp->get_MediaControlsLeft(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_MediaControlsLeft()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=MediaControlsLeft, get=getMediaControlsLeft)
+
+        single getMediaControlsTop();
+        %MethodCode
+            wppapi::single prop = 0;
+            HRESULT hr = sipCpp->get_MediaControlsTop(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_MediaControlsTop()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=MediaControlsTop, get=getMediaControlsTop)
+
+        single getMediaControlsWidth();
+        %MethodCode
+            wppapi::single prop = 0;
+            HRESULT hr = sipCpp->get_MediaControlsWidth(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_MediaControlsWidth()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=MediaControlsWidth, get=getMediaControlsWidth)
+
+        single getMediaControlsHeight();
+        %MethodCode
+            wppapi::single prop = 0;
+            HRESULT hr = sipCpp->get_MediaControlsHeight(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_MediaControlsHeight()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=MediaControlsHeight, get=getMediaControlsHeight)
     };
 };

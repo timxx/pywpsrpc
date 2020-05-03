@@ -48,5 +48,167 @@ namespace wppapi
         virtual HRESULT get_TextRange2(
             ksoapi::TextRange2 **TextRange2 /Out/) = 0;
 
+        Application* getApplication();
+        %MethodCode
+            wppapi::Application *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        PpSelectionType getType();
+        %MethodCode
+            wppapi::PpSelectionType prop = (wppapi::PpSelectionType)0;
+            HRESULT hr = sipCpp->get_Type(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Type()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Type, get=getType)
+
+        SlideRange* getSlideRange();
+        %MethodCode
+            wppapi::SlideRange *prop = nullptr;
+            HRESULT hr = sipCpp->get_SlideRange(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SlideRange()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=SlideRange, get=getSlideRange)
+
+        ShapeRange* getShapeRange();
+        %MethodCode
+            wppapi::ShapeRange *prop = nullptr;
+            HRESULT hr = sipCpp->get_ShapeRange(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ShapeRange()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ShapeRange, get=getShapeRange)
+
+        TextRange* getTextRange();
+        %MethodCode
+            wppapi::TextRange *prop = nullptr;
+            HRESULT hr = sipCpp->get_TextRange(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_TextRange()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=TextRange, get=getTextRange)
+
+        ShapeRange* getChildShapeRange();
+        %MethodCode
+            wppapi::ShapeRange *prop = nullptr;
+            HRESULT hr = sipCpp->get_ChildShapeRange(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ChildShapeRange()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ChildShapeRange, get=getChildShapeRange)
+
+        VARIANT_BOOL getHasChildShapeRange();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_HasChildShapeRange(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_HasChildShapeRange()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=HasChildShapeRange, get=getHasChildShapeRange)
+
+        ksoapi::TextRange2* getTextRange2();
+        %MethodCode
+            ksoapi::TextRange2 *prop = nullptr;
+            HRESULT hr = sipCpp->get_TextRange2(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_TextRange2()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=TextRange2, get=getTextRange2)
     };
 };

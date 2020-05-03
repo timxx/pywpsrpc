@@ -31,5 +31,107 @@ namespace wppapi
         virtual HRESULT put_ShowCoauthoringMergeChanges(
             VARIANT_BOOL ShowCoauthoringMergeChanges) = 0;
 
+        MsoTriState getDisplayPasteOptions();
+        %MethodCode
+            wppapi::MsoTriState prop = (wppapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_DisplayPasteOptions(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DisplayPasteOptions()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDisplayPasteOptions(MsoTriState prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DisplayPasteOptions(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DisplayPasteOptions()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DisplayPasteOptions, get=getDisplayPasteOptions, set=setDisplayPasteOptions)
+
+        MsoTriState getDoNotPromptForConvert();
+        %MethodCode
+            wppapi::MsoTriState prop = (wppapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_DoNotPromptForConvert(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DoNotPromptForConvert()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDoNotPromptForConvert(MsoTriState prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DoNotPromptForConvert(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DoNotPromptForConvert()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DoNotPromptForConvert, get=getDoNotPromptForConvert, set=setDoNotPromptForConvert)
+
+        VARIANT_BOOL getShowCoauthoringMergeChanges();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ShowCoauthoringMergeChanges(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ShowCoauthoringMergeChanges()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setShowCoauthoringMergeChanges(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ShowCoauthoringMergeChanges(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ShowCoauthoringMergeChanges()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ShowCoauthoringMergeChanges, get=getShowCoauthoringMergeChanges, set=setShowCoauthoringMergeChanges)
     };
 };

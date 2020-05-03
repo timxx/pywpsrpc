@@ -55,5 +55,244 @@ namespace wppapi
         virtual HRESULT put_SlideOrientation(
             MsoOrientation SlideOrientation) = 0;
 
+        Application* getApplication();
+        %MethodCode
+            wppapi::Application *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        int getFirstSlideNumber();
+        %MethodCode
+            int prop = 0;
+            HRESULT hr = sipCpp->get_FirstSlideNumber(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_FirstSlideNumber()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setFirstSlideNumber(int prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_FirstSlideNumber(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_FirstSlideNumber()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=FirstSlideNumber, get=getFirstSlideNumber, set=setFirstSlideNumber)
+
+        single getSlideHeight();
+        %MethodCode
+            wppapi::single prop = 0;
+            HRESULT hr = sipCpp->get_SlideHeight(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SlideHeight()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSlideHeight(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SlideHeight(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SlideHeight()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SlideHeight, get=getSlideHeight, set=setSlideHeight)
+
+        single getSlideWidth();
+        %MethodCode
+            wppapi::single prop = 0;
+            HRESULT hr = sipCpp->get_SlideWidth(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SlideWidth()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSlideWidth(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SlideWidth(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SlideWidth()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SlideWidth, get=getSlideWidth, set=setSlideWidth)
+
+        PpSlideSizeType getSlideSize();
+        %MethodCode
+            wppapi::PpSlideSizeType prop = (wppapi::PpSlideSizeType)0;
+            HRESULT hr = sipCpp->get_SlideSize(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SlideSize()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSlideSize(PpSlideSizeType prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SlideSize(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SlideSize()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SlideSize, get=getSlideSize, set=setSlideSize)
+
+        MsoOrientation getNotesOrientation();
+        %MethodCode
+            wppapi::MsoOrientation prop = (wppapi::MsoOrientation)0;
+            HRESULT hr = sipCpp->get_NotesOrientation(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_NotesOrientation()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setNotesOrientation(MsoOrientation prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_NotesOrientation(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_NotesOrientation()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=NotesOrientation, get=getNotesOrientation, set=setNotesOrientation)
+
+        MsoOrientation getSlideOrientation();
+        %MethodCode
+            wppapi::MsoOrientation prop = (wppapi::MsoOrientation)0;
+            HRESULT hr = sipCpp->get_SlideOrientation(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SlideOrientation()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSlideOrientation(MsoOrientation prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SlideOrientation(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SlideOrientation()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SlideOrientation, get=getSlideOrientation, set=setSlideOrientation)
     };
 };
