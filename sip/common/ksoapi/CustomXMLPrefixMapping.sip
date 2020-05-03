@@ -22,5 +22,60 @@ namespace ksoapi
         virtual HRESULT get_NamespaceURI(
             BSTR *pbstrNamespaceURI /Out/) = 0;
 
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        BSTR getPrefix();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_Prefix(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Prefix()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Prefix, get=getPrefix)
+
+        BSTR getNamespaceURI();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_NamespaceURI(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_NamespaceURI()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=NamespaceURI, get=getNamespaceURI)
     };
 };

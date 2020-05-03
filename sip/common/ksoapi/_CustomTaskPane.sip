@@ -57,5 +57,248 @@ namespace ksoapi
 
         virtual HRESULT Delete() = 0;
 
+        BSTR getTitle();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_Title(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Title()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Title, get=getTitle)
+
+        IDispatch* getApplication();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        IDispatch* getWindow();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Window(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Window()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Window, get=getWindow)
+
+        VARIANT_BOOL getVisible();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_Visible(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Visible()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setVisible(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Visible(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Visible()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Visible, get=getVisible, set=setVisible)
+
+        IDispatch* getContentControl();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_ContentControl(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ContentControl()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ContentControl, get=getContentControl)
+
+        int getHeight();
+        %MethodCode
+            int prop = 0;
+            HRESULT hr = sipCpp->get_Height(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Height()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setHeight(int prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Height(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Height()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Height, get=getHeight, set=setHeight)
+
+        int getWidth();
+        %MethodCode
+            int prop = 0;
+            HRESULT hr = sipCpp->get_Width(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Width()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setWidth(int prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Width(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Width()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Width, get=getWidth, set=setWidth)
+
+        MsoCTPDockPosition getDockPosition();
+        %MethodCode
+            ksoapi::MsoCTPDockPosition prop = (ksoapi::MsoCTPDockPosition)0;
+            HRESULT hr = sipCpp->get_DockPosition(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DockPosition()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDockPosition(MsoCTPDockPosition prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DockPosition(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DockPosition()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DockPosition, get=getDockPosition, set=setDockPosition)
+
+        MsoCTPDockPositionRestrict getDockPositionRestrict();
+        %MethodCode
+            ksoapi::MsoCTPDockPositionRestrict prop = (ksoapi::MsoCTPDockPositionRestrict)0;
+            HRESULT hr = sipCpp->get_DockPositionRestrict(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DockPositionRestrict()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDockPositionRestrict(MsoCTPDockPositionRestrict prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DockPositionRestrict(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DockPositionRestrict()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DockPositionRestrict, get=getDockPositionRestrict, set=setDockPositionRestrict)
     };
 };

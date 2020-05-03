@@ -30,5 +30,60 @@ namespace ksoapi
         virtual HRESULT get_Parent(
             IDispatch **ppidisp /Out/) = 0;
 
+        BSTR getName();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_Name(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Name()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Name, get=getName)
+
+        BSTR getDescription();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_Description(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Description()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Description, get=getDescription)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
     };
 };

@@ -25,5 +25,78 @@ namespace ksoapi
         virtual HRESULT get_SegmentType(
             MsoSegmentType *SegmentType /Out/) = 0;
 
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        MsoEditingType getEditingType();
+        %MethodCode
+            ksoapi::MsoEditingType prop = (ksoapi::MsoEditingType)0;
+            HRESULT hr = sipCpp->get_EditingType(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_EditingType()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=EditingType, get=getEditingType)
+
+        VARIANT getPoints();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_Points(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Points()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Points, get=getPoints)
+
+        MsoSegmentType getSegmentType();
+        %MethodCode
+            ksoapi::MsoSegmentType prop = (ksoapi::MsoSegmentType)0;
+            HRESULT hr = sipCpp->get_SegmentType(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SegmentType()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=SegmentType, get=getSegmentType)
     };
 };

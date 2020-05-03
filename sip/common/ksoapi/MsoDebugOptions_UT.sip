@@ -22,5 +22,42 @@ namespace ksoapi
         virtual HRESULT Run(
             MsoDebugOptions_UTRunResult **ppRunResult /Out/) = 0;
 
+        BSTR getName();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_Name(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Name()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Name, get=getName)
+
+        BSTR getCollectionName();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_CollectionName(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_CollectionName()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=CollectionName, get=getCollectionName)
     };
 };

@@ -25,5 +25,74 @@ namespace ksoapi
         virtual HRESULT get_ThemeColorSchemeIndex(
             MsoThemeColorSchemeIndex *pValue /Out/) = 0;
 
+        MsoRGBType getRGB();
+        %MethodCode
+            ksoapi::MsoRGBType prop = 0;
+            HRESULT hr = sipCpp->get_RGB(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RGB()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRGB(MsoRGBType prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_RGB(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_RGB()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=RGB, get=getRGB, set=setRGB)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        MsoThemeColorSchemeIndex getThemeColorSchemeIndex();
+        %MethodCode
+            ksoapi::MsoThemeColorSchemeIndex prop = (ksoapi::MsoThemeColorSchemeIndex)0;
+            HRESULT hr = sipCpp->get_ThemeColorSchemeIndex(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ThemeColorSchemeIndex()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ThemeColorSchemeIndex, get=getThemeColorSchemeIndex)
     };
 };

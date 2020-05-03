@@ -100,5 +100,114 @@ namespace ksoapi
         virtual HRESULT get_OfficeOnTheWebUrl(
             BSTR *bstrUrl /Out/) = 0;
 
+        long getContext();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_Context(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Context()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Context, get=getContext)
+
+        IDispatch* getValidator();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Validator(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Validator()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Validator, get=getValidator)
+
+        IDispatch* getLicAgent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_LicAgent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_LicAgent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=LicAgent, get=getLicAgent)
+
+        BSTR getCountryInfo();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_CountryInfo(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_CountryInfo()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=CountryInfo, get=getCountryInfo)
+
+        int getAnimationEnabled();
+        %MethodCode
+            int prop = 0;
+            HRESULT hr = sipCpp->get_AnimationEnabled(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AnimationEnabled()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=AnimationEnabled, get=getAnimationEnabled)
+
+        BSTR getOfficeOnTheWebUrl();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_OfficeOnTheWebUrl(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_OfficeOnTheWebUrl()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=OfficeOnTheWebUrl, get=getOfficeOnTheWebUrl)
     };
 };

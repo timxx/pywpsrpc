@@ -54,5 +54,74 @@ namespace ksoapi
         virtual HRESULT get__NewEnum(
             IUnknown **_NewEnum /Out/) = 0;
 
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        int getCount();
+        %MethodCode
+            int prop = 0;
+            HRESULT hr = sipCpp->get_Count(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Count()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Count, get=getCount)
+
+        single getDefaultSpacing();
+        %MethodCode
+            ksoapi::single prop = 0;
+            HRESULT hr = sipCpp->get_DefaultSpacing(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DefaultSpacing()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDefaultSpacing(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DefaultSpacing(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DefaultSpacing()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DefaultSpacing, get=getDefaultSpacing, set=setDefaultSpacing)
     };
 };

@@ -22,5 +22,58 @@ namespace ksoapi
         virtual HRESULT get_TabStops(
             TabStops2 **TabStops /Out/) = 0;
 
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        RulerLevels2* getLevels();
+        %MethodCode
+            ksoapi::RulerLevels2 *prop = nullptr;
+            HRESULT hr = sipCpp->get_Levels(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Levels()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Levels, get=getLevels)
+
+        TabStops2* getTabStops();
+        %MethodCode
+            ksoapi::TabStops2 *prop = nullptr;
+            HRESULT hr = sipCpp->get_TabStops(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_TabStops()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=TabStops, get=getTabStops)
     };
 };

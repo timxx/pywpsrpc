@@ -16,5 +16,22 @@ namespace wpsapiex
         virtual HRESULT get_WaterMarks(
             WaterMarks **prop /Out/) = 0;
 
+        WaterMarks* getWaterMarks();
+        %MethodCode
+            wpsapiex::WaterMarks *prop = nullptr;
+            HRESULT hr = sipCpp->get_WaterMarks(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_WaterMarks()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=WaterMarks, get=getWaterMarks)
     };
 };

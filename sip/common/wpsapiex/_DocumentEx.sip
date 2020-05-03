@@ -61,5 +61,38 @@ namespace wpsapiex
 
         virtual HRESULT InsertImageFromScanner() = 0;
 
+        int getShowDocumentFieldTarget();
+        %MethodCode
+            int prop = 0;
+            HRESULT hr = sipCpp->get_ShowDocumentFieldTarget(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ShowDocumentFieldTarget()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setShowDocumentFieldTarget(int prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ShowDocumentFieldTarget(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ShowDocumentFieldTarget()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ShowDocumentFieldTarget, get=getShowDocumentFieldTarget, set=setShowDocumentFieldTarget)
     };
 };

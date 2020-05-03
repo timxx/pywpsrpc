@@ -29,5 +29,23 @@ namespace wpsapiex
             BSTR FilePath,
             VARIANT_BOOL IsAsync = -1) = 0;
 
+        BSTR getLoginToken();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_LoginToken(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_LoginToken()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=LoginToken, get=getLoginToken)
     };
 };

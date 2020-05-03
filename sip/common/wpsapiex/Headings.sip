@@ -40,5 +40,40 @@ namespace wpsapiex
                 sipRes = prop;
         %End
 
+        IUnknown* get_NewEnum();
+        %MethodCode
+            IUnknown *prop = nullptr;
+            HRESULT hr = sipCpp->get__NewEnum(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get__NewEnum()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=_NewEnum, get=get_NewEnum)
+
+        long getCount();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_Count(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Count()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Count, get=getCount)
     };
 };

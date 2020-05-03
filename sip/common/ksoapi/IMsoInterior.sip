@@ -58,5 +58,274 @@ namespace ksoapi
         virtual HRESULT get_Parent(
             IDispatch **RHS /Out/) = 0;
 
+        VARIANT getColor();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_Color(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Color()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setColor(VARIANT prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Color(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Color()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Color, get=getColor, set=setColor)
+
+        VARIANT getColorIndex();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_ColorIndex(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ColorIndex()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setColorIndex(VARIANT prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ColorIndex(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ColorIndex()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ColorIndex, get=getColorIndex, set=setColorIndex)
+
+        VARIANT getInvertIfNegative();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_InvertIfNegative(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_InvertIfNegative()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setInvertIfNegative(VARIANT prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_InvertIfNegative(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_InvertIfNegative()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=InvertIfNegative, get=getInvertIfNegative, set=setInvertIfNegative)
+
+        VARIANT getPattern();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_Pattern(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Pattern()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setPattern(VARIANT prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Pattern(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Pattern()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Pattern, get=getPattern, set=setPattern)
+
+        VARIANT getPatternColor();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_PatternColor(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PatternColor()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setPatternColor(VARIANT prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_PatternColor(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_PatternColor()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=PatternColor, get=getPatternColor, set=setPatternColor)
+
+        VARIANT getPatternColorIndex();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_PatternColorIndex(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PatternColorIndex()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setPatternColorIndex(VARIANT prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_PatternColorIndex(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_PatternColorIndex()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=PatternColorIndex, get=getPatternColorIndex, set=setPatternColorIndex)
+
+        IDispatch* getApplication();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        long getCreator();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_Creator(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Creator()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Creator, get=getCreator)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
     };
 };

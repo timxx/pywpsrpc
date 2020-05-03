@@ -56,5 +56,94 @@ namespace ksoapi
         virtual HRESULT get_LastChild(
             DiagramNode **Last /Out/) = 0;
 
+        IUnknown* get_NewEnum();
+        %MethodCode
+            IUnknown *prop = nullptr;
+            HRESULT hr = sipCpp->get__NewEnum(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get__NewEnum()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=_NewEnum, get=get_NewEnum)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        int getCount();
+        %MethodCode
+            int prop = 0;
+            HRESULT hr = sipCpp->get_Count(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Count()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Count, get=getCount)
+
+        DiagramNode* getFirstChild();
+        %MethodCode
+            ksoapi::DiagramNode *prop = nullptr;
+            HRESULT hr = sipCpp->get_FirstChild(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_FirstChild()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=FirstChild, get=getFirstChild)
+
+        DiagramNode* getLastChild();
+        %MethodCode
+            ksoapi::DiagramNode *prop = nullptr;
+            HRESULT hr = sipCpp->get_LastChild(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_LastChild()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=LastChild, get=getLastChild)
     };
 };

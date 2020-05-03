@@ -98,5 +98,80 @@ namespace ksoapi
             VARIANT varChild = argMissing2(),
             BSTR pszValue = 0) = 0;
 
+        IDispatch* getaccParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_accParent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_accParent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=accParent, get=getaccParent)
+
+        long getaccChildCount();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_accChildCount(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_accChildCount()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=accChildCount, get=getaccChildCount)
+
+        VARIANT getaccFocus();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_accFocus(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_accFocus()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=accFocus, get=getaccFocus)
+
+        VARIANT getaccSelection();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_accSelection(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_accSelection()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=accSelection, get=getaccSelection)
     };
 };

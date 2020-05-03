@@ -48,5 +48,22 @@ namespace ksoapi
         virtual HRESULT Delete(
             int Index = -1) = 0;
 
+        int getCount();
+        %MethodCode
+            int prop = 0;
+            HRESULT hr = sipCpp->get_Count(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Count()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Count, get=getCount)
     };
 };

@@ -41,5 +41,92 @@ namespace ksoapi
             int duplicateDlgMode,
             PickerResults **Results /Out/) = 0;
 
+        BSTR getDataHandlerId();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_DataHandlerId(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DataHandlerId()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDataHandlerId(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DataHandlerId(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DataHandlerId()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DataHandlerId, get=getDataHandlerId, set=setDataHandlerId)
+
+        BSTR getTitle();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_Title(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Title()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setTitle(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Title(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Title()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Title, get=getTitle, set=setTitle)
+
+        PickerProperties* getProperties();
+        %MethodCode
+            ksoapi::PickerProperties *prop = nullptr;
+            HRESULT hr = sipCpp->get_Properties(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Properties()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Properties, get=getProperties)
     };
 };

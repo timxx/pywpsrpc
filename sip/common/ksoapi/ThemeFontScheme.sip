@@ -28,5 +28,58 @@ namespace ksoapi
         virtual HRESULT get_MajorFont(
             ThemeFonts **MajorFont /Out/) = 0;
 
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        ThemeFonts* getMinorFont();
+        %MethodCode
+            ksoapi::ThemeFonts *prop = nullptr;
+            HRESULT hr = sipCpp->get_MinorFont(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_MinorFont()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=MinorFont, get=getMinorFont)
+
+        ThemeFonts* getMajorFont();
+        %MethodCode
+            ksoapi::ThemeFonts *prop = nullptr;
+            HRESULT hr = sipCpp->get_MajorFont(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_MajorFont()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=MajorFont, get=getMajorFont)
     };
 };

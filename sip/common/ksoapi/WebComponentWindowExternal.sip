@@ -30,5 +30,95 @@ namespace ksoapi
         virtual HRESULT get_WebComponent(
             WebComponent **RetValue /Out/) = 0;
 
+        long getInterfaceVersion();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_InterfaceVersion(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_InterfaceVersion()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=InterfaceVersion, get=getInterfaceVersion)
+
+        BSTR getApplicationName();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_ApplicationName(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ApplicationName()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ApplicationName, get=getApplicationName)
+
+        long getApplicationVersion();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_ApplicationVersion(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ApplicationVersion()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ApplicationVersion, get=getApplicationVersion)
+
+        IDispatch* getApplication();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        WebComponent* getWebComponent();
+        %MethodCode
+            ksoapi::WebComponent *prop = nullptr;
+            HRESULT hr = sipCpp->get_WebComponent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_WebComponent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=WebComponent, get=getWebComponent)
     };
 };

@@ -31,5 +31,58 @@ namespace ksoapi
         virtual HRESULT Open(
             MsoHTMLProjectOpen OpenKind = (ksoapi::MsoHTMLProjectOpen)0) = 0;
 
+        MsoHTMLProjectState getState();
+        %MethodCode
+            ksoapi::MsoHTMLProjectState prop = (ksoapi::MsoHTMLProjectState)0;
+            HRESULT hr = sipCpp->get_State(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_State()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=State, get=getState)
+
+        HTMLProjectItems* getHTMLProjectItems();
+        %MethodCode
+            ksoapi::HTMLProjectItems *prop = nullptr;
+            HRESULT hr = sipCpp->get_HTMLProjectItems(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_HTMLProjectItems()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=HTMLProjectItems, get=getHTMLProjectItems)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
     };
 };

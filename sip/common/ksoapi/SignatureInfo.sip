@@ -72,5 +72,258 @@ namespace ksoapi
         virtual HRESULT SelectCertificateDetailByThumbprint(
             BSTR bstrThumbprint) = 0;
 
+        VARIANT_BOOL getReadOnly();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_ReadOnly(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ReadOnly()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ReadOnly, get=getReadOnly)
+
+        BSTR getSignatureProvider();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_SignatureProvider(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SignatureProvider()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=SignatureProvider, get=getSignatureProvider)
+
+        BSTR getSignatureText();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_SignatureText(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SignatureText()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSignatureText(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SignatureText(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SignatureText()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SignatureText, get=getSignatureText, set=setSignatureText)
+
+        IPictureDisp* getSignatureImage();
+        %MethodCode
+            IPictureDisp *prop = nullptr;
+            HRESULT hr = sipCpp->get_SignatureImage(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SignatureImage()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSignatureImage(IPictureDisp *prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SignatureImage(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SignatureImage()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SignatureImage, get=getSignatureImage, set=setSignatureImage)
+
+        BSTR getSignatureComment();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_SignatureComment(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SignatureComment()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSignatureComment(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SignatureComment(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SignatureComment()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SignatureComment, get=getSignatureComment, set=setSignatureComment)
+
+        ContentVerificationResults getContentVerificationResults();
+        %MethodCode
+            ksoapi::ContentVerificationResults prop = (ksoapi::ContentVerificationResults)0;
+            HRESULT hr = sipCpp->get_ContentVerificationResults(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ContentVerificationResults()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ContentVerificationResults, get=getContentVerificationResults)
+
+        CertificateVerificationResults getCertificateVerificationResults();
+        %MethodCode
+            ksoapi::CertificateVerificationResults prop = (ksoapi::CertificateVerificationResults)0;
+            HRESULT hr = sipCpp->get_CertificateVerificationResults(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_CertificateVerificationResults()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=CertificateVerificationResults, get=getCertificateVerificationResults)
+
+        VARIANT_BOOL getIsValid();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_IsValid(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_IsValid()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=IsValid, get=getIsValid)
+
+        VARIANT_BOOL getIsCertificateExpired();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_IsCertificateExpired(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_IsCertificateExpired()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=IsCertificateExpired, get=getIsCertificateExpired)
+
+        VARIANT_BOOL getIsCertificateRevoked();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_IsCertificateRevoked(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_IsCertificateRevoked()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=IsCertificateRevoked, get=getIsCertificateRevoked)
+
+        VARIANT_BOOL getIsCertificateUntrusted();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_IsCertificateUntrusted(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_IsCertificateUntrusted()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=IsCertificateUntrusted, get=getIsCertificateUntrusted)
     };
 };
