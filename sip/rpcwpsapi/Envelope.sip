@@ -357,5 +357,885 @@ namespace wpsapi
         %MethodCode
             return _insertOrPrint(sipSelf, sipArgs, sipKwds, false);
         %End
+
+        Application* getApplication();
+        %MethodCode
+            wpsapi::Application *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        long getCreator();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_Creator(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Creator()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Creator, get=getCreator)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        Range* getAddress();
+        %MethodCode
+            wpsapi::Range *prop = nullptr;
+            HRESULT hr = sipCpp->get_Address(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Address()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Address, get=getAddress)
+
+        Range* getReturnAddress();
+        %MethodCode
+            wpsapi::Range *prop = nullptr;
+            HRESULT hr = sipCpp->get_ReturnAddress(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ReturnAddress()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ReturnAddress, get=getReturnAddress)
+
+        VARIANT_BOOL getDefaultPrintBarCode();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_DefaultPrintBarCode(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DefaultPrintBarCode()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDefaultPrintBarCode(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DefaultPrintBarCode(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DefaultPrintBarCode()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DefaultPrintBarCode, get=getDefaultPrintBarCode, set=setDefaultPrintBarCode)
+
+        VARIANT_BOOL getDefaultPrintFIMA();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_DefaultPrintFIMA(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DefaultPrintFIMA()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDefaultPrintFIMA(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DefaultPrintFIMA(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DefaultPrintFIMA()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DefaultPrintFIMA, get=getDefaultPrintFIMA, set=setDefaultPrintFIMA)
+
+        single getDefaultHeight();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_DefaultHeight(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DefaultHeight()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDefaultHeight(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DefaultHeight(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DefaultHeight()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DefaultHeight, get=getDefaultHeight, set=setDefaultHeight)
+
+        single getDefaultWidth();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_DefaultWidth(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DefaultWidth()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDefaultWidth(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DefaultWidth(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DefaultWidth()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DefaultWidth, get=getDefaultWidth, set=setDefaultWidth)
+
+        BSTR getDefaultSize();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_DefaultSize(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DefaultSize()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDefaultSize(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DefaultSize(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DefaultSize()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DefaultSize, get=getDefaultSize, set=setDefaultSize)
+
+        VARIANT_BOOL getDefaultOmitReturnAddress();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_DefaultOmitReturnAddress(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DefaultOmitReturnAddress()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDefaultOmitReturnAddress(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DefaultOmitReturnAddress(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DefaultOmitReturnAddress()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DefaultOmitReturnAddress, get=getDefaultOmitReturnAddress, set=setDefaultOmitReturnAddress)
+
+        WdPaperTray getFeedSource();
+        %MethodCode
+            wpsapi::WdPaperTray prop = (wpsapi::WdPaperTray)0;
+            HRESULT hr = sipCpp->get_FeedSource(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_FeedSource()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setFeedSource(WdPaperTray prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_FeedSource(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_FeedSource()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=FeedSource, get=getFeedSource, set=setFeedSource)
+
+        single getAddressFromLeft();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_AddressFromLeft(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AddressFromLeft()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setAddressFromLeft(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_AddressFromLeft(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_AddressFromLeft()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=AddressFromLeft, get=getAddressFromLeft, set=setAddressFromLeft)
+
+        single getAddressFromTop();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_AddressFromTop(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AddressFromTop()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setAddressFromTop(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_AddressFromTop(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_AddressFromTop()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=AddressFromTop, get=getAddressFromTop, set=setAddressFromTop)
+
+        single getReturnAddressFromLeft();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_ReturnAddressFromLeft(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ReturnAddressFromLeft()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setReturnAddressFromLeft(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ReturnAddressFromLeft(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ReturnAddressFromLeft()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ReturnAddressFromLeft, get=getReturnAddressFromLeft, set=setReturnAddressFromLeft)
+
+        single getReturnAddressFromTop();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_ReturnAddressFromTop(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ReturnAddressFromTop()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setReturnAddressFromTop(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ReturnAddressFromTop(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ReturnAddressFromTop()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ReturnAddressFromTop, get=getReturnAddressFromTop, set=setReturnAddressFromTop)
+
+        Style* getAddressStyle();
+        %MethodCode
+            wpsapi::Style *prop = nullptr;
+            HRESULT hr = sipCpp->get_AddressStyle(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AddressStyle()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=AddressStyle, get=getAddressStyle)
+
+        Style* getReturnAddressStyle();
+        %MethodCode
+            wpsapi::Style *prop = nullptr;
+            HRESULT hr = sipCpp->get_ReturnAddressStyle(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ReturnAddressStyle()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ReturnAddressStyle, get=getReturnAddressStyle)
+
+        WdEnvelopeOrientation getDefaultOrientation();
+        %MethodCode
+            wpsapi::WdEnvelopeOrientation prop = (wpsapi::WdEnvelopeOrientation)0;
+            HRESULT hr = sipCpp->get_DefaultOrientation(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DefaultOrientation()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDefaultOrientation(WdEnvelopeOrientation prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DefaultOrientation(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DefaultOrientation()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DefaultOrientation, get=getDefaultOrientation, set=setDefaultOrientation)
+
+        VARIANT_BOOL getDefaultFaceUp();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_DefaultFaceUp(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DefaultFaceUp()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setDefaultFaceUp(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_DefaultFaceUp(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_DefaultFaceUp()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=DefaultFaceUp, get=getDefaultFaceUp, set=setDefaultFaceUp)
+
+        VARIANT_BOOL getVertical();
+        %MethodCode
+            VARIANT_BOOL *prop = new VARIANT_BOOL;
+            HRESULT hr = sipCpp->get_Vertical(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Vertical()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setVertical(VARIANT_BOOL prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Vertical(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Vertical()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Vertical, get=getVertical, set=setVertical)
+
+        single getRecipientNamefromLeft();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_RecipientNamefromLeft(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RecipientNamefromLeft()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRecipientNamefromLeft(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_RecipientNamefromLeft(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_RecipientNamefromLeft()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=RecipientNamefromLeft, get=getRecipientNamefromLeft, set=setRecipientNamefromLeft)
+
+        single getRecipientNamefromTop();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_RecipientNamefromTop(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RecipientNamefromTop()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRecipientNamefromTop(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_RecipientNamefromTop(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_RecipientNamefromTop()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=RecipientNamefromTop, get=getRecipientNamefromTop, set=setRecipientNamefromTop)
+
+        single getRecipientPostalfromLeft();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_RecipientPostalfromLeft(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RecipientPostalfromLeft()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRecipientPostalfromLeft(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_RecipientPostalfromLeft(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_RecipientPostalfromLeft()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=RecipientPostalfromLeft, get=getRecipientPostalfromLeft, set=setRecipientPostalfromLeft)
+
+        single getRecipientPostalfromTop();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_RecipientPostalfromTop(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RecipientPostalfromTop()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRecipientPostalfromTop(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_RecipientPostalfromTop(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_RecipientPostalfromTop()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=RecipientPostalfromTop, get=getRecipientPostalfromTop, set=setRecipientPostalfromTop)
+
+        single getSenderNamefromLeft();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_SenderNamefromLeft(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SenderNamefromLeft()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSenderNamefromLeft(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SenderNamefromLeft(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SenderNamefromLeft()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SenderNamefromLeft, get=getSenderNamefromLeft, set=setSenderNamefromLeft)
+
+        single getSenderNamefromTop();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_SenderNamefromTop(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SenderNamefromTop()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSenderNamefromTop(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SenderNamefromTop(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SenderNamefromTop()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SenderNamefromTop, get=getSenderNamefromTop, set=setSenderNamefromTop)
+
+        single getSenderPostalfromLeft();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_SenderPostalfromLeft(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SenderPostalfromLeft()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSenderPostalfromLeft(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SenderPostalfromLeft(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SenderPostalfromLeft()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SenderPostalfromLeft, get=getSenderPostalfromLeft, set=setSenderPostalfromLeft)
+
+        single getSenderPostalfromTop();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_SenderPostalfromTop(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SenderPostalfromTop()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setSenderPostalfromTop(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_SenderPostalfromTop(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_SenderPostalfromTop()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=SenderPostalfromTop, get=getSenderPostalfromTop, set=setSenderPostalfromTop)
     };
 };

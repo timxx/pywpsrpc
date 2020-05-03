@@ -370,5 +370,1493 @@ namespace wpsapi
         virtual HRESULT put_Title(
             BSTR prop) = 0;
 
+        Application* getApplication();
+        %MethodCode
+            wpsapi::Application *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        long getCreator();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_Creator(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Creator()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Creator, get=getCreator)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        long getCount();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_Count(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Count()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Count, get=getCount)
+
+        IUnknown* get_NewEnum();
+        %MethodCode
+            IUnknown *prop = nullptr;
+            HRESULT hr = sipCpp->get__NewEnum(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get__NewEnum()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=_NewEnum, get=get_NewEnum)
+
+        Adjustments* getAdjustments();
+        %MethodCode
+            wpsapi::Adjustments *prop = nullptr;
+            HRESULT hr = sipCpp->get_Adjustments(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Adjustments()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Adjustments, get=getAdjustments)
+
+        MsoAutoShapeType getAutoShapeType();
+        %MethodCode
+            wpsapi::MsoAutoShapeType prop = (wpsapi::MsoAutoShapeType)0;
+            HRESULT hr = sipCpp->get_AutoShapeType(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AutoShapeType()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setAutoShapeType(MsoAutoShapeType prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_AutoShapeType(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_AutoShapeType()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=AutoShapeType, get=getAutoShapeType, set=setAutoShapeType)
+
+        CalloutFormat* getCallout();
+        %MethodCode
+            wpsapi::CalloutFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_Callout(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Callout()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Callout, get=getCallout)
+
+        long getConnectionSiteCount();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_ConnectionSiteCount(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ConnectionSiteCount()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ConnectionSiteCount, get=getConnectionSiteCount)
+
+        MsoTriState getConnector();
+        %MethodCode
+            wpsapi::MsoTriState prop = (wpsapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_Connector(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Connector()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Connector, get=getConnector)
+
+        ConnectorFormat* getConnectorFormat();
+        %MethodCode
+            wpsapi::ConnectorFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_ConnectorFormat(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ConnectorFormat()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ConnectorFormat, get=getConnectorFormat)
+
+        FillFormat* getFill();
+        %MethodCode
+            wpsapi::FillFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_Fill(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Fill()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Fill, get=getFill)
+
+        GroupShapes* getGroupItems();
+        %MethodCode
+            wpsapi::GroupShapes *prop = nullptr;
+            HRESULT hr = sipCpp->get_GroupItems(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_GroupItems()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=GroupItems, get=getGroupItems)
+
+        single getHeight();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_Height(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Height()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setHeight(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Height(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Height()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Height, get=getHeight, set=setHeight)
+
+        MsoTriState getHorizontalFlip();
+        %MethodCode
+            wpsapi::MsoTriState prop = (wpsapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_HorizontalFlip(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_HorizontalFlip()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=HorizontalFlip, get=getHorizontalFlip)
+
+        single getLeft();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_Left(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Left()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setLeft(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Left(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Left()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Left, get=getLeft, set=setLeft)
+
+        LineFormat* getLine();
+        %MethodCode
+            wpsapi::LineFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_Line(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Line()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Line, get=getLine)
+
+        MsoTriState getLockAspectRatio();
+        %MethodCode
+            wpsapi::MsoTriState prop = (wpsapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_LockAspectRatio(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_LockAspectRatio()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setLockAspectRatio(MsoTriState prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_LockAspectRatio(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_LockAspectRatio()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=LockAspectRatio, get=getLockAspectRatio, set=setLockAspectRatio)
+
+        BSTR getName();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_Name(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Name()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setName(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Name(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Name()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Name, get=getName, set=setName)
+
+        ShapeNodes* getNodes();
+        %MethodCode
+            wpsapi::ShapeNodes *prop = nullptr;
+            HRESULT hr = sipCpp->get_Nodes(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Nodes()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Nodes, get=getNodes)
+
+        single getRotation();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_Rotation(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Rotation()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRotation(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Rotation(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Rotation()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Rotation, get=getRotation, set=setRotation)
+
+        PictureFormat* getPictureFormat();
+        %MethodCode
+            wpsapi::PictureFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_PictureFormat(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_PictureFormat()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=PictureFormat, get=getPictureFormat)
+
+        ShadowFormat* getShadow();
+        %MethodCode
+            wpsapi::ShadowFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_Shadow(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Shadow()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Shadow, get=getShadow)
+
+        TextEffectFormat* getTextEffect();
+        %MethodCode
+            wpsapi::TextEffectFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_TextEffect(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_TextEffect()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=TextEffect, get=getTextEffect)
+
+        TextFrame* getTextFrame();
+        %MethodCode
+            wpsapi::TextFrame *prop = nullptr;
+            HRESULT hr = sipCpp->get_TextFrame(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_TextFrame()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=TextFrame, get=getTextFrame)
+
+        ThreeDFormat* getThreeD();
+        %MethodCode
+            wpsapi::ThreeDFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_ThreeD(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ThreeD()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ThreeD, get=getThreeD)
+
+        single getTop();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_Top(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Top()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setTop(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Top(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Top()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Top, get=getTop, set=setTop)
+
+        MsoShapeType getType();
+        %MethodCode
+            wpsapi::MsoShapeType prop = (wpsapi::MsoShapeType)0;
+            HRESULT hr = sipCpp->get_Type(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Type()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Type, get=getType)
+
+        MsoTriState getVerticalFlip();
+        %MethodCode
+            wpsapi::MsoTriState prop = (wpsapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_VerticalFlip(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_VerticalFlip()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=VerticalFlip, get=getVerticalFlip)
+
+        VARIANT getVertices();
+        %MethodCode
+            VARIANT *prop = new VARIANT;
+            VariantInit(prop);
+            HRESULT hr = sipCpp->get_Vertices(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Vertices()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Vertices, get=getVertices)
+
+        MsoTriState getVisible();
+        %MethodCode
+            wpsapi::MsoTriState prop = (wpsapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_Visible(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Visible()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setVisible(MsoTriState prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Visible(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Visible()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Visible, get=getVisible, set=setVisible)
+
+        single getWidth();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_Width(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Width()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setWidth(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Width(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Width()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Width, get=getWidth, set=setWidth)
+
+        long getZOrderPosition();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_ZOrderPosition(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ZOrderPosition()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ZOrderPosition, get=getZOrderPosition)
+
+        Hyperlink* getHyperlink();
+        %MethodCode
+            wpsapi::Hyperlink *prop = nullptr;
+            HRESULT hr = sipCpp->get_Hyperlink(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Hyperlink()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Hyperlink, get=getHyperlink)
+
+        WdRelativeHorizontalPosition getRelativeHorizontalPosition();
+        %MethodCode
+            wpsapi::WdRelativeHorizontalPosition prop = (wpsapi::WdRelativeHorizontalPosition)0;
+            HRESULT hr = sipCpp->get_RelativeHorizontalPosition(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RelativeHorizontalPosition()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRelativeHorizontalPosition(WdRelativeHorizontalPosition prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_RelativeHorizontalPosition(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_RelativeHorizontalPosition()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=RelativeHorizontalPosition, get=getRelativeHorizontalPosition, set=setRelativeHorizontalPosition)
+
+        WdRelativeVerticalPosition getRelativeVerticalPosition();
+        %MethodCode
+            wpsapi::WdRelativeVerticalPosition prop = (wpsapi::WdRelativeVerticalPosition)0;
+            HRESULT hr = sipCpp->get_RelativeVerticalPosition(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RelativeVerticalPosition()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRelativeVerticalPosition(WdRelativeVerticalPosition prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_RelativeVerticalPosition(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_RelativeVerticalPosition()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=RelativeVerticalPosition, get=getRelativeVerticalPosition, set=setRelativeVerticalPosition)
+
+        long getLockAnchor();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_LockAnchor(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_LockAnchor()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setLockAnchor(long prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_LockAnchor(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_LockAnchor()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=LockAnchor, get=getLockAnchor, set=setLockAnchor)
+
+        WrapFormat* getWrapFormat();
+        %MethodCode
+            wpsapi::WrapFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_WrapFormat(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_WrapFormat()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=WrapFormat, get=getWrapFormat)
+
+        Range* getAnchor();
+        %MethodCode
+            wpsapi::Range *prop = nullptr;
+            HRESULT hr = sipCpp->get_Anchor(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Anchor()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Anchor, get=getAnchor)
+
+        BSTR getAlternativeText();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_AlternativeText(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AlternativeText()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setAlternativeText(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_AlternativeText(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_AlternativeText()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=AlternativeText, get=getAlternativeText, set=setAlternativeText)
+
+        MsoTriState getHasDiagram();
+        %MethodCode
+            wpsapi::MsoTriState prop = (wpsapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_HasDiagram(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_HasDiagram()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=HasDiagram, get=getHasDiagram)
+
+        ksoapi::IMsoDiagram* getDiagram();
+        %MethodCode
+            ksoapi::IMsoDiagram *prop = nullptr;
+            HRESULT hr = sipCpp->get_Diagram(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Diagram()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Diagram, get=getDiagram)
+
+        MsoTriState getHasDiagramNode();
+        %MethodCode
+            wpsapi::MsoTriState prop = (wpsapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_HasDiagramNode(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_HasDiagramNode()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=HasDiagramNode, get=getHasDiagramNode)
+
+        DiagramNode* getDiagramNode();
+        %MethodCode
+            wpsapi::DiagramNode *prop = nullptr;
+            HRESULT hr = sipCpp->get_DiagramNode(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_DiagramNode()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=DiagramNode, get=getDiagramNode)
+
+        MsoTriState getChild();
+        %MethodCode
+            wpsapi::MsoTriState prop = (wpsapi::MsoTriState)0;
+            HRESULT hr = sipCpp->get_Child(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Child()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Child, get=getChild)
+
+        Shape* getParentGroup();
+        %MethodCode
+            wpsapi::Shape *prop = nullptr;
+            HRESULT hr = sipCpp->get_ParentGroup(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ParentGroup()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ParentGroup, get=getParentGroup)
+
+        CanvasShapes* getCanvasItems();
+        %MethodCode
+            wpsapi::CanvasShapes *prop = nullptr;
+            HRESULT hr = sipCpp->get_CanvasItems(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_CanvasItems()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=CanvasItems, get=getCanvasItems)
+
+        long getID();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_ID(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ID()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ID, get=getID)
+
+        long getLayoutInCell();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_LayoutInCell(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_LayoutInCell()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setLayoutInCell(long prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_LayoutInCell(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_LayoutInCell()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=LayoutInCell, get=getLayoutInCell, set=setLayoutInCell)
+
+        single getLeftRelative();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_LeftRelative(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_LeftRelative()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setLeftRelative(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_LeftRelative(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_LeftRelative()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=LeftRelative, get=getLeftRelative, set=setLeftRelative)
+
+        single getTopRelative();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_TopRelative(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_TopRelative()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setTopRelative(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_TopRelative(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_TopRelative()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=TopRelative, get=getTopRelative, set=setTopRelative)
+
+        single getWidthRelative();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_WidthRelative(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_WidthRelative()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setWidthRelative(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_WidthRelative(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_WidthRelative()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=WidthRelative, get=getWidthRelative, set=setWidthRelative)
+
+        single getHeightRelative();
+        %MethodCode
+            wpsapi::single prop = 0;
+            HRESULT hr = sipCpp->get_HeightRelative(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_HeightRelative()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setHeightRelative(single prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_HeightRelative(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_HeightRelative()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=HeightRelative, get=getHeightRelative, set=setHeightRelative)
+
+        WdRelativeHorizontalSize getRelativeHorizontalSize();
+        %MethodCode
+            wpsapi::WdRelativeHorizontalSize prop = (wpsapi::WdRelativeHorizontalSize)0;
+            HRESULT hr = sipCpp->get_RelativeHorizontalSize(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RelativeHorizontalSize()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRelativeHorizontalSize(WdRelativeHorizontalSize prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_RelativeHorizontalSize(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_RelativeHorizontalSize()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=RelativeHorizontalSize, get=getRelativeHorizontalSize, set=setRelativeHorizontalSize)
+
+        WdRelativeVerticalSize getRelativeVerticalSize();
+        %MethodCode
+            wpsapi::WdRelativeVerticalSize prop = (wpsapi::WdRelativeVerticalSize)0;
+            HRESULT hr = sipCpp->get_RelativeVerticalSize(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_RelativeVerticalSize()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setRelativeVerticalSize(WdRelativeVerticalSize prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_RelativeVerticalSize(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_RelativeVerticalSize()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=RelativeVerticalSize, get=getRelativeVerticalSize, set=setRelativeVerticalSize)
+
+        SoftEdgeFormat* getSoftEdge();
+        %MethodCode
+            wpsapi::SoftEdgeFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_SoftEdge(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_SoftEdge()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=SoftEdge, get=getSoftEdge)
+
+        GlowFormat* getGlow();
+        %MethodCode
+            wpsapi::GlowFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_Glow(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Glow()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Glow, get=getGlow)
+
+        ReflectionFormat* getReflection();
+        %MethodCode
+            wpsapi::ReflectionFormat *prop = nullptr;
+            HRESULT hr = sipCpp->get_Reflection(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Reflection()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Reflection, get=getReflection)
+
+        ksoapi::TextFrame2* getTextFrame2();
+        %MethodCode
+            ksoapi::TextFrame2 *prop = nullptr;
+            HRESULT hr = sipCpp->get_TextFrame2(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_TextFrame2()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=TextFrame2, get=getTextFrame2)
+
+        MsoShapeStyleIndex getShapeStyle();
+        %MethodCode
+            wpsapi::MsoShapeStyleIndex prop = (wpsapi::MsoShapeStyleIndex)0;
+            HRESULT hr = sipCpp->get_ShapeStyle(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ShapeStyle()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setShapeStyle(MsoShapeStyleIndex prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ShapeStyle(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ShapeStyle()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ShapeStyle, get=getShapeStyle, set=setShapeStyle)
+
+        MsoBackgroundStyleIndex getBackgroundStyle();
+        %MethodCode
+            wpsapi::MsoBackgroundStyleIndex prop = (wpsapi::MsoBackgroundStyleIndex)0;
+            HRESULT hr = sipCpp->get_BackgroundStyle(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_BackgroundStyle()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setBackgroundStyle(MsoBackgroundStyleIndex prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_BackgroundStyle(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_BackgroundStyle()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=BackgroundStyle, get=getBackgroundStyle, set=setBackgroundStyle)
+
+        BSTR getTitle();
+        %MethodCode
+            BSTR *prop = new BSTR;
+            HRESULT hr = sipCpp->get_Title(prop);
+            if (hr != S_OK)
+            {
+                delete prop;
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Title()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setTitle(BSTR prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Title(*a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Title()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Title, get=getTitle, set=setTitle)
     };
 };

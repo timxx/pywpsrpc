@@ -88,5 +88,374 @@ namespace wpsapi
 
         virtual HRESULT ConvertToLiteralText() = 0;
 
+        Application* getApplication();
+        %MethodCode
+            wpsapi::Application *prop = nullptr;
+            HRESULT hr = sipCpp->get_Application(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Application()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Application, get=getApplication)
+
+        long getCreator();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_Creator(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Creator()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Creator, get=getCreator)
+
+        IDispatch* getParent();
+        %MethodCode
+            IDispatch *prop = nullptr;
+            HRESULT hr = sipCpp->get_Parent(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Parent()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Parent, get=getParent)
+
+        Range* getRange();
+        %MethodCode
+            wpsapi::Range *prop = nullptr;
+            HRESULT hr = sipCpp->get_Range(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Range()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Range, get=getRange)
+
+        OMathFunctions* getFunctions();
+        %MethodCode
+            wpsapi::OMathFunctions *prop = nullptr;
+            HRESULT hr = sipCpp->get_Functions(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Functions()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Functions, get=getFunctions)
+
+        WdOMathType getType();
+        %MethodCode
+            wpsapi::WdOMathType prop = (wpsapi::WdOMathType)0;
+            HRESULT hr = sipCpp->get_Type(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Type()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setType(WdOMathType prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Type(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Type()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Type, get=getType, set=setType)
+
+        OMath* getParentOMath();
+        %MethodCode
+            wpsapi::OMath *prop = nullptr;
+            HRESULT hr = sipCpp->get_ParentOMath(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ParentOMath()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ParentOMath, get=getParentOMath)
+
+        OMathFunction* getParentFunction();
+        %MethodCode
+            wpsapi::OMathFunction *prop = nullptr;
+            HRESULT hr = sipCpp->get_ParentFunction(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ParentFunction()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ParentFunction, get=getParentFunction)
+
+        OMathMatRow* getParentRow();
+        %MethodCode
+            wpsapi::OMathMatRow *prop = nullptr;
+            HRESULT hr = sipCpp->get_ParentRow(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ParentRow()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ParentRow, get=getParentRow)
+
+        OMathMatCol* getParentCol();
+        %MethodCode
+            wpsapi::OMathMatCol *prop = nullptr;
+            HRESULT hr = sipCpp->get_ParentCol(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ParentCol()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ParentCol, get=getParentCol)
+
+        OMath* getParentArg();
+        %MethodCode
+            wpsapi::OMath *prop = nullptr;
+            HRESULT hr = sipCpp->get_ParentArg(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ParentArg()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ParentArg, get=getParentArg)
+
+        long getArgIndex();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_ArgIndex(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ArgIndex()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ArgIndex, get=getArgIndex)
+
+        long getNestingLevel();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_NestingLevel(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_NestingLevel()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=NestingLevel, get=getNestingLevel)
+
+        long getArgSize();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_ArgSize(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_ArgSize()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setArgSize(long prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_ArgSize(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_ArgSize()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=ArgSize, get=getArgSize, set=setArgSize)
+
+        OMathBreaks* getBreaks();
+        %MethodCode
+            wpsapi::OMathBreaks *prop = nullptr;
+            HRESULT hr = sipCpp->get_Breaks(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Breaks()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=Breaks, get=getBreaks)
+
+        WdOMathJc getJustification();
+        %MethodCode
+            wpsapi::WdOMathJc prop = (wpsapi::WdOMathJc)0;
+            HRESULT hr = sipCpp->get_Justification(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Justification()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setJustification(WdOMathJc prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_Justification(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_Justification()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=Justification, get=getJustification, set=setJustification)
+
+        long getAlignPoint();
+        %MethodCode
+            long prop = 0;
+            HRESULT hr = sipCpp->get_AlignPoint(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AlignPoint()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        PyObject* setAlignPoint(long prop);
+        %MethodCode
+            HRESULT hr = sipCpp->put_AlignPoint(a0);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'put_AlignPoint()' failed with 0x%x", hr);
+                sipRes = nullptr;
+            }
+            else
+            {
+                Py_INCREF(Py_None);
+                sipRes = Py_None;
+            }
+        %End
+
+        %Property(name=AlignPoint, get=getAlignPoint, set=setAlignPoint)
     };
 };
