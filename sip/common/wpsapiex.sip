@@ -18,7 +18,6 @@
 %Include wpsapiex/KsoDocumentEx.sip
 %Include wpsapiex/WpsCloudService.sip
 
-%Include wpsapiex.sip
 %Include wpsapiex/_DocumentEx.sip
 %Include wpsapiex/_WpsApplicationEx.sip
 %Include wpsapiex/DocumentsEx.sip
