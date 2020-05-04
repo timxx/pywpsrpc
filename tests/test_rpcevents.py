@@ -27,13 +27,11 @@ def _onDocumentChange():
 
 
 def _onDocumentOpen(doc):
-    doc.AddRef()
-    print("_onDocumentOpen:", RpcProxy(doc).Name)
+    print("_onDocumentOpen:", doc.Name)
 
 
 def _onNewDocument(doc):
-    doc.AddRef()
-    print("_onNewDocument:", RpcProxy(doc).Name)
+    print("_onNewDocument:", doc.Name)
 
 
 def _onQuit():
@@ -113,18 +111,15 @@ def _onPresentationClose(Pres):
 
 
 def _onAfterNewPresentation(Pres):
-    Pres.AddRef()
-    print("_onAfterNewPresentation: ", RpcProxy(Pres).Name)
+    print("_onAfterNewPresentation: ", Pres.Name)
 
 
 def _onAfterPresentationOpen(Pres):
-    Pres.AddRef()
-    print("_onAfterPresentationOpen: ", RpcProxy(Pres).Name)
+    print("_onAfterPresentationOpen: ", Pres.Name)
 
 
 def _onNewPresentation(Pres):
-    Pres.AddRef()
-    print("_onNewPresentation: ", RpcProxy(Pres).Name)
+    print("_onNewPresentation: ", Pres.Name)
 
 
 def _onDocumentAfterPrint(Pres, PageEx):
@@ -205,18 +200,15 @@ def _onWorkbookBeforeSave(wb, saveAsUi, cancel):
 
 
 def _onWorkbookAfterSave(wb, success):
-    wb.AddRef()
-    print("_onWorkbookAfterSave: ", RpcProxy(wb).Name, success)
+    print("_onWorkbookAfterSave: ", wb.Name, success)
 
 
 def _onNewWorkbook(wb):
-    wb.AddRef()
-    print("_onNewWorkbook: ", RpcProxy(wb).Name)
+    print("_onNewWorkbook: ", wb.Name)
 
 
 def _onWorkbookOpen(wb):
-    wb.AddRef()
-    print("_onWorkbookOpen: ", RpcProxy(wb).Name)
+    print("_onWorkbookOpen: ", wb.Name)
 
 
 def test_rpcetapi():

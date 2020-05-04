@@ -117,7 +117,8 @@ class RpcProxy(object):
                 _check_iunknown(obj[1])
                 self._object = obj[1]
             elif use_exception:
-                raise RpcException("Can't create proxy due to the previous call failed.", obj[0])
+                raise RpcException(
+                    "Can't create proxy due to the previous call failed.", obj[0])
         else:
             _check_iunknown(obj)
             self._object = obj
@@ -129,34 +130,21 @@ class RpcProxy(object):
             self._object.Release()
 
     def __getattr__(self, name):
-        if name.startswith("_"):
-            return getattr(self._object, name)
-
-        if hasattr(self._object, name):
-            return RpcMethod(getattr(self._object, name), self)
-
-        hr, value = getattr(self._object, "get_" + name)()
-        if hr != S_OK:
-            if self._use_exception:
-                raise RpcException("Call '{}.get_{}()' failed.".format(
-                    self._object.__class__.__name__, name), hr)
-            value = None
+        value = getattr(self._object, name)
+        if isinstance(value, BuiltinFunctionType):
+            return RpcMethod(value, self)
         elif isinstance(value, IUnknown):
             value = RpcProxy(value, self._use_exception)
 
-        self._last_hr = hr
-
+        self._last_hr = S_OK
         return value
 
     def __setattr__(self, name, value):
         if name in self.__slots__ or name in ("use_exception", "last_error", "rpc_object"):
             super().__setattr__(name, value)
         else:
-            hr = getattr(self._object, "put_" + name)(value)
-            if hr != S_OK and self._use_exception:
-                raise RpcException("Call '{}.put_{}({})' failed.".format(
-                    self._object.__class__.__name__, name, value), hr)
-            self._last_hr = hr
+            setattr(self._object, name, value)
+            self._last_hr = S_OK
 
     def __bool__(self):
         return self._object is not None

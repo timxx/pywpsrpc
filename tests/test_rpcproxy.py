@@ -38,10 +38,6 @@ def main():
 
     doc.Close(SaveChanges=wpsapi.wdDoNotSaveChanges)
 
-    doc = app.ActiveDocument
-    print(app.last_error)
-
-    app.use_exception = True
     try:
         # should be failed since no Documents opened.
         doc = app.ActiveDocument
