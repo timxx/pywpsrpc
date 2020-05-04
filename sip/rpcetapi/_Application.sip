@@ -2320,6 +2320,11 @@ namespace etapi
         virtual HRESULT get_DebugTools(
             _DebugTools **RHS /Out/) = 0;
 
+        virtual HRESULT get_ApplicationEx(wpsapiex::_ApplicationEx **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->QueryInterface(wpsapiex::IID__EtApplicationEx, (void**)&a0);
+        %End
+
         Application* getApplication();
         %MethodCode
             etapi::Application *prop = nullptr;
@@ -8685,5 +8690,23 @@ namespace etapi
         %End
 
         %Property(name=DebugTools, get=getDebugTools)
+
+        wpsapiex::_ApplicationEx* getApplicationEx();
+        %MethodCode
+            wpsapiex::_ApplicationEx *prop = nullptr;
+            HRESULT hr = sipCpp->QueryInterface(wpsapiex::IID__EtApplicationEx, (void**)&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'QueryInterface()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ApplicationEx, get=getApplicationEx)
     };
 };

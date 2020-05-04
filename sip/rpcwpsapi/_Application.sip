@@ -3955,5 +3955,23 @@ Run(self, str, varg1: Any = None, varg2: Any = None, varg3: Any = None, varg4: A
         %End
 
         %Property(name=ShowAnimation, get=getShowAnimation, set=setShowAnimation)
+
+        wpsapiex::_ApplicationEx* getApplicationEx();
+        %MethodCode
+            wpsapiex::_ApplicationEx *prop = nullptr;
+            HRESULT hr = sipCpp->QueryInterface(wpsapiex::IID__WpsApplicationEx, (void**)&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'QueryInterface()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ApplicationEx, get=getApplicationEx)
     };
 };

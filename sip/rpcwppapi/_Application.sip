@@ -1618,5 +1618,23 @@ namespace wppapi
         %End
 
         %Property(name=DisplayGuides, get=getDisplayGuides, set=setDisplayGuides)
+
+        wpsapiex::_ApplicationEx* getApplicationEx();
+        %MethodCode
+            wpsapiex::_ApplicationEx *prop = nullptr;
+            HRESULT hr = sipCpp->QueryInterface(wpsapiex::IID__WppApplicationEx, (void**)&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'QueryInterface()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=ApplicationEx, get=getApplicationEx)
     };
 };
