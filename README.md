@@ -35,12 +35,14 @@ Copyright @ 2012-2019, Kingsoft office,All rights reserved.
   - qmake (仅编译)
   - g++ (仅编译)
 
+  PS，目前WPS整合模式有BUG，非把WPS嵌入到自己进程的场景建议先切换到多组件模式
+
 
 ## 如何编译
 
 在项目顶层目录下运行终端执行： `sip-build`
 
-如果需要查看编译相关输出信息，可添加*--verbose*选项
+如果需要查看编译相关输出信息，可添加 *--verbose* 选项
 
 
 ## 安装
