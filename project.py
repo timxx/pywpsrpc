@@ -12,6 +12,11 @@ import sipbuild
 import os
 import sys
 import shutil
+import re
+
+
+var_pattern = re.compile(
+    rb"(\s+::([a-zA-Z0-9_]+::)?[a-zA-Z0-9_]+\* a[0-9]+);$")
 
 
 class PyWpsRpcProject(sipbuild.Project):
@@ -77,8 +82,6 @@ class RpcApiBindings(sipbuild.Bindings):
         super().apply_user_defaults(tool)
 
     def generate(self):
-        self.tags.append("Module_%s" % self.name)
-
         buildable = super().generate()
 
         pch_file = os.path.join(buildable.build_dir, "stdafx.h")
@@ -94,7 +97,30 @@ class RpcApiBindings(sipbuild.Bindings):
 
         buildable.headers.append(pch_file)
 
+        # asyncio seems no improves here
+        self._fix_uninited_vars(buildable.sources)
+
         return buildable
+
+    def _fix_uninited_vars(self, sources):
+        """ Try init the pointer argument
+        We need it because of using sipEventCollectingWrapper
+        """
+        # FIXME: this should be done by SIP
+        for src in sources:
+            tmp_file = src + "_tmp"
+            f = open(src, "rb")
+            f_tmp = open(tmp_file, "wb+")
+
+            for line in f:
+                m = var_pattern.match(line)
+                if m:
+                    line = m.group(1) + b' = nullptr;\n'
+                f_tmp.write(line)
+
+            f.close()
+            f_tmp.close()
+            os.rename(tmp_file, src)
 
 
 class RpcCommon(RpcApiBindings):

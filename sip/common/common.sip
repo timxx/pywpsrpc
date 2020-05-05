@@ -244,4 +244,18 @@ QtApp::~QtApp()
     }
 }
 
+static void IUnknown_CollectingWrapperEventHandler(sipSimpleWrapper *sipSelf)
+{
+    if (!sipIsOwnedByPython(sipSelf))
+    {
+        if (IUnknown *cppPtr = reinterpret_cast<IUnknown*>(sipGetAddress(sipSelf)))
+            cppPtr->Release();
+    }
+}
+%End
+
+%PostInitialisationCode
+sipRegisterEventHandler(sipEventCollectingWrapper,
+    sipType_IUnknown,
+    (void *)IUnknown_CollectingWrapperEventHandler);
 %End

@@ -11,7 +11,4 @@
 
 struct IUnknown /Abstract/
 {
-public:
-    virtual ULONG AddRef() = 0;
-    virtual ULONG Release() = 0;
 };

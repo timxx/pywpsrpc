@@ -38,14 +38,6 @@ class RpcMethod(object):
         self._method = method
         self._proxy = proxy
 
-        # AddRef to avoid Releasing before the method be called
-        # such as app.Documents.Add()
-        self._proxy.rpc_object.AddRef()
-
-    def __del__(self):
-        if self._proxy:
-            self._proxy.rpc_object.Release()
-
     def __call__(self, *args, **kwargs):
         ret = self._method(*args, **kwargs)
         if isinstance(ret, tuple):
@@ -124,10 +116,6 @@ class RpcProxy(object):
             self._object = obj
 
         self._use_exception = use_exception
-
-    def __del__(self):
-        if self._object:
-            self._object.Release()
 
     def __getattr__(self, name):
         value = getattr(self._object, name)
