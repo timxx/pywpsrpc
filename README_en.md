@@ -129,3 +129,9 @@ doc.SaveAs2("test.docx")
 # use wpsapi.wdDoNotSaveChanges to ignore the changes
 app.Quit(wpsapi.wdDoNotSaveChanges)
 ```
+
+## Examples
+
+[Word document format convertor](examples/rpcwpsapi/convertto)
+
+[Embed WPS into self process](examples/rpcwpsapi/embedded)

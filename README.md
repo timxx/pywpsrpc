@@ -27,7 +27,7 @@ Copyright @ 2012-2019, Kingsoft office,All rights reserved.
 对于pywpsrpc本身的文档，可跳转到[wiki](https://github.com/timxx/pywpsrpc/wiki)查看。
 
 
-## 要求
+## 依赖
   - Python 3.5+
   - Qt5 (C++ SDK依赖)
   - WPS Office for Linux 11.1.0.9080+
@@ -136,3 +136,9 @@ doc.SaveAs2("test.docx")
 # 使用wpsapi.wdDoNotSaveChanges来忽略文档改动
 app.Quit(wpsapi.wdDoNotSaveChanges)
 ```
+
+## 例子
+
+[文字文档互转](examples/rpcwpsapi/convertto)
+
+[WPS嵌入第三方进程](examples/rpcwpsapi/embedded)
