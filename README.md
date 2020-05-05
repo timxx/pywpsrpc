@@ -67,6 +67,7 @@ sip-wheel
 # you always need the createXXXRpcInstance, so first import
 # take wps for example here
 from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
+from pywpsrpc import RpcIter
 
 
 # now create the rpc instance
@@ -89,6 +90,28 @@ selection.InsertAfter("Hello, world")
 
 # bold the "Hello, world"
 selection.Font.Bold = True
+
+# move cursor to end
+selection.EndKey()
+
+# add new paragraph
+selection.InsertParagraph()
+
+# move to next paragraph
+selection.MoveDown()
+
+# type some text
+selection.TypeText("pywpsrpc~")
+
+# iterate all paragraphs
+paras = doc.Paragraphs
+for para in RpcIter(paras):
+    print(para.Range.Text)
+
+# or use index based to loop
+for i in range(0, paras.Count):
+    # the first element starts with 1
+    print(paras[i + 1].OutlineLevel)
 
 def onDocumentBeforeSave(doc, saveAsUi, cancel):
     # to discard the saving, return cancel as True
