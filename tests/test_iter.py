@@ -4,7 +4,7 @@ import sys
 import os
 
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + "/../build")
-from pywpsrpc import RpcProxy
+from pywpsrpc import RpcProxy, RpcIter
 from pywpsrpc.rpcwpsapi import createWpsRpcInstance
 from pywpsrpc.rpcwppapi import createWppRpcInstance
 from pywpsrpc.rpcetapi import createEtRpcInstance
@@ -27,6 +27,10 @@ def test_wps():
 
     for doc in docs:
         print("iter.docName: ", doc.Name)
+
+    # use raw object
+    for doc in RpcIter(docs.rpc_object):
+        print("iter2.docName: ", doc.Name)
 
     # access by name
     name = docs[2].Name
