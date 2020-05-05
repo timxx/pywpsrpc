@@ -122,5 +122,23 @@ namespace wpsapiex
         %End
 
         %Property(name=ForceBackupEnable, get=getForceBackupEnable, set=setForceBackupEnable)
+
+        unsigned long getEmbedWid();
+        %MethodCode
+            unsigned long prop = 0;
+            HRESULT hr = sipCpp->get_EmbedWid(&prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_EmbedWid()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            else
+            {
+                sipRes = prop;
+            }
+        %End
+
+        %Property(name=EmbedWid, get=getEmbedWid)
     };
 };
