@@ -91,6 +91,10 @@ class RpcIter(object):
 
 
 class RpcProxy(object):
+    """ Deprecated
+    use RpcProxy only if you want to deduce the HRESULT
+    """
+
     __slots__ = ["_object", "_use_exception", "_last_hr"]
 
     def __init__(self, obj, use_exception=False):

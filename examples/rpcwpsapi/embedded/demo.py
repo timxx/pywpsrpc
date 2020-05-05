@@ -15,7 +15,6 @@ import sys
 
 from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
 from pywpsrpc.common import FAILED
-from pywpsrpc import RpcProxy
 
 from PySide2.QtWidgets import *
 from PySide2.QtCore import *
@@ -87,7 +86,7 @@ class MyWindow(QWidget):
 
         rpc.setProcessArgs(args)
 
-        self._wpsApp = RpcProxy(rpc.getWpsApplication())
+        hr, self._wpsApp = rpc.getWpsApplication()
         if not self._wpsApp:
             QMessageBox.critical(
                 self, "Open Wps", "Failed to call getWpsApplication")
@@ -118,8 +117,8 @@ class MyWindow(QWidget):
         if not filePath:
             return
 
-        doc = self._wpsApp.Documents.Open(filePath)
-        if not doc:
+        hr, _ = self._wpsApp.Documents.Open(filePath)
+        if FAILED(hr):
             QMessageBox.critical(
                 self, "Demo", "Failed to call open document '%s'" % filePath)
 

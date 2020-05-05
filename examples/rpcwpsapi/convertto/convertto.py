@@ -16,7 +16,6 @@ import argparse
 
 from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
 from pywpsrpc.common import (S_OK, QtApp)
-from pywpsrpc import RpcProxy
 
 
 formats = {
@@ -35,11 +34,11 @@ class ConvertException(Exception):
         self.text = text
         self.hr = hr
 
-    def __repr__(self):
+    def __str__(self):
         return """Convert failed:
 Details: {}
 ErrCode: {}
-""".format(self.text, self.hr)
+""".format(self.text, hex(self.hr & 0xFFFFFFFF))
 
 
 def convert_to(paths, format, abort_on_fails=False):
@@ -47,28 +46,37 @@ def convert_to(paths, format, abort_on_fails=False):
     if hr != S_OK:
         raise ConvertException("Can't create the rpc instance", hr)
 
-    app = RpcProxy(rpc.getWpsApplication(), True)
+    hr, app = rpc.getWpsApplication()
+    if hr != S_OK:
+        raise ConvertException("Can't get the application", hr)
 
     # we don't need the gui
     app.Visible = False
 
     docs = app.Documents
-    docs.use_exception = abort_on_fails
+
+    def _handle_result(hr):
+        if abort_on_fails and hr != S_OK:
+            raise ConvertException("convert_file failed", hr)
 
     for path in paths:
         abs_path = os.path.realpath(path)
         if os.path.isdir(abs_path):
             files = [(os.path.join(abs_path, f)) for f in os.listdir(abs_path)]
             for file in files:
-                convert_file(file, docs, format)
+                hr = convert_file(file, docs, format)
+                _handle_result(hr)
         else:
-            convert_file(abs_path, docs, format)
+            hr = convert_file(abs_path, docs, format)
+            _handle_result(hr)
 
     app.Quit()
 
 
 def convert_file(file, docs, format):
-    doc = docs.Open(file, ReadOnly=True)
+    hr, doc = docs.Open(file, ReadOnly=True)
+    if hr != S_OK:
+        return hr
 
     out_dir = os.path.dirname(os.path.realpath(file)) + "/out"
     os.makedirs(out_dir, exist_ok=True)

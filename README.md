@@ -68,26 +68,20 @@ sip-wheel
 # take wps for example here
 from pywpsrpc.rpcwpsapi import (createWpsRpcInstance, wpsapi)
 
-# use the RpcProxy to make things easy...
-from pywpsrpc import RpcProxy
 
 # now create the rpc instance
 hr, rpc = createWpsRpcInstance()
 
-# all the calls returns the error code as the first value
-# you can check it for fails
+# most of the call returns the error code as the first value
+# you can check it for fails (negative number means failed)
 # 0 means all fines, you can use the common module's S_OK,
 # FAILED or SUCCEEDED to check
-# recommend use the RpcProxy instead
 
 # get the application and you get everything...
-# here we use the RpcProxy to wrap the application
-# otherwise, you have to call Release on each instance
-# and handle the hr for every call...
-app = RpcProxy(rpc.getWpsApplication())
+hr, app = rpc.getWpsApplication()
 
 # Add blank doc e.g.
-doc = app.Documents.Add()
+hr, doc = app.Documents.Add()
 
 # append text...
 selection = app.Selection
@@ -98,10 +92,11 @@ selection.Font.Bold = True
 
 def onDocumentBeforeSave(doc, saveAsUi, cancel):
     # to discard the saving, return cancel as True
+    print("onDocumentBeforeSave called for doc: ", doc.Name)
     return saveAsUi, cancel
 
 # get a notify about saving
-rpc.registerEvent(app.rpc_object,
+rpc.registerEvent(app,
                   wpsapi.DIID_ApplicationEvents4,
                   "DocumentBeforeSave",
                   onDocumentBeforeSave)
