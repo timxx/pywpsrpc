@@ -7,6 +7,8 @@
 
 Python bindings for WPS Office RPC (for Linux version only).
 
+*Read this in other languages: [简体中文](README.md).*
+
 What is WPS Office RPC?
 
 To make it simple, it means you can use the rpc (api) get working with WPS Office,
@@ -31,7 +33,7 @@ For pywpsrpc document, go to the [wiki](https://github.com/timxx/pywpsrpc/wiki) 
   - WPS Office for Linux 11.1.0.9080+
   - sip 5.0+ (for building)
   - qmake (for building)
-  - gcc (for building)
+  - g++ (for building)
 
 ## How to build
 
@@ -47,13 +49,7 @@ The pywpsrpc can be installed from PyPi:
 
 You can also install from the source:
 
-```
-# the easy way, you may need the root privilege
-sip-install
-
-# or package first, and then install the whl by pip
-sip-wheel
-```
+Run `sip-wheel` package first, and then install the whl by `pip install`
 
 ## Quick Start
 
