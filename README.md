@@ -34,6 +34,7 @@ Copyright @ 2012-2019, Kingsoft office,All rights reserved.
   - sip 5.0+ (仅编译)
   - qmake (仅编译)
   - g++ (仅编译)
+  - 桌面环境（WPS运行需要）
 
   PS，目前WPS整合模式有BUG，非把WPS嵌入到自己进程的场景建议先切换到多组件模式
 

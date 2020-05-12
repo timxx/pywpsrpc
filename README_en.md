@@ -34,6 +34,7 @@ For pywpsrpc document, go to the [wiki](https://github.com/timxx/pywpsrpc/wiki) 
   - sip 5.0+ (for building)
   - qmake (for building)
   - g++ (for building)
+  - Desktop Environment (WPS Office required)
 
   If you don't embed WPS into your program, you should switch WPS to All-in-One mode.
 
