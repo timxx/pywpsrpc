@@ -92,6 +92,7 @@ class RpcApiBindings(sipbuild.Bindings):
                 f.write("#include <%s>\n" % pch)
 
             f.write("#include <wpsapiex.h>\n")
+            f.write("#include <string>\n")
             f.write("#include <vector>\n\n")
             f.write("#endif\n")
 
