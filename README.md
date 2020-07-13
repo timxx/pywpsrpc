@@ -15,7 +15,7 @@ WPS二次开发接口允许开发者通过给定的接口来调起WPS并执行�
 比如你可以打开、编辑然后保存文档，转换文档格式等文档自动化操作，又或者将WPS嵌入到自己的程序、进行功能扩展等。
 
 
-C++ SDK头文件拷贝自[wps_cpp](https://dev.tencent.com/u/zouyingfeng/p/wps/git/tree/master/cpp)(目前链接已经失效)，且无任何修改：
+C++ SDK头文件拷贝自[wps_cpp](https://zouyingfeng.coding.net/public/wps/wps/git/files/master/cpp)，且无任何修改：
 ```
 Copyright @ 2012-2019, Kingsoft office,All rights reserved.
 ```
