@@ -37,9 +37,6 @@ namespace ksoapi
 
         virtual HRESULT Unsuspend() = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **ppidisp /Out/) = 0;
-
         MsoSyncStatusType getStatus();
         %MethodCode
             ksoapi::MsoSyncStatusType prop = (ksoapi::MsoSyncStatusType)0;
@@ -114,23 +111,5 @@ namespace ksoapi
         %End
 
         %Property(name=ErrorType, get=getErrorType)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
     };
 };

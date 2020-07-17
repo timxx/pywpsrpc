@@ -19,9 +19,6 @@ namespace etapi
         virtual HRESULT get_Creator(
             XlCreator *RHS /Out/) = 0;
 
-        virtual HRESULT get_Parent(
-            Worksheet **RHS /Out/) = 0;
-
         virtual HRESULT Delete() = 0;
 
         virtual HRESULT DragOff(
@@ -94,8 +91,6 @@ namespace etapi
                 sipRes = prop;
             }
         %End
-
-        %Property(name=Parent, get=getParent)
 
         XlPageBreak getType();
         %MethodCode

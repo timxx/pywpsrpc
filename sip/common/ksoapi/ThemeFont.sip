@@ -19,9 +19,6 @@ namespace ksoapi
         virtual HRESULT put_Name(
             BSTR Val) = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **Parent /Out/) = 0;
-
         BSTR getName();
         %MethodCode
             BSTR *prop = new BSTR;
@@ -56,23 +53,5 @@ namespace ksoapi
         %End
 
         %Property(name=Name, get=getName, set=setName)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
     };
 };

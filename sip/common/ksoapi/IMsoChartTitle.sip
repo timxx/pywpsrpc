@@ -96,9 +96,6 @@ namespace ksoapi
         virtual HRESULT get_Name(
             BSTR *pval /Out/) = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **ppval /Out/) = 0;
-
         virtual HRESULT Select(
             VARIANT *pval /Out/) = 0;
 
@@ -119,12 +116,6 @@ namespace ksoapi
 
         virtual HRESULT get_Height(
             double *pval /Out/) = 0;
-
-        virtual HRESULT get_Application(
-            IDispatch **ppval /Out/) = 0;
-
-        virtual HRESULT get_Creator(
-            long *pval /Out/) = 0;
 
         virtual HRESULT get_Width(
             double *pval /Out/) = 0;
@@ -595,24 +586,6 @@ namespace ksoapi
 
         %Property(name=Name, get=getName)
 
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
-
         VARIANT_BOOL getIncludeInLayout();
         %MethodCode
             VARIANT_BOOL *prop = new VARIANT_BOOL;
@@ -717,42 +690,6 @@ namespace ksoapi
         %End
 
         %Property(name=Height, get=getHeight)
-
-        IDispatch* getApplication();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Application(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Application()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Application, get=getApplication)
-
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
 
         double getWidth();
         %MethodCode

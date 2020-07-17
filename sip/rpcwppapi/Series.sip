@@ -13,9 +13,6 @@ namespace wppapi
     struct Series : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Parent(
-            IDispatch **RHS /Out/) = 0;
-
         virtual HRESULT get_AxisGroup(
             XlAxisGroup *RHS /Out/) = 0;
 
@@ -258,9 +255,6 @@ namespace wppapi
         virtual HRESULT get_Format(
             ChartFormat **ppChartFormat /Out/) = 0;
 
-        virtual HRESULT get_Creator(
-            long *pval /Out/) = 0;
-
         virtual HRESULT get_PictureUnit2(
             double *RHS /Out/) = 0;
 
@@ -316,24 +310,6 @@ namespace wppapi
 
         virtual HRESULT put_IsFiltered(
             VARIANT_BOOL RHS) = 0;
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         XlAxisGroup getAxisGroup();
         %MethodCode
@@ -1517,24 +1493,6 @@ namespace wppapi
         %End
 
         %Property(name=Format, get=getFormat)
-
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
 
         double getPictureUnit2();
         %MethodCode

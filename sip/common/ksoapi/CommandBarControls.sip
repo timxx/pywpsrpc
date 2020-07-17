@@ -48,9 +48,6 @@ namespace ksoapi
         virtual HRESULT get__NewEnum(
             IUnknown **ppienum /Out/) = 0;
 
-        virtual HRESULT get_Parent(
-            CommandBar **ppcb /Out/) = 0;
-
         int getCount();
         %MethodCode
             int prop = 0;
@@ -102,7 +99,5 @@ namespace ksoapi
                 sipRes = prop;
             }
         %End
-
-        %Property(name=Parent, get=getParent)
     };
 };

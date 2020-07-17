@@ -19,9 +19,6 @@ namespace etapi
         virtual HRESULT get_Creator(
             XlCreator *RHS /Out/) = 0;
 
-        virtual HRESULT get_Parent(
-            PivotField **RHS /Out/) = 0;
-
         virtual HRESULT Add(
             BSTR Name) = 0;
 
@@ -103,8 +100,6 @@ namespace etapi
                 sipRes = prop;
             }
         %End
-
-        %Property(name=Parent, get=getParent)
 
         long getCount();
         %MethodCode

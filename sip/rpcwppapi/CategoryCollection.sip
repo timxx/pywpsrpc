@@ -13,9 +13,6 @@ namespace wppapi
     struct CategoryCollection : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Parent(
-            IDispatch **RHS /Out/) = 0;
-
         virtual HRESULT get_Count(
             long *cCategory /Out/) = 0;
 
@@ -43,30 +40,9 @@ namespace wppapi
         virtual HRESULT get_Application(
             Application **ppval /Out/) = 0;
 
-        virtual HRESULT get_Creator(
-            long *pval /Out/) = 0;
-
         virtual HRESULT _Default(
             VARIANT Index,
             ChartCategory **RHS /Out/) = 0;
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         long getCount();
         %MethodCode
@@ -103,23 +79,5 @@ namespace wppapi
         %End
 
         %Property(name=Application, get=getApplication)
-
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
     };
 };

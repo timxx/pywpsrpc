@@ -16,9 +16,6 @@ namespace wppapi
         virtual HRESULT get_Application(
             Application **Application /Out/) = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **Parent /Out/) = 0;
-
         virtual HRESULT get_Additive(
             MsoAnimAdditive *Additive /Out/) = 0;
 
@@ -83,24 +80,6 @@ namespace wppapi
         %End
 
         %Property(name=Application, get=getApplication)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         MsoAnimAdditive getAdditive();
         %MethodCode

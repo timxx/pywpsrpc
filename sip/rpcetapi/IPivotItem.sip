@@ -19,9 +19,6 @@ namespace etapi
         virtual HRESULT get_Creator(
             XlCreator *RHS /Out/) = 0;
 
-        virtual HRESULT get_Parent(
-            PivotField **RHS /Out/) = 0;
-
         virtual HRESULT get_ChildItems(
             VARIANT Index = argMissing2(),
             VARIANT *RHS /Out/ = 0) = 0;
@@ -166,8 +163,6 @@ namespace etapi
                 sipRes = prop;
             }
         %End
-
-        %Property(name=Parent, get=getParent)
 
         Range* getDataRange();
         %MethodCode

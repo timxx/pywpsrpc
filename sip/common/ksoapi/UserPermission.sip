@@ -28,9 +28,6 @@ namespace ksoapi
         virtual HRESULT put_ExpirationDate(
             VARIANT ExpirationDate) = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **ppidisp /Out/) = 0;
-
         virtual HRESULT Remove() = 0;
 
         BSTR getUserId();
@@ -121,23 +118,5 @@ namespace ksoapi
         %End
 
         %Property(name=ExpirationDate, get=getExpirationDate, set=setExpirationDate)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
     };
 };

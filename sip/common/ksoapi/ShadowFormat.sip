@@ -13,9 +13,6 @@ namespace ksoapi
     struct ShadowFormat : public ksoapi::_IMsoDispObj /Abstract/
     {
     public:
-        virtual HRESULT get_Parent(
-            IDispatch **Parent /Out/) = 0;
-
         virtual HRESULT IncrementOffsetX(
             single Increment) = 0;
 
@@ -87,24 +84,6 @@ namespace ksoapi
 
         virtual HRESULT put_RotateWithShape(
             MsoTriState RotateWithShape) = 0;
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         ColorFormat* getForeColor();
         %MethodCode

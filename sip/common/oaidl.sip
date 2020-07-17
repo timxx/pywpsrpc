@@ -230,5 +230,4 @@ public:
 
 struct IPictureDisp : public IDispatch /Abstract/
 {
-
 };

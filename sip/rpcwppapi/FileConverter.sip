@@ -37,9 +37,6 @@ namespace wppapi
         virtual HRESULT get_Name(
             BSTR *Name /Out/) = 0;
 
-        virtual HRESULT get_Parent(
-            FileConverters **Parent /Out/) = 0;
-
         virtual HRESULT get_Path(
             BSTR *Path /Out/) = 0;
 
@@ -214,8 +211,6 @@ namespace wppapi
                 sipRes = prop;
             }
         %End
-
-        %Property(name=Parent, get=getParent)
 
         BSTR getPath();
         %MethodCode

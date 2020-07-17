@@ -19,9 +19,6 @@ namespace ksoapi
         virtual HRESULT put_RGB(
             MsoRGBType RGB) = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **Parent /Out/) = 0;
-
         virtual HRESULT get_ThemeColorSchemeIndex(
             MsoThemeColorSchemeIndex *pValue /Out/) = 0;
 
@@ -58,24 +55,6 @@ namespace ksoapi
         %End
 
         %Property(name=RGB, get=getRGB, set=setRGB)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         MsoThemeColorSchemeIndex getThemeColorSchemeIndex();
         %MethodCode

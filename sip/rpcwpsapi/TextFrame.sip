@@ -16,12 +16,6 @@ namespace wpsapi
         virtual HRESULT get_Application(
             Application **prop /Out/) = 0;
 
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            Shape **prop /Out/) = 0;
-
         virtual HRESULT get_MarginBottom(
             single *prop /Out/) = 0;
 
@@ -150,24 +144,6 @@ namespace wpsapi
 
         %Property(name=Application, get=getApplication)
 
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
-
         Shape* getParent();
         %MethodCode
             wpsapi::Shape *prop = nullptr;
@@ -183,8 +159,6 @@ namespace wpsapi
                 sipRes = prop;
             }
         %End
-
-        %Property(name=Parent, get=getParent)
 
         single getMarginBottom();
         %MethodCode

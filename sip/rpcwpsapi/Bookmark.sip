@@ -43,12 +43,6 @@ namespace wpsapi
         virtual HRESULT get_Application(
             Application **prop /Out/) = 0;
 
-        virtual HRESULT get_Creator(
-            long *prop /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **prop /Out/) = 0;
-
         virtual HRESULT Select() = 0;
 
         virtual HRESULT Delete() = 0;
@@ -235,41 +229,5 @@ namespace wpsapi
         %End
 
         %Property(name=Application, get=getApplication)
-
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
     };
 };

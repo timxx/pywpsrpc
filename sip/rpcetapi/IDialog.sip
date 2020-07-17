@@ -19,9 +19,6 @@ namespace etapi
         virtual HRESULT get_Creator(
             XlCreator *RHS /Out/) = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **RHS /Out/) = 0;
-
         virtual HRESULT Show(
             /* VARIANT Arg1 = argMissing2(),
             VARIANT Arg2 = argMissing2(),
@@ -144,23 +141,5 @@ namespace etapi
         %End
 
         %Property(name=Creator, get=getCreator)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
     };
 };

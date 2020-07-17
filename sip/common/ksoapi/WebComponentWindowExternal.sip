@@ -22,9 +22,6 @@ namespace ksoapi
         virtual HRESULT get_ApplicationVersion(
             long *RetValue /Out/) = 0;
 
-        virtual HRESULT get_Application(
-            IDispatch **RetValue /Out/) = 0;
-
         virtual HRESULT CloseWindow() = 0;
 
         virtual HRESULT get_WebComponent(
@@ -84,24 +81,6 @@ namespace ksoapi
         %End
 
         %Property(name=ApplicationVersion, get=getApplicationVersion)
-
-        IDispatch* getApplication();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Application(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Application()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Application, get=getApplication)
 
         WebComponent* getWebComponent();
         %MethodCode

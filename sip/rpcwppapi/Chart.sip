@@ -13,9 +13,6 @@ namespace wppapi
     struct Chart : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Parent(
-            IDispatch **RHS /Out/) = 0;
-
         virtual HRESULT ApplyDataLabels(
             XlDataLabelsType Type = wppapi::xlDataLabelsShowNone,
             VARIANT LegendKey = argMissing2(),
@@ -127,9 +124,6 @@ namespace wppapi
 
         virtual HRESULT get_Shapes(
             Shapes **RHS /Out/) = 0;
-
-        virtual HRESULT get_Creator(
-            long *pval /Out/) = 0;
 
         virtual HRESULT get_Area3DGroup(
             long lcid,
@@ -494,24 +488,6 @@ namespace wppapi
 
         virtual HRESULT ClearToMatchColorStyle() = 0;
 
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
-
         XlChartType getChartType();
         %MethodCode
             wppapi::XlChartType prop = (wppapi::XlChartType)0;
@@ -844,24 +820,6 @@ namespace wppapi
         %End
 
         %Property(name=Shapes, get=getShapes)
-
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
 
         ChartGroup* getArea3DGroup();
         %MethodCode

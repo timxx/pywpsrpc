@@ -19,9 +19,6 @@ namespace etapi
         virtual HRESULT get_Creator(
             XlCreator *RHS /Out/) = 0;
 
-        virtual HRESULT get_Parent(
-            SlicerCache **RHS /Out/) = 0;
-
         virtual HRESULT get_Caption(
             BSTR *RHS /Out/) = 0;
 
@@ -97,8 +94,6 @@ namespace etapi
                 sipRes = prop;
             }
         %End
-
-        %Property(name=Parent, get=getParent)
 
         BSTR getCaption();
         %MethodCode

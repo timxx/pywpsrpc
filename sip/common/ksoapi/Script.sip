@@ -13,9 +13,6 @@ namespace ksoapi
     struct Script : public ksoapi::_IMsoDispObj /Abstract/
     {
     public:
-        virtual HRESULT get_Parent(
-            IDispatch **Parent /Out/) = 0;
-
         virtual HRESULT get_Extended(
             BSTR *Extended /Out/) = 0;
 
@@ -47,24 +44,6 @@ namespace ksoapi
 
         virtual HRESULT put_ScriptText(
             BSTR Script) = 0;
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         BSTR getExtended();
         %MethodCode

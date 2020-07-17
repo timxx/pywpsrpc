@@ -13,9 +13,6 @@ namespace wppapi
     struct Pane : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Parent(
-            IDispatch **Parent /Out/) = 0;
-
         virtual HRESULT Activate() = 0;
 
         virtual HRESULT get_Active(
@@ -26,24 +23,6 @@ namespace wppapi
 
         virtual HRESULT get_ViewType(
             PpViewType *ViewType /Out/) = 0;
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         MsoTriState getActive();
         %MethodCode

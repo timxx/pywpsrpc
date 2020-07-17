@@ -13,38 +13,14 @@ namespace wppapi
     struct Corners : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Parent(
-            IDispatch **RHS /Out/) = 0;
-
         virtual HRESULT get_Name(
             BSTR *RHS /Out/) = 0;
 
         virtual HRESULT Select(
             VARIANT *RHS /Out/) = 0;
 
-        virtual HRESULT get_Creator(
-            long *pval /Out/) = 0;
-
         virtual HRESULT get_Application(
             Application **Application /Out/) = 0;
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         BSTR getName();
         %MethodCode
@@ -64,24 +40,6 @@ namespace wppapi
         %End
 
         %Property(name=Name, get=getName)
-
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
 
         Application* getApplication();
         %MethodCode

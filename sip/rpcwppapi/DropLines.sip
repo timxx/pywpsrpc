@@ -16,17 +16,11 @@ namespace wppapi
         virtual HRESULT get_Name(
             BSTR *RHS /Out/) = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **RHS /Out/) = 0;
-
         virtual HRESULT get_Border(
             ChartBorder **RHS /Out/) = 0;
 
         virtual HRESULT get_Format(
             ChartFormat **RHS /Out/) = 0;
-
-        virtual HRESULT get_Creator(
-            long *pval /Out/) = 0;
 
         virtual HRESULT get_Application(
             Application **Application /Out/) = 0;
@@ -55,24 +49,6 @@ namespace wppapi
         %End
 
         %Property(name=Name, get=getName)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         ChartBorder* getBorder();
         %MethodCode
@@ -109,24 +85,6 @@ namespace wppapi
         %End
 
         %Property(name=Format, get=getFormat)
-
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
 
         Application* getApplication();
         %MethodCode

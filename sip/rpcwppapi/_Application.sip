@@ -67,9 +67,6 @@ namespace wppapi
         virtual HRESULT get_ActivePrinter(
             BSTR *ActivePrinter /Out/) = 0;
 
-        virtual HRESULT get_Creator(
-            long *Creator /Out/) = 0;
-
         virtual HRESULT get_AddIns(
             AddIns **AddIns /Out/) = 0;
 
@@ -620,24 +617,6 @@ namespace wppapi
         %End
 
         %Property(name=ActivePrinter, get=getActivePrinter)
-
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
 
         AddIns* getAddIns();
         %MethodCode

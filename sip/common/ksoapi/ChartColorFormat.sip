@@ -13,9 +13,6 @@ namespace ksoapi
     struct ChartColorFormat : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Parent(
-            IDispatch **RHS /Out/) = 0;
-
         virtual HRESULT get_SchemeColor(
             long *RHS /Out/) = 0;
 
@@ -33,30 +30,6 @@ namespace ksoapi
 
         virtual HRESULT get_Type(
             long *RHS /Out/) = 0;
-
-        virtual HRESULT get_Application(
-            IDispatch **ppval /Out/) = 0;
-
-        virtual HRESULT get_Creator(
-            long *pval /Out/) = 0;
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         long getSchemeColor();
         %MethodCode
@@ -161,41 +134,5 @@ namespace ksoapi
         %End
 
         %Property(name=Type, get=getType)
-
-        IDispatch* getApplication();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Application(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Application()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Application, get=getApplication)
-
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
     };
 };

@@ -13,15 +13,6 @@ namespace wppapi
     struct Shapes : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Application(
-            IDispatch **ppidisp /Out/) = 0;
-
-        virtual HRESULT get_Creator(
-            long *plCreator /Out/) = 0;
-
-        virtual HRESULT get_Parent(
-            IDispatch **Parent /Out/) = 0;
-
         virtual HRESULT get_Count(
             int *Count /Out/) = 0;
 
@@ -276,60 +267,6 @@ namespace wppapi
             single Height = 0,
             MsoPictureCompress compress = wppapi::msoPictureCompressDocDefault,
             Shape **Picture /Out/ = 0) = 0;
-
-        IDispatch* getApplication();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Application(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Application()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Application, get=getApplication)
-
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         int getCount();
         %MethodCode

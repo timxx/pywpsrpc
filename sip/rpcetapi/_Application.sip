@@ -191,9 +191,6 @@ namespace etapi
         virtual HRESULT get_Creator(
             XlCreator *RHS /Out/) = 0;
 
-        virtual HRESULT get_Parent(
-            Application **RHS /Out/) = 0;
-
         virtual HRESULT get_ActiveCell(
             Range **RHS /Out/) = 0;
 
@@ -2374,8 +2371,6 @@ namespace etapi
                 sipRes = prop;
             }
         %End
-
-        %Property(name=Parent, get=getParent)
 
         Range* getActiveCell();
         %MethodCode

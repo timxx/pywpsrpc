@@ -71,9 +71,6 @@ namespace ksoapi
         virtual HRESULT put_NameLocal(
             BSTR pbstrNameLocal) = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **ppidisp /Out/) = 0;
-
         virtual HRESULT get_Position(
             MsoBarPosition *ppos /Out/) = 0;
 
@@ -411,24 +408,6 @@ namespace ksoapi
         %End
 
         %Property(name=NameLocal, get=getNameLocal, set=setNameLocal)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         MsoBarPosition getPosition();
         %MethodCode

@@ -22,9 +22,6 @@ namespace etapi
         virtual HRESULT get_Object(
             IDispatch **RHS /Out/) = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **RHS /Out/) = 0;
-
         virtual HRESULT get_Application(
             Application **RHS /Out/) = 0;
 
@@ -249,24 +246,6 @@ namespace etapi
         %End
 
         %Property(name=Object, get=getObject)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         Application* getApplication();
         %MethodCode

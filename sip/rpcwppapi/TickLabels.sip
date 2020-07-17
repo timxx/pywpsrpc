@@ -13,9 +13,6 @@ namespace wppapi
     struct TickLabels : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Parent(
-            IDispatch **ppval /Out/) = 0;
-
         virtual HRESULT Delete(
             VARIANT *RHS /Out/) = 0;
 
@@ -76,9 +73,6 @@ namespace wppapi
         virtual HRESULT get_Format(
             ChartFormat **ppChartFormat /Out/) = 0;
 
-        virtual HRESULT get_Creator(
-            long *RHS /Out/) = 0;
-
         virtual HRESULT get_Application(
             Application **Application /Out/) = 0;
 
@@ -93,24 +87,6 @@ namespace wppapi
 
         virtual HRESULT put_ReadingOrder(
             long RHS) = 0;
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         ChartFont* getFont();
         %MethodCode
@@ -429,24 +405,6 @@ namespace wppapi
         %End
 
         %Property(name=Format, get=getFormat)
-
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
 
         Application* getApplication();
         %MethodCode

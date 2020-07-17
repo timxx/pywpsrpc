@@ -16,9 +16,6 @@ namespace ksoapi
         virtual HRESULT get_Title(
             BSTR *prop /Out/) = 0;
 
-        virtual HRESULT get_Application(
-            IDispatch **prop /Out/) = 0;
-
         virtual HRESULT get_Window(
             IDispatch **prop /Out/) = 0;
 
@@ -75,24 +72,6 @@ namespace ksoapi
         %End
 
         %Property(name=Title, get=getTitle)
-
-        IDispatch* getApplication();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Application(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Application()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Application, get=getApplication)
 
         IDispatch* getWindow();
         %MethodCode

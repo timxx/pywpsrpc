@@ -13,12 +13,6 @@ namespace wppapi
     struct DiagramNodeChildren : public IDispatch /Abstract/
     {
     public:
-        virtual HRESULT get_Application(
-            IDispatch **ppidisp /Out/) = 0;
-
-        virtual HRESULT get_Creator(
-            long *plCreator /Out/) = 0;
-
         virtual HRESULT get__NewEnum(
             IUnknown **ppunkEnum /Out/) = 0;
 
@@ -42,9 +36,6 @@ namespace wppapi
 
         virtual HRESULT SelectAll() = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **Parent /Out/) = 0;
-
         virtual HRESULT get_Count(
             int *iDiagramNodes /Out/) = 0;
 
@@ -61,42 +52,6 @@ namespace wppapi
 
         virtual HRESULT get_LastChild(
             DiagramNode **Last /Out/) = 0;
-
-        IDispatch* getApplication();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Application(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Application()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Application, get=getApplication)
-
-        long getCreator();
-        %MethodCode
-            long prop = 0;
-            HRESULT hr = sipCpp->get_Creator(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Creator()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Creator, get=getCreator)
 
         IUnknown* get_NewEnum();
         %MethodCode
@@ -115,24 +70,6 @@ namespace wppapi
         %End
 
         %Property(name=_NewEnum, get=get_NewEnum)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         int getCount();
         %MethodCode

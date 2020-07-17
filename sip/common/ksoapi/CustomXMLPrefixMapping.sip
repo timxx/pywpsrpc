@@ -13,32 +13,11 @@ namespace ksoapi
     struct CustomXMLPrefixMapping : public ksoapi::_IMsoDispObj /Abstract/
     {
     public:
-        virtual HRESULT get_Parent(
-            IDispatch **ppdispParent /Out/) = 0;
-
         virtual HRESULT get_Prefix(
             BSTR *pbstrPrefix /Out/) = 0;
 
         virtual HRESULT get_NamespaceURI(
             BSTR *pbstrNamespaceURI /Out/) = 0;
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         BSTR getPrefix();
         %MethodCode

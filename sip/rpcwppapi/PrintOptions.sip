@@ -52,9 +52,6 @@ namespace wppapi
         virtual HRESULT put_OutputType(
             PpPrintOutputType OutputType) = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **Parent /Out/) = 0;
-
         virtual HRESULT get_PrintHiddenSlides(
             MsoTriState *PrintHiddenSlides /Out/) = 0;
 
@@ -339,24 +336,6 @@ namespace wppapi
         %End
 
         %Property(name=OutputType, get=getOutputType, set=setOutputType)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         MsoTriState getPrintHiddenSlides();
         %MethodCode

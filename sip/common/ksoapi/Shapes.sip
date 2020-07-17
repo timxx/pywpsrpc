@@ -13,9 +13,6 @@ namespace ksoapi
     struct Shapes : public ksoapi::_IMsoDispObj /Abstract/
     {
     public:
-        virtual HRESULT get_Parent(
-            IDispatch **Parent /Out/) = 0;
-
         virtual HRESULT get_Count(
             int *Count /Out/) = 0;
 
@@ -197,24 +194,6 @@ namespace ksoapi
             single Height = 0,
             MsoPictureCompress Compress = ksoapi::msoPictureCompressDocDefault,
             Shape **Picture /Out/ = 0) = 0;
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         int getCount();
         %MethodCode

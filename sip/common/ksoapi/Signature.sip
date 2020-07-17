@@ -33,9 +33,6 @@ namespace ksoapi
 
         virtual HRESULT Delete() = 0;
 
-        virtual HRESULT get_Parent(
-            IDispatch **ppidisp /Out/) = 0;
-
         virtual HRESULT get_IsCertificateExpired(
             VARIANT_BOOL *pvarfExpired /Out/) = 0;
 
@@ -185,24 +182,6 @@ namespace ksoapi
         %End
 
         %Property(name=AttachCertificate, get=getAttachCertificate, set=setAttachCertificate)
-
-        IDispatch* getParent();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Parent(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Parent()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Parent, get=getParent)
 
         VARIANT_BOOL getIsCertificateExpired();
         %MethodCode
