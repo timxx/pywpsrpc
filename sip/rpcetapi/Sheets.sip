@@ -58,9 +58,7 @@ namespace etapi
             VARIANT Index,
             _Worksheet **RHS /Out/) = 0;
         %MethodCode
-            etapi::_Worksheet *prop = nullptr;
-            HRESULT hr = sipCpp->get_Item(*a0, (IDispatch**)&prop);
-            return sipBuildResult(0, "(iD)", hr, prop, sipType_etapi_Worksheet, SIP_NULLPTR);
+            sipRes = sipCpp->get_Item(*a0, (IDispatch**)&a1);
         %End
 
         _Worksheet* __getitem__(VARIANT index) const;

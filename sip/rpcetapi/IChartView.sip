@@ -25,9 +25,7 @@ namespace etapi
         virtual HRESULT get_Sheet(
             _Worksheet **RHS /Out/) = 0;
         %MethodCode
-            etapi::_Worksheet *prop = nullptr;
-            HRESULT hr = sipCpp->get_Sheet((IDispatch**)&prop);
-            return sipBuildResult(0, "(iD)", hr, prop, sipType_etapi_Worksheet, SIP_NULLPTR);
+            sipRes = sipCpp->get_Sheet((IDispatch**)&a0);
         %End
 
         Application* getApplication();

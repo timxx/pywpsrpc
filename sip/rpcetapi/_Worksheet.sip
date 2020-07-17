@@ -60,9 +60,7 @@ namespace etapi
         virtual HRESULT get_Next(
             _Worksheet **RHS /Out/) = 0;
         %MethodCode
-            etapi::_Worksheet *prop = nullptr;
-            HRESULT hr = sipCpp->get_Next((IDispatch**)&prop);
-            return sipBuildResult(0, "(iD)", hr, prop, sipType_etapi_Worksheet, SIP_NULLPTR);
+            sipRes = sipCpp->get_Next((IDispatch**)&a0);
         %End
 
         virtual HRESULT get_OnDoubleClick(
@@ -95,9 +93,7 @@ namespace etapi
         virtual HRESULT get_Previous(
             _Worksheet **RHS /Out/) = 0;
         %MethodCode
-            etapi::_Worksheet *prop = nullptr;
-            HRESULT hr = sipCpp->get_Previous((IDispatch**)&prop);
-            return sipBuildResult(0, "(iD)", hr, prop, sipType_etapi_Worksheet, SIP_NULLPTR);
+            sipRes = sipCpp->get_Previous((IDispatch**)&a0);
         %End
 
         virtual HRESULT __PrintOut(
