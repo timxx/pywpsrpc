@@ -25,7 +25,10 @@ namespace etapi
             VARIANT Count = argMissing2(),
             VARIANT Type = argMissing2(),
             long lcid = 0,
-            IDispatch **RHS /Out/ = 0) = 0;
+            _Worksheet **RHS /Out/ = 0) = 0;
+        %MethodCode
+            sipRes = sipCpp->Add(*a0, *a1, *a2, *a3, a4, (IDispatch **)&a5);
+        %End
 
         virtual HRESULT Copy(
             VARIANT Before = argMissing2(),
@@ -136,7 +139,10 @@ namespace etapi
             VARIANT After = argMissing2(),
             VARIANT Count = argMissing2(),
             VARIANT NewLayout = argMissing2(),
-            IDispatch **RHS /Out/ = 0) = 0;
+            _Worksheet **RHS /Out/ = 0) = 0;
+        %MethodCode
+            sipRes = sipCpp->Add2(*a0, *a1, *a2, *a3, (IDispatch **)&a4);
+        %End
 
         Application* getApplication();
         %MethodCode
