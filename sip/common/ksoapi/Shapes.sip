@@ -37,9 +37,6 @@ namespace ksoapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **_NewEnum /Out/) = 0;
-
         virtual HRESULT AddCallout(
             MsoCalloutType Type,
             single Left,

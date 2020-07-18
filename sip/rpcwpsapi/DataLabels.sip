@@ -172,9 +172,6 @@ namespace wpsapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **prop /Out/) = 0;
-
         virtual HRESULT get_Format(
             ChartFormat **prop /Out/) = 0;
 

@@ -37,9 +37,6 @@ namespace wpsapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **prop /Out/) = 0;
-
         long getCount();
         %MethodCode
             long prop = 0;

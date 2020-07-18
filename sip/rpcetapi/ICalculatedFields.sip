@@ -52,9 +52,6 @@ namespace etapi
             VARIANT Field,
             PivotField **RHS /Out/) = 0;
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT Add(
             BSTR Name,
             BSTR Formula,

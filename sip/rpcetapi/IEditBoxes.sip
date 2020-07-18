@@ -216,9 +216,6 @@ namespace etapi
             }
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         Application* getApplication();
         %MethodCode
             etapi::Application *prop = nullptr;

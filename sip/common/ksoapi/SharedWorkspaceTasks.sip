@@ -49,9 +49,6 @@ namespace ksoapi
         virtual HRESULT get_ItemCountExceeded(
             VARIANT_BOOL *pf /Out/) = 0;
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **ppienum /Out/) = 0;
-
         int getCount();
         %MethodCode
             int prop = 0;
@@ -89,22 +86,5 @@ namespace ksoapi
 
         %Property(name=ItemCountExceeded, get=getItemCountExceeded)
 
-        IUnknown* get_NewEnum();
-        %MethodCode
-            IUnknown *prop = nullptr;
-            HRESULT hr = sipCpp->get__NewEnum(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get__NewEnum()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=_NewEnum, get=get_NewEnum)
     };
 };

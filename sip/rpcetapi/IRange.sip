@@ -470,9 +470,6 @@ namespace etapi
             VARIANT LinkNumber = argMissing2(),
             VARIANT *RHS /Out/ = 0) = 0;
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT get_Next(
             Range **RHS /Out/) = 0;
 
@@ -1984,24 +1981,6 @@ namespace etapi
         %End
 
         %Property(name=Name, get=getName, set=setName)
-
-        IUnknown* get_NewEnum();
-        %MethodCode
-            IUnknown *prop = nullptr;
-            HRESULT hr = sipCpp->get__NewEnum(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get__NewEnum()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=_NewEnum, get=get_NewEnum)
 
         Range* getNext();
         %MethodCode

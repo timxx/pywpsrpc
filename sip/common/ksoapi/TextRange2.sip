@@ -43,9 +43,6 @@ namespace ksoapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **_NewEnum /Out/) = 0;
-
         virtual HRESULT get_Paragraphs(
             int Start = 0,
             int Length = 0,

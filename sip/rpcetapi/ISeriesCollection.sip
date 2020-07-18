@@ -57,9 +57,6 @@ namespace etapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT Paste(
             XlRowCol Rowcol = etapi::xlColumns,
             VARIANT SeriesLabels = argMissing2(),

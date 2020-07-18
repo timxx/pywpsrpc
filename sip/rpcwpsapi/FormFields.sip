@@ -33,9 +33,6 @@ namespace wpsapi
         virtual HRESULT put_Shaded(
             VARIANT_BOOL prop) = 0;
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **prop /Out/) = 0;
-
         virtual HRESULT Item(
             VARIANT *Index,
             FormField **prop /Out/) = 0;
@@ -125,22 +122,5 @@ namespace wpsapi
 
         %Property(name=Shaded, get=getShaded, set=setShaded)
 
-        IUnknown* get_NewEnum();
-        %MethodCode
-            IUnknown *prop = nullptr;
-            HRESULT hr = sipCpp->get__NewEnum(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get__NewEnum()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=_NewEnum, get=get_NewEnum)
     };
 };

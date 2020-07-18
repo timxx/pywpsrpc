@@ -37,9 +37,6 @@ namespace ksoapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT get__Default(
             long Index,
             ChartPoint **RHS /Out/) = 0;

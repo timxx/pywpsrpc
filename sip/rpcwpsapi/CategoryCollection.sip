@@ -37,9 +37,6 @@ namespace wpsapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **prop /Out/) = 0;
-
         virtual HRESULT _Default(
             VARIANT Index,
             ChartCategory **prop /Out/) = 0;

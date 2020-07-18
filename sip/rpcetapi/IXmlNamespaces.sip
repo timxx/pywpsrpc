@@ -50,9 +50,6 @@ namespace etapi
         virtual HRESULT get_Value(
             BSTR *RHS /Out/) = 0;
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT InstallManifest(
             BSTR Path,
             VARIANT InstallForAllUsers = argMissing2()) = 0;
@@ -130,22 +127,5 @@ namespace etapi
 
         %Property(name=Value, get=getValue)
 
-        IUnknown* get_NewEnum();
-        %MethodCode
-            IUnknown *prop = nullptr;
-            HRESULT hr = sipCpp->get__NewEnum(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get__NewEnum()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=_NewEnum, get=get_NewEnum)
     };
 };

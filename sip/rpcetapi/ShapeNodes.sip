@@ -37,9 +37,6 @@ namespace etapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **_NewEnum /Out/) = 0;
-
         virtual HRESULT Delete(
             int Index) = 0;
 

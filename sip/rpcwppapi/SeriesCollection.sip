@@ -43,9 +43,6 @@ namespace wppapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT NewSeries(
             Series **RHS /Out/) = 0;
 

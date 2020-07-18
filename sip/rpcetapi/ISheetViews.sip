@@ -30,9 +30,6 @@ namespace etapi
             sipRes = count;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT get_Item(
             VARIANT Index,
             IDispatch **RHS /Out/) = 0;

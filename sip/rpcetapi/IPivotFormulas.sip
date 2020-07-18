@@ -51,9 +51,6 @@ namespace etapi
             VARIANT Index,
             PivotFormula **RHS /Out/) = 0;
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT Add(
             BSTR Formula,
             VARIANT UseStandardFormula = argMissing2(),

@@ -49,9 +49,6 @@ namespace wppapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT get_Application(
             Application **Application /Out/) = 0;
 

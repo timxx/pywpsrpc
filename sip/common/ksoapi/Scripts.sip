@@ -24,9 +24,6 @@ namespace ksoapi
             sipRes = count;
         %End
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **_NewEnum /Out/) = 0;
-
         virtual HRESULT Item(
             VARIANT Index,
             Script **Item /Out/) = 0;

@@ -172,9 +172,6 @@ namespace wppapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT get_Format(
             ChartFormat **ppChartFormat /Out/) = 0;
 

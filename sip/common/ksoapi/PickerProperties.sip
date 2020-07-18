@@ -46,9 +46,6 @@ namespace ksoapi
         virtual HRESULT Remove(
             BSTR Id) = 0;
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **_NewEnum /Out/) = 0;
-
         long getCount();
         %MethodCode
             long prop = 0;

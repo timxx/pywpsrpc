@@ -32,9 +32,6 @@ namespace wppapi
             XlAxisGroup AxisGroup = wppapi::xlPrimary,
             Axis **RHS /Out/ = 0) = 0;
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT _Default(
             XlAxisType Type,
             XlAxisGroup AxisGroup = wppapi::xlPrimary,

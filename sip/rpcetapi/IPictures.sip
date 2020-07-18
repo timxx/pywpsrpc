@@ -177,9 +177,6 @@ namespace etapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT Paste(
             VARIANT Link = argMissing2(),
             Picture **RHS /Out/ = 0) = 0;

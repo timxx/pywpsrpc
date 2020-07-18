@@ -13,9 +13,6 @@ namespace ksoapi
     struct SmartArtQuickStyles : public ksoapi::_IMsoDispObj /Abstract/
     {
     public:
-        virtual HRESULT get__NewEnum(
-            IUnknown **_NewEnum /Out/) = 0;
-
         virtual HRESULT get_Item(
             VARIANT Index,
             SmartArtQuickStyle **Style /Out/) = 0;

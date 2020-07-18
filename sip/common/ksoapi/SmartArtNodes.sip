@@ -13,9 +13,6 @@ namespace ksoapi
     struct SmartArtNodes : public ksoapi::_IMsoDispObj /Abstract/
     {
     public:
-        virtual HRESULT get__NewEnum(
-            IUnknown **_NewEnum /Out/) = 0;
-
         virtual HRESULT get_Item(
             VARIANT Index,
             SmartArtNode **SmartArtNode /Out/) = 0;

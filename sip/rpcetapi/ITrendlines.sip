@@ -55,9 +55,6 @@ namespace etapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT _Default(
             VARIANT Index = argMissing2(),
             Trendline **RHS /Out/ = 0) = 0;

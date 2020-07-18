@@ -49,9 +49,6 @@ namespace wpsapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **prop /Out/) = 0;
-
         virtual HRESULT _Default(
             VARIANT Index = argMissing2(),
             Trendline **prop /Out/ = 0) = 0;

@@ -13,9 +13,6 @@ namespace etapi
     struct DiagramNodeChildren : public ksoapi::_IMsoDispObj /Abstract/
     {
     public:
-        virtual HRESULT get__NewEnum(
-            IUnknown **ppunkEnum /Out/) = 0;
-
         virtual HRESULT Item(
             VARIANT Index,
             DiagramNode **ppNode /Out/) = 0;
@@ -52,24 +49,6 @@ namespace etapi
 
         virtual HRESULT get_LastChild(
             DiagramNode **pLast /Out/) = 0;
-
-        IUnknown* get_NewEnum();
-        %MethodCode
-            IUnknown *prop = nullptr;
-            HRESULT hr = sipCpp->get__NewEnum(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get__NewEnum()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=_NewEnum, get=get_NewEnum)
 
         int getCount();
         %MethodCode

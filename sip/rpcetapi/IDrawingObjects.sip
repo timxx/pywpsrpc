@@ -426,9 +426,6 @@ namespace etapi
             VARIANT Link = argMissing2(),
             VARIANT *RHS /Out/ = 0) = 0;
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         Application* getApplication();
         %MethodCode
             etapi::Application *prop = nullptr;

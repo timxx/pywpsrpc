@@ -37,9 +37,6 @@ namespace ksoapi
             sipRes = count;
         %End
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **_NewEnum /Out/) = 0;
-
         virtual HRESULT Insert(
             MsoPictureEffectType EffectType,
             int Position = 0,

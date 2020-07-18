@@ -13,9 +13,6 @@ namespace ksoapi
     struct FileDialogSelectedItems : public ksoapi::_IMsoDispObj /Abstract/
     {
     public:
-        virtual HRESULT get__NewEnum(
-            IUnknown **ppienum /Out/) = 0;
-
         virtual HRESULT get_Count(
             long *pcFiles /Out/) = 0;
 
@@ -44,24 +41,6 @@ namespace ksoapi
                 sipRes = prop;
             }
         %End
-
-        IUnknown* get_NewEnum();
-        %MethodCode
-            IUnknown *prop = nullptr;
-            HRESULT hr = sipCpp->get__NewEnum(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get__NewEnum()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=_NewEnum, get=get_NewEnum)
 
         long getCount();
         %MethodCode

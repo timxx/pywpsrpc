@@ -49,9 +49,6 @@ namespace ksoapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT get__Default(
             VARIANT Index = argMissing2(),
             IMsoTrendline **RHS /Out/ = 0) = 0;

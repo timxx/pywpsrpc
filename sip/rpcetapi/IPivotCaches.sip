@@ -47,9 +47,6 @@ namespace etapi
             VARIANT Index,
             PivotCache **RHS /Out/) = 0;
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         virtual HRESULT Add(
             XlPivotTableSourceType SourceType,
             VARIANT SourceData = argMissing2(),

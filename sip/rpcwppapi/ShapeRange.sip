@@ -218,9 +218,6 @@ namespace wppapi
                 sipRes = prop;
         %End
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **_NewEnum /Out/) = 0;
-
         virtual HRESULT _Index(
             int Index,
             VARIANT *_Index /Out/) = 0;

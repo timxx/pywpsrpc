@@ -47,9 +47,6 @@ namespace etapi
             long Index,
             OLEDBError **RHS /Out/) = 0;
 
-        virtual HRESULT _NewEnum(
-            IUnknown **RHS /Out/) = 0;
-
         Application* getApplication();
         %MethodCode
             etapi::Application *prop = nullptr;

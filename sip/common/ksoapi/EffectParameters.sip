@@ -37,9 +37,6 @@ namespace ksoapi
             sipRes = count;
         %End
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **_NewEnum /Out/) = 0;
-
         int getCount();
         %MethodCode
             int prop = 0;

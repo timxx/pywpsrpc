@@ -48,9 +48,6 @@ namespace ksoapi
         virtual HRESULT put_DefaultSpacing(
             single Spacing) = 0;
 
-        virtual HRESULT get__NewEnum(
-            IUnknown **_NewEnum /Out/) = 0;
-
         int getCount();
         %MethodCode
             int prop = 0;
