@@ -117,7 +117,13 @@
     case VT_R8:
         return PyFloat_FromDouble(V_R8(sipCpp));
     case VT_BSTR:
-        return sipConvertFromType(V_BSTR(sipCpp), sipType_BSTR, sipTransferObj);
+    {
+        BSTR *pBstr = new BSTR;
+        *pBstr = V_BSTR(sipCpp);
+        auto res = sipConvertFromType(pBstr, sipType_BSTR, sipTransferObj);
+        delete pBstr;
+        return res;
+    }
     case VT_DISPATCH:
         return sipConvertFromType(V_DISPATCH(sipCpp), sipType_IDispatch, sipTransferObj);
     case VT_ERROR:
