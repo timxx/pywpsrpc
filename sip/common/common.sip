@@ -24,6 +24,11 @@ HRESULT _SafeArrayGetElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv);
 _SAFEARRAY_PTR _SafeArrayCreateVector(VARTYPE vt, INT32 lLbound, UINT32 cElements);
 HRESULT _SafeArrayPutElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv);
 
+bool _getVarDate(double date,
+                 int &year, int &month, int &day,
+                 int &hour, int &minute, int &second,
+                 int &us);
+
 class QtApp
 {
 public:
@@ -124,6 +129,58 @@ HRESULT _SafeArrayPutElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv)
     return fnPutEle(psa, rgIndices, pv);
 }
 
+bool _getVarDate(double date,
+                 int &year, int &month, int &day,
+                 int &hour, int &minute, int &second,
+                 int &us)
+{
+    const int DATE_MIN = -657434;
+    const int DATE_MAX = 2958465;
+
+    if (date <= (DATE_MIN - 1.0) || date >= (DATE_MAX + 1.0))
+        return false;
+
+    double datePart = date < 0.0 ? ceil(date) : floor(date);
+    double timePart = fabs(date - datePart) + 0.00000000001;
+    if (timePart >= 1.0)
+        timePart -= 0.00000000001;
+
+    auto julianDays = [](int date) -> int
+    {
+        date -= DATE_MIN;
+        date += 1757585;
+        return date;
+    };
+
+    auto parseJulian = [](int jd, int &year, int &month, int &day)
+    {
+        int l = jd + 68569;
+        int n = l * 4 / 146097;
+        l -= (n * 146097 + 3) / 4;
+        int i = (4000 * (l + 1)) / 1461001;
+        l += 31 - (i * 1461) / 4;
+        int j = (l * 80) / 2447;
+        day = l - (j * 2447) / 80;
+        l = j / 11;
+        month = (j + 2) - (12 * l);
+        year = 100 * (n - 49) + i + l;
+    };
+
+    parseJulian(julianDays(date), year, month, day);
+
+    timePart *= 24.0;
+    hour = timePart;
+    timePart -= hour;
+    timePart *= 60.0;
+    minute = timePart;
+    timePart -= minute;
+    timePart *= 60.0;
+    second = timePart;
+    timePart -= second;
+    us = timePart * 1000 * 1000;
+
+    return true;
+}
 
 #define _HRESULT_CONST(name, value) \
     static const HRESULT name = value;

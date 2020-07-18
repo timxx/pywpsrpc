@@ -167,8 +167,18 @@
 
     case VT_DATE:
         {
-            // TODO: convert to PyDateTime
-            return PyFloat_FromDouble(V_DATE(sipCpp));
+            sipDateDef sipDate = { 0 };
+            sipTimeDef sipTime = { 0 };
+
+            if (!_getVarDate(V_DATE(sipCpp),
+                             sipDate.pd_year, sipDate.pd_month, sipDate.pd_day,
+                             sipTime.pt_hour, sipTime.pt_minute, sipTime.pt_second,
+                             sipTime.pt_microsecond))
+            {
+                printf("Invalid V_DATE: %f\n", V_DATE(sipCpp));
+            }
+
+            return sipFromDateTime(&sipDate, &sipTime);
         }
         break;
     }
