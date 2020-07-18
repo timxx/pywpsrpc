@@ -547,7 +547,10 @@ namespace etapi
 
         virtual HRESULT get_Selection(
             long lcid,
-            IDispatch **RHS /Out/) = 0;
+            IRange **RHS /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Selection(a0, (IDispatch**)&a1);
+        %End
 
         virtual HRESULT SendKeys(
             VARIANT Keys,
@@ -1790,9 +1793,6 @@ namespace etapi
         virtual HRESULT get_LanguageSettings(
             ksoapi::LanguageSettings **RHS /Out/) = 0;
 
-        virtual HRESULT get_Dummy101(
-            IDispatch **RHS /Out/) = 0;
-
         virtual HRESULT Dummy12(
             PivotTable *p1,
             PivotTable *p2) = 0;
@@ -2749,10 +2749,10 @@ namespace etapi
 
         %Property(name=Rows, get=getRows)
 
-        IDispatch* getSelection();
+        IRange* getSelection();
         %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Selection(0, &prop);
+            etapi::IRange *prop = nullptr;
+            HRESULT hr = sipCpp->get_Selection(0, (IDispatch**)&prop);
             if (hr != S_OK)
             {
                 PyErr_Format(PyExc_AttributeError,
@@ -6481,24 +6481,6 @@ namespace etapi
         %End
 
         %Property(name=LanguageSettings, get=getLanguageSettings)
-
-        IDispatch* getDummy101();
-        %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Dummy101(&prop);
-            if (hr != S_OK)
-            {
-                PyErr_Format(PyExc_AttributeError,
-                    "Call 'get_Dummy101()' failed with 0x%x", hr);
-                return nullptr;
-            }
-            else
-            {
-                sipRes = prop;
-            }
-        %End
-
-        %Property(name=Dummy101, get=getDummy101)
 
         ksoapi::AnswerWizard* getAnswerWizard();
         %MethodCode
