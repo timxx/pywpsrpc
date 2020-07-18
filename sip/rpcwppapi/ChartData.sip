@@ -14,7 +14,10 @@ namespace wppapi
     {
     public:
         virtual HRESULT get_Workbook(
-            IDispatch **ppdispWorkbook /Out/) = 0;
+            Workbook **ppdispWorkbook /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_Workbook((IDispatch **)&a0);
+        %End
 
         virtual HRESULT Activate() = 0;
 
@@ -25,10 +28,10 @@ namespace wppapi
 
         virtual HRESULT ActivateChartDataWindow() = 0;
 
-        IDispatch* getWorkbook();
+        Workbook* getWorkbook();
         %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_Workbook(&prop);
+            etapi::Workbook *prop = nullptr;
+            HRESULT hr = sipCpp->get_Workbook((IDispatch **)&prop);
             if (hr != S_OK)
             {
                 PyErr_Format(PyExc_AttributeError,
