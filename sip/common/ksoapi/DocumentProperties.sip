@@ -20,6 +20,15 @@ namespace ksoapi
             long lcid,
             DocumentProperty **ppIDocProp /Out/) = 0;
 
+        DocumentProperty* __getitem__(VARIANT Index) const;
+        %MethodCode
+            ksoapi::DocumentProperty *prop = nullptr;
+            if (sipCpp->get_Item(*a0, 0, &prop) != S_OK)
+                sipIsErr = 1;
+            else
+                sipRes = prop;
+        %End
+
         virtual HRESULT get_Count(
             long *pc /Out/) = 0;
 

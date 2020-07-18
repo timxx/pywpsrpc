@@ -64,7 +64,10 @@ namespace etapi
             long RHS) = 0;
 
         virtual HRESULT get_BuiltinDocumentProperties(
-            IDispatch **RHS /Out/) = 0;
+            ksoapi::DocumentProperties **RHS /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_BuiltinDocumentProperties((IDispatch **)&a0);
+        %End
 
         virtual HRESULT ChangeFileAccess(
             XlFileAccess Mode,
@@ -131,7 +134,10 @@ namespace etapi
             VARIANT_BOOL *RHS /Out/) = 0;
 
         virtual HRESULT get_CustomDocumentProperties(
-            IDispatch **RHS /Out/) = 0;
+            ksoapi::DocumentProperties **RHS /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_CustomDocumentProperties((IDispatch **)&a0);
+        %End
 
         virtual HRESULT get_Date1904(
             long lcid,
@@ -1245,10 +1251,10 @@ namespace etapi
 
         %Property(name=ChangeHistoryDuration, get=getChangeHistoryDuration, set=setChangeHistoryDuration)
 
-        IDispatch* getBuiltinDocumentProperties();
+        ksoapi::DocumentProperties* getBuiltinDocumentProperties();
         %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_BuiltinDocumentProperties(&prop);
+            ksoapi::DocumentProperties *prop = nullptr;
+            HRESULT hr = sipCpp->get_BuiltinDocumentProperties((IDispatch **)&prop);
             if (hr != S_OK)
             {
                 PyErr_Format(PyExc_AttributeError,
@@ -1459,10 +1465,10 @@ namespace etapi
 
         %Property(name=CreateBackup, get=getCreateBackup)
 
-        IDispatch* getCustomDocumentProperties();
+        ksoapi::DocumentProperties* getCustomDocumentProperties();
         %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_CustomDocumentProperties(&prop);
+            ksoapi::DocumentProperties *prop = nullptr;
+            HRESULT hr = sipCpp->get_CustomDocumentProperties((IDispatch **)&prop);
             if (hr != S_OK)
             {
                 PyErr_Format(PyExc_AttributeError,

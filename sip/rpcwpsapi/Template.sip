@@ -44,10 +44,16 @@ namespace wpsapi
             BSTR *prop /Out/) = 0;
 
         virtual HRESULT get_BuiltInDocumentProperties(
-            IDispatch **prop /Out/) = 0;
+            ksoapi::DocumentProperties **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_BuiltInDocumentProperties((IDispatch **)&a0);
+        %End
 
         virtual HRESULT get_CustomDocumentProperties(
-            IDispatch **prop /Out/) = 0;
+            ksoapi::DocumentProperties **prop /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->get_CustomDocumentProperties((IDispatch **)&a0);
+        %End
 
         virtual HRESULT get_ListTemplates(
             ListTemplates **prop /Out/) = 0;
@@ -294,10 +300,10 @@ namespace wpsapi
 
         %Property(name=FullName, get=getFullName)
 
-        IDispatch* getBuiltInDocumentProperties();
+        ksoapi::DocumentProperties* getBuiltInDocumentProperties();
         %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_BuiltInDocumentProperties(&prop);
+            ksoapi::DocumentProperties *prop = nullptr;
+            HRESULT hr = sipCpp->get_BuiltInDocumentProperties((IDispatch **)&prop);
             if (hr != S_OK)
             {
                 PyErr_Format(PyExc_AttributeError,
@@ -312,10 +318,10 @@ namespace wpsapi
 
         %Property(name=BuiltInDocumentProperties, get=getBuiltInDocumentProperties)
 
-        IDispatch* getCustomDocumentProperties();
+        ksoapi::DocumentProperties* getCustomDocumentProperties();
         %MethodCode
-            IDispatch *prop = nullptr;
-            HRESULT hr = sipCpp->get_CustomDocumentProperties(&prop);
+            ksoapi::DocumentProperties *prop = nullptr;
+            HRESULT hr = sipCpp->get_CustomDocumentProperties((IDispatch **)&prop);
             if (hr != S_OK)
             {
                 PyErr_Format(PyExc_AttributeError,

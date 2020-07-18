@@ -7,6 +7,7 @@ sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + "/../build")
 
 from pywpsrpc.rpcwppapi import wppapi
 from pywpsrpc import (rpcwppapi, common)
+from pywpsrpc.utils import RpcIter
 
 
 def check_call(funcName, hr, value=None):
@@ -40,6 +41,16 @@ def test():
 
     hr, name = pres.get_FullName()
     check_call("pres.get_FullName", hr, name)
+
+    props = pres.CustomDocumentProperties
+    print("Doc Props:")
+    for prop in RpcIter(props):
+        print("\t %s: %s" % (prop.Name, prop.Value))
+
+    props = pres.BuiltInDocumentProperties
+    print("Builtin Props:")
+    for prop in RpcIter(props):
+        print("\t %s: %s" % (prop.Name, prop.Value))
 
     hr = pres.Close()
     check_call("pres.Close", hr)

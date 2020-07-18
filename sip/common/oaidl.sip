@@ -164,7 +164,18 @@
             return pyList;
         }
         break;
+
+    case VT_DATE:
+        {
+            // TODO: convert to PyDateTime
+            return PyFloat_FromDouble(V_DATE(sipCpp));
+        }
+        break;
     }
+
+    PyErr_Format(PyExc_TypeError,
+                 "Converting from V_VT (%d) is unsupported",
+                 V_VT(sipCpp));
     return nullptr;
 %End
 };
