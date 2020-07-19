@@ -263,7 +263,15 @@ class RpcApiBuilder(sipbuild.Builder):
             sipbuild.Option("qmake",
                             metavar="<FILE>",
                             help="Specify the qmake executable"))
+        options.append(
+            sipbuild.Option("clang",
+                            option_type=bool,
+                            help="Use clang to compile the project"))
 
+        options.append(
+            sipbuild.Option("libcxx",
+                            option_type=bool,
+                            help="Link libc++ when --clang specified"))
         return options
 
     def apply_user_defaults(self, tool):
@@ -348,8 +356,14 @@ class RpcApiBuilder(sipbuild.Builder):
 
         old_dir = os.getcwd()
         os.chdir(self.project.build_dir)
-        self.project.run_command(
-            [self.qmake, "-recursive", self.project.name + ".pro"], fatal=True)
+
+        args = [self.qmake, "-recursive", self.project.name + ".pro"]
+        if self.clang:
+            if self.libcxx:
+                args.extend(["-spec", "linux-clang-libc++"])
+            else:
+                args.extend(["-spec", "linux-clang"])
+        self.project.run_command(args, fatal=True)
 
         self.project.progress("Compiling the project")
         self._run_make()
