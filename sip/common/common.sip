@@ -29,6 +29,10 @@ bool _getVarDate(double date,
                  int &hour, int &minute, int &second,
                  int &us);
 
+double _toVarDate(int year, int month, int day,
+                  int hour, int minute, int second,
+                  int us);
+
 class QtApp
 {
 public:
@@ -180,6 +184,37 @@ bool _getVarDate(double date,
     us = timePart * 1000 * 1000;
 
     return true;
+}
+
+double _toVarDate(int year, int month, int day,
+                  int hour, int minute, int second,
+                  int us)
+{
+    auto toJulian = [](int year, int month, int day) -> double
+    {
+        int m12 = (month - 14) / 12;
+
+        return ((1461 * (year + 4800 + m12)) / 4 +
+                (367 * (month - 2 - 12 * m12)) / 12 -
+                (3 * ((year + 4900 + m12) / 100)) / 4 + day - 32075);
+    };
+
+    auto dateFromJulian = [](int date) -> int
+    {
+        date -= 1757585;
+        date += -657434;
+        return date;
+    };
+
+    double date = dateFromJulian(toJulian(year, month, day));
+    double sign = (date < 0.0) ? -1.0 : 1.0;
+
+    date += hour / 24.0 * sign;
+    date += minute / 1440.0 * sign;
+    date += second / 86400.0 * sign;
+    date += us / 1000000 * sign;
+
+    return date;
 }
 
 #define _HRESULT_CONST(name, value) \

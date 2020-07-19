@@ -89,10 +89,36 @@
         V_VT(pVar) = VT_I4;
         V_I4(pVar) = PyLong_AsLong(sipPy);
     }
+    else if (sipGetDateTime(sipPy, nullptr, nullptr))
+    {
+        sipDateDef pyDate = { 0 };
+        sipTimeDef pyTime = { 0 };
+
+        sipGetDateTime(sipPy, &pyDate, &pyTime);
+        double d = _toVarDate(pyDate.pd_year, pyDate.pd_month, pyDate.pd_day,
+                              pyTime.pt_hour, pyTime.pt_minute, pyTime.pt_second,
+                              pyTime.pt_microsecond);
+
+        V_VT(pVar) = VT_DATE;
+        V_DATE(pVar) = d;
+    }
+    else if (sipGetDate(sipPy, nullptr))
+    {
+        sipDateDef pyDate = { 0 };
+
+        sipGetDate(sipPy, &pyDate);
+        double d = _toVarDate(pyDate.pd_year, pyDate.pd_month, pyDate.pd_day,
+                              0, 0, 0, 0);
+
+        V_VT(pVar) = VT_DATE;
+        V_DATE(pVar) = d;
+    }
     else
     {
-        printf("TODO: unsupported type for VARIANT\n");
         delete pVar;
+        *sipIsErr = 1;
+        PyErr_Format(PyExc_TypeError,
+                "Unsupported '%s' for VARIANT", Py_TYPE(sipPy)->tp_name);
         return 0;
     }
 

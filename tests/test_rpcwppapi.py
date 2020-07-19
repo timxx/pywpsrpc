@@ -2,6 +2,7 @@
 
 import sys
 import os
+import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + "/../build")
 
@@ -46,6 +47,14 @@ def test():
     print("Doc Props:")
     for prop in RpcIter(props):
         print("\t %s: %s" % (prop.Name, prop.Value))
+
+    a_date = datetime.date(2020, 7, 20)
+    hr, prop = props.Add("_a_date", False, Value=a_date)
+    assert(hr == common.S_OK and prop.Value.date() == a_date)
+
+    a_datetime = datetime.datetime(2020, 7, 21, 14, 15, 30)
+    hr, prop = props.Add("_a_datetime", False, Value=a_datetime)
+    assert(hr == common.S_OK and prop.Value == a_datetime)
 
     props = pres.BuiltInDocumentProperties
     print("Builtin Props:")
