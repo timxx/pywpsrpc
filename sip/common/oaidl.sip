@@ -26,10 +26,7 @@
     VariantInit(pVar);
     *sipCppPtr = nullptr;
 
-    auto toSipType = [&]() -> const sipTypeDef*
-    {
-        return sipTypeFromPyTypeObject(Py_TYPE(sipPy));
-    };
+    const sipTypeDef *sipType = sipTypeFromPyTypeObject(Py_TYPE(sipPy));
 
     // TODO: fix the ugly code
     if (sipPy == Py_None)
@@ -87,7 +84,7 @@
         V_UNKNOWN(pVar) = pUnk;
         sipReleaseType(pUnk, sipType_IUnknown, 0);
     }
-    else if (sipTypeIsEnum(toSipType()) || PyLong_Check(sipPy))
+    else if ((sipType && sipTypeIsEnum(sipType)) || PyLong_Check(sipPy))
     {
         V_VT(pVar) = VT_I4;
         V_I4(pVar) = PyLong_AsLong(sipPy);
