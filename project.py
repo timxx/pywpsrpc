@@ -166,7 +166,8 @@ class RpcCommon(RpcApiBindings):
                 state = 1
             elif state == 1 and line == b'{\n':
                 f_out.write(line)
-                f_out.write(b"    BSTR *pBstr = reinterpret_cast<BSTR*>(ptr);\n")
+                f_out.write(
+                    b"    BSTR *pBstr = reinterpret_cast<BSTR*>(ptr);\n")
                 f_out.write(b"    if (*pBstr)\n")
                 f_out.write(b"        _SysFreeString(*pBstr);\n")
                 state = 2
@@ -382,7 +383,8 @@ class RpcApiBuilder(sipbuild.Builder):
         with open(buildable.build_dir + "/" + buildable.target + ".pro", "w+") as f:
             f.write("TEMPLATE = lib\n")
             f.write("CONFIG += plugin no_plugin_name_prefix warn_off\n")
-            f.write("CONFIG += %s\n" % ("debug" if buildable.debug else "release"))
+            f.write("CONFIG += %s\n" %
+                    ("debug" if buildable.debug else "release"))
             f.write("CONFIG += c++11 precompile_header\n")
             f.write("%s\n" % ' '.join(buildable.builder_settings))
             f.write("TARGET = %s\n\n" % buildable.target)
@@ -404,13 +406,16 @@ class RpcApiBuilder(sipbuild.Builder):
 
             # hidden symbols
             with open(buildable.build_dir + "/" + buildable.target + ".exp", "w+") as exp:
-                exp.write("{ global: PyInit_%s; local: *; };" % buildable.target)
+                exp.write("{ global: PyInit_%s; local: *; };" %
+                          buildable.target)
 
-            f.write("QMAKE_LFLAGS += -Wl,--version-script=%s.exp\n" % buildable.target)
+            f.write("QMAKE_LFLAGS += -Wl,--version-script=%s.exp\n" %
+                    buildable.target)
             if not buildable.debug:
                 f.write("QMAKE_LFLAGS += -s\n")
             #f.write("QMAKE_LFLAGS_PLUGIN += -Wl,--no-undefined\n")
-            f.write("QMAKE_CXXFLAGS += -Wno-attributes -Wno-delete-non-virtual-dtor\n")
+            f.write(
+                "QMAKE_CXXFLAGS += -Wno-attributes -Wno-delete-non-virtual-dtor\n")
             f.write("QMAKE_CXXFLAGS += -Wno-delete-incomplete -Wno-unused-variable\n")
             f.write("QMAKE_RPATHDIR += $ORIGIN /opt/kingsoft/wps-office/office6\n")
             f.write("QMAKE_RPATHDIR += /usr/lib/office6\n\n")
@@ -426,7 +431,8 @@ class RpcApiBuilder(sipbuild.Builder):
             f.write("SOURCES = %s" % " \\\n\t".join(buildable.sources))
             f.write('\n\n')
 
-            f.write("target.path = %s\n" % (target_dir + "/" + self.project.name))
+            f.write("target.path = %s\n" %
+                    (target_dir + "/" + self.project.name))
             f.write("INSTALLS += target\n\n")
 
             # for dist-info
@@ -493,7 +499,8 @@ class RpcApiBuilder(sipbuild.Builder):
 
             f.write("SOURCES = %s\n\n" % " \\\n\t".join(sources))
 
-            f.write("target.path = %s\n" % (target_dir + "/" + self.project.name))
+            f.write("target.path = %s\n" %
+                    (target_dir + "/" + self.project.name))
             f.write("INSTALLS += target\n\n")
 
         sub_dirs.append("sip")
