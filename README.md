@@ -119,10 +119,11 @@ for i in range(0, paras.Count):
     # 注意：首个元素总是从1开始
     print(paras[i + 1].OutlineLevel)
 
-def onDocumentBeforeSave(doc, saveAsUi, cancel):
-    # 如果想取消当前文档保存，返回值里的cancel设为True
+def onDocumentBeforeSave(doc):
+    # 如果想取消当前文档保存，第二个返回值设为True
     print("onDocumentBeforeSave called for doc: ", doc.Name)
-    return saveAsUi, cancel
+    # SaveAsUI, Cancel
+    return True, False
 
 # 注册文档保存前通知
 rpc.registerEvent(app,

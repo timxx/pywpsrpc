@@ -12,14 +12,15 @@ from pywpsrpc import RpcProxy
 can_close_doc = False
 
 
-def _onDocumentBeforeClose(doc, cancel):
-    print("_onDocumentBeforeClose: ", doc, cancel)
+def _onDocumentBeforeClose(doc):
+    print("_onDocumentBeforeClose: ", doc.Name)
     return not can_close_doc
 
 
-def _onDocumentBeforeSave(doc, saveAsUi, cancel):
-    print("__onDocumentBeforeSave: ", doc, saveAsUi, cancel)
-    return saveAsUi, True
+def _onDocumentBeforeSave(doc):
+    print("__onDocumentBeforeSave: ", doc.Name)
+    # SaveAsUI, Cancel
+    return True, True
 
 
 def _onDocumentChange():
@@ -94,6 +95,23 @@ def test_rpcwpsapi():
                            "WindowActivate",
                            _onWindowActivate)
 
+    def _onWindowDeactivate(doc, window):
+        print("_onWindowDeactivate:", window.Caption)
+
+    hr = rpc.registerEvent(app.rpc_object,
+                           wpsapi.DIID_ApplicationEvents4,
+                           "WindowDeactivate",
+                           _onWindowDeactivate)
+
+    def _onWindowSelectionChange(selection):
+        print("_onWindowSelectionChange:", selection.Start,
+              selection.End, selection.Text)
+
+    hr = rpc.registerEvent(app.rpc_object,
+                           wpsapi.DIID_ApplicationEvents4,
+                           "WindowSelectionChange",
+                           _onWindowSelectionChange)
+
     doc = app.Documents.Add()
     # the doc should not be saved
     doc.SaveAs2("test.doc")
@@ -102,6 +120,10 @@ def test_rpcwpsapi():
     doc2 = app.Documents.Add()
 
     doc3 = app.Documents.Open(os.path.realpath(__file__))
+
+    selection = app.Selection
+    # selection should changed
+    selection.SetRange(0, 10)
 
     # the doc should not be closed
     doc.Close()

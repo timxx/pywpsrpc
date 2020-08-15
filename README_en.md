@@ -112,10 +112,11 @@ for i in range(0, paras.Count):
     # the first element starts with 1
     print(paras[i + 1].OutlineLevel)
 
-def onDocumentBeforeSave(doc, saveAsUi, cancel):
-    # to discard the saving, return cancel as True
+def onDocumentBeforeSave(doc):
+    # to discard the saving, return Cancel as True
     print("onDocumentBeforeSave called for doc: ", doc.Name)
-    return saveAsUi, cancel
+    # SaveAsUI, Cancel
+    return True, False
 
 # get a notify about saving
 rpc.registerEvent(app,

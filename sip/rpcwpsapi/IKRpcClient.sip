@@ -13,8 +13,8 @@ struct IKRpcClient /Abstract/
 %TypeCode
     #include "pyevents.h"
 
-    static HRESULT _DocumentCancelEvent(
-        wpsapi::_Document *Doc,
+    static HRESULT _CancelEvent(
+        PyObject *pyObject,
         VARIANT_BOOL *Cancel,
         const PyFuncs &pyFuncs)
     {
@@ -23,21 +23,20 @@ struct IKRpcClient /Abstract/
 
         SIP_BLOCK_THREADS
 
-        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
-
         for (auto &pyFunc : pyFuncs)
         {
-            PyObject *pyCancel = (Cancel && *Cancel) ? Py_True : Py_False;
-            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyDoc, pyCancel, nullptr);
+            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyObject, nullptr);
             if (ret)
             {
                 if (PyBool_Check(ret))
                 {
                     PyErr_Clear();
 
-                    // shall we break if *Cancel is VARIANT_TRUE?
                     if (Cancel)
                         *Cancel = (ret == Py_True) ? VARIANT_TRUE : VARIANT_FALSE;
+
+                    if (ret == Py_True)
+                        break;
                 }
 
                 Py_DECREF(ret);
@@ -56,7 +55,8 @@ struct IKRpcClient /Abstract/
 
     static HRESULT _DocumentBeforeClose(wpsapi::_Document *Doc, VARIANT_BOOL *Cancel)
     {
-        return _DocumentCancelEvent(Doc, Cancel, _GET_PY_FUNCS(DocumentBeforeClose));
+        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
+        return _CancelEvent(pyDoc, Cancel, _GET_PY_FUNCS(DocumentBeforeClose));
     }
 
     static HRESULT _DocumentBeforeSave(wpsapi::_Document *Doc, VARIANT_BOOL *SaveAsUI, VARIANT_BOOL *Cancel)
@@ -72,9 +72,7 @@ struct IKRpcClient /Abstract/
 
         for (auto &pyFunc : pyFuncs)
         {
-            PyObject *pySaveAsUI = (SaveAsUI && *SaveAsUI) ? Py_True : Py_False;
-            PyObject *pyCancel = (Cancel && *Cancel) ? Py_True : Py_False;
-            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyDoc, pySaveAsUI, pyCancel, nullptr);
+            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyDoc, nullptr);
             if (ret)
             {
                 if (PyTuple_Check(ret))
@@ -87,11 +85,12 @@ struct IKRpcClient /Abstract/
                         *SaveAsUI = (pySaveAsUI == Py_True) ? VARIANT_TRUE : VARIANT_FALSE;
                     }
 
+                    PyObject *pyCancel = PyTuple_GetItem(ret, 1);
                     if (Cancel)
-                    {
-                        PyObject *pyCancel = PyTuple_GetItem(ret, 1);
                         *Cancel = (pyCancel == Py_True) ? VARIANT_TRUE : VARIANT_FALSE;
-                    }
+
+                    if (pyCancel == Py_True)
+                        break;
                 }
 
                 Py_DECREF(ret);
@@ -104,7 +103,8 @@ struct IKRpcClient /Abstract/
 
     static HRESULT _DocumentBeforePrint(wpsapi::_Document *Doc, VARIANT_BOOL *Cancel)
     {
-        return _DocumentCancelEvent(Doc, Cancel, _GET_PY_FUNCS(DocumentBeforePrint));
+        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
+        return _CancelEvent(pyDoc, Cancel, _GET_PY_FUNCS(DocumentBeforePrint));
     }
 
     static HRESULT _DocumentChange()
@@ -157,6 +157,38 @@ struct IKRpcClient /Abstract/
         return _callPyFunc(_GET_PY_FUNCS(WindowActivate), pyDoc, pyWn);
     }
 
+    static HRESULT _WindowDeactivate(wpsapi::_Document *Doc, wpsapi::Window *Wn)
+    {
+        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
+        PyObject *pyWn = Wn == nullptr ? Py_None : sipConvertFromType(Wn, sipType_wpsapi_Window, 0);
+        return _callPyFunc(_GET_PY_FUNCS(WindowDeactivate), pyDoc, pyWn);
+    }
+
+    static HRESULT _WindowSize(wpsapi::_Document *Doc, wpsapi::Window *Wn)
+    {
+        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
+        PyObject *pyWn = Wn == nullptr ? Py_None : sipConvertFromType(Wn, sipType_wpsapi_Window, 0);
+        return _callPyFunc(_GET_PY_FUNCS(WindowSize), pyDoc, pyWn);
+    }
+
+    static HRESULT _WindowBeforeDoubleClick(wpsapi::Selection *Sel, VARIANT_BOOL *Cancel)
+    {
+        PyObject *pySel = Sel ? sipConvertFromType(Sel, sipType_wpsapi_Selection, 0) : Py_None;
+        return _CancelEvent(pySel, Cancel, _GET_PY_FUNCS(WindowBeforeDoubleClick));
+    }
+
+    static HRESULT _WindowBeforeRightClick(wpsapi::Selection *Sel, VARIANT_BOOL *Cancel)
+    {
+        PyObject *pySel = Sel ? sipConvertFromType(Sel, sipType_wpsapi_Selection, 0) : Py_None;
+        return _CancelEvent(pySel, Cancel, _GET_PY_FUNCS(WindowBeforeRightClick));
+    }
+
+    static HRESULT _WindowSelectionChange(wpsapi::Selection *Sel)
+    {
+        PyObject *pySel = Sel ? sipConvertFromType(Sel, sipType_wpsapi_Selection, 0) : Py_None;
+        return _callPyFunc(_GET_PY_FUNCS(WindowSelectionChange), pySel);
+    }
+
     #define _FUNC(name) std::make_pair(__X(#name), (void *)_##name)
     static void* _registerFunc(const IID &iid, const BSTR eventName, PyObject *pyFunc)
     {
@@ -175,6 +207,11 @@ struct IKRpcClient /Abstract/
                 events[_FUNC(Quit)] = PyFuncs(); // no works...
 
                 events[_FUNC(WindowActivate)] = PyFuncs();
+                events[_FUNC(WindowDeactivate)] = PyFuncs();
+                events[_FUNC(WindowSize)] = PyFuncs();
+                events[_FUNC(WindowBeforeDoubleClick)] = PyFuncs();
+                events[_FUNC(WindowBeforeRightClick)] = PyFuncs();
+                events[_FUNC(WindowSelectionChange)] = PyFuncs();
 
                 g_eventMap[wpsapi::DIID_ApplicationEvents4] = events;
             }
