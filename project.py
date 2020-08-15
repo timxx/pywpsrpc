@@ -295,8 +295,10 @@ class RpcApiBuilder(sipbuild.Builder):
         installed = []
         sub_dirs = []
 
+        is_debug = False
         for buildable in self.project.buildables:
             if isinstance(buildable, sipbuild.BuildableModule):
+                is_debug = buildable.debug
                 self._gen_module_pro_file(buildable, target_dir, installed)
             elif type(buildable) is sipbuild.Buildable:
                 for installable in buildable.installables:
@@ -304,15 +306,17 @@ class RpcApiBuilder(sipbuild.Builder):
                         target_dir, installed, do_install=False)
             else:
                 raise sipbuild.UserException(
-                    "RpcApiBuilder cannot build '{0}' buildables".format(type(buildable).__name__))
+                    "RpcApiBuilder cannot build '{0}' buildables".format(
+                        type(buildable).__name__))
 
             sub_dirs.append(buildable.name)
 
-        self._gen_sip_project(target_dir, sub_dirs, installed)
+        self._gen_sip_project(target_dir, sub_dirs, installed, is_debug)
 
         self.project.progress("Generating the top-level project")
 
-        with open(self.project.build_dir + "/" + self.project.name + ".pro", "w+") as f:
+        pro = self.project.build_dir + "/" + self.project.name + ".pro"
+        with open(pro, "w+") as f:
             f.write("TEMPLATE = subdirs\n")
             f.write("CONFIG += ordered\n\n")
             f.write("SUBDIRS = %s\n\n" % ' '.join(sub_dirs))
@@ -465,7 +469,7 @@ class RpcApiBuilder(sipbuild.Builder):
 
         self.project.run_command(args, fatal=True)
 
-    def _gen_sip_project(self, target_dir, sub_dirs, installed):
+    def _gen_sip_project(self, target_dir, sub_dirs, installed, is_debug):
         self.project.progress("Generating the sip project")
 
         sub_dir = self.project.build_dir + "/sip"
@@ -481,7 +485,7 @@ class RpcApiBuilder(sipbuild.Builder):
             f.write("TEMPLATE = lib\n")
 
             f.write("CONFIG += plugin no_plugin_name_prefix warn_on\n")
-            f.write("CONFIG += release\n")
+            f.write("CONFIG += %s\n" % ("debug" if is_debug else "release"))
 
             f.write("QT =\n")
             f.write("TARGET = sip\n\n")
