@@ -11,120 +11,12 @@
 struct IKRpcClient /Abstract/
 {
 %TypeCode
-    #include <unordered_map>
-    #include <list>
-
-    typedef std::list<PyObject*> PyFuncs;
-    typedef std::pair<const WCHAR*, void *> NameFuncPair;
-
-    struct IID_Hash
-    {
-        std::size_t operator()(const IID &key) const
-        {
-            return std::hash<uint32>()(key.Data1) ^
-                std::hash<uint16>()(key.Data2) ^
-                std::hash<uint16>()(key.Data3) ^
-                std::hash<uint64>()(*((uint64*)key.Data4));
-        }
-    };
-
-    struct NameFuncPair_Hash
-    {
-        std::size_t operator()(const NameFuncPair &key) const
-        {
-            if (key.first == nullptr)
-                return 0;
-
-            return std::hash<std::u16string>()(
-                reinterpret_cast<const char16_t*>(key.first));
-        }
-    };
-
-    struct NameFuncPair_Equal
-    {
-        bool operator()(const NameFuncPair &lhs, const NameFuncPair &rhs) const
-        {
-            if (lhs.second != nullptr && lhs.second == rhs.second)
-                return true;
-
-            if (lhs.first == rhs.first)
-                return true;
-
-            if (lhs.first == nullptr || rhs.first == nullptr)
-                return false;
-
-            size_t len = xstrlen(lhs.first);
-            if (len != xstrlen(rhs.first))
-                return false;
-
-            return memcmp(lhs.first, rhs.first, len * 2) == 0;
-        }
-    };
-
-    typedef std::unordered_map<NameFuncPair, PyFuncs, NameFuncPair_Hash, NameFuncPair_Equal> EventFuncs;
-    static std::unordered_map<IID, EventFuncs, IID_Hash> g_eventMap;
-
-    static std::list<PyObject*> _getPyFuncs(const WCHAR* name, void *pFunc)
-    {
-        // TODO: specify the IID?
-        for (const auto &itEvents : g_eventMap)
-        {
-            auto itFuncs = itEvents.second.find(std::make_pair(name, pFunc));
-            if (itFuncs != itEvents.second.cend())
-                return itFuncs->second;
-        }
-
-        return std::list<PyObject*>();
-    }
-
-    #define _GET_PY_FUNCS(name) _getPyFuncs(__X(#name), (void*)_##name)
-
-    static HRESULT _PyObjectEvent(PyObject *pyObject, const PyFuncs &pyFuncs)
-    {
-        if (pyFuncs.empty())
-            return E_FAIL;
-
-        SIP_BLOCK_THREADS
-
-        for (auto &pyFunc : pyFuncs)
-        {
-            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyObject, nullptr);
-            if (ret)
-            {
-                PyErr_Clear();
-                Py_DECREF(ret);
-            }
-        }
-
-        SIP_UNBLOCK_THREADS
-        return S_OK;
-    }
-
-    static HRESULT _PyObjectArgEvent(PyObject *pyObject, PyObject *arg, const PyFuncs &pyFuncs)
-    {
-        if (pyFuncs.empty())
-            return E_FAIL;
-
-        SIP_BLOCK_THREADS
-
-        for (auto &pyFunc : pyFuncs)
-        {
-            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyObject, arg, nullptr);
-            if (ret)
-            {
-                PyErr_Clear();
-                Py_DECREF(ret);
-            }
-        }
-
-        SIP_UNBLOCK_THREADS
-        return S_OK;
-    }
+    #include "pyevents.h"
 
     static inline HRESULT _PresentationEvent(wppapi::_Presentation *Pres, const PyFuncs &pyFuncs)
     {
         PyObject *pyPres = Pres == nullptr ? Py_None : sipConvertFromType(Pres, sipType_wppapi__Presentation, 0);
-        return _PyObjectEvent(pyPres, pyFuncs);
+        return _callPyFunc(pyFuncs, pyPres);
     }
 
     static HRESULT _PresentationCancelEvent(wppapi::_Presentation *Pres, VARIANT_BOOL *Cancel, const PyFuncs &pyFuncs)
@@ -201,7 +93,7 @@ struct IKRpcClient /Abstract/
     static HRESULT _PresentationNewSlide(wppapi::_Slide *Sld)
     {
         PyObject *pySld = Sld ? sipConvertFromType(Sld, sipType_wppapi__Slide, 0) : Py_None;
-        return _PyObjectEvent(pySld, _GET_PY_FUNCS(PresentationNewSlide));
+        return _callPyFunc(_GET_PY_FUNCS(PresentationNewSlide), pySld);
     }
 
     static HRESULT _PresentationOpen(wppapi::_Presentation *Pres)
@@ -241,7 +133,7 @@ struct IKRpcClient /Abstract/
     {
         PyObject *pyPres = Pres ? sipConvertFromType(Pres, sipType_wppapi__Presentation, 0) : Py_None;
         PyObject *pyPageEx = pageEx ? sipConvertFromType(pageEx, sipFindType("PrintoutPageEx"), 0) : Py_None;
-        return _PyObjectArgEvent(pyPres, pyPageEx, _GET_PY_FUNCS(DocumentAfterPrint));
+        return _callPyFunc(_GET_PY_FUNCS(DocumentAfterPrint), pyPres, pyPageEx);
     }
 
     #define _FUNC(name) std::make_pair(__X(#name), (void *)_##name)
