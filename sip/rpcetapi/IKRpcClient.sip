@@ -46,13 +46,13 @@ struct IKRpcClient /Abstract/
 
     static HRESULT _WorkbookEvent(etapi::_Workbook *Wb, const PyFuncs &pyFuncs)
     {
-        PyObject *pyWb = Wb == nullptr ? Py_None : sipConvertFromType(Wb, sipType_etapi__Workbook, 0);
+        PyObject *pyWb = _convertFromType(Wb, sipType_etapi__Workbook);
         return _callPyFunc(pyFuncs, pyWb);
     }
 
     static HRESULT _WorkbookEvent1(etapi::_Workbook *Wb, PyObject *arg, const PyFuncs &pyFuncs)
     {
-        PyObject *pyWb = Wb == nullptr ? Py_None : sipConvertFromType(Wb, sipType_etapi__Workbook, 0);
+        PyObject *pyWb = _convertFromType(Wb, sipType_etapi__Workbook);
         return _callPyFunc(pyFuncs, pyWb, arg);
     }
 
@@ -116,7 +116,7 @@ struct IKRpcClient /Abstract/
 
     static HRESULT _WorkbookNewSheet(etapi::_Workbook *Wb, etapi::_Worksheet *Sh)
     {
-        PyObject *pySh = Sh ? sipConvertFromType(Sh, sipType_etapi__Worksheet, 0) : Py_None;
+        PyObject *pySh = _convertFromType(Sh, sipType_etapi__Worksheet);
         return _WorkbookEvent1(Wb, pySh, _GET_PY_FUNCS(WorkbookNewSheet));
     }
 

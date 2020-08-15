@@ -49,13 +49,13 @@ struct IKRpcClient /Abstract/
 
     static HRESULT _DocumentEvent(wpsapi::_Document *Doc, const PyFuncs &pyFuncs)
     {
-        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
+        PyObject *pyDoc = _convertFromType(Doc, sipType_wpsapi__Document);
         return _callPyFunc(pyFuncs, pyDoc);
     }
 
     static HRESULT _DocumentBeforeClose(wpsapi::_Document *Doc, VARIANT_BOOL *Cancel)
     {
-        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
+        PyObject *pyDoc = _convertFromType(Doc, sipType_wpsapi__Document);
         return _CancelEvent(pyDoc, Cancel, _GET_PY_FUNCS(DocumentBeforeClose));
     }
 
@@ -103,7 +103,7 @@ struct IKRpcClient /Abstract/
 
     static HRESULT _DocumentBeforePrint(wpsapi::_Document *Doc, VARIANT_BOOL *Cancel)
     {
-        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
+        PyObject *pyDoc = _convertFromType(Doc, sipType_wpsapi__Document);
         return _CancelEvent(pyDoc, Cancel, _GET_PY_FUNCS(DocumentBeforePrint));
     }
 
@@ -152,40 +152,40 @@ struct IKRpcClient /Abstract/
 
     static HRESULT _WindowActivate(wpsapi::_Document *Doc, wpsapi::Window *Wn)
     {
-        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
-        PyObject *pyWn = Wn == nullptr ? Py_None : sipConvertFromType(Wn, sipType_wpsapi_Window, 0);
+        PyObject *pyDoc = _convertFromType(Doc, sipType_wpsapi__Document);
+        PyObject *pyWn = _convertFromType(Wn, sipType_wpsapi_Window);
         return _callPyFunc(_GET_PY_FUNCS(WindowActivate), pyDoc, pyWn);
     }
 
     static HRESULT _WindowDeactivate(wpsapi::_Document *Doc, wpsapi::Window *Wn)
     {
-        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
-        PyObject *pyWn = Wn == nullptr ? Py_None : sipConvertFromType(Wn, sipType_wpsapi_Window, 0);
+        PyObject *pyDoc = _convertFromType(Doc, sipType_wpsapi__Document);
+        PyObject *pyWn = _convertFromType(Wn, sipType_wpsapi_Window);
         return _callPyFunc(_GET_PY_FUNCS(WindowDeactivate), pyDoc, pyWn);
     }
 
     static HRESULT _WindowSize(wpsapi::_Document *Doc, wpsapi::Window *Wn)
     {
-        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
-        PyObject *pyWn = Wn == nullptr ? Py_None : sipConvertFromType(Wn, sipType_wpsapi_Window, 0);
+        PyObject *pyDoc = _convertFromType(Doc, sipType_wpsapi__Document);
+        PyObject *pyWn = _convertFromType(Wn, sipType_wpsapi_Window);
         return _callPyFunc(_GET_PY_FUNCS(WindowSize), pyDoc, pyWn);
     }
 
     static HRESULT _WindowBeforeDoubleClick(wpsapi::Selection *Sel, VARIANT_BOOL *Cancel)
     {
-        PyObject *pySel = Sel ? sipConvertFromType(Sel, sipType_wpsapi_Selection, 0) : Py_None;
+        PyObject *pySel = _convertFromType(Sel, sipType_wpsapi_Selection);
         return _CancelEvent(pySel, Cancel, _GET_PY_FUNCS(WindowBeforeDoubleClick));
     }
 
     static HRESULT _WindowBeforeRightClick(wpsapi::Selection *Sel, VARIANT_BOOL *Cancel)
     {
-        PyObject *pySel = Sel ? sipConvertFromType(Sel, sipType_wpsapi_Selection, 0) : Py_None;
+        PyObject *pySel = _convertFromType(Sel, sipType_wpsapi_Selection);
         return _CancelEvent(pySel, Cancel, _GET_PY_FUNCS(WindowBeforeRightClick));
     }
 
     static HRESULT _WindowSelectionChange(wpsapi::Selection *Sel)
     {
-        PyObject *pySel = Sel ? sipConvertFromType(Sel, sipType_wpsapi_Selection, 0) : Py_None;
+        PyObject *pySel = _convertFromType(Sel, sipType_wpsapi_Selection);
         return _callPyFunc(_GET_PY_FUNCS(WindowSelectionChange), pySel);
     }
 

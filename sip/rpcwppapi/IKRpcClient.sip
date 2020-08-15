@@ -15,7 +15,7 @@ struct IKRpcClient /Abstract/
 
     static inline HRESULT _PresentationEvent(wppapi::_Presentation *Pres, const PyFuncs &pyFuncs)
     {
-        PyObject *pyPres = Pres == nullptr ? Py_None : sipConvertFromType(Pres, sipType_wppapi__Presentation, 0);
+        PyObject *pyPres = _convertFromType(Pres, sipType_wppapi__Presentation);
         return _callPyFunc(pyFuncs, pyPres);
     }
 
@@ -92,7 +92,7 @@ struct IKRpcClient /Abstract/
 
     static HRESULT _PresentationNewSlide(wppapi::_Slide *Sld)
     {
-        PyObject *pySld = Sld ? sipConvertFromType(Sld, sipType_wppapi__Slide, 0) : Py_None;
+        PyObject *pySld = _convertFromType(Sld, sipType_wppapi__Slide);
         return _callPyFunc(_GET_PY_FUNCS(PresentationNewSlide), pySld);
     }
 
@@ -131,8 +131,8 @@ struct IKRpcClient /Abstract/
 
     static HRESULT _DocumentAfterPrint(wppapi::_Presentation *Pres, wpsapiex::PrintoutPageEx *pageEx)
     {
-        PyObject *pyPres = Pres ? sipConvertFromType(Pres, sipType_wppapi__Presentation, 0) : Py_None;
-        PyObject *pyPageEx = pageEx ? sipConvertFromType(pageEx, sipFindType("PrintoutPageEx"), 0) : Py_None;
+        PyObject *pyPres = _convertFromType(Pres, sipType_wppapi__Presentation);
+        PyObject *pyPageEx = _convertFromType(pageEx, sipFindType("PrintoutPageEx"));
         return _callPyFunc(_GET_PY_FUNCS(DocumentAfterPrint), pyPres, pyPageEx);
     }
 

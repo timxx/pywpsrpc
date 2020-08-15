@@ -68,6 +68,8 @@ static std::list<PyObject*> _getPyFuncs(const WCHAR* name, void *pFunc)
     return std::list<PyObject*>();
 }
 
+#define _GET_PY_FUNCS(name) _getPyFuncs(__X(#name), (void*)_##name)
+
 #define _CALL_PYFUNC(pyFuncs, ...)  \
     if (pyFuncs.empty())            \
         return E_FAIL;              \
@@ -102,7 +104,20 @@ static HRESULT _callPyFunc(const PyFuncs &pyFuncs, PyObject *arg0,  PyObject *ar
     _CALL_PYFUNC(pyFuncs, arg0, arg1)
 }
 
-#define _GET_PY_FUNCS(name) _getPyFuncs(__X(#name), (void*)_##name)
+template<typename T>
+PyObject* _convertFromType(T *cpp, const sipTypeDef *td, PyObject *transferObj = nullptr)
+{
+    if (!cpp)
+        return Py_None;
+
+    PyObject *res = nullptr;
+
+    SIP_BLOCK_THREADS
+    res = sipConvertFromType(cpp, td, transferObj);
+    SIP_UNBLOCK_THREADS
+
+    return res;
+}
 
 #else
 #error "This file is intended include for IKRpcClient.sip only"
