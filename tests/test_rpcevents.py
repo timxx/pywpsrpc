@@ -83,6 +83,17 @@ def test_rpcwpsapi():
                            "Quit",
                            _onQuit)
 
+    def _onWindowActivate(doc, window):
+        ss = {wpsapi.wdWindowStateNormal: "wdWindowStateNormal",
+            wpsapi.wdWindowStateMaximize: "wdWindowStateMaximize",
+            wpsapi.wdWindowStateMinimize: "wdWindowStateMinimize"}
+        print("_onWindowActivate:", doc.Name, window.Caption, ss[window.WindowState])
+
+    hr = rpc.registerEvent(app.rpc_object,
+                           wpsapi.DIID_ApplicationEvents4,
+                           "WindowActivate",
+                           _onWindowActivate)
+
     doc = app.Documents.Add()
     # the doc should not be saved
     doc.SaveAs2("test.doc")

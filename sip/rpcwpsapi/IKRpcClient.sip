@@ -150,6 +150,13 @@ struct IKRpcClient /Abstract/
         return _callPyFunc(_GET_PY_FUNCS(Quit));
     }
 
+    static HRESULT _WindowActivate(wpsapi::_Document *Doc, wpsapi::Window *Wn)
+    {
+        PyObject *pyDoc = Doc == nullptr ? Py_None : sipConvertFromType(Doc, sipType_wpsapi__Document, 0);
+        PyObject *pyWn = Wn == nullptr ? Py_None : sipConvertFromType(Wn, sipType_wpsapi_Window, 0);
+        return _callPyFunc(_GET_PY_FUNCS(WindowActivate), pyDoc, pyWn);
+    }
+
     #define _FUNC(name) std::make_pair(__X(#name), (void *)_##name)
     static void* _registerFunc(const IID &iid, const BSTR eventName, PyObject *pyFunc)
     {
@@ -166,6 +173,9 @@ struct IKRpcClient /Abstract/
                 events[_FUNC(NewDocument)] = PyFuncs();
                 events[_FUNC(DocumentSync)] = PyFuncs();
                 events[_FUNC(Quit)] = PyFuncs(); // no works...
+
+                events[_FUNC(WindowActivate)] = PyFuncs();
+
                 g_eventMap[wpsapi::DIID_ApplicationEvents4] = events;
             }
         }
