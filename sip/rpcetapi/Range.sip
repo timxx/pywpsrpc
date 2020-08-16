@@ -12,5 +12,8 @@ namespace etapi
 {
     struct Range : public IDispatch /Abstract/
     {
+    %ConvertToSubClassCode
+        sipType = sipType_etapi_IRange;
+    %End
     };
 };

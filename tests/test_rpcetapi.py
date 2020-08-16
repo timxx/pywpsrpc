@@ -36,6 +36,15 @@ def test():
     hr, workbook = workbooks.Add()
     check_call("workbooks.Add", hr, workbook)
 
+    hr, sheet = workbook.get_ActiveSheet()
+    check_call("workbook.get_ActiveSheet", hr, sheet)
+
+    hr, rg = sheet.get_Range("A1")
+    check_call("sheet.get_Range", hr, rg)
+
+    hr = rg.put_Value(RHS="test")
+    check_call("rg.put_Value", hr)
+
     hr, window = app.get_ActiveWindow()
     check_call("app.get_ActiveWindow", hr, window)
 
