@@ -19,37 +19,6 @@ struct IKRpcClient /Abstract/
         return _callPyFunc(pyFuncs, pyPres);
     }
 
-    static HRESULT _PresentationCancelEvent(wppapi::_Presentation *Pres, VARIANT_BOOL *Cancel, const PyFuncs &pyFuncs)
-    {
-        if (pyFuncs.empty())
-            return E_FAIL;
-
-        SIP_BLOCK_THREADS
-
-        PyObject *pyPres = Pres == nullptr ? Py_None : sipConvertFromType(Pres, sipType_wppapi__Presentation, 0);
-        for (auto &pyFunc : pyFuncs)
-        {
-            PyObject *pyCancel = (Cancel && *Cancel) ? Py_True : Py_False;
-            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyPres, pyCancel, nullptr);
-            if (ret)
-            {
-                if (PyBool_Check(ret))
-                {
-                    PyErr_Clear();
-
-                    // shall we break if *Cancel is VARIANT_TRUE?
-                    if (Cancel)
-                        *Cancel = (ret == Py_True) ? VARIANT_TRUE : VARIANT_FALSE;
-                }
-
-                Py_DECREF(ret);
-            }
-        }
-
-        SIP_UNBLOCK_THREADS
-        return S_OK;
-    }
-
     static HRESULT _PresentationSave(wppapi::_Presentation *Pres)
     {
         return _PresentationEvent(Pres, _GET_PY_FUNCS(PresentationSave));
@@ -77,12 +46,14 @@ struct IKRpcClient /Abstract/
 
     static HRESULT _PresentationBeforeClose(wppapi::_Presentation *Pres, VARIANT_BOOL *Cancel)
     {
-        return _PresentationCancelEvent(Pres, Cancel, _GET_PY_FUNCS(PresentationBeforeClose));
+        PyObject *pyPres = _convertFromType(Pres, sipType_wppapi__Presentation);
+        return _doCancelEvent(pyPres, Cancel, _GET_PY_FUNCS(PresentationBeforeClose));
     }
 
     static HRESULT _PresentationBeforeSave(wppapi::_Presentation *Pres, VARIANT_BOOL *Cancel)
     {
-        return _PresentationCancelEvent(Pres, Cancel, _GET_PY_FUNCS(PresentationBeforeSave));
+        PyObject *pyPres = _convertFromType(Pres, sipType_wppapi__Presentation);
+        return _doCancelEvent(pyPres, Cancel, _GET_PY_FUNCS(PresentationBeforeSave));
     }
 
     static HRESULT _PresentationCloseFinal(wppapi::_Presentation *Pres)

@@ -222,14 +222,15 @@ def test_rpcwppapi():
 can_close_wb = False
 
 
-def _onWorkbookBeforeClose(wb, cancel):
-    print("_onWorkbookBeforeClose: ", wb, cancel)
+def _onWorkbookBeforeClose(wb):
+    print("_onWorkbookBeforeClose: ", wb)
     return not can_close_wb
 
 
-def _onWorkbookBeforeSave(wb, saveAsUi, cancel):
-    print("_onWorkbookBeforeSave: ", wb, saveAsUi, cancel)
-    return saveAsUi, not can_close_wb
+def _onWorkbookBeforeSave(wb):
+    print("_onWorkbookBeforeSave: ", wb)
+    # SaveAsUI, Cancel
+    return True, not can_close_wb
 
 
 def _onWorkbookAfterSave(wb, success):

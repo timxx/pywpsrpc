@@ -119,6 +119,40 @@ PyObject* _convertFromType(T *cpp, const sipTypeDef *td, PyObject *transferObj =
     return res;
 }
 
+static HRESULT _doCancelEvent(
+    PyObject *pyObject,
+    VARIANT_BOOL *Cancel,
+    const PyFuncs &pyFuncs)
+{
+    if (pyFuncs.empty())
+        return E_FAIL;
+
+    SIP_BLOCK_THREADS
+
+    for (auto &pyFunc : pyFuncs)
+    {
+        PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyObject, nullptr);
+        if (ret)
+        {
+            if (PyBool_Check(ret))
+            {
+                PyErr_Clear();
+
+                if (Cancel)
+                    *Cancel = (ret == Py_True) ? VARIANT_TRUE : VARIANT_FALSE;
+
+                if (ret == Py_True)
+                    break;
+            }
+
+            Py_DECREF(ret);
+        }
+    }
+
+    SIP_UNBLOCK_THREADS
+    return S_OK;
+}
+
 #else
 #error "This file is intended include for IKRpcClient.sip only"
 #endif // PYWPSRPC_PY_EVENTS_H

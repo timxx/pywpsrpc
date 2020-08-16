@@ -13,40 +13,6 @@ struct IKRpcClient /Abstract/
 %TypeCode
     #include "pyevents.h"
 
-    static HRESULT _CancelEvent(
-        PyObject *pyObject,
-        VARIANT_BOOL *Cancel,
-        const PyFuncs &pyFuncs)
-    {
-        if (pyFuncs.empty())
-            return E_FAIL;
-
-        SIP_BLOCK_THREADS
-
-        for (auto &pyFunc : pyFuncs)
-        {
-            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyObject, nullptr);
-            if (ret)
-            {
-                if (PyBool_Check(ret))
-                {
-                    PyErr_Clear();
-
-                    if (Cancel)
-                        *Cancel = (ret == Py_True) ? VARIANT_TRUE : VARIANT_FALSE;
-
-                    if (ret == Py_True)
-                        break;
-                }
-
-                Py_DECREF(ret);
-            }
-        }
-
-        SIP_UNBLOCK_THREADS
-        return S_OK;
-    }
-
     static HRESULT _DocumentEvent(wpsapi::_Document *Doc, const PyFuncs &pyFuncs)
     {
         PyObject *pyDoc = _convertFromType(Doc, sipType_wpsapi__Document);
@@ -56,7 +22,7 @@ struct IKRpcClient /Abstract/
     static HRESULT _DocumentBeforeClose(wpsapi::_Document *Doc, VARIANT_BOOL *Cancel)
     {
         PyObject *pyDoc = _convertFromType(Doc, sipType_wpsapi__Document);
-        return _CancelEvent(pyDoc, Cancel, _GET_PY_FUNCS(DocumentBeforeClose));
+        return _doCancelEvent(pyDoc, Cancel, _GET_PY_FUNCS(DocumentBeforeClose));
     }
 
     static HRESULT _DocumentBeforeSave(wpsapi::_Document *Doc, VARIANT_BOOL *SaveAsUI, VARIANT_BOOL *Cancel)
@@ -104,7 +70,7 @@ struct IKRpcClient /Abstract/
     static HRESULT _DocumentBeforePrint(wpsapi::_Document *Doc, VARIANT_BOOL *Cancel)
     {
         PyObject *pyDoc = _convertFromType(Doc, sipType_wpsapi__Document);
-        return _CancelEvent(pyDoc, Cancel, _GET_PY_FUNCS(DocumentBeforePrint));
+        return _doCancelEvent(pyDoc, Cancel, _GET_PY_FUNCS(DocumentBeforePrint));
     }
 
     static HRESULT _DocumentChange()
@@ -174,13 +140,13 @@ struct IKRpcClient /Abstract/
     static HRESULT _WindowBeforeDoubleClick(wpsapi::Selection *Sel, VARIANT_BOOL *Cancel)
     {
         PyObject *pySel = _convertFromType(Sel, sipType_wpsapi_Selection);
-        return _CancelEvent(pySel, Cancel, _GET_PY_FUNCS(WindowBeforeDoubleClick));
+        return _doCancelEvent(pySel, Cancel, _GET_PY_FUNCS(WindowBeforeDoubleClick));
     }
 
     static HRESULT _WindowBeforeRightClick(wpsapi::Selection *Sel, VARIANT_BOOL *Cancel)
     {
         PyObject *pySel = _convertFromType(Sel, sipType_wpsapi_Selection);
-        return _CancelEvent(pySel, Cancel, _GET_PY_FUNCS(WindowBeforeRightClick));
+        return _doCancelEvent(pySel, Cancel, _GET_PY_FUNCS(WindowBeforeRightClick));
     }
 
     static HRESULT _WindowSelectionChange(wpsapi::Selection *Sel)

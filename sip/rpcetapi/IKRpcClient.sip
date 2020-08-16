@@ -13,37 +13,6 @@ struct IKRpcClient /Abstract/
 %TypeCode
     #include "pyevents.h"
 
-    static HRESULT _WorkbookCancelEvent(etapi::_Workbook *Wb, VARIANT_BOOL *Cancel, const PyFuncs &pyFuncs)
-    {
-        if (pyFuncs.empty())
-            return E_FAIL;
-
-        SIP_BLOCK_THREADS
-
-        PyObject *pyWb = Wb == nullptr ? Py_None : sipConvertFromType(Wb, sipType_etapi__Workbook, 0);
-        for (auto &pyFunc : pyFuncs)
-        {
-            PyObject *pyCancel = (Cancel && *Cancel) ? Py_True : Py_False;
-            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyWb, pyCancel, nullptr);
-            if (ret)
-            {
-                if (PyBool_Check(ret))
-                {
-                    PyErr_Clear();
-
-                    // shall we break if *Cancel is VARIANT_TRUE?
-                    if (Cancel)
-                        *Cancel = (ret == Py_True) ? VARIANT_TRUE : VARIANT_FALSE;
-                }
-
-                Py_DECREF(ret);
-            }
-        }
-
-        SIP_UNBLOCK_THREADS
-        return S_OK;
-    }
-
     static HRESULT _WorkbookEvent(etapi::_Workbook *Wb, const PyFuncs &pyFuncs)
     {
         PyObject *pyWb = _convertFromType(Wb, sipType_etapi__Workbook);
@@ -58,7 +27,8 @@ struct IKRpcClient /Abstract/
 
     static HRESULT _WorkbookBeforeClose(etapi::_Workbook *Wb, VARIANT_BOOL *Cancel)
     {
-        return _WorkbookCancelEvent(Wb, Cancel, _GET_PY_FUNCS(WorkbookBeforeClose));
+        PyObject *pyWb = _convertFromType(Wb, sipType_etapi__Workbook);
+        return _doCancelEvent(pyWb, Cancel, _GET_PY_FUNCS(WorkbookBeforeClose));
     }
 
     static HRESULT _WorkbookBeforeSave(etapi::_Workbook* Wb, VARIANT_BOOL *SaveAsUI, VARIANT_BOOL *Cancel)
@@ -73,9 +43,7 @@ struct IKRpcClient /Abstract/
         PyObject *pyWb = Wb == nullptr ? Py_None : sipConvertFromType(Wb, sipType_etapi__Workbook, 0);
         for (auto &pyFunc : pyFuncs)
         {
-            PyObject *pySaveAsUI = (SaveAsUI && *SaveAsUI) ? Py_True : Py_False;
-            PyObject *pyCancel = (Cancel && *Cancel) ? Py_True : Py_False;
-            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyWb, pySaveAsUI, pyCancel, nullptr);
+            PyObject *ret = PyObject_CallFunctionObjArgs(pyFunc, pyWb, nullptr);
             if (ret)
             {
                 if (PyTuple_Check(ret))
@@ -88,11 +56,12 @@ struct IKRpcClient /Abstract/
                         *SaveAsUI = (pySaveAsUI == Py_True) ? VARIANT_TRUE : VARIANT_FALSE;
                     }
 
+                    PyObject *pyCancel = PyTuple_GetItem(ret, 1);
                     if (Cancel)
-                    {
-                        PyObject *pyCancel = PyTuple_GetItem(ret, 1);
                         *Cancel = (pyCancel == Py_True) ? VARIANT_TRUE : VARIANT_FALSE;
-                    }
+
+                    if (pyCancel == Py_True)
+                        break;
                 }
 
                 Py_DECREF(ret);
@@ -111,7 +80,8 @@ struct IKRpcClient /Abstract/
 
     static HRESULT _WorkbookBeforePrint(etapi::_Workbook *Wb, VARIANT_BOOL *Cancel)
     {
-        return _WorkbookCancelEvent(Wb, Cancel, _GET_PY_FUNCS(WorkbookBeforePrint));
+        PyObject *pyWb = _convertFromType(Wb, sipType_etapi__Workbook);
+        return _doCancelEvent(pyWb, Cancel, _GET_PY_FUNCS(WorkbookBeforePrint));
     }
 
     static HRESULT _WorkbookNewSheet(etapi::_Workbook *Wb, etapi::_Worksheet *Sh)
