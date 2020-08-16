@@ -68,6 +68,20 @@ class MyWindow(QWidget):
         self._wpsWnd = WpsWindow(self)
         layout.addWidget(self._wpsWnd)
 
+        hbox = QHBoxLayout()
+        hbox.addWidget(QLabel(self.tr("Current Document: "), self))
+        self.lbCurDocName = QLabel(self.tr("<No document>"), self)
+        hbox.addWidget(self.lbCurDocName)
+        hbox.addStretch()
+        layout.addLayout(hbox)
+
+        hbox = QHBoxLayout()
+        hbox.addWidget(QLabel(self.tr("Current Selection: "), self))
+        self.lbCurSelection = QLabel(self.tr("<No selection>"), self)
+        hbox.addWidget(self.lbCurSelection)
+        hbox.addStretch()
+        layout.addLayout(hbox)
+
     def _onOpenWps(self):
         if self._wpsApp:
             return
@@ -92,6 +106,30 @@ class MyWindow(QWidget):
                 self, "Open Wps", "Failed to call getWpsApplication")
             return
 
+        hr = rpc.registerEvent(self._wpsApp,
+                               wpsapi.DIID_ApplicationEvents4,
+                               "WindowBeforeRightClick",
+                               self._onWindowBeforeRightClick)
+
+        hr = rpc.registerEvent(self._wpsApp,
+                               wpsapi.DIID_ApplicationEvents4,
+                               "WindowSelectionChange",
+                               self._onWindowSelectionChange)
+
+        hr = rpc.registerEvent(self._wpsApp,
+                               wpsapi.DIID_ApplicationEvents4,
+                               "DocumentChange",
+                               self._onDocumentChange)
+
+        hr = rpc.registerEvent(self._wpsApp,
+                               wpsapi.DIID_ApplicationEvents4,
+                               "DocumentOpen",
+                               self._onDocumentOpen)
+
+        hr = rpc.registerEvent(self._wpsApp,
+                               wpsapi.DIID_ApplicationEvents4,
+                               "NewDocument",
+                               self._onNewDocument)
         appEx = self._wpsApp.ApplicationEx
         if appEx:
             container = QWidget.createWindowContainer(
@@ -121,6 +159,44 @@ class MyWindow(QWidget):
         if FAILED(hr):
             QMessageBox.critical(
                 self, "Demo", "Failed to call open document '%s'" % filePath)
+
+    def _onWindowBeforeRightClick(self, selection):
+        btn = QMessageBox.question(
+            self,
+            self.tr("About to show popup menu"),
+            self.tr('Press "No" to cancel the popup menu.'))
+
+        return btn == QMessageBox.No
+
+    def _onWindowSelectionChange(self, selection):
+        start = selection.Start
+        end = selection.End
+        if start == end:
+            self.lbCurSelection.setText(self.tr("<No selection>"))
+        else:
+            text = selection.Text
+            if text:
+                fm = self.lbCurDocName.fontMetrics()
+                text = fm.elidedText(text, Qt.ElideRight, self.width() / 2)
+                self.lbCurSelection.setText(text)
+            else:
+                self.lbCurSelection.setText(self.tr("<No text>"))
+
+    def _onDocumentChange(self):
+        text = self.tr("<No document>")
+        if self._wpsApp:
+            docs = self._wpsApp.Documents
+            if docs.Count > 0:
+                doc = self._wpsApp.ActiveDocument
+                text = doc.Name
+
+        self.lbCurDocName.setText(text)
+
+    def _onDocumentOpen(self, doc):
+        self._onDocumentChange()
+
+    def _onNewDocument(self, doc):
+        self._onDocumentChange()
 
     def closeEvent(self, event):
         if self._wpsApp:
