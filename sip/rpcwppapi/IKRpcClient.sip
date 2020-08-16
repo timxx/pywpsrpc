@@ -107,6 +107,38 @@ struct IKRpcClient /Abstract/
         return _callPyFunc(_GET_PY_FUNCS(DocumentAfterPrint), pyPres, pyPageEx);
     }
 
+    static HRESULT _WindowActivate(wppapi::_Presentation *Pres, wppapi::DocumentWindow *Wn)
+    {
+        PyObject *pyPres = _convertFromType(Pres, sipType_wppapi__Presentation);
+        PyObject *pyWn = _convertFromType(Wn, sipType_wppapi_DocumentWindow);
+        return _callPyFunc(_GET_PY_FUNCS(WindowActivate), pyPres, pyWn);
+    }
+
+    static HRESULT _WindowDeactivate(wppapi::_Presentation *Pres, wppapi::DocumentWindow *Wn)
+    {
+        PyObject *pyPres = _convertFromType(Pres, sipType_wppapi__Presentation);
+        PyObject *pyWn = _convertFromType(Wn, sipType_wppapi_DocumentWindow);
+        return _callPyFunc(_GET_PY_FUNCS(WindowDeactivate), pyPres, pyWn);
+    }
+
+    static HRESULT _WindowBeforeDoubleClick(wppapi::Selection *Sel, VARIANT_BOOL *Cancel)
+    {
+        PyObject *pySel = _convertFromType(Sel, sipType_wppapi_Selection);
+        return _doCancelEvent(pySel, Cancel, _GET_PY_FUNCS(WindowBeforeDoubleClick));
+    }
+
+    static HRESULT _WindowBeforeRightClick(wppapi::Selection *Sel, VARIANT_BOOL *Cancel)
+    {
+        PyObject *pySel = _convertFromType(Sel, sipType_wppapi_Selection);
+        return _doCancelEvent(pySel, Cancel, _GET_PY_FUNCS(WindowBeforeRightClick));
+    }
+
+    static HRESULT _WindowSelectionChange(wppapi::Selection *Sel)
+    {
+        PyObject *pySel = _convertFromType(Sel, sipType_wppapi_Selection);
+        return _callPyFunc(_GET_PY_FUNCS(WindowSelectionChange), pySel);
+    }
+
     #define _FUNC(name) std::make_pair(__X(#name), (void *)_##name)
     static void* _registerFunc(const IID &iid, const BSTR eventName, PyObject *pyFunc)
     {
@@ -127,6 +159,13 @@ struct IKRpcClient /Abstract/
                 events[_FUNC(PresentationOpen)] = PyFuncs();
                 events[_FUNC(PresentationPrint)] = PyFuncs();
                 events[_FUNC(PresentationSync)] = PyFuncs();
+
+                events[_FUNC(WindowActivate)] = PyFuncs();
+                events[_FUNC(WindowDeactivate)] = PyFuncs();
+                events[_FUNC(WindowBeforeDoubleClick)] = PyFuncs();
+                events[_FUNC(WindowBeforeRightClick)] = PyFuncs();
+                events[_FUNC(WindowSelectionChange)] = PyFuncs();
+
                 g_eventMap[wppapi::IID_EApplication] = events;
             }
 

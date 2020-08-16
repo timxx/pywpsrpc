@@ -200,6 +200,25 @@ def test_rpcwppapi():
                            "NewPresentation",
                            _onNewPresentation)
 
+    def _onWindowActivate(doc, window):
+        ss = {wppapi.ppWindowNormal: "ppWindowNormal",
+              wppapi.ppWindowMinimized: "ppWindowMinimized",
+              wppapi.ppWindowMaximized: "ppWindowMaximized"}
+        print("_onWindowActivate:", window.Caption, ss[window.WindowState])
+
+    hr = rpc.registerEvent(app.rpc_object,
+                           wppapi.IID_EApplication,
+                           "WindowActivate",
+                           _onWindowActivate)
+
+    def _onWindowDeactivate(doc, window):
+        print("_onWindowDeactivate:", window.Caption)
+
+    hr = rpc.registerEvent(app.rpc_object,
+                           wppapi.IID_EApplication,
+                           "WindowDeactivate",
+                           _onWindowDeactivate)
+
     appEx = app.ApplicationEx
     hr = rpc.registerEvent(appEx.rpc_object,
                            wpsapiex.DIID_ApplicationEventsEx,
