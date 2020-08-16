@@ -12,5 +12,8 @@ namespace etapi
 {
     struct Window : public IDispatch /Abstract/
     {
+    %ConvertToSubClassCode
+        sipType = sipType_etapi_IWindow;
+    %End
     };
 };

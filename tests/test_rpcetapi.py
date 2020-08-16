@@ -36,6 +36,12 @@ def test():
     hr, workbook = workbooks.Add()
     check_call("workbooks.Add", hr, workbook)
 
+    hr, window = app.get_ActiveWindow()
+    check_call("app.get_ActiveWindow", hr, window)
+
+    hr, winType = window.get_Type()
+    check_call("window.get_Type", hr, winType)
+
     props = workbook.CustomDocumentProperties
     print("Doc Props:")
     for prop in RpcIter(props):

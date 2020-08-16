@@ -242,12 +242,12 @@ can_close_wb = False
 
 
 def _onWorkbookBeforeClose(wb):
-    print("_onWorkbookBeforeClose: ", wb)
+    print("_onWorkbookBeforeClose: ", wb.Name)
     return not can_close_wb
 
 
 def _onWorkbookBeforeSave(wb):
-    print("_onWorkbookBeforeSave: ", wb)
+    print("_onWorkbookBeforeSave: ", wb.Name)
     # SaveAsUI, Cancel
     return True, not can_close_wb
 
@@ -306,7 +306,10 @@ def test_rpcetapi():
                            _onWorkbookOpen)
 
     def _onWindowActivate(wb, window):
-        print("_onWindowActivate:", wb.Name)
+        ss = {etapi.xlMaximized: "xlMaximized",
+              etapi.xlMinimized: "xlMinimized",
+              etapi.xlNormal: "xlNormal"}
+        print("_onWindowActivate:", window.Caption, ss[window.WindowState])
 
     hr = rpc.registerEvent(app.rpc_object,
                            etapi.DIID_AppEvents,
@@ -314,7 +317,7 @@ def test_rpcetapi():
                            _onWindowActivate)
 
     def _onWindowDeactivate(wb, window):
-        print("_onWindowDeactivate:", wb.Name)
+        print("_onWindowDeactivate:", wb.Name, window.Caption)
 
     hr = rpc.registerEvent(app.rpc_object,
                            etapi.DIID_AppEvents,
