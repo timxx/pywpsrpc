@@ -100,6 +100,27 @@ struct IKRpcClient /Abstract/
         return _WorkbookEvent(Wb, _GET_PY_FUNCS(WorkbookOpen));
     }
 
+    static HRESULT _WindowActivate(etapi::_Workbook *Wb, etapi::Window *Wn)
+    {
+        PyObject *pyWb = _convertFromType(Wb, sipType_etapi__Workbook);
+        PyObject *pyWn = _convertFromType(Wn, sipType_etapi_Window);
+        return _callPyFunc(_GET_PY_FUNCS(WindowActivate), pyWb, pyWn);
+    }
+
+    static HRESULT _WindowDeactivate(etapi::_Workbook *Wb, etapi::Window *Wn)
+    {
+        PyObject *pyWb = _convertFromType(Wb, sipType_etapi__Workbook);
+        PyObject *pyWn = _convertFromType(Wn, sipType_etapi_Window);
+        return _callPyFunc(_GET_PY_FUNCS(WindowDeactivate), pyWb, pyWn);
+    }
+
+    static HRESULT _WindowResize(etapi::_Workbook *Wb, etapi::Window *Wn)
+    {
+        PyObject *pyWb = _convertFromType(Wb, sipType_etapi__Workbook);
+        PyObject *pyWn = _convertFromType(Wn, sipType_etapi_Window);
+        return _callPyFunc(_GET_PY_FUNCS(WindowResize), pyWb, pyWn);
+    }
+
     #define _FUNC(name) std::make_pair(__X(#name), (void *)_##name)
     static void* _registerFunc(const IID &iid, const BSTR eventName, PyObject *pyFunc)
     {
@@ -113,6 +134,11 @@ struct IKRpcClient /Abstract/
             events[_FUNC(WorkbookNewSheet)] = PyFuncs();
             events[_FUNC(NewWorkbook)] = PyFuncs();
             events[_FUNC(WorkbookOpen)] = PyFuncs();
+
+            events[_FUNC(WindowActivate)] = PyFuncs();
+            events[_FUNC(WindowDeactivate)] = PyFuncs();
+            events[_FUNC(WindowResize)] = PyFuncs();
+
             g_eventMap[etapi::DIID_AppEvents] = events;
         }
 

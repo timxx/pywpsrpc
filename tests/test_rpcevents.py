@@ -305,6 +305,22 @@ def test_rpcetapi():
                            "WorkbookOpen",
                            _onWorkbookOpen)
 
+    def _onWindowActivate(wb, window):
+        print("_onWindowActivate:", wb.Name)
+
+    hr = rpc.registerEvent(app.rpc_object,
+                           etapi.DIID_AppEvents,
+                           "WindowActivate",
+                           _onWindowActivate)
+
+    def _onWindowDeactivate(wb, window):
+        print("_onWindowDeactivate:", wb.Name)
+
+    hr = rpc.registerEvent(app.rpc_object,
+                           etapi.DIID_AppEvents,
+                           "WindowDeactivate",
+                           _onWindowDeactivate)
+
     wb = app.Workbooks.Add()
     # the doc should not be saved
     wb.SaveAs("test.xls")
