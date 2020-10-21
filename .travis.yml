@@ -9,6 +9,7 @@ python:
   - "3.6"
   - "3.7"
   - "3.8"
+  - "3.9-dev"
 
 cache:
   directories:
@@ -28,7 +29,7 @@ addons:
 
 before_install:
   - test -d "$HOME/.cache/wpssdk" || mkdir -p "$HOME/.cache/wpssdk"
-  - test -f "$HOME/.cache/wpssdk/wps.deb" || wget http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9080/wps-office_11.1.0.9080.XA_amd64.deb -O $HOME/.cache/wpssdk/wps.deb
+  - test -f "$HOME/.cache/wpssdk/wps.deb" || wget http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9711/wps-office_11.1.0.9711.XA_amd64.deb -O $HOME/.cache/wpssdk/wps.deb
   - dpkg -l wps-office || sudo dpkg -i $HOME/.cache/wpssdk/wps.deb
 
 install:
