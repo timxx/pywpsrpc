@@ -144,3 +144,7 @@ app.Quit(wpsapi.wdDoNotSaveChanges)
 [文字文档互转](examples/rpcwpsapi/convertto)
 
 [WPS嵌入第三方进程](examples/rpcwpsapi/embedded)
+
+## 在服务器上运行
+[点我查看](https://github.com/timxx/pywpsrpc/wiki/Run-on-Server)
+
