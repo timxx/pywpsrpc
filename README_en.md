@@ -137,3 +137,7 @@ app.Quit(wpsapi.wdDoNotSaveChanges)
 [Word document format convertor](examples/rpcwpsapi/convertto)
 
 [Embed WPS into self process](examples/rpcwpsapi/embedded)
+
+## Run on Server
+[Click here](https://github.com/timxx/pywpsrpc/wiki/Run-on-Server)
+
