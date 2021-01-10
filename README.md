@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/timxx/pywpsrpc.svg?branch=master)](https://travis-ci.org/timxx/pywpsrpc)
 [![PyPI version](https://img.shields.io/pypi/v/pywpsrpc.svg)](https://pypi.org/project/pywpsrpc/)
-[![Python version](https://img.shields.io/badge/python-3.5+-green.svg)](http://python.org/)
+[![Python version](https://img.shields.io/badge/python-3.6+-green.svg)](http://python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 WPS Office for Linux二次开发C++接口Python绑定.
@@ -28,10 +28,10 @@ Copyright @ 2012-2019, Kingsoft office,All rights reserved.
 
 
 ## 依赖
-  - Python 3.5+
+  - Python 3.6+
   - Qt5 (C++ SDK依赖)
   - WPS Office for Linux 11.1.0.9080+
-  - sip 5.0+ (仅编译)
+  - sip 6.0+ (仅编译)
   - qmake (仅编译)
   - g++ (仅编译)
   - 桌面环境（WPS运行需要）
