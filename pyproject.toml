@@ -1,5 +1,5 @@
 [build-system]
-requires = ["sip >=5, <6"]
+requires = ["sip >=6"]
 build-backend = "sipbuild.api"
 
 [tool.sip.metadata]

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2021 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -134,5 +134,10 @@ typedef double DATE;
         sipUnicodeWrite(kind, data, i, buffer[i]);
 
     return obj;
+%End
+%ReleaseCode
+    if (*sipCpp)
+        _SysFreeString(*sipCpp);
+    delete sipCpp;
 %End
 };
