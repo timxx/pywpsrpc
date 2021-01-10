@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2021 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -302,9 +302,9 @@ QtApp::QtApp(PyObject *args)
                 break;
             }
         }
-        else if (SIPBytes_Check(item))
+        else if (PyBytes_Check(item))
         {
-            arg = strdup(SIPBytes_AsString(item));
+            arg = strdup(PyBytes_AsString(item));
         }
 
         argv[i] = arg;

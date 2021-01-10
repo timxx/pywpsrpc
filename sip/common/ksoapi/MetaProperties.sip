@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2021 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -33,7 +33,7 @@ namespace ksoapi
         virtual HRESULT get_Count(
             long *pc /Out/) = 0;
 
-        int __len__() const;
+        Py_ssize_t __len__() const;
         %MethodCode
             long count = 0;
             if (sipCpp->get_Count(&count) != S_OK)
