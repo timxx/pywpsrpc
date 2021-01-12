@@ -22,6 +22,7 @@ var_pattern = re.compile(
 class PyWpsRpcProject(sipbuild.Project):
     def __init__(self):
         super().__init__(dunder_init=True)
+        self.abi_version = "12"
 
         self.bindings_factories = [RpcCommon, RpcWpsApi, RpcWppApi, RpcEtApi]
         self.sdk_inc_dir = os.path.join(self.root_dir, "include")
