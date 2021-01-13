@@ -4,7 +4,7 @@ build-backend = "sipbuild.api"
 
 [tool.sip.metadata]
 name = "pywpsrpc"
-version = "2.2.0"
+version = "2.3.0"
 summary = "Python bindings for the WPS Office RPC"
 home-page = "https://github.com/timxx/pywpsrpc"
 author = "Weitian Leung"
