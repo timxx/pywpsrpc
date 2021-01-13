@@ -2,6 +2,7 @@
 
 import sys
 import os
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + "/../build")
 from pywpsrpc import rpcwpsapi
@@ -35,6 +36,9 @@ def test():
 
     hr, docs = wpsApp.get_Documents()
     check_call("get_Documents", hr, docs)
+
+    # FIXME: some env may fails get_Count (returns 0)
+    time.sleep(0.5)
 
     hr, count = docs.get_Count()
     check_call("get_Count", hr, count)
