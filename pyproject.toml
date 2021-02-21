@@ -13,3 +13,9 @@ license = "MIT"
 description-file = "README.md"
 description-content-type = "text/markdown"
 platform = "Linux"
+
+[tool.sip.project]
+sdist-excludes = [".gitignore", ".travis.yml", "*.tar.gz",
+    ".git/*", ".git/*/*", ".git/*/*/*", ".git/*/*/*/*",
+    ".git/*/*/*/*/*", ".github/*/*", ".vscode/*",
+    "build/*", "build/*/*", "build/*/*/*", "build/.*"]
