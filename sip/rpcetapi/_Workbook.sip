@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2021 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -352,10 +352,10 @@ namespace etapi
         virtual HRESULT RefreshAll() = 0;
 
         virtual HRESULT Reply(
-            long lcid) = 0;
+            long lcid = 0) = 0;
 
         virtual HRESULT ReplyAll(
-            long lcid) = 0;
+            long lcid = 0) = 0;
 
         virtual HRESULT RemoveUser(
             long Index) = 0;
@@ -365,7 +365,7 @@ namespace etapi
             long *RHS /Out/) = 0;
 
         virtual HRESULT Route(
-            long lcid) = 0;
+            long lcid = 0) = 0;
 
         virtual HRESULT get_Routed(
             long lcid,
@@ -379,7 +379,7 @@ namespace etapi
             long lcid) = 0;
 
         virtual HRESULT Save(
-            long lcid) = 0;
+            long lcid = 0) = 0;
 
         virtual HRESULT _SaveAs(
             VARIANT Filename = argMissing2(),
