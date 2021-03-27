@@ -31,7 +31,7 @@ def test():
     check_call("rpc.getProcessPid", hr, pid)
 
     hr, workbooks = app.get_Workbooks()
-    check_call("app.get_Workbooks", hr ,workbooks)
+    check_call("app.get_Workbooks", hr, workbooks)
 
     hr, workbook = workbooks.Add()
     check_call("workbooks.Add", hr, workbook)
@@ -44,6 +44,9 @@ def test():
 
     hr = rg.put_Value(RHS="test")
     check_call("rg.put_Value", hr)
+
+    rg = sheet.Range("A1")
+    assert(rg.Value == "test")
 
     hr, window = app.get_ActiveWindow()
     check_call("app.get_ActiveWindow", hr, window)

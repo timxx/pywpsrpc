@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2021 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -346,6 +346,21 @@ namespace etapi
             VARIANT Cell1,
             VARIANT Cell2 = argMissing2(),
             Range **RHS /Out/ = 0) = 0;
+
+        etapi::Range* Range(
+            VARIANT Cell1,
+            VARIANT Cell2 = argMissing2());
+        %MethodCode
+            etapi::Range *prop = nullptr;
+            HRESULT hr = sipCpp->get_Range(*a0, *a1, &prop);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Range()' failed with 0x%x", hr);
+                return nullptr;
+            }
+            sipRes = prop;
+        %End
 
         virtual HRESULT get_Rows(
             Range **RHS /Out/) = 0;
