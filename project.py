@@ -441,8 +441,9 @@ class RpcApiBuilder(sipbuild.Builder):
         sub_dir = self.project.build_dir + "/sip"
         os.makedirs(sub_dir, exist_ok=True)
 
+        parts = self.project.abi_version.split('.')
         sources = sipbuild.module.copy_nonshared_sources(
-            self.project.abi_version, sub_dir)
+            parts[0], sub_dir)
 
         # use copy_sip_h instead?
         shutil.copy(self.project.build_dir + "/sip.h", sub_dir)
