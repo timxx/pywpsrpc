@@ -1,0 +1,3 @@
+[submodule "wpsrpc-sdk"]
+	path = wpsrpc-sdk
+	url = git@github.com:timxx/wpsrpc-sdk.git
