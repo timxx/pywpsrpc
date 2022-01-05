@@ -14,12 +14,6 @@ WPS Office for Linux二次开发C++接口Python绑定.
 WPS二次开发接口允许开发者通过给定的接口来调起WPS并执行指定的任务，
 比如你可以打开、编辑然后保存文档，转换文档格式等文档自动化操作，又或者将WPS嵌入到自己的程序、进行功能扩展等。
 
-
-C++ SDK头文件拷贝自[wps_cpp](https://zouyingfeng.coding.net/public/wps/wps/git/files/master/cpp)，且无任何修改：
-```
-Copyright @ 2012-2019, Kingsoft office,All rights reserved.
-```
-
 关于详细的接口文档，可参考WPS官方的开发网站[https://open.wps.cn/docs/office](https://open.wps.cn/docs/office)
 或参考VBA官方文档[https://docs.microsoft.com/en-us/office/vba/api/overview/](https://docs.microsoft.com/en-us/office/vba/api/overview/)。
 
