@@ -13,6 +13,7 @@ import os
 import sys
 import shutil
 import re
+import platform
 
 
 var_pattern = re.compile(
@@ -24,14 +25,27 @@ class PyWpsRpcProject(sipbuild.Project):
         super().__init__(dunder_init=True)
         self.abi_version = "12"
 
-        self.bindings_factories = [RpcCommon, RpcWpsApi, RpcWppApi, RpcEtApi]
-        self.sdk_inc_dir = os.path.join(self.root_dir, "include")
+        sdk_dir = os.path.join(self.root_dir, "wpsrpc-sdk")
 
-        # For Arch Linux
-        if os.path.exists("/usr/lib/office6"):
-            self.sdk_lib_dir = "/usr/lib/office6"
-        else:
-            self.sdk_lib_dir = "/opt/kingsoft/wps-office/office6"
+        self.bindings_factories = [RpcCommon, RpcWpsApi, RpcWppApi, RpcEtApi]
+        self.sdk_inc_dir = os.path.join(sdk_dir, "include")
+        self.cxx_inc_dir = os.path.join(self.root_dir, "include")
+
+        if not os.path.exists(self.sdk_inc_dir) or not os.path.isdir(self.sdk_inc_dir):
+            raise sipbuild.UserException(
+                "Missing sdk, please checkout the 'wpsrpc-sdk' submodule and try again")
+
+        # always try system's one first
+        dirs = ["/opt/kingsoft/wps-office/office6",
+                "/usr/lib/office6",  # for Arch Linux
+                sdk_dir + "/lib/" + platform.machine()
+                ]
+
+        self.sdk_lib_dir = None
+        for dir in dirs:
+            if os.path.exists(dir) and os.path.isdir(dir):
+                self.sdk_lib_dir = dir
+                break
 
     def apply_nonuser_defaults(self, tool):
         if self.builder_factory is None:
@@ -180,8 +194,11 @@ class RpcCommon(RpcApiBindings):
 class RpcWpsApi(RpcApiBindings):
 
     def __init__(self, project):
-        dirs = [project.sdk_inc_dir, project.sdk_inc_dir + "/common"]
-        dirs.append(project.sdk_inc_dir + "/wps")
+        dirs = [project.sdk_inc_dir,
+                project.sdk_inc_dir + "/common",
+                project.sdk_inc_dir + "/wps",
+                project.cxx_inc_dir]
+
         super().__init__(project,
                          "rpcwpsapi",
                          include_dirs=dirs,
@@ -194,8 +211,11 @@ class RpcWpsApi(RpcApiBindings):
 class RpcWppApi(RpcApiBindings):
 
     def __init__(self, project):
-        dirs = [project.sdk_inc_dir, project.sdk_inc_dir + "/common"]
-        dirs.append(project.sdk_inc_dir + "/wpp")
+        dirs = [project.sdk_inc_dir,
+                project.sdk_inc_dir + "/common",
+                project.sdk_inc_dir + "/wpp",
+                project.cxx_inc_dir]
+
         super().__init__(project,
                          "rpcwppapi",
                          include_dirs=dirs,
@@ -207,8 +227,11 @@ class RpcWppApi(RpcApiBindings):
 class RpcEtApi(RpcApiBindings):
 
     def __init__(self, project):
-        dirs = [project.sdk_inc_dir, project.sdk_inc_dir + "/common"]
-        dirs.append(project.sdk_inc_dir + "/et")
+        dirs = [project.sdk_inc_dir,
+                project.sdk_inc_dir + "/common",
+                project.sdk_inc_dir + "/et",
+                project.cxx_inc_dir]
+
         super().__init__(project,
                          "rpcetapi",
                          include_dirs=dirs,
