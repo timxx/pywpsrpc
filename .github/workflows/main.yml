@@ -3,13 +3,14 @@ name: Build and upload package
 on:
   push:
     branches: [ master ]
+    tags:
+      - '*'
   pull_request:
     branches: [ master ]
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     strategy:
       fail-fast: false
       matrix:
@@ -27,19 +28,22 @@ jobs:
     - name: Set up GCC
       uses: egor-tensin/setup-gcc@v1
       with:
-        version: latest
+        version: 4.8
         platform: x64
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install sip
-        # TODO: qt & wps
+        python -m pip install sip twine
     - name: Build
       run: |
         sip-sdist
-        sip-wheel
+        sip-wheel --verbose
     - name: Upload
+      if: ${{ github.ref_type == 'tag' }}
+      env:
+        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        # TODO: upload
+          twine upload --skip-existing pywpsrpc-*.tar.gz pywpsrpc-*.whl
