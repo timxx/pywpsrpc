@@ -17,5 +17,6 @@ platform = "Linux"
 [tool.sip.project]
 sdist-excludes = [".gitignore", ".travis.yml", "*.tar.gz",
     ".git/*", ".git/*/*", ".git/*/*/*", ".git/*/*/*/*",
-    ".git/*/*/*/*/*", ".github/*/*", ".vscode/*",
+    ".git/*/*/*/*/*", ".git/*/*/*/*/*/*", ".git/*/*/*/*/*/*/*",
+    ".github/*/*", ".vscode/*", ".gitmodules", "wpsrpc-sdk/.git",
     "build/*", "build/*/*", "build/*/*/*", "build/.*"]
