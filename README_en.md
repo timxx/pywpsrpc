@@ -15,8 +15,10 @@ To make it simple, it means you can use the rpc (api) get working with WPS Offic
 open, edit and save documents,
 extend the WPS Office functionals etc.
 
-For full API references, go to [https://open.wps.cn/docs/office](https://open.wps.cn/docs/office)
-or [https://docs.microsoft.com/en-us/office/vba/api/overview/](https://docs.microsoft.com/en-us/office/vba/api/overview/).
+For full API references, go to
+
+- WPS doc: <https://open.wps.cn/docs/client/wpsLoad>
+- VBA doc: <https://docs.microsoft.com/en-us/office/vba/api/overview/>
 
 
 For pywpsrpc document, go to the [wiki](https://github.com/timxx/pywpsrpc/wiki) page.
