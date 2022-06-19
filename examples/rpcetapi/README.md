@@ -10,5 +10,6 @@ For example:
 et_convert.py --format "pdf" test.xlsx
 ```
 
+![](https://fastly.jsdelivr.net/gh/qbmzc/images/2022/202206190956257.png)
 
 [open.wps.cn](https://open.wps.cn/docs/client/wpsLoad)
