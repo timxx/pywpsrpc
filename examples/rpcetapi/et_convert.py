@@ -24,6 +24,8 @@ formats = {
     "pdf": etapi.XlFixedFormatType.xlTypePDF,
 }
 
+pid = None
+
 
 class ConvertException(Exception):
 
@@ -47,6 +49,10 @@ def convert_to(paths, format, abort_on_fails=False):
     if hr != S_OK:
         raise ConvertException("Can't get the application", hr)
 
+    hr, pid = rpc.getProcessPid()
+    if hr != S_OK:
+        raise ConvertException("Can't  get the PID", hr)
+    print("PID:{}".format(pid))
     # we don't need the gui
     app.Visible = False
 
@@ -110,14 +116,13 @@ def main():
     qApp = QtApp(sys.argv)
     try:
         convert_to(args.path, args.format, args.abort)
-        print("covert over")
+        print("conversion completed")
     except Exception as e:
         print(e)
     finally:
-        # ubuntu
-        # apt install psmisc
-        print("kill all et")
-        subprocess.call("killall -9 et", shell=True)
+        if pid is not None:
+            print("kill et")
+            subprocess.call("kill -9 {}".format(pid), shell=True)
 
 
 if __name__ == "__main__":

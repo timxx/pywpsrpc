@@ -17,12 +17,12 @@ import sys
 import argparse
 
 from pywpsrpc.rpcwppapi import (createWppRpcInstance, wppapi)
-from pywpsrpc import common
 from pywpsrpc.common import (S_OK, QtApp)
 
 formats = {
     "pdf": wppapi.PpSaveAsFileType.ppSaveAsPDF,
 }
+pid = None
 
 
 class ConvertException(Exception):
@@ -38,25 +38,18 @@ ErrCode: {}
 """.format(self.text, hex(self.hr & 0xFFFFFFFF))
 
 
-def check_call(funcName, hr, value=None):
-    if not common.SUCCEEDED(hr):
-        print("call {} failed with code: {}".format(funcName, hr))
-        sys.exit(-1)
-    if value != None:
-        print("{}: {}".format(funcName, value))
-    else:
-        print("{}: <ok>".format(funcName))
-
-
 def convert_to(paths, format, abort_on_fails=False):
     hr, rpc = createWppRpcInstance()
     if hr != S_OK:
         raise ConvertException("Can't create the rpc instance", hr)
-
     hr, app = rpc.getWppApplication()
     if hr != S_OK:
         raise ConvertException("Can't get the application", hr)
 
+    hr, pid = rpc.getProcessPid()
+    if hr != S_OK:
+        raise ConvertException("Can't  get the PID", hr)
+    print("PID:{}".format(pid))
     # we don't need the gui
     # Call 'put_Visible()' failed with 0x80010105
     # app.Visible = wppapi.MsoTriState.msoFalse
@@ -92,7 +85,6 @@ def convert_file(file, docs, format):
     # you have to handle if the new_file already exists
     new_file = out_dir + "/" + os.path.splitext(os.path.basename(file))[0] + "." + format
     ret = doc.SaveAs(new_file, formats[format])
-
     # always close the doc
     doc.Close()
 
@@ -121,14 +113,13 @@ def main():
     qApp = QtApp(sys.argv)
     try:
         convert_to(args.path, args.format, args.abort)
-        print("covert over")
+        print("conversion completed")
     except Exception as e:
         print(e)
     finally:
-        # ubuntu
-        # apt install psmisc
-        print("kill all wpp")
-        subprocess.call("killall -9 wpp", shell=True)
+        if pid is not None:
+            print("kill wpp,pid {}".format(pid))
+            subprocess.call("kill -9 {}".format(pid), shell=True)
 
 
 if __name__ == "__main__":
