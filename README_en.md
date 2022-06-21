@@ -131,8 +131,12 @@ app.Quit(wpsapi.wdDoNotSaveChanges)
 
 ## Examples
 
-[Word document format convertor](examples/rpcwpsapi/convertto)
+### Document Format Converter
+ - [WPS Writer](examples/rpcwpsapi/convertto)
+ - [WPS Presentation](examples/rpcwppapi/wpp_convert.py)
+ - [WPS Spreadsheets](examples/rpcetapi/et_convert.py)
 
+### Embedded
 [Embed WPS into self process](examples/rpcwpsapi/embedded)
 
 ## Run on Server
