@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2022 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -487,7 +487,6 @@ typedef float single;
 %Include DialogSheet.sip
 %Include DialogSheets.sip
 %Include Worksheets.sip
-%Include PageSetup.sip
 %Include Names.sip
 %Include Name.sip
 %Include ChartObject.sip
@@ -768,6 +767,13 @@ namespace etapi
     {
     %ConvertToSubClassCode
         sipType = sipType_etapi__Worksheet;
+    %End
+    };
+
+    class PageSetup /Abstract,NoDefaultCtors/
+    {
+    %ConvertToSubClassCode
+        sipType = sipType_etapi_IPageSetup;
     %End
     };
 
