@@ -22,8 +22,8 @@ from pywpsrpc.common import (S_OK, QtApp)
 formats = {
     "pdf": wppapi.PpSaveAsFileType.ppSaveAsPDF,
 }
-pid = None
 
+pid = None
 
 class ConvertException(Exception):
 
@@ -45,7 +45,7 @@ def convert_to(paths, format, abort_on_fails=False):
     hr, app = rpc.getWppApplication()
     if hr != S_OK:
         raise ConvertException("Can't get the application", hr)
-
+    global pid
     hr, pid = rpc.getProcessPid()
     if hr != S_OK:
         raise ConvertException("Can't  get the PID", hr)
