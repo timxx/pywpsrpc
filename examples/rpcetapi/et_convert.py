@@ -48,7 +48,7 @@ def convert_to(paths, format, abort_on_fails=False):
     hr, app = rpc.getEtApplication()
     if hr != S_OK:
         raise ConvertException("Can't get the application", hr)
-
+    global pid
     hr, pid = rpc.getProcessPid()
     if hr != S_OK:
         raise ConvertException("Can't  get the PID", hr)
