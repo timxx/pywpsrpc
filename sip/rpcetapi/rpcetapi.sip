@@ -648,7 +648,6 @@ typedef float single;
 %Include Ranges.sip
 %Include HeaderFooter.sip
 %Include Page.sip
-%Include Pages.sip
 %Include ServerViewableItems.sip
 %Include TableStyleElement.sip
 %Include TableStyleElements.sip
@@ -774,6 +773,13 @@ namespace etapi
     {
     %ConvertToSubClassCode
         sipType = sipType_etapi_IPageSetup;
+    %End
+    };
+
+    class Pages /Abstract,NoDefaultCtors/
+    {
+    %ConvertToSubClassCode
+        sipType = sipType_etapi_IPages;
     %End
     };
 
