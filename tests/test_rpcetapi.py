@@ -13,20 +13,23 @@ from pywpsrpc.utils import RpcIter
 
 class TestRpcEtApi(unittest.TestCase):
 
+    def setUp(self):
+        super().setUp()
+        _, self.rpc = rpcetapi.createEtRpcInstance()
+        _, self.app = self.rpc.getEtApplication()
+
+    def tearDown(self):
+        self.app.Quit()
+        super().tearDown()
+
     def check_call(self, funcName, hr, value=None):
         self.assertEqual(hr, common.S_OK, funcName)
 
-    def test(self, ):
-        hr, rpc = rpcetapi.createEtRpcInstance()
-        self.check_call("rpcetapi.createEtRpcInstance", hr, rpc)
-
-        hr, app = rpc.getEtApplication()
-        self.check_call("rpc.getEtApplication", hr, app)
-
-        hr, pid = rpc.getProcessPid()
+    def test(self):
+        hr, pid = self.rpc.getProcessPid()
         self.check_call("rpc.getProcessPid", hr, pid)
 
-        hr, workbooks = app.get_Workbooks()
+        hr, workbooks = self.app.get_Workbooks()
         self.check_call("app.get_Workbooks", hr, workbooks)
 
         hr, workbook = workbooks.Add()
@@ -44,7 +47,7 @@ class TestRpcEtApi(unittest.TestCase):
         rg = sheet.Range("A1")
         self.assertEqual(rg.Value, "test")
 
-        hr, window = app.get_ActiveWindow()
+        hr, window = self.app.get_ActiveWindow()
         self.check_call("app.get_ActiveWindow", hr, window)
 
         hr, winType = window.get_Type()
@@ -61,7 +64,18 @@ class TestRpcEtApi(unittest.TestCase):
         hr = workbook.Close(False)
         self.check_call("workbook.Close", hr)
 
-        app.Quit()
+    def test_pagesetup(self):
+        _, workbook = self.app.Workbooks.Add()
+        ps = workbook.ActiveSheet.PageSetup
+        self.assertEqual(ps.Pages.Count, 0)
+
+        ps.FitToPagesTall = True
+        self.assertTrue(ps.FitToPagesTall)
+
+        ps.FitToPagesWide = False
+        self.assertFalse(ps.FitToPagesWide)
+
+        workbook.Close(False)
 
 
 if __name__ == "__main__":
