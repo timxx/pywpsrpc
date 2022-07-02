@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2022 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -211,12 +211,8 @@ typedef float single;
 %Include ShapeNodes.sip
 %Include TextEffectFormat.sip
 %Include ThreeDFormat.sip
-%Include ApplicationEvents.sip
-%Include DocumentEvents.sip
-%Include OCXEvents.sip
 %Include IApplicationEvents.sip
 %Include IApplicationEvents2.sip
-%Include ApplicationEvents2.sip
 %Include EmailAuthor.sip
 %Include EmailOptions.sip
 %Include EmailSignature.sip
@@ -253,7 +249,6 @@ typedef float single;
 %Include TaskPane.sip
 %Include TaskPanes.sip
 %Include IApplicationEvents3.sip
-%Include ApplicationEvents3.sip
 %Include SmartTagAction.sip
 %Include SmartTagActions.sip
 %Include SmartTagRecognizer.sip
@@ -281,8 +276,6 @@ typedef float single;
 %Include Editors.sip
 %Include Editor.sip
 %Include IApplicationEvents4.sip
-%Include ApplicationEvents4.sip
-%Include DocumentEvents2.sip
 %Include Source.sip
 %Include Sources.sip
 %Include Bibliography.sip
