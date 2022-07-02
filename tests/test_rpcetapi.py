@@ -77,6 +77,12 @@ class TestRpcEtApi(unittest.TestCase):
 
         workbook.Close(False)
 
+    def test_querytable(self):
+        _, workbook = self.app.Workbooks.Add()
+        sheet = workbook.ActiveSheet
+        self.assertEqual(sheet.QueryTables.Count, 0)
+        workbook.Close(False)
+
 
 if __name__ == "__main__":
     unittest.main()

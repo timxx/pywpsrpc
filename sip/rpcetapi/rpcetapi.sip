@@ -499,8 +499,6 @@ typedef float single;
 %Include Comments.sip
 %Include Comment.sip
 %Include RefreshEvents.sip
-%Include _QueryTable.sip
-%Include QueryTables.sip
 %Include Parameter.sip
 %Include Parameters.sip
 %Include ODBCError.sip
@@ -751,7 +749,14 @@ namespace etapi
     class QueryTable /Abstract,NoDefaultCtors/
     {
     %ConvertToSubClassCode
-        sipType = sipType_etapi__QueryTable;
+        sipType = sipType_etapi__IQueryTable;
+    %End
+    };
+
+    class QueryTables /Abstract,NoDefaultCtors/
+    {
+    %ConvertToSubClassCode
+        sipType = sipType_etapi_IQueryTables;
     %End
     };
 
