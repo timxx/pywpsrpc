@@ -83,6 +83,22 @@ class TestRpcEtApi(unittest.TestCase):
         self.assertEqual(sheet.QueryTables.Count, 0)
         workbook.Close(False)
 
+    def test_formatcondition(self):
+        _, workbook = self.app.Workbooks.Add()
+        sheet = workbook.ActiveSheet
+        rg = sheet.Range("A1")
+
+        fc = rg.FormatConditions
+        hr, cond = fc.AddAboveAverage()
+
+        self.assertEqual(fc.Count, 1)
+        self.assertIsNotNone(fc[1])
+
+        cond.AboveBelow = etapi.xlAboveAverage
+        self.assertEqual(cond.AboveBelow, etapi.xlAboveAverage)
+
+        workbook.Close(False)
+
 
 if __name__ == "__main__":
     unittest.main()

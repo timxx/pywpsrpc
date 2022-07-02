@@ -494,8 +494,6 @@ typedef float single;
 %Include Mailer.sip
 %Include CustomViews.sip
 %Include CustomView.sip
-%Include FormatConditions.sip
-%Include FormatCondition.sip
 %Include Comments.sip
 %Include Comment.sip
 %Include RefreshEvents.sip
@@ -641,7 +639,6 @@ typedef float single;
 %Include IconSet.sip
 %Include IconSets.sip
 %Include Top10.sip
-%Include AboveAverage.sip
 %Include UniqueValues.sip
 %Include Ranges.sip
 %Include HeaderFooter.sip
@@ -785,6 +782,27 @@ namespace etapi
     {
     %ConvertToSubClassCode
         sipType = sipType_etapi_IPages;
+    %End
+    };
+
+    class AboveAverage /Abstract,NoDefaultCtors/
+    {
+    %ConvertToSubClassCode
+        sipType = sipType_etapi_IAboveAverage;
+    %End
+    };
+
+    class FormatConditions /Abstract,NoDefaultCtors/
+    {
+    %ConvertToSubClassCode
+        sipType = sipType_etapi_IFormatConditions;
+    %End
+    };
+
+    class FormatCondition /Abstract,NoDefaultCtors/
+    {
+    %ConvertToSubClassCode
+        sipType = sipType_etapi_IFormatCondition;
     %End
     };
 

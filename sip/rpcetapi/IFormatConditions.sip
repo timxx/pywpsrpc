@@ -32,12 +32,15 @@ namespace etapi
 
         virtual HRESULT Item(
             VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
-
-        IDispatch* __getitem__(VARIANT index) const;
+            IFormatCondition **RHS /Out/) = 0;
         %MethodCode
-            IDispatch *prop = nullptr;
-            if (sipCpp->Item(*a0, &prop) != S_OK)
+            sipRes = sipCpp->Item(*a0, (IDispatch**)&a1);
+        %End
+
+        IFormatCondition* __getitem__(VARIANT index) const;
+        %MethodCode
+            etapi::IFormatCondition *prop = nullptr;
+            if (sipCpp->Item(*a0, (IDispatch**)&prop) != S_OK)
                 sipIsErr = 1;
             else
                 sipRes = prop;
@@ -52,7 +55,10 @@ namespace etapi
             VARIANT TextOperator = argMissing2(),
             VARIANT DateOperator = argMissing2(),
             VARIANT ScopeType = argMissing2(),
-            IDispatch **RHS /Out/ = 0) = 0;
+            IFormatCondition **RHS /Out/ = 0) = 0;
+        %MethodCode
+            sipRes = sipCpp->Add(a0, *a1, *a2, *a3, *a4, *a5, *a6, *a7, (IDispatch**)&a8);
+        %End
 
         virtual HRESULT get__Default(
             VARIANT Index,
@@ -74,7 +80,10 @@ namespace etapi
             IDispatch **RHS /Out/) = 0;
 
         virtual HRESULT AddAboveAverage(
-            IDispatch **RHS /Out/) = 0;
+            AboveAverage **RHS /Out/) = 0;
+        %MethodCode
+            sipRes = sipCpp->AddAboveAverage((IDispatch**)&a0);
+        %End
 
         virtual HRESULT AddUniqueValues(
             IDispatch **RHS /Out/) = 0;
