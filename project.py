@@ -1,5 +1,5 @@
 #**
-# * Copyright (c) 2020-2021 Weitian Leung
+# * Copyright (c) 2020-2022 Weitian Leung
 # *
 # * This file is part of pywpsrpc.
 # *
@@ -76,6 +76,10 @@ class PyWpsRpcProject(sipbuild.Project):
 
 
 class RpcApiBindings(sipbuild.Bindings):
+
+    def __init__(self, project, name, **kwargs):
+        super().__init__(project, name, **kwargs)
+        self.pep484_pyi = True
 
     def get_options(self):
         options = super().get_options()
@@ -415,9 +419,11 @@ class RpcApiBuilder(sipbuild.Builder):
 
             # for testing
             rpc_dir = os.path.join(self.project.build_dir, self.project.name)
+            pyi = os.path.join(buildable.build_dir, buildable.target + ".pyi")
             os.makedirs(rpc_dir, exist_ok=True)
-            f.write("QMAKE_POST_LINK = $(COPY_FILE) $(TARGET) %s\n\n" % rpc_dir)
+            shutil.copy(pyi, rpc_dir)
 
+            f.write("QMAKE_POST_LINK = $(COPY_FILE) $(TARGET) %s\n\n" % rpc_dir)
             f.write("PRECOMPILED_HEADER = stdafx.h\n\n")
 
             f.write("HEADERS = %s\n" % " \\\n\t".join(buildable.headers))
