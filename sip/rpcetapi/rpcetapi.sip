@@ -418,7 +418,6 @@ typedef float single;
 %Include Menu.sip
 %Include MenuItems.sip
 %Include MenuItem.sip
-%Include Charts.sip
 %Include DrawingObjects.sip
 %Include PivotCache.sip
 %Include PivotCaches.sip
@@ -803,6 +802,13 @@ namespace etapi
     {
     %ConvertToSubClassCode
         sipType = sipType_etapi_IFormatCondition;
+    %End
+    };
+
+    class Charts /Abstract,NoDefaultCtors/
+    {
+    %ConvertToSubClassCode
+        sipType = sipType_etapi_ICharts;
     %End
     };
 

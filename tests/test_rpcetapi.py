@@ -99,6 +99,10 @@ class TestRpcEtApi(unittest.TestCase):
 
         workbook.Close(False)
 
+    def test_charts(self):
+        _, workbook = self.app.Workbooks.Add()
+        self.assertEqual(workbook.Charts.Count, 0)
+
 
 if __name__ == "__main__":
     unittest.main()
