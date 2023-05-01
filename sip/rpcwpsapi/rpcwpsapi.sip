@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020-2022 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -401,47 +401,12 @@ typedef float single;
 
 namespace wpsapi
 {
-    class Application /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapi__Application;
-    %End
-    };
-
-    class Document /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapi__Document;
-    %End
-    };
-
-    class Font /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapi__Font;
-    %End
-    };
-
-    class ParagraphFormat /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapi__ParagraphFormat;
-    %End
-    };
-
-    class LetterContent /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapi__LetterContent;
-    %End
-    };
-
-    class OLEControl /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapi__OLEControl;
-    %End
-    };
+    typedef _Application Application;
+    typedef _Document Document;
+    typedef _Font Font;
+    typedef _ParagraphFormat ParagraphFormat;
+    typedef _LetterContent LetterContent;
+    typedef _OLEControl OLEControl;
 
     class VBE;
     class VBProject;

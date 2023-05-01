@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -901,7 +901,7 @@ namespace wpsapi
             for (const auto &index : indexes)
                 sipReleaseType(args[index.first], sipType_VARIANT, index.second);
 
-            return sipBuildResult(0, "(iD)", hr, prop, sipType_wpsapi_LetterContent, SIP_NULLPTR);
+            return sipBuildResult(0, "(iD)", hr, prop, sipType_wpsapi__LetterContent, SIP_NULLPTR);
         %End
 
         virtual HRESULT AcceptAllRevisions() = 0;

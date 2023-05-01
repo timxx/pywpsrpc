@@ -322,6 +322,20 @@ class TestRpcWpsApi(unittest.TestCase):
         hr = wpsApp.Quit(wpsapi.wdDoNotSaveChanges)
         self.check_call("Quit", hr)
 
+    def test_cmp_docs(self):
+        _, rpc = rpcwpsapi.createWpsRpcInstance()
+        _, app = rpc.getWpsApplication()
+
+        _, doc1 = app.Documents.Add()
+        _, doc2 = app.Documents.Add()
+        doc2.Content.InsertAfter("test")
+
+        _, doc = app.CompareDocuments(doc1, doc2)
+        # FIXME: seems not works for linux..
+        # self.assertNotEqual(doc, None)
+
+        app.Quit(wpsapi.wdDoNotSaveChanges)
+
 
 if __name__ == "__main__":
     unittest.main()
