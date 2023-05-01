@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -103,21 +103,21 @@ struct IKRpcClient /Abstract/
     static HRESULT _WindowActivate(etapi::_Workbook *Wb, etapi::Window *Wn)
     {
         PyObject *pyWb = _convertFromType(Wb, sipType_etapi__Workbook);
-        PyObject *pyWn = _convertFromType(Wn, sipType_etapi_Window);
+        PyObject *pyWn = _convertFromType(Wn, sipType_etapi_IWindow);
         return _callPyFunc(_GET_PY_FUNCS(WindowActivate), pyWb, pyWn);
     }
 
     static HRESULT _WindowDeactivate(etapi::_Workbook *Wb, etapi::Window *Wn)
     {
         PyObject *pyWb = _convertFromType(Wb, sipType_etapi__Workbook);
-        PyObject *pyWn = _convertFromType(Wn, sipType_etapi_Window);
+        PyObject *pyWn = _convertFromType(Wn, sipType_etapi_IWindow);
         return _callPyFunc(_GET_PY_FUNCS(WindowDeactivate), pyWb, pyWn);
     }
 
     static HRESULT _WindowResize(etapi::_Workbook *Wb, etapi::Window *Wn)
     {
         PyObject *pyWb = _convertFromType(Wb, sipType_etapi__Workbook);
-        PyObject *pyWn = _convertFromType(Wn, sipType_etapi_Window);
+        PyObject *pyWn = _convertFromType(Wn, sipType_etapi_IWindow);
         return _callPyFunc(_GET_PY_FUNCS(WindowResize), pyWb, pyWn);
     }
 

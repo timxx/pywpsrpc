@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -443,7 +443,7 @@ namespace etapi
             for (const auto &index : indexes)
                 sipReleaseType(args[index.first], sipType_VARIANT, index.second);
 
-            return sipBuildResult(0, "(iD)", hr, prop, sipType_etapi_Range, SIP_NULLPTR);
+            return sipBuildResult(0, "(iD)", hr, prop, sipType_etapi_IRange, SIP_NULLPTR);
         %End
 
         virtual HRESULT get_DataPivotField(

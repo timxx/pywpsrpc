@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020-2022 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -388,11 +388,9 @@ typedef float single;
 %Include IModelMeasureName.sip
 %Include IModelMeasureNames.sip
 %Include Font.sip
-%Include Window.sip
 %Include Windows.sip
 %Include AppEvents.sip
 %Include WorksheetFunction.sip
-%Include Range.sip
 %Include ChartEvents.sip
 %Include VPageBreak.sip
 %Include HPageBreak.sip
@@ -721,96 +719,21 @@ typedef float single;
 
 namespace etapi
 {
-    class Application /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi__Application;
-    %End
-    };
-
-    class Chart /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi__Chart;
-    %End
-    };
-
-    class OLEObject /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi__OLEObject;
-    %End
-    };
-
-    class QueryTable /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi__IQueryTable;
-    %End
-    };
-
-    class QueryTables /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi_IQueryTables;
-    %End
-    };
-
-    class Workbook /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi__Workbook;
-    %End
-    };
-
-    class Worksheet /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi__Worksheet;
-    %End
-    };
-
-    class PageSetup /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi_IPageSetup;
-    %End
-    };
-
-    class Pages /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi_IPages;
-    %End
-    };
-
-    class AboveAverage /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi_IAboveAverage;
-    %End
-    };
-
-    class FormatConditions /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi_IFormatConditions;
-    %End
-    };
-
-    class FormatCondition /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi_IFormatCondition;
-    %End
-    };
-
-    class Charts /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_etapi_ICharts;
-    %End
-    };
+    typedef _Application Application;
+    typedef _Chart Chart;
+    typedef _OLEObject OLEObject;
+    typedef _IQueryTable QueryTable;
+    typedef IQueryTables QueryTables;
+    typedef _Workbook Workbook;
+    typedef _Worksheet Worksheet;
+    typedef IPageSetup PageSetup;
+    typedef IPages Pages;
+    typedef IAboveAverage AboveAverage;
+    typedef IFormatConditions FormatConditions;
+    typedef IFormatCondition FormatCondition;
+    typedef ICharts Charts;
+    typedef IRange Range;
+    typedef IWindow Window;
 
     class VBE;
     class VBProject;

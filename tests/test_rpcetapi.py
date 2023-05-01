@@ -102,6 +102,22 @@ class TestRpcEtApi(unittest.TestCase):
     def test_charts(self):
         _, workbook = self.app.Workbooks.Add()
         self.assertEqual(workbook.Charts.Count, 0)
+        workbook.Close(False)
+
+    def test_autofill(self):
+        _, workbook = self.app.Workbooks.Add()
+        sheet = workbook.ActiveSheet
+        rg = sheet.Range("A1")
+        rg.put_Value(RHS="1")
+
+        rg = sheet.Range("A2")
+        rg.put_Value(RHS="2")
+
+        sourceRg = sheet.Range("A1:A2")
+        fillRg = sheet.Range("A1:A20")
+        hr, _ = sourceRg.AutoFill(fillRg)
+        self.assertEqual(hr, common.S_OK)
+        workbook.Close(False)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020-2021 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -105,7 +105,7 @@ namespace etapi
             for (int i = 0; i < 2; ++i)
             {
                 PyObject *pyArg = PyTuple_GetItem(sipArgs, i);
-                if (Py_TYPE(pyArg) != sipTypeAsPyTypeObject(sipType_etapi_Range))
+                if (Py_TYPE(pyArg) != sipTypeAsPyTypeObject(sipType_etapi_IRange))
                 {
                     PyErr_Format(PyExc_TypeError,
                             "The %d positional argument requires 'etapi.Range' not '%s'.",
@@ -116,7 +116,7 @@ namespace etapi
                 int state = 0;
                 int isError = 0;
                 rgArgs[i] = reinterpret_cast<etapi::Range*>(
-                    sipConvertToType(pyArg, sipType_etapi_Range, 0, SIP_NO_CONVERTORS, &state, &isError));
+                    sipConvertToType(pyArg, sipType_etapi_IRange, 0, SIP_NO_CONVERTORS, &state, &isError));
 
                 rgState.push_back(state);
             }
@@ -178,9 +178,9 @@ namespace etapi
                 sipReleaseType(args[index.first], sipType_VARIANT, index.second);
 
             for (int i = 0; i < 2; ++i)
-                sipReleaseType(rgArgs[i], sipType_etapi_Range, rgState[i]);
+                sipReleaseType(rgArgs[i], sipType_etapi_IRange, rgState[i]);
 
-            return sipBuildResult(0, "(iD)", hr, prop, sipType_etapi_Range, SIP_NULLPTR);
+            return sipBuildResult(0, "(iD)", hr, prop, sipType_etapi_IRange, SIP_NULLPTR);
         }
     %End
 
