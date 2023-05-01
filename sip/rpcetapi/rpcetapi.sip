@@ -401,7 +401,6 @@ typedef float single;
 %Include DocEvents.sip
 %Include Style.sip
 %Include Styles.sip
-%Include Borders.sip
 %Include AddIn.sip
 %Include AddIns.sip
 %Include Toolbar.sip
@@ -483,7 +482,6 @@ typedef float single;
 %Include Modules.sip
 %Include DialogSheet.sip
 %Include DialogSheets.sip
-%Include Worksheets.sip
 %Include Names.sip
 %Include Name.sip
 %Include ChartObject.sip
@@ -734,6 +732,8 @@ namespace etapi
     typedef ICharts Charts;
     typedef IRange Range;
     typedef IWindow Window;
+    typedef IBorders Borders;
+    typedef IWorksheets Worksheets;
 
     class VBE;
     class VBProject;
