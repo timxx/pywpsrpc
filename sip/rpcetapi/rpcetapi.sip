@@ -541,10 +541,6 @@ typedef float single;
 %Include ErrorBars.sip
 %Include DataTable.sip
 %Include Phonetic.sip
-%Include Shape.sip
-%Include Shapes.sip
-%Include ShapeRange.sip
-%Include GroupShapes.sip
 %Include TextFrame.sip
 %Include ConnectorFormat.sip
 %Include FreeformBuilder.sip
@@ -734,6 +730,10 @@ namespace etapi
     typedef IWindow Window;
     typedef IBorders Borders;
     typedef IWorksheets Worksheets;
+    typedef IShapes Shapes;
+    typedef IShape Shape;
+    typedef IShapeRange ShapeRange;
+    typedef IGroupShapes GroupShapes;
 
     class VBE;
     class VBProject;

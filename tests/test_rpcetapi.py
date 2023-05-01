@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + "/../build")
 
 from pywpsrpc.rpcetapi import etapi
 from pywpsrpc import (rpcetapi, common)
-from pywpsrpc.utils import RpcIter
+from pywpsrpc.utils import RpcIter, RpcProxy
 
 
 class TestRpcEtApi(unittest.TestCase):
@@ -117,6 +117,21 @@ class TestRpcEtApi(unittest.TestCase):
         fillRg = sheet.Range("A1:A20")
         hr, _ = sourceRg.AutoFill(fillRg)
         self.assertEqual(hr, common.S_OK)
+        workbook.Close(False)
+
+    def test_shapes(self):
+        workbook = RpcProxy(self.app.Workbooks.Add())
+        shapes = workbook.ActiveSheet.Shapes
+        line = shapes.AddLine(10, 10, 250, 250).Line
+        self.assertNotEqual(line, None)
+        self.assertEqual(1, shapes.Count)
+
+        line.DashStyle = etapi.msoLineDashDotDot
+
+        for shape in shapes:
+            self.assertEqual(shape.Type, etapi.msoLine)
+            self.assertEqual(shape.Line.DashStyle, etapi.msoLineDashDotDot)
+
         workbook.Close(False)
 
 
