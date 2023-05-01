@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -276,47 +276,12 @@ typedef long MsoRGBType;
 
 namespace ksoapi
 {
-    class CommandBarButton /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_ksoapi__CommandBarButton;
-    %End
-    };
-
-    class CommandBarComboBox /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_ksoapi__CommandBarComboBox;
-    %End
-    };
-
-    class CommandBars /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_ksoapi__CommandBars;
-    %End
-    };
-
-    class CustomXMLPart /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_ksoapi__CustomXMLPart;
-    %End
-    };
-
-    class CustomXMLParts /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_ksoapi__CustomXMLParts;
-    %End
-    };
-
-    class CustomXMLSchemaCollection /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_ksoapi__CustomXMLSchemaCollection;
-    %End
-    };
+    typedef _CommandBarButton CommandBarButton;
+    typedef _CommandBarComboBox CommandBarComboBox;
+    typedef _CommandBars CommandBars;
+    typedef _CustomXMLPart CustomXMLPart;
+    typedef _CustomXMLParts CustomXMLParts;
+    typedef _CustomXMLSchemaCollection CustomXMLSchemaCollection;
 
     class MsoEnvelope;
 };

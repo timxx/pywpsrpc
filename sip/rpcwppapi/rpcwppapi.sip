@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -231,26 +231,9 @@ typedef long MsoRGBType;
 
 namespace wppapi
 {
-    class Application /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wppapi__Application;
-    %End
-    };
-
-    class Presentation /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wppapi__Presentation;
-    %End
-    };
-
-    class Slide /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wppapi__Slide;
-    %End
-    };
+    typedef _Application Application;
+    typedef _Presentation Presentation;
+    typedef _Slide Slide;
 
     class VBE;
     class VBProject;

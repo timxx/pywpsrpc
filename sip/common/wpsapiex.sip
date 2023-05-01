@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -43,54 +43,13 @@
 
 namespace wpsapiex
 {
-    class ApplicationEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__ApplicationEx;
-    %End
-    };
-
-    class WpsApplicationEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__WpsApplicationEx;
-    %End
-    };
-
-    class DocumentEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__DocumentEx;
-    %End
-    };
-
-    class PresentationEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__PresentationEx;
-    %End
-    };
-
-    class WppApplicationEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__WppApplicationEx;
-    %End
-    };
-
-    class EtApplicationEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__EtApplicationEx;
-    %End
-    };
-
-    class WorkbookEx /Abstract,NoDefaultCtors/
-    {
-    %ConvertToSubClassCode
-        sipType = sipType_wpsapiex__WorkbookEx;
-    %End
-    };
+    typedef _ApplicationEx ApplicationEx;
+    typedef _WpsApplicationEx WpsApplicationEx;
+    typedef _DocumentEx DocumentEx;
+    typedef _PresentationEx PresentationEx;
+    typedef _WppApplicationEx WppApplicationEx;
+    typedef _EtApplicationEx EtApplicationEx;
+    typedef _WorkbookEx WorkbookEx;
 
     typedef float single;
 
