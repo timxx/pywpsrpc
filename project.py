@@ -1,12 +1,12 @@
-#**
-# * Copyright (c) 2020-2022 Weitian Leung
+# **
+# * Copyright (c) 2020-2023 Weitian Leung
 # *
 # * This file is part of pywpsrpc.
 # *
 # * This file is distributed under the MIT License.
 # * See the LICENSE file for details.
 # *
-#*
+# *
 
 import sipbuild
 import os
@@ -38,6 +38,7 @@ class PyWpsRpcProject(sipbuild.Project):
         # always try system's one first
         dirs = ["/opt/kingsoft/wps-office/office6",
                 "/usr/lib/office6",  # for Arch Linux
+                "/opt/apps/cn.wps.wps-office/files/kingsoft/wps-office/office6",  # Deepin
                 sdk_dir + "/lib/" + platform.machine()
                 ]
 
@@ -410,12 +411,13 @@ class RpcApiBuilder(sipbuild.Builder):
                     buildable.target)
             if not buildable.debug:
                 f.write("QMAKE_LFLAGS += -s\n")
-            #f.write("QMAKE_LFLAGS_PLUGIN += -Wl,--no-undefined\n")
+            # f.write("QMAKE_LFLAGS_PLUGIN += -Wl,--no-undefined\n")
             f.write(
                 "QMAKE_CXXFLAGS += -Wno-attributes -Wno-delete-non-virtual-dtor\n")
             f.write("QMAKE_CXXFLAGS += -Wno-delete-incomplete -Wno-unused-variable\n")
             f.write("QMAKE_RPATHDIR += $ORIGIN /opt/kingsoft/wps-office/office6\n")
-            f.write("QMAKE_RPATHDIR += /usr/lib/office6\n\n")
+            f.write("QMAKE_RPATHDIR += /usr/lib/office6\n")
+            f.write("QMAKE_RPATHDIR += /opt/apps/cn.wps.wps-office/files/kingsoft/wps-office/office6\n\n")
 
             # for testing
             rpc_dir = os.path.join(self.project.build_dir, self.project.name)
