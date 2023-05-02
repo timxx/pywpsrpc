@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020-2021 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -21,8 +21,11 @@ void _SysFreeString(BSTR bstr);
 
 UINT32 _SafeArrayGetElemsize(SAFEARRAY *psa);
 HRESULT _SafeArrayGetElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv);
-_SAFEARRAY_PTR _SafeArrayCreateVector(VARTYPE vt, INT32 lLbound, UINT32 cElements);
+_SAFEARRAY_PTR _SafeArrayCreate(VARTYPE vt, UINT32 cDims, SAFEARRAYBOUND* rgsabound);
 HRESULT _SafeArrayPutElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv);
+UINT32 _SafeArrayGetDim(SAFEARRAY *psa);
+HRESULT _SafeArrayGetUBound(SAFEARRAY *psa, UINT32 nDim, INT32 *plUbound);
+HRESULT _SafeArrayGetLBound(SAFEARRAY *psa, UINT32 nDim, INT32 *plLbound);
 
 bool _getVarDate(double date,
                  int &year, int &month, int &day,
@@ -117,12 +120,12 @@ HRESULT _SafeArrayGetElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv)
     return fnGetEle(psa, rgIndices, pv);
 }
 
-_SAFEARRAY_PTR _SafeArrayCreateVector(VARTYPE vt, INT32 lLbound, UINT32 cElements)
+_SAFEARRAY_PTR _SafeArrayCreate(VARTYPE vt, UINT32 cDims, SAFEARRAYBOUND* rgsabound)
 {
-    typedef _SAFEARRAY_PTR (*pfnSafeArrayCreateVector)(VARTYPE, INT32, UINT32);
-    static pfnSafeArrayCreateVector fnCreateVec = (pfnSafeArrayCreateVector)sipImportSymbol("SafeArrayCreateVector");
+    typedef _SAFEARRAY_PTR (*pfnSafeArrayCreate)(VARTYPE vt, UINT32 cDims, SAFEARRAYBOUND* rgsabound);
+    static pfnSafeArrayCreate fnCreate = (pfnSafeArrayCreate)sipImportSymbol("SafeArrayCreate");
 
-    return fnCreateVec(vt, lLbound, cElements);
+    return fnCreate(vt, cDims, rgsabound);
 }
 
 HRESULT _SafeArrayPutElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv)
@@ -131,6 +134,30 @@ HRESULT _SafeArrayPutElement(SAFEARRAY *psa, INT32 *rgIndices, void *pv)
     static pfnSafeArrayPutElement fnPutEle = (pfnSafeArrayPutElement)sipImportSymbol("SafeArrayPutElement");
 
     return fnPutEle(psa, rgIndices, pv);
+}
+
+UINT32 _SafeArrayGetDim(SAFEARRAY *psa)
+{
+    typedef UINT32 (*pfnSafeArrayGetDim)(SAFEARRAY *);
+    static pfnSafeArrayGetDim fnGetDim = (pfnSafeArrayGetDim)sipImportSymbol("SafeArrayGetDim");
+
+    return fnGetDim(psa);
+}
+
+HRESULT _SafeArrayGetUBound(SAFEARRAY *psa, UINT32 nDim, INT32 *plUbound)
+{
+    typedef UINT32 (*pfnSafeArrayGetUBound)(SAFEARRAY *, UINT32, INT32*);
+    static pfnSafeArrayGetUBound fnGetUBound = (pfnSafeArrayGetUBound)sipImportSymbol("SafeArrayGetUBound");
+
+    return fnGetUBound(psa, nDim, plUbound);
+}
+
+HRESULT _SafeArrayGetLBound(SAFEARRAY *psa, UINT32 nDim, INT32 *plLbound)
+{
+    typedef UINT32 (*pfnSafeArrayGetLBound)(SAFEARRAY *, UINT32, INT32*);
+    static pfnSafeArrayGetLBound fnGetLBound = (pfnSafeArrayGetLBound)sipImportSymbol("SafeArrayGetLBound");
+
+    return fnGetLBound(psa, nDim, plLbound);
 }
 
 bool _getVarDate(double date,

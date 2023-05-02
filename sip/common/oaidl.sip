@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -54,18 +54,61 @@
     }
     else if (Py_TYPE(sipPy) == &PyList_Type)
     {
-        V_VT(pVar) = VT_ARRAY;
-        Py_ssize_t count = PyList_Size(sipPy);
-        SAFEARRAY* arr = _SafeArrayCreateVector(VT_VARIANT, 0, count);
+        V_VT(pVar) = VT_ARRAY | VT_VARIANT;
+        Py_ssize_t nRows = PyList_Size(sipPy);
+        Py_ssize_t nCols = 0;
 
-        for (int i = 0; i < count; ++i)
+        // TODO: we only supports two or one dims
+        if (nRows > 0)
         {
-            PyObject *item = PyList_GetItem(sipPy, i);
-            VARIANT *pEle = reinterpret_cast<VARIANT *>(sipConvertToType(item,
-                sipType_VARIANT, sipTransferObj, SIP_NO_CONVERTORS, 0, sipIsErr));
-            sipReleaseType(pEle, sipType_VARIANT, 0);
-            _SafeArrayPutElement(arr, &i, pEle);
+            PyObject *item = PyList_GetItem(sipPy, 0);
+            // FIXME: row may not has the same cols...
+            if (Py_TYPE(item) == &PyList_Type)
+                nCols = PyList_Size(item);
         }
+
+        SAFEARRAY *arr = nullptr;
+        if (nCols == 0)
+        {
+            SAFEARRAYBOUND sab;
+            sab.lLbound = 0;
+            sab.cElements = nRows;
+            arr = _SafeArrayCreate(VT_VARIANT, 1, &sab);
+
+            for (int i = 0; i < nRows; ++i)
+            {
+                PyObject *item = PyList_GetItem(sipPy, i);
+                VARIANT *pEle = reinterpret_cast<VARIANT *>(sipConvertToType(item,
+                    sipType_VARIANT, sipTransferObj, SIP_NO_CONVERTORS, 0, sipIsErr));
+                sipReleaseType(pEle, sipType_VARIANT, 0);
+                _SafeArrayPutElement(arr, &i, pEle);
+            }
+        }
+        else
+        {
+            SAFEARRAYBOUND sab[2];
+            sab[0].lLbound = 0;
+            sab[0].cElements = nRows;
+            sab[1].lLbound = 0;
+            sab[1].cElements = nCols;
+            arr = _SafeArrayCreate(VT_VARIANT, 2, sab);
+
+            for (int i = 0; i < nRows; ++i)
+            {
+                PyObject *row = PyList_GetItem(sipPy, i);
+
+                for (int j = 0; j < nCols; ++j)
+                {
+                    PyObject *item = PyList_GetItem(row, j);
+                    VARIANT *pEle = reinterpret_cast<VARIANT *>(sipConvertToType(item,
+                        sipType_VARIANT, sipTransferObj, SIP_NO_CONVERTORS, 0, sipIsErr));
+                    sipReleaseType(pEle, sipType_VARIANT, 0);
+                    INT32 indices[] = { i, j };
+                    _SafeArrayPutElement(arr, indices, pEle);
+                }
+            }
+        }
+
         V_ARRAY(pVar) = arr;
     }
     else if (sipCanConvertToType(sipPy, sipType_IDispatch, SIP_NOT_NONE | SIP_NO_CONVERTORS))
@@ -202,6 +245,77 @@
             }
 
             return sipFromDateTime(&sipDate, &sipTime);
+        }
+        break;
+    case VT_ARRAY | VT_VARIANT:
+        {
+            UINT32 nDim = _SafeArrayGetDim(V_ARRAY(sipCpp));
+            if (nDim > 2)
+            {
+                PyErr_Format(PyExc_TypeError,
+                    "%d dimensions is unsupported", nDim);
+                return nullptr;
+            }
+
+            auto getSize = [](SAFEARRAY *psa, UINT dim)
+            {
+                INT32 lb = 0;
+                INT32 ub = 0;
+                _SafeArrayGetUBound(psa, dim, &ub);
+                _SafeArrayGetLBound(psa, dim, &lb);
+                return ub - lb + 1;
+            };
+
+            if (nDim == 2)
+            {
+                INT32 nRows = getSize(V_ARRAY(sipCpp), 1);
+                INT32 nCols = getSize(V_ARRAY(sipCpp), 2);
+
+                PyObject *pyList = PyList_New(nRows);
+                for (INT32 i = 0; i < nRows; ++i)
+                {
+                    PyObject *pyRow = PyList_New(nCols);
+                    for (INT32 j = 0; j < nCols; ++j)
+                    {
+                        INT32 indices[] = { i, j };
+                        VARIANT var;
+                        HRESULT hr = _SafeArrayGetElement(V_ARRAY(sipCpp), indices, &var);
+                        if (hr != S_OK)
+                        {
+                            PyErr_Format(PyExc_TypeError,
+                                "Failed to SafeArrayGetElement: %d, %d\n",
+                                i, j);
+                            return nullptr;
+                        }
+
+                        PyObject *pyObj = sipConvertFromType(&var, sipType_VARIANT, sipTransferObj);
+                        PyList_SetItem(pyRow, j, pyObj);
+                    }
+
+                    PyList_SetItem(pyList, i, pyRow);
+                }
+                return pyList;
+            }
+            else
+            {
+                INT32 nElements = getSize(V_ARRAY(sipCpp), 1);
+                PyObject *pyList = PyList_New(nElements);
+                for (INT32 i = 0; i < nElements; ++i)
+                {
+                    VARIANT var;
+                    HRESULT hr = _SafeArrayGetElement(V_ARRAY(sipCpp), &i, &var);
+                    if (hr != S_OK)
+                    {
+                        PyErr_Format(PyExc_TypeError,
+                            "Failed to SafeArrayGetElement: %d\n", i);
+                        return nullptr;
+                    }
+
+                    PyObject *pyObj = sipConvertFromType(&var, sipType_VARIANT, sipTransferObj);
+                    PyList_SetItem(pyList, i, pyObj);
+                }
+                return pyList;
+            }
         }
         break;
     }

@@ -134,6 +134,27 @@ class TestRpcEtApi(unittest.TestCase):
 
         workbook.Close(False)
 
+    def test_array(self):
+        _, workbook = self.app.Workbooks.Add()
+        sheet = workbook.ActiveSheet
+        sheet.Range("A1:B1").Value = [1, "a"]
+        self.assertEqual(sheet.Range("A1").Value, 1)
+        self.assertEqual(sheet.Range("B1").Value, "a")
+
+        value = sheet.Range("A1:B1").Value
+        self.assertTrue(isinstance(value, list))
+        self.assertTrue(len(value) == 1)
+        self.assertEqual(value[0][0], 1)
+        self.assertEqual(value[0][1], "a")
+
+        # FIXME: maybe et doesn't support 2-d array???
+        sheet.Range("A2:B3").Value = [[2, 3], [4, 5]]
+        value = sheet.Range("A2:B3").Value
+        self.assertEqual(len(value), 2)
+        #self.assertEqual(value[1][1], 5)
+
+        workbook.Close(False)
+
 
 if __name__ == "__main__":
     unittest.main()

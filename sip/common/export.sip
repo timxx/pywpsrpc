@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -15,8 +15,11 @@ sipExportSymbol("SysFreeString", (void*)_XSysFreeString);
 
 sipExportSymbol("SafeArrayGetElemsize", (void*)_MSafeArrayGetElemsize);
 sipExportSymbol("SafeArrayGetElement", (void*)_MSafeArrayGetElement);
-sipExportSymbol("SafeArrayCreateVector", (void*)_MSafeArrayCreateVector);
+sipExportSymbol("SafeArrayCreate", (void*)_MSafeArrayCreate);
 sipExportSymbol("SafeArrayPutElement", (void*)_MSafeArrayPutElement);
+sipExportSymbol("SafeArrayGetDim", (void*)_MSafeArrayGetDim);
+sipExportSymbol("SafeArrayGetUBound", (void*)_MSafeArrayGetUBound);
+sipExportSymbol("SafeArrayGetLBound", (void*)_MSafeArrayGetLBound);
 %End
 
 %ModuleHeaderCode
