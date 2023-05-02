@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -893,18 +893,18 @@ Run(self, str, varg1: Any = None, varg2: Any = None, varg3: Any = None, varg4: A
         virtual HRESULT CompareDocuments(
             Document *OriginalDocument,
             Document *RevisedDocument,
-            WdCompareDestination Destination = wpsapi::wdCompareDestinationOriginal,
-            WdGranularity Granularity = wpsapi::wdGranularityCharLevel,
-            VARIANT_BOOL CompareFormatting = VARIANT_FALSE,
-            VARIANT_BOOL CompareCaseChanges = VARIANT_FALSE,
-            VARIANT_BOOL CompareWhitespace = VARIANT_FALSE,
-            VARIANT_BOOL CompareTables = VARIANT_FALSE,
-            VARIANT_BOOL CompareHeaders = VARIANT_FALSE,
-            VARIANT_BOOL CompareFootnotes = VARIANT_FALSE,
-            VARIANT_BOOL CompareTextboxes = VARIANT_FALSE,
-            VARIANT_BOOL CompareFields = VARIANT_FALSE,
-            VARIANT_BOOL CompareComments = VARIANT_FALSE,
-            VARIANT_BOOL CompareMoves = VARIANT_FALSE,
+            WdCompareDestination Destination = wpsapi::wdCompareDestinationNew,
+            WdGranularity Granularity = wpsapi::wdGranularityWordLevel,
+            VARIANT_BOOL CompareFormatting = VARIANT_TRUE,
+            VARIANT_BOOL CompareCaseChanges = VARIANT_TRUE,
+            VARIANT_BOOL CompareWhitespace = VARIANT_TRUE,
+            VARIANT_BOOL CompareTables = VARIANT_TRUE,
+            VARIANT_BOOL CompareHeaders = VARIANT_TRUE,
+            VARIANT_BOOL CompareFootnotes = VARIANT_TRUE,
+            VARIANT_BOOL CompareTextboxes = VARIANT_TRUE,
+            VARIANT_BOOL CompareFields = VARIANT_TRUE,
+            VARIANT_BOOL CompareComments = VARIANT_TRUE,
+            VARIANT_BOOL CompareMoves = VARIANT_TRUE,
             BSTR RevisedAuthor = 0,
             VARIANT_BOOL IgnoreAllComparisonWarnings = VARIANT_FALSE,
             Document **prop /Out/ = 0) = 0;
