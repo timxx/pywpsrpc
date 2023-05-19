@@ -387,7 +387,6 @@ typedef float single;
 %Include IModelColumnChanges.sip
 %Include IModelMeasureName.sip
 %Include IModelMeasureNames.sip
-%Include Font.sip
 %Include Windows.sip
 %Include AppEvents.sip
 %Include WorksheetFunction.sip
@@ -553,7 +552,6 @@ typedef float single;
 %Include Phonetics.sip
 %Include PivotLayout.sip
 %Include DisplayUnitLabel.sip
-%Include CellFormat.sip
 %Include UsedObjects.sip
 %Include CustomProperties.sip
 %Include CustomProperty.sip
@@ -734,6 +732,8 @@ namespace etapi
     typedef IShape Shape;
     typedef IShapeRange ShapeRange;
     typedef IGroupShapes GroupShapes;
+    typedef IFont Font;
+    typedef ICellFormat CellFormat;
 
     class VBE;
     class VBProject;

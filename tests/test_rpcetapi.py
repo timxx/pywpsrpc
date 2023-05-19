@@ -155,6 +155,20 @@ class TestRpcEtApi(unittest.TestCase):
 
         workbook.Close(False)
 
+    def test_font(self):
+        _, workbook = self.app.Workbooks.Add()
+        sheet = workbook.ActiveSheet
+        font = sheet.Range("A1").Font
+        hr, _ = font.get_Name()
+        self.assertEqual(hr, common.S_OK)
+
+        font.Name = "FreeSans"
+        self.assertEqual(font.Name, "FreeSans")
+
+        self.app.FindFormat.Font.Name = "FreeSans"
+
+        workbook.Close(False)
+
 
 if __name__ == "__main__":
     unittest.main()
