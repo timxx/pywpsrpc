@@ -387,322 +387,7 @@ typedef float single;
 %Include IModelColumnChanges.sip
 %Include IModelMeasureName.sip
 %Include IModelMeasureNames.sip
-%Include Windows.sip
-%Include AppEvents.sip
 %Include WorksheetFunction.sip
-%Include ChartEvents.sip
-%Include VPageBreak.sip
-%Include HPageBreak.sip
-%Include HPageBreaks.sip
-%Include VPageBreaks.sip
-%Include RecentFile.sip
-%Include RecentFiles.sip
-%Include DocEvents.sip
-%Include Style.sip
-%Include Styles.sip
-%Include AddIn.sip
-%Include AddIns.sip
-%Include Toolbar.sip
-%Include Toolbars.sip
-%Include ToolbarButton.sip
-%Include ToolbarButtons.sip
-%Include Areas.sip
-%Include WorkbookEvents.sip
-%Include MenuBars.sip
-%Include MenuBar.sip
-%Include Menus.sip
-%Include Menu.sip
-%Include MenuItems.sip
-%Include MenuItem.sip
-%Include DrawingObjects.sip
-%Include PivotCache.sip
-%Include PivotCaches.sip
-%Include PivotFormula.sip
-%Include PivotFormulas.sip
-%Include PivotTable.sip
-%Include PivotTables.sip
-%Include PivotField.sip
-%Include PivotFields.sip
-%Include CalculatedFields.sip
-%Include PivotItem.sip
-%Include PivotItems.sip
-%Include CalculatedItems.sip
-%Include Characters.sip
-%Include Dialogs.sip
-%Include Dialog.sip
-%Include SoundNote.sip
-%Include Button.sip
-%Include Buttons.sip
-%Include CheckBox.sip
-%Include CheckBoxes.sip
-%Include OptionButton.sip
-%Include OptionButtons.sip
-%Include EditBox.sip
-%Include EditBoxes.sip
-%Include ScrollBar.sip
-%Include ScrollBars.sip
-%Include ListBox.sip
-%Include ListBoxes.sip
-%Include GroupBox.sip
-%Include GroupBoxes.sip
-%Include DropDown.sip
-%Include DropDowns.sip
-%Include Spinner.sip
-%Include Spinners.sip
-%Include DialogFrame.sip
-%Include Label.sip
-%Include Labels.sip
-%Include Panes.sip
-%Include Pane.sip
-%Include Scenarios.sip
-%Include Scenario.sip
-%Include GroupObject.sip
-%Include GroupObjects.sip
-%Include Line.sip
-%Include Lines.sip
-%Include Rectangle.sip
-%Include Rectangles.sip
-%Include Oval.sip
-%Include Ovals.sip
-%Include Arc.sip
-%Include Arcs.sip
-%Include OLEObjectEvents.sip
-%Include _OLEObject.sip
-%Include OLEObjects.sip
-%Include TextBox.sip
-%Include TextBoxes.sip
-%Include Picture.sip
-%Include Pictures.sip
-%Include Drawing.sip
-%Include Drawings.sip
-%Include RoutingSlip.sip
-%Include Outline.sip
-%Include Module.sip
-%Include Modules.sip
-%Include DialogSheet.sip
-%Include DialogSheets.sip
-%Include Names.sip
-%Include Name.sip
-%Include ChartObject.sip
-%Include ChartObjects.sip
-%Include Mailer.sip
-%Include CustomViews.sip
-%Include CustomView.sip
-%Include Comments.sip
-%Include Comment.sip
-%Include RefreshEvents.sip
-%Include Parameter.sip
-%Include Parameters.sip
-%Include ODBCError.sip
-%Include ODBCErrors.sip
-%Include Validation.sip
-%Include Hyperlinks.sip
-%Include Hyperlink.sip
-%Include AutoFilter.sip
-%Include Filters.sip
-%Include Filter.sip
-%Include AutoCorrect.sip
-%Include Border.sip
-%Include Interior.sip
-%Include ChartFillFormat.sip
-%Include ChartColorFormat.sip
-%Include Axis.sip
-%Include ChartTitle.sip
-%Include AxisTitle.sip
-%Include ChartGroup.sip
-%Include ChartGroups.sip
-%Include Axes.sip
-%Include Points.sip
-%Include Point.sip
-%Include Series.sip
-%Include SeriesCollection.sip
-%Include DataLabel.sip
-%Include DataLabels.sip
-%Include LegendEntry.sip
-%Include LegendEntries.sip
-%Include LegendKey.sip
-%Include Trendlines.sip
-%Include Trendline.sip
-%Include Corners.sip
-%Include SeriesLines.sip
-%Include HiLoLines.sip
-%Include Gridlines.sip
-%Include DropLines.sip
-%Include LeaderLines.sip
-%Include UpBars.sip
-%Include DownBars.sip
-%Include Floor.sip
-%Include Walls.sip
-%Include TickLabels.sip
-%Include PlotArea.sip
-%Include ChartArea.sip
-%Include Legend.sip
-%Include ErrorBars.sip
-%Include DataTable.sip
-%Include Phonetic.sip
-%Include TextFrame.sip
-%Include ConnectorFormat.sip
-%Include FreeformBuilder.sip
-%Include ControlFormat.sip
-%Include OLEFormat.sip
-%Include LinkFormat.sip
-%Include PublishObjects.sip
-%Include OLEDBError.sip
-%Include OLEDBErrors.sip
-%Include Phonetics.sip
-%Include PivotLayout.sip
-%Include DisplayUnitLabel.sip
-%Include UsedObjects.sip
-%Include CustomProperties.sip
-%Include CustomProperty.sip
-%Include CalculatedMembers.sip
-%Include CalculatedMember.sip
-%Include Watches.sip
-%Include Watch.sip
-%Include PivotCell.sip
-%Include Graphic.sip
-%Include AutoRecover.sip
-%Include ErrorCheckingOptions.sip
-%Include Errors.sip
-%Include Error.sip
-%Include SmartTagAction.sip
-%Include SmartTagActions.sip
-%Include SmartTag.sip
-%Include SmartTags.sip
-%Include SmartTagRecognizer.sip
-%Include SmartTagRecognizers.sip
-%Include SmartTagOptions.sip
-%Include SpellingOptions.sip
-%Include Speech.sip
-%Include Protection.sip
-%Include PivotItemList.sip
-%Include Tab.sip
-%Include AllowEditRanges.sip
-%Include AllowEditRange.sip
-%Include UserAccessList.sip
-%Include UserAccess.sip
-%Include RTD.sip
-%Include Diagram.sip
-%Include ListObjects.sip
-%Include ListObject.sip
-%Include ListColumns.sip
-%Include ListColumn.sip
-%Include ListRows.sip
-%Include ListRow.sip
-%Include XmlNamespace.sip
-%Include XmlNamespaces.sip
-%Include XmlDataBinding.sip
-%Include XmlSchema.sip
-%Include XmlSchemas.sip
-%Include XmlMap.sip
-%Include XmlMaps.sip
-%Include ListDataFormat.sip
-%Include XPath.sip
-%Include PivotLineCells.sip
-%Include PivotLine.sip
-%Include PivotLines.sip
-%Include PivotAxis.sip
-%Include PivotFilter.sip
-%Include PivotFilters.sip
-%Include WorkbookConnection.sip
-%Include Connections.sip
-%Include WorksheetView.sip
-%Include ChartView.sip
-%Include ModuleView.sip
-%Include DialogSheetView.sip
-%Include SheetViews.sip
-%Include OLEDBConnection.sip
-%Include ODBCConnection.sip
-%Include Action.sip
-%Include Actions.sip
-%Include FormatColor.sip
-%Include ConditionValue.sip
-%Include ColorScale.sip
-%Include ColorScaleCriteria.sip
-%Include ColorScaleCriterion.sip
-%Include Databar.sip
-%Include IconSetCondition.sip
-%Include IconCriteria.sip
-%Include IconCriterion.sip
-%Include Icon.sip
-%Include IconSet.sip
-%Include IconSets.sip
-%Include Top10.sip
-%Include UniqueValues.sip
-%Include Ranges.sip
-%Include HeaderFooter.sip
-%Include Page.sip
-%Include ServerViewableItems.sip
-%Include TableStyleElement.sip
-%Include TableStyleElements.sip
-%Include TableStyle.sip
-%Include TableStyles.sip
-%Include SortField.sip
-%Include SortFields.sip
-%Include Sort.sip
-%Include Research.sip
-%Include ColorStop.sip
-%Include ColorStops.sip
-%Include LinearGradient.sip
-%Include RectangularGradient.sip
-%Include MultiThreadedCalculation.sip
-%Include ChartFormat.sip
-%Include FileExportConverter.sip
-%Include FileExportConverters.sip
-%Include AddIns2.sip
-%Include SparklineGroups.sip
-%Include SparklineGroup.sip
-%Include SparkPoints.sip
-%Include Sparkline.sip
-%Include SparkAxes.sip
-%Include SparkHorizontalAxis.sip
-%Include SparkVerticalAxis.sip
-%Include SparkColor.sip
-%Include DataBarBorder.sip
-%Include NegativeBarFormat.sip
-%Include ValueChange.sip
-%Include PivotTableChangeList.sip
-%Include DisplayFormat.sip
-%Include SlicerCaches.sip
-%Include SlicerCache.sip
-%Include SlicerCacheLevels.sip
-%Include SlicerCacheLevel.sip
-%Include Slicers.sip
-%Include Slicer.sip
-%Include SlicerItem.sip
-%Include SlicerItems.sip
-%Include SlicerPivotTables.sip
-%Include ProtectedViewWindows.sip
-%Include ProtectedViewWindow.sip
-%Include TableObject.sip
-%Include PivotValueCell.sip
-%Include QuickAnalysis.sip
-%Include ModelConnection.sip
-%Include WorksheetDataConnection.sip
-%Include TextConnection.sip
-%Include DataFeedConnection.sip
-%Include ModelTableColumn.sip
-%Include ModelTableColumns.sip
-%Include ModelTable.sip
-%Include ModelTables.sip
-%Include ModelRelationship.sip
-%Include ModelRelationships.sip
-%Include Model.sip
-%Include FullSeriesCollection.sip
-%Include ChartCategory.sip
-%Include CategoryCollection.sip
-%Include TimelineState.sip
-%Include TimelineViewState.sip
-%Include ModelTableNames.sip
-%Include ModelTableNameChange.sip
-%Include ModelTableNameChanges.sip
-%Include ModelChanges.sip
-%Include ModelColumnName.sip
-%Include ModelColumnNames.sip
-%Include ModelColumnChange.sip
-%Include ModelColumnChanges.sip
-%Include ModelMeasureName.sip
-%Include ModelMeasureNames.sip
 %Include IDummy.sip
 %Include ICanvasShapes.sip
 %Include _DebugTools.sip
@@ -713,7 +398,7 @@ namespace etapi
 {
     typedef _Application Application;
     typedef _Chart Chart;
-    typedef _OLEObject OLEObject;
+    typedef _IOLEObject OLEObject;
     typedef _IQueryTable QueryTable;
     typedef IQueryTables QueryTables;
     typedef _Workbook Workbook;
@@ -734,6 +419,320 @@ namespace etapi
     typedef IGroupShapes GroupShapes;
     typedef IFont Font;
     typedef ICellFormat CellFormat;
+    typedef IPivotFormula PivotFormula;
+    typedef IPlotArea PlotArea;
+    typedef IDownBars DownBars;
+    typedef IDataFeedConnection DataFeedConnection;
+    typedef ISmartTagRecognizer SmartTagRecognizer;
+    typedef IHyperlink Hyperlink;
+    typedef IFloor Floor;
+    typedef IDrawings Drawings;
+    typedef IWatch Watch;
+    typedef IPivotItems PivotItems;
+    typedef IPivotLine PivotLine;
+    typedef IErrorCheckingOptions ErrorCheckingOptions;
+    typedef IOLEObjectEvents OLEObjectEvents;
+    typedef IDisplayUnitLabel DisplayUnitLabel;
+    typedef IGraphic Graphic;
+    typedef IVPageBreak VPageBreak;
+    typedef ISmartTags SmartTags;
+    typedef IError Error;
+    typedef IBorder Border;
+    typedef IModelMeasureNames ModelMeasureNames;
+    typedef IComment Comment;
+    typedef IHeaderFooter HeaderFooter;
+    typedef ILegendEntries LegendEntries;
+    typedef ISlicerCacheLevel SlicerCacheLevel;
+    typedef IListBox ListBox;
+    typedef IChartFormat ChartFormat;
+    typedef IMenus Menus;
+    typedef ILinkFormat LinkFormat;
+    typedef IPivotLayout PivotLayout;
+    typedef IAddIns2 AddIns2;
+    typedef IFileExportConverters FileExportConverters;
+    typedef IModelTableNameChanges ModelTableNameChanges;
+    typedef IChartFillFormat ChartFillFormat;
+    typedef IGroupBox GroupBox;
+    typedef ICustomProperty CustomProperty;
+    typedef ITimelineViewState TimelineViewState;
+    typedef IUsedObjects UsedObjects;
+    typedef IOLEDBErrors OLEDBErrors;
+    typedef IWorksheetDataConnection WorksheetDataConnection;
+    typedef ICheckBoxes CheckBoxes;
+    typedef IScenario Scenario;
+    typedef IVPageBreaks VPageBreaks;
+    typedef ISlicerCacheLevels SlicerCacheLevels;
+    typedef IProtectedViewWindow ProtectedViewWindow;
+    typedef ILegendKey LegendKey;
+    typedef ITableStyleElement TableStyleElement;
+    typedef IControlFormat ControlFormat;
+    typedef IMenuItems MenuItems;
+    typedef IPivotCache PivotCache;
+    typedef IModelConnection ModelConnection;
+    typedef ITableStyles TableStyles;
+    typedef IIconSetCondition IconSetCondition;
+    typedef IXmlSchema XmlSchema;
+    typedef IIcon Icon;
+    typedef ICorners Corners;
+    typedef IPoints Points;
+    typedef IModelColumnChanges ModelColumnChanges;
+    typedef IScrollBars ScrollBars;
+    typedef ISmartTagRecognizers SmartTagRecognizers;
+    typedef ICategoryCollection CategoryCollection;
+    typedef IModelColumnNames ModelColumnNames;
+    typedef IListObjects ListObjects;
+    typedef IModuleView ModuleView;
+    typedef IRecentFile RecentFile;
+    typedef IEditBoxes EditBoxes;
+    typedef IStyles Styles;
+    typedef IXmlSchemas XmlSchemas;
+    typedef IModelMeasureName ModelMeasureName;
+    typedef IListRow ListRow;
+    typedef IWorkbookEvents WorkbookEvents;
+    typedef IFormatColor FormatColor;
+    typedef ISmartTagOptions SmartTagOptions;
+    typedef IScenarios Scenarios;
+    typedef IQuickAnalysis QuickAnalysis;
+    typedef IDiagram Diagram;
+    typedef ITextFrame TextFrame;
+    typedef IPivotLineCells PivotLineCells;
+    typedef ISlicerItem SlicerItem;
+    typedef IModelTableColumn ModelTableColumn;
+    typedef IDropLines DropLines;
+    typedef ICalculatedFields CalculatedFields;
+    typedef IGroupBoxes GroupBoxes;
+    typedef IODBCConnection ODBCConnection;
+    typedef IToolbar Toolbar;
+    typedef IOptionButtons OptionButtons;
+    typedef IRectangle Rectangle;
+    typedef IAreas Areas;
+    typedef IPhonetics Phonetics;
+    typedef IDocEvents DocEvents;
+    typedef IArcs Arcs;
+    typedef ITrendline Trendline;
+    typedef ISparkline Sparkline;
+    typedef ISmartTagActions SmartTagActions;
+    typedef IPivotTableChangeList PivotTableChangeList;
+    typedef IAction Action;
+    typedef ILines Lines;
+    typedef IPane Pane;
+    typedef IAxis Axis;
+    typedef IDrawing Drawing;
+    typedef IGridlines Gridlines;
+    typedef IConnections Connections;
+    typedef IRoutingSlip RoutingSlip;
+    typedef ICheckBox CheckBox;
+    typedef IRectangularGradient RectangularGradient;
+    typedef IChartEvents ChartEvents;
+    typedef IDataTable DataTable;
+    typedef IScrollBar ScrollBar;
+    typedef IAutoFilter AutoFilter;
+    typedef IPivotItem PivotItem;
+    typedef IModelRelationships ModelRelationships;
+    typedef IProtectedViewWindows ProtectedViewWindows;
+    typedef IModules Modules;
+    typedef IModelTable ModelTable;
+    typedef ITab Tab;
+    typedef IToolbarButton ToolbarButton;
+    typedef IXmlMap XmlMap;
+    typedef IDialogSheetView DialogSheetView;
+    typedef IXmlDataBinding XmlDataBinding;
+    typedef ILinearGradient LinearGradient;
+    typedef IFullSeriesCollection FullSeriesCollection;
+    typedef IOptionButton OptionButton;
+    typedef ISortFields SortFields;
+    typedef IPivotLines PivotLines;
+    typedef IPivotAxis PivotAxis;
+    typedef IFilter Filter;
+    typedef IXmlNamespaces XmlNamespaces;
+    typedef IResearch Research;
+    typedef ICustomView CustomView;
+    typedef IModelTableNameChange ModelTableNameChange;
+    typedef ISeriesCollection SeriesCollection;
+    typedef IDatabar Databar;
+    typedef IIconSets IconSets;
+    typedef IAutoCorrect AutoCorrect;
+    typedef IToolbarButtons ToolbarButtons;
+    typedef IDisplayFormat DisplayFormat;
+    typedef IWindows Windows;
+    typedef IStyle Style;
+    typedef IUserAccessList UserAccessList;
+    typedef IListColumns ListColumns;
+    typedef IPivotCaches PivotCaches;
+    typedef IDataBarBorder DataBarBorder;
+    typedef ITrendlines Trendlines;
+    typedef ILine Line;
+    typedef ISpeech Speech;
+    typedef ILabel Label;
+    typedef IButton Button;
+    typedef IConnectorFormat ConnectorFormat;
+    typedef ISparkColor SparkColor;
+    typedef ICustomViews CustomViews;
+    typedef IChartTitle ChartTitle;
+    typedef ITickLabels TickLabels;
+    typedef ILegendEntry LegendEntry;
+    typedef IModelColumnName ModelColumnName;
+    typedef IColorScaleCriteria ColorScaleCriteria;
+    typedef ITextConnection TextConnection;
+    typedef IParameters Parameters;
+    typedef IListColumn ListColumn;
+    typedef IPoint Point;
+    typedef IDialogSheets DialogSheets;
+    typedef ISmartTag SmartTag;
+    typedef IUniqueValues UniqueValues;
+    typedef ITableObject TableObject;
+    typedef IChartColorFormat ChartColorFormat;
+    typedef IErrors Errors;
+    typedef INegativeBarFormat NegativeBarFormat;
+    typedef IOval Oval;
+    typedef IIconCriteria IconCriteria;
+    typedef IValueChange ValueChange;
+    typedef IPhonetic Phonetic;
+    typedef IModelRelationship ModelRelationship;
+    typedef IDialog Dialog;
+    typedef IButtons Buttons;
+    typedef ITextBoxes TextBoxes;
+    typedef IFreeformBuilder FreeformBuilder;
+    typedef IArc Arc;
+    typedef IAutoRecover AutoRecover;
+    typedef IChartObject ChartObject;
+    typedef IChartArea ChartArea;
+    typedef ISparklineGroup SparklineGroup;
+    typedef IPivotFilter PivotFilter;
+    typedef ICalculatedItems CalculatedItems;
+    typedef IColorStops ColorStops;
+    typedef IXmlMaps XmlMaps;
+    typedef IAxisTitle AxisTitle;
+    typedef ISparklineGroups SparklineGroups;
+    typedef IXPath XPath;
+    typedef IIconCriterion IconCriterion;
+    typedef IOLEFormat OLEFormat;
+    typedef ISpinners Spinners;
+    typedef ISeriesLines SeriesLines;
+    typedef IGroupObjects GroupObjects;
+    typedef IPivotField PivotField;
+    typedef IODBCError ODBCError;
+    typedef IModelChanges ModelChanges;
+    typedef IPivotFilters PivotFilters;
+    typedef IOLEDBError OLEDBError;
+    typedef IMailer Mailer;
+    typedef ISlicerCaches SlicerCaches;
+    typedef IPivotFields PivotFields;
+    typedef ITimelineState TimelineState;
+    typedef ISpellingOptions SpellingOptions;
+    typedef IChartGroup ChartGroup;
+    typedef ISort Sort;
+    typedef ISoundNote SoundNote;
+    typedef IProtection Protection;
+    typedef IRTD RTD;
+    typedef ISpinner Spinner;
+    typedef IWorksheetView WorksheetView;
+    typedef IMenuItem MenuItem;
+    typedef ISparkHorizontalAxis SparkHorizontalAxis;
+    typedef IOvals Ovals;
+    typedef IAllowEditRanges AllowEditRanges;
+    typedef IRecentFiles RecentFiles;
+    typedef IDataLabel DataLabel;
+    typedef IErrorBars ErrorBars;
+    typedef ICustomProperties CustomProperties;
+    typedef IDrawingObjects DrawingObjects;
+    typedef IInterior Interior;
+    typedef IName Name;
+    typedef IHyperlinks Hyperlinks;
+    typedef IRefreshEvents RefreshEvents;
+    typedef IPivotTable PivotTable;
+    typedef IPivotItemList PivotItemList;
+    typedef ILegend Legend;
+    typedef IChartObjects ChartObjects;
+    typedef IListDataFormat ListDataFormat;
+    typedef ISlicerCache SlicerCache;
+    typedef IModule Module;
+    typedef IWatches Watches;
+    typedef ISparkPoints SparkPoints;
+    typedef IPivotTables PivotTables;
+    typedef IPivotValueCell PivotValueCell;
+    typedef IPivotCell PivotCell;
+    typedef IIconSet IconSet;
+    typedef IPublishObjects PublishObjects;
+    typedef IOLEObjects OLEObjects;
+    typedef IMenuBars MenuBars;
+    typedef IComments Comments;
+    typedef ILeaderLines LeaderLines;
+    typedef IListRows ListRows;
+    typedef IHPageBreak HPageBreak;
+    typedef IPictures Pictures;
+    typedef IWorkbookConnection WorkbookConnection;
+    typedef ILabels Labels;
+    typedef ISmartTagAction SmartTagAction;
+    typedef INames Names;
+    typedef ISortField SortField;
+    typedef IDialogSheet DialogSheet;
+    typedef IModel Model;
+    typedef IMultiThreadedCalculation MultiThreadedCalculation;
+    typedef IColorScale ColorScale;
+    typedef IDialogFrame DialogFrame;
+    typedef ISlicerPivotTables SlicerPivotTables;
+    typedef IDialogs Dialogs;
+    typedef IOutline Outline;
+    typedef IDropDowns DropDowns;
+    typedef IXmlNamespace XmlNamespace;
+    typedef IModelTableColumns ModelTableColumns;
+    typedef IPage Page;
+    typedef ICharacters Characters;
+    typedef IHPageBreaks HPageBreaks;
+    typedef IRectangles Rectangles;
+    typedef ISparkVerticalAxis SparkVerticalAxis;
+    typedef IConditionValue ConditionValue;
+    typedef IGroupObject GroupObject;
+    typedef IPivotFormulas PivotFormulas;
+    typedef IServerViewableItems ServerViewableItems;
+    typedef IChartCategory ChartCategory;
+    typedef IModelTableNames ModelTableNames;
+    typedef ITop10 Top10;
+    typedef ICalculatedMembers CalculatedMembers;
+    typedef IAddIns AddIns;
+    typedef IDropDown DropDown;
+    typedef IAllowEditRange AllowEditRange;
+    typedef IUpBars UpBars;
+    typedef IRanges Ranges;
+    typedef IAxes Axes;
+    typedef IParameter Parameter;
+    typedef ITableStyleElements TableStyleElements;
+    typedef IWalls Walls;
+    typedef ISparkAxes SparkAxes;
+    typedef IListObject ListObject;
+    typedef IMenuBar MenuBar;
+    typedef IFileExportConverter FileExportConverter;
+    typedef IOLEDBConnection OLEDBConnection;
+    typedef IPicture Picture;
+    typedef IMenu Menu;
+    typedef IModelTables ModelTables;
+    typedef IODBCErrors ODBCErrors;
+    typedef IChartView ChartView;
+    typedef ISheetViews SheetViews;
+    typedef IAppEvents AppEvents;
+    typedef IColorStop ColorStop;
+    typedef IFilters Filters;
+    typedef IListBoxes ListBoxes;
+    typedef ISlicers Slicers;
+    typedef IPanes Panes;
+    typedef ICalculatedMember CalculatedMember;
+    typedef IActions Actions;
+    typedef ITextBox TextBox;
+    typedef ITableStyle TableStyle;
+    typedef ISlicerItems SlicerItems;
+    typedef IHiLoLines HiLoLines;
+    typedef IUserAccess UserAccess;
+    typedef IEditBox EditBox;
+    typedef ISeries Series;
+    typedef IModelColumnChange ModelColumnChange;
+    typedef IChartGroups ChartGroups;
+    typedef IToolbars Toolbars;
+    typedef IDataLabels DataLabels;
+    typedef IValidation Validation;
+    typedef IAddIn AddIn;
+    typedef IColorScaleCriterion ColorScaleCriterion;
+    typedef ISlicer Slicer;
 
     class VBE;
     class VBProject;
