@@ -176,6 +176,41 @@ class TestRpcEtApi(unittest.TestCase):
         self.assertEqual(len(data), 20000)
         workbook.Close(False)
 
+    def test_rows_and_cols(self):
+        _, workbook = self.app.Workbooks.Add()
+        row = workbook.ActiveSheet.Rows.Item(12)
+        self.assertIsNotNone(row)
+
+        row.Value = 1
+        self.assertEqual(1, workbook.ActiveSheet.Range("A12").Value)
+        self.assertEqual(1, workbook.ActiveSheet.Range("XFD12").Value)
+
+        col = workbook.ActiveSheet.Columns.Item(2)
+        self.assertIsNotNone(col)
+        col.Value = "x"
+
+        self.assertEqual("x", workbook.ActiveSheet.Range("B1").Value)
+        self.assertEqual("x", workbook.ActiveSheet.Range("B1048576").Value)
+
+        workbook.Close(False)
+
+    # example from https://learn.microsoft.com/en-us/office/vba/api/excel.range.item
+    def test_address(self):
+        _, workbook = self.app.Workbooks.Add()
+        sheet = workbook.ActiveSheet
+        hr, exampleRange = self.app.Union(sheet.Range(
+            "B2:D4"), sheet.Range("A1"), sheet.Range("Z1:AA20"))
+        self.assertEqual(common.S_OK, hr)
+
+        self.assertEqual(exampleRange.Item(1, 1).Address(), "$B$2")
+        self.assertEqual(exampleRange.Item(2, 4).Address(), "$E$3")
+        self.assertEqual(exampleRange.Item(20, 40).Address(), "$AO$21")
+        self.assertEqual(exampleRange.Item(2, "D").Address(), "$E$3")
+        # the official example seems has a wrong value ("$E$3"")
+        self.assertEqual(exampleRange.Item(20, "AN").Address(), "$AO$21")
+
+        workbook.Close(False)
+
 
 if __name__ == "__main__":
     unittest.main()

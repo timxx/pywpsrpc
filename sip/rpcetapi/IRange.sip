@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020-2021 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -37,6 +37,33 @@ namespace etapi
             long lcid = 0,
             BSTR *RHS /Out/ = 0) = 0;
 
+        BSTR Address(VARIANT RowAbsolute = argMissing2(),
+            VARIANT ColumnAbsolute = argMissing2(),
+            XlReferenceStyle ReferenceStyle = etapi::xlA1,
+            VARIANT External = argMissing2(),
+            VARIANT RelativeTo = argMissing2());
+        %MethodCode
+            BSTR *rhs = new BSTR;
+            HRESULT hr = sipCpp->get_Address(*a0, *a1, a2, *a3, *a4, 0, rhs);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Address()' failed with 0x%x", hr);
+
+                sipReleaseType(a0, sipType_VARIANT, a0State);
+                sipReleaseType(a1, sipType_VARIANT, a1State);
+                sipReleaseType(a3, sipType_VARIANT, a3State);
+                sipReleaseType(a4, sipType_VARIANT, a4State);
+
+                delete rhs;
+                return nullptr;
+            }
+            else
+            {
+                sipRes = rhs;
+            }
+        %End
+
         virtual HRESULT get_AddressLocal(
             VARIANT RowAbsolute = argMissing2(),
             VARIANT ColumnAbsolute = argMissing2(),
@@ -44,6 +71,33 @@ namespace etapi
             VARIANT External = argMissing2(),
             VARIANT RelativeTo = argMissing2(),
             BSTR *RHS /Out/ = 0) = 0;
+
+        BSTR AddressLocal(VARIANT RowAbsolute = argMissing2(),
+            VARIANT ColumnAbsolute = argMissing2(),
+            XlReferenceStyle ReferenceStyle = etapi::xlA1,
+            VARIANT External = argMissing2(),
+            VARIANT RelativeTo = argMissing2());
+        %MethodCode
+            BSTR *rhs = new BSTR;
+            HRESULT hr = sipCpp->get_AddressLocal(*a0, *a1, a2, *a3, *a4, rhs);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_AddressLocal()' failed with 0x%x", hr);
+
+                sipReleaseType(a0, sipType_VARIANT, a0State);
+                sipReleaseType(a1, sipType_VARIANT, a1State);
+                sipReleaseType(a3, sipType_VARIANT, a3State);
+                sipReleaseType(a4, sipType_VARIANT, a4State);
+
+                delete rhs;
+                return nullptr;
+            }
+            else
+            {
+                sipRes = rhs;
+            }
+        %End
 
         virtual HRESULT AdvancedFilter(
             XlFilterAction Action,
@@ -416,6 +470,51 @@ namespace etapi
             VARIANT ColumnIndex = argMissing2(),
             long lcid = 0,
             VARIANT *RHS /Out/ = 0) = 0;
+
+        // FIXME: we should support IDispatch to query any interface...
+        IRange* Item(VARIANT RowIndex, VARIANT ColumnIndex = argMissing2());
+        %MethodCode
+            VARIANT rhs;
+            VariantInit(&rhs);
+            sipRes = nullptr;
+
+            HRESULT hr = sipCpp->get_Item(*a0, *a1, 0, &rhs);
+            if (hr != S_OK)
+            {
+                PyErr_Format(PyExc_AttributeError,
+                    "Call 'get_Item()' failed with 0x%x", hr);
+
+                sipReleaseType(a0, sipType_VARIANT, a0State);
+                sipReleaseType(a1, sipType_VARIANT, a1State);
+                return nullptr;
+            }
+            else
+            {
+                if (V_VT(&rhs) != VT_DISPATCH)
+                {
+                    PyErr_Format(PyExc_AttributeError,
+                        "Unsupported type for get_Item: %d", V_VT(&rhs));
+
+                    sipReleaseType(a0, sipType_VARIANT, a0State);
+                    sipReleaseType(a1, sipType_VARIANT, a1State);
+                    return nullptr;
+                }
+
+                etapi::IRange* rg = nullptr;
+                hr = V_DISPATCH(&rhs)->QueryInterface(etapi::IID_IRange, (void**)&rg);
+                if (hr != S_OK)
+                {
+                    PyErr_Format(PyExc_AttributeError,
+                        "get_Item returns other than IRange: %d", hr);
+
+                    sipReleaseType(a0, sipType_VARIANT, a0State);
+                    sipReleaseType(a1, sipType_VARIANT, a1State);
+                    return nullptr;
+                }
+
+                sipRes = rg;
+            }
+        %End
 
         virtual HRESULT put_Item(
             VARIANT RowIndex,
