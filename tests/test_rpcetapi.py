@@ -169,6 +169,13 @@ class TestRpcEtApi(unittest.TestCase):
 
         workbook.Close(False)
 
+    def test_bigrange(self):
+        _, workbook = self.app.Workbooks.Add()
+        sheet = workbook.ActiveSheet
+        data = sheet.Range("A1:V20000").Value
+        self.assertEqual(len(data), 20000)
+        workbook.Close(False)
+
 
 if __name__ == "__main__":
     unittest.main()

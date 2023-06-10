@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020-2021 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -119,7 +119,10 @@ typedef double DATE;
 
     size_t len = *sipCpp ? _SysStringLen(*sipCpp) : 0;
     if (len == 0)
+    {
+        Py_INCREF(Py_None);
         return Py_None;
+    }
 
     uint maxChar = 0x7F;
     std::vector<wchar_t> buffer = _toUtf32(*sipCpp, len, maxChar);

@@ -173,7 +173,10 @@
     switch (V_VT(sipCpp))
     {
     case VT_EMPTY:
+    {
+        Py_INCREF(Py_None);
         return Py_None;
+    }
     case VT_I2:
         return PyLong_FromLong(V_I2(sipCpp));
     case VT_I4:
