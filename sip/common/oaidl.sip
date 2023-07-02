@@ -52,6 +52,11 @@
         V_VT(pVar) = VT_BOOL;
         V_BOOL(pVar) = sipPy == Py_True ? VARIANT_TRUE : VARIANT_FALSE;
     }
+    else if (Py_TYPE(sipPy) == &PyFloat_Type)
+    {
+        V_VT(pVar) = VT_R8;
+        V_R8(pVar) = PyFloat_AsDouble(sipPy);
+    }
     else if (Py_TYPE(sipPy) == &PyList_Type)
     {
         V_VT(pVar) = VT_ARRAY | VT_VARIANT;
