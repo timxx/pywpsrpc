@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020-2021 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -403,7 +403,10 @@ namespace etapi
         virtual HRESULT PivotTables(
             VARIANT Index = argMissing2(),
             long lcid = 0,
-            IDispatch **RHS /Out/ = 0) = 0;
+            IPivotTables **RHS /Out/ = 0) = 0;
+        %MethodCode
+            sipRes = sipCpp->PivotTables(*a0, a1, (IDispatch**)&a2);
+        %End
 
         virtual HRESULT PivotTableWizard(
             VARIANT SourceType = argMissing2(),

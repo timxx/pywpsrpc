@@ -211,6 +211,40 @@ class TestRpcEtApi(unittest.TestCase):
 
         workbook.Close(False)
 
+    def test_pivottables(self):
+        _, workbook = self.app.Workbooks.Add()
+        sheet = workbook.ActiveSheet
+
+        hr, pivottables = sheet.PivotTables()
+        self.assertEqual(hr, common.S_OK)
+        self.assertEqual(pivottables.Count, 0)
+
+        sheet.Range("A1").Value = "Product"
+        sheet.Range("B1").Value = "Sales"
+
+        data = [
+            ("a", "100"),
+            ("b", "0"),
+            ("c", "50"),
+            ("d", "50"),
+        ]
+
+        row = 2
+        for a, b in data:
+            sheet.Range("A{}".format(row)).Value = a
+            sheet.Range("B{}".format(row)).Value = b
+            row += 1
+
+        hr, pivottable = sheet.PivotTableWizard(
+            etapi.xlDatabase, sheet.Range("A1:B{}".format(row - 1)))
+        self.assertEqual(hr, common.S_OK)
+        self.assertIsNotNone(pivottable)
+
+        # the wizard create the pivottable in another sheet...
+        self.assertEqual(workbook.Sheets[1].PivotTables()[1].Count, 1)
+
+        workbook.Close(False)
+
 
 if __name__ == "__main__":
     unittest.main()
