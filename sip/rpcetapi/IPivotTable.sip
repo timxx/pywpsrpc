@@ -93,7 +93,10 @@ namespace etapi
 
         virtual HRESULT PivotFields(
             VARIANT Index = argMissing2(),
-            IDispatch **RHS /Out/ = 0) = 0;
+            IPivotFields **RHS /Out/ = 0) = 0;
+        %MethodCode
+            sipRes = sipCpp->PivotFields(*a0, (IDispatch**)&a1);
+        %End
 
         virtual HRESULT get_RefreshDate(
             DATE *RHS /Out/) = 0;

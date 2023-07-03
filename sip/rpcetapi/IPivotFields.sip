@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020-2021 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -32,12 +32,15 @@ namespace etapi
 
         virtual HRESULT Item(
             VARIANT Index,
-            IDispatch **RHS /Out/) = 0;
-
-        IDispatch* __getitem__(VARIANT index) const;
+            etapi::IPivotField **RHS /Out/) = 0;
         %MethodCode
-            IDispatch *prop = nullptr;
-            if (sipCpp->Item(*a0, &prop) != S_OK)
+            sipRes = sipCpp->Item(*a0, (IDispatch**)&a1);
+        %End
+
+        etapi::IPivotField* __getitem__(VARIANT index) const;
+        %MethodCode
+            etapi::IPivotField *prop = nullptr;
+            if (sipCpp->Item(*a0, (IDispatch**)&prop) != S_OK)
                 sipIsErr = 1;
             else
                 sipRes = prop;

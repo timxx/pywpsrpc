@@ -240,6 +240,14 @@ class TestRpcEtApi(unittest.TestCase):
         self.assertEqual(hr, common.S_OK)
         self.assertIsNotNone(pivottable)
 
+        hr, pivotfields = pivottable.PivotFields()
+        self.assertEqual(hr, common.S_OK)
+        self.assertIsNotNone(pivotfields)
+        self.assertEqual(pivotfields.Count, 2)
+
+        self.assertEqual(pivotfields[1].Name, "Product")
+        self.assertEqual(pivotfields[2].Name, "Sales")
+
         # the wizard create the pivottable in another sheet...
         self.assertEqual(workbook.Sheets[1].PivotTables()[1].Count, 1)
 
