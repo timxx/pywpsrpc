@@ -142,3 +142,7 @@ app.Quit(wpsapi.wdDoNotSaveChanges)
 ## Run on Server
 [Click here](https://github.com/timxx/pywpsrpc/wiki/Run-on-Server)
 
+
+## About License
+
+It's free to use pywpsrpc even for commercial as [MIT](./LICENSE) allows, but you must ensure your WPS Office for Linux allows you to do so. Regarding the use of this project outside reasonable bounds, this project assumes no legal liability.

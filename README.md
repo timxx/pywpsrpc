@@ -148,3 +148,7 @@ app.Quit(wpsapi.wdDoNotSaveChanges)
 ## 在服务器上运行
 [点我查看](https://github.com/timxx/pywpsrpc/wiki/Run-on-Server)
 
+
+## 关于授权
+
+pywpsrpc为[MIT](./LICENSE)开源授权协议，项目本身允许商用，但前提是你所使用的WPS Office For Linux版本允许商用（目前个人版本即社区版本不允许），具体需要联系WPS官方咨询。对于不在合理范围使用本项目的，本项目不承担任何法律责任。
