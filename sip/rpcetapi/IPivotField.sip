@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Weitian Leung
+ * Copyright (c) 2020-2023 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -99,7 +99,39 @@ namespace etapi
 
         virtual HRESULT PivotItems(
             VARIANT Index = argMissing2(),
-            VARIANT *RHS /Out/ = 0) = 0;
+            etapi::IPivotItems **RHS /Out/ = 0) = 0;
+        %MethodCode
+            VARIANT var;
+            VariantInit(&var);
+            sipRes = sipCpp->PivotItems(*a0, &var);
+
+            bool unsupported = false;
+            do
+            {
+                if (sipRes != S_OK)
+                    break;
+                if (V_VT(&var) != VT_DISPATCH)
+                {
+                    unsupported = true;
+                    break;
+                }
+
+                HRESULT hr = V_DISPATCH(&var)->QueryInterface(etapi::IID_IPivotItems, (void**)&a1);
+                if (hr == S_OK)
+                    break;
+
+                // MSDN says it could be PivotItems or PivotItem
+                // but when will PivotItem?
+
+                sipRes = hr;
+                unsupported = true;
+            } while (0);
+
+            VariantClear(&var);
+
+            if (unsupported)
+                PyErr_Format(PyExc_TypeError, "Unexpected type returns from PivotItems");
+        %End
 
         virtual HRESULT get_Position(
             VARIANT *RHS /Out/) = 0;

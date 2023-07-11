@@ -251,6 +251,18 @@ class TestRpcEtApi(unittest.TestCase):
         # the wizard create the pivottable in another sheet...
         self.assertEqual(workbook.Sheets[1].PivotTables()[1].Count, 1)
 
+        hr, pivotitems = pivotfields[1].PivotItems()
+        self.assertEqual(hr, common.S_OK)
+        self.assertIsNotNone(pivotitems)
+
+        self.assertTrue(pivotitems.Count > 0)
+
+        pivotitem = pivotitems[1]
+        self.assertIsNotNone(pivotitem)
+
+        self.assertEqual(pivotitem.Visible, True)
+        self.assertEqual(pivotitem.Name, "a")
+
         workbook.Close(False)
 
 
