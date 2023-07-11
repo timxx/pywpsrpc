@@ -396,7 +396,6 @@ typedef float single;
 %Include DocumentFields.sip
 %Include OfdExportOptions.sip
 %Include PdfExportOptions.sip
-%Include IWORDCtrlExtender.sip
 
 
 namespace wpsapi

@@ -106,8 +106,6 @@ typedef long MsoRGBType;
 %Include Tags.sip
 %Include MouseTracker.sip
 %Include MouseDownHandler.sip
-%Include OCXExtender.sip
-%Include OCXExtenderEvents.sip
 %Include EApplication.sip
 %Include Table.sip
 %Include Columns.sip
@@ -227,7 +225,6 @@ typedef long MsoRGBType;
 %Include SlideNavigation.sip
 %Include Guides.sip
 %Include Guide.sip
-%Include IPPTCtrlExtender.sip
 
 namespace wppapi
 {

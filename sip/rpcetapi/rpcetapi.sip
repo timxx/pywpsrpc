@@ -392,7 +392,6 @@ typedef float single;
 %Include ICanvasShapes.sip
 %Include _DebugTools.sip
 %Include Solver.sip
-%Include IEXCELCtrlExtender.sip
 
 namespace etapi
 {
