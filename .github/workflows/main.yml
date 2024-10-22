@@ -15,6 +15,8 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.6", "3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+    permissions:
+      id-token: write
 
     steps:
     - name: Checkout repository and submodules
@@ -29,15 +31,15 @@ jobs:
       run: |
         sudo apt install g++ qtbase5-dev qt5-default
         python -m pip install --upgrade pip
-        python -m pip install sip twine
+        if [ "${{ matrix.python-version }}" == "3.6" ] || [ "${{ matrix.python-version }}" == "3.7" ]; then
+          python -m pip install sip==6.5.1 twine
+        else
+          python -m pip install sip twine
+        fi
     - name: Build
       run: |
         sip-sdist
         sip-wheel --verbose
     - name: Upload
       if: ${{ github.ref_type == 'tag' }}
-      env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-      run: |
-          twine upload --skip-existing pywpsrpc-*.tar.gz pywpsrpc-*.whl
+      uses: pypa/gh-action-pypi-publish@release/v1
