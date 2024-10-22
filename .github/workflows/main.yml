@@ -41,5 +41,5 @@ jobs:
         sip-sdist
         sip-wheel --verbose
     - name: Upload
-      if: ${{ github.ref_type == 'tag' }}
+      if: ${{ github.ref_type == 'tag' || startsWith(github.event.head_commit.message, '[upload]') }}
       uses: pypa/gh-action-pypi-publish@release/v1
