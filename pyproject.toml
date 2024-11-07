@@ -2,19 +2,17 @@
 requires = ["sip >=6"]
 build-backend = "sipbuild.api"
 
-[project]
+[tool.poetry]
 name = "pywpsrpc"
 version = "2.3.9"
 description = "Python bindings for the WPS Office RPC"
 readme = "README.md"
-authors = [
-    { name = "Weitian Leung", email = "weitianleung@gmail.com" }
-]
+authors = ["Weitian Leung <weitianleung@gmail.com>"]
+
 license = "MIT"
 homepage = "https://github.com/timxx/pywpsrpc"
 keywords = ["WPS Office", "RPC", "Python bindings"]
-platform = "Linux"
-tool.sip.project.sdist-excludes = [
+exclude = [
     ".gitignore", ".travis.yml", "*.tar.gz",
     ".git/*", ".git/*/*", ".git/*/*/*", ".git/*/*/*/*",
     ".git/*/*/*/*/*", ".git/*/*/*/*/*/*", ".git/*/*/*/*/*/*/*",
