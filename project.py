@@ -26,7 +26,7 @@ class PyWpsRpcProject(sipbuild.Project):
         self.abi_version = "12"
 
         sdk_dir = os.path.join(self.root_dir, "wpsrpc-sdk")
-
+        print(platform.machine())
         self.bindings_factories = [RpcCommon, RpcWpsApi, RpcWppApi, RpcEtApi]
         self.sdk_inc_dir = os.path.join(sdk_dir, "include")
         self.cxx_inc_dir = os.path.join(self.root_dir, "include")
@@ -38,7 +38,8 @@ class PyWpsRpcProject(sipbuild.Project):
         # always try system's one first
         dirs = ["/opt/kingsoft/wps-office/office6",
                 "/usr/lib/office6",  # for Arch Linux
-                "/opt/apps/cn.wps.wps-office/files/kingsoft/wps-office/office6",  # Deepin
+                "/opt/apps/cn.wps.wps-office-pro/files/kingsoft/wps-office/office6",  # Deepin
+                "/opt/apps/cn.wps.wps-office/files/kingsoft/wps-office/office6",
                 sdk_dir + "/lib/" + platform.machine()
                 ]
 
@@ -417,6 +418,7 @@ class RpcApiBuilder(sipbuild.Builder):
             f.write("QMAKE_CXXFLAGS += -Wno-delete-incomplete -Wno-unused-variable\n")
             f.write("QMAKE_RPATHDIR += $ORIGIN /opt/kingsoft/wps-office/office6\n")
             f.write("QMAKE_RPATHDIR += /usr/lib/office6\n")
+            f.write("QMAKE_RPATHDIR += /opt/apps/cn.wps.wps-office-pro/files/kingsoft/wps-office/office6\n")
             f.write("QMAKE_RPATHDIR += /opt/apps/cn.wps.wps-office/files/kingsoft/wps-office/office6\n\n")
 
             # for testing
