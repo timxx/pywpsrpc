@@ -278,6 +278,40 @@ class TestRpcEtApi(unittest.TestCase):
 
         workbook.Close(False)
 
+    def test_charts(self):
+        hr, workbook = self.app.Workbooks.Add()
+        self.assertEqual(hr, common.S_OK)
+
+        sheet = workbook.ActiveSheet
+        hr, chartObjects = sheet.ChartObjects()
+        self.assertEqual(hr, common.S_OK)
+        self.assertIsNotNone(chartObjects)
+
+        hr, charObject = chartObjects.Add(100, 30, 400, 250)
+        self.assertEqual(hr, common.S_OK)
+        self.assertIsNotNone(charObject)
+
+        chart = charObject.Chart
+        self.assertIsNotNone(chart)
+
+        source = sheet.Range("A1:A20")
+        hr = chart.ChartWizard(source, etapi.xlLine, Title="Hello Chart")
+        self.assertEqual(hr, common.S_OK)
+
+        chartArea = chart.ChartArea
+        self.assertIsNotNone(chartArea)
+
+        format = chartArea.Format
+        self.assertIsNotNone(format)
+
+        fillFormat = format.Fill
+        self.assertIsNotNone(fillFormat)
+
+        hr = fillFormat.Patterned(etapi.msoPatternLightDownwardDiagonal)
+        self.assertEqual(hr, common.S_OK)
+
+        workbook.Close(False)
+
 
 if __name__ == "__main__":
     unittest.main()

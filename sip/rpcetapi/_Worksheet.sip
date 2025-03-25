@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020-2023 Weitian Leung
+ * Copyright (c) 2020-2025 Weitian Leung
  *
  * This file is part of pywpsrpc.
  *
@@ -206,7 +206,10 @@ namespace etapi
         virtual HRESULT ChartObjects(
             VARIANT Index = argMissing2(),
             long lcid = 0,
-            IDispatch **RHS /Out/ = 0) = 0;
+            IChartObjects **RHS /Out/ = 0) = 0;
+        %MethodCode
+            sipRes = sipCpp->ChartObjects(*a0, a1, (IDispatch**)&a2);
+        %End
 
         virtual HRESULT CheckBoxes(
             VARIANT Index = argMissing2(),
