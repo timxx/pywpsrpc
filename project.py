@@ -428,6 +428,7 @@ class RpcApiBuilder(sipbuild.Builder):
                     buildable.target)
             if not buildable.debug:
                 f.write("QMAKE_LFLAGS += -s\n")
+            f.write("QMAKE_LFLAGS += -Wl,--disable-new-dtags\n")
             # f.write("QMAKE_LFLAGS_PLUGIN += -Wl,--no-undefined\n")
             f.write(
                 "QMAKE_CXXFLAGS += -Wno-attributes -Wno-delete-non-virtual-dtor\n")
