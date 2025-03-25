@@ -24,7 +24,7 @@ class PyWpsRpcProject(sipbuild.Project):
     def __init__(self):
         super().__init__(dunder_init=True)
         # newer python can only be built with newer abi version
-        if sys.version_info >= (3, 9) or sipbuild.SIP_VERSION >= 0x060200:
+        if sys.version_info >= (3, 9) or sipbuild.SIP_VERSION >= 0x060A00:
             self.abi_version = "12.10"
         else:
             self.abi_version = "12"
