@@ -4,6 +4,8 @@ import sys
 import os
 import unittest
 
+import psutil
+
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + "/../build")
 
 from pywpsrpc.rpcetapi import etapi
@@ -17,9 +19,20 @@ class TestRpcEtApi(unittest.TestCase):
         super().setUp()
         _, self.rpc = rpcetapi.createEtRpcInstance()
         _, self.app = self.rpc.getEtApplication()
+        _, self.pid = self.rpc.getProcessPid()
 
     def tearDown(self):
         self.app.Quit()
+        try:
+            process = psutil.Process(self.pid)
+            for child in process.children(recursive=True):
+                try:
+                    child.kill()
+                except Exception:
+                    pass
+            process.kill()
+        except Exception:
+            pass
         super().tearDown()
 
     def check_call(self, funcName, hr, value=None):
