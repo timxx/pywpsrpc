@@ -23,7 +23,11 @@ var_pattern = re.compile(
 class PyWpsRpcProject(sipbuild.Project):
     def __init__(self):
         super().__init__(dunder_init=True)
-        self.abi_version = "12"
+        # newer python can only be built with newer abi version
+        if sys.version_info >= (3, 9) or sipbuild.SIP_VERSION >= 0x060A00:
+            self.abi_version = "12.10"
+        else:
+            self.abi_version = "12"
 
         sdk_dir = os.path.join(self.root_dir, "wpsrpc-sdk")
         print(platform.machine())
@@ -197,6 +201,16 @@ class RpcCommon(RpcApiBindings):
             buildable.installables.append(sub_installable)
 
 
+def _detect_rpc_lib(libdir, name):
+    rpc_suffixes = ["wpsqt", "sysqt5"]
+    for suffix in rpc_suffixes:
+        fullPath = os.path.join(
+            libdir, "librpc{}api_{}.so".format(name, suffix))
+        if os.path.exists(fullPath):
+            return "rpc{}api_".format(name) + suffix
+    return None
+
+
 class RpcWpsApi(RpcApiBindings):
 
     def __init__(self, project):
@@ -205,10 +219,11 @@ class RpcWpsApi(RpcApiBindings):
                 project.sdk_inc_dir + "/wps",
                 project.cxx_inc_dir]
 
+        rpc_lib = _detect_rpc_lib(project.sdk_lib_dir, "wps")
         super().__init__(project,
                          "rpcwpsapi",
                          include_dirs=dirs,
-                         libraries=["rpcwpsapi_sysqt5"],
+                         libraries=[rpc_lib],
                          library_dirs=[project.sdk_lib_dir],
                          QT=["core"],
                          PCH=["QString", "wps/wpsapi.h"])
@@ -222,10 +237,11 @@ class RpcWppApi(RpcApiBindings):
                 project.sdk_inc_dir + "/wpp",
                 project.cxx_inc_dir]
 
+        rpc_lib = _detect_rpc_lib(project.sdk_lib_dir, "wpp")
         super().__init__(project,
                          "rpcwppapi",
                          include_dirs=dirs,
-                         libraries=["rpcwppapi_sysqt5"],
+                         libraries=[rpc_lib],
                          library_dirs=[project.sdk_lib_dir],
                          PCH=["wpp/wppapi.h"])
 
@@ -238,10 +254,11 @@ class RpcEtApi(RpcApiBindings):
                 project.sdk_inc_dir + "/et",
                 project.cxx_inc_dir]
 
+        rpc_lib = _detect_rpc_lib(project.sdk_lib_dir, "et")
         super().__init__(project,
                          "rpcetapi",
                          include_dirs=dirs,
-                         libraries=["rpcetapi_sysqt5"],
+                         libraries=[rpc_lib],
                          library_dirs=[project.sdk_lib_dir],
                          PCH=["et/etapi.h"])
 
@@ -412,6 +429,7 @@ class RpcApiBuilder(sipbuild.Builder):
                     buildable.target)
             if not buildable.debug:
                 f.write("QMAKE_LFLAGS += -s\n")
+            f.write("QMAKE_LFLAGS += -Wl,--disable-new-dtags\n")
             # f.write("QMAKE_LFLAGS_PLUGIN += -Wl,--no-undefined\n")
             f.write(
                 "QMAKE_CXXFLAGS += -Wno-attributes -Wno-delete-non-virtual-dtor\n")
@@ -474,12 +492,14 @@ class RpcApiBuilder(sipbuild.Builder):
         sub_dir = self.project.build_dir + "/sip"
         os.makedirs(sub_dir, exist_ok=True)
 
-        if sipbuild.SIP_VERSION >= 0x060200:
-            main_ver = self.project.abi_version.split('.')[0]
+        if sipbuild.SIP_VERSION >= 0x060A00:
+            abi_ver = self.project.abi_version.split('.')
+        elif sipbuild.SIP_VERSION >= 0x060200:
+            abi_ver = self.project.abi_version.split('.')[0]
         else:
-            main_ver = self.project.abi_version
+            abi_ver = self.project.abi_version
         sources = sipbuild.module.copy_nonshared_sources(
-            main_ver, sub_dir)
+            abi_ver, sub_dir)
 
         # use copy_sip_h instead?
         shutil.copy(self.project.build_dir + "/sip.h", sub_dir)

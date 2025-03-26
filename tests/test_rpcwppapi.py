@@ -5,6 +5,8 @@ import os
 import datetime
 import unittest
 
+import psutil
+
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + "/../build")
 
 from pywpsrpc.rpcwppapi import wppapi
@@ -61,6 +63,22 @@ class TestRpcWppApi(unittest.TestCase):
 
         hr = app.Quit()
         self.check_call("ap.Quit", hr)
+
+        TestRpcWppApi.killRpc(rpc)
+
+    @staticmethod
+    def killRpc(rpc):
+        try:
+            _, pid = rpc.getProcessPid()
+            process = psutil.Process(pid)
+            for child in process.children(recursive=True):
+                try:
+                    child.kill()
+                except Exception:
+                    pass
+            process.kill()
+        except Exception:
+            pass
 
 
 if __name__ == "__main__":

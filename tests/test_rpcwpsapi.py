@@ -5,6 +5,8 @@ import os
 import time
 import unittest
 
+import psutil
+
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + "/../build")
 from pywpsrpc import rpcwpsapi
 from pywpsrpc import common
@@ -321,6 +323,7 @@ class TestRpcWpsApi(unittest.TestCase):
 
         hr = wpsApp.Quit(wpsapi.wdDoNotSaveChanges)
         self.check_call("Quit", hr)
+        TestRpcWpsApi.killRpc(rpc)
 
     def test_cmp_docs(self):
         _, rpc = rpcwpsapi.createWpsRpcInstance()
@@ -335,6 +338,21 @@ class TestRpcWpsApi(unittest.TestCase):
         # self.assertNotEqual(doc, None)
 
         app.Quit(wpsapi.wdDoNotSaveChanges)
+        TestRpcWpsApi.killRpc(rpc)
+
+    @staticmethod
+    def killRpc(rpc):
+        try:
+            _, pid = rpc.getProcessPid()
+            process = psutil.Process(pid)
+            for child in process.children(recursive=True):
+                try:
+                    child.kill()
+                except Exception:
+                    pass
+            process.kill()
+        except Exception:
+            pass
 
 
 if __name__ == "__main__":
