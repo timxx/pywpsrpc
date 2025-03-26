@@ -315,12 +315,18 @@ class TestRpcEtApi(unittest.TestCase):
         chartObject.Name = "hello"
         self.assertEqual(chartObject.Name, "hello")
 
-        # not working
-        # self.assertGreater(chartObjects.Count, 0)
-        # co = chartObjects[1]
-        # self.assertIsNotNone(co)
-        # co = chartObjects["hello"]
-        # self.assertIsNotNone(co)
+        # this is a bug in WPS Spreadsheets
+        self.assertEqual(chartObjects.Count, 0)
+
+        # we have to recreate the chartObjects
+        _, chartObjects = sheet.ChartObjects()
+        self.assertEqual(chartObjects.Count, 1)
+
+        co = chartObjects[1]
+        self.assertIsNotNone(co)
+
+        co = chartObjects["hello"]
+        self.assertIsNotNone(co)
 
         workbook.Close(False)
 
