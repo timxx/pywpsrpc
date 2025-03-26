@@ -287,11 +287,11 @@ class TestRpcEtApi(unittest.TestCase):
         self.assertEqual(hr, common.S_OK)
         self.assertIsNotNone(chartObjects)
 
-        hr, charObject = chartObjects.Add(100, 30, 400, 250)
+        hr, chartObject = chartObjects.Add(100, 30, 400, 250)
         self.assertEqual(hr, common.S_OK)
-        self.assertIsNotNone(charObject)
+        self.assertIsNotNone(chartObject)
 
-        chart = charObject.Chart
+        chart = chartObject.Chart
         self.assertIsNotNone(chart)
 
         source = sheet.Range("A1:A20")
@@ -309,6 +309,18 @@ class TestRpcEtApi(unittest.TestCase):
 
         hr = fillFormat.Patterned(etapi.msoPatternLightDownwardDiagonal)
         self.assertEqual(hr, common.S_OK)
+
+        # the default name should be "Chart 1"
+        self.assertNotEqual(chartObject.Name, "hello")
+        chartObject.Name = "hello"
+        self.assertEqual(chartObject.Name, "hello")
+
+        # not working
+        # self.assertGreater(chartObjects.Count, 0)
+        # co = chartObjects[1]
+        # self.assertIsNotNone(co)
+        # co = chartObjects["hello"]
+        # self.assertIsNotNone(co)
 
         workbook.Close(False)
 
