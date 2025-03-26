@@ -1,5 +1,5 @@
 # **
-# * Copyright (c) 2020-2023 Weitian Leung
+# * Copyright (c) 2020-2025 Weitian Leung
 # *
 # * This file is part of pywpsrpc.
 # *
