@@ -30,7 +30,6 @@ class PyWpsRpcProject(sipbuild.Project):
             self.abi_version = "12"
 
         sdk_dir = os.path.join(self.root_dir, "wpsrpc-sdk")
-        print(platform.machine())
         self.bindings_factories = [RpcCommon, RpcWpsApi, RpcWppApi, RpcEtApi]
         self.sdk_inc_dir = os.path.join(sdk_dir, "include")
         self.cxx_inc_dir = os.path.join(self.root_dir, "include")
