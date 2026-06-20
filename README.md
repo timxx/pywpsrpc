@@ -115,6 +115,10 @@ for i in range(0, paras.Count):
     # 注意：首个元素总是从1开始
     print(paras[i + 1].OutlineLevel)
 
+# 也支持VBA风格的call语法访问集合元素
+first_para = paras(1)
+print(first_para.Range.Text)
+
 def onDocumentBeforeSave(doc):
     # 如果想取消当前文档保存，第二个返回值设为True
     print("onDocumentBeforeSave called for doc: ", doc.Name)

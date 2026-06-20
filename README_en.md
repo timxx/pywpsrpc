@@ -109,6 +109,10 @@ for i in range(0, paras.Count):
     # the first element starts with 1
     print(paras[i + 1].OutlineLevel)
 
+# VBA-style call syntax is also supported for collection access
+first_para = paras(1)
+print(first_para.Range.Text)
+
 def onDocumentBeforeSave(doc):
     # to discard the saving, return Cancel as True
     print("onDocumentBeforeSave called for doc: ", doc.Name)

@@ -40,9 +40,17 @@ class TestWps(unittest.TestCase):
         doc = docs[name]
         self.assertEqual(name, doc.Name)
 
+        # test VBA-style call syntax: Panes(1) instead of Panes[1]
+        doc_by_call = docs(2)
+        self.assertEqual(doc_by_call.Name, name)
+
         doc = docs.Open(os.path.dirname(os.path.realpath(__file__)) + "/../pyproject.toml", ReadOnly=True)
         for para in doc.Paragraphs:
             self.assertIsNotNone(para.Range.Text)
+
+        # test call syntax on paragraphs
+        para_by_call = doc.Paragraphs(1)
+        self.assertIsNotNone(para_by_call.Range.Text)
 
         app.Quit()
 
@@ -61,6 +69,10 @@ class TestWpp(unittest.TestCase):
 
         preses.Add()
         self.assertEqual(len(preses), 2)
+
+        # test VBA-style call syntax
+        pres_by_call = preses(1)
+        self.assertIsNotNone(pres_by_call.Name)
 
         for pres in preses:
             self.assertIsNotNone(pres.Name)
@@ -82,6 +94,10 @@ class TestEt(unittest.TestCase):
 
         wbs.Add()
         self.assertEqual(len(wbs), 2)
+
+        # test VBA-style call syntax
+        wb_by_call = wbs(1)
+        self.assertIsNotNone(wb_by_call.Name)
 
         for wb in wbs:
             self.assertIsNotNone(wb.Name)

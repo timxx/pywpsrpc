@@ -1,5 +1,5 @@
 #**
-# * Copyright (c) 2020 Weitian Leung
+# * Copyright (c) 2020-2026 Weitian Leung
 # *
 # * This file is part of pywpsrpc.
 # *
@@ -144,6 +144,10 @@ class RpcProxy(object):
 
     def __len__(self):
         return len(self._object)
+
+    def __call__(self, index):
+        """Support VBA-style call syntax, e.g. Panes(1) instead of Panes[1]"""
+        return self.__getitem__(index)
 
     def __getitem__(self, index):
         item = self._object.__getitem__(index)
