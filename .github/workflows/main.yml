@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.6", "3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
     permissions:
       id-token: write
 
@@ -31,7 +31,7 @@ jobs:
       run: |
         sudo apt install g++ qtbase5-dev qt5-qmake
         python -m pip install --upgrade pip
-        if [ "${{ matrix.python-version }}" == "3.6" ] || [ "${{ matrix.python-version }}" == "3.7" ]; then
+        if [ "${{ matrix.python-version }}" == "3.7" ]; then
           python -m pip install sip==6.5.1 twine
         else
           python -m pip install sip twine
